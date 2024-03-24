@@ -39,13 +39,13 @@ void CSequence::Clear()
 	m_iPlaying = -1;
 }
 
-void CSequence::SetItem(int Index, signed char Value)
+void CSequence::SetItem(const int Index, const signed char Value)
 {
 	ASSERT(Index <= MAX_SEQUENCE_ITEMS);
 	m_cValues[Index] = Value;
 }
 
-void CSequence::SetItemCount(unsigned int Count)
+void CSequence::SetItemCount(const unsigned int Count)
 {
 	ASSERT(Count <= MAX_SEQUENCE_ITEMS);
 
@@ -57,7 +57,7 @@ void CSequence::SetItemCount(unsigned int Count)
 		m_iReleasePoint = -1;
 }
 
-void CSequence::SetLoopPoint(unsigned int Point)
+void CSequence::SetLoopPoint(const unsigned int Point)
 {
 	m_iLoopPoint = Point;
 	// Loop point cannot be beyond release point (at the moment)
@@ -65,7 +65,7 @@ void CSequence::SetLoopPoint(unsigned int Point)
 		m_iLoopPoint = -1;
 }
 
-void CSequence::SetReleasePoint(unsigned int Point)
+void CSequence::SetReleasePoint(const unsigned int Point)
 {
 	m_iReleasePoint = Point;
 	// Loop point cannot be beyond release point (at the moment)
@@ -73,12 +73,12 @@ void CSequence::SetReleasePoint(unsigned int Point)
 		m_iLoopPoint = -1;
 }
 
-void CSequence::SetSetting(unsigned int Setting)
+void CSequence::SetSetting(const unsigned int Setting)
 {
 	m_iSetting = Setting;
 }
 
-signed char CSequence::GetItem(int Index) const
+signed char CSequence::GetItem(const int Index) const
 {
 	ASSERT(Index <= MAX_SEQUENCE_ITEMS);
 	return m_cValues[Index];

@@ -69,7 +69,7 @@ void CDialogReBar::OnMove(int x, int y)
 	Invalidate();
 }
 
-HBRUSH CDialogReBar::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+HBRUSH CDialogReBar::OnCtlColor(CDC* pDC, CWnd* pWnd, const UINT nCtlColor)
 {
 	HBRUSH hbr = CDialogBar::OnCtlColor(pDC, pWnd, nCtlColor);
 
@@ -82,7 +82,7 @@ HBRUSH CDialogReBar::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	return hbr;
 }
 
-BOOL CDialogReBar::Create(CWnd* pParentWnd, UINT nIDTemplate, UINT nStyle, UINT nID)
+BOOL CDialogReBar::Create(CWnd* pParentWnd, const UINT nIDTemplate, const UINT nStyle, const UINT nID)
 {
 	const int RANGE_MAX = 32; // Max value of highlight
 

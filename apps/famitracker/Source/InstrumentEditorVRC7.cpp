@@ -140,7 +140,7 @@ void CInstrumentEditorVRC7::OnCbnSelchangePatch()
 	SelectPatch(pPatchBox->GetCurSel());
 }
 
-void CInstrumentEditorVRC7::SelectPatch(int Patch)
+void CInstrumentEditorVRC7::SelectPatch(const int Patch)
 {
 	m_pInstrument->SetPatch(Patch);
 	EnableControls(Patch == 0);
@@ -151,7 +151,7 @@ void CInstrumentEditorVRC7::SelectPatch(int Patch)
 		LoadInternalPatch(Patch);
 }
 
-void CInstrumentEditorVRC7::EnableControls(bool bEnable)
+void CInstrumentEditorVRC7::EnableControls(const bool bEnable)
 {
 	const int SLIDER_IDS[] = {
 		IDC_M_AM, IDC_M_AR,
@@ -175,7 +175,7 @@ void CInstrumentEditorVRC7::EnableControls(bool bEnable)
 		GetDlgItem(SLIDER_IDS[i])->EnableWindow(bEnable ? TRUE : FALSE);
 }
 
-void CInstrumentEditorVRC7::SelectInstrument(int Instrument)
+void CInstrumentEditorVRC7::SelectInstrument(const int Instrument)
 {
 	CComboBox* pPatchBox = static_cast<CComboBox*>(GetDlgItem(IDC_PATCH));
 
@@ -202,30 +202,30 @@ BOOL CInstrumentEditorVRC7::OnEraseBkgnd(CDC* pDC)
 	return CDialog::OnEraseBkgnd(pDC);
 }
 
-HBRUSH CInstrumentEditorVRC7::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+HBRUSH CInstrumentEditorVRC7::OnCtlColor(CDC* pDC, CWnd* pWnd, const UINT nCtlColor)
 {
 	return CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 }
 
-void CInstrumentEditorVRC7::SetupSlider(int Slider, int Max)
+void CInstrumentEditorVRC7::SetupSlider(const int Slider, const int Max)
 {
 	CSliderCtrl* pSlider = static_cast<CSliderCtrl*>(GetDlgItem(Slider));
 	pSlider->SetRangeMax(Max);
 }
 
-int CInstrumentEditorVRC7::GetSliderVal(int Slider)
+int CInstrumentEditorVRC7::GetSliderVal(const int Slider)
 {
 	CSliderCtrl* pSlider = static_cast<CSliderCtrl*>(GetDlgItem(Slider));
 	return pSlider->GetPos();
 }
 
-void CInstrumentEditorVRC7::SetSliderVal(int Slider, int Value)
+void CInstrumentEditorVRC7::SetSliderVal(const int Slider, const int Value)
 {
 	CSliderCtrl* pSlider = static_cast<CSliderCtrl*>(GetDlgItem(Slider));
 	pSlider->SetPos(Value);
 }
 
-void CInstrumentEditorVRC7::LoadInternalPatch(int Num)
+void CInstrumentEditorVRC7::LoadInternalPatch(const int Num)
 {
 	unsigned int Reg;
 
@@ -394,21 +394,21 @@ void CInstrumentEditorVRC7::OnBnClickedCheckbox()
 	SetFocus();
 }
 
-void CInstrumentEditorVRC7::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CInstrumentEditorVRC7::OnVScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	SaveCustomPatch();
 	SetFocus();
 	CInstrumentEditPanel::OnVScroll(nSBCode, nPos, pScrollBar);
 }
 
-void CInstrumentEditorVRC7::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CInstrumentEditorVRC7::OnHScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	SaveCustomPatch();
 	SetFocus();
 	CInstrumentEditPanel::OnHScroll(nSBCode, nPos, pScrollBar);
 }
 
-void CInstrumentEditorVRC7::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
+void CInstrumentEditorVRC7::OnContextMenu(CWnd* /*pWnd*/, const CPoint point)
 {
 	CMenu menu;
 
@@ -468,7 +468,7 @@ void CInstrumentEditorVRC7::OnPaste()
 	}
 }
 
-void CInstrumentEditorVRC7::PasteSettings(LPCTSTR pString)
+void CInstrumentEditorVRC7::PasteSettings(const LPCTSTR pString)
 {
 	std::string str(pString);
 

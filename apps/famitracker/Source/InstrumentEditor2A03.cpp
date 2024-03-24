@@ -177,7 +177,7 @@ void CInstrumentEditor2A03::OnKeyReturn()
 	}
 }
 
-void CInstrumentEditor2A03::SelectInstrument(int Instrument)
+void CInstrumentEditor2A03::SelectInstrument(const int Instrument)
 {
 	CInstrument2A03* pInstrument = static_cast<CInstrument2A03*>(GetDocument()->GetInstrument(Instrument));
 	ASSERT(pInstrument->GetType() == INST_2A03);
@@ -207,14 +207,14 @@ void CInstrumentEditor2A03::SelectInstrument(int Instrument)
 	SetFocus();
 }
 
-void CInstrumentEditor2A03::SelectSequence(int Sequence, int Type)
+void CInstrumentEditor2A03::SelectSequence(const int Sequence, const int Type)
 {
 	// Selects the current sequence in the sequence editor
 	m_pSequence = GetDocument()->GetSequence(unsigned(Sequence), Type);
 	m_pSequenceEditor->SelectSequence(m_pSequence, Type, INST_2A03);
 }
 
-void CInstrumentEditor2A03::TranslateMML(CString String, int Max, int Min)
+void CInstrumentEditor2A03::TranslateMML(CString String, const int Max, const int Min)
 {
 	CSequenceInstrumentEditPanel::TranslateMML(String, m_pSequence, Max, Min);
 
@@ -228,7 +228,7 @@ void CInstrumentEditor2A03::TranslateMML(CString String, int Max, int Min)
 	static_cast<CListCtrl*>(GetDlgItem(IDC_INSTSETTINGS))->SetCheck(m_iSelectedSetting, 1);
 }
 
-void CInstrumentEditor2A03::SetSequenceString(CString Sequence, bool Changed)
+void CInstrumentEditor2A03::SetSequenceString(const CString Sequence, const bool Changed)
 {
 	// Update sequence string
 	SetDlgItemText(IDC_SEQUENCE_STRING, Sequence);

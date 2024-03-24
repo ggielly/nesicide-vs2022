@@ -35,7 +35,7 @@ CDSample::CDSample() :
 	memset(m_Name, 0, MAX_NAME_SIZE);
 }
 
-CDSample::CDSample(unsigned int Size, char* pData) :
+CDSample::CDSample(const unsigned int Size, char* pData) :
 	m_iSampleSize(Size),
 	m_pSampleData(pData)
 {
@@ -73,7 +73,7 @@ void CDSample::Copy(const CDSample* pDSample)
 	strncpy(m_Name, pDSample->m_Name, MAX_NAME_SIZE);
 }
 
-void CDSample::Allocate(unsigned int iSize, const char* pData)
+void CDSample::Allocate(const unsigned int iSize, const char* pData)
 {
 	SAFE_RELEASE_ARRAY(m_pSampleData);
 
@@ -90,7 +90,7 @@ void CDSample::Clear()
 	m_iSampleSize = 0;
 }
 
-void CDSample::SetData(unsigned int Size, char* pData)
+void CDSample::SetData(const unsigned int Size, char* pData)
 {
 	ASSERT(pData != NULL);
 

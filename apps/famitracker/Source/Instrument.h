@@ -57,7 +57,7 @@ private:
 class CInstrumentFile : public CFile
 {
 public:
-	CInstrumentFile(LPCTSTR lpszFileName, UINT nOpenFlags) : CFile(lpszFileName, nOpenFlags)
+	CInstrumentFile(const LPCTSTR lpszFileName, const UINT nOpenFlags) : CFile(lpszFileName, nOpenFlags)
 	{
 	};
 	void WriteInt(unsigned int Value);

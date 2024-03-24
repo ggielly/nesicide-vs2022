@@ -55,7 +55,7 @@ CInstrumentList::CInstrumentList(CMainFrame* pMainFrame) :
 {
 }
 
-int CInstrumentList::GetInstrumentIndex(int Selection) const
+int CInstrumentList::GetInstrumentIndex(const int Selection) const
 {
 	// Get the instrument number from an item in the list (Selection = list index)
 	if (Selection == -1)
@@ -70,7 +70,7 @@ int CInstrumentList::GetInstrumentIndex(int Selection) const
 	return Instrument;
 }
 
-int CInstrumentList::FindInstrument(int Index) const
+int CInstrumentList::FindInstrument(const int Index) const
 {
 	// Find the instrument item from the list (Index = instrument number)
 	CString Txt;
@@ -83,7 +83,7 @@ int CInstrumentList::FindInstrument(int Index) const
 	return FindItem(&info);
 }
 
-void CInstrumentList::SelectInstrument(int Index)
+void CInstrumentList::SelectInstrument(const int Index)
 {
 	// Highlight a specified instrument (Index = instrument number)	
 	int ListIndex = FindInstrument(Index);
@@ -115,7 +115,7 @@ void CInstrumentList::SelectPreviousItem()
 	}
 }
 
-void CInstrumentList::InsertInstrument(int Index)
+void CInstrumentList::InsertInstrument(const int Index)
 {
 	// Inserts an instrument in the list (Index = instrument number)
 	CFamiTrackerDoc* pDoc = CFamiTrackerDoc::GetDoc();
@@ -133,7 +133,7 @@ void CInstrumentList::InsertInstrument(int Index)
 	InsertItem(Index, Text, Type - 1);
 }
 
-void CInstrumentList::RemoveInstrument(int Index)
+void CInstrumentList::RemoveInstrument(const int Index)
 {
 	// Remove an instrument from the list (Index = instrument number)
 	int Selection = FindInstrument(Index);
@@ -141,7 +141,7 @@ void CInstrumentList::RemoveInstrument(int Index)
 		DeleteItem(Selection);
 }
 
-void CInstrumentList::SetInstrumentName(int Index, TCHAR* pName)
+void CInstrumentList::SetInstrumentName(const int Index, TCHAR* pName)
 {
 	// Update instrument name in the list
 	int ListIndex = GetSelectionMark();
@@ -150,7 +150,7 @@ void CInstrumentList::SetInstrumentName(int Index, TCHAR* pName)
 	SetItemText(ListIndex, 0, Name);
 }
 
-void CInstrumentList::OnContextMenu(CWnd* pWnd, CPoint point)
+void CInstrumentList::OnContextMenu(CWnd* pWnd, const CPoint point)
 {
 	int Instrument = GetInstrumentIndex(GetSelectionMark());
 
@@ -253,7 +253,7 @@ void CInstrumentList::OnLvnBegindrag(NMHDR* pNMHDR, LRESULT* pResult)
 	*pResult = 0;
 }
 
-void CInstrumentList::OnMouseMove(UINT nFlags, CPoint point)
+void CInstrumentList::OnMouseMove(const UINT nFlags, const CPoint point)
 {
 	// Handle drag operation
 	if (m_bDragging)
@@ -285,7 +285,7 @@ void CInstrumentList::OnMouseMove(UINT nFlags, CPoint point)
 	CListCtrl::OnMouseMove(nFlags, point);
 }
 
-void CInstrumentList::OnLButtonUp(UINT nFlags, CPoint point)
+void CInstrumentList::OnLButtonUp(const UINT nFlags, const CPoint point)
 {
 	// End a drag operation
 	if (m_bDragging)

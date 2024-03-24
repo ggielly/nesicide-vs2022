@@ -107,7 +107,7 @@ void CSequenceSetting::OnPaint()
 	}
 }
 
-void CSequenceSetting::OnLButtonDown(UINT nFlags, CPoint point)
+void CSequenceSetting::OnLButtonDown(const UINT nFlags, const CPoint point)
 {
 	CRect rect;
 	GetWindowRect(rect);
@@ -133,7 +133,7 @@ void CSequenceSetting::OnLButtonDown(UINT nFlags, CPoint point)
 	CWnd::OnLButtonDown(nFlags, point);
 }
 
-void CSequenceSetting::SelectSequence(CSequence* pSequence, int Type, int InstrumentType)
+void CSequenceSetting::SelectSequence(CSequence* pSequence, const int Type, const int InstrumentType)
 {
 	m_pSequence = pSequence;
 	m_iType = Type;
@@ -170,7 +170,7 @@ void CSequenceSetting::OnMenuArpFixed()
 	}
 }
 
-void CSequenceSetting::OnMouseMove(UINT nFlags, CPoint point)
+void CSequenceSetting::OnMouseMove(const UINT nFlags, const CPoint point)
 {
 	bool bOldMouseOver = m_bMouseOver;
 	m_bMouseOver = true;

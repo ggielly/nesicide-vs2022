@@ -50,7 +50,7 @@ void CVRC7::Reset()
 	m_iTime = 0;
 }
 
-void CVRC7::SetSampleSpeed(uint32 SampleRate, double ClockRate, uint32 FrameRate)
+void CVRC7::SetSampleSpeed(const uint32 SampleRate, double ClockRate, const uint32 FrameRate)
 {
 	if (m_pOPLLInt != NULL)
 	{
@@ -70,12 +70,12 @@ void CVRC7::SetSampleSpeed(uint32 SampleRate, double ClockRate, uint32 FrameRate
 	memset(m_pBuffer, 0, sizeof(int16) * m_iMaxSamples);
 }
 
-void CVRC7::SetVolume(float Volume)
+void CVRC7::SetVolume(const float Volume)
 {
 	m_fVolume = Volume * AMPLIFY;
 }
 
-void CVRC7::Write(uint16 Address, uint8 Value)
+void CVRC7::Write(const uint16 Address, const uint8 Value)
 {
 	switch (Address)
 	{
@@ -128,7 +128,7 @@ void CVRC7::EndFrame()
 	m_iTime = 0;
 }
 
-void CVRC7::Process(uint32 Time)
+void CVRC7::Process(const uint32 Time)
 {
 	// This cannot run in sync, fetch all samples at end of frame instead
 	m_iTime += Time;

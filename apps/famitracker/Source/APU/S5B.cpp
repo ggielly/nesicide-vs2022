@@ -50,7 +50,7 @@ void CS5B::Reset()
 	//	PSG_reset(psg);
 }
 
-void CS5B::Process(uint32 Time)
+void CS5B::Process(const uint32 Time)
 {
 	m_iTime += Time;
 }
@@ -83,7 +83,7 @@ void CS5B::GetMixMono()
 	m_iTime = 0;
 }
 
-void CS5B::Write(uint16 Address, uint8 Value)
+void CS5B::Write(const uint16 Address, const uint8 Value)
 {
 	switch (Address)
 	{
@@ -103,7 +103,7 @@ uint8 CS5B::Read(uint16 Address, bool& Mapped)
 	return 0;
 }
 
-void CS5B::SetSampleSpeed(uint32 SampleRate, double ClockRate, uint32 FrameRate)
+void CS5B::SetSampleSpeed(const uint32 SampleRate, const double ClockRate, uint32 FrameRate)
 {
 	if (psg != NULL)
 	{
@@ -121,7 +121,7 @@ void CS5B::SetSampleSpeed(uint32 SampleRate, double ClockRate, uint32 FrameRate)
 	//	PSG_reset(psg);
 }
 
-void CS5B::SetVolume(float fVol)
+void CS5B::SetVolume(const float fVol)
 {
 	m_fVolume = AMPLIFY * fVol;
 }

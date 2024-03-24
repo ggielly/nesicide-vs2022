@@ -37,7 +37,7 @@
 
 IMPLEMENT_DYNAMIC(CInstrumentEditPanel, CDialog)
 
-CInstrumentEditPanel::CInstrumentEditPanel(UINT nIDTemplate, CWnd* pParent) : CDialog(nIDTemplate, pParent)
+CInstrumentEditPanel::CInstrumentEditPanel(const UINT nIDTemplate, CWnd* pParent) : CDialog(nIDTemplate, pParent)
 //, m_bShow(false)
 {
 }
@@ -66,7 +66,7 @@ BOOL CInstrumentEditPanel::OnEraseBkgnd(CDC* pDC)
 	return FALSE;
 }
 
-HBRUSH CInstrumentEditPanel::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+HBRUSH CInstrumentEditPanel::OnCtlColor(CDC* pDC, CWnd* pWnd, const UINT nCtlColor)
 {
 	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
@@ -134,7 +134,7 @@ BOOL CInstrumentEditPanel::PreTranslateMessage(MSG* pMsg)
 	return CDialog::PreTranslateMessage(pMsg);
 }
 
-void CInstrumentEditPanel::OnLButtonDown(UINT nFlags, CPoint point)
+void CInstrumentEditPanel::OnLButtonDown(const UINT nFlags, const CPoint point)
 {
 	// Set focus on mouse clicks to enable note preview from keyboard
 	SetFocus();
@@ -159,12 +159,12 @@ CFamiTrackerDoc* CInstrumentEditPanel::GetDocument() const
 	return CFamiTrackerDoc::GetDoc();
 }
 
-void CInstrumentEditPanel::PreviewNote(unsigned char Key)
+void CInstrumentEditPanel::PreviewNote(const unsigned char Key)
 {
 	CFamiTrackerView::GetView()->PreviewNote(Key);
 }
 
-void CInstrumentEditPanel::PreviewRelease(unsigned char Key)
+void CInstrumentEditPanel::PreviewRelease(const unsigned char Key)
 {
 	CFamiTrackerView::GetView()->PreviewRelease(Key);
 }
@@ -177,7 +177,7 @@ void CInstrumentEditPanel::PreviewRelease(unsigned char Key)
 
 IMPLEMENT_DYNAMIC(CSequenceInstrumentEditPanel, CInstrumentEditPanel)
 
-CSequenceInstrumentEditPanel::CSequenceInstrumentEditPanel(UINT nIDTemplate, CWnd* pParent) :
+CSequenceInstrumentEditPanel::CSequenceInstrumentEditPanel(const UINT nIDTemplate, CWnd* pParent) :
 	CInstrumentEditPanel(nIDTemplate, pParent),
 	m_pSequenceEditor(NULL),
 	m_pSequence(NULL),
@@ -247,19 +247,19 @@ int CSequenceInstrumentEditPanel::ReadStringValue(const std::string& str)
 	return value;
 }
 
-void CSequenceInstrumentEditPanel::PreviewNote(unsigned char Key)
+void CSequenceInstrumentEditPanel::PreviewNote(const unsigned char Key)
 {
 	// Skip if MML window has focus
 	if (GetDlgItem(IDC_SEQUENCE_STRING) != GetFocus())
 		CFamiTrackerView::GetView()->PreviewNote(Key);
 }
 
-void CSequenceInstrumentEditPanel::PreviewRelease(unsigned char Key)
+void CSequenceInstrumentEditPanel::PreviewRelease(const unsigned char Key)
 {
 	CFamiTrackerView::GetView()->PreviewRelease(Key);
 }
 
-void CSequenceInstrumentEditPanel::TranslateMML(CString String, CSequence* pSequence, int Max, int Min) const
+void CSequenceInstrumentEditPanel::TranslateMML(CString String, CSequence* pSequence, const int Max, const int Min) const
 {
 	// Takes a string and translates it into a sequence
 

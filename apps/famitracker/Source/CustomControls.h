@@ -97,7 +97,7 @@ DECLARE_DYNAMIC(CBannerEdit)
 protected:
 DECLARE_MESSAGE_MAP()
 public:
-	CBannerEdit(UINT nID) : CEdit() { m_strText.LoadString(nID); };
+	CBannerEdit(const UINT nID) : CEdit() { m_strText.LoadString(nID); };
 protected:
 	CString m_strText;
 protected:

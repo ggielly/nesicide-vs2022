@@ -25,7 +25,7 @@
 // This class contains pattern data
 // A list of these objects exists inside the document one for each song
 
-CPatternData::CPatternData(unsigned int PatternLength, unsigned int Speed, unsigned int Tempo) :
+CPatternData::CPatternData(const unsigned int PatternLength, const unsigned int Speed, const unsigned int Tempo) :
 	m_iPatternLength(PatternLength),
 	m_iFrameCount(1),
 	m_iSongSpeed(Speed),
@@ -51,7 +51,7 @@ CPatternData::~CPatternData()
 	}
 }
 
-bool CPatternData::IsCellFree(unsigned int Channel, unsigned int Pattern, unsigned int Row) const
+bool CPatternData::IsCellFree(const unsigned int Channel, const unsigned int Pattern, const unsigned int Row) const
 {
 	stChanNote* pNote = GetPatternData(Channel, Pattern, Row);
 
@@ -66,7 +66,7 @@ bool CPatternData::IsCellFree(unsigned int Channel, unsigned int Pattern, unsign
 	return IsFree;
 }
 
-bool CPatternData::IsPatternEmpty(unsigned int Channel, unsigned int Pattern) const
+bool CPatternData::IsPatternEmpty(const unsigned int Channel, const unsigned int Pattern) const
 {
 	// Unallocated pattern means empty
 	if (!m_pPatternData[Channel][Pattern])
@@ -82,7 +82,7 @@ bool CPatternData::IsPatternEmpty(unsigned int Channel, unsigned int Pattern) co
 	return true;
 }
 
-bool CPatternData::IsPatternInUse(unsigned int Channel, unsigned int Pattern) const
+bool CPatternData::IsPatternInUse(const unsigned int Channel, const unsigned int Pattern) const
 {
 	// Check if pattern is addressed in frame list
 	for (unsigned i = 0; i < m_iFrameCount; ++i)
@@ -94,7 +94,7 @@ bool CPatternData::IsPatternInUse(unsigned int Channel, unsigned int Pattern) co
 	return false;
 }
 
-stChanNote* CPatternData::GetPatternData(unsigned int Channel, unsigned int Pattern, unsigned int Row) const
+stChanNote* CPatternData::GetPatternData(const unsigned int Channel, const unsigned int Pattern, const unsigned int Row) const
 {
 	// Private method, may return NULL
 	if (!m_pPatternData[Channel][Pattern])
@@ -103,7 +103,7 @@ stChanNote* CPatternData::GetPatternData(unsigned int Channel, unsigned int Patt
 	return m_pPatternData[Channel][Pattern] + Row;
 }
 
-stChanNote* CPatternData::GetPatternData(unsigned int Channel, unsigned int Pattern, unsigned int Row)
+stChanNote* CPatternData::GetPatternData(const unsigned int Channel, const unsigned int Pattern, const unsigned int Row)
 {
 	if (!m_pPatternData[Channel][Pattern]) // Allocate pattern if accessed for the first time
 		AllocatePattern(Channel, Pattern);
@@ -111,7 +111,7 @@ stChanNote* CPatternData::GetPatternData(unsigned int Channel, unsigned int Patt
 	return m_pPatternData[Channel][Pattern] + Row;
 }
 
-void CPatternData::AllocatePattern(unsigned int Channel, unsigned int Pattern)
+void CPatternData::AllocatePattern(const unsigned int Channel, const unsigned int Pattern)
 {
 	// Allocate memory
 	m_pPatternData[Channel][Pattern] = new stChanNote[MAX_PATTERN_LENGTH];
@@ -151,7 +151,7 @@ void CPatternData::ClearEverything()
 	}
 }
 
-void CPatternData::ClearPattern(unsigned int Channel, unsigned int Pattern)
+void CPatternData::ClearPattern(const unsigned int Channel, const unsigned int Pattern)
 {
 	// Deletes a specified pattern in a channel
 	if (m_pPatternData[Channel][Pattern] != NULL)
@@ -160,17 +160,17 @@ void CPatternData::ClearPattern(unsigned int Channel, unsigned int Pattern)
 	}
 }
 
-unsigned int CPatternData::GetFramePattern(unsigned int Frame, unsigned int Channel) const
+unsigned int CPatternData::GetFramePattern(const unsigned int Frame, const unsigned int Channel) const
 {
 	return m_iFrameList[Frame][Channel];
 }
 
-void CPatternData::SetFramePattern(unsigned int Frame, unsigned int Channel, unsigned int Pattern)
+void CPatternData::SetFramePattern(const unsigned int Frame, const unsigned int Channel, const unsigned int Pattern)
 {
 	m_iFrameList[Frame][Channel] = Pattern;
 }
 
-void CPatternData::SetHighlight(unsigned int First, unsigned int Second)
+void CPatternData::SetHighlight(const unsigned int First, const unsigned int Second)
 {
 	m_iRowHighlight1 = First;
 	m_iRowHighlight2 = Second;

@@ -305,14 +305,14 @@ void CAPU::Reset()
 #endif
 }
 
-void CAPU::SetupMixer(int LowCut, int HighCut, int HighDamp, int Volume) const
+void CAPU::SetupMixer(const int LowCut, const int HighCut, const int HighDamp, const int Volume) const
 {
 	// New settings
 	m_pMixer->UpdateSettings(LowCut, HighCut, HighDamp, float(Volume) / 100.0f);
 	m_pVRC7->SetVolume((float(Volume) / 100.0f) * m_fLevelVRC7);
 }
 
-void CAPU::SetExternalSound(uint8 Chip)
+void CAPU::SetExternalSound(const uint8 Chip)
 {
 	// Set expansion chip
 	m_iExternalSoundChip = Chip;
@@ -336,7 +336,7 @@ void CAPU::SetExternalSound(uint8 Chip)
 	Reset();
 }
 
-void CAPU::ChangeMachine(int Machine)
+void CAPU::ChangeMachine(const int Machine)
 {
 	// Allow to change speed on the fly
 	//
@@ -356,7 +356,7 @@ void CAPU::ChangeMachine(int Machine)
 	}
 }
 
-bool CAPU::SetupSound(int SampleRate, int NrChannels, int Machine)
+bool CAPU::SetupSound(const int SampleRate, const int NrChannels, const int Machine)
 {
 	// Allocate a sound buffer
 	//
@@ -398,7 +398,7 @@ bool CAPU::SetupSound(int SampleRate, int NrChannels, int Machine)
 	return true;
 }
 
-void CAPU::AddTime(int32 Cycles)
+void CAPU::AddTime(const int32 Cycles)
 {
 	if (Cycles < 0)
 		return;
@@ -444,7 +444,7 @@ void CAPU::Write(uint16 Address, uint8 Value)
 #endif
 }
 
-void CAPU::Write4017(uint8 Value)
+void CAPU::Write4017(const uint8 Value)
 {
 	// The $4017 Control port
 	//
@@ -470,7 +470,7 @@ void CAPU::Write4017(uint8 Value)
 	// IRQs are not generated when playing NSFs
 }
 
-void CAPU::Write4015(uint8 Value)
+void CAPU::Write4015(const uint8 Value)
 {
 	//  Sound Control ($4015)
 	//
@@ -503,7 +503,7 @@ uint8 CAPU::Read4015()
 	return RetVal;
 }
 
-void CAPU::ExternalWrite(uint16 Address, uint8 Value)
+void CAPU::ExternalWrite(const uint16 Address, const uint8 Value)
 {
 	// Data was written to an external sound chip 
 	// (this doesn't really belong in the APU but are here for convenience)
@@ -519,7 +519,7 @@ void CAPU::ExternalWrite(uint16 Address, uint8 Value)
 	LogExternalWrite(Address, Value);
 }
 
-uint8 CAPU::ExternalRead(uint16 Address)
+uint8 CAPU::ExternalRead(const uint16 Address)
 {
 	// Data read from an external chip
 	//
@@ -543,7 +543,7 @@ uint8 CAPU::ExternalRead(uint16 Address)
 
 // Expansion for famitracker
 
-int32 CAPU::GetVol(uint8 Chan) const
+int32 CAPU::GetVol(const uint8 Chan) const
 {
 	return m_pMixer->GetChanOutput(Chan);
 }
@@ -575,7 +575,7 @@ void CAPU::Log()
 }
 #endif
 
-void CAPU::SetChipLevel(chip_level_t Chip, float Level)
+void CAPU::SetChipLevel(const chip_level_t Chip, const float Level)
 {
 	float fLevel = powf(10, Level / 20.0f); // Convert dB to linear
 
@@ -592,7 +592,7 @@ void CAPU::SetChipLevel(chip_level_t Chip, float Level)
 	}
 }
 
-void CAPU::LogExternalWrite(uint16 Address, uint8 Value)
+void CAPU::LogExternalWrite(const uint16 Address, const uint8 Value)
 {
 	if (Address >= 0x9000 && Address <= 0x9003)
 		m_iRegsVRC6[Address - 0x9000] = Value;
@@ -604,7 +604,7 @@ void CAPU::LogExternalWrite(uint16 Address, uint8 Value)
 		m_iRegsFDS[Address - 0x4080] = Value;
 }
 
-uint8 CAPU::GetReg(int Chip, int Reg) const
+uint8 CAPU::GetReg(const int Chip, const int Reg) const
 {
 	switch (Chip)
 	{

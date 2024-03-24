@@ -39,7 +39,7 @@ const TCHAR MINIDUMP_FILE_END[] = _T(".dmp");
 
 //#ifdef ENABLE_CRASH_HANDLER
 
-static CString GetDumpFilename(int counter)
+static CString GetDumpFilename(const int counter)
 {
 	// Append a timestamp to the filename
 	//

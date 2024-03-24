@@ -79,7 +79,7 @@ private:
 	CEdit* m_pEdit;
 };
 
-void CEditLog::WriteLog(LPCTSTR text)
+void CEditLog::WriteLog(const LPCTSTR text)
 {
 	int Len = m_pEdit->GetWindowTextLength();
 	m_pEdit->SetSel(Len, Len, 0);

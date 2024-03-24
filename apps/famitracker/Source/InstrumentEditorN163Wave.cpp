@@ -60,7 +60,7 @@ void CInstrumentEditorN163Wave::DoDataExchange(CDataExchange* pDX)
 	CInstrumentEditPanel::DoDataExchange(pDX);
 }
 
-void CInstrumentEditorN163Wave::SelectInstrument(int Instrument)
+void CInstrumentEditorN163Wave::SelectInstrument(const int Instrument)
 {
 	if (m_pInstrument)
 		m_pInstrument->Release();
@@ -261,7 +261,7 @@ void CInstrumentEditorN163Wave::OnBnClickedPaste()
 	}
 }
 
-void CInstrumentEditorN163Wave::ParseString(LPCTSTR pString)
+void CInstrumentEditorN163Wave::ParseString(const LPCTSTR pString)
 {
 	string str(pString);
 
@@ -351,7 +351,7 @@ void CInstrumentEditorN163Wave::OnWavePosSelChange()
 	m_pInstrument->SetWavePos(pos);
 }
 
-void CInstrumentEditorN163Wave::FillPosBox(int size)
+void CInstrumentEditorN163Wave::FillPosBox(const int size)
 {
 	CComboBox* pPosBox = static_cast<CComboBox*>(GetDlgItem(IDC_WAVE_POS));
 	pPosBox->ResetContent();

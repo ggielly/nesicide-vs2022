@@ -219,7 +219,7 @@ void CSettings::DeleteSettings()
 	theApp.DelRegTree(hKey, _T(""));
 }
 
-void CSettings::SetWindowPos(int Left, int Top, int Right, int Bottom, int State)
+void CSettings::SetWindowPos(const int Left, const int Top, const int Right, const int Bottom, const int State)
 {
 	WindowPos.iLeft = Left;
 	WindowPos.iTop = Top;
@@ -228,13 +228,13 @@ void CSettings::SetWindowPos(int Left, int Top, int Right, int Bottom, int State
 	WindowPos.iState = State;
 }
 
-CString CSettings::GetPath(unsigned int PathType) const
+CString CSettings::GetPath(const unsigned int PathType) const
 {
 	ASSERT(PathType < PATH_COUNT);
 	return Paths[PathType];
 }
 
-void CSettings::SetPath(CString PathName, unsigned int PathType)
+void CSettings::SetPath(CString PathName, const unsigned int PathType)
 {
 	ASSERT(PathType < PATH_COUNT);
 
@@ -245,12 +245,12 @@ void CSettings::SetPath(CString PathName, unsigned int PathType)
 		Paths[PathType] = PathName.Left(PathName.ReverseFind(_T('\\')));
 }
 
-void CSettings::StoreSetting(CString Section, CString Name, int Value) const
+void CSettings::StoreSetting(CString Section, CString Name, const int Value) const
 {
 	theApp.WriteProfileInt(Section, Name, Value);
 }
 
-int CSettings::LoadSetting(CString Section, CString Name, int Default) const
+int CSettings::LoadSetting(CString Section, CString Name, const int Default) const
 {
 	return theApp.GetProfileInt(Section, Name, Default);
 }

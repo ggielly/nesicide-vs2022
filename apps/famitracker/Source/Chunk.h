@@ -47,7 +47,7 @@ public:
 class CChunkDataByte : public CChunkData
 {
 public:
-	CChunkDataByte(unsigned char data) : CChunkData(), m_data(data)
+	CChunkDataByte(const unsigned char data) : CChunkData(), m_data(data)
 	{
 	}
 
@@ -59,7 +59,7 @@ public:
 class CChunkDataWord : public CChunkData
 {
 public:
-	CChunkDataWord(unsigned short data) : CChunkData(), m_data(data)
+	CChunkDataWord(const unsigned short data) : CChunkData(), m_data(data)
 	{
 	}
 
@@ -84,7 +84,7 @@ public:
 class CChunkDataBank : public CChunkData
 {
 public:
-	CChunkDataBank(CStringA bankOf, int bank) : CChunkData(), m_bankOf(bankOf), m_bank(bank)
+	CChunkDataBank(CStringA bankOf, const int bank) : CChunkData(), m_bankOf(bankOf), m_bank(bank)
 	{
 	}
 

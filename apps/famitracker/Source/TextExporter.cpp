@@ -267,7 +267,7 @@ public:
 		return t;
 	}
 
-	bool ReadInt(int& i, int range_min, int range_max, CString* err)
+	bool ReadInt(int& i, const int range_min, const int range_max, CString* err)
 	{
 		CString t = ReadToken();
 		int c = GetColumn();
@@ -294,7 +294,7 @@ public:
 		return true;
 	}
 
-	bool ReadHex(int& i, int range_min, int range_max, CString* err)
+	bool ReadHex(int& i, const int range_min, const int range_max, CString* err)
 	{
 		CString t = ReadToken();
 		int c = GetColumn();
@@ -369,7 +369,7 @@ public:
 
 // =============================================================================
 
-static bool ImportHex(CString& sToken, int& i, int line, int column, CString& sResult)
+static bool ImportHex(CString& sToken, int& i, const int line, const int column, CString& sResult)
 {
 	i = 0;
 	for (int d = 0; d < sToken.GetLength(); ++d)
@@ -414,10 +414,10 @@ CString ExportString(const CString& s)
 static bool ImportCellText(
 	CFamiTrackerDoc* pDoc,
 	Tokenizer& t,
-	unsigned int track,
-	unsigned int pattern,
-	unsigned int channel,
-	unsigned int row,
+	const unsigned int track,
+	const unsigned int pattern,
+	const unsigned int channel,
+	const unsigned int row,
 	CString& sResult)
 {
 	stChanNote Cell;
@@ -571,7 +571,7 @@ static bool ImportCellText(
 	return true;
 }
 
-static const CString& ExportCellText(const stChanNote& stCell, unsigned int nEffects, bool bNoise)
+static const CString& ExportCellText(const stChanNote& stCell, const unsigned int nEffects, const bool bNoise)
 {
 	static CString s;
 	CString tmp;
@@ -1157,7 +1157,7 @@ const CString& CTextExport::ImportFile(LPCTSTR FileName, CFamiTrackerDoc* pDoc)
 
 // =============================================================================
 
-const CString& CTextExport::ExportFile(LPCTSTR FileName, CFamiTrackerDoc* pDoc)
+const CString& CTextExport::ExportFile(const LPCTSTR FileName, CFamiTrackerDoc* pDoc)
 {
 	static CString sResult;
 	sResult = _T("");

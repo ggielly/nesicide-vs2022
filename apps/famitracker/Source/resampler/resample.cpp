@@ -48,7 +48,7 @@ class func_iterator : public std::iterator<std::forward_iterator_tag, float>
 	float x_;
 	float step_;
 public:
-	func_iterator(func f, float initval, float step = 1.f)
+	func_iterator(func f, const float initval, const float step = 1.f)
 		: f_(f), x_(initval), step_(step)
 	{
 	}
@@ -93,7 +93,7 @@ namespace jarh
 	// cutoff(float thecutoff) -
 	//
 	//------------------------------------------------------------------------
-	void resample_base::cutoff(float thecutoff)
+	void resample_base::cutoff(const float thecutoff)
 	{
 		// limit cutoff_ in the range ]0-1]
 		cutoff_ = (std::min)(
@@ -109,7 +109,7 @@ namespace jarh
 	// ratio(float theratio) -
 	//
 	//------------------------------------------------------------------------
-	void resample_base::ratio(float theratio)
+	void resample_base::ratio(const float theratio)
 	{
 		// ratio_ can't be 0 or below.
 		ratio_ = (std::max)(std::numeric_limits<float>::epsilon(), theratio);

@@ -32,7 +32,7 @@
 // Undo/redo commands for frame editor
 //
 
-CFrameAction::CFrameAction(int iAction) :
+CFrameAction::CFrameAction(const int iAction) :
 	CAction(iAction),
 	m_pAllPatterns(NULL),
 	m_pClipData(NULL)
@@ -45,17 +45,17 @@ CFrameAction::~CFrameAction()
 	SAFE_RELEASE(m_pClipData);
 }
 
-void CFrameAction::SetFrameCount(unsigned int FrameCount)
+void CFrameAction::SetFrameCount(const unsigned int FrameCount)
 {
 	m_iNewFrameCount = FrameCount;
 }
 
-void CFrameAction::SetPattern(unsigned int Pattern)
+void CFrameAction::SetPattern(const unsigned int Pattern)
 {
 	m_iNewPattern = Pattern;
 }
 
-void CFrameAction::SetPatternDelta(int Delta, bool ChangeAll)
+void CFrameAction::SetPatternDelta(const int Delta, const bool ChangeAll)
 {
 	m_iPatternDelta = Delta;
 	m_bChangeAll = ChangeAll;
@@ -82,7 +82,7 @@ void CFrameAction::RestoreFrame(CFamiTrackerDoc* pDoc)
 	}
 }
 
-void CFrameAction::SetDragInfo(int DragTarget, CFrameClipData* pClipData, bool Remove)
+void CFrameAction::SetDragInfo(const int DragTarget, CFrameClipData* pClipData, const bool Remove)
 {
 	m_iDragTarget = DragTarget;
 	m_pClipData = pClipData;
@@ -133,7 +133,7 @@ int CFrameAction::ClipPattern(int Pattern) const
 	return Pattern;
 }
 
-void CFrameAction::ClearPatterns(CFamiTrackerDoc* pDoc, int Target)
+void CFrameAction::ClearPatterns(CFamiTrackerDoc* pDoc, const int Target)
 {
 	const int Rows = m_pClipData->ClipInfo.Rows;
 	const int Channels = m_pClipData->ClipInfo.Channels;

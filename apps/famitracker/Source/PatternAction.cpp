@@ -53,7 +53,7 @@ void CPatternAction::SetNote(stChanNote& Note)
 	m_NewNote = Note;
 }
 
-void CPatternAction::SetDelete(bool PullUp, bool Back)
+void CPatternAction::SetDelete(const bool PullUp, const bool Back)
 {
 	m_bPullUp = PullUp;
 	m_bBack = Back;
@@ -64,22 +64,22 @@ void CPatternAction::SetPaste(CPatternClipData* pClipData)
 	m_pClipData = pClipData;
 }
 
-void CPatternAction::SetTranspose(transpose_t Mode)
+void CPatternAction::SetTranspose(const transpose_t Mode)
 {
 	m_iTransposeMode = Mode;
 }
 
-void CPatternAction::SetScroll(int Scroll)
+void CPatternAction::SetScroll(const int Scroll)
 {
 	m_iScrollValue = Scroll;
 }
 
-void CPatternAction::SetInstrument(int Instrument)
+void CPatternAction::SetInstrument(const int Instrument)
 {
 	m_iInstrument = Instrument;
 }
 
-void CPatternAction::SetDragAndDrop(const CPatternClipData* pClipData, bool bDelete, bool bMix,
+void CPatternAction::SetDragAndDrop(const CPatternClipData* pClipData, const bool bDelete, const bool bMix,
                                     const CSelection* pDragTarget)
 {
 	m_pClipData = pClipData;
@@ -88,12 +88,12 @@ void CPatternAction::SetDragAndDrop(const CPatternClipData* pClipData, bool bDel
 	m_dragTarget = *pDragTarget;
 }
 
-void CPatternAction::SetPatternLength(int Length)
+void CPatternAction::SetPatternLength(const int Length)
 {
 	m_iNewPatternLen = Length;
 }
 
-void CPatternAction::SetClickedChannel(int Channel)
+void CPatternAction::SetClickedChannel(const int Channel)
 {
 	m_iClickedChannel = Channel;
 }

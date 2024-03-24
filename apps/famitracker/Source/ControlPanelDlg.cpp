@@ -56,7 +56,7 @@ BOOL CControlPanelDlg::PreTranslateMessage(MSG* pMsg)
 	return CDialog::PreTranslateMessage(pMsg);
 }
 
-BOOL CControlPanelDlg::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
+BOOL CControlPanelDlg::OnCmdMsg(const UINT nID, const int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
 {
 	// Route command messages to main frame
 	//	if (nID != IDC_KEYSTEP_SPIN) {
@@ -68,7 +68,7 @@ BOOL CControlPanelDlg::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLE
 	return CDialog::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
 
-BOOL CControlPanelDlg::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+BOOL CControlPanelDlg::OnNotify(const WPARAM wParam, const LPARAM lParam, LRESULT* pResult)
 {
 	// Route notify messages to main frame
 	//*pResult = GetParent()->GetParent()->SendMessage(WM_NOTIFY, wParam, lParam);

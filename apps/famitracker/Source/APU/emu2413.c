@@ -207,7 +207,7 @@ int32_t opll_volumes[10];
  
 ****************************************************/
 static inline int32_t
-Min (int32_t i, int32_t j)
+Min (const int32_t i, const int32_t j)
 {
   if (i < j)
     return i;
@@ -243,7 +243,7 @@ makeDB2LinTable (void)
 
 /* Liner(+0.0 - +1.0) to dB((1<<DB_BITS) - 1 -- 0) */
 static int32_t
-lin2db (double d)
+lin2db (const double d)
 {
   if (d == 0)
     return (DB_MUTE - 1);
@@ -279,7 +279,7 @@ makeSinTable (void)
     halfsintable[i] = fullsintable[0];
 }
 
-static double saw(double phase)
+static double saw(const double phase)
 {
   if(phase <= PI/2)
     return phase * 2 / PI ;
@@ -456,7 +456,7 @@ OPLL_dump2patch (const uint8_t * dump, OPLL_PATCH * patch)
 }
 
 void
-OPLL_getDefaultPatch (int32_t type, int32_t num, OPLL_PATCH * patch)
+OPLL_getDefaultPatch (const int32_t type, const int32_t num, OPLL_PATCH * patch)
 {
   OPLL_dump2patch (default_inst[type] + num * 16, patch);
 }
@@ -609,7 +609,7 @@ slotOff (OPLL_SLOT * slot)
 
 /* Channel key on */
 static inline void
-keyOn (OPLL * opll, int32_t i)
+keyOn (OPLL * opll, const int32_t i)
 {
   if (!opll->slot_on_flag[i * 2])
     slotOn (MOD(opll,i));
@@ -620,7 +620,7 @@ keyOn (OPLL * opll, int32_t i)
 
 /* Channel key off */
 static inline void
-keyOff (OPLL * opll, int32_t i)
+keyOff (OPLL * opll, const int32_t i)
 {
   if (opll->slot_on_flag[i * 2 + 1])
     slotOff (CAR(opll,i));
@@ -698,7 +698,7 @@ keyOff_CYM (OPLL * opll)
 
 /* Change a voice */
 static inline void
-setPatch (OPLL * opll, int32_t i, int32_t num)
+setPatch (OPLL * opll, const int32_t i, const int32_t num)
 {
   opll->patch_number[i] = num;
   MOD(opll,i)->patch = &opll->patch[num * 2 + 0];
@@ -714,7 +714,7 @@ setSlotPatch (OPLL_SLOT * slot, OPLL_PATCH * patch)
 
 /* Set sustine parameter */
 static inline void
-setSustine (OPLL * opll, int32_t c, int32_t sustine)
+setSustine (OPLL * opll, const int32_t c, const int32_t sustine)
 {
   CAR(opll,c)->sustine = sustine;
   if (MOD(opll,c)->type)
@@ -723,20 +723,20 @@ setSustine (OPLL * opll, int32_t c, int32_t sustine)
 
 /* Volume : 6bit ( Volume register << 2 ) */
 static inline void
-setVolume (OPLL * opll, int32_t c, int32_t volume)
+setVolume (OPLL * opll, const int32_t c, const int32_t volume)
 {
   CAR(opll,c)->volume = volume;
 }
 
 static inline void
-setSlotVolume (OPLL_SLOT * slot, int32_t volume)
+setSlotVolume (OPLL_SLOT * slot, const int32_t volume)
 {
   slot->volume = volume;
 }
 
 /* Set F-Number ( fnum : 9bit ) */
 static inline void
-setFnumber (OPLL * opll, int32_t c, int32_t fnum)
+setFnumber (OPLL * opll, const int32_t c, const int32_t fnum)
 {
   CAR(opll,c)->fnum = fnum;
   MOD(opll,c)->fnum = fnum;
@@ -744,7 +744,7 @@ setFnumber (OPLL * opll, int32_t c, int32_t fnum)
 
 /* Set Block data (block : 3bit ) */
 static inline void
-setBlock (OPLL * opll, int32_t c, int32_t block)
+setBlock (OPLL * opll, const int32_t c, const int32_t block)
 {
   CAR(opll,c)->block = block;
   MOD(opll,c)->block = block;
@@ -833,7 +833,7 @@ update_key_status (OPLL * opll)
 }
 
 void
-OPLL_copyPatch (OPLL * opll, int32_t num, OPLL_PATCH * patch)
+OPLL_copyPatch (OPLL * opll, const int32_t num, OPLL_PATCH * patch)
 {
   memcpy (&opll->patch[num], patch, sizeof (OPLL_PATCH));
 }
@@ -845,7 +845,7 @@ OPLL_copyPatch (OPLL * opll, int32_t num, OPLL_PATCH * patch)
 ***********************************************************/
 
 static void
-OPLL_SLOT_reset (OPLL_SLOT * slot, int type)
+OPLL_SLOT_reset (OPLL_SLOT * slot, const int type)
 {
   slot->type = type;
   slot->sintbl = waveform[0];
@@ -879,7 +879,7 @@ internal_refresh (void)
 }
 
 static void
-maketables (uint32_t c, uint32_t r)
+maketables (const uint32_t c, const uint32_t r)
 {
   if (c != clk)
   {
@@ -902,7 +902,7 @@ maketables (uint32_t c, uint32_t r)
 }
 
 OPLL *
-OPLL_new (uint32_t clk, uint32_t rate)
+OPLL_new (const uint32_t clk, const uint32_t rate)
 {
   OPLL *opll;
   int32_t i;
@@ -934,7 +934,7 @@ OPLL_delete (OPLL * opll)
 
 /* Reset patch datas by system default. */
 void
-OPLL_reset_patch (OPLL * opll, int32_t type)
+OPLL_reset_patch (OPLL * opll, const int32_t type)
 {
   int32_t i;
 
@@ -1003,7 +1003,7 @@ OPLL_forceRefresh (OPLL * opll)
 }
 
 void
-OPLL_set_rate (OPLL * opll, uint32_t r)
+OPLL_set_rate (OPLL * opll, const uint32_t r)
 {
   if (opll->quality)
     rate = 49716;
@@ -1014,7 +1014,7 @@ OPLL_set_rate (OPLL * opll, uint32_t r)
 }
 
 void
-OPLL_set_quality (OPLL * opll, uint32_t q)
+OPLL_set_quality (OPLL * opll, const uint32_t q)
 {
   opll->quality = q;
   OPLL_set_rate (opll, rate);
@@ -1062,7 +1062,7 @@ update_ampm (OPLL * opll)
 
 /* PG */
 static inline void
-calc_phase (OPLL_SLOT * slot, int32_t lfo)
+calc_phase (OPLL_SLOT * slot, const int32_t lfo)
 {
   if (slot->patch->PM)
     slot->phase += (slot->dphase * lfo) >> PM_AMP_BITS;
@@ -1084,7 +1084,7 @@ update_noise (OPLL * opll)
 
 /* EG */
 static void
-calc_envelope (OPLL_SLOT * slot, int32_t lfo)
+calc_envelope (OPLL_SLOT * slot, const int32_t lfo)
 {
 #define S2E(x) (SL2EG((int32_t)(x/SL_STEP))<<(EG_DP_BITS-EG_BITS))
 
@@ -1182,7 +1182,7 @@ calc_envelope (OPLL_SLOT * slot, int32_t lfo)
 
 /* CARRIOR */
 static inline int32_t
-calc_slot_car (OPLL_SLOT * slot, int32_t fm)
+calc_slot_car (OPLL_SLOT * slot, const int32_t fm)
 {
   if (slot->egout >= (DB_MUTE - 1))
   {
@@ -1238,7 +1238,7 @@ calc_slot_tom (OPLL_SLOT * slot)
 
 /* SNARE */
 static inline int32_t
-calc_slot_snare (OPLL_SLOT * slot, uint32_t noise)
+calc_slot_snare (OPLL_SLOT * slot, const uint32_t noise)
 {
   if(slot->egout>=(DB_MUTE-1))
     return 0;
@@ -1253,7 +1253,7 @@ calc_slot_snare (OPLL_SLOT * slot, uint32_t noise)
   TOP-CYM 
  */
 static inline int32_t
-calc_slot_cym (OPLL_SLOT * slot, uint32_t pgout_hh)
+calc_slot_cym (OPLL_SLOT * slot, const uint32_t pgout_hh)
 {
   uint32_t dbout;
 
@@ -1276,7 +1276,7 @@ calc_slot_cym (OPLL_SLOT * slot, uint32_t pgout_hh)
   HI-HAT 
 */
 static inline int32_t
-calc_slot_hat (OPLL_SLOT *slot, int32_t pgout_cym, uint32_t noise)
+calc_slot_hat (OPLL_SLOT *slot, const int32_t pgout_cym, const uint32_t noise)
 {
   uint32_t dbout;
 
@@ -1437,7 +1437,7 @@ OPLL_calc_stereo (OPLL * opll, int32_t out[2])
 }
 
 uint32_t
-OPLL_setMask (OPLL * opll, uint32_t mask)
+OPLL_setMask (OPLL * opll, const uint32_t mask)
 {
   uint32_t ret;
 
@@ -1452,7 +1452,7 @@ OPLL_setMask (OPLL * opll, uint32_t mask)
 }
 
 uint32_t
-OPLL_toggleMask (OPLL * opll, uint32_t mask)
+OPLL_toggleMask (OPLL * opll, const uint32_t mask)
 {
   uint32_t ret;
 
@@ -1710,7 +1710,7 @@ OPLL_writeReg (OPLL * opll, uint32_t reg, uint32_t data)
 }
 
 void
-OPLL_writeIO (OPLL * opll, uint32_t adr, uint32_t val)
+OPLL_writeIO (OPLL * opll, const uint32_t adr, const uint32_t val)
 {
   if (adr & 1)
     OPLL_writeReg (opll, opll->adr, val);
@@ -1720,12 +1720,12 @@ OPLL_writeIO (OPLL * opll, uint32_t adr, uint32_t val)
 
 /* STEREO MODE (OPT) */
 void
-OPLL_set_pan (OPLL * opll, uint32_t ch, uint32_t pan)
+OPLL_set_pan (OPLL * opll, const uint32_t ch, const uint32_t pan)
 {
   opll->pan[ch & 15] = pan & 3;
 }
 
-int32_t OPLL_getchanvol(int i)
+int32_t OPLL_getchanvol(const int i)
 {
 	int retval = opll_volumes[i];
 	opll_volumes[i] = 0;

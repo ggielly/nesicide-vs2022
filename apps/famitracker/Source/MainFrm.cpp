@@ -87,12 +87,12 @@ static const int DEFAULT_DPI = 96;
 static int _dpiX, _dpiY;
 
 // DPI scaling functions
-int SX(int pt)
+int SX(const int pt)
 {
 	return MulDiv(pt, _dpiX, DEFAULT_DPI);
 }
 
-int SY(int pt)
+int SY(const int pt)
 {
 	return MulDiv(pt, _dpiY, DEFAULT_DPI);
 }
@@ -296,8 +296,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 END_MESSAGE_MAP()
 
 
-BOOL CMainFrame::Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect,
-                        CWnd* pParentWnd, LPCTSTR lpszMenuName, DWORD dwExStyle, CCreateContext* pContext)
+BOOL CMainFrame::Create(const LPCTSTR lpszClassName, const LPCTSTR lpszWindowName, const DWORD dwStyle, const RECT& rect,
+                        CWnd* pParentWnd, const LPCTSTR lpszMenuName, const DWORD dwExStyle, CCreateContext* pContext)
 {
 	CSettings* pSettings = theApp.GetSettings();
 	RECT newrect;
@@ -312,7 +312,7 @@ BOOL CMainFrame::Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwS
 	                         pContext);
 }
 
-int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
+int CMainFrame::OnCreate(const LPCREATESTRUCT lpCreateStruct)
 {
 	// Get the DPI setting
 	CDC* pDC = GetDC();
@@ -838,12 +838,12 @@ void CMainFrame::UpdateControls()
 	m_wndDialogBar.UpdateDialogControls(&m_wndDialogBar, TRUE);
 }
 
-void CMainFrame::SetFirstHighlightRow(int Rows)
+void CMainFrame::SetFirstHighlightRow(const int Rows)
 {
 	m_wndOctaveBar.SetDlgItemInt(IDC_HIGHLIGHT1, Rows);
 }
 
-void CMainFrame::SetSecondHighlightRow(int Rows)
+void CMainFrame::SetSecondHighlightRow(const int Rows)
 {
 	m_wndOctaveBar.SetDlgItemInt(IDC_HIGHLIGHT2, Rows);
 }
@@ -895,7 +895,7 @@ void CMainFrame::ClearInstrumentList()
 	SetInstrumentName(_T(""));
 }
 
-void CMainFrame::NewInstrument(int ChipType)
+void CMainFrame::NewInstrument(const int ChipType)
 {
 	// Add new instrument to module
 	CFamiTrackerDoc* pDoc = static_cast<CFamiTrackerDoc*>(GetActiveDocument());
@@ -925,7 +925,7 @@ void CMainFrame::UpdateInstrumentList()
 	}
 }
 
-void CMainFrame::SelectInstrument(int Index)
+void CMainFrame::SelectInstrument(const int Index)
 {
 	// Set the selected instrument
 	//
@@ -981,7 +981,7 @@ int CMainFrame::GetSelectedInstrument() const
 	return m_iInstrument;
 }
 
-void CMainFrame::SwapInstruments(int First, int Second)
+void CMainFrame::SwapInstruments(const int First, const int Second)
 {
 	// Swap two instruments
 	CFamiTrackerDoc* pDoc = static_cast<CFamiTrackerDoc*>(GetActiveDocument());
@@ -1016,7 +1016,7 @@ void CMainFrame::SetInstrumentName(char* pText)
 	m_wndDialogBar.GetDlgItem(IDC_INSTNAME)->SetWindowText(pText);
 }
 
-void CMainFrame::SetIndicatorTime(int Min, int Sec, int MSec)
+void CMainFrame::SetIndicatorTime(const int Min, const int Sec, const int MSec)
 {
 	static int LMin, LSec, LMSec;
 
@@ -1031,14 +1031,14 @@ void CMainFrame::SetIndicatorTime(int Min, int Sec, int MSec)
 	}
 }
 
-void CMainFrame::SetIndicatorPos(int Frame, int Row)
+void CMainFrame::SetIndicatorPos(const int Frame, const int Row)
 {
 	CString String;
 	String.Format(_T("%02i / %02i"), Row, Frame);
 	m_wndStatusBar.SetPaneText(7, String);
 }
 
-void CMainFrame::OnSize(UINT nType, int cx, int cy)
+void CMainFrame::OnSize(const UINT nType, const int cx, const int cy)
 {
 	CFrameWnd::OnSize(nType, cx, cy);
 
@@ -1613,7 +1613,7 @@ void CMainFrame::OnUpdateInstrumentEdit(CCmdUI* pCmdUI)
 	pCmdUI->Enable(m_pInstrumentList->GetItemCount() > 0);
 }
 
-void CMainFrame::OnTimer(UINT nIDEvent)
+void CMainFrame::OnTimer(const UINT nIDEvent)
 {
 	CString text, str;
 	switch (nIDEvent)
@@ -1761,7 +1761,7 @@ void CMainFrame::OnEnSongCopyrightChange()
 	static_cast<CFamiTrackerDoc*>(GetActiveDocument())->SetSongCopyright(Text);
 }
 
-void CMainFrame::ChangeNoteState(int Note)
+void CMainFrame::ChangeNoteState(const int Note)
 {
 	m_wndInstEdit.ChangeNoteState(Note);
 }
@@ -2176,7 +2176,7 @@ void CMainFrame::OnUpdateEditEnablemidi(CCmdUI* pCmdUI)
 	pCmdUI->SetCheck(theApp.GetMIDI()->IsOpened());
 }
 
-void CMainFrame::OnShowWindow(BOOL bShow, UINT nStatus)
+void CMainFrame::OnShowWindow(const BOOL bShow, const UINT nStatus)
 {
 	CFrameWnd::OnShowWindow(bShow, nStatus);
 
@@ -2224,7 +2224,7 @@ int CMainFrame::GetSelectedTrack() const
 	return m_iTrack;
 }
 
-void CMainFrame::SelectTrack(unsigned int Track)
+void CMainFrame::SelectTrack(const unsigned int Track)
 {
 	// Select a new track
 	ASSERT(Track < MAX_TRACKS);
@@ -2241,7 +2241,7 @@ void CMainFrame::SelectTrack(unsigned int Track)
 	OnUpdateFrameTitle(TRUE);
 }
 
-BOOL CMainFrame::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
+BOOL CMainFrame::OnNotify(const WPARAM wParam, const LPARAM lParam, LRESULT* pResult)
 {
 	LPNMTOOLBAR lpnmtb = (LPNMTOOLBAR)lParam;
 
@@ -2428,7 +2428,7 @@ bool CMainFrame::AddAction(CAction* pAction)
 	return true;
 }
 
-CAction* CMainFrame::GetLastAction(int Filter) const
+CAction* CMainFrame::GetLastAction(const int Filter) const
 {
 	ASSERT(m_pActionHandler != NULL);
 	CAction* pAction = m_pActionHandler->GetLastAction();
@@ -2633,7 +2633,7 @@ void CMainFrame::OnUpdateSelectionEnabled(CCmdUI* pCmdUI)
 	pCmdUI->Enable((pView->IsSelecting()) ? 1 : 0);
 }
 
-void CMainFrame::SetFrameEditorPosition(int Position)
+void CMainFrame::SetFrameEditorPosition(const int Position)
 {
 	// Change frame editor position
 	m_iFrameEditorPos = Position;
@@ -2718,13 +2718,13 @@ void CMainFrame::OnUpdateFrameTitle(BOOL bAddToTitle)
 	UpdateFrameTitleForDocument(title);
 }
 
-LRESULT CMainFrame::OnDisplayMessageString(WPARAM wParam, LPARAM lParam)
+LRESULT CMainFrame::OnDisplayMessageString(const WPARAM wParam, const LPARAM lParam)
 {
 	AfxMessageBox((LPCTSTR)wParam, (UINT)lParam);
 	return 0;
 }
 
-LRESULT CMainFrame::OnDisplayMessageID(WPARAM wParam, LPARAM lParam)
+LRESULT CMainFrame::OnDisplayMessageID(const WPARAM wParam, const LPARAM lParam)
 {
 	AfxMessageBox((UINT)wParam, (UINT)lParam);
 	return 0;

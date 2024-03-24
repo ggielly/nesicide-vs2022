@@ -60,7 +60,7 @@ void CInstrumentEditorS5B::DoDataExchange(CDataExchange* pDX)
 	CSequenceInstrumentEditPanel::DoDataExchange(pDX);
 }
 
-void CInstrumentEditorS5B::SelectInstrument(int Instrument)
+void CInstrumentEditorS5B::SelectInstrument(const int Instrument)
 {
 	CInstrumentS5B* pInstrument = static_cast<CInstrumentS5B*>(GetDocument()->GetInstrument(Instrument));
 	ASSERT(pInstrument->GetType() == INST_S5B);
@@ -88,14 +88,14 @@ void CInstrumentEditorS5B::SelectInstrument(int Instrument)
 	SelectSequence(pInstrument->GetSeqIndex(m_iSelectedSetting), m_iSelectedSetting);
 }
 
-void CInstrumentEditorS5B::SelectSequence(int Sequence, int Type)
+void CInstrumentEditorS5B::SelectSequence(const int Sequence, const int Type)
 {
 	// Selects the current sequence in the sequence editor
 	m_pSequence = GetDocument()->GetSequence(SNDCHIP_S5B, Sequence, Type);
 	m_pSequenceEditor->SelectSequence(m_pSequence, Type, INST_S5B);
 }
 
-void CInstrumentEditorS5B::TranslateMML(CString String, int Max, int Min)
+void CInstrumentEditorS5B::TranslateMML(CString String, const int Max, const int Min)
 {
 	CSequenceInstrumentEditPanel::TranslateMML(String, m_pSequence, Max, Min);
 
@@ -109,7 +109,7 @@ void CInstrumentEditorS5B::TranslateMML(CString String, int Max, int Min)
 	static_cast<CListCtrl*>(GetDlgItem(IDC_INSTSETTINGS))->SetCheck(m_iSelectedSetting, 1);
 }
 
-void CInstrumentEditorS5B::SetSequenceString(CString Sequence, bool Changed)
+void CInstrumentEditorS5B::SetSequenceString(const CString Sequence, const bool Changed)
 {
 	// Update sequence string
 	SetDlgItemText(IDC_SEQUENCE_STRING, Sequence);

@@ -30,7 +30,7 @@
 
 // CAction ////////////////////////////////////////////////////////////////////////
 
-CAction::CAction(int iAction)
+CAction::CAction(const int iAction)
 {
 	m_iAction = iAction;
 }

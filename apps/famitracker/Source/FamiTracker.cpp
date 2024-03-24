@@ -404,7 +404,7 @@ bool CFamiTrackerApp::IsThemeActive() const
 	return m_bThemeActive;
 }
 
-bool GetFileVersion(LPCTSTR Filename, WORD& Major, WORD& Minor, WORD& Revision, WORD& Build)
+bool GetFileVersion(const LPCTSTR Filename, WORD& Major, WORD& Minor, WORD& Revision, WORD& Build)
 {
 	DWORD Handle;
 	DWORD Size = GetFileVersionInfoSize(Filename, &Handle);
@@ -685,7 +685,7 @@ void CFamiTrackerApp::OnAppAbout()
 
 // CFamiTrackerApp message handlers
 
-void CFamiTrackerApp::StartPlayer(play_mode_t Mode)
+void CFamiTrackerApp::StartPlayer(const play_mode_t Mode)
 {
 	int Track = static_cast<CMainFrame*>(GetMainWnd())->GetSelectedTrack();
 	if (m_pSoundGenerator)
@@ -869,19 +869,19 @@ bool CFamiTrackerApp::IsExportTest() const
 #endif /* EXPORT_TEST */
 
 // Used to display a messagebox on the main thread
-void CFamiTrackerApp::ThreadDisplayMessage(LPCTSTR lpszText, UINT nType, UINT nIDHelp)
+void CFamiTrackerApp::ThreadDisplayMessage(LPCTSTR lpszText, const UINT nType, UINT nIDHelp)
 {
 	m_pMainWnd->SendMessage(WM_USER_DISPLAY_MESSAGE_STRING, (WPARAM)lpszText, (LPARAM)nType);
 }
 
-void CFamiTrackerApp::ThreadDisplayMessage(UINT nIDPrompt, UINT nType, UINT nIDHelp)
+void CFamiTrackerApp::ThreadDisplayMessage(const UINT nIDPrompt, const UINT nType, UINT nIDHelp)
 {
 	m_pMainWnd->SendMessage(WM_USER_DISPLAY_MESSAGE_ID, (WPARAM)nIDPrompt, (LPARAM)nType);
 }
 
 // Various global helper functions
 
-CString LoadDefaultFilter(LPCTSTR Name, LPCTSTR Ext)
+CString LoadDefaultFilter(const LPCTSTR Name, const LPCTSTR Ext)
 {
 	// Loads a single filter string including the all files option
 	CString filter;
@@ -898,7 +898,7 @@ CString LoadDefaultFilter(LPCTSTR Name, LPCTSTR Ext)
 	return filter;
 }
 
-CString LoadDefaultFilter(UINT nID, LPCTSTR Ext)
+CString LoadDefaultFilter(const UINT nID, const LPCTSTR Ext)
 {
 	// Loads a single filter string including the all files option
 	CString filter;
@@ -915,14 +915,14 @@ CString LoadDefaultFilter(UINT nID, LPCTSTR Ext)
 	return filter;
 }
 
-void AfxFormatString3(CString& rString, UINT nIDS, LPCTSTR lpsz1, LPCTSTR lpsz2, LPCTSTR lpsz3)
+void AfxFormatString3(CString& rString, const UINT nIDS, const LPCTSTR lpsz1, const LPCTSTR lpsz2, const LPCTSTR lpsz3)
 {
 	// AfxFormatString with three arguments
 	LPCTSTR arr[] = {lpsz1, lpsz2, lpsz3};
 	AfxFormatStrings(rString, nIDS, arr, 3);
 }
 
-CString MakeIntString(int val, LPCTSTR format)
+CString MakeIntString(const int val, const LPCTSTR format)
 {
 	// Turns an int into a string
 	CString str;
@@ -930,7 +930,7 @@ CString MakeIntString(int val, LPCTSTR format)
 	return str;
 }
 
-CString MakeFloatString(float val, LPCTSTR format)
+CString MakeFloatString(const float val, const LPCTSTR format)
 {
 	// Turns a float into a string
 	CString str;
@@ -956,7 +956,7 @@ CFTCommandLineInfo::CFTCommandLineInfo() : CCommandLineInfo(),
 {
 }
 
-void CFTCommandLineInfo::ParseParam(const TCHAR* pszParam, BOOL bFlag, BOOL bLast)
+void CFTCommandLineInfo::ParseParam(const TCHAR* pszParam, const BOOL bFlag, const BOOL bLast)
 {
 	if (bFlag)
 	{

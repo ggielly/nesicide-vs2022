@@ -61,7 +61,7 @@ public:
 	{
 	};
 
-	uint8 Read(uint16 Address) const
+	uint8 Read(const uint16 Address) const
 	{
 		if (!m_pMemory)
 			return 0;
@@ -71,7 +71,7 @@ public:
 		return m_pMemory[Addr];
 	};
 
-	void SetMem(const char* pPtr, int Size)
+	void SetMem(const char* pPtr, const int Size)
 	{
 		m_pMemory = (uint8*)pPtr;
 		m_iMemSize = Size;

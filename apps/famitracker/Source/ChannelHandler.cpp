@@ -99,7 +99,7 @@ int CChannelHandler::LimitVolume(int Volume) const
 	return Volume;
 }
 
-void CChannelHandler::SetPitch(int Pitch)
+void CChannelHandler::SetPitch(const int Pitch)
 {
 	// Pitch ranges from -511 to +512
 	m_iPitch = Pitch;
@@ -124,7 +124,7 @@ int CChannelHandler::GetPitch() const
 	return 0;
 }
 
-void CChannelHandler::Arpeggiate(unsigned int Note)
+void CChannelHandler::Arpeggiate(const unsigned int Note)
 {
 	SetPeriod(TriggerNote(Note));
 }
@@ -179,7 +179,7 @@ void CChannelHandler::ResetChannel()
 }
 
 // Handle common things before letting the channels play the notes
-void CChannelHandler::PlayNote(stChanNote* pNoteData, int EffColumns)
+void CChannelHandler::PlayNote(stChanNote* pNoteData, const int EffColumns)
 {
 	ASSERT (pNoteData != NULL);
 
@@ -194,7 +194,7 @@ void CChannelHandler::PlayNote(stChanNote* pNoteData, int EffColumns)
 	HandleNoteData(pNoteData, EffColumns);
 }
 
-void CChannelHandler::HandleNoteData(stChanNote* pNoteData, int EffColumns)
+void CChannelHandler::HandleNoteData(stChanNote* pNoteData, const int EffColumns)
 {
 	int LastInstrument = m_iInstrument;
 	int Instrument = pNoteData->Instrument;
@@ -312,7 +312,7 @@ void CChannelHandler::ReleaseNote()
 	m_bRelease = true;
 }
 
-int CChannelHandler::RunNote(int Octave, int Note)
+int CChannelHandler::RunNote(const int Octave, const int Note)
 {
 	// Run the note and handle portamento
 	int NewNote = MIDI_NOTE(Octave, Note);
@@ -332,7 +332,7 @@ int CChannelHandler::RunNote(int Octave, int Note)
 	return NewNote;
 }
 
-void CChannelHandler::SetupSlide(int Type, int EffParam)
+void CChannelHandler::SetupSlide(const int Type, const int EffParam)
 {
 #define GET_SLIDE_SPEED(x) (((x & 0xF0) >> 3) + 1)
 
@@ -347,7 +347,7 @@ void CChannelHandler::SetupSlide(int Type, int EffParam)
 	m_iPortaTo = TriggerNote(m_iNote);
 }
 
-bool CChannelHandler::CheckCommonEffects(unsigned char EffCmd, unsigned char EffParam)
+bool CChannelHandler::CheckCommonEffects(const unsigned char EffCmd, const unsigned char EffParam)
 {
 	// Handle common effects for all channels
 
@@ -402,7 +402,7 @@ bool CChannelHandler::CheckCommonEffects(unsigned char EffCmd, unsigned char Eff
 	return true;
 }
 
-bool CChannelHandler::HandleDelay(stChanNote* pNoteData, int EffColumns)
+bool CChannelHandler::HandleDelay(stChanNote* pNoteData, const int EffColumns)
 {
 	// Handle note delay, Gxx
 
@@ -502,7 +502,7 @@ void CChannelHandler::UpdateVibratoTremolo()
 	m_iTremoloPhase = (m_iTremoloPhase + m_iTremoloSpeed) & 63;
 }
 
-void CChannelHandler::LinearAdd(int Step)
+void CChannelHandler::LinearAdd(const int Step)
 {
 	m_iPeriod = (m_iPeriod << 5) | m_iPeriodPart;
 	int value = (m_iPeriod * Step) / 512;
@@ -513,7 +513,7 @@ void CChannelHandler::LinearAdd(int Step)
 	m_iPeriod >>= 5;
 }
 
-void CChannelHandler::LinearRemove(int Step)
+void CChannelHandler::LinearRemove(const int Step)
 {
 	m_iPeriod = (m_iPeriod << 5) | m_iPeriodPart;
 	int value = (m_iPeriod * Step) / 512;
@@ -524,7 +524,7 @@ void CChannelHandler::LinearRemove(int Step)
 	m_iPeriod >>= 5;
 }
 
-void CChannelHandler::PeriodAdd(int Step)
+void CChannelHandler::PeriodAdd(const int Step)
 {
 	if (m_bLinearPitch)
 		LinearAdd(Step);
@@ -532,7 +532,7 @@ void CChannelHandler::PeriodAdd(int Step)
 		SetPeriod(GetPeriod() + Step);
 }
 
-void CChannelHandler::PeriodRemove(int Step)
+void CChannelHandler::PeriodRemove(const int Step)
 {
 	if (m_bLinearPitch)
 		LinearRemove(Step);
@@ -710,34 +710,34 @@ int CChannelHandler::CalculateVolume() const
 	return Volume;
 }
 
-void CChannelHandler::AddCycles(int count)
+void CChannelHandler::AddCycles(const int count)
 {
 	m_pSoundGen->AddCycles(count);
 }
 
-void CChannelHandler::WriteRegister(uint16 Reg, uint8 Value)
+void CChannelHandler::WriteRegister(const uint16 Reg, const uint8 Value)
 {
 	m_pAPU->Write(Reg, Value);
 	m_pSoundGen->WriteRegister(Reg, Value);
 }
 
-void CChannelHandler::WriteExternalRegister(uint16 Reg, uint8 Value)
+void CChannelHandler::WriteExternalRegister(const uint16 Reg, const uint8 Value)
 {
 	m_pAPU->ExternalWrite(Reg, Value);
 	m_pSoundGen->WriteExternalRegister(Reg, Value);
 }
 
-void CChannelHandler::RegisterKeyState(int Note)
+void CChannelHandler::RegisterKeyState(const int Note)
 {
 	m_pSoundGen->RegisterKeyState(m_iChannelID, Note);
 }
 
-void CChannelHandler::SetVolume(int Volume)
+void CChannelHandler::SetVolume(const int Volume)
 {
 	m_iSeqVolume = Volume;
 }
 
-void CChannelHandler::SetPeriod(int Period)
+void CChannelHandler::SetPeriod(const int Period)
 {
 	m_iPeriod = LimitPeriod(Period);
 	m_bPeriodUpdated = true;
@@ -748,7 +748,7 @@ int CChannelHandler::GetPeriod() const
 	return m_iPeriod;
 }
 
-void CChannelHandler::SetNote(int Note)
+void CChannelHandler::SetNote(const int Note)
 {
 	m_iNote = Note;
 }
@@ -758,7 +758,7 @@ int CChannelHandler::GetNote() const
 	return m_iNote;
 }
 
-void CChannelHandler::SetDutyPeriod(int Period)
+void CChannelHandler::SetDutyPeriod(const int Period)
 {
 	m_iDutyPeriod = Period;
 }
@@ -768,7 +768,7 @@ void CChannelHandler::SetDutyPeriod(int Period)
  *
  */
 
-void CChannelHandlerInverted::SetupSlide(int Type, int EffParam)
+void CChannelHandlerInverted::SetupSlide(const int Type, const int EffParam)
 {
 	CChannelHandler::SetupSlide(Type, EffParam);
 
@@ -796,21 +796,21 @@ CSequenceHandler::CSequenceHandler()
 
 // Sequence routines
 
-void CSequenceHandler::SetupSequence(int Index, const CSequence* pSequence)
+void CSequenceHandler::SetupSequence(const int Index, const CSequence* pSequence)
 {
 	m_iSeqState[Index] = SEQ_STATE_RUNNING;
 	m_iSeqPointer[Index] = 0;
 	m_pSequence[Index] = pSequence;
 }
 
-void CSequenceHandler::ClearSequence(int Index)
+void CSequenceHandler::ClearSequence(const int Index)
 {
 	m_iSeqState[Index] = SEQ_STATE_DISABLED;
 	m_iSeqPointer[Index] = 0;
 	m_pSequence[Index] = NULL;
 }
 
-void CSequenceHandler::UpdateSequenceRunning(int Index, const CSequence* pSequence)
+void CSequenceHandler::UpdateSequenceRunning(const int Index, const CSequence* pSequence)
 {
 	int Value = pSequence->GetItem(m_iSeqPointer[Index]);
 
@@ -881,7 +881,7 @@ void CSequenceHandler::UpdateSequenceRunning(int Index, const CSequence* pSequen
 	theApp.GetSoundGenerator()->SetSequencePlayPos(pSequence, m_iSeqPointer[Index]);
 }
 
-void CSequenceHandler::UpdateSequenceEnd(int Index, const CSequence* pSequence)
+void CSequenceHandler::UpdateSequenceEnd(const int Index, const CSequence* pSequence)
 {
 	switch (Index)
 	{
@@ -898,7 +898,7 @@ void CSequenceHandler::UpdateSequenceEnd(int Index, const CSequence* pSequence)
 	theApp.GetSoundGenerator()->SetSequencePlayPos(pSequence, -1);
 }
 
-void CSequenceHandler::RunSequence(int Index)
+void CSequenceHandler::RunSequence(const int Index)
 {
 	const CSequence* pSequence = m_pSequence[Index];
 
@@ -941,7 +941,7 @@ void CSequenceHandler::ReleaseSequences()
 	}
 }
 
-void CSequenceHandler::ReleaseSequence(int Index, const CSequence* pSeq)
+void CSequenceHandler::ReleaseSequence(const int Index, const CSequence* pSeq)
 {
 	int ReleasePoint = pSeq->GetReleasePoint();
 
@@ -952,12 +952,12 @@ void CSequenceHandler::ReleaseSequence(int Index, const CSequence* pSeq)
 	}
 }
 
-bool CSequenceHandler::IsSequenceEqual(int Index, const CSequence* pSequence) const
+bool CSequenceHandler::IsSequenceEqual(const int Index, const CSequence* pSequence) const
 {
 	return pSequence == m_pSequence[Index];
 }
 
-seq_state_t CSequenceHandler::GetSequenceState(int Index) const
+seq_state_t CSequenceHandler::GetSequenceState(const int Index) const
 {
 	return m_iSeqState[Index];
 }

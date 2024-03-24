@@ -28,7 +28,7 @@ CCursorPos::CCursorPos() : m_iRow(0), m_iChannel(0), m_iColumn(0)
 {
 }
 
-CCursorPos::CCursorPos(int Row, int Channel, int Column) : m_iRow(Row), m_iChannel(Channel), m_iColumn(Column)
+CCursorPos::CCursorPos(const int Row, const int Channel, const int Column) : m_iRow(Row), m_iChannel(Channel), m_iColumn(Column)
 {
 }
 
@@ -47,7 +47,7 @@ bool CCursorPos::operator !=(const CCursorPos& other) const
 	return (m_iRow != other.m_iRow) || (m_iChannel != other.m_iChannel) || (m_iColumn != other.m_iColumn);
 }
 
-bool CCursorPos::IsValid(int RowCount, int ChannelCount) const
+bool CCursorPos::IsValid(const int RowCount, const int ChannelCount) const
 {
 	// Check if a valid pattern position
 	if (m_iChannel < 0 || m_iChannel >= ChannelCount)
@@ -168,7 +168,7 @@ bool CSelection::IsSameStartPoint(const CSelection& selection) const
 		GetColStart() == selection.GetColStart();
 }
 
-bool CSelection::IsColumnSelected(int Column, int Channel) const
+bool CSelection::IsColumnSelected(const int Column, const int Channel) const
 {
 	int SelColStart = GetColStart();
 	int SelColEnd = GetColEnd();
@@ -234,7 +234,7 @@ SIZE_T CPatternClipData::GetAllocSize() const
 	return sizeof(ClipInfo) + Size * sizeof(stChanNote);
 }
 
-void CPatternClipData::ToMem(HGLOBAL hMem)
+void CPatternClipData::ToMem(const HGLOBAL hMem)
 {
 	// From CPatternClipData to memory
 	ASSERT(hMem != NULL);
@@ -251,7 +251,7 @@ void CPatternClipData::ToMem(HGLOBAL hMem)
 	}
 }
 
-void CPatternClipData::FromMem(HGLOBAL hMem)
+void CPatternClipData::FromMem(const HGLOBAL hMem)
 {
 	// From memory to CPatternClipData
 	ASSERT(hMem != NULL);
@@ -271,7 +271,7 @@ void CPatternClipData::FromMem(HGLOBAL hMem)
 	}
 }
 
-stChanNote* CPatternClipData::GetPattern(int Channel, int Row)
+stChanNote* CPatternClipData::GetPattern(const int Channel, const int Row)
 {
 	ASSERT(Channel < ClipInfo.Channels);
 	ASSERT(Row < ClipInfo.Rows);
@@ -279,7 +279,7 @@ stChanNote* CPatternClipData::GetPattern(int Channel, int Row)
 	return pPattern + (Channel * ClipInfo.Rows + Row);
 }
 
-const stChanNote* CPatternClipData::GetPattern(int Channel, int Row) const
+const stChanNote* CPatternClipData::GetPattern(const int Channel, const int Row) const
 {
 	ASSERT(Channel < ClipInfo.Channels);
 	ASSERT(Row < ClipInfo.Rows);

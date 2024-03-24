@@ -204,7 +204,7 @@ void CInstrumentEditorDPCM::BuildKeyList()
 	}
 }
 
-void CInstrumentEditorDPCM::UpdateKey(int Index)
+void CInstrumentEditorDPCM::UpdateKey(const int Index)
 {
 	CListCtrl* pTableListCtrl = static_cast<CListCtrl*>(GetDlgItem(IDC_TABLE));
 	CString NameStr = NO_SAMPLE_STR;
@@ -601,7 +601,7 @@ void CInstrumentEditorDPCM::OnBnClickedLoop()
 	UpdateKey(m_iSelectedKey);
 }
 
-void CInstrumentEditorDPCM::SelectInstrument(int Instrument)
+void CInstrumentEditorDPCM::SelectInstrument(const int Instrument)
 {
 	if (m_pInstrument)
 		m_pInstrument->Release();

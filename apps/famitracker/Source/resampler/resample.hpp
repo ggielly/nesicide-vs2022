@@ -94,12 +94,12 @@ namespace jarh
 		operator const void *() const { return fail() ? 0 : this; }
 
 		// state control
-		void clear(iostate b = goodbit)
+		void clear(const iostate b = goodbit)
 		{
 			flags_ = b;
 		}
 
-		void setstate(iostate b)
+		void setstate(const iostate b)
 		{
 			clear(rdstate() | b);
 		}

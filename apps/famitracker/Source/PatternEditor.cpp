@@ -257,7 +257,7 @@ void CPatternEditor::SetDocument(CFamiTrackerDoc* pDoc, CFamiTrackerView* pView)
 	ResetCursor();
 }
 
-void CPatternEditor::SetWindowSize(int width, int height)
+void CPatternEditor::SetWindowSize(const int width, const int height)
 {
 	// Sets the window size of parent view
 	m_iWinWidth = width;
@@ -944,7 +944,7 @@ void CPatternEditor::PerformQuickRedraw(CDC* pDC)
 	++m_iQuickRedraws;
 }
 
-void CPatternEditor::PrintRow(CDC* pDC, int Row, int Line, int Frame) const
+void CPatternEditor::PrintRow(CDC* pDC, const int Row, const int Line, const int Frame) const
 {
 	const int Track = GetSelectedTrack();
 	const int FrameCount = m_pDocument->GetFrameCount(Track);
@@ -983,7 +983,7 @@ void CPatternEditor::PrintRow(CDC* pDC, int Row, int Line, int Frame) const
 	}
 }
 
-void CPatternEditor::MovePatternArea(CDC* pDC, int FromRow, int ToRow, int NumRows) const
+void CPatternEditor::MovePatternArea(CDC* pDC, const int FromRow, const int ToRow, const int NumRows) const
 {
 	// Move a part of the pattern area
 	const int Width = ROW_COLUMN_WIDTH + m_iPatternWidth - 1;
@@ -993,7 +993,7 @@ void CPatternEditor::MovePatternArea(CDC* pDC, int FromRow, int ToRow, int NumRo
 	pDC->BitBlt(1, DestY, Width, Height, pDC, 1, SrcY, SRCCOPY);
 }
 
-void CPatternEditor::ScrollPatternArea(CDC* pDC, int Rows) const
+void CPatternEditor::ScrollPatternArea(CDC* pDC, const int Rows) const
 {
 	ASSERT(Rows < (m_iLinesVisible / 2));
 
@@ -1059,7 +1059,7 @@ void CPatternEditor::ScrollPatternArea(CDC* pDC, int Rows) const
 	PrintRow(pDC, Row, MiddleLine, m_iCurrentFrame);
 }
 
-void CPatternEditor::ClearRow(CDC* pDC, int Line) const
+void CPatternEditor::ClearRow(CDC* pDC, const int Line) const
 {
 	pDC->SetWindowOrg(0, 0);
 
@@ -1074,27 +1074,27 @@ void CPatternEditor::ClearRow(CDC* pDC, int Line) const
 	pDC->FillSolidRect(1, Line * m_iRowHeight, ROW_COLUMN_WIDTH - 2, m_iRowHeight, m_colEmptyBg);
 }
 
-static bool IsTopEdge(const CSelection& sel, int Channel, int Row, int Column)
+static bool IsTopEdge(const CSelection& sel, int Channel, const int Row, int Column)
 {
 	return Row == sel.GetRowStart();
 }
 
-static bool IsBottomEdge(const CSelection& sel, int Channel, int Row, int Column)
+static bool IsBottomEdge(const CSelection& sel, int Channel, const int Row, int Column)
 {
 	return Row == sel.GetRowEnd();
 }
 
-static bool IsLeftEdge(const CSelection& sel, int Channel, int Row, int Column)
+static bool IsLeftEdge(const CSelection& sel, const int Channel, int Row, const int Column)
 {
 	return Channel == sel.GetChanStart() && Column == sel.GetColStart();
 }
 
-static bool IsRightEdge(const CSelection& sel, int Channel, int Row, int Column)
+static bool IsRightEdge(const CSelection& sel, const int Channel, int Row, const int Column)
 {
 	return Channel == sel.GetChanEnd() && Column == sel.GetColEnd();
 }
 
-static bool IsInRange(const CSelection& sel, int Channel, int Row, int Column)
+static bool IsInRange(const CSelection& sel, const int Channel, const int Row, const int Column)
 {
 	// Return true if cursor is in range of selection
 	if (Row >= sel.GetRowStart() && Row <= sel.GetRowEnd())
@@ -1120,7 +1120,7 @@ static bool IsInRange(const CSelection& sel, int Channel, int Row, int Column)
 }
 
 // Draw a single row
-void CPatternEditor::DrawRow(CDC* pDC, int Row, int Line, int Frame, bool bPreview) const
+void CPatternEditor::DrawRow(CDC* pDC, const int Row, const int Line, const int Frame, const bool bPreview) const
 {
 	// Row is row from pattern to display
 	// Line is (absolute) screen line
@@ -1318,7 +1318,7 @@ void CPatternEditor::DrawRow(CDC* pDC, int Row, int Line, int Frame, bool bPrevi
 	}
 }
 
-void CPatternEditor::DrawCell(CDC* pDC, int PosX, int Column, int Channel, bool bInvert, stChanNote* pNoteData,
+void CPatternEditor::DrawCell(CDC* pDC, int PosX, const int Column, const int Channel, bool bInvert, stChanNote* pNoteData,
                               RowColorInfo_t* pColorInfo) const
 {
 	// Sharps
@@ -1701,19 +1701,19 @@ void CPatternEditor::DrawMeters(CDC* pDC)
 	pDC->SelectObject(pOldFont);
 }
 
-static double NoteFromFreq(double Freq, double Base)
+static double NoteFromFreq(const double Freq, const double Base)
 {
 	// Convert frequency to note number
 	return 12.0 * (std::log(Freq / Base) / log(2.0));
 }
 
-static double FreqFromNote(double Note, double Base)
+static double FreqFromNote(const double Note, const double Base)
 {
 	// Return frequency for a note number
 	return Base * std::pow(2.0, Note / 12.0);
 }
 
-static double NesPeriodToFreq(double Period, double Length)
+static double NesPeriodToFreq(const double Period, const double Length)
 {
 	// Return NES period converted to frequency
 	return (double(CAPU::BASE_FREQ_NTSC) / double(Period + 1)) / Length;
@@ -1941,7 +1941,7 @@ void CPatternEditor::DrawRegisters(CDC* pDC)
 }
 
 // Draws a colored character
-void CPatternEditor::DrawChar(CDC* pDC, int x, int y, TCHAR c, COLORREF Color) const
+void CPatternEditor::DrawChar(CDC* pDC, const int x, const int y, const TCHAR c, const COLORREF Color) const
 {
 	pDC->SetTextColor(Color);
 	pDC->TextOut(x, y, &c, 1);
@@ -2000,12 +2000,12 @@ void CPatternEditor::UpdateHorizontalScroll()
 
 // Point to/from cursor translations
 
-int CPatternEditor::GetRowAtPoint(int PointY) const
+int CPatternEditor::GetRowAtPoint(const int PointY) const
 {
 	return (PointY - HEADER_HEIGHT) / m_iRowHeight - (m_iLinesVisible / 2) + m_iCenterRow;
 }
 
-int CPatternEditor::GetChannelAtPoint(int PointX) const
+int CPatternEditor::GetChannelAtPoint(const int PointX) const
 {
 	// Convert X position to channel number
 	const int ChannelCount = GetChannelCount();
@@ -2023,7 +2023,7 @@ int CPatternEditor::GetChannelAtPoint(int PointX) const
 	return m_iFirstChannel + m_iChannelsVisible;
 }
 
-int CPatternEditor::GetColumnAtPoint(int PointX) const
+int CPatternEditor::GetColumnAtPoint(const int PointX) const
 {
 	// Convert X position to column number
 	const int ChannelCount = GetChannelCount();
@@ -2051,7 +2051,7 @@ CCursorPos CPatternEditor::GetCursorAtPoint(const CPoint& point) const
 	return CCursorPos(GetRowAtPoint(point.y), GetChannelAtPoint(point.x), GetColumnAtPoint(point.x));
 }
 
-int CPatternEditor::GetSelectColumn(int Column)
+int CPatternEditor::GetSelectColumn(const int Column)
 {
 	// Return first column for a specific column field
 	static const int COLUMNS[] = {
@@ -2069,7 +2069,7 @@ int CPatternEditor::GetSelectColumn(int Column)
 	return COLUMNS[Column];
 }
 
-int CPatternEditor::GetCursorStartColumn(int Column) const
+int CPatternEditor::GetCursorStartColumn(const int Column) const
 {
 	static const int COL_START[] = {
 		0, 1, 3, 4, 7, 10, 13
@@ -2080,7 +2080,7 @@ int CPatternEditor::GetCursorStartColumn(int Column) const
 	return COL_START[Column];
 }
 
-int CPatternEditor::GetCursorEndColumn(int Column) const
+int CPatternEditor::GetCursorEndColumn(const int Column) const
 {
 	static const int COL_END[] = {
 		0, 2, 3, 6, 9, 12, 15
@@ -2091,7 +2091,7 @@ int CPatternEditor::GetCursorEndColumn(int Column) const
 	return COL_END[Column];
 }
 
-int CPatternEditor::GetChannelColumns(int Channel) const
+int CPatternEditor::GetChannelColumns(const int Channel) const
 {
 	// Return number of available columns in a channel
 	return m_pDocument->GetEffColumns(GetSelectedTrack(), Channel) * 3 + COLUMNS;
@@ -2107,7 +2107,7 @@ int CPatternEditor::GetChannelCount() const
 	return m_pDocument->GetAvailableChannels();
 }
 
-int CPatternEditor::RowToLine(int Row) const
+int CPatternEditor::RowToLine(const int Row) const
 {
 	// Turn row number into line number
 	const int MiddleLine = m_iLinesVisible / 2;
@@ -2443,7 +2443,7 @@ void CPatternEditor::MoveToChannel(int Channel)
 	m_cpCursorPos.m_iColumn = 0;
 }
 
-void CPatternEditor::MoveToColumn(int Column)
+void CPatternEditor::MoveToColumn(const int Column)
 {
 	m_cpCursorPos.m_iColumn = Column;
 }
@@ -2801,7 +2801,7 @@ void CPatternEditor::ContinueMouseSelection(const CPoint& point)
 	}
 }
 
-void CPatternEditor::OnMouseMove(UINT nFlags, const CPoint& point)
+void CPatternEditor::OnMouseMove(const UINT nFlags, const CPoint& point)
 {
 	// Move movement, called only when lbutton is active
 
@@ -2882,7 +2882,7 @@ void CPatternEditor::OnMouseDblClk(const CPoint& point)
 	}
 }
 
-void CPatternEditor::OnMouseScroll(int Delta)
+void CPatternEditor::OnMouseScroll(const int Delta)
 {
 	// Mouse scroll wheel
 	if (theApp.IsPlaying() && m_bFollowMode)
@@ -2936,7 +2936,7 @@ void CPatternEditor::OnMouseRDown(const CPoint& point)
 	}
 }
 
-void CPatternEditor::DragPaste(const CPatternClipData* pClipData, const CSelection* pDragTarget, bool bMix)
+void CPatternEditor::DragPaste(const CPatternClipData* pClipData, const CSelection* pDragTarget, const bool bMix)
 {
 	// Paste drag'n'drop selections
 
@@ -3385,7 +3385,7 @@ void CPatternEditor::SelectAll()
 
 // Other ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-int CPatternEditor::GetCurrentPatternLength(unsigned int Frame) const
+int CPatternEditor::GetCurrentPatternLength(const unsigned int Frame) const
 {
 	const int Track = GetSelectedTrack();
 	const int Channels = GetChannelCount();
@@ -3433,23 +3433,23 @@ int CPatternEditor::GetCurrentPatternLength(unsigned int Frame) const
 	return HaltPoint;
 }
 
-void CPatternEditor::SetHighlight(int Rows, int SecondRows)
+void CPatternEditor::SetHighlight(const int Rows, const int SecondRows)
 {
 	m_iHighlight = Rows;
 	m_iHighlightSecond = SecondRows;
 }
 
-void CPatternEditor::SetFollowMove(bool bEnable)
+void CPatternEditor::SetFollowMove(const bool bEnable)
 {
 	m_bFollowMode = bEnable;
 }
 
-void CPatternEditor::SetFocus(bool bFocus)
+void CPatternEditor::SetFocus(const bool bFocus)
 {
 	m_bHasFocus = bFocus;
 }
 
-void CPatternEditor::IncreaseEffectColumn(int Channel)
+void CPatternEditor::IncreaseEffectColumn(const int Channel)
 {
 	const int Columns = m_pDocument->GetEffColumns(GetSelectedTrack(), Channel);
 	if (Columns < (MAX_EFFECT_COLUMNS - 1))
@@ -3460,7 +3460,7 @@ void CPatternEditor::IncreaseEffectColumn(int Channel)
 	}
 }
 
-void CPatternEditor::DecreaseEffectColumn(int Channel)
+void CPatternEditor::DecreaseEffectColumn(const int Channel)
 {
 	const int Columns = m_pDocument->GetEffColumns(GetSelectedTrack(), Channel);
 	if (Columns > 0)
@@ -3491,7 +3491,7 @@ bool CPatternEditor::IsPlayCursorVisible() const
 	return true;
 }
 
-void CPatternEditor::AutoScroll(const CPoint& point, UINT nFlags)
+void CPatternEditor::AutoScroll(const CPoint& point, const UINT nFlags)
 {
 	CCursorPos PointPos = GetCursorAtPoint(point);
 	const int Channels = GetChannelCount();
@@ -3573,7 +3573,7 @@ bool CPatternEditor::ScrollTimerCallback()
 	return true;
 }
 
-void CPatternEditor::OnVScroll(UINT nSBCode, UINT nPos)
+void CPatternEditor::OnVScroll(const UINT nSBCode, const UINT nPos)
 {
 	int PageSize = theApp.GetSettings()->General.iPageStepSize;
 
@@ -3607,7 +3607,7 @@ void CPatternEditor::OnVScroll(UINT nSBCode, UINT nPos)
 		CancelSelection();
 }
 
-void CPatternEditor::OnHScroll(UINT nSBCode, UINT nPos)
+void CPatternEditor::OnHScroll(const UINT nSBCode, const UINT nPos)
 {
 	const int Channels = GetChannelCount();
 	unsigned int count = 0;
@@ -3734,7 +3734,7 @@ void CPatternEditor::EndDrag()
 	m_bDragging = false;
 }
 
-bool CPatternEditor::PerformDrop(const CPatternClipData* pClipData, bool bCopy, bool bCopyMix)
+bool CPatternEditor::PerformDrop(const CPatternClipData* pClipData, const bool bCopy, bool bCopyMix)
 {
 	// Drop selection onto pattern, returns true if drop was successful
 

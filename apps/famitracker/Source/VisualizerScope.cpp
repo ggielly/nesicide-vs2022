@@ -30,7 +30,7 @@
  *
  */
 
-CVisualizerScope::CVisualizerScope(bool bBlur) :
+CVisualizerScope::CVisualizerScope(const bool bBlur) :
 	m_pBlitBuffer(NULL),
 	m_pWindowBuf(NULL),
 	m_bBlur(bBlur),
@@ -44,7 +44,7 @@ CVisualizerScope::~CVisualizerScope()
 	SAFE_RELEASE_ARRAY(m_pWindowBuf);
 }
 
-void CVisualizerScope::Create(int Width, int Height)
+void CVisualizerScope::Create(const int Width, const int Height)
 {
 	CVisualizerBase::Create(Width, Height);
 

@@ -33,14 +33,14 @@ CDSound* CDSound::pThisObject = NULL;
 
 // Class members
 
-BOOL CALLBACK CDSound::DSEnumCallback(LPGUID lpGuid, LPCTSTR lpcstrDescription, LPCTSTR lpcstrModule, LPVOID lpContext)
+BOOL CALLBACK CDSound::DSEnumCallback(const LPGUID lpGuid, const LPCTSTR lpcstrDescription, const LPCTSTR lpcstrModule, const LPVOID lpContext)
 {
 	return pThisObject->EnumerateCallback(lpGuid, lpcstrDescription, lpcstrModule, lpContext);
 }
 
 // Instance members
 
-CDSound::CDSound(HWND hWnd, HANDLE hNotification) :
+CDSound::CDSound(const HWND hWnd, const HANDLE hNotification) :
 	m_iDevices(0),
 	m_lpDirectSound(NULL),
 	m_hWndTarget(hWnd),
@@ -109,7 +109,7 @@ void CDSound::ClearEnumeration()
 	m_iDevices = 0;
 }
 
-BOOL CDSound::EnumerateCallback(LPGUID lpGuid, LPCTSTR lpcstrDescription, LPCTSTR lpcstrModule, LPVOID lpContext)
+BOOL CDSound::EnumerateCallback(const LPGUID lpGuid, const LPCTSTR lpcstrDescription, LPCTSTR lpcstrModule, LPVOID lpContext)
 {
 	m_pcDevice[m_iDevices] = new TCHAR[_tcslen(lpcstrDescription) + 1];
 	_tcscpy((TCHAR*)m_pcDevice[m_iDevices], lpcstrDescription);
@@ -151,13 +151,13 @@ unsigned int CDSound::GetDeviceCount() const
 	return m_iDevices;
 }
 
-LPCTSTR CDSound::GetDeviceName(unsigned int iDevice) const
+LPCTSTR CDSound::GetDeviceName(const unsigned int iDevice) const
 {
 	ASSERT(iDevice < m_iDevices);
 	return m_pcDevice[iDevice];
 }
 
-int CDSound::MatchDeviceID(LPCTSTR Name) const
+int CDSound::MatchDeviceID(const LPCTSTR Name) const
 {
 	for (unsigned int i = 0; i < m_iDevices; ++i)
 	{
@@ -168,13 +168,13 @@ int CDSound::MatchDeviceID(LPCTSTR Name) const
 	return 0;
 }
 
-int CDSound::CalculateBufferLength(int BufferLen, int Samplerate, int Samplesize, int Channels) const
+int CDSound::CalculateBufferLength(const int BufferLen, const int Samplerate, const int Samplesize, const int Channels) const
 {
 	// Calculate size of the buffer, in bytes
 	return ((Samplerate * BufferLen) / 1000) * (Samplesize / 8) * Channels;
 }
 
-CDSoundChannel* CDSound::OpenChannel(int SampleRate, int SampleSize, int Channels, int BufferLength, int Blocks)
+CDSoundChannel* CDSound::OpenChannel(const int SampleRate, const int SampleSize, const int Channels, int BufferLength, const int Blocks)
 {
 	// Open a new secondary buffer
 	//
@@ -341,7 +341,7 @@ bool CDSoundChannel::ClearBuffer()
 	return true;
 }
 
-bool CDSoundChannel::WriteBuffer(char* pBuffer, unsigned int Samples)
+bool CDSoundChannel::WriteBuffer(char* pBuffer, const unsigned int Samples)
 {
 	// Fill sound buffer
 	//
@@ -372,7 +372,7 @@ bool CDSoundChannel::WriteBuffer(char* pBuffer, unsigned int Samples)
 	return true;
 }
 
-buffer_event_t CDSoundChannel::WaitForSyncEvent(DWORD dwTimeout) const
+buffer_event_t CDSoundChannel::WaitForSyncEvent(const DWORD dwTimeout) const
 {
 	// Wait for a DirectSound event
 	if (!IsPlaying())

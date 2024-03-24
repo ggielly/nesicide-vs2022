@@ -28,7 +28,7 @@
  *
  */
 
-CChunk::CChunk(chunk_type_t Type, CStringA label) : m_iType(Type), m_strLabel(label), m_iBank(0)
+CChunk::CChunk(const chunk_type_t Type, CStringA label) : m_iType(Type), m_strLabel(label), m_iBank(0)
 {
 }
 
@@ -57,7 +57,7 @@ LPCSTR CChunk::GetLabel() const
 	return m_strLabel;
 }
 
-void CChunk::SetBank(unsigned char Bank)
+void CChunk::SetBank(const unsigned char Bank)
 {
 	m_iBank = Bank;
 }
@@ -73,22 +73,22 @@ int CChunk::GetLength() const
 	return m_vChunkData.size();
 }
 
-unsigned short CChunk::GetData(int index) const
+unsigned short CChunk::GetData(const int index) const
 {
 	return m_vChunkData[index]->GetData();
 }
 
-unsigned short CChunk::GetDataSize(int index) const
+unsigned short CChunk::GetDataSize(const int index) const
 {
 	return m_vChunkData[index]->GetSize();
 }
 
-void CChunk::StoreByte(unsigned char data)
+void CChunk::StoreByte(const unsigned char data)
 {
 	m_vChunkData.push_back(new CChunkDataByte(data));
 }
 
-void CChunk::StoreWord(unsigned short data)
+void CChunk::StoreWord(const unsigned short data)
 {
 	m_vChunkData.push_back(new CChunkDataWord(data));
 }
@@ -98,7 +98,7 @@ void CChunk::StoreReference(CStringA refName)
 	m_vChunkData.push_back(new CChunkDataReference(refName));
 }
 
-void CChunk::StoreBankReference(CStringA refName, int bank)
+void CChunk::StoreBankReference(CStringA refName, const int bank)
 {
 	m_vChunkData.push_back(new CChunkDataBank(refName, bank));
 }
@@ -108,29 +108,29 @@ void CChunk::StoreString(const std::vector<char>& data)
 	m_vChunkData.push_back(new CChunkDataString(data));
 }
 
-void CChunk::ChangeByte(int index, unsigned char data)
+void CChunk::ChangeByte(const int index, const unsigned char data)
 {
 	ASSERT(index < (int)m_vChunkData.size());
 	static_cast<CChunkDataByte*>(m_vChunkData[index])->m_data = data;
 }
 
-void CChunk::SetupBankData(int index, unsigned char bank)
+void CChunk::SetupBankData(const int index, const unsigned char bank)
 {
 	ASSERT(index < (int)m_vChunkData.size());
 	static_cast<CChunkDataBank*>(m_vChunkData[index])->m_bank = bank;
 }
 
-unsigned char CChunk::GetStringData(int index, int pos) const
+unsigned char CChunk::GetStringData(const int index, const int pos) const
 {
 	return static_cast<CChunkDataString*>(m_vChunkData[index])->m_vData[pos];
 }
 
-const std::vector<char>& CChunk::GetStringData(int index) const
+const std::vector<char>& CChunk::GetStringData(const int index) const
 {
 	return (static_cast<CChunkDataString*>(m_vChunkData[index]))->m_vData;
 }
 
-LPCSTR CChunk::GetDataRefName(int index) const
+LPCSTR CChunk::GetDataRefName(const int index) const
 {
 	CChunkDataReference* pChunkData = dynamic_cast<CChunkDataReference*>(m_vChunkData[index]);
 
@@ -140,7 +140,7 @@ LPCSTR CChunk::GetDataRefName(int index) const
 	return "";
 }
 
-void CChunk::UpdateDataRefName(int index, CStringA& name)
+void CChunk::UpdateDataRefName(const int index, CStringA& name)
 {
 	CChunkDataReference* pChunkData = dynamic_cast<CChunkDataReference*>(m_vChunkData[index]);
 
@@ -148,12 +148,12 @@ void CChunk::UpdateDataRefName(int index, CStringA& name)
 		pChunkData->m_refName = name;
 }
 
-bool CChunk::IsDataReference(int index) const
+bool CChunk::IsDataReference(const int index) const
 {
 	return dynamic_cast<CChunkDataReference*>(m_vChunkData[index]) != NULL;
 }
 
-bool CChunk::IsDataBank(int index) const
+bool CChunk::IsDataBank(const int index) const
 {
 	return dynamic_cast<CChunkDataBank*>(m_vChunkData[index]) != NULL;
 }

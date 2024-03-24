@@ -121,7 +121,7 @@ bool CInstrumentVRC7::CanRelease() const
 	return false; // This can use release but disable it when previewing notes
 }
 
-void CInstrumentVRC7::SetPatch(unsigned int Patch)
+void CInstrumentVRC7::SetPatch(const unsigned int Patch)
 {
 	m_iPatch = Patch;
 	InstrumentChanged();
@@ -132,13 +132,13 @@ unsigned int CInstrumentVRC7::GetPatch() const
 	return m_iPatch;
 }
 
-void CInstrumentVRC7::SetCustomReg(int Reg, unsigned int Value)
+void CInstrumentVRC7::SetCustomReg(const int Reg, const unsigned int Value)
 {
 	m_iRegs[Reg] = Value;
 	InstrumentChanged();
 }
 
-unsigned int CInstrumentVRC7::GetCustomReg(int Reg) const
+unsigned int CInstrumentVRC7::GetCustomReg(const int Reg) const
 {
 	return m_iRegs[Reg];
 }

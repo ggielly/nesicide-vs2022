@@ -133,7 +133,7 @@ CCompiler* CCompiler::GetCompiler()
 	return pCompiler;
 }
 
-unsigned int CCompiler::AdjustSampleAddress(unsigned int Address)
+unsigned int CCompiler::AdjustSampleAddress(const unsigned int Address)
 {
 	// Align samples to 64-byte pages
 	return (0x40 - (Address & 0x3F)) & 0x3F;
@@ -197,7 +197,7 @@ void CCompiler::ClearLog() const
 		m_pLogger->Clear();
 }
 
-bool CCompiler::OpenFile(LPCTSTR lpszFileName, CFile& file) const
+bool CCompiler::OpenFile(const LPCTSTR lpszFileName, CFile& file) const
 {
 	CFileException ex;
 
@@ -215,7 +215,7 @@ bool CCompiler::OpenFile(LPCTSTR lpszFileName, CFile& file) const
 	return true;
 }
 
-void CCompiler::ExportNSF(LPCTSTR lpszFileName, int MachineType)
+void CCompiler::ExportNSF(const LPCTSTR lpszFileName, const int MachineType)
 {
 	ClearLog();
 
@@ -400,7 +400,7 @@ void CCompiler::ExportNSF(LPCTSTR lpszFileName, int MachineType)
 	Cleanup();
 }
 
-void CCompiler::ExportNES(LPCTSTR lpszFileName, bool EnablePAL)
+void CCompiler::ExportNES(const LPCTSTR lpszFileName, bool EnablePAL)
 {
 	// 32kb NROM, no CHR
 	const char NES_HEADER[] = {
@@ -486,7 +486,7 @@ void CCompiler::ExportNES(LPCTSTR lpszFileName, bool EnablePAL)
 	Cleanup();
 }
 
-void CCompiler::ExportBIN(LPCTSTR lpszBIN_File, LPCTSTR lpszDPCM_File)
+void CCompiler::ExportBIN(const LPCTSTR lpszBIN_File, const LPCTSTR lpszDPCM_File)
 {
 	ClearLog();
 
@@ -537,7 +537,7 @@ void CCompiler::ExportBIN(LPCTSTR lpszBIN_File, LPCTSTR lpszDPCM_File)
 	Cleanup();
 }
 
-void CCompiler::ExportPRG(LPCTSTR lpszFileName, bool EnablePAL)
+void CCompiler::ExportPRG(const LPCTSTR lpszFileName, bool EnablePAL)
 {
 	// Same as export to .NES but without the header
 
@@ -610,7 +610,7 @@ void CCompiler::ExportPRG(LPCTSTR lpszFileName, bool EnablePAL)
 	Cleanup();
 }
 
-void CCompiler::ExportASM(LPCTSTR lpszFileName)
+void CCompiler::ExportASM(const LPCTSTR lpszFileName)
 {
 	ClearLog();
 
@@ -654,7 +654,7 @@ void CCompiler::ExportASM(LPCTSTR lpszFileName)
 	Cleanup();
 }
 
-char* CCompiler::LoadDriver(const driver_t* pDriver, unsigned short Origin) const
+char* CCompiler::LoadDriver(const driver_t* pDriver, const unsigned short Origin) const
 {
 	// Copy embedded driver
 	unsigned char* pData = new unsigned char[pDriver->driver_size];
@@ -690,7 +690,7 @@ char* CCompiler::LoadDriver(const driver_t* pDriver, unsigned short Origin) cons
 	return (char*)pData;
 }
 
-void CCompiler::SetDriverSongAddress(char* pDriver, unsigned short Address) const
+void CCompiler::SetDriverSongAddress(char* pDriver, const unsigned short Address) const
 {
 	// Write start address of music data
 	pDriver[m_iDriverSize - 2] = Address & 0xFF;
@@ -708,7 +708,7 @@ void CCompiler::PatchVibratoTable(char* pDriver) const
 	}
 }
 
-void CCompiler::CreateHeader(stNSFHeader* pHeader, int MachineType) const
+void CCompiler::CreateHeader(stNSFHeader* pHeader, const int MachineType) const
 {
 	// Fill the NSF header
 	//
@@ -802,7 +802,7 @@ void CCompiler::CreateHeader(stNSFHeader* pHeader, int MachineType) const
 	pHeader->Reserved[3] = 0x00;
 }
 
-void CCompiler::UpdateSamplePointers(unsigned int Origin)
+void CCompiler::UpdateSamplePointers(const unsigned int Origin)
 {
 	// Rewrite sample pointer list with valid addresses
 	//
@@ -1278,7 +1278,7 @@ void CCompiler::ScanSong()
 	}
 }
 
-bool CCompiler::IsInstrumentInPattern(int index) const
+bool CCompiler::IsInstrumentInPattern(const int index) const
 {
 	// Returns true if the instrument is used in a pattern
 
@@ -1717,7 +1717,7 @@ void CCompiler::StoreSamples()
 	Print(_T(" * DPCM samples used: %i (%i bytes)\n"), m_iSamplesUsed, m_iSamplesSize);
 }
 
-int CCompiler::GetSampleIndex(int SampleNumber)
+int CCompiler::GetSampleIndex(const int SampleNumber)
 {
 	// Returns a sample pos from the sample bank
 	for (int i = 0; i < MAX_DSAMPLES; i++)
@@ -1795,7 +1795,7 @@ void CCompiler::StoreSongs()
 
 // Frames
 
-void CCompiler::CreateFrameList(unsigned int Track)
+void CCompiler::CreateFrameList(const unsigned int Track)
 {
 	/*
 	 * Creates a frame list
@@ -1856,7 +1856,7 @@ void CCompiler::CreateFrameList(unsigned int Track)
 
 // Patterns
 
-void CCompiler::StorePatterns(unsigned int Track)
+void CCompiler::StorePatterns(const unsigned int Track)
 {
 	/* 
 	 * Store patterns and save references to them for the frame list
@@ -1952,7 +1952,7 @@ void CCompiler::StorePatterns(unsigned int Track)
 	Print(_T("%i patterns (%i bytes)\r\n"), PatternCount, PatternSize);
 }
 
-bool CCompiler::IsPatternAddressed(unsigned int Track, int Pattern, int Channel) const
+bool CCompiler::IsPatternAddressed(const unsigned int Track, const int Pattern, const int Channel) const
 {
 	// Scan the frame list to see if a pattern is accessed for that frame
 	const int FrameCount = m_pDocument->GetFrameCount(Track);
@@ -2011,7 +2011,7 @@ void CCompiler::WriteSamplesBinary(CFile* pFile)
 
 // Object list functions
 
-CChunk* CCompiler::CreateChunk(chunk_type_t Type, CStringA label)
+CChunk* CCompiler::CreateChunk(const chunk_type_t Type, CStringA label)
 {
 	CChunk* pChunk = new CChunk(Type, label);
 	m_vChunks.push_back(pChunk);

@@ -47,7 +47,7 @@ void CInstrumentFileTree::DeleteMenuObjects()
 	TRACE0("Cleared instrument file tree\n");
 }
 
-CString CInstrumentFileTree::GetFile(int Index) const
+CString CInstrumentFileTree::GetFile(const int Index) const
 {
 	ASSERT(Index >= MENU_BASE + 2);
 	return m_fileList[Index - MENU_BASE - 2];
@@ -111,7 +111,7 @@ bool CInstrumentFileTree::BuildMenuTree(CString instrumentPath)
 	return true;
 }
 
-bool CInstrumentFileTree::ScanDirectory(CString path, CMenu* pMenu, int level)
+bool CInstrumentFileTree::ScanDirectory(CString path, CMenu* pMenu, const int level)
 {
 	CFileFind fileFinder;
 	bool bNoFile = true;

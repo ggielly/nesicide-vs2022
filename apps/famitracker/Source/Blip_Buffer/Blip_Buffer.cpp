@@ -57,7 +57,7 @@ Blip_Buffer::~Blip_Buffer()
 	free(buffer_);
 }
 
-void Blip_Buffer::clear(int entire_buffer)
+void Blip_Buffer::clear(const int entire_buffer)
 {
 	offset_ = 0;
 	reader_accum = 0;
@@ -68,7 +68,7 @@ void Blip_Buffer::clear(int entire_buffer)
 	}
 }
 
-Blip_Buffer::blargg_err_t Blip_Buffer::set_sample_rate(long new_rate, int msec)
+Blip_Buffer::blargg_err_t Blip_Buffer::set_sample_rate(const long new_rate, const int msec)
 {
 	// start with maximum length that resampled time can represent
 	long new_size = (ULONG_MAX >> BLIP_BUFFER_ACCURACY) - buffer_extra - 64;
@@ -105,7 +105,7 @@ Blip_Buffer::blargg_err_t Blip_Buffer::set_sample_rate(long new_rate, int msec)
 	return 0; // success
 }
 
-blip_resampled_time_t Blip_Buffer::clock_rate_factor(long clock_rate) const
+blip_resampled_time_t Blip_Buffer::clock_rate_factor(const long clock_rate) const
 {
 	double ratio = (double)sample_rate_ / clock_rate;
 	long factor = (long)floor(ratio * (1L << BLIP_BUFFER_ACCURACY) + 0.5);
@@ -113,7 +113,7 @@ blip_resampled_time_t Blip_Buffer::clock_rate_factor(long clock_rate) const
 	return (blip_resampled_time_t)factor;
 }
 
-void Blip_Buffer::bass_freq(int freq)
+void Blip_Buffer::bass_freq(const int freq)
 {
 	bass_freq_ = freq;
 	int shift = 31;
@@ -128,19 +128,19 @@ void Blip_Buffer::bass_freq(int freq)
 	bass_shift = shift;
 }
 
-void Blip_Buffer::end_frame(blip_time_t t)
+void Blip_Buffer::end_frame(const blip_time_t t)
 {
 	offset_ += t * factor_;
 	assert( samples_avail() <= (long) buffer_size_ ); // time outside buffer length
 }
 
-void Blip_Buffer::remove_silence(long count)
+void Blip_Buffer::remove_silence(const long count)
 {
 	assert( count <= samples_avail() ); // tried to remove more samples than available
 	offset_ -= (blip_resampled_time_t)count << BLIP_BUFFER_ACCURACY;
 }
 
-long Blip_Buffer::count_samples(blip_time_t t) const
+long Blip_Buffer::count_samples(const blip_time_t t) const
 {
 	unsigned long last_sample = resampled_time(t) >> BLIP_BUFFER_ACCURACY;
 	unsigned long first_sample = offset_ >> BLIP_BUFFER_ACCURACY;
@@ -155,7 +155,7 @@ blip_time_t Blip_Buffer::count_clocks(long count) const
 	return (blip_time_t)((time - offset_ + factor_ - 1) / factor_);
 }
 
-void Blip_Buffer::remove_samples(long count)
+void Blip_Buffer::remove_samples(const long count)
 {
 	if (count)
 	{
@@ -170,7 +170,7 @@ void Blip_Buffer::remove_samples(long count)
 
 // Blip_Synth_
 
-Blip_Synth_::Blip_Synth_(short* p, int w) :
+Blip_Synth_::Blip_Synth_(short* p, const int w) :
 	impulses(p),
 	width(w)
 {
@@ -183,7 +183,7 @@ Blip_Synth_::Blip_Synth_(short* p, int w) :
 
 static double const pi = 3.1415926535897932384626433832795029;
 
-static void gen_sinc(float* out, int count, double oversample, double treble, double cutoff)
+static void gen_sinc(float* out, const int count, const double oversample, double treble, double cutoff)
 {
 	if (cutoff >= 0.999)
 		cutoff = 0.999;
@@ -214,7 +214,7 @@ static void gen_sinc(float* out, int count, double oversample, double treble, do
 	}
 }
 
-void blip_eq_t::generate(float* out, int count) const
+void blip_eq_t::generate(float* out, const int count) const
 {
 	// lower cutoff freq for narrow kernels with their wider transition band
 	// (8 points->1.49, 16 points->1.15)
@@ -307,7 +307,7 @@ void Blip_Synth_::treble_eq(blip_eq_t const& eq)
 	}
 }
 
-void Blip_Synth_::volume_unit(double new_unit)
+void Blip_Synth_::volume_unit(const double new_unit)
 {
 	if (new_unit != volume_unit_)
 	{
@@ -366,7 +366,7 @@ int dither(long size)
 }
 #endif
 
-long Blip_Buffer::read_samples(blip_sample_t* out, long max_samples, int stereo)
+long Blip_Buffer::read_samples(blip_sample_t* out, const long max_samples, const int stereo)
 {
 	long count = samples_avail();
 	if (count > max_samples)

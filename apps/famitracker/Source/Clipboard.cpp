@@ -23,8 +23,8 @@
 
 // CClipboard //////////////////////////////////////////////////////////////////
 
-CClipboard::CClipboard(CWnd* pWnd, UINT Clipboard) : m_bOpened(pWnd->OpenClipboard() == TRUE), m_iClipboard(Clipboard),
-                                                     m_hMemory(NULL)
+CClipboard::CClipboard(CWnd* pWnd, const UINT Clipboard) : m_bOpened(pWnd->OpenClipboard() == TRUE), m_iClipboard(Clipboard),
+                                                           m_hMemory(NULL)
 {
 }
 
@@ -42,12 +42,12 @@ bool CClipboard::IsOpened() const
 	return m_bOpened;
 }
 
-HGLOBAL CClipboard::AllocMem(UINT Size) const
+HGLOBAL CClipboard::AllocMem(const UINT Size) const
 {
 	return ::GlobalAlloc(GMEM_MOVEABLE, Size);
 }
 
-void CClipboard::SetData(HGLOBAL hMemory) const
+void CClipboard::SetData(const HGLOBAL hMemory) const
 {
 	ASSERT(m_bOpened);
 
@@ -55,7 +55,7 @@ void CClipboard::SetData(HGLOBAL hMemory) const
 	::SetClipboardData(m_iClipboard, hMemory);
 }
 
-bool CClipboard::SetDataPointer(LPVOID pData, UINT Size) const
+bool CClipboard::SetDataPointer(const LPVOID pData, const UINT Size) const
 {
 	ASSERT(m_bOpened);
 

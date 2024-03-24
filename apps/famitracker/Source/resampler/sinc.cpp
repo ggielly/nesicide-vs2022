@@ -23,7 +23,7 @@ namespace
 
 	const float eps = std::numeric_limits<float>::epsilon();
 
-	inline float fetchval(const std::vector<float>& v, size_t elem)
+	inline float fetchval(const std::vector<float>& v, const size_t elem)
 	{
 		return elem >= v.size() ? 0.f : v[elem];
 	}
@@ -35,7 +35,7 @@ namespace jarh
 	//------------------------------------------------------------------------
 	// ctor -
 	//------------------------------------------------------------------------
-	sinc::sinc(size_t sz, size_t firstnull, float gain)
+	sinc::sinc(const size_t sz, const size_t firstnull, const float gain)
 	{
 		resize(sz, firstnull, gain);
 	}
@@ -44,7 +44,7 @@ namespace jarh
 	// resize(size_t sz, size_t firstnull, float gain) -
 	//------------------------------------------------------------------------
 	void
-	sinc::resize(size_t sz, size_t firstnull, float gain)
+	sinc::resize(size_t sz, size_t firstnull, const float gain)
 	{
 		using std::sin;
 		using std::cos;

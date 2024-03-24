@@ -31,7 +31,7 @@ const uint8 CSquare::DUTY_TABLE[4][16] = {
 	{1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 };
 
-CSquare::CSquare(CMixer* pMixer, int ID, int Chip) : CChannel(pMixer, ID, Chip)
+CSquare::CSquare(CMixer* pMixer, const int ID, const int Chip) : CChannel(pMixer, ID, Chip)
 {
 	m_iDutyLength = 0;
 	m_iDutyCycle = 0;
@@ -76,7 +76,7 @@ void CSquare::Reset()
 	EndFrame();
 }
 
-void CSquare::Write(uint16 Address, uint8 Value)
+void CSquare::Write(const uint16 Address, const uint8 Value)
 {
 	switch (Address)
 	{
@@ -108,7 +108,7 @@ void CSquare::Write(uint16 Address, uint8 Value)
 	}
 }
 
-void CSquare::WriteControl(uint8 Value)
+void CSquare::WriteControl(const uint8 Value)
 {
 	m_iControlReg = Value & 0x01;
 
@@ -151,7 +151,7 @@ void CSquare::LengthCounterUpdate()
 		--m_iLengthCounter;
 }
 
-void CSquare::SweepUpdate(int Diff)
+void CSquare::SweepUpdate(const int Diff)
 {
 	m_iSweepResult = (m_iPeriod >> m_iSweepShift);
 

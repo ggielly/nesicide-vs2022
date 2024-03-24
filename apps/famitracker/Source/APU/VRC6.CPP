@@ -24,7 +24,7 @@
 
 // Konami VRC6 external sound chip emulation
 
-CVRC6_Pulse::CVRC6_Pulse(CMixer* pMixer, int ID) : CExChannel(pMixer, SNDCHIP_VRC6, ID)
+CVRC6_Pulse::CVRC6_Pulse(CMixer* pMixer, const int ID) : CExChannel(pMixer, SNDCHIP_VRC6, ID)
 {
 	Reset();
 }
@@ -37,7 +37,7 @@ void CVRC6_Pulse::Reset()
 	m_iDutyCycleCounter = 0;
 }
 
-void CVRC6_Pulse::Write(uint16 Address, uint8 Value)
+void CVRC6_Pulse::Write(const uint16 Address, const uint8 Value)
 {
 	switch (Address)
 	{
@@ -82,7 +82,7 @@ void CVRC6_Pulse::Process(int Time)
 	m_iTime += Time;
 }
 
-CVRC6_Sawtooth::CVRC6_Sawtooth(CMixer* pMixer, int ID) : CExChannel(pMixer, SNDCHIP_VRC6, ID)
+CVRC6_Sawtooth::CVRC6_Sawtooth(CMixer* pMixer, const int ID) : CExChannel(pMixer, SNDCHIP_VRC6, ID)
 {
 	Reset();
 }
@@ -95,7 +95,7 @@ void CVRC6_Sawtooth::Reset()
 	m_iCounter = 0;
 }
 
-void CVRC6_Sawtooth::Write(uint16 Address, uint8 Value)
+void CVRC6_Sawtooth::Write(const uint16 Address, const uint8 Value)
 {
 	switch (Address)
 	{
@@ -173,7 +173,7 @@ void CVRC6::Reset()
 	m_pSawtooth->Reset();
 }
 
-void CVRC6::Write(uint16 Address, uint8 Value)
+void CVRC6::Write(const uint16 Address, const uint8 Value)
 {
 	switch (Address)
 	{
@@ -208,7 +208,7 @@ void CVRC6::EndFrame()
 	m_pSawtooth->EndFrame();
 }
 
-void CVRC6::Process(uint32 Time)
+void CVRC6::Process(const uint32 Time)
 {
 	m_pPulse1->Process(Time);
 	m_pPulse2->Process(Time);

@@ -122,7 +122,7 @@ BOOL CConfigSound::OnInitDialog()
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void CConfigSound::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CConfigSound::OnHScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	UpdateTexts();
 	SetModified();

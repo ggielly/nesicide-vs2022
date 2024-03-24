@@ -55,7 +55,7 @@ const int CConfigAppearance::FONT_SIZES[] = {10, 11, 12, 14, 16, 18, 20, 22};
 const int CConfigAppearance::FONT_SIZE_COUNT = sizeof(FONT_SIZES) / sizeof(int);
 
 int CALLBACK CConfigAppearance::EnumFontFamExProc(ENUMLOGFONTEX* lpelfe, NEWTEXTMETRICEX* lpntme, DWORD FontType,
-                                                  LPARAM lParam)
+                                                  const LPARAM lParam)
 {
 	if (lpelfe->elfLogFont.lfCharSet == ANSI_CHARSET && lpelfe->elfFullName[0] != '@')
 		reinterpret_cast<CConfigAppearance*>(lParam)->AddFontName((char*)&lpelfe->elfFullName);
@@ -399,12 +399,12 @@ void CConfigAppearance::SelectColorScheme(const COLOR_SCHEME* pColorScheme)
 	pFontSizeList->SelectString(0, MakeIntString(m_iFontSize));
 }
 
-void CConfigAppearance::SetColor(int Index, int Color)
+void CConfigAppearance::SetColor(const int Index, const int Color)
 {
 	m_iColors[Index] = Color;
 }
 
-int CConfigAppearance::GetColor(int Index) const
+int CConfigAppearance::GetColor(const int Index) const
 {
 	return m_iColors[Index];
 }

@@ -31,7 +31,7 @@ CChannelHandlerVRC6::CChannelHandlerVRC6() : CChannelHandler(0xFFF, 0x0F)
 {
 }
 
-void CChannelHandlerVRC6::HandleNoteData(stChanNote* pNoteData, int EffColumns)
+void CChannelHandlerVRC6::HandleNoteData(stChanNote* pNoteData, const int EffColumns)
 {
 	m_iPostEffect = 0;
 	m_iPostEffectParam = 0;
@@ -47,7 +47,7 @@ void CChannelHandlerVRC6::HandleNoteData(stChanNote* pNoteData, int EffColumns)
 	}
 }
 
-void CChannelHandlerVRC6::HandleCustomEffects(int EffNum, int EffParam)
+void CChannelHandlerVRC6::HandleCustomEffects(const int EffNum, const int EffParam)
 {
 	if (!CheckCommonEffects(EffNum, EffParam))
 	{
@@ -66,7 +66,7 @@ void CChannelHandlerVRC6::HandleCustomEffects(int EffNum, int EffParam)
 	}
 }
 
-bool CChannelHandlerVRC6::HandleInstrument(int Instrument, bool Trigger, bool NewInstrument)
+bool CChannelHandlerVRC6::HandleInstrument(const int Instrument, const bool Trigger, bool NewInstrument)
 {
 	CFamiTrackerDoc* pDocument = m_pSoundGen->GetDocument();
 	CInstrumentContainer<CInstrumentVRC6> instContainer(pDocument, Instrument);
@@ -109,7 +109,7 @@ void CChannelHandlerVRC6::HandleRelease()
 	}
 }
 
-void CChannelHandlerVRC6::HandleNote(int Note, int Octave)
+void CChannelHandlerVRC6::HandleNote(const int Note, const int Octave)
 {
 	m_iNote = RunNote(Octave, Note);
 	m_iSeqVolume = 0x0F;

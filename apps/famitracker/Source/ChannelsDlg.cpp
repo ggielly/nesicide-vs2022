@@ -188,7 +188,7 @@ void CChannelsDlg::OnDblClickAdded(NMHDR* pNMHDR, LRESULT* result)
 	}
 }
 
-void CChannelsDlg::AddChannel(int ChanID)
+void CChannelsDlg::AddChannel(const int ChanID)
 {
 	for (int i = 0; i < ROOT_ITEM_COUNT; ++i)
 	{
@@ -208,7 +208,7 @@ void CChannelsDlg::AddChannel(int ChanID)
 	}
 }
 
-void CChannelsDlg::InsertChannel(HTREEITEM hItem)
+void CChannelsDlg::InsertChannel(const HTREEITEM hItem)
 {
 	HTREEITEM hParentItem = m_pAvailableTree->GetParentItem(hItem);
 

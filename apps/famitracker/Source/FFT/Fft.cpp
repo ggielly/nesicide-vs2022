@@ -14,7 +14,7 @@
 
 // Points must be a power of 2
 
-Fft::Fft(int Points, long sampleRate)
+Fft::Fft(int Points, const long sampleRate)
 	: m_Points(Points), m_sampleRate(sampleRate)
 {
 	m_aTape = new double [m_Points];
@@ -84,7 +84,8 @@ Fft::~Fft()
 	delete []m_X;
 }
 
-void Fft::CopyIn(/*SampleIter& iter*/ int SampleCount, short* Samples)
+void Fft::CopyIn(/*SampleIter& iter*/
+	const int SampleCount, short* Samples)
 {
 	//    int cSample = iter.Count();
 	int cSample = SampleCount;

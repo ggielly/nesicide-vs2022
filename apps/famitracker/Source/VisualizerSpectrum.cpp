@@ -42,7 +42,7 @@ CVisualizerSpectrum::~CVisualizerSpectrum()
 	SAFE_RELEASE(m_pFftObject);
 }
 
-void CVisualizerSpectrum::Create(int Width, int Height)
+void CVisualizerSpectrum::Create(const int Width, const int Height)
 {
 	CVisualizerBase::Create(Width, Height);
 
@@ -57,7 +57,7 @@ void CVisualizerSpectrum::Create(int Width, int Height)
 		m_fWindow[i] = 0.5f * (1.0f - cosf(float(i * fraction)));
 }
 
-void CVisualizerSpectrum::SetSampleRate(int SampleRate)
+void CVisualizerSpectrum::SetSampleRate(const int SampleRate)
 {
 	SAFE_RELEASE(m_pFftObject);
 
@@ -69,7 +69,7 @@ void CVisualizerSpectrum::SetSampleRate(int SampleRate)
 	m_iFillPos = 0;
 }
 
-void CVisualizerSpectrum::Transform(short* pSamples, unsigned int Count)
+void CVisualizerSpectrum::Transform(short* pSamples, const unsigned int Count)
 {
 	ASSERT(m_pFftObject != NULL);
 

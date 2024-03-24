@@ -40,7 +40,7 @@ CVisualizerStatic::~CVisualizerStatic()
 	}
 }
 
-void CVisualizerStatic::Create(int Width, int Height)
+void CVisualizerStatic::Create(const int Width, const int Height)
 {
 	CVisualizerBase::Create(Width, Height);
 }
@@ -53,7 +53,7 @@ void CVisualizerStatic::Draw()
 {
 }
 
-void CVisualizerStatic::Display(CDC* pDC, bool bPaintMsg)
+void CVisualizerStatic::Display(CDC* pDC, const bool bPaintMsg)
 {
 	if (!bPaintMsg)
 		return;

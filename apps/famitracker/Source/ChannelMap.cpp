@@ -68,7 +68,7 @@ void CChannelMap::SetupSoundChips()
 #endif /* _DEBUG */
 }
 
-void CChannelMap::AddChip(int Ident, CInstrument* pInst, LPCTSTR pName)
+void CChannelMap::AddChip(const int Ident, CInstrument* pInst, const LPCTSTR pName)
 {
 	ASSERT(m_iAddedChips < CHIP_COUNT);
 
@@ -84,19 +84,19 @@ int CChannelMap::GetChipCount() const
 	return m_iAddedChips;
 }
 
-LPCTSTR CChannelMap::GetChipName(int Index) const
+LPCTSTR CChannelMap::GetChipName(const int Index) const
 {
 	// Get chip name from index
 	return m_pChipNames[Index];
 }
 
-int CChannelMap::GetChipIdent(int Index) const
+int CChannelMap::GetChipIdent(const int Index) const
 {
 	// Get chip ID from index
 	return m_iChipIdents[Index];
 }
 
-int CChannelMap::GetChipIndex(int Ident) const
+int CChannelMap::GetChipIndex(const int Ident) const
 {
 	// Get index from chip ID
 	for (int i = 0; i < m_iAddedChips; ++i)
@@ -107,7 +107,7 @@ int CChannelMap::GetChipIndex(int Ident) const
 	return 0;
 }
 
-CInstrument* CChannelMap::GetChipInstrument(int Chip) const
+CInstrument* CChannelMap::GetChipInstrument(const int Chip) const
 {
 	// Get instrument from chip ID
 	int Index = GetChipIndex(Chip);
@@ -120,14 +120,14 @@ CInstrument* CChannelMap::GetChipInstrument(int Chip) const
 
 // Todo move enabled module channels here
 
-int CChannelMap::GetChannelType(int Channel) const
+int CChannelMap::GetChannelType(const int Channel) const
 {
 	// Return channel type form channel index
 	ASSERT(m_iRegisteredChannels != 0);
 	return m_iChannelTypes[Channel];
 }
 
-int CChannelMap::GetChipType(int Channel) const
+int CChannelMap::GetChipType(const int Channel) const
 {
 	// Return chip type from channel index
 	ASSERT(m_iRegisteredChannels != 0);
@@ -141,7 +141,7 @@ void CChannelMap::ResetChannels()
 	m_iRegisteredChannels = 0;
 }
 
-void CChannelMap::RegisterChannel(CTrackerChannel* pChannel, int ChannelType, int ChipType)
+void CChannelMap::RegisterChannel(CTrackerChannel* pChannel, const int ChannelType, const int ChipType)
 {
 	// Adds a channel to the channel map
 	m_pChannels[m_iRegisteredChannels] = pChannel;
@@ -150,7 +150,7 @@ void CChannelMap::RegisterChannel(CTrackerChannel* pChannel, int ChannelType, in
 	++m_iRegisteredChannels;
 }
 
-CTrackerChannel* CChannelMap::GetChannel(int Index) const
+CTrackerChannel* CChannelMap::GetChannel(const int Index) const
 {
 	// Return channel from index
 	ASSERT(m_iRegisteredChannels != 0);

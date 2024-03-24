@@ -41,13 +41,13 @@ CChannelHandlerVRC7::CChannelHandlerVRC7() :
 	m_iVolume = VOL_COLUMN_MAX;
 }
 
-void CChannelHandlerVRC7::SetChannelID(int ID)
+void CChannelHandlerVRC7::SetChannelID(const int ID)
 {
 	CChannelHandler::SetChannelID(ID);
 	m_iChannel = ID - CHANID_VRC7_CH1;
 }
 
-void CChannelHandlerVRC7::HandleNoteData(stChanNote* pNoteData, int EffColumns)
+void CChannelHandlerVRC7::HandleNoteData(stChanNote* pNoteData, const int EffColumns)
 {
 	m_iPostEffect = 0;
 	m_iPostEffectParam = 0;
@@ -89,7 +89,7 @@ void CChannelHandlerVRC7::HandleNoteData(stChanNote* pNoteData, int EffColumns)
 		m_iEffect = EF_NONE;
 }
 
-void CChannelHandlerVRC7::HandleCustomEffects(int EffNum, int EffParam)
+void CChannelHandlerVRC7::HandleCustomEffects(const int EffNum, const int EffParam)
 {
 	if (EffNum == EF_PORTA_DOWN)
 	{
@@ -158,7 +158,7 @@ void CChannelHandlerVRC7::HandleCustomEffects(int EffNum, int EffParam)
 	}
 }
 
-bool CChannelHandlerVRC7::HandleInstrument(int Instrument, bool Trigger, bool NewInstrument)
+bool CChannelHandlerVRC7::HandleInstrument(const int Instrument, const bool Trigger, const bool NewInstrument)
 {
 	CFamiTrackerDoc* pDocument = m_pSoundGen->GetDocument();
 	CInstrumentContainer<CInstrumentVRC7> instContainer(pDocument, Instrument);
@@ -203,7 +203,7 @@ void CChannelHandlerVRC7::HandleRelease()
 	}
 }
 
-void CChannelHandlerVRC7::HandleNote(int Note, int Octave)
+void CChannelHandlerVRC7::HandleNote(const int Note, const int Octave)
 {
 	int OldNote = m_iNote;
 	int OldOctave = m_iOctave;
@@ -246,7 +246,7 @@ void CChannelHandlerVRC7::ResetChannel()
 	CChannelHandler::ResetChannel();
 }
 
-int CChannelHandlerVRC7::TriggerNote(int Note)
+int CChannelHandlerVRC7::TriggerNote(const int Note)
 {
 	m_iTriggeredNote = Note;
 	RegisterKeyState(Note);
@@ -256,7 +256,7 @@ int CChannelHandlerVRC7::TriggerNote(int Note)
 	return GetFnum(Note);
 }
 
-unsigned int CChannelHandlerVRC7::GetFnum(int Note) const
+unsigned int CChannelHandlerVRC7::GetFnum(const int Note) const
 {
 	const int FREQ_TABLE[] = {172, 183, 194, 205, 217, 230, 244, 258, 274, 290, 307, 326};
 	return FREQ_TABLE[Note % 12] << 2;
@@ -339,7 +339,7 @@ void CVRC7Channel::ClearRegisters()
 	m_iCommand = CMD_NOTE_HALT;
 }
 
-void CVRC7Channel::RegWrite(unsigned char Reg, unsigned char Value)
+void CVRC7Channel::RegWrite(const unsigned char Reg, const unsigned char Value)
 {
 	WriteExternalRegister(0x9010, Reg);
 	WriteExternalRegister(0x9030, Value);

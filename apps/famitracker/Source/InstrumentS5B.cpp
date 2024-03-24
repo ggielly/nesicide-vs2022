@@ -103,22 +103,22 @@ bool CInstrumentS5B::CanRelease() const
 	return false; // TODO
 }
 
-int CInstrumentS5B::GetSeqEnable(int Index) const
+int CInstrumentS5B::GetSeqEnable(const int Index) const
 {
 	return m_iSeqEnable[Index];
 }
 
-int CInstrumentS5B::GetSeqIndex(int Index) const
+int CInstrumentS5B::GetSeqIndex(const int Index) const
 {
 	return m_iSeqIndex[Index];
 }
 
-void CInstrumentS5B::SetSeqEnable(int Index, int Value)
+void CInstrumentS5B::SetSeqEnable(const int Index, const int Value)
 {
 	m_iSeqEnable[Index] = Value;
 }
 
-void CInstrumentS5B::SetSeqIndex(int Index, int Value)
+void CInstrumentS5B::SetSeqIndex(const int Index, const int Value)
 {
 	m_iSeqIndex[Index] = Value;
 }
