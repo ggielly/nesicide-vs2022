@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -27,10 +27,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{92FE0690-CE4F-4CCF-A52C-23265AE7429F}</ProjectGuid>
     <RootNamespace>FamiTracker</RootNamespace>
     <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release 64|Win32'" Label="Configuration">
@@ -47,7 +47,7 @@
     <UseOfMfc>Static</UseOfMfc>
     <UseOfAtl>false</UseOfAtl>
     <CharacterSet>MultiByte</CharacterSet>
-    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -72,7 +72,7 @@
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
     <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
@@ -106,7 +106,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <_ProjectFileVersion>17.0.34511.75</_ProjectFileVersion>
+    <_ProjectFileVersion>15.0.26730.3</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>Debug\</OutDir>
@@ -855,17 +855,17 @@ makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(Filename)%(Extension)" &gt;&gt; "hlp\
     <Image Include="res\VisualizerBg.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\nsf driver\apu.s" />
-    <None Include="..\nsf driver\driver.s" />
-    <None Include="..\nsf driver\effects.s" />
-    <None Include="..\nsf driver\fds.s" />
-    <None Include="..\nsf driver\init.s" />
-    <None Include="..\nsf driver\instrument.s" />
-    <None Include="..\nsf driver\mmc5.s" />
-    <None Include="..\nsf driver\n106.s" />
-    <None Include="..\nsf driver\player.s" />
-    <None Include="..\nsf driver\vrc6.s" />
-    <None Include="..\nsf driver\vrc7.s" />
+    <None Include="..\NSF-Driver\apu.s" />
+    <None Include="..\NSF-Driver\driver.s" />
+    <None Include="..\NSF-Driver\effects.s" />
+    <None Include="..\NSF-Driver\fds.s" />
+    <None Include="..\NSF-Driver\init.s" />
+    <None Include="..\NSF-Driver\instrument.s" />
+    <None Include="..\NSF-Driver\mmc5.s" />
+    <None Include="..\NSF-Driver\n106.s" />
+    <None Include="..\NSF-Driver\player.s" />
+    <None Include="..\NSF-Driver\vrc6.s" />
+    <None Include="..\NSF-Driver\vrc7.s" />
     <None Include="FamiTracker.reg" />
     <None Include="hlp\2a03.htm">
       <DeploymentContent>true</DeploymentContent>
@@ -1076,13 +1076,13 @@ echo.
     <None Include="hlp\vrc7.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="packages.config" />
     <None Include="res\export_report.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="changelog.txt" />
-    <Text Include="gpl.txt" />
     <Text Include="ReadMe.txt" />
     <Text Include="Texts\FastTracker effects.txt" />
   </ItemGroup>
@@ -1098,10 +1098,17 @@ echo.
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\boost.1.65.1.0\build\native\boost.targets" Condition="Exists('packages\boost.1.65.1.0\build\native\boost.targets')" />
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties RESOURCE_FILE="FamiTracker.rc" />
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\boost.1.65.1.0\build\native\boost.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\boost.1.65.1.0\build\native\boost.targets'))" />
+  </Target>
 </Project>

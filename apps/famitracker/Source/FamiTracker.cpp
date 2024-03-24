@@ -574,29 +574,29 @@ bool CFamiTrackerApp::CheckSingleInstance(CFTCommandLineInfo& cmdInfo)
 	if (GetLastError() == ERROR_ALREADY_EXISTS)
 	{
 		// Another instance detected, get window handle
-		HANDLE hMapFile = OpenFileMapping(FILE_MAP_ALL_ACCESS, FALSE, FT_SHARED_MEM_NAME);
+		const HANDLE hMapFile = OpenFileMapping(FILE_MAP_ALL_ACCESS, FALSE, FT_SHARED_MEM_NAME);
 		if (hMapFile != NULL)
 		{
-			LPCTSTR pBuf = (LPTSTR)MapViewOfFile(hMapFile, FILE_MAP_ALL_ACCESS, 0, 0, SHARED_MEM_SIZE);
+			const LPCTSTR pBuf = (LPTSTR)MapViewOfFile(hMapFile, FILE_MAP_ALL_ACCESS, 0, 0, SHARED_MEM_SIZE);
 			if (pBuf != NULL)
 			{
 				// Get window handle
-				HWND hWnd = (HWND)_ttoi(pBuf);
+				const HWND hWnd = (HWND)_ttoi(pBuf);
 				if (hWnd != NULL)
 				{
 					// Get file name
-					LPTSTR pFilePath = cmdInfo.m_strFileName.GetBuffer();
+					const LPTSTR pFilePath = cmdInfo.m_strFileName.GetBuffer();
 					// We have the window handle & file, send a message to open the file
 					COPYDATASTRUCT data;
 					data.dwData = cmdInfo.m_bPlay ? IPC_LOAD_PLAY : IPC_LOAD;
 					data.cbData = (DWORD)((_tcslen(pFilePath) + 1) * sizeof(TCHAR));
 					data.lpData = pFilePath;
 					DWORD_PTR result;
-					result = SendMessage(hWnd, WM_COPYDATA, NULL, (LPARAM)&data);
+					result = SendMessage(hWnd, WM_COPYDATA, NULL, reinterpret_cast<LPARAM>(&data));
 					UnmapViewOfFile(pBuf);
 					CloseHandle(hMapFile);
 					TRACE("App: Found another instance, shutting down\n");
-					// Then close the program  
+					// Then close the program
 					return true;
 				}
 
