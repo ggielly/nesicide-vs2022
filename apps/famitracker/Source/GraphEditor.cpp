@@ -29,7 +29,6 @@
 // CGraphEditor
 
 // The graphical sequence editor
-
 IMPLEMENT_DYNAMIC(CGraphEditor, CWnd)
 
 BEGIN_MESSAGE_MAP(CGraphEditor, CWnd)
@@ -45,16 +44,15 @@ BEGIN_MESSAGE_MAP(CGraphEditor, CWnd)
 		ON_WM_KILLFOCUS()
 END_MESSAGE_MAP()
 
-
-CGraphEditor::CGraphEditor(CSequence* pSequence) :
-	m_pBackDC(nullptr),
-	m_pBitmap(nullptr),
-	m_pSmallFont(nullptr),
-	m_iHighlightedItem(-1),
-	m_iHighlightedValue(0),
-	m_bButtonState(false)
+CGraphEditor::CGraphEditor(CSequence* p_sequence) : m_pParentWnd(nullptr),
+                                                   m_pSmallFont(nullptr),
+                                                   m_pBitmap(nullptr),
+                                                   m_pBackDC(nullptr), m_iCurrentPlayPos(0),
+                                                   m_iHighlightedItem(-1),
+                                                   m_iHighlightedValue(0),
+                                                   m_bButtonState(false), m_iEditing()
 {
-	m_pSequence = pSequence;
+	m_pSequence = p_sequence;
 	m_iLastPlayPos = 0;
 
 	m_ptLineStart = m_ptLineEnd = CPoint(0, 0);
@@ -72,23 +70,23 @@ BOOL CGraphEditor::OnEraseBkgnd(CDC* pDC)
 	return FALSE;
 }
 
-BOOL CGraphEditor::CreateEx(const DWORD dwExStyle, const LPCTSTR lpszClassName, const LPCTSTR lpszWindowName, const DWORD dwStyle,
-                            const RECT& rect, CWnd* pParentWnd, const UINT nID, const LPVOID lpParam)
+BOOL CGraphEditor::CreateEx(const DWORD dw_ex_style, const LPCTSTR lpsz_class_name, const LPCTSTR lpsz_window_name, const DWORD dw_style,
+                            const RECT& rect, CWnd* p_parent_wnd, const UINT n_id, const LPVOID lp_param)
 {
-	if (CWnd::CreateEx(dwExStyle, lpszClassName, lpszWindowName, dwStyle, rect, pParentWnd, nID, lpParam) == -1)
+	if (CWnd::CreateEx(dw_ex_style, lpsz_class_name, lpsz_window_name, dw_style, rect, p_parent_wnd, n_id, lp_param) == -1)
 		return -1;
 
-	LOGFONT LogFont;
+	LOGFONT log_font;
 
-	const TCHAR* SMALL_FONT_FACE = _T("Verdana");
+	const auto small_font_face = _T("Verdana");
 
 	m_pSmallFont = new CFont();
 
-	memset(&LogFont, 0, sizeof LOGFONT);
-	_tcscpy_s(LogFont.lfFaceName, 32, SMALL_FONT_FACE);
-	LogFont.lfHeight = -10;
-	LogFont.lfPitchAndFamily = VARIABLE_PITCH | FF_SWISS;
-	m_pSmallFont->CreateFontIndirect(&LogFont);
+	memset(&log_font, 0, sizeof LOGFONT);
+	_tcscpy_s(log_font.lfFaceName, 32, small_font_face);
+	log_font.lfHeight = -10;
+	log_font.lfPitchAndFamily = VARIABLE_PITCH | FF_SWISS;
+	m_pSmallFont->CreateFontIndirect(&log_font);
 
 	// Calculate the draw areas
 	GetClientRect(m_GraphRect);
@@ -102,7 +100,7 @@ BOOL CGraphEditor::CreateEx(const DWORD dwExStyle, const LPCTSTR lpszClassName, 
 	m_BottomRect.left += GRAPH_LEFT;
 	m_BottomRect.top = m_GraphRect.bottom;
 
-	m_pParentWnd = pParentWnd;
+	m_pParentWnd = p_parent_wnd;
 
 	RedrawWindow();
 
@@ -116,30 +114,30 @@ BOOL CGraphEditor::CreateEx(const DWORD dwExStyle, const LPCTSTR lpszClassName, 
 
 	ReleaseDC(p_dc);
 
-	Initialize();
+	initialize();
 
 	CWnd::SetTimer(0, 30, nullptr);
 
 	return 0;
 }
 
-void CGraphEditor::Initialize()
+void CGraphEditor::initialize()
 {
 	// Allow extra initialization
 }
 
-void CGraphEditor::OnTimer(UINT nIDEvent)
+void CGraphEditor::on_timer(UINT nIDEvent)
 {
 	if (m_pSequence)
 	{
-		const int Pos = theApp.GetSoundGenerator()->GetSequencePlayPos(m_pSequence);
+		const int pos = theApp.GetSoundGenerator()->GetSequencePlayPos(m_pSequence);
 		//int Pos = m_pSequence->GetPlayPos();
-		if (Pos != m_iLastPlayPos)
+		if (pos != m_iLastPlayPos)
 		{
-			m_iCurrentPlayPos = Pos;
+			m_iCurrentPlayPos = pos;
 			RedrawWindow();
 		}
-		m_iLastPlayPos = Pos;
+		m_iLastPlayPos = pos;
 	}
 }
 
@@ -152,22 +150,22 @@ void CGraphEditor::PaintBuffer(CDC* pBackDC, CDC* pFrontDC) const
 {
 	if (this == GetFocus())
 	{
-		CRect focusRect = m_ClientRect;
+		CRect focus_rect = m_ClientRect;
 		pBackDC->SetBkColor(0);
-		pBackDC->DrawFocusRect(focusRect);
+		pBackDC->DrawFocusRect(focus_rect);
 	}
 
 	pFrontDC->BitBlt(0, 0, m_ClientRect.Width(), m_ClientRect.Height(), pBackDC, 0, 0, SRCCOPY);
 }
 
-void CGraphEditor::DrawBackground(CDC* pDC, const int Lines, const bool DrawMarks, const int MarkOffset) const
+void CGraphEditor::DrawBackground(CDC* pDC, const int lines, const bool DrawMarks, const int MarkOffset) const
 {
-	constexpr COLORREF COL_BACKGROUND = 0x000000;
+	constexpr COLORREF col_background = 0x000000;
 	constexpr COLORREF col_bottom = 0x404040;
 	constexpr COLORREF col_horz_bar = 0x202020;
 
 	// Fill background
-	pDC->FillSolidRect(m_ClientRect, COL_BACKGROUND);
+	pDC->FillSolidRect(m_ClientRect, col_background);
 	pDC->FillSolidRect(m_GraphRect.left, m_GraphRect.top, 1, m_GraphRect.bottom, col_bottom);
 
 	// Fill bottom area
@@ -191,15 +189,15 @@ void CGraphEditor::DrawBackground(CDC* pDC, const int Lines, const bool DrawMark
 
 	int marker = MarkOffset;
 
-	if (Lines > 0)
+	if (lines > 0)
 	{
-		const int StepHeight = m_GraphRect.Height() / Lines;
+		const int step_height = m_GraphRect.Height() / lines;
 
 		// Draw vertical bars
-		for (int i = 0; i < Lines + 1; ++i)
+		for (int i = 0; i < lines + 1; ++i)
 		{
 			const int x = m_GraphRect.left + 1;
-			const int y = m_GraphRect.top + StepHeight * i;
+			const int y = m_GraphRect.top + step_height * i;
 			const int w = m_GraphRect.Width() - 2;
 			constexpr int h = 1;
 
@@ -207,7 +205,7 @@ void CGraphEditor::DrawBackground(CDC* pDC, const int Lines, const bool DrawMark
 			{
 				if ((++marker + 1) % 12 == 0)
 				{
-					pDC->FillSolidRect(x, y, w, StepHeight, col_horz_bar);
+					pDC->FillSolidRect(x, y, w, step_height, col_horz_bar);
 				}
 			}
 
@@ -216,7 +214,7 @@ void CGraphEditor::DrawBackground(CDC* pDC, const int Lines, const bool DrawMark
 	}
 }
 
-void CGraphEditor::DrawRange(CDC* p_dc, const int Max, const int Min) const
+void CGraphEditor::draw_range(CDC* p_dc, const int max, const int Min) const
 {
 	CFont* pOldFont = p_dc->SelectObject(m_pSmallFont);
 	CString line;
@@ -228,11 +226,11 @@ void CGraphEditor::DrawRange(CDC* p_dc, const int Max, const int Min) const
 	p_dc->SetBkColor(p_dc->GetPixel(0, 0)); // Ugly but works
 
 	const CRect textRect(2, 0, GRAPH_LEFT - 5, 10);
-	CRect topRect = textRect, bottomRect = textRect;
+	CRect top_rect = textRect, bottomRect = textRect;
 
-	topRect.MoveToY(m_GraphRect.top - 3);
-	line.Format(_T("%02i"), Max);
-	p_dc->DrawText(line, topRect, DT_RIGHT);
+	top_rect.MoveToY(m_GraphRect.top - 3);
+	line.Format(_T("%02i"), max);
+	p_dc->DrawText(line, top_rect, DT_RIGHT);
 
 	bottomRect.MoveToY(m_GraphRect.bottom - 13);
 	line.Format(_T("%02i"), Min);
@@ -268,7 +266,7 @@ void CGraphEditor::DrawReleasePoint(CDC* pDC, const int StepWidth) const
 	// Draw loop point
 	const int ReleasePoint = m_pSequence->GetReleasePoint();
 
-	CFont* pOldFont = pDC->SelectObject(m_pSmallFont);
+	CFont* p_old_font = pDC->SelectObject(m_pSmallFont);
 
 	if (ReleasePoint > -1)
 	{
@@ -282,7 +280,7 @@ void CGraphEditor::DrawReleasePoint(CDC* pDC, const int StepWidth) const
 		pDC->TextOut(x + 4, m_BottomRect.top, _T("Release"));
 	}
 
-	pDC->SelectObject(pOldFont);
+	pDC->SelectObject(p_old_font);
 }
 
 void CGraphEditor::DrawLine(CDC* pDC) const
@@ -299,7 +297,7 @@ void CGraphEditor::DrawLine(CDC* pDC) const
 }
 
 template <COLORREF COL_BG1, COLORREF COL_BG2, COLORREF COL_EDGE1, COLORREF COL_EDGE2>
-void CGraphEditor::DrawRect(CDC* pDC, const int x, const int y, const int w, int h, const bool flat) const
+void CGraphEditor::DrawRect(CDC* pDC, const int x, const int y, const int w, int h, const bool flat)
 {
 	if (h == 0)
 		h = 1;
@@ -316,7 +314,7 @@ void CGraphEditor::DrawRect(CDC* pDC, const int x, const int y, const int w, int
 	}
 }
 
-void CGraphEditor::DrawRect(CDC* pDC, const int x, const int y, const int w, const int h) const
+void CGraphEditor::DrawRect(CDC* pDC, const int x, const int y, const int w, const int h)
 {
 	DrawRect<0xF0F0F0, 0xD0D0D0, 0xFFFFFF, 0xA0A0A0>(pDC, x, y, w, h, false);
 }
@@ -423,12 +421,12 @@ void CGraphEditor::OnMouseMove(const UINT nFlags, const CPoint point)
 					const int EndX = (m_ptLineStart.x > m_ptLineEnd.x ? m_ptLineStart.x : m_ptLineEnd.x);
 					const int EndY = (m_ptLineStart.x > m_ptLineEnd.x ? m_ptLineStart.y : m_ptLineEnd.y);
 
-					const float DeltaY = float(EndY - StartY) / float((EndX - StartX) + 1);
-					float fY = float(StartY);
+					const float DeltaY = static_cast<float>(EndY - StartY) / static_cast<float>((EndX - StartX) + 1);
+					float fY = static_cast<float>(StartY);
 
 					for (int x = StartX; x < EndX; x++)
 					{
-						ModifyItem(CPoint(x, (int)fY), false);
+						ModifyItem(CPoint(x, static_cast<int>(fY)), false);
 						fY += DeltaY;
 					}
 
@@ -440,6 +438,7 @@ void CGraphEditor::OnMouseMove(const UINT nFlags, const CPoint point)
 		case EDIT_RELEASE:
 			ModifyReleasePoint(point, true);
 			break;
+		default: ;
 		}
 	}
 	else
@@ -585,7 +584,7 @@ void CBarGraphEditor::OnPaint()
 	CPaintDC dc(this);
 
 	DrawBackground(m_pBackDC, m_iLevels, false, 0);
-	DrawRange(m_pBackDC, m_iLevels, 0);
+	draw_range(m_pBackDC, m_iLevels, 0);
 
 	// Return now if no sequence is selected
 	if (!m_pSequence)
@@ -709,7 +708,7 @@ CArpeggioGraphEditor::~CArpeggioGraphEditor()
 	SAFE_RELEASE(m_pScrollBar);
 }
 
-void CArpeggioGraphEditor::Initialize()
+void CArpeggioGraphEditor::initialize()
 {
 	// Setup scrollbar
 	constexpr int SCROLLBAR_WIDTH = 18;
@@ -763,7 +762,7 @@ void CArpeggioGraphEditor::Initialize()
 
 	m_ClientRect.right -= SCROLLBAR_WIDTH;
 
-	CGraphEditor::Initialize();
+	CGraphEditor::initialize();
 }
 
 void CArpeggioGraphEditor::ChangeSetting()
@@ -816,7 +815,7 @@ void CArpeggioGraphEditor::DrawRange(CDC* pDC, const int Max, const int Min)
 	if (m_pSequence->GetSetting() != ARP_SETTING_FIXED)
 	{
 		// Absolute, relative
-		CGraphEditor::DrawRange(pDC, Max, Min);
+		CGraphEditor::draw_range(pDC, Max, Min);
 	}
 	else
 	{
@@ -1067,7 +1066,7 @@ void CPitchGraphEditor::OnPaint()
 	CPaintDC dc(this);
 
 	DrawBackground(m_pBackDC, 0, false, 0);
-	DrawRange(m_pBackDC, 127, -128);
+	draw_range(m_pBackDC, 127, -128);
 
 	m_pBackDC->FillSolidRect(m_GraphRect.left, m_GraphRect.top + m_GraphRect.Height() / 2, m_GraphRect.Width(), 1,
 	                         COLOR_LINES);
@@ -1217,7 +1216,7 @@ void CNoiseEditor::OnPaint()
 	CPaintDC dc(this);
 
 	DrawBackground(m_pBackDC, m_iItems, false, 0);
-	DrawRange(m_pBackDC, m_iItems, 0);
+	draw_range(m_pBackDC, m_iItems, 0);
 
 	// Return now if no sequence is selected
 	if (!m_pSequence)

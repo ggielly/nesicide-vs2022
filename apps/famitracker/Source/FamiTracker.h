@@ -199,7 +199,7 @@ DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnAppAbout();
 	afx_msg void OnFileOpen();
-	virtual BOOL PreTranslateMessage(MSG* pMsg);
+	virtual BOOL PreTranslateMessage(MSG* p_msg);
 	afx_msg void OnTestExport();
 };
 
