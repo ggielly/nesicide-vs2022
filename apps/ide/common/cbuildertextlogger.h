@@ -5,15 +5,16 @@
 
 class CTextLogger : public QObject
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CTextLogger();
-   virtual void erase();
-   virtual void write(QString text);
+	CTextLogger();
+	virtual void erase();
+	virtual void write(QString text);
 
 signals:
-   void updateText(QString text);
-   void eraseText();
+	void updateText(QString text);
+	void eraseText();
 };
 
 extern CTextLogger* generalTextLogger;

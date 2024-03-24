@@ -5,19 +5,19 @@
 
 namespace Ui
 {
-class StartupSplashDialog;
+	class StartupSplashDialog;
 }
 
 class StartupSplashDialog : public QDialog
 {
-   Q_OBJECT
+	Q_OBJECT
 
 public:
-   explicit StartupSplashDialog(QWidget* parent = 0);
-   virtual ~StartupSplashDialog();
+	explicit StartupSplashDialog(QWidget* parent = 0);
+	~StartupSplashDialog() override;
 
 private:
-   Ui::StartupSplashDialog* ui;
+	Ui::StartupSplashDialog* ui;
 };
 
 #endif // STARTUPSPLASHDIALOG_H

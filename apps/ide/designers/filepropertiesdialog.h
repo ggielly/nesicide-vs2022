@@ -6,28 +6,29 @@
 
 #include "cprojectbase.h"
 
-namespace Ui {
-class FilePropertiesDialog;
+namespace Ui
+{
+	class FilePropertiesDialog;
 }
 
 class FilePropertiesDialog : public QDialog
 {
-   Q_OBJECT
+	Q_OBJECT
 
 public:
-   explicit FilePropertiesDialog(CProjectBase *base, QWidget *parent = nullptr);
-   ~FilePropertiesDialog();
+	explicit FilePropertiesDialog(CProjectBase* base, QWidget* parent = nullptr);
+	~FilePropertiesDialog() override;
 
 protected:
-   CProjectBase *_base;
+	CProjectBase* _base;
 
 private slots:
-   void on_buttonBox_accepted();
+	void on_buttonBox_accepted();
 
-   void on_buttonBox_rejected();
+	void on_buttonBox_rejected();
 
 private:
-   Ui::FilePropertiesDialog *ui;
+	Ui::FilePropertiesDialog* ui;
 };
 
 #endif // FILEPROPERTIESDIALOG_H

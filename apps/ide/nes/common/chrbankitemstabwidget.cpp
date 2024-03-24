@@ -6,166 +6,167 @@
 #include "cchrromitemtabledisplaymodel.h"
 #include "iprojecttreeviewitem.h"
 
-ChrBankItemsTabWidget::ChrBankItemsTabWidget(QWidget *parent) :
-   QTabWidget(parent),
-   ui(new Ui::ChrBankItemsTabWidget)
+ChrBankItemsTabWidget::ChrBankItemsTabWidget(QWidget* parent) :
+	QTabWidget(parent),
+	ui(new Ui::ChrBankItemsTabWidget)
 {
-   ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 ChrBankItemsTabWidget::~ChrBankItemsTabWidget()
 {
-   QListView* pListView;
-   int tab;
+	QListView* pListView;
+	int tab;
 
-   // Delete existing tabs.
-   for ( tab = count()-1; tab >= 0; tab-- )
-   {
-      pListView = dynamic_cast<QListView*>(widget(tab));
+	// Delete existing tabs.
+	for (tab = count() - 1; tab >= 0; tab--)
+	{
+		pListView = dynamic_cast<QListView*>(widget(tab));
 
-      removeTab(tab);
+		removeTab(tab);
 
-      delete pListView->model();
-      delete pListView;
-   }
+		delete pListView->model();
+		delete pListView;
+	}
 
-   delete ui;
+	delete ui;
 }
 
-void ChrBankItemsTabWidget::setItems(QList<IChrRomBankItem *> items)
+void ChrBankItemsTabWidget::setItems(QList<IChrRomBankItem*> items)
 {
-   QMap<QString,CChrRomItemListDisplayModel*> map;
-   QList<IChrRomBankItem*> tabItems;
-   QListView* pListView;
-   CChrRomItemListDisplayModel* pModel;
-   QString text;
-   QImage  image;
-   int tab;
-   int item;
-   bool found;
+	QMap<QString, CChrRomItemListDisplayModel*> map;
+	QList<IChrRomBankItem*> tabItems;
+	QListView* pListView;
+	CChrRomItemListDisplayModel* pModel;
+	QString text;
+	QImage image;
+	int tab;
+	int item;
+	bool found;
 
-   // Delete existing tabs.
-   for ( tab = count()-1; tab >= 0; tab-- )
-   {
-      pListView = dynamic_cast<QListView*>(widget(tab));
+	// Delete existing tabs.
+	for (tab = count() - 1; tab >= 0; tab--)
+	{
+		pListView = dynamic_cast<QListView*>(widget(tab));
 
-      removeTab(tab);
+		removeTab(tab);
 
-      delete pListView->model();
-      delete pListView;
-   }
+		delete pListView->model();
+		delete pListView;
+	}
 
-   // Create new tabs for all different sizes.
-   for ( item = 0; item < items.count(); item++ )
-   {
-      image = items.at(item)->getChrRomBankItemImage();
+	// Create new tabs for all different sizes.
+	for (item = 0; item < items.count(); item++)
+	{
+		image = items.at(item)->getChrRomBankItemImage();
 
-      text.sprintf("%d x %d",image.size().width(),image.size().height());
+		text.sprintf("%d x %d", image.size().width(), image.size().height());
 
-      found = false;
-      for ( tab = 0; tab < count(); tab++ )
-      {
-         if ( tabText(tab) == text )
-         {
-            found = true;
-            break;
-         }
-      }
+		found = false;
+		for (tab = 0; tab < count(); tab++)
+		{
+			if (tabText(tab) == text)
+			{
+				found = true;
+				break;
+			}
+		}
 
-      if ( !found )
-      {
-         pListView = new QListView();
+		if (!found)
+		{
+			pListView = new QListView();
 
-         pListView->setFrameShape(QFrame::NoFrame);
+			pListView->setFrameShape(QFrame::NoFrame);
 
-         pModel = new CChrRomItemListDisplayModel();
+			pModel = new CChrRomItemListDisplayModel();
 
-         pListView->setModel(pModel);
-         pListView->setModelColumn(ChrRomBankItemCol_Image);
+			pListView->setModel(pModel);
+			pListView->setModelColumn(ChrRomBankItemCol_Image);
 
-         QObject::connect(pListView,SIGNAL(activated(QModelIndex)),this,SLOT(tileList_activated(QModelIndex)));
-         QObject::connect(pListView,SIGNAL(clicked(QModelIndex)),this,SLOT(tileList_clicked(QModelIndex)));
-         QObject::connect(pListView,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(tileList_doubleClicked(QModelIndex)));
+			QObject::connect(pListView,SIGNAL(activated(QModelIndex)), this,SLOT(tileList_activated(QModelIndex)));
+			QObject::connect(pListView,SIGNAL(clicked(QModelIndex)), this,SLOT(tileList_clicked(QModelIndex)));
+			QObject::connect(pListView,SIGNAL(doubleClicked(QModelIndex)), this,
+			                 SLOT(tileList_doubleClicked(QModelIndex)));
 
-         map.insert(text,pModel);
+			map.insert(text, pModel);
 
-         addTab(pListView,text);
-      }
-   }
+			addTab(pListView, text);
+		}
+	}
 
-   // Put each item into the right list.
-   for ( tab = 0; tab < count(); tab++ )
-   {
-      tabItems.clear();
+	// Put each item into the right list.
+	for (tab = 0; tab < count(); tab++)
+	{
+		tabItems.clear();
 
-      pModel = map.find(tabText(tab)).value();
+		pModel = map.find(tabText(tab)).value();
 
-      for ( item = 0; item < items.count(); item++ )
-      {
-         image = items.at(item)->getChrRomBankItemImage();
+		for (item = 0; item < items.count(); item++)
+		{
+			image = items.at(item)->getChrRomBankItemImage();
 
-         text.sprintf("%d x %d",image.size().width(),image.size().height());
+			text.sprintf("%d x %d", image.size().width(), image.size().height());
 
-         if ( text == tabText(tab) )
-         {
-            tabItems.append(items.at(item));
-         }
-      }
+			if (text == tabText(tab))
+			{
+				tabItems.append(items.at(item));
+			}
+		}
 
-      pModel->setBankItems(tabItems);
-      pModel->update();
-   }
+		pModel->setBankItems(tabItems);
+		pModel->update();
+	}
 }
 
 QModelIndex ChrBankItemsTabWidget::currentIndex() const
 {
-   QListView* pListView = dynamic_cast<QListView*>(currentWidget());
+	auto pListView = dynamic_cast<QListView*>(currentWidget());
 
-   if ( pListView )
-   {
-      return pListView->currentIndex();
-   }
+	if (pListView)
+	{
+		return pListView->currentIndex();
+	}
 
-   return QModelIndex();
+	return QModelIndex();
 }
 
 void ChrBankItemsTabWidget::setCurrentIndex(QModelIndex index)
 {
-   int tab;
+	int tab;
 
-   // Put each item into the right list.
-   for ( tab = 0; tab < count(); tab++ )
-   {
-      QListView* pListView = dynamic_cast<QListView*>(currentWidget());
-      pListView->setCurrentIndex(index);
-   }
+	// Put each item into the right list.
+	for (tab = 0; tab < count(); tab++)
+	{
+		auto pListView = dynamic_cast<QListView*>(currentWidget());
+		pListView->setCurrentIndex(index);
+	}
 }
 
 void ChrBankItemsTabWidget::tileList_activated(QModelIndex index)
 {
-   if ( index.isValid() )
-   {
-      emit tileSelected(index);
-   }
+	if (index.isValid())
+	{
+		emit tileSelected(index);
+	}
 }
 
 void ChrBankItemsTabWidget::tileList_clicked(QModelIndex index)
 {
-   if ( index.isValid() )
-   {
-      emit tileSelected(index);
-   }
+	if (index.isValid())
+	{
+		emit tileSelected(index);
+	}
 }
 
 void ChrBankItemsTabWidget::tileList_doubleClicked(QModelIndex index)
 {
-   if ( index.isValid() )
-   {
-      QListView* pListView = dynamic_cast<QListView*>(currentWidget());
-      CChrRomItemListDisplayModel* pModel = dynamic_cast<CChrRomItemListDisplayModel*>(pListView->model());
-      IChrRomBankItem* pChrItem = pModel->bankItems().at(index.row());
-      IProjectTreeViewItem* pProjItem = dynamic_cast<IProjectTreeViewItem*>(pChrItem);
+	if (index.isValid())
+	{
+		auto pListView = dynamic_cast<QListView*>(currentWidget());
+		auto pModel = dynamic_cast<CChrRomItemListDisplayModel*>(pListView->model());
+		IChrRomBankItem* pChrItem = pModel->bankItems().at(index.row());
+		auto pProjItem = dynamic_cast<IProjectTreeViewItem*>(pChrItem);
 
-      emit snapToTab("Tile,"+pProjItem->uuid());
-   }
+		emit snapToTab("Tile," + pProjItem->uuid());
+	}
 }

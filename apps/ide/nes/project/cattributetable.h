@@ -11,28 +11,29 @@
 
 class CAttributeTable : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CAttributeTable(IProjectTreeViewItem* parent);
-   virtual ~CAttributeTable();
+	CAttributeTable(IProjectTreeViewItem* parent);
+	~CAttributeTable() override;
 
-   // Member getters
-   QList<uint8_t>& getPalette();
+	// Member getters
+	QList<uint8_t>& getPalette();
 
-   AttributeTableEditorForm* editor() { return dynamic_cast<AttributeTableEditorForm*>(m_editor); }
+	AttributeTableEditorForm* editor() { return dynamic_cast<AttributeTableEditorForm*>(m_editor); }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   virtual void openItemEvent(CProjectTabWidget* parent);
-   virtual void saveItemEvent();
-   virtual bool canChangeName() { return true; }
-   virtual bool onNameChanged(QString newName);
+	// IProjectTreeViewItem Interface Implmentation
+	void openItemEvent(CProjectTabWidget* parent) override;
+	void saveItemEvent() override;
+	bool canChangeName() override { return true; }
+	bool onNameChanged(QString newName) override;
 
 private:
-   QList<uint8_t> m_palette;
+	QList<uint8_t> m_palette;
 };
 
 #endif // CATTRIBUTETABLE_H

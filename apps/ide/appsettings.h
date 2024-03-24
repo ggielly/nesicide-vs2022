@@ -5,39 +5,47 @@
 
 class AppSettings : public QObject
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   static AppSettings *instance()
-   {
-      if ( !_instance )
-      {
-         _instance = new AppSettings();
-      }
-      return _instance;
-   }
-   virtual ~AppSettings() {};
+	static AppSettings* instance()
+	{
+		if (!_instance)
+		{
+			_instance = new AppSettings();
+		}
+		return _instance;
+	}
 
-   // Accessors
-   enum AppMode
-   {
-      CodingMode,
-      DebuggingMode
-   };
-   AppMode appMode() const { return m_appMode; }
+	~AppSettings() override
+	{
+	};
 
-   // Modifiers
-   void setAppMode(AppMode mode);
+	// Accessors
+	enum AppMode
+	{
+		CodingMode,
+		DebuggingMode
+	};
+
+	AppMode appMode() const { return m_appMode; }
+
+	// Modifiers
+	void setAppMode(AppMode mode);
 
 protected:
-   // Settings data structures.
-   AppMode m_appMode;
+	// Settings data structures.
+	AppMode m_appMode;
 
 private:
-   static AppSettings *_instance;
-   AppSettings(QObject* parent = 0) : QObject(parent) {};
+	static AppSettings* _instance;
+
+	AppSettings(QObject* parent = 0) : QObject(parent)
+	{
+	};
 
 signals:
-   void appSettingsChanged();
+	void appSettingsChanged();
 };
 
 #endif // APPSETTINGS_H

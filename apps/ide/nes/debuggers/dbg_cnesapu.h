@@ -9,8 +9,8 @@
 class CAPUDBG
 {
 public:
-   CAPUDBG();
-   virtual ~CAPUDBG();
+	CAPUDBG();
+	virtual ~CAPUDBG();
 };
 
 #endif

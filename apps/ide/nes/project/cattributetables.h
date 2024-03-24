@@ -8,30 +8,34 @@
 
 class CAttributeTables : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CAttributeTables(IProjectTreeViewItem* parent);
-   virtual ~CAttributeTables();
+	CAttributeTables(IProjectTreeViewItem* parent);
+	~CAttributeTables() override;
 
-   // Helper functions
-   void initializeProject();
-   void terminateProject();
+	// Helper functions
+	void initializeProject();
+	void terminateProject();
 
-   QList<CAttributeTable*>& getAttributeTableList() { return m_attributeTables; }
+	QList<CAttributeTable*>& getAttributeTableList() { return m_attributeTables; }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   QString caption() const;
-   virtual void openItemEvent(CProjectTabWidget*) {}
+	// IProjectTreeViewItem Interface Implmentation
+	QString caption() const override;
 
-   // ICenterWidgetItem Interface Implementation
+	void openItemEvent(CProjectTabWidget*) override
+	{
+	}
+
+	// ICenterWidgetItem Interface Implementation
 
 private:
-   // Contained children
-   QList<CAttributeTable*> m_attributeTables;
+	// Contained children
+	QList<CAttributeTable*> m_attributeTables;
 };
 
 #endif // CATTRIBUTETABLES_H

@@ -5,19 +5,19 @@
 
 namespace Ui
 {
-class AboutDialog;
+	class AboutDialog;
 }
 
 class AboutDialog : public QDialog
 {
-   Q_OBJECT
+	Q_OBJECT
 
 public:
-   explicit AboutDialog(QWidget* parent = 0);
-   virtual ~AboutDialog();
+	explicit AboutDialog(QWidget* parent = 0);
+	~AboutDialog() override;
 
 private:
-   Ui::AboutDialog* ui;
+	Ui::AboutDialog* ui;
 };
 
 #endif // ABOUTDIALOG_H

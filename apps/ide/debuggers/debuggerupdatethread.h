@@ -6,45 +6,47 @@
 
 class DebuggerUpdateWorker : public QObject
 {
-   Q_OBJECT
-public:
-   explicit DebuggerUpdateWorker(void (*func)(),QObject *parent = 0);
-   ~DebuggerUpdateWorker();
+	Q_OBJECT
 
-   void changeFunction(void (*func)()) { _func = func; }
-   void updateDebuggers();
+public:
+	explicit DebuggerUpdateWorker(void (*func)(), QObject* parent = 0);
+	~DebuggerUpdateWorker() override;
+
+	void changeFunction(void (*func)()) { _func = func; }
+	void updateDebuggers();
 
 signals:
-   void updateComplete();
+	void updateComplete();
 
 private:
-   void        (*_func)();
+	void (*_func)();
 };
 
 class DebuggerUpdateThread : public QObject
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   explicit DebuggerUpdateThread(void (*func)(),QObject *parent = 0);
-   ~DebuggerUpdateThread();
+	explicit DebuggerUpdateThread(void (*func)(), QObject* parent = 0);
+	~DebuggerUpdateThread() override;
 
-   void changeFunction(void (*func)()) { pWorker->changeFunction(func); }
+	void changeFunction(void (*func)()) { pWorker->changeFunction(func); }
 
-   static void silence(bool silence) { silenced = silence; }
-   static bool isSilenced() { return silenced; }
+	static void silence(bool silence) { silenced = silence; }
+	static bool isSilenced() { return silenced; }
 
 public slots:
-   void updateDebuggers();
+	void updateDebuggers();
 
 signals:
-   void updateComplete();
+	void updateComplete();
 
 private:
-   DebuggerUpdateWorker *pWorker;
-   static QThread       *pThread;
-   static QMutex        *pMutex;
-   static int            resourceCount;
-   static bool           silenced;
+	DebuggerUpdateWorker* pWorker;
+	static QThread* pThread;
+	static QMutex* pMutex;
+	static int resourceCount;
+	static bool silenced;
 };
 
 #endif // DEBUGGERUPDATETHREAD_H

@@ -9,36 +9,39 @@
 
 class CGraphicsBank : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CGraphicsBank(IProjectTreeViewItem* parent);
-   virtual ~CGraphicsBank();
+	CGraphicsBank(IProjectTreeViewItem* parent);
+	~CGraphicsBank() override;
 
-   // Member getters
-   QList<IChrRomBankItem*> getGraphics();
-   uint32_t getSize();
+	// Member getters
+	QList<IChrRomBankItem*> getGraphics();
+	uint32_t getSize();
 
-   GraphicsBankEditorForm* editor() { return dynamic_cast<GraphicsBankEditorForm*>(m_editor); }
-   void exportAsPNG();
+	GraphicsBankEditorForm* editor() { return dynamic_cast<GraphicsBankEditorForm*>(m_editor); }
+	void exportAsPNG();
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   QString caption() const;
-   virtual void openItemEvent(CProjectTabWidget* tabWidget);
-   virtual void saveItemEvent();
-   virtual bool canChangeName()
-   {
-      return true;
-   }
-   virtual bool onNameChanged(QString newName);
+	// IProjectTreeViewItem Interface Implmentation
+	QString caption() const override;
+	void openItemEvent(CProjectTabWidget* tabWidget) override;
+	void saveItemEvent() override;
+
+	bool canChangeName() override
+	{
+		return true;
+	}
+
+	bool onNameChanged(QString newName) override;
 
 private:
-   // Attributes
-   QList<IChrRomBankItem*> m_bankItems;
-   uint32_t m_bankSize;
+	// Attributes
+	QList<IChrRomBankItem*> m_bankItems;
+	uint32_t m_bankSize;
 };
 
 #endif // CGRAPHICSBANK_H

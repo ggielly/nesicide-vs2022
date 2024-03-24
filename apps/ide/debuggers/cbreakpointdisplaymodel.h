@@ -7,21 +7,22 @@
 
 class CBreakpointDisplayModel : public QAbstractTableModel
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CBreakpointDisplayModel(CBreakpointInfo* pBreakpoints,QObject* parent = 0);
-   virtual ~CBreakpointDisplayModel();
-   Qt::ItemFlags flags(const QModelIndex& index) const;
-   QVariant data(const QModelIndex& index, int role) const;
-   int columnCount(const QModelIndex& parent = QModelIndex()) const;
-   int rowCount(const QModelIndex& parent = QModelIndex()) const;
+	CBreakpointDisplayModel(CBreakpointInfo* pBreakpoints, QObject* parent = 0);
+	~CBreakpointDisplayModel() override;
+	Qt::ItemFlags flags(const QModelIndex& index) const override;
+	QVariant data(const QModelIndex& index, int role) const override;
+	int columnCount(const QModelIndex& parent = QModelIndex()) const override;
+	int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 
 private:
-   CBreakpointInfo *m_pBreakpoints;
-   char            *m_modelStringBuffer;
+	CBreakpointInfo* m_pBreakpoints;
+	char* m_modelStringBuffer;
 
 public slots:
-   void update();
+	void update();
 };
 
 #endif // CBREAKPOINTDISPLAYMODEL_H

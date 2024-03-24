@@ -4,34 +4,36 @@
 #include <QWidget>
 #include <QDir>
 
-namespace Ui {
-   class SearchWidget;
+namespace Ui
+{
+	class SearchWidget;
 }
 
 class SearchWidget : public QWidget
 {
-   Q_OBJECT
+	Q_OBJECT
 
 public:
-   explicit SearchWidget(QWidget *parent = 0);
-   virtual ~SearchWidget();
+	explicit SearchWidget(QWidget* parent = 0);
+	~SearchWidget() override;
 
 protected:
-   void showEvent(QShowEvent *event);
-   bool eventFilter(QObject *object, QEvent *event);
+	void showEvent(QShowEvent* event) override;
+	bool eventFilter(QObject* object, QEvent* event) override;
 
 private:
-   Ui::SearchWidget *ui;
+	Ui::SearchWidget* ui;
 
 signals:
-   void search(QDir dir, QString searchText, QString pattern, bool subfolders, bool sourceSearchPaths, bool useRegex, bool caseSensitive);
-   void snapTo(QString item);
+	void search(QDir dir, QString searchText, QString pattern, bool subfolders, bool sourceSearchPaths, bool useRegex,
+	            bool caseSensitive);
+	void snapTo(QString item);
 
 private slots:
-   void on_projectFolder_clicked(bool checked);
-   void searcher_searchDone(int found);
-   void on_find_clicked();
-   void on_browse_clicked();
+	void on_projectFolder_clicked(bool checked);
+	void searcher_searchDone(int found);
+	void on_find_clicked();
+	void on_browse_clicked();
 };
 
 #endif // SEARCHWIDGET_H

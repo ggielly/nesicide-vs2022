@@ -9,43 +9,44 @@
 
 class QsciLexerDefault : public QsciLexerCustom
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   // Styles
-   enum
-   {
-      Default_Default
-   };
+	// Styles
+	enum
+	{
+		Default_Default
+	};
 
-   QsciLexerDefault(QObject *parent = 0);
-   virtual ~QsciLexerDefault();
+	QsciLexerDefault(QObject* parent = 0);
+	~QsciLexerDefault() override;
 
-   virtual const char* language() const { return "Default"; }
-   virtual QString description(int style) const;
-   virtual void styleText(int start,int end);
+	const char* language() const override { return "Default"; }
+	QString description(int style) const override;
+	void styleText(int start, int end) override;
 
-   virtual bool eolFill(int /*style*/) const { return true; }
+	bool eolFill(int /*style*/) const override { return true; }
 
-   virtual QColor defaultColor() const;
-   virtual QColor defaultColor(int style) const;
+	virtual QColor defaultColor() const;
+	QColor defaultColor(int style) const override;
 
-   virtual QColor defaultPaper() const;
-   virtual QColor defaultPaper(int style) const;
-   virtual QColor paper(int style) const;
+	virtual QColor defaultPaper() const;
+	QColor defaultPaper(int style) const override;
+	QColor paper(int style) const override;
 
-   virtual QFont defaultFont() const;
-   virtual QFont defaultFont(int style) const;
+	virtual QFont defaultFont() const;
+	QFont defaultFont(int style) const override;
 
-   virtual const char *wordCharacters() const;
+	const char* wordCharacters() const override;
 
-   virtual int styleBitsNeeded() const { return 8; }
+	int styleBitsNeeded() const override { return 8; }
 
-   bool readSettings(QSettings &qs,const char *prefix = "/Scintilla");
-   bool writeSettings(QSettings &qs,const char *prefix = "/Scintilla");
+	bool readSettings(QSettings& qs, const char* prefix = "/Scintilla");
+	bool writeSettings(QSettings& qs, const char* prefix = "/Scintilla");
 
 protected:
-   bool readProperties(QSettings &qs,const QString &prefix);
-   bool writeProperties(QSettings &qs,const QString &prefix) const;
+	bool readProperties(QSettings& qs, const QString& prefix) override;
+	bool writeProperties(QSettings& qs, const QString& prefix) const override;
 };
 
 #endif // QSCILEXERDEFAULT_H

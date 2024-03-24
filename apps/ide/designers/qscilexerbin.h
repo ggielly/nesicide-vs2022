@@ -9,35 +9,36 @@
 
 class QsciLexerBin : public QsciLexerCustom
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   // Styles
-   enum
-   {
-      Bin_Default
-   };
+	// Styles
+	enum
+	{
+		Bin_Default
+	};
 
-   QsciLexerBin(QObject *parent = 0);
-   virtual ~QsciLexerBin();
+	QsciLexerBin(QObject* parent = 0);
+	~QsciLexerBin() override;
 
-   virtual const char* language() const { return "Bin"; }
-   virtual QString description(int style) const;
+	const char* language() const override { return "Bin"; }
+	QString description(int style) const override;
 
-   virtual void styleText(int start, int end);
+	void styleText(int start, int end) override;
 
-   virtual bool eolFill(int /*style*/) const { return true; }
+	bool eolFill(int /*style*/) const override { return true; }
 
-   virtual QColor defaultColor() const;
-   virtual QColor defaultColor(int style) const;
+	virtual QColor defaultColor() const;
+	QColor defaultColor(int style) const override;
 
-   virtual QColor defaultPaper() const;
-   virtual QColor defaultPaper(int style) const;
-   virtual QColor paper(int style) const;
+	virtual QColor defaultPaper() const;
+	QColor defaultPaper(int style) const override;
+	QColor paper(int style) const override;
 
-   virtual QFont defaultFont() const;
-   virtual QFont defaultFont(int style) const;
+	virtual QFont defaultFont() const;
+	QFont defaultFont(int style) const override;
 
-   virtual int styleBitsNeeded() const { return 1; }
+	int styleBitsNeeded() const override { return 1; }
 };
 
 #endif // QSCILEXERBIN_H

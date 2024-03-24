@@ -7,41 +7,40 @@
 
 #include "debuggerupdatethread.h"
 
-namespace Ui {
-   class NameTableVisualizerDockWidget;
+namespace Ui
+{
+	class NameTableVisualizerDockWidget;
 }
 
 class NameTableVisualizerDockWidget : public CDebuggerBase
 {
-   Q_OBJECT
+	Q_OBJECT
 
 public:
-   explicit NameTableVisualizerDockWidget(QWidget *parent = 0);
-   virtual ~NameTableVisualizerDockWidget();
+	explicit NameTableVisualizerDockWidget(QWidget* parent = 0);
+	~NameTableVisualizerDockWidget() override;
 
 protected:
-   void showEvent(QShowEvent* event);
-   void hideEvent(QHideEvent* event);
-   void changeEvent(QEvent* e);
-   void updateInfoText(int x=-1,int y=-1);
-   bool eventFilter(QObject *obj, QEvent *event);
-   void renderer_enterEvent(QEvent* event);
-   void renderer_leaveEvent(QEvent* event);
-   void renderer_mouseMoveEvent(QMouseEvent *event);
+	void showEvent(QShowEvent* event) override;
+	void hideEvent(QHideEvent* event) override;
+	void changeEvent(QEvent* e) override;
+	void updateInfoText(int x = -1, int y = -1);
+	bool eventFilter(QObject* obj, QEvent* event) override;
+	void renderer_enterEvent(QEvent* event);
+	void renderer_leaveEvent(QEvent* event);
+	void renderer_mouseMoveEvent(QMouseEvent* event);
 
 public slots:
-   void renderData();
-   void updateTargetMachine(QString target);
+	void renderData();
+	void updateTargetMachine(QString target);
 
 private slots:
-   void on_showVisible_toggled(bool checked);
+	void on_showVisible_toggled(bool checked);
 
 private:
-   Ui::NameTableVisualizerDockWidget *ui;
-   PanZoomRenderer* renderer;
-   DebuggerUpdateThread* pThread;
+	Ui::NameTableVisualizerDockWidget* ui;
+	PanZoomRenderer* renderer;
+	DebuggerUpdateThread* pThread;
 };
 
 #endif // NAMETABLEVISUALIZERDOCKWIDGET_H
-
-

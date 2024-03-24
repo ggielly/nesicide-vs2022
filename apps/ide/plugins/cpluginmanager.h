@@ -15,35 +15,37 @@ extern "C" {
 
 class CPluginManager : public QObject
 {
-   Q_OBJECT
-public:
-   static CPluginManager *instance()
-   {
-      if ( !_instance )
-      {
-         _instance = new CPluginManager();
-      }
-      return _instance;
-   }
-   virtual ~CPluginManager();
-   QString getVersionInfo();
-   void doInitScript();
-   void loadPlugins();
-   void defineInterfaces(lua_State* lua);
+	Q_OBJECT
 
-   // Functions called by lua
-   void lua_compiler_logger_print(QString text);
+public:
+	static CPluginManager* instance()
+	{
+		if (!_instance)
+		{
+			_instance = new CPluginManager();
+		}
+		return _instance;
+	}
+
+	~CPluginManager() override;
+	QString getVersionInfo();
+	void doInitScript();
+	void loadPlugins();
+	void defineInterfaces(lua_State* lua);
+
+	// Functions called by lua
+	void lua_compiler_logger_print(QString text);
 
 private:
-   static CPluginManager *_instance;
-   CPluginManager();
+	static CPluginManager* _instance;
+	CPluginManager();
 
 protected:
-   lua_State* globalLuaInstance;
-   int report(lua_State* L, int status);
+	lua_State* globalLuaInstance;
+	int report(lua_State* L, int status);
 
-   // Database of plugins
-   static QHash<QString,QDomDocument*> plugins;
+	// Database of plugins
+	static QHash<QString, QDomDocument*> plugins;
 };
 
 #endif // CPLUGINMANAGER_H

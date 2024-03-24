@@ -7,38 +7,39 @@ class CProjectModel;
 
 class CFilterModel : public CSubModel
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   QList<QUuid> getUuids() const;
-   QString getName(const QUuid &) const;
+	QList<QUuid> getUuids() const override;
+	QString getName(const QUuid&) const override;
 
-   // Create a new filter.
-   QUuid newFilter(const QString& name);
+	// Create a new filter.
+	QUuid newFilter(const QString& name);
 
-   // Check wether a uuid describes a filter.
-   bool isFilter(const QUuid& uuid) const;
+	// Check wether a uuid describes a filter.
+	bool isFilter(const QUuid& uuid) const;
 
-   // Returns true if uuid1 should be placed before uuid2 in the project browser.
-   // JSTODO Switch to some other filter ordering scheme.
-   bool compare(const QUuid& uuid1, const QUuid& uuid2) const;
+	// Returns true if uuid1 should be placed before uuid2 in the project browser.
+	// JSTODO Switch to some other filter ordering scheme.
+	bool compare(const QUuid& uuid1, const QUuid& uuid2) const;
 
-   // Data Getters
-   QList<QUuid> getFilteredItems(const QUuid& uuid) const;
-   QString      getFilterName(const QUuid& uuid) const;
+	// Data Getters
+	QList<QUuid> getFilteredItems(const QUuid& uuid) const;
+	QString getFilterName(const QUuid& uuid) const;
 
-   // Data Setters
-   void addToFilter(const QUuid& filterUuid, const QUuid& uuid);
+	// Data Setters
+	void addToFilter(const QUuid& filterUuid, const QUuid& uuid);
 
-   CDesignerEditorBase* createEditorWidget(const QUuid&) const { return NULL; }
+	CDesignerEditorBase* createEditorWidget(const QUuid&) const override { return NULL; }
 
 private:
-   friend class CProjectModel;
-   CFilterModel(CProjectModel* project);
+	friend class CProjectModel;
+	CFilterModel(CProjectModel* project);
 
-   CProjectModel* m_pProjectModel;
-   QList<QUuid>   m_filters;
+	CProjectModel* m_pProjectModel;
+	QList<QUuid> m_filters;
 
-   int getFilterId(const QUuid& filterUuid) const;
+	int getFilterId(const QUuid& filterUuid) const;
 };
 
 #endif // CFILTERMODEL_H

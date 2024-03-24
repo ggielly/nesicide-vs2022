@@ -13,55 +13,67 @@
 
 class CTileStamp : public CProjectBase, public IChrRomBankItem
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CTileStamp(IProjectTreeViewItem* parent);
-   virtual ~CTileStamp();
+	CTileStamp(IProjectTreeViewItem* parent);
+	~CTileStamp() override;
 
-   // Member getters
-   QByteArray getTileData();
-   QByteArray getAttributeData();
-   void getSize(int* xSize,int* ySize) { (*xSize) = m_xSize; (*ySize) = m_ySize; }
-   QString getAttrTbl() { return m_attrTblUUID; }
-   QImage getTileImage();
-   QList<PropertyItem> getTileProperties() { return m_tileProperties; }
-   bool getGridSetting() { return m_grid; }
+	// Member getters
+	QByteArray getTileData();
+	QByteArray getAttributeData();
 
-   // Member setters
-   void setSize(int xSize,int ySize) { m_xSize = xSize; m_ySize = ySize; }
+	void getSize(int* xSize, int* ySize)
+	{
+		(*xSize) = m_xSize;
+		(*ySize) = m_ySize;
+	}
 
-   TileStampEditorForm* editor() { return dynamic_cast<TileStampEditorForm*>(m_editor); }
+	QString getAttrTbl() { return m_attrTblUUID; }
+	QImage getTileImage();
+	QList<PropertyItem> getTileProperties() { return m_tileProperties; }
+	bool getGridSetting() { return m_grid; }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool serializeContent();
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
-   virtual bool deserializeContent();
+	// Member setters
+	void setSize(int xSize, int ySize)
+	{
+		m_xSize = xSize;
+		m_ySize = ySize;
+	}
 
-   // IProjectTreeViewItem Interface Implmentation
-   virtual void openItemEvent(CProjectTabWidget* parent);
-   virtual void saveItemEvent();
-   virtual bool canChangeName() { return true; }
-   virtual bool onNameChanged(QString newName);
+	TileStampEditorForm* editor() { return dynamic_cast<TileStampEditorForm*>(m_editor); }
 
-   // IChrRomBankItem Interface Implementation
-   virtual int getChrRomBankItemSize();
-   virtual QByteArray getChrRomBankItemData();
-   virtual QIcon getChrRomBankItemIcon();
-   virtual QImage getChrRomBankItemImage();
-   virtual QString getItemType()
-   {
-      return "Tile";
-   }
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	virtual bool serializeContent();
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
+	virtual bool deserializeContent();
+
+	// IProjectTreeViewItem Interface Implmentation
+	void openItemEvent(CProjectTabWidget* parent) override;
+	void saveItemEvent() override;
+	bool canChangeName() override { return true; }
+	bool onNameChanged(QString newName) override;
+
+	// IChrRomBankItem Interface Implementation
+	int getChrRomBankItemSize() override;
+	QByteArray getChrRomBankItemData() override;
+	QIcon getChrRomBankItemIcon() override;
+	QImage getChrRomBankItemImage() override;
+
+	QString getItemType() override
+	{
+		return "Tile";
+	}
 
 private:
-   QByteArray m_tile;
-   QByteArray m_attr;
-   int        m_xSize;
-   int        m_ySize;
-   QString    m_attrTblUUID;
-   QList<PropertyItem> m_tileProperties;
-   bool       m_grid;
+	QByteArray m_tile;
+	QByteArray m_attr;
+	int m_xSize;
+	int m_ySize;
+	QString m_attrTblUUID;
+	QList<PropertyItem> m_tileProperties;
+	bool m_grid;
 };
 
 #endif // CTILESTAMP_H

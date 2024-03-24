@@ -3,26 +3,26 @@
 
 #include <QString>
 
-typedef enum
+using propertyTypeEnum = enum
 {
-   propertyInteger,
-   propertyBoolean,
-   propertyString,
-   propertyEnumeration
-} propertyTypeEnum;
+	propertyInteger,
+	propertyBoolean,
+	propertyString,
+	propertyEnumeration
+};
 
 struct PropertyItem
 {
-   QString name;
-   propertyTypeEnum type;
-   QString value;
+	QString name;
+	propertyTypeEnum type;
+	QString value;
 };
 
 struct PropertyEnumItem
 {
-   bool isSelected;
-   QString symbol;
-   QString value;
+	bool isSelected;
+	QString symbol;
+	QString value;
 };
 
 QString getEnumRawString(QList<PropertyEnumItem> items);

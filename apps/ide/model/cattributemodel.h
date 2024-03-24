@@ -9,30 +9,30 @@ class CDesignerEditorBase;
 
 class CAttributeModel : public CSubModel
 {
-   Q_OBJECT
+	Q_OBJECT
 signals:
-   void paletteAdded(const QUuid& uuid);
-   void paletteDeleted(const QUuid& uuid);
+	void paletteAdded(const QUuid& uuid);
+	void paletteDeleted(const QUuid& uuid);
 
 public:
-   QUuid newPalette(const QString& name);
-   void deletePalette(const QUuid& uuid);
+	QUuid newPalette(const QString& name);
+	void deletePalette(const QUuid& uuid);
 
-   QList<QUuid> getUuids() const;
-   QString getName(const QUuid& uuid) const;
+	QList<QUuid> getUuids() const override;
+	QString getName(const QUuid& uuid) const override;
 
-   // -- Getters --
-   QList<uint8_t> getPaletteData(const QUuid& uuid) const;
+	// -- Getters --
+	QList<uint8_t> getPaletteData(const QUuid& uuid) const;
 
-   // -- Setters --
-   void setPaletteData(const QUuid& uuid, const QList<uint8_t>& data);
+	// -- Setters --
+	void setPaletteData(const QUuid& uuid, const QList<uint8_t>& data);
 
-   // Workaround methods.
-   CDesignerEditorBase* createEditorWidget(const QUuid& uuid) const;
+	// Workaround methods.
+	CDesignerEditorBase* createEditorWidget(const QUuid& uuid) const override;
 
 private:
-   friend class CProjectModel;
-   CAttributeModel();
+	friend class CProjectModel;
+	CAttributeModel();
 };
 
 #endif // CATTRIBUTEMODEL_H

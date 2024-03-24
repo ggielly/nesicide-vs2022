@@ -16,15 +16,15 @@
 #include <QtGui>
 #include <QComboBox>
 
-class CheckBoxList: public QComboBox
+class CheckBoxList : public QComboBox
 {
 	Q_OBJECT;
 
 public:
-	CheckBoxList(QWidget *widget = 0);
-	virtual ~CheckBoxList();
-	bool eventFilter(QObject *object, QEvent *event);
-	virtual void paintEvent(QPaintEvent *);
+	CheckBoxList(QWidget* widget = 0);
+	~CheckBoxList() override;
+	bool eventFilter(QObject* object, QEvent* event) override;
+	void paintEvent(QPaintEvent*) override;
 	void SetDisplayText(QString text);
 	QString GetDisplayText() const;
 

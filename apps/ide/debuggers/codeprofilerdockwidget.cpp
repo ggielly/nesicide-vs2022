@@ -7,17 +7,17 @@
 
 #include "cobjectregistry.h"
 
-CodeProfilerDockWidget::CodeProfilerDockWidget(QWidget *parent) :
-    CDebuggerBase(parent),
-    ui(new Ui::CodeProfilerDockWidget)
+CodeProfilerDockWidget::CodeProfilerDockWidget(QWidget* parent) :
+	CDebuggerBase(parent),
+	ui(new Ui::CodeProfilerDockWidget)
 {
-   ui->setupUi(this);
-   model = new CDebuggerCodeProfilerModel();
+	ui->setupUi(this);
+	model = new CDebuggerCodeProfilerModel();
 
-   ui->tableView->setModel(model);
-   ui->tableView->resizeColumnsToContents();
+	ui->tableView->setModel(model);
+	ui->tableView->resizeColumnsToContents();
 
-   ui->tableView->sortByColumn(CodeProfilerCol_Calls,Qt::DescendingOrder);
+	ui->tableView->sortByColumn(CodeProfilerCol_Calls, Qt::DescendingOrder);
 
 #if defined(Q_OS_MAC) || defined(Q_OS_MACX) || defined(Q_OS_MAC64)
    ui->tableView->setFont(QFont("Monaco", 11));
@@ -26,71 +26,72 @@ CodeProfilerDockWidget::CodeProfilerDockWidget(QWidget *parent) :
    ui->tableView->setFont(QFont("Monospace", 10));
 #endif
 #ifdef Q_OS_WIN
-   ui->tableView->setFont(QFont("Consolas", 11));
+	ui->tableView->setFont(QFont("Consolas", 11));
 #endif
 
-   QObject::connect(ui->tableView->horizontalHeader(),SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)),model,SLOT(sort(int,Qt::SortOrder)));
-   QObject::connect(model,SIGNAL(layoutChanged()),this,SLOT(updateUi()));
+	QObject::connect(ui->tableView->horizontalHeader(),SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), model,
+	                 SLOT(sort(int,Qt::SortOrder)));
+	QObject::connect(model,SIGNAL(layoutChanged()), this,SLOT(updateUi()));
 }
 
 CodeProfilerDockWidget::~CodeProfilerDockWidget()
 {
-    delete ui;
+	delete ui;
 }
 
 void CodeProfilerDockWidget::updateTargetMachine(QString target)
 {
-   if ( target.compare("none") )
-   {
-      QObject* breakpointWatcher = CObjectRegistry::instance()->getObject("Breakpoint Watcher");
-      QObject* emulator = CObjectRegistry::instance()->getObject("Emulator");
+	if (target.compare("none"))
+	{
+		QObject* breakpointWatcher = CObjectRegistry::instance()->getObject("Breakpoint Watcher");
+		QObject* emulator = CObjectRegistry::instance()->getObject("Emulator");
 
-      QObject::connect(breakpointWatcher,SIGNAL(breakpointHit()),model,SLOT(update()));
-      QObject::connect(emulator,SIGNAL(machineReady()),this,SLOT(on_clear_clicked()));
-      QObject::connect(emulator,SIGNAL(emulatorReset()),model,SLOT(update()));
-      QObject::connect(emulator,SIGNAL(emulatorPaused(bool)),model,SLOT(update()));
-   }
+		QObject::connect(breakpointWatcher,SIGNAL(breakpointHit()), model,SLOT(update()));
+		QObject::connect(emulator,SIGNAL(machineReady()), this,SLOT(on_clear_clicked()));
+		QObject::connect(emulator,SIGNAL(emulatorReset()), model,SLOT(update()));
+		QObject::connect(emulator,SIGNAL(emulatorPaused(bool)), model,SLOT(update()));
+	}
 }
 
-void CodeProfilerDockWidget::showEvent(QShowEvent */*event*/)
+void CodeProfilerDockWidget::showEvent(QShowEvent*/*event*/)
 {
-   QObject* emulator = CObjectRegistry::instance()->getObject("Emulator");
+	QObject* emulator = CObjectRegistry::instance()->getObject("Emulator");
 
-   if ( emulator )
-   {
-      QObject::connect(emulator,SIGNAL(updateDebuggers()),model,SLOT(update()));
-   }
-   model->update();
+	if (emulator)
+	{
+		QObject::connect(emulator,SIGNAL(updateDebuggers()), model,SLOT(update()));
+	}
+	model->update();
 }
 
-void CodeProfilerDockWidget::hideEvent(QHideEvent */*event*/)
+void CodeProfilerDockWidget::hideEvent(QHideEvent*/*event*/)
 {
-   QObject* emulator = CObjectRegistry::instance()->getObject("Emulator");
+	QObject* emulator = CObjectRegistry::instance()->getObject("Emulator");
 
-   if ( emulator )
-   {
-      QObject::disconnect(emulator,SIGNAL(updateDebuggers()),model,SLOT(update()));
-   }
+	if (emulator)
+	{
+		QObject::disconnect(emulator,SIGNAL(updateDebuggers()), model,SLOT(update()));
+	}
 }
 
 void CodeProfilerDockWidget::updateUi()
 {
-   ui->symbolsProfiled->setText(QString::number(model->getItems().count()));
+	ui->symbolsProfiled->setText(QString::number(model->getItems().count()));
 }
 
 void CodeProfilerDockWidget::on_tableView_doubleClicked(QModelIndex index)
 {
-   QString symbol = model->getItems().at(index.row()).symbol;
-   QString file = model->getItems().at(index.row()).file;
+	QString symbol = model->getItems().at(index.row()).symbol;
+	QString file = model->getItems().at(index.row()).file;
 
-   emit snapTo("SourceNavigatorFile,"+file);
-   emit snapTo("SourceNavigatorSymbol,"+symbol);
+	emit snapTo("SourceNavigatorFile," + file);
+	emit snapTo("SourceNavigatorSymbol," + symbol);
 }
 
 void CodeProfilerDockWidget::on_clear_clicked()
 {
-   nesClearCodeDataLoggerDatabases();
+	nesClearCodeDataLoggerDatabases();
 
-   model->clear();
-   model->update();
+	model->clear();
+	model->update();
 }

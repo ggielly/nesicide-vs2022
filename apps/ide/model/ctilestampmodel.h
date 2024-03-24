@@ -6,36 +6,36 @@
 
 class CTileStampModel : public CSubModel
 {
-   Q_OBJECT
+	Q_OBJECT
 signals:
-   void tileStampAdded(const QUuid& uuid);
-   void tileStampRemoved(const QUuid& uuid);
+	void tileStampAdded(const QUuid& uuid);
+	void tileStampRemoved(const QUuid& uuid);
 
 public:
-   QUuid newTileStamp(const QString& name);
-   QUuid newScreen(const QString& name);
-   void deleteTileStamp(const QUuid& uuid);
+	QUuid newTileStamp(const QString& name);
+	QUuid newScreen(const QString& name);
+	void deleteTileStamp(const QUuid& uuid);
 
-   // Retrieve a list of all UUIDs in this model.
-   QList<QUuid> getUuids() const;
-   QString getName(const QUuid& uuid) const;
+	// Retrieve a list of all UUIDs in this model.
+	QList<QUuid> getUuids() const override;
+	QString getName(const QUuid& uuid) const override;
 
-   // -- Getters --
-   QByteArray getTileData(const QUuid& uuid) const;
-   QByteArray getAttributeData(const QUuid& uuid) const;
-   QSize getSize(const QUuid& uuid) const;
-   QUuid getPaletteUuid(const QUuid& uuid) const;
-   QImage getTileImage(const QUuid& uuid) const;
-   //QList<PropertyItem> getTileProperties(const QUuid& uuid) const;
+	// -- Getters --
+	QByteArray getTileData(const QUuid& uuid) const;
+	QByteArray getAttributeData(const QUuid& uuid) const;
+	QSize getSize(const QUuid& uuid) const;
+	QUuid getPaletteUuid(const QUuid& uuid) const;
+	QImage getTileImage(const QUuid& uuid) const;
+	//QList<PropertyItem> getTileProperties(const QUuid& uuid) const;
 
-   // -- Setters --
-   void setSize(const QUuid& uuid, QSize& size);
+	// -- Setters --
+	void setSize(const QUuid& uuid, QSize& size);
 
-   CDesignerEditorBase *createEditorWidget(const QUuid &uuid) const;
+	CDesignerEditorBase* createEditorWidget(const QUuid& uuid) const override;
 
 private:
-   friend class CProjectModel;
-   CTileStampModel();
+	friend class CProjectModel;
+	CTileStampModel();
 };
 
 #endif // CTILESTAMPMODEL_H

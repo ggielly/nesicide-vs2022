@@ -7,30 +7,34 @@
 
 class CTileStamps : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CTileStamps(IProjectTreeViewItem* parent);
-   virtual ~CTileStamps();
+	CTileStamps(IProjectTreeViewItem* parent);
+	~CTileStamps() override;
 
-   // Helper functions
-   void initializeProject();
-   void terminateProject();
+	// Helper functions
+	void initializeProject();
+	void terminateProject();
 
-   QList<CTileStamp*>& getTileStampList() { return m_tileStamps; }
+	QList<CTileStamp*>& getTileStampList() { return m_tileStamps; }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   QString caption() const;
-   virtual void openItemEvent(CProjectTabWidget*) {}
+	// IProjectTreeViewItem Interface Implmentation
+	QString caption() const override;
 
-   // ICenterWidgetItem Interface Implementation
+	void openItemEvent(CProjectTabWidget*) override
+	{
+	}
+
+	// ICenterWidgetItem Interface Implementation
 
 private:
-   // Contained children
-   QList<CTileStamp*> m_tileStamps;
+	// Contained children
+	QList<CTileStamp*> m_tileStamps;
 };
 
 #endif // CTILESTAMPS_H

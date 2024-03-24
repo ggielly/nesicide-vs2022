@@ -5,23 +5,23 @@
 
 class ColorPushButton : public QPushButton
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   explicit ColorPushButton(QWidget *parent = 0);
+	explicit ColorPushButton(QWidget* parent = 0);
 
-   void setCurrentColor(QColor color) { m_color = color; }
-   QColor currentColor() { return m_color; }
-
-protected:
-   void paintEvent(QPaintEvent *event);
+	void setCurrentColor(QColor color) { m_color = color; }
+	QColor currentColor() { return m_color; }
 
 protected:
-   QColor m_color;
+	void paintEvent(QPaintEvent* event) override;
+
+protected:
+	QColor m_color;
 
 signals:
 
 public slots:
-
 };
 
 #endif // COLORPUSHBUTTON_H

@@ -11,10 +11,10 @@ CTextLogger::CTextLogger()
 
 void CTextLogger::erase()
 {
-   emit eraseText();
+	emit eraseText();
 }
 
 void CTextLogger::write(QString text)
 {
-   emit updateText(text);
+	emit updateText(text);
 }

@@ -8,38 +8,39 @@
 
 enum
 {
-   ChrRomBankItemCol_Image,
-   ChrRomBankItemCol_Name,
-   ChrRomBankItemCol_Size,
-   ChrRomBankItemCol_Type,
-   ChrRomBankItemCol_MAX
+	ChrRomBankItemCol_Image,
+	ChrRomBankItemCol_Name,
+	ChrRomBankItemCol_Size,
+	ChrRomBankItemCol_Type,
+	ChrRomBankItemCol_MAX
 };
 
 class CChrRomItemTableDisplayModel : public QAbstractTableModel
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CChrRomItemTableDisplayModel(bool editable,QObject* parent = 0);
-   virtual ~CChrRomItemTableDisplayModel();
-   QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
-   QVariant data(const QModelIndex& index, int role) const;
-   Qt::ItemFlags flags(const QModelIndex& index) const;
-   bool setData ( const QModelIndex& index, const QVariant& value, int );
-   QVariant headerData(int section, Qt::Orientation orientation,
-                       int role = Qt::DisplayRole) const;
-   int rowCount(const QModelIndex& parent = QModelIndex()) const;
-   int columnCount(const QModelIndex& parent = QModelIndex()) const;
-   void removeRow(int row, const QModelIndex &parent);
-   void insertRow(IChrRomBankItem* item, const QModelIndex &parent);
-   QList<IChrRomBankItem*> bankItems() { return chrRomBankItems; }
-   void setBankItems(QList<IChrRomBankItem*> items) { chrRomBankItems = items; }
+	CChrRomItemTableDisplayModel(bool editable, QObject* parent = 0);
+	~CChrRomItemTableDisplayModel() override;
+	QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const override;
+	QVariant data(const QModelIndex& index, int role) const override;
+	Qt::ItemFlags flags(const QModelIndex& index) const override;
+	bool setData(const QModelIndex& index, const QVariant& value, int) override;
+	QVariant headerData(int section, Qt::Orientation orientation,
+	                    int role = Qt::DisplayRole) const override;
+	int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+	int columnCount(const QModelIndex& parent = QModelIndex()) const override;
+	void removeRow(int row, const QModelIndex& parent);
+	void insertRow(IChrRomBankItem* item, const QModelIndex& parent);
+	QList<IChrRomBankItem*> bankItems() { return chrRomBankItems; }
+	void setBankItems(QList<IChrRomBankItem*> items) { chrRomBankItems = items; }
 
 public slots:
-   void update();
+	void update();
 
 private:
-   QList<IChrRomBankItem*> chrRomBankItems;
-   bool m_editable;
+	QList<IChrRomBankItem*> chrRomBankItems;
+	bool m_editable;
 };
 
 #endif // CCHRROMITEMTABLEDISPLAYMODEL_H

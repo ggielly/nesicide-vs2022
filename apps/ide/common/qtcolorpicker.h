@@ -74,52 +74,52 @@ class ColorPickerPopup;
 
 class QT_QTCOLORPICKER_EXPORT QtColorPicker : public QPushButton
 {
-   Q_OBJECT
+	Q_OBJECT
 
-   Q_PROPERTY(bool colorDialog READ colorDialogEnabled WRITE setColorDialogEnabled)
+	Q_PROPERTY(bool colorDialog READ colorDialogEnabled WRITE setColorDialogEnabled)
 
 public:
-   QtColorPicker(QWidget* parent = 0,
-                 int columns = 16, bool enableColorDialog = false);
+	QtColorPicker(QWidget* parent = 0,
+	              int columns = 16, bool enableColorDialog = false);
 
-   virtual ~QtColorPicker();
+	~QtColorPicker() override;
 
-   void insertColor(const QColor& color, const QString& text = QString::null, int index = -1);
+	void insertColor(const QColor& color, const QString& text = QString::null, int index = -1);
 
-   QColor currentColor() const;
+	QColor currentColor() const;
 
-   QColor color(int index) const;
+	QColor color(int index) const;
 
-   void setColorDialogEnabled(bool enabled);
-   bool colorDialogEnabled() const;
+	void setColorDialogEnabled(bool enabled);
+	bool colorDialogEnabled() const;
 
-   void setColorPopupEnabled(bool enabled);
-   bool colorPopupEnabled() const;
+	void setColorPopupEnabled(bool enabled);
+	bool colorPopupEnabled() const;
 
-   void setStandardColors();
+	void setStandardColors();
 
-   static QColor getColor(const QPoint& pos, bool allowCustomColors = true);
+	static QColor getColor(const QPoint& pos, bool allowCustomColors = true);
 
 public Q_SLOTS:
-   void setCurrentColor(const QColor& col);
+	void setCurrentColor(const QColor& col);
 
 Q_SIGNALS:
-   void colorChanged(const QColor&);
+	void colorChanged(const QColor&);
 
 protected:
-   void paintEvent(QPaintEvent* e);
+	void paintEvent(QPaintEvent* e) override;
 
 private Q_SLOTS:
-   void buttonPressed(bool toggled);
-   void popupClosed();
+	void buttonPressed(bool toggled);
+	void popupClosed();
 
 private:
-   ColorPickerPopup* popup;
-   QColor col;
-   bool withColorDialog;
-   bool withColorPopup;
-   bool dirty;
-   bool firstInserted;
+	ColorPickerPopup* popup;
+	QColor col;
+	bool withColorDialog;
+	bool withColorPopup;
+	bool dirty;
+	bool firstInserted;
 };
 
 #endif

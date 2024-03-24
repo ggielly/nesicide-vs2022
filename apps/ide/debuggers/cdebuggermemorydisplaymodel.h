@@ -7,31 +7,32 @@
 
 class CDebuggerMemoryDisplayModel : public QAbstractTableModel
 {
-   Q_OBJECT
-public:
-   CDebuggerMemoryDisplayModel(memDBFunc memDB,QObject* parent = 0);
-   virtual ~CDebuggerMemoryDisplayModel();
-   QVariant data(const QModelIndex& index, int role) const;
-   Qt::ItemFlags flags(const QModelIndex& index) const;
-   bool setData ( const QModelIndex& index, const QVariant& value, int );
-   QVariant headerData(int section, Qt::Orientation orientation,
-                       int role = Qt::DisplayRole) const;
-   QModelIndex index(int row, int column,
-                     const QModelIndex& parent = QModelIndex()) const;
-   int rowCount(const QModelIndex& parent = QModelIndex()) const;
-   int columnCount(const QModelIndex& parent = QModelIndex()) const;
+	Q_OBJECT
 
-   int memoryType() const;
-   int memoryBottom() const;
-   int memoryTop() const;
+public:
+	CDebuggerMemoryDisplayModel(memDBFunc memDB, QObject* parent = 0);
+	~CDebuggerMemoryDisplayModel() override;
+	QVariant data(const QModelIndex& index, int role) const override;
+	Qt::ItemFlags flags(const QModelIndex& index) const override;
+	bool setData(const QModelIndex& index, const QVariant& value, int) override;
+	QVariant headerData(int section, Qt::Orientation orientation,
+	                    int role = Qt::DisplayRole) const override;
+	QModelIndex index(int row, int column,
+	                  const QModelIndex& parent = QModelIndex()) const override;
+	int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+	int columnCount(const QModelIndex& parent = QModelIndex()) const override;
+
+	int memoryType() const;
+	int memoryBottom() const;
+	int memoryTop() const;
 
 public slots:
-   void update(void);
+	void update(void);
 
 private:
-   memDBFunc        m_memDBFunc;
-   CMemoryDatabase *m_memDB;
-   char            *m_modelStringBuffer;
+	memDBFunc m_memDBFunc;
+	CMemoryDatabase* m_memDB;
+	char* m_modelStringBuffer;
 };
 
 #endif // CDEBUGGERMEMORYDISPLAYMODEL_H

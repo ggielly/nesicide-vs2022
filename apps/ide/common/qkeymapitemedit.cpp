@@ -1,26 +1,26 @@
 #include "qkeymapitemedit.h"
 
 QKeymapItemEdit::QKeymapItemEdit(QWidget* parent) :
-   QLineEdit(parent)
+	QLineEdit(parent)
 {
-   setReadOnly(true);
-   setFocusPolicy(Qt::ClickFocus);
+	setReadOnly(true);
+	setFocusPolicy(Qt::ClickFocus);
 }
 
-bool QKeymapItemEdit::event( QEvent* evt )
+bool QKeymapItemEdit::event(QEvent* evt)
 {
-   // Consume all keypress events
-   if ( (evt->type() == QEvent::KeyPress) ||
-         (evt->type() == QEvent::KeyRelease))
-   {
-      QKeyEvent* ke = (QKeyEvent*)evt;
-      QKeySequence ks(ke->key());
+	// Consume all keypress events
+	if ((evt->type() == QEvent::KeyPress) ||
+		(evt->type() == QEvent::KeyRelease))
+	{
+		auto ke = (QKeyEvent*)evt;
+		QKeySequence ks(ke->key());
 
-      setText(ks.toString());
+		setText(ks.toString());
 
-      ke->accept();
-      return true;
-   }
+		ke->accept();
+		return true;
+	}
 
-   return QWidget::event( evt );
+	return QWidget::event(evt);
 }

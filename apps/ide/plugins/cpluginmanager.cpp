@@ -10,25 +10,25 @@
 
 static int luabind_compiler_logger_print(lua_State* lua);
 
-CPluginManager *CPluginManager::_instance = NULL;
+CPluginManager* CPluginManager::_instance = NULL;
 
-QHash<QString,QDomDocument*> CPluginManager::plugins;
+QHash<QString, QDomDocument*> CPluginManager::plugins;
 
 CPluginManager::CPluginManager()
 {
-   globalLuaInstance = lua_open();
-   defineInterfaces(globalLuaInstance);
+	globalLuaInstance = lua_open();
+	defineInterfaces(globalLuaInstance);
 }
 
 void CPluginManager::doInitScript()
 {
 #ifdef Q_OS_WIN
-   const char* initScriptPath   = "../plugins/init.lua";
+	auto initScriptPath = "../plugins/init.lua";
 #else
    const char* initScriptPath   = "plugins/init.lua";
 #endif
-   int status;
-   QString result;
+	int status;
+	QString result;
 #if defined(Q_OS_MAC) || defined(Q_OS_MACX) || defined(Q_OS_MAC64)
    struct stat stFileInfo;
    QString filePath = initScriptPath;
@@ -56,15 +56,15 @@ void CPluginManager::doInitScript()
 
    report(globalLuaInstance, status = luaL_dofile(globalLuaInstance, filePath.toLatin1().constData()));
 #else
-   QString filePath = QCoreApplication::applicationDirPath()+"/"+QString(initScriptPath);
-   report(globalLuaInstance, status = luaL_dofile(globalLuaInstance, filePath.toLatin1().constData()));
+	QString filePath = QCoreApplication::applicationDirPath() + "/" + QString(initScriptPath);
+	report(globalLuaInstance, status = luaL_dofile(globalLuaInstance, filePath.toLatin1().constData()));
 #endif
 }
 
 void CPluginManager::loadPlugins()
 {
 #ifdef Q_OS_WIN
-   const char* pluginPath   = "../plugins/";
+	auto pluginPath = "../plugins/";
 #else
    const char* pluginPath   = "plugins/";
 #endif
@@ -96,104 +96,105 @@ void CPluginManager::loadPlugins()
 
    QDir pluginDir(filePath.toLatin1().constData());
 #else
-   QDir pluginDir(pluginPath);
+	QDir pluginDir(pluginPath);
 #endif
-   QStringList pluginFiles;
-   QDomElement pluginDocElement;
-   int i;
+	QStringList pluginFiles;
+	QDomElement pluginDocElement;
+	int i;
 
-   generalTextLogger->write ( "<strong>Loading plugins...</strong>" );
+	generalTextLogger->write("<strong>Loading plugins...</strong>");
 
-   pluginFiles = pluginDir.entryList(QStringList("*.plugin"),QDir::Files);
+	pluginFiles = pluginDir.entryList(QStringList("*.plugin"), QDir::Files);
 
-   for ( i = 0; i < pluginFiles.size(); i++ )
-   {
-      generalTextLogger->write ( pluginFiles[i] + ": " );
+	for (i = 0; i < pluginFiles.size(); i++)
+	{
+		generalTextLogger->write(pluginFiles[i] + ": ");
 
-      QFile pluginFile ( pluginDir.absoluteFilePath(pluginFiles[i]) );
-      pluginFile.open(QIODevice::ReadOnly|QIODevice::Text);
+		QFile pluginFile(pluginDir.absoluteFilePath(pluginFiles[i]));
+		pluginFile.open(QIODevice::ReadOnly | QIODevice::Text);
 
-      if ( pluginFile.isOpen() )
-      {
-         QDomDocument* plugin = new QDomDocument();
-         //QDomNode    logicNode;
-         //QDomElement logicElement;
+		if (pluginFile.isOpen())
+		{
+			auto plugin = new QDomDocument();
+			//QDomNode    logicNode;
+			//QDomElement logicElement;
 
-         plugin->setContent(&pluginFile);
+			plugin->setContent(&pluginFile);
 
-         plugins.insert(pluginFiles[i],plugin);
+			plugins.insert(pluginFiles[i], plugin);
 
-         pluginDocElement = plugin->documentElement();
-         generalTextLogger->write ( "&nbsp;&nbsp;&nbsp;caption: " + pluginDocElement.attribute("caption") );
-         generalTextLogger->write ( "&nbsp;&nbsp;&nbsp;author: " + pluginDocElement.attribute("author") );
-         generalTextLogger->write ( "&nbsp;&nbsp;&nbsp;version: " + pluginDocElement.attribute("version") );
+			pluginDocElement = plugin->documentElement();
+			generalTextLogger->write("&nbsp;&nbsp;&nbsp;caption: " + pluginDocElement.attribute("caption"));
+			generalTextLogger->write("&nbsp;&nbsp;&nbsp;author: " + pluginDocElement.attribute("author"));
+			generalTextLogger->write("&nbsp;&nbsp;&nbsp;version: " + pluginDocElement.attribute("version"));
 
-         QDomNodeList logicNodeList = pluginDocElement.elementsByTagName("logic");
+			QDomNodeList logicNodeList = pluginDocElement.elementsByTagName("logic");
 
-         if (!logicNodeList.isEmpty())
-         {
-            // only read the first logic node
-            QDomNode logicNode = logicNodeList.item(0);
-            QDomNode logicScript = logicNode.firstChild();
+			if (!logicNodeList.isEmpty())
+			{
+				// only read the first logic node
+				QDomNode logicNode = logicNodeList.item(0);
+				QDomNode logicScript = logicNode.firstChild();
 
-            if (logicScript.nodeType() == QDomNode::CDATASectionNode)
-            {
-               QString luascript = logicScript.toText().data();
+				if (logicScript.nodeType() == QDomNode::CDATASectionNode)
+				{
+					QString luascript = logicScript.toText().data();
 
-               if (luascript.length() != 0)
-               {
-                  generalTextLogger->write ( "&nbsp;&nbsp;&nbsp;loading logic" );
+					if (luascript.length() != 0)
+					{
+						generalTextLogger->write("&nbsp;&nbsp;&nbsp;loading logic");
 
-                  if (report(globalLuaInstance, luaL_dostring(globalLuaInstance, luascript.toLatin1())))
-                  {
-                     continue; // ignore rest of the plugin and continue with next one if we couldn't load the script
-                  }
-               }
-            }
+						if (report(globalLuaInstance, luaL_dostring(globalLuaInstance, luascript.toLatin1())))
+						{
+							continue;
+							// ignore rest of the plugin and continue with next one if we couldn't load the script
+						}
+					}
+				}
 
-            QString onLoad = logicNode.toElement().attribute("onLoad");
+				QString onLoad = logicNode.toElement().attribute("onLoad");
 
-            if (!onLoad.isEmpty())
-            {
-               //onLoad
-               generalTextLogger->write ( "&nbsp;&nbsp;&nbsp;call onLoadFunc \"" + onLoad + "\"");
-               lua_getglobal(globalLuaInstance, onLoad.toLatin1());
+				if (!onLoad.isEmpty())
+				{
+					//onLoad
+					generalTextLogger->write("&nbsp;&nbsp;&nbsp;call onLoadFunc \"" + onLoad + "\"");
+					lua_getglobal(globalLuaInstance, onLoad.toLatin1());
 
-               if (report(globalLuaInstance, lua_pcall(globalLuaInstance, 0, LUA_MULTRET, 0)))
-               {
-                  continue;
-               }
-            }
-         }
+					if (report(globalLuaInstance, lua_pcall(globalLuaInstance, 0, LUA_MULTRET, 0)))
+					{
+						continue;
+					}
+				}
+			}
 
-         pluginFile.close();
-      }
+			pluginFile.close();
+		}
 
-      generalTextLogger->write ( "done." );
-   }
+		generalTextLogger->write("done.");
+	}
 
-   generalTextLogger->write ( "<strong>Done loading plugins.</strong>" );
+	generalTextLogger->write("<strong>Done loading plugins.</strong>");
 }
 
 CPluginManager::~CPluginManager()
 {
-   lua_close(globalLuaInstance);
+	lua_close(globalLuaInstance);
 }
 
 void CPluginManager::defineInterfaces(lua_State* lua)
 {
-   lua_pushcclosure (lua, luabind_compiler_logger_print, 0);
-   lua_setglobal (lua, "compiler_logger_print");
+	lua_pushcclosure(lua, luabind_compiler_logger_print, 0);
+	lua_setglobal(lua, "compiler_logger_print");
 }
 
 void CPluginManager::lua_compiler_logger_print(QString text)
 {
-   generalTextLogger->write(text);
+	generalTextLogger->write(text);
 }
 
 QString CPluginManager::getVersionInfo()
 {
-   return QString(LUA_VERSION " " LUA_COPYRIGHT);
+	return QString(LUA_VERSION " " LUA_COPYRIGHT);
 }
 
 // ========================================================================
@@ -202,59 +203,59 @@ QString CPluginManager::getVersionInfo()
 
 int CPluginManager::report(lua_State* L, int status)
 {
-   if (status)
-   {
-      QString err = QString("");
+	if (status)
+	{
+		auto err = QString("");
 
-      switch (status)
-      {
-         case LUA_YIELD:
-            err += "Yield";
-            break;
-         case LUA_ERRRUN:
-            err += "Runtime error";
-            break;
-         case LUA_ERRSYNTAX:
-            err += "Syntax error";
-            break;
-         case LUA_ERRMEM:
-            err += "Memory allocation error";
-            break;
-         case LUA_ERRERR:
-            err += "Error when running the error handler";
-            break;
-         default:
-            err += "Unknown error";
-            break;
-      }
+		switch (status)
+		{
+		case LUA_YIELD:
+			err += "Yield";
+			break;
+		case LUA_ERRRUN:
+			err += "Runtime error";
+			break;
+		case LUA_ERRSYNTAX:
+			err += "Syntax error";
+			break;
+		case LUA_ERRMEM:
+			err += "Memory allocation error";
+			break;
+		case LUA_ERRERR:
+			err += "Error when running the error handler";
+			break;
+		default:
+			err += "Unknown error";
+			break;
+		}
 
-      err += ", ";
+		err += ", ";
 
-      if (!lua_isnil(L, -1))
-      {
-         const char* msg = lua_tostring(L, -1);
+		if (!lua_isnil(L, -1))
+		{
+			const char* msg = lua_tostring(L, -1);
 
-         if (msg == NULL)
-         {
-            msg = "(error object is not a string)";
-         }
+			if (msg == NULL)
+			{
+				msg = "(error object is not a string)";
+			}
 
-         lua_pop(L, 1);
-         err += msg;
-         generalTextLogger->write("<font color='red'><strong> Lua Script Error:</strong> " + err + "</font>");
-      }
-   }
+			lua_pop(L, 1);
+			err += msg;
+			generalTextLogger->write("<font color='red'><strong> Lua Script Error:</strong> " + err + "</font>");
+		}
+	}
 
-   return status;
+	return status;
 }
 
 static int luabind_compiler_logger_print(lua_State* lua)
 {
-   if (!lua_isstring(lua, 1))
-   {
-      return 0;
-   }
+	if (!lua_isstring(lua, 1))
+	{
+		return 0;
+	}
 
-   CPluginManager::instance()->lua_compiler_logger_print(QString(lua_tostring (lua, 1)));
-   return 0;
+	CPluginManager::instance()->lua_compiler_logger_print(QString(lua_tostring(lua, 1)));
+	return 0;
 }

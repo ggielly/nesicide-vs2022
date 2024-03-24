@@ -5,30 +5,31 @@
 
 namespace Ui
 {
-class NewFileDialog;
+	class NewFileDialog;
 }
 
 class NewFileDialog : public QDialog
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   NewFileDialog(QString windowTitle = "New",QString defName = "", QString defPath = "", QWidget* parent = 0);
-   virtual ~NewFileDialog();
-   QString getName();
-   QString getPath();
+	NewFileDialog(QString windowTitle = "New", QString defName = "", QString defPath = "", QWidget* parent = 0);
+	~NewFileDialog() override;
+	QString getName();
+	QString getPath();
 
 protected:
-   void changeEvent(QEvent* e);
-   bool checkValidity();
+	void changeEvent(QEvent* e) override;
+	bool checkValidity();
 
 private:
-   Ui::NewFileDialog* ui;
+	Ui::NewFileDialog* ui;
 
 private slots:
-    void on_buttonBox_accepted();
-    void on_name_textChanged(QString text);
-    void on_path_textChanged(QString text);
-    void on_pathBrowse_clicked();
+	void on_buttonBox_accepted();
+	void on_name_textChanged(QString text);
+	void on_path_textChanged(QString text);
+	void on_pathBrowse_clicked();
 };
 
 #endif // NEWFILEDIALOG_H

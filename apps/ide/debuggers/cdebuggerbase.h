@@ -7,24 +7,30 @@
 
 class CDebuggerBase : public QDockWidget
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   explicit CDebuggerBase(QWidget *parent = 0);
-   virtual ~CDebuggerBase();
+	explicit CDebuggerBase(QWidget* parent = 0);
+	~CDebuggerBase() override;
 
 signals:
-   void markProjectDirty(bool dirty);
-   void snapTo(QString item);
-   void setStatusBarMessage(QString message);
-   void addStatusBarWidget(QWidget* widget);
-   void removeStatusBarWidget(QWidget* widget);
+	void markProjectDirty(bool dirty);
+	void snapTo(QString item);
+	void setStatusBarMessage(QString message);
+	void addStatusBarWidget(QWidget* widget);
+	void removeStatusBarWidget(QWidget* widget);
 
 public slots:
-   void snapToHandler(QString item) {};
-   void applyEnvironmentSettings() {};
+	void snapToHandler(QString item)
+	{
+	};
+
+	void applyEnvironmentSettings()
+	{
+	};
 
 protected:
-   NesStateSnapshot m_nesState;
+	NesStateSnapshot m_nesState;
 };
 
 #endif // CDEBUGGERBASE_H

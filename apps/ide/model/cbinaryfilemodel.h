@@ -6,32 +6,32 @@
 
 class CBinaryFileModel : public CSubModel
 {
-   Q_OBJECT
+	Q_OBJECT
 signals:
-   void binaryFileAdded  (const QUuid& uuid);
-   void binaryFileRemoved(const QUuid& uuid);
+	void binaryFileAdded(const QUuid& uuid);
+	void binaryFileRemoved(const QUuid& uuid);
 
 public:
-   QUuid addExistingBinaryFile(const QString& path);
-   void removeBinaryFile(const QUuid& uuid);
+	QUuid addExistingBinaryFile(const QString& path);
+	void removeBinaryFile(const QUuid& uuid);
 
-   QList<QUuid> getUuids() const;
-   QString getName(const QUuid& uuid) const;
+	QList<QUuid> getUuids() const override;
+	QString getName(const QUuid& uuid) const override;
 
-   // -- Getters --
-   QString getFileName(const QUuid& uuid) const;
-   QByteArray getBinaryData(const QUuid& uuid) const;
-   QImage getBinaryImage(const QUuid& uuid) const;
-   QSize getSize(const QUuid& uuid) const;
+	// -- Getters --
+	QString getFileName(const QUuid& uuid) const;
+	QByteArray getBinaryData(const QUuid& uuid) const;
+	QImage getBinaryImage(const QUuid& uuid) const;
+	QSize getSize(const QUuid& uuid) const;
 
-   // -- Setters --
-   void setBinaryData(const QUuid& uuid, const QByteArray& newBinaryData);
+	// -- Setters --
+	void setBinaryData(const QUuid& uuid, const QByteArray& newBinaryData);
 
-   CDesignerEditorBase* createEditorWidget(const QUuid&) const { return NULL; }
+	CDesignerEditorBase* createEditorWidget(const QUuid&) const override { return NULL; }
 
 private:
-   friend class CProjectModel;
-   CBinaryFileModel();
+	friend class CProjectModel;
+	CBinaryFileModel();
 };
 
 #endif // CBINARYFILEMODEL_H

@@ -70,55 +70,56 @@
 
 class CProjectTabWidget : public QTabWidget
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   explicit CProjectTabWidget(QWidget *parent = 0);
+	explicit CProjectTabWidget(QWidget* parent = 0);
 
-   int addTab(QWidget *page, const QString &label);
-   int addTab(QWidget *page, const QIcon &icon, const QString &label);
-   void removeTab(int index);
+	int addTab(QWidget* page, const QString& label);
+	int addTab(QWidget* page, const QIcon& icon, const QString& label);
+	void removeTab(int index);
 
-   void setProjectModel(CProjectModel* model);
+	void setProjectModel(CProjectModel* model);
 
 protected:
-   void tabBar_contextMenuEvent(QContextMenuEvent *event);
-   void tabBar_mouseMoveEvent(QMouseEvent* event);
-   bool eventFilter(QObject *object, QEvent *event);
+	void tabBar_contextMenuEvent(QContextMenuEvent* event);
+	void tabBar_mouseMoveEvent(QMouseEvent* event);
+	bool eventFilter(QObject* object, QEvent* event) override;
 
 signals:
-   void tabModified(int tab,bool modified);
-   void tabAdded(int tab);
-   void tabAboutToBeRemoved(int tabIndex);
-   void tabRemoved(int index);
-   void snapTo(QString item);
-   void applyChangesToTab(QString uuid);
-   void markProjectDirty(bool dirty);
-   void applyProjectPropertiesToTab();
-   void applyEnvironmentSettingsToTab();
-   void applyAppSettingsToTab();
-   void addStatusBarWidget(QWidget* widget);
-   void removeStatusBarWidget(QWidget* widget);
-   void addToolBarWidget(QToolBar* toolBar);
-   void removeToolBarWidget(QToolBar* toolBar);
-   void setStatusBarMessage(QString message);
-   void updateTargetMachine(QString target);
-   void checkOpenFile(QDateTime lastActivationTime);
+	void tabModified(int tab, bool modified);
+	void tabAdded(int tab);
+	void tabAboutToBeRemoved(int tabIndex);
+	void tabRemoved(int index) override;
+	void snapTo(QString item);
+	void applyChangesToTab(QString uuid);
+	void markProjectDirty(bool dirty);
+	void applyProjectPropertiesToTab();
+	void applyEnvironmentSettingsToTab();
+	void applyAppSettingsToTab();
+	void addStatusBarWidget(QWidget* widget);
+	void removeStatusBarWidget(QWidget* widget);
+	void addToolBarWidget(QToolBar* toolBar);
+	void removeToolBarWidget(QToolBar* toolBar);
+	void setStatusBarMessage(QString message);
+	void updateTargetMachine(QString target);
+	void checkOpenFile(QDateTime lastActivationTime);
 
 public slots:
-   void unDockTab();
-   void reDockTab();
-   void checkOpenFiles(QDateTime lastActivationTime);
-   void tabModified(bool modified);
-   void projectDirtied(bool dirtied);
-   void snapToTab(QString item);
-   void applyChanges(QString uuid);
-   void applyProjectProperties();
-   void applyEnvironmentSettings();
-   void applyAppSettings();
+	void unDockTab();
+	void reDockTab();
+	void checkOpenFiles(QDateTime lastActivationTime);
+	void tabModified(bool modified);
+	void projectDirtied(bool dirtied);
+	void snapToTab(QString item);
+	void applyChanges(QString uuid);
+	void applyProjectProperties();
+	void applyEnvironmentSettings();
+	void applyAppSettings();
 
 protected:
-   QMap<QString,QWidget*>  tearOffs;
-   CProjectModel          *m_pProjectModel;
+	QMap<QString, QWidget*> tearOffs;
+	CProjectModel* m_pProjectModel;
 };
 
 #endif // CPROJECTTABWIDGET_H

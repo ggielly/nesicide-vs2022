@@ -8,23 +8,24 @@
 
 class CChrRomItemListDisplayModel : public QAbstractListModel
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CChrRomItemListDisplayModel(QObject* parent = 0);
-   virtual ~CChrRomItemListDisplayModel();
-   QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
-   QVariant data(const QModelIndex& index, int role) const;
-   Qt::ItemFlags flags(const QModelIndex& index) const;
-   int rowCount(const QModelIndex& parent = QModelIndex()) const;
-   int columnCount(const QModelIndex& parent = QModelIndex()) const;
-   QList<IChrRomBankItem*> bankItems() { return chrRomBankItems; }
-   void setBankItems(QList<IChrRomBankItem*> items) { chrRomBankItems = items; }
+	CChrRomItemListDisplayModel(QObject* parent = 0);
+	~CChrRomItemListDisplayModel() override;
+	QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const override;
+	QVariant data(const QModelIndex& index, int role) const override;
+	Qt::ItemFlags flags(const QModelIndex& index) const override;
+	int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+	int columnCount(const QModelIndex& parent = QModelIndex()) const override;
+	QList<IChrRomBankItem*> bankItems() { return chrRomBankItems; }
+	void setBankItems(QList<IChrRomBankItem*> items) { chrRomBankItems = items; }
 
 public slots:
-   void update();
+	void update();
 
 private:
-   QList<IChrRomBankItem*> chrRomBankItems;
+	QList<IChrRomBankItem*> chrRomBankItems;
 };
 
 #endif // CCHRROMITEMLISTDISPLAYMODEL_H
