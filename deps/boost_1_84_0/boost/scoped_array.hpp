@@ -10,6 +10,7 @@
 //
 //  See http://www.boost.org/libs/smart_ptr/ for documentation.
 
-#include <boost/smart_ptr/scoped_array.hpp>
+//#include <boost/smart_ptr/scoped_array.hpp>
+#include <../../deps/boost_1_84_0/boost/scoped_array.hpp>
 
 #endif  // #ifndef BOOST_SCOPED_ARRAY_HPP_INCLUDED
