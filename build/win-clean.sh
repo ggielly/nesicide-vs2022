@@ -1,0 +1,16 @@
+#!/bin/bash
+
+PATH=../deps/Windows/GnuWin32/bin:$PATH
+
+echo Cleaning NESICIDE...
+( cd ide; make distclean )
+echo Cleaning FamiTracker...
+( cd famitracker; make distclean )
+echo Cleaning FamiPlayer...
+( cd famiplayer; make distclean )
+echo Cleaning NES Emulator...
+( cd nes-emulator; make distclean )
+echo Removing deps...
+if [ "$1" == "deps" ]; then
+  ( cd ..; rm -rf deps )
+fi

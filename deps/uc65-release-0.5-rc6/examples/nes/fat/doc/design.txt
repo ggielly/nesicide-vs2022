@@ -1,0 +1,113 @@
+Find All the Things! (FAT!)
+
+Overview
+
+FAT is intended to be an action puzzle platformer game in the zeldroidvania
+vein with a style similar to Hydra Castle Labrynth. The game will be developed
+for the 2014 NESDEV competition's main category and be provided as an example
+with the uc65 development package. The project will be considered successful if
+the initial release version is completed in time for entry to the competition
+and included on the competition cart.
+
+Gameplay and Plot Synopsis
+
+The player controls the hero character Lut Footen, which roughly translated from
+Zelvanian means "He who Shall Find All the Things". He has come to the
+Palace of Das Buttas in search of a lost treasure, said to be worth over 2,000
+monies! Unfortunately for our hero, the Palace is not ADA-compliant and he is
+unable to get to the treasure. He must Find All the Things! in the Palace that
+will enable him to jump higher, break through barriers and open doors to finally
+find his way to the most coveted treasure.
+
+The game should include a second, harder layout for the Palace if
+possible within the limitations of the competition. The second layout would be
+accessable after the player has defeated the first, with a message saying "We
+sorry but our monies is in another castle!" Alternatively the secondly layout
+should be accessable through a "secret" code on the title screen, starting the
+game using the select button instead of start.
+
+The Palace of Das Buttas is divided into a grid of 16 by 16 rooms, each of which
+consists of 15 by 11 blocks. The player and enemies move around the rooms in a
+side-view fashion with gravity effecting most objects. When the player oversteps
+the bounds of the room they are moved to the next room in the given direction,
+with the 16 by 16 grid wraping to form a torodal space, but giving the player
+the illusion of a larger, sparsely packed grid.
+
+The Palace of Das Buttas is structured in such a way as to have a central area
+that is immediately accessable at the start of the game with "mechanical locks"
+gating access to the wings of the palace. Each lock is overcome with the use of
+a special item that the player must find. Each wing will contain one such item,
+and may contain other mechanical locks gating access to other macguffins.
+
+A running tally of the player's progress towards acquiring all Things in the
+Palace will be kept along with a realish-time up counter to track both
+completion percentage and time to completion. Completion percentage should read
+0% at start of game, 100% when all but one of the Things has been found, and
+greater than 100% when all of the Things have been found.
+
+The player begins the game with a short-range attack that can harm and destroy
+enemies. Enemies will actively attack the player with short and long-range
+attacks which will reduce the player's health. When the player's health reaches
+zero, the player dies and they are returned to the last checkpoint room they
+were in.
+
+Areas of the Palace of Das Buttas in Detail
+
+The Main Hall contains the entry way and central hub of the palace, and connects
+to every other wing.
+
+The Fruit Cellar connects to the bottom of the Main Hall and can be entered
+through a one-way high-jump lock. The high-jump item can be found at the end of
+the cellar, and allows the player to jump again while in mid-air. A maguffin is
+high on a ledge requiring the high-jump to reach, and another behind a glass
+block requiring the breaker to reach.
+
+The Attic connects to the top of the Main Hall and can be entered through a
+high-jump. A one-way fall from the Attic leads to the Moat sub-area. The Attic
+contains the breaker which allows the player to break blocks of glass in the
+Palace when struck with the melee attack. The Attic also contains one maguffin
+requiring the use of both the high-jump and the breaker.
+
+The Grand Hall connects off the Main Hall near the entrance and has no
+mechanical lock at it's entrance. At the end of the Grand Hall is suit that
+allows the wearer to sink in water. The Grand Hall also contains two maguffins,
+one needing the high-jump to access and the other requiring the breaker.
+
+The Treasury connects to the central portion of the Main Hall and is gated by
+a water mechanical lock that requires suit to pass. The final room containing
+the Monies can only be entered using the breaker, and the Monies are on a high
+pedistal needing the high-jump to reach. This area contains one maguffin that
+requires the player to fall through a one-way drop into a path that eventually
+leads to the maguffin, and then through another one-way fall into the Fruit
+Cellar.
+
+The Moat sub-area is reached by falling through a one-way drop in the Attic
+area, or through a high-jump sequence at the entrance. The high-jump sequence is
+the only way out of the Moat sub-area. This area contains four maguffins,
+three which require each of the mechanical Things, plus the ranged weapon.
+
+Maguffins
+
+Nimble Bastard Booster Fruit - An jar of ferminted fruit. Fruit that makes you
+toot. Toots from your boot! Allows the player to jump again in mid-air, and does
+minor damage to enemies that are touched by the cloud of gas.
+
+Sexy Bastard Bastard Suit - A heavy suit of armor that makes the wearer sink in
+water, but it looks damn sexy!
+
+Little Bastard Bastard Bat - A baseball bat for little bastards, great for
+breaking glass windows.
+
+Incredible Bastard Bastard Beam - A laser cannon for the most incredible of
+bastards, allows the user to fire projectiles. La-La-La-Layza BEAMS!
+
+Cheeky Bastard Palette Changer - A strange item that changes the palette of the
+hero and reduces damage received from enemies by half.
+
+Bloody Bastard Broken Heart - One half of a broken heart, which the hero then
+consumes to charge his insane robot powers! How else would this work? Gives the
+hero a longer life bar. There are a total of eight to find, collect 'em all!
+
+Enemies
+
+

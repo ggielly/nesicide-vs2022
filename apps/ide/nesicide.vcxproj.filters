@@ -1,0 +1,1786 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="aboutdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\appeventfilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="appsettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\apuinformationdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\designers\attributetableeditorform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\breakpointdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\breakpointdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\breakpointwatcherthread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="c64\emulator\c64emulatorcontrol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="c64\emulator\c64emulatorthread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\cattributemodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cattributetable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cattributetables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\cbinaryfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\cbinaryfilemodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\cbinaryfiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cbreakpointdisplaymodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\cbreakpointinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\cbuildertextlogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\ccartridge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\compilers\ccartridgebuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\ccartridgemodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="compilers\cc65\ccc65interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cchrrombank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\designers\cchrrombankitemdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cchrrombanks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\cchrromitemlistdisplaymodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\cchrromitemtabledisplaymodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\ccodebrowserdisplaymodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cdebuggerbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cdebuggerbitfieldcomboboxdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cdebuggerbitfielddisplaymodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cdebuggercodeprofilermodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cdebuggerexecutiontracermodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cdebuggermemorydisplaymodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cdebuggernumericitemdelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cdebuggerregisterdisplaymodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cdebuggersymboldelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\cdesignereditorbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\cdockwidgetregistry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\cexecutionmarkerdisplaymodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\cexpandablestatusbar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\cfiltermodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\common\cgamedatabasehandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\compilers\cgraphicsassembler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cgraphicsbank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\cgraphicsbankmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cgraphicsbanks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\checkboxlist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\common\chrbankitemstabwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\chrmeminspector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\chrromdisplaydialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\common\cimageconverters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="c64\compilers\cmachineimagebuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cmusicitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\cmusicmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cmusics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\cnesicideproject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\cobjectregistry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\codebrowserdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\codedataloggerdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\codeeditorform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\codeprofilerdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\common\colorpushbutton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="compilers\compilerthread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\cpluginmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cprgrombank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cprgrombanks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\cproject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\cprojectbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\cprojectmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\cprojectprimitives.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\cprojecttabwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\cprojecttreecontextmenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\cprojecttreeopenaction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\cprojecttreewidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\cpropertyenumlistmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\cpropertyitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\cpropertylistmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\cpropertysymboldelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\cpropertyvaluedelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\crendererbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\csounds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="compilers\csourceassembler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\csourcefilemodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\csourceitem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\csources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\csymbolwatchmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\ctilestamp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\ctilestampmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\designers\ctilestamprenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\project\ctilestamps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="c64\debuggers\dbg_cc64.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\dbg_cnes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\dbg_cnes6502.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\dbg_cnesapu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\dbg_cnesmappers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\dbg_cnesppu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\dbg_cnesrom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="compilers\cc65\dbginfo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\debuggerupdatethread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\emulatorprefsdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="environmentsettingsdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\executioninspectordockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\executionvisualizerdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\filepropertiesdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\designers\graphicsbankeditorform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\joypadloggerdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\mapperinformationdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\memoryinspectordockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\designers\musiceditorform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\nametablevisualizerdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\emulator\nesemulatorcontrol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\emulator\nesemulatordockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\emulator\nesemulatorrenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\emulator\nesemulatorthread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\newfiledialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\newprojectdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\oamvisualizerdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="outputpanedockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\panzoomrenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\ppuinformationdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\debuggers\prgromdisplaydialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="project\projectbrowserdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\projectpropertiesdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\propertyeditordialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\qkeymapitemedit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\qsciapisca65.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\qscilexerbin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\qscilexerca65.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\qscilexercc65.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="designers\qscilexerdefault.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <QtMoc Include="common\qtcolorpicker.cpp">
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <ClCompile Include="debuggers\registerinspectordockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\searchbar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\searcherthread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\searchwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\sourcenavigator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="startupsplashdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debuggers\symbolwatchdockwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\emulator\testsuiteexecutivedialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\designers\tilestampeditorform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nes\common\tilificationthread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\version.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\xmlhelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="aboutdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\..\common\appeventfilter.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="appsettings.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\apuinformationdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\designers\attributetableeditorform.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\breakpointdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\breakpointdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\breakpointwatcherthread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="c64\emulator\c64emulatorcontrol.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="c64\emulator\c64emulatorthread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="model\cattributemodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\cattributetable.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\cattributetables.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\cbinaryfile.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="model\cbinaryfilemodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\cbinaryfiles.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\cbreakpointdisplaymodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="..\..\common\cbreakpointinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="common\cbuildertextlogger.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\ccartridge.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="nes\compilers\ccartridgebuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ccartridgemodel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="compilers\cc65\ccc65interface.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\cchrrombank.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\designers\cchrrombankitemdelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\cchrrombanks.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\cchrromitemlistdisplaymodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\cchrromitemtabledisplaymodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\ccodebrowserdisplaymodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\cdebuggerbase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\cdebuggerbitfieldcomboboxdelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\cdebuggerbitfielddisplaymodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\cdebuggercodeprofilermodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\cdebuggerexecutiontracermodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\cdebuggermemorydisplaymodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\cdebuggernumericitemdelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\cdebuggerregisterdisplaymodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\cdebuggersymboldelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="common\cdesignercommon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="designers\cdesignereditorbase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="common\cdockwidgetregistry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="debuggers\cexecutionmarkerdisplaymodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="common\cexpandablestatusbar.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="model\cfiltermodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="nes\common\cgamedatabasehandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nes\compilers\cgraphicsassembler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="nes\project\cgraphicsbank.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="model\cgraphicsbankmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\cgraphicsbanks.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="common\checkboxlist.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\common\chrbankitemstabwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\chrmeminspector.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\chrromdisplaydialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="nes\common\cimageconverters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="c64\compilers\cmachineimagebuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\cmemorydata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="nes\project\cmusicitem.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="model\cmusicmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\cmusics.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\cnesicideproject.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="..\..\common\cobjectregistry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="debuggers\codebrowserdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\codedataloggerdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\codeeditorform.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\codeprofilerdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\common\colorpushbutton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="compilers\compilerthread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="nes\common\cpaletteitemdelegate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="plugins\cpluginmanager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\cprgrombank.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\cprgrombanks.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\cproject.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\cprojectbase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="model\cprojectmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\cprojectprimitives.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="common\cprojecttabwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\cprojecttreecontextmenu.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\cprojecttreeopenaction.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\cprojecttreewidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\cpropertyenumlistmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="common\cpropertyitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="designers\cpropertylistmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\cpropertysymboldelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\cpropertyvaluedelegate.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="..\..\common\cregisterdata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="common\crendererbase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\csounds.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="compilers\csourceassembler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="model\csourcefilemodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\csourceitem.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\csources.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="model\csubmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\csymbolwatchmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\project\ctilestamp.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="model\ctilestampmodel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="nes\designers\ctilestamprenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="nes\project\ctilestamps.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="c64\debuggers\dbg_cc64.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nes\debuggers\dbg_cnes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nes\debuggers\dbg_cnes6502.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nes\debuggers\dbg_cnesapu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nes\debuggers\dbg_cnesmappers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nes\debuggers\dbg_cnesppu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nes\debuggers\dbg_cnesrom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="compilers\cc65\dbginfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="debuggers\debuggerupdatethread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\..\common\emulatorprefsdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="environmentsettingsdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\executioninspectordockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\executionvisualizerdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\filepropertiesdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\designers\graphicsbankeditorform.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="interfaces\icenterwidgetitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\ichrrombankitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\iprojecttreeviewitem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\iuuidvisitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces\ixmlserializable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="nes\debuggers\joypadloggerdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="mainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\mapperinformationdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\memoryinspectordockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\designers\musiceditorform.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\nametablevisualizerdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\emulator\nesemulatorcontrol.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\emulator\nesemulatordockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\emulator\nesemulatorrenderer.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\emulator\nesemulatorthread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\newfiledialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\newprojectdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\oamvisualizerdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="outputpanedockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="common\panzoomrenderer.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\ppuinformationdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\debuggers\prgromdisplaydialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="project\projectbrowserdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\projectpropertiesdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="model\projectsearcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="designers\propertyeditordialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="common\qkeymapitemedit.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="designers\qsciapisca65.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="designers\qscilexerbin.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\qscilexerca65.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\qscilexercc65.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="designers\qscilexerdefault.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="common\qtcolorpicker.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\registerinspectordockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="common\searchbar.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="common\searcherthread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="common\searchwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="common\sourcenavigator.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="startupsplashdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="debuggers\symbolwatchdockwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\emulator\testsuiteexecutivedialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\designers\tilestampeditorform.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="nes\common\tilificationthread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="aboutdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\debuggers\apuinformationdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\designers\attributetableeditorform.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="debuggers\breakpointdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="debuggers\breakpointdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="c64\emulator\c64emulatorcontrol.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="common\cexpandablestatusbar.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\common\chrbankitemstabwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\debuggers\chrromdisplaydialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="debuggers\codebrowserdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\debuggers\codedataloggerdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="designers\codeeditorform.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="debuggers\codeprofilerdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="..\..\common\emulatorprefsdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="environmentsettingsdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="debuggers\executioninspectordockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\debuggers\executionvisualizerdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="designers\filepropertiesdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\designers\graphicsbankeditorform.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\debuggers\joypadloggerdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\debuggers\mapperinformationdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="debuggers\memoryinspectordockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\designers\musiceditorform.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\debuggers\nametablevisualizerdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\emulator\nesemulatorcontrol.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\emulator\nesemulatordockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="designers\newfiledialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="designers\newprojectdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\debuggers\oamvisualizerdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="outputpanedockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="common\panzoomrenderer.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\debuggers\ppuinformationdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\debuggers\prgromdisplaydialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="project\projectbrowserdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="designers\projectpropertiesdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="designers\propertyeditordialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="debuggers\registerinspectordockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="common\searchbar.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="common\searchwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="common\sourcenavigator.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="startupsplashdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="debuggers\symbolwatchdockwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\emulator\testsuiteexecutivedialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="nes\designers\tilestampeditorform.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="(2010-12-26).xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="-">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_bin_rom.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_binary_file.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_breakpoint.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_breakpoint_disabled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_chr_mem.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_code_inspector.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_cpu_ram.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_cpu_registers.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_document-new.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_document-open.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_document-save-all.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_document-save-as.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_document-save.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_edit-clear.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_execution.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_execution_break.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_execution_break_disabled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_execution_pointer.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_item_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_item_remove.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_mapper_memory.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_nametable.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_preferences-desktop-display-color.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_preferences-desktop-gaming.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_preferences-other.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_run-build.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_utilities-terminal.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\About.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Actions-arrow-left-double-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Actions-arrow-right-double-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Actions-arrow-right-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Actions-edit-undo-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Actions-games-solve-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Application.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="CA65">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="CC65">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="addons\NES\FamiTone2\Custom">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Document.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\FamiTracker-Exe.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="templates\NES\Hello">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_2A03.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_2A03inv.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_2A07.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_FDS.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_N163.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_S5B.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_VRC6.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_VRC7.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\InstrumentToolbar-16.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\InstrumentToolbar-256.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\LeftArrow.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\MainToolbar-16.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\MainToolbar-256.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\NESICIDE.mk_in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\NesCarts">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Pause-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="addons\NES\FamiTone2\README.HTM">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_bomb.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_bug.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_cursor.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_cut_red.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_film.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_film_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_film_delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_font.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_graphics_bank.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_magifier_zoom_out.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_magnifier.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_magnifier_zoom_in.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_music.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_page_asm.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_page_white.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_page_white_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_page_white_delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_page_white_paint.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_paintcan.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_pencil.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_circle_filled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_circle_hollow.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_flip_horizontal.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_flip_vertical.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_line.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_rotate_anticlockwise.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_rotate_clockwise.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_square_filled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_square_hollow.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RightArrow.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\SampleBg.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="addons\NES\FamiTone2\Source">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Toolbar-d5.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="World">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="addons.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="..\..\common\resources\appicon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\application-x-mplayer2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\applications-system.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\applications-system.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\applications-utilities.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\applications-utilities.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\bash.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\bash.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="C\c.mk">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\case-sensitive.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\case-sensitive.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\chardevice.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\chardevice.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\compile_16.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\compile_16.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\continue-icon-cpu.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\continue-icon-cpu.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\continue-icon-ppu.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\continue-icon-ppu.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\controller.icns">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\controller.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\controller.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="C\src\crt0.s">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\lib\crt0.s">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\source\data.uc">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-export.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-export.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-import.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-import.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-open.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-open.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-properties.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-properties.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\drive-harddisk.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\edit_delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\error-mark.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\error-mark.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Code\famitone2.inc">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Rules\famitone2.mk">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Code\famitone2.s_includeInBuild">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\find.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\folder-system.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\folder-system.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\folder_closed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\folder_open.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Assembly\tilesets\gamegfx.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="C\tilesets\gamegfx.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\gb.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\gplv3.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\data\graphics.atr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\data\graphics.chr">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\data\graphics.nam">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\data\graphics.pal">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Assembly\header.s_in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="C\header.s_in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\header.s_in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\help-about.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\ico00001.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\ico00002.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\ico00003.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\ico00004.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\ico00005.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icon1.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icon2.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icon3.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icons8-pin.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icons8-sort_down.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icons8-sort_up.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icons8-swiss_army_knife.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\inst_toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\key_black_pressed.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\key_black_unpressed.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\key_white_pressed.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\key_white_unpressed.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\logo.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="C\src\main.c">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Assembly\src\main.s">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\source\main.uc">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="C\src\memmap.inc">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Assembly\src\nes.h">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Assembly\nes.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="C\nes.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\nes.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\source\nes.uc">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\paintcan.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\pen.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\regular-expression.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\regular-expression.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="..\..\common\resource.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="..\..\common\resources\select_tool.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\selection_all_tool.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stepinto_6.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stepover_6.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stepreturn_6.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_exit.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_exit.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-pause.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-pause.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-play.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-play.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-rec.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-rec.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-stop.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-stop.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_right.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_right.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_save-as.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_save-as.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_save.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_save.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\style.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\style.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\system-run.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\system-run.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Assembly\template.nesproject_in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="C\template.nesproject_in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\template.nesproject_in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="templates.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="Assembly\tilesets\titlegfx.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="C\tilesets\titlegfx.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\toolbar1.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\turbo_ver01_by_ogr.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="UC\uc.mk">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\usa.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\vaus.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\view_sort_ascending.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\view_sort_descending.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\window_new.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\window_new.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\deps\Windows\Lua\lua.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

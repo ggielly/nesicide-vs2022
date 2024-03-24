@@ -1,0 +1,813 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C6301559-6D68-3569-9678-B392CB84B9A4}</ProjectGuid>
+    <RootNamespace>nesicide</RootNamespace>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.22621.0</WindowsTargetPlatformMinVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v143</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>nesicide</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v143</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>MultiByte</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>nesicide</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(QtMsBuild)\qt_defaults.props" Condition="Exists('$(QtMsBuild)\qt_defaults.props')" />
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtInstall>5.12.12_msvc2017_64</QtInstall>
+    <QtModules>core;xml;opengl;network;gui;widgets</QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <QtInstall>5.12.12_msvc2017_64</QtInstall>
+    <QtModules>core;xml;opengl;network;gui;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') OR !Exists('$(QtMsBuild)\Qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nesicide</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nesicide</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;../../libs/nes;../../libs/nes/emulator;../../libs/nes/common;../../libs/c64;../../libs/c64/emulator;../../libs/c64/common;../../libs/famitracker;../../deps/Windows/SDL;;../../deps/qscintilla2/src;../../deps/qhexedit2/src;../../deps/rtmidi;.;..\..\common;common;nes\common;compilers;compilers\cc65;nes\compilers;c64\compilers;debuggers;nes\debuggers;c64\debuggers;designers;nes\designers;emulator;nes\emulator;c64\emulator;interfaces;project;nes\project;plugins;resources;release;/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>false</ExceptionHandling>
+      <ObjectFileName>release\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>IDE;_WINDOWS;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NOMINMAX;NULL=0;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>
+      </ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"C:\Program Files (x86)\Windows Kits\10\lib\10.0.22621.0\um\x64\opengl32.lib";nes-emulator.lib;c64-emulator.lib;famitracker.lib;sdl.lib;lua51.lib;qscintilla2_qt5.lib;qhexedit4.lib;rtmidi.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\libs\nes\release;..\..\libs\c64\release;..\..\libs\famitracker\release;..\..\deps\Windows\SDL\x64;..\..\deps\Windows\Lua;..\..\deps\qscintilla2\src\release;..\..\deps\qhexedit2\lib;..\..\deps\rtmidi\release;C:\openssl\lib;C:\Utils\my_sql\mysql-5.6.11-winx64\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\nesicide.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>IDE;_WINDOWS;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NOMINMAX;NULL=0;QT_NO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <QtMocDir>$(Configuration)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+    </QtMoc>
+    <QtUic>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>$(Configuration)</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
+    </QtUic>
+    <QtRcc>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <Compression>default</Compression>
+      <QtRccDir>$(Configuration)</QtRccDir>
+      <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;../../libs/nes;../../libs/nes/emulator;../../libs/nes/common;../../libs/c64;../../libs/c64/emulator;../../libs/c64/common;../../libs/famitracker;../../deps/Windows/SDL;;../../deps/qscintilla2/src;../../deps/qhexedit2/src;../../deps/rtmidi;.;..\..\common;common;nes\common;compilers;compilers\cc65;nes\compilers;c64\compilers;debuggers;nes\debuggers;c64\debuggers;designers;nes\designers;emulator;nes\emulator;c64\emulator;interfaces;project;nes\project;plugins;resources;debug;/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>false</ExceptionHandling>
+      <ObjectFileName>debug\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>IDE;_WINDOWS;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NOMINMAX;NULL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>"C:\Program Files (x86)\Windows Kits\10\lib\10.0.22621.0\um\x64\opengl32.lib";nes-emulator.lib;c64-emulator.lib;famitracker.lib;sdl.lib;lua51.lib;qscintilla2_qt5d.lib;qhexeditd.lib;rtmidi.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\libs\nes\debug;..\..\libs\c64\debug;..\..\libs\famitracker\debug;..\..\deps\Windows\SDL\x64;..\..\deps\Windows\Lua;..\..\deps\qscintilla2\src\debug;..\..\deps\qhexedit2\lib;..\..\deps\rtmidi\debug;C:\openssl\lib;C:\Utils\my_sql\mysql-5.6.11-winx64\lib;C:\Utils\postgresql\pgsql\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\nesicide.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>IDE;_WINDOWS;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NOMINMAX;NULL=0;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtRcc>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <Compression>default</Compression>
+      <QtRccDir>$(Configuration)</QtRccDir>
+      <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
+    </QtRcc>
+    <QtMoc>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <QtMocDir>$(Configuration)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+    </QtMoc>
+    <QtUic>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>$(Configuration)</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
+    </QtUic>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="aboutdialog.cpp" />
+    <ClCompile Include="..\..\common\appeventfilter.cpp" />
+    <ClCompile Include="appsettings.cpp" />
+    <ClCompile Include="nes\debuggers\apuinformationdockwidget.cpp" />
+    <ClCompile Include="nes\designers\attributetableeditorform.cpp" />
+    <ClCompile Include="debuggers\breakpointdialog.cpp" />
+    <ClCompile Include="debuggers\breakpointdockwidget.cpp" />
+    <ClCompile Include="debuggers\breakpointwatcherthread.cpp" />
+    <ClCompile Include="c64\emulator\c64emulatorcontrol.cpp" />
+    <ClCompile Include="c64\emulator\c64emulatorthread.cpp" />
+    <ClCompile Include="model\cattributemodel.cpp" />
+    <ClCompile Include="nes\project\cattributetable.cpp" />
+    <ClCompile Include="nes\project\cattributetables.cpp" />
+    <ClCompile Include="project\cbinaryfile.cpp" />
+    <ClCompile Include="model\cbinaryfilemodel.cpp" />
+    <ClCompile Include="project\cbinaryfiles.cpp" />
+    <ClCompile Include="debuggers\cbreakpointdisplaymodel.cpp" />
+    <ClCompile Include="..\..\common\cbreakpointinfo.cpp" />
+    <ClCompile Include="common\cbuildertextlogger.cpp" />
+    <ClCompile Include="nes\project\ccartridge.cpp" />
+    <ClCompile Include="nes\compilers\ccartridgebuilder.cpp" />
+    <ClCompile Include="model\ccartridgemodel.cpp" />
+    <ClCompile Include="compilers\cc65\ccc65interface.cpp" />
+    <ClCompile Include="nes\project\cchrrombank.cpp" />
+    <ClCompile Include="nes\designers\cchrrombankitemdelegate.cpp" />
+    <ClCompile Include="nes\project\cchrrombanks.cpp" />
+    <ClCompile Include="nes\debuggers\cchrromitemlistdisplaymodel.cpp" />
+    <ClCompile Include="nes\debuggers\cchrromitemtabledisplaymodel.cpp" />
+    <ClCompile Include="debuggers\ccodebrowserdisplaymodel.cpp" />
+    <ClCompile Include="debuggers\cdebuggerbase.cpp" />
+    <ClCompile Include="debuggers\cdebuggerbitfieldcomboboxdelegate.cpp" />
+    <ClCompile Include="debuggers\cdebuggerbitfielddisplaymodel.cpp" />
+    <ClCompile Include="debuggers\cdebuggercodeprofilermodel.cpp" />
+    <ClCompile Include="debuggers\cdebuggerexecutiontracermodel.cpp" />
+    <ClCompile Include="debuggers\cdebuggermemorydisplaymodel.cpp" />
+    <ClCompile Include="debuggers\cdebuggernumericitemdelegate.cpp" />
+    <ClCompile Include="debuggers\cdebuggerregisterdisplaymodel.cpp" />
+    <ClCompile Include="debuggers\cdebuggersymboldelegate.cpp" />
+    <ClCompile Include="designers\cdesignereditorbase.cpp" />
+    <ClCompile Include="common\cdockwidgetregistry.cpp" />
+    <ClCompile Include="debuggers\cexecutionmarkerdisplaymodel.cpp" />
+    <ClCompile Include="common\cexpandablestatusbar.cpp" />
+    <ClCompile Include="model\cfiltermodel.cpp" />
+    <ClCompile Include="nes\common\cgamedatabasehandler.cpp" />
+    <ClCompile Include="nes\compilers\cgraphicsassembler.cpp" />
+    <ClCompile Include="nes\project\cgraphicsbank.cpp" />
+    <ClCompile Include="model\cgraphicsbankmodel.cpp" />
+    <ClCompile Include="nes\project\cgraphicsbanks.cpp" />
+    <ClCompile Include="common\checkboxlist.cpp" />
+    <ClCompile Include="nes\common\chrbankitemstabwidget.cpp" />
+    <ClCompile Include="nes\debuggers\chrmeminspector.cpp" />
+    <ClCompile Include="nes\debuggers\chrromdisplaydialog.cpp" />
+    <ClCompile Include="nes\common\cimageconverters.cpp" />
+    <ClCompile Include="c64\compilers\cmachineimagebuilder.cpp" />
+    <ClCompile Include="nes\project\cmusicitem.cpp" />
+    <ClCompile Include="model\cmusicmodel.cpp" />
+    <ClCompile Include="nes\project\cmusics.cpp" />
+    <ClCompile Include="project\cnesicideproject.cpp" />
+    <ClCompile Include="..\..\common\cobjectregistry.cpp" />
+    <ClCompile Include="debuggers\codebrowserdockwidget.cpp" />
+    <ClCompile Include="nes\debuggers\codedataloggerdockwidget.cpp" />
+    <ClCompile Include="designers\codeeditorform.cpp" />
+    <ClCompile Include="debuggers\codeprofilerdockwidget.cpp" />
+    <ClCompile Include="nes\common\colorpushbutton.cpp" />
+    <ClCompile Include="compilers\compilerthread.cpp" />
+    <ClCompile Include="plugins\cpluginmanager.cpp" />
+    <ClCompile Include="nes\project\cprgrombank.cpp" />
+    <ClCompile Include="nes\project\cprgrombanks.cpp" />
+    <ClCompile Include="project\cproject.cpp" />
+    <ClCompile Include="project\cprojectbase.cpp" />
+    <ClCompile Include="model\cprojectmodel.cpp" />
+    <ClCompile Include="nes\project\cprojectprimitives.cpp" />
+    <ClCompile Include="common\cprojecttabwidget.cpp" />
+    <ClCompile Include="project\cprojecttreecontextmenu.cpp" />
+    <ClCompile Include="project\cprojecttreeopenaction.cpp" />
+    <ClCompile Include="project\cprojecttreewidget.cpp" />
+    <ClCompile Include="designers\cpropertyenumlistmodel.cpp" />
+    <ClCompile Include="common\cpropertyitem.cpp" />
+    <ClCompile Include="designers\cpropertylistmodel.cpp" />
+    <ClCompile Include="designers\cpropertysymboldelegate.cpp" />
+    <ClCompile Include="designers\cpropertyvaluedelegate.cpp" />
+    <ClCompile Include="common\crendererbase.cpp" />
+    <ClCompile Include="nes\project\csounds.cpp" />
+    <ClCompile Include="compilers\csourceassembler.cpp" />
+    <ClCompile Include="model\csourcefilemodel.cpp" />
+    <ClCompile Include="project\csourceitem.cpp" />
+    <ClCompile Include="project\csources.cpp" />
+    <ClCompile Include="debuggers\csymbolwatchmodel.cpp" />
+    <ClCompile Include="nes\project\ctilestamp.cpp" />
+    <ClCompile Include="model\ctilestampmodel.cpp" />
+    <ClCompile Include="nes\designers\ctilestamprenderer.cpp" />
+    <ClCompile Include="nes\project\ctilestamps.cpp" />
+    <ClCompile Include="c64\debuggers\dbg_cc64.cpp" />
+    <ClCompile Include="nes\debuggers\dbg_cnes.cpp" />
+    <ClCompile Include="nes\debuggers\dbg_cnes6502.cpp" />
+    <ClCompile Include="nes\debuggers\dbg_cnesapu.cpp" />
+    <ClCompile Include="nes\debuggers\dbg_cnesmappers.cpp" />
+    <ClCompile Include="nes\debuggers\dbg_cnesppu.cpp" />
+    <ClCompile Include="nes\debuggers\dbg_cnesrom.cpp" />
+    <ClCompile Include="compilers\cc65\dbginfo.c" />
+    <ClCompile Include="debuggers\debuggerupdatethread.cpp" />
+    <ClCompile Include="..\..\common\emulatorprefsdialog.cpp" />
+    <ClCompile Include="environmentsettingsdialog.cpp" />
+    <ClCompile Include="debuggers\executioninspectordockwidget.cpp" />
+    <ClCompile Include="nes\debuggers\executionvisualizerdockwidget.cpp" />
+    <ClCompile Include="designers\filepropertiesdialog.cpp" />
+    <ClCompile Include="nes\designers\graphicsbankeditorform.cpp" />
+    <ClCompile Include="nes\debuggers\joypadloggerdockwidget.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="nes\debuggers\mapperinformationdockwidget.cpp" />
+    <ClCompile Include="debuggers\memoryinspectordockwidget.cpp" />
+    <ClCompile Include="nes\designers\musiceditorform.cpp" />
+    <ClCompile Include="nes\debuggers\nametablevisualizerdockwidget.cpp" />
+    <ClCompile Include="nes\emulator\nesemulatorcontrol.cpp" />
+    <ClCompile Include="nes\emulator\nesemulatordockwidget.cpp" />
+    <ClCompile Include="nes\emulator\nesemulatorrenderer.cpp" />
+    <ClCompile Include="nes\emulator\nesemulatorthread.cpp" />
+    <ClCompile Include="designers\newfiledialog.cpp" />
+    <ClCompile Include="designers\newprojectdialog.cpp" />
+    <ClCompile Include="nes\debuggers\oamvisualizerdockwidget.cpp" />
+    <ClCompile Include="outputpanedockwidget.cpp" />
+    <ClCompile Include="common\panzoomrenderer.cpp" />
+    <ClCompile Include="nes\debuggers\ppuinformationdockwidget.cpp" />
+    <ClCompile Include="nes\debuggers\prgromdisplaydialog.cpp" />
+    <ClCompile Include="project\projectbrowserdockwidget.cpp" />
+    <ClCompile Include="designers\projectpropertiesdialog.cpp" />
+    <ClCompile Include="designers\propertyeditordialog.cpp" />
+    <ClCompile Include="common\qkeymapitemedit.cpp" />
+    <ClCompile Include="designers\qsciapisca65.cpp" />
+    <ClCompile Include="designers\qscilexerbin.cpp" />
+    <ClCompile Include="designers\qscilexerca65.cpp" />
+    <ClCompile Include="designers\qscilexercc65.cpp" />
+    <ClCompile Include="designers\qscilexerdefault.cpp" />
+    <ClCompile Include="debuggers\registerinspectordockwidget.cpp" />
+    <ClCompile Include="common\searchbar.cpp" />
+    <ClCompile Include="common\searcherthread.cpp" />
+    <ClCompile Include="common\searchwidget.cpp" />
+    <ClCompile Include="common\sourcenavigator.cpp" />
+    <ClCompile Include="startupsplashdialog.cpp" />
+    <ClCompile Include="debuggers\symbolwatchdockwidget.cpp" />
+    <ClCompile Include="nes\emulator\testsuiteexecutivedialog.cpp" />
+    <ClCompile Include="nes\designers\tilestampeditorform.cpp" />
+    <ClCompile Include="nes\common\tilificationthread.cpp" />
+    <ClCompile Include="..\..\common\version.cpp" />
+    <ClCompile Include="..\..\common\xmlhelpers.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="aboutdialog.h" />
+    <QtMoc Include="..\..\common\appeventfilter.h" />
+    <QtMoc Include="appsettings.h" />
+    <QtMoc Include="nes\debuggers\apuinformationdockwidget.h" />
+    <QtMoc Include="nes\designers\attributetableeditorform.h" />
+    <QtMoc Include="debuggers\breakpointdialog.h" />
+    <QtMoc Include="debuggers\breakpointdockwidget.h" />
+    <QtMoc Include="debuggers\breakpointwatcherthread.h" />
+    <QtMoc Include="c64\emulator\c64emulatorcontrol.h" />
+    <QtMoc Include="c64\emulator\c64emulatorthread.h" />
+    <QtMoc Include="model\cattributemodel.h" />
+    <QtMoc Include="nes\project\cattributetable.h" />
+    <QtMoc Include="nes\project\cattributetables.h" />
+    <QtMoc Include="project\cbinaryfile.h" />
+    <QtMoc Include="model\cbinaryfilemodel.h" />
+    <QtMoc Include="project\cbinaryfiles.h" />
+    <QtMoc Include="debuggers\cbreakpointdisplaymodel.h" />
+    <ClInclude Include="..\..\common\cbreakpointinfo.h" />
+    <QtMoc Include="common\cbuildertextlogger.h" />
+    <QtMoc Include="nes\project\ccartridge.h" />
+    <ClInclude Include="..\..\deps\Windows\Lua\lua.h" />
+    <ClInclude Include="nes\compilers\ccartridgebuilder.h" />
+    <ClInclude Include="model\ccartridgemodel.h" />
+    <QtMoc Include="compilers\cc65\ccc65interface.h" />
+    <QtMoc Include="nes\project\cchrrombank.h" />
+    <QtMoc Include="nes\designers\cchrrombankitemdelegate.h" />
+    <QtMoc Include="nes\project\cchrrombanks.h" />
+    <QtMoc Include="nes\debuggers\cchrromitemlistdisplaymodel.h" />
+    <QtMoc Include="nes\debuggers\cchrromitemtabledisplaymodel.h" />
+    <QtMoc Include="debuggers\ccodebrowserdisplaymodel.h" />
+    <QtMoc Include="debuggers\cdebuggerbase.h" />
+    <QtMoc Include="debuggers\cdebuggerbitfieldcomboboxdelegate.h" />
+    <QtMoc Include="debuggers\cdebuggerbitfielddisplaymodel.h" />
+    <QtMoc Include="debuggers\cdebuggercodeprofilermodel.h" />
+    <QtMoc Include="debuggers\cdebuggerexecutiontracermodel.h" />
+    <QtMoc Include="debuggers\cdebuggermemorydisplaymodel.h" />
+    <QtMoc Include="debuggers\cdebuggernumericitemdelegate.h" />
+    <QtMoc Include="debuggers\cdebuggerregisterdisplaymodel.h" />
+    <QtMoc Include="debuggers\cdebuggersymboldelegate.h" />
+    <ClInclude Include="common\cdesignercommon.h" />
+    <QtMoc Include="designers\cdesignereditorbase.h" />
+    <ClInclude Include="common\cdockwidgetregistry.h" />
+    <QtMoc Include="debuggers\cexecutionmarkerdisplaymodel.h" />
+    <QtMoc Include="common\cexpandablestatusbar.h" />
+    <QtMoc Include="model\cfiltermodel.h" />
+    <ClInclude Include="nes\common\cgamedatabasehandler.h" />
+    <ClInclude Include="nes\compilers\cgraphicsassembler.h" />
+    <QtMoc Include="nes\project\cgraphicsbank.h" />
+    <QtMoc Include="model\cgraphicsbankmodel.h" />
+    <QtMoc Include="nes\project\cgraphicsbanks.h" />
+    <QtMoc Include="common\checkboxlist.h" />
+    <QtMoc Include="nes\common\chrbankitemstabwidget.h" />
+    <QtMoc Include="nes\debuggers\chrmeminspector.h" />
+    <QtMoc Include="nes\debuggers\chrromdisplaydialog.h" />
+    <ClInclude Include="nes\common\cimageconverters.h" />
+    <ClInclude Include="c64\compilers\cmachineimagebuilder.h" />
+    <ClInclude Include="..\..\common\cmemorydata.h" />
+    <QtMoc Include="nes\project\cmusicitem.h" />
+    <QtMoc Include="model\cmusicmodel.h" />
+    <QtMoc Include="nes\project\cmusics.h" />
+    <QtMoc Include="project\cnesicideproject.h" />
+    <ClInclude Include="..\..\common\cobjectregistry.h" />
+    <QtMoc Include="debuggers\codebrowserdockwidget.h" />
+    <QtMoc Include="nes\debuggers\codedataloggerdockwidget.h" />
+    <QtMoc Include="designers\codeeditorform.h" />
+    <QtMoc Include="debuggers\codeprofilerdockwidget.h" />
+    <QtMoc Include="nes\common\colorpushbutton.h" />
+    <QtMoc Include="compilers\compilerthread.h" />
+    <ClInclude Include="nes\common\cpaletteitemdelegate.h" />
+    <QtMoc Include="plugins\cpluginmanager.h" />
+    <QtMoc Include="nes\project\cprgrombank.h" />
+    <QtMoc Include="nes\project\cprgrombanks.h" />
+    <QtMoc Include="project\cproject.h" />
+    <QtMoc Include="project\cprojectbase.h" />
+    <QtMoc Include="model\cprojectmodel.h" />
+    <QtMoc Include="nes\project\cprojectprimitives.h" />
+    <QtMoc Include="common\cprojecttabwidget.h" />
+    <QtMoc Include="project\cprojecttreecontextmenu.h" />
+    <QtMoc Include="project\cprojecttreeopenaction.h" />
+    <QtMoc Include="project\cprojecttreewidget.h" />
+    <QtMoc Include="designers\cpropertyenumlistmodel.h" />
+    <ClInclude Include="common\cpropertyitem.h" />
+    <QtMoc Include="designers\cpropertylistmodel.h" />
+    <QtMoc Include="designers\cpropertysymboldelegate.h" />
+    <QtMoc Include="designers\cpropertyvaluedelegate.h" />
+    <ClInclude Include="..\..\common\cregisterdata.h" />
+    <QtMoc Include="common\crendererbase.h" />
+    <QtMoc Include="nes\project\csounds.h" />
+    <ClInclude Include="compilers\csourceassembler.h" />
+    <QtMoc Include="model\csourcefilemodel.h" />
+    <QtMoc Include="project\csourceitem.h" />
+    <QtMoc Include="project\csources.h" />
+    <QtMoc Include="model\csubmodel.h" />
+    <QtMoc Include="debuggers\csymbolwatchmodel.h" />
+    <QtMoc Include="nes\project\ctilestamp.h" />
+    <QtMoc Include="model\ctilestampmodel.h" />
+    <ClInclude Include="nes\designers\ctilestamprenderer.h" />
+    <QtMoc Include="nes\project\ctilestamps.h" />
+    <ClInclude Include="c64\debuggers\dbg_cc64.h" />
+    <ClInclude Include="nes\debuggers\dbg_cnes.h" />
+    <ClInclude Include="nes\debuggers\dbg_cnes6502.h" />
+    <ClInclude Include="nes\debuggers\dbg_cnesapu.h" />
+    <ClInclude Include="nes\debuggers\dbg_cnesmappers.h" />
+    <ClInclude Include="nes\debuggers\dbg_cnesppu.h" />
+    <ClInclude Include="nes\debuggers\dbg_cnesrom.h" />
+    <ClInclude Include="compilers\cc65\dbginfo.h" />
+    <QtMoc Include="debuggers\debuggerupdatethread.h" />
+    <QtMoc Include="..\..\common\emulatorprefsdialog.h" />
+    <QtMoc Include="environmentsettingsdialog.h" />
+    <QtMoc Include="debuggers\executioninspectordockwidget.h" />
+    <QtMoc Include="nes\debuggers\executionvisualizerdockwidget.h" />
+    <QtMoc Include="designers\filepropertiesdialog.h" />
+    <QtMoc Include="nes\designers\graphicsbankeditorform.h" />
+    <ClInclude Include="interfaces\icenterwidgetitem.h" />
+    <ClInclude Include="interfaces\ichrrombankitem.h" />
+    <ClInclude Include="interfaces\iprojecttreeviewitem.h" />
+    <ClInclude Include="model\iuuidvisitor.h" />
+    <ClInclude Include="interfaces\ixmlserializable.h" />
+    <QtMoc Include="nes\debuggers\joypadloggerdockwidget.h" />
+    <ClInclude Include="main.h" />
+    <QtMoc Include="mainwindow.h" />
+    <QtMoc Include="nes\debuggers\mapperinformationdockwidget.h" />
+    <QtMoc Include="debuggers\memoryinspectordockwidget.h" />
+    <QtMoc Include="nes\designers\musiceditorform.h" />
+    <QtMoc Include="nes\debuggers\nametablevisualizerdockwidget.h" />
+    <QtMoc Include="nes\emulator\nesemulatorcontrol.h" />
+    <QtMoc Include="nes\emulator\nesemulatordockwidget.h" />
+    <QtMoc Include="nes\emulator\nesemulatorrenderer.h" />
+    <QtMoc Include="nes\emulator\nesemulatorthread.h" />
+    <QtMoc Include="designers\newfiledialog.h" />
+    <QtMoc Include="designers\newprojectdialog.h" />
+    <QtMoc Include="nes\debuggers\oamvisualizerdockwidget.h" />
+    <QtMoc Include="outputpanedockwidget.h" />
+    <QtMoc Include="common\panzoomrenderer.h" />
+    <QtMoc Include="nes\debuggers\ppuinformationdockwidget.h" />
+    <QtMoc Include="nes\debuggers\prgromdisplaydialog.h" />
+    <QtMoc Include="project\projectbrowserdockwidget.h" />
+    <QtMoc Include="designers\projectpropertiesdialog.h" />
+    <ClInclude Include="model\projectsearcher.h" />
+    <QtMoc Include="designers\propertyeditordialog.h" />
+    <QtMoc Include="common\qkeymapitemedit.h" />
+    <ClInclude Include="designers\qsciapisca65.h" />
+    <QtMoc Include="designers\qscilexerbin.h" />
+    <QtMoc Include="designers\qscilexerca65.h" />
+    <QtMoc Include="designers\qscilexercc65.h" />
+    <QtMoc Include="designers\qscilexerdefault.h" />
+    <QtMoc Include="common\qtcolorpicker.h" />
+    <QtMoc Include="debuggers\registerinspectordockwidget.h" />
+    <QtMoc Include="common\searchbar.h" />
+    <QtMoc Include="common\searcherthread.h" />
+    <QtMoc Include="common\searchwidget.h" />
+    <QtMoc Include="common\sourcenavigator.h" />
+    <QtMoc Include="startupsplashdialog.h" />
+    <QtMoc Include="debuggers\symbolwatchdockwidget.h" />
+    <QtMoc Include="nes\emulator\testsuiteexecutivedialog.h" />
+    <QtMoc Include="nes\designers\tilestampeditorform.h" />
+    <QtMoc Include="nes\common\tilificationthread.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w -DIDE -I../../libs/nes -I../../libs/nes/emulator -I../../libs/nes/common -I../../libs/c64 -I../../libs/c64/emulator -I../../libs/c64/common -I../../libs/famitracker -I../../deps/Windows/SDL -I ../../deps/Windows/Lua -I../../deps/qscintilla2/src -I../../deps/qhexedit2/src -I../../deps/rtmidi -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w -DIDE -I../../libs/nes -I../../libs/nes/emulator -I../../libs/nes/common -I../../libs/c64 -I../../libs/c64/emulator -I../../libs/c64/common -I../../libs/famitracker -I../../deps/Windows/SDL -I ../../deps/Windows/Lua -I../../deps/qscintilla2/src -I../../deps/qhexedit2/src -I../../deps/rtmidi -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_predefs.h;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <QtMoc Include="common\qtcolorpicker.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocDir>$(Configuration)</QtMocDir>
+      <QtMocFileName>%(Filename).moc</QtMocFileName>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="aboutdialog.ui" />
+    <QtUic Include="nes\debuggers\apuinformationdockwidget.ui" />
+    <QtUic Include="nes\designers\attributetableeditorform.ui" />
+    <QtUic Include="debuggers\breakpointdialog.ui" />
+    <QtUic Include="debuggers\breakpointdockwidget.ui" />
+    <QtUic Include="c64\emulator\c64emulatorcontrol.ui" />
+    <QtUic Include="common\cexpandablestatusbar.ui" />
+    <QtUic Include="nes\common\chrbankitemstabwidget.ui" />
+    <QtUic Include="nes\debuggers\chrromdisplaydialog.ui" />
+    <QtUic Include="debuggers\codebrowserdockwidget.ui" />
+    <QtUic Include="nes\debuggers\codedataloggerdockwidget.ui" />
+    <QtUic Include="designers\codeeditorform.ui" />
+    <QtUic Include="debuggers\codeprofilerdockwidget.ui" />
+    <QtUic Include="..\..\common\emulatorprefsdialog.ui" />
+    <QtUic Include="environmentsettingsdialog.ui" />
+    <QtUic Include="debuggers\executioninspectordockwidget.ui" />
+    <QtUic Include="nes\debuggers\executionvisualizerdockwidget.ui" />
+    <QtUic Include="designers\filepropertiesdialog.ui" />
+    <QtUic Include="nes\designers\graphicsbankeditorform.ui" />
+    <QtUic Include="nes\debuggers\joypadloggerdockwidget.ui" />
+    <QtUic Include="mainwindow.ui" />
+    <QtUic Include="nes\debuggers\mapperinformationdockwidget.ui" />
+    <QtUic Include="debuggers\memoryinspectordockwidget.ui" />
+    <QtUic Include="nes\designers\musiceditorform.ui" />
+    <QtUic Include="nes\debuggers\nametablevisualizerdockwidget.ui" />
+    <QtUic Include="nes\emulator\nesemulatorcontrol.ui" />
+    <QtUic Include="nes\emulator\nesemulatordockwidget.ui" />
+    <QtUic Include="designers\newfiledialog.ui" />
+    <QtUic Include="designers\newprojectdialog.ui" />
+    <QtUic Include="nes\debuggers\oamvisualizerdockwidget.ui" />
+    <QtUic Include="outputpanedockwidget.ui" />
+    <QtUic Include="common\panzoomrenderer.ui" />
+    <QtUic Include="nes\debuggers\ppuinformationdockwidget.ui" />
+    <QtUic Include="nes\debuggers\prgromdisplaydialog.ui" />
+    <QtUic Include="project\projectbrowserdockwidget.ui" />
+    <QtUic Include="designers\projectpropertiesdialog.ui" />
+    <QtUic Include="designers\propertyeditordialog.ui" />
+    <QtUic Include="debuggers\registerinspectordockwidget.ui" />
+    <QtUic Include="common\searchbar.ui" />
+    <QtUic Include="common\searchwidget.ui" />
+    <QtUic Include="common\sourcenavigator.ui" />
+    <QtUic Include="startupsplashdialog.ui" />
+    <QtUic Include="debuggers\symbolwatchdockwidget.ui" />
+    <QtUic Include="nes\emulator\testsuiteexecutivedialog.ui" />
+    <QtUic Include="nes\designers\tilestampeditorform.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="(2010-12-26).xml" />
+    <None Include="-" />
+    <None Include="..\..\common\resources\22_bin_rom.png" />
+    <None Include="..\..\common\resources\22_binary_file.png" />
+    <None Include="..\..\common\resources\22_breakpoint.png" />
+    <None Include="..\..\common\resources\22_breakpoint_disabled.png" />
+    <None Include="..\..\common\resources\22_chr_mem.png" />
+    <None Include="..\..\common\resources\22_code_inspector.png" />
+    <None Include="..\..\common\resources\22_cpu_ram.png" />
+    <None Include="..\..\common\resources\22_cpu_registers.png" />
+    <None Include="..\..\common\resources\22_document-new.png" />
+    <None Include="..\..\common\resources\22_document-open.png" />
+    <None Include="..\..\common\resources\22_document-save-all.png" />
+    <None Include="..\..\common\resources\22_document-save-as.png" />
+    <None Include="..\..\common\resources\22_document-save.png" />
+    <None Include="..\..\common\resources\22_edit-clear.png" />
+    <None Include="..\..\common\resources\22_execution.png" />
+    <None Include="..\..\common\resources\22_execution_break.png" />
+    <None Include="..\..\common\resources\22_execution_break_disabled.png" />
+    <None Include="..\..\common\resources\22_execution_pointer.png" />
+    <None Include="..\..\common\resources\22_item_add.png" />
+    <None Include="..\..\common\resources\22_item_remove.png" />
+    <None Include="..\..\common\resources\22_mapper_memory.png" />
+    <None Include="..\..\common\resources\22_nametable.png" />
+    <None Include="..\..\common\resources\22_preferences-desktop-display-color.png" />
+    <None Include="..\..\common\resources\22_preferences-desktop-gaming.png" />
+    <None Include="..\..\common\resources\22_preferences-other.png" />
+    <None Include="..\..\common\resources\22_run-build.png" />
+    <None Include="..\..\common\resources\22_utilities-terminal.png" />
+    <None Include="..\..\common\resources\About.bmp" />
+    <None Include="..\..\common\resources\Actions-arrow-left-double-icon.png" />
+    <None Include="..\..\common\resources\Actions-arrow-right-double-icon.png" />
+    <None Include="..\..\common\resources\Actions-arrow-right-icon.png" />
+    <None Include="..\..\common\resources\Actions-edit-undo-icon.png" />
+    <None Include="..\..\common\resources\Actions-games-solve-icon.png" />
+    <None Include="..\..\common\resources\Application.ico" />
+    <None Include="CA65" />
+    <None Include="CC65" />
+    <None Include="addons\NES\FamiTone2\Custom" />
+    <None Include="..\..\common\resources\Document.ico" />
+    <None Include="..\..\common\resources\FamiTracker-Exe.ico" />
+    <None Include="templates\NES\Hello" />
+    <None Include="..\..\common\resources\Inst_2A03.ico" />
+    <None Include="..\..\common\resources\Inst_2A03inv.ico" />
+    <None Include="..\..\common\resources\Inst_2A07.ico" />
+    <None Include="..\..\common\resources\Inst_FDS.ico" />
+    <None Include="..\..\common\resources\Inst_N163.ico" />
+    <None Include="..\..\common\resources\Inst_S5B.ico" />
+    <None Include="..\..\common\resources\Inst_VRC6.ico" />
+    <None Include="..\..\common\resources\Inst_VRC7.ico" />
+    <None Include="..\..\common\resources\InstrumentToolbar-16.bmp" />
+    <None Include="..\..\common\resources\InstrumentToolbar-256.bmp" />
+    <None Include="..\..\common\resources\LeftArrow.ico" />
+    <None Include="..\..\common\resources\MainToolbar-16.bmp" />
+    <None Include="..\..\common\resources\MainToolbar-256.bmp" />
+    <None Include="..\..\common\resources\NESICIDE.mk_in" />
+    <None Include="..\..\common\resources\NesCarts" />
+    <None Include="..\..\common\resources\Pause-icon.png" />
+    <None Include="addons\NES\FamiTone2\README.HTM" />
+    <None Include="..\..\common\resources\RR_bomb.png" />
+    <None Include="..\..\common\resources\RR_bug.png" />
+    <None Include="..\..\common\resources\RR_cursor.png" />
+    <None Include="..\..\common\resources\RR_cut_red.png" />
+    <None Include="..\..\common\resources\RR_film.png" />
+    <None Include="..\..\common\resources\RR_film_add.png" />
+    <None Include="..\..\common\resources\RR_film_delete.png" />
+    <None Include="..\..\common\resources\RR_font.png" />
+    <None Include="..\..\common\resources\RR_graphics_bank.png" />
+    <None Include="..\..\common\resources\RR_magifier_zoom_out.png" />
+    <None Include="..\..\common\resources\RR_magnifier.png" />
+    <None Include="..\..\common\resources\RR_magnifier_zoom_in.png" />
+    <None Include="..\..\common\resources\RR_music.png" />
+    <None Include="..\..\common\resources\RR_page_asm.png" />
+    <None Include="..\..\common\resources\RR_page_white.png" />
+    <None Include="..\..\common\resources\RR_page_white_add.png" />
+    <None Include="..\..\common\resources\RR_page_white_delete.png" />
+    <None Include="..\..\common\resources\RR_page_white_paint.png" />
+    <None Include="..\..\common\resources\RR_paintcan.png" />
+    <None Include="..\..\common\resources\RR_pencil.png" />
+    <None Include="..\..\common\resources\RR_shape_circle_filled.png" />
+    <None Include="..\..\common\resources\RR_shape_circle_hollow.png" />
+    <None Include="..\..\common\resources\RR_shape_flip_horizontal.png" />
+    <None Include="..\..\common\resources\RR_shape_flip_vertical.png" />
+    <None Include="..\..\common\resources\RR_shape_line.png" />
+    <None Include="..\..\common\resources\RR_shape_rotate_anticlockwise.png" />
+    <None Include="..\..\common\resources\RR_shape_rotate_clockwise.png" />
+    <None Include="..\..\common\resources\RR_shape_square_filled.png" />
+    <None Include="..\..\common\resources\RR_shape_square_hollow.png" />
+    <None Include="..\..\common\resources\RightArrow.ico" />
+    <None Include="..\..\common\resources\SampleBg.bmp" />
+    <None Include="addons\NES\FamiTone2\Source" />
+    <None Include="..\..\common\resources\Toolbar-d5.bmp" />
+    <None Include="..\..\common\resources\Toolbar.bmp" />
+    <None Include="World" />
+    <QtRcc Include="addons.qrc">
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">addons</InitFuncName>
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">addons</InitFuncName>
+    </QtRcc>
+    <None Include="..\..\common\resources\appicon.png" />
+    <None Include="..\..\common\resources\application-x-mplayer2.png" />
+    <None Include="..\..\common\resources\applications-system.png" />
+    <None Include="..\..\common\resources\applications-system.svg" />
+    <None Include="..\..\common\resources\applications-utilities.png" />
+    <None Include="..\..\common\resources\applications-utilities.svg" />
+    <None Include="..\..\common\resources\bash.png" />
+    <None Include="..\..\common\resources\bash.svg" />
+    <None Include="C\c.mk" />
+    <None Include="..\..\common\resources\case-sensitive.png" />
+    <None Include="..\..\common\resources\case-sensitive.svg" />
+    <None Include="..\..\common\resources\chardevice.png" />
+    <None Include="..\..\common\resources\chardevice.svg" />
+    <None Include="..\..\common\resources\compile_16.png" />
+    <None Include="..\..\common\resources\compile_16.svg" />
+    <None Include="..\..\common\resources\continue-icon-cpu.png" />
+    <None Include="..\..\common\resources\continue-icon-cpu.svg" />
+    <None Include="..\..\common\resources\continue-icon-ppu.png" />
+    <None Include="..\..\common\resources\continue-icon-ppu.svg" />
+    <None Include="..\..\common\resources\controller.icns" />
+    <None Include="..\..\common\resources\controller.png" />
+    <None Include="..\..\common\resources\controller.svg" />
+    <None Include="C\src\crt0.s" />
+    <None Include="UC\lib\crt0.s" />
+    <None Include="UC\source\data.uc" />
+    <None Include="..\..\common\resources\document-export.png" />
+    <None Include="..\..\common\resources\document-export.svg" />
+    <None Include="..\..\common\resources\document-import.png" />
+    <None Include="..\..\common\resources\document-import.svg" />
+    <None Include="..\..\common\resources\document-open.png" />
+    <None Include="..\..\common\resources\document-open.svg" />
+    <None Include="..\..\common\resources\document-properties.png" />
+    <None Include="..\..\common\resources\document-properties.svg" />
+    <None Include="..\..\common\resources\drive-harddisk.svg" />
+    <None Include="..\..\common\resources\edit_delete.png" />
+    <None Include="..\..\common\resources\error-mark.png" />
+    <None Include="..\..\common\resources\error-mark.svg" />
+    <None Include="Code\famitone2.inc" />
+    <None Include="Rules\famitone2.mk" />
+    <None Include="Code\famitone2.s_includeInBuild" />
+    <None Include="..\..\common\resources\find.png" />
+    <None Include="..\..\common\resources\folder-system.png" />
+    <None Include="..\..\common\resources\folder-system.svg" />
+    <None Include="..\..\common\resources\folder_closed.png" />
+    <None Include="..\..\common\resources\folder_open.png" />
+    <None Include="Assembly\tilesets\gamegfx.png" />
+    <None Include="C\tilesets\gamegfx.png" />
+    <None Include="..\..\common\resources\gb.png" />
+    <None Include="..\..\common\resources\gplv3.png" />
+    <None Include="UC\data\graphics.atr" />
+    <None Include="UC\data\graphics.chr" />
+    <None Include="UC\data\graphics.nam" />
+    <None Include="UC\data\graphics.pal" />
+    <None Include="Assembly\header.s_in" />
+    <None Include="C\header.s_in" />
+    <None Include="UC\header.s_in" />
+    <None Include="..\..\common\resources\help-about.png" />
+    <None Include="..\..\common\resources\ico00001.ico" />
+    <None Include="..\..\common\resources\ico00002.ico" />
+    <None Include="..\..\common\resources\ico00003.ico" />
+    <None Include="..\..\common\resources\ico00004.ico" />
+    <None Include="..\..\common\resources\ico00005.ico" />
+    <None Include="..\..\common\resources\icon1.ico" />
+    <None Include="..\..\common\resources\icon2.ico" />
+    <None Include="..\..\common\resources\icon3.ico" />
+    <None Include="..\..\common\resources\icons8-pin.png" />
+    <None Include="..\..\common\resources\icons8-sort_down.png" />
+    <None Include="..\..\common\resources\icons8-sort_up.png" />
+    <None Include="..\..\common\resources\icons8-swiss_army_knife.png" />
+    <None Include="..\..\common\resources\inst_toolbar.bmp" />
+    <None Include="..\..\common\resources\key_black_pressed.bmp" />
+    <None Include="..\..\common\resources\key_black_unpressed.bmp" />
+    <None Include="..\..\common\resources\key_white_pressed.bmp" />
+    <None Include="..\..\common\resources\key_white_unpressed.bmp" />
+    <None Include="..\..\common\resources\logo.png" />
+    <None Include="C\src\main.c" />
+    <None Include="Assembly\src\main.s" />
+    <None Include="UC\source\main.uc" />
+    <None Include="C\src\memmap.inc" />
+    <None Include="Assembly\src\nes.h" />
+    <None Include="Assembly\nes.ini" />
+    <None Include="C\nes.ini" />
+    <None Include="UC\nes.ini" />
+    <None Include="UC\source\nes.uc" />
+    <None Include="..\..\common\resources\paintcan.png" />
+    <None Include="..\..\common\resources\pen.png" />
+    <None Include="..\..\common\resources\regular-expression.png" />
+    <None Include="..\..\common\resources\regular-expression.svg" />
+    <QtRcc Include="..\..\common\resource.qrc">
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">resource</InitFuncName>
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">resource</InitFuncName>
+    </QtRcc>
+    <None Include="..\..\common\resources\select_tool.png" />
+    <None Include="..\..\common\resources\selection_all_tool.png" />
+    <None Include="..\..\common\resources\stepinto_6.png" />
+    <None Include="..\..\common\resources\stepover_6.png" />
+    <None Include="..\..\common\resources\stepreturn_6.png" />
+    <None Include="..\..\common\resources\stock_exit.png" />
+    <None Include="..\..\common\resources\stock_exit.svg" />
+    <None Include="..\..\common\resources\stock_media-pause.png" />
+    <None Include="..\..\common\resources\stock_media-pause.svg" />
+    <None Include="..\..\common\resources\stock_media-play.png" />
+    <None Include="..\..\common\resources\stock_media-play.svg" />
+    <None Include="..\..\common\resources\stock_media-rec.png" />
+    <None Include="..\..\common\resources\stock_media-rec.svg" />
+    <None Include="..\..\common\resources\stock_media-stop.png" />
+    <None Include="..\..\common\resources\stock_media-stop.svg" />
+    <None Include="..\..\common\resources\stock_right.png" />
+    <None Include="..\..\common\resources\stock_right.svg" />
+    <None Include="..\..\common\resources\stock_save-as.png" />
+    <None Include="..\..\common\resources\stock_save-as.svg" />
+    <None Include="..\..\common\resources\stock_save.png" />
+    <None Include="..\..\common\resources\stock_save.svg" />
+    <None Include="..\..\common\resources\style.png" />
+    <None Include="..\..\common\resources\style.svg" />
+    <None Include="..\..\common\resources\system-run.png" />
+    <None Include="..\..\common\resources\system-run.svg" />
+    <None Include="Assembly\template.nesproject_in" />
+    <None Include="C\template.nesproject_in" />
+    <None Include="UC\template.nesproject_in" />
+    <QtRcc Include="templates.qrc">
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">templates</InitFuncName>
+      <InitFuncName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">templates</InitFuncName>
+    </QtRcc>
+    <None Include="Assembly\tilesets\titlegfx.png" />
+    <None Include="C\tilesets\titlegfx.png" />
+    <None Include="..\..\common\resources\toolbar1.bmp" />
+    <None Include="..\..\common\resources\turbo_ver01_by_ogr.png" />
+    <None Include="UC\uc.mk" />
+    <None Include="..\..\common\resources\usa.png" />
+    <None Include="..\..\common\resources\vaus.png" />
+    <None Include="..\..\common\resources\view_sort_ascending.png" />
+    <None Include="..\..\common\resources\view_sort_descending.png" />
+    <None Include="..\..\common\resources\window_new.png" />
+    <None Include="..\..\common\resources\window_new.svg" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="$(QtMsBuild)\qt.targets" Condition="Exists('$(QtMsBuild)\qt.targets')" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

@@ -1,0 +1,651 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7EBE6364-B8EF-3F28-9130-DBA123DB8BAD}</ProjectGuid>
+    <RootNamespace>famitracker</RootNamespace>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.22621.0</WindowsTargetPlatformMinVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+    <ProjectName>famitracker-old</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v142</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>famitracker</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v142</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>famitracker</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(QtMsBuild)\qt_defaults.props" Condition="Exists('$(QtMsBuild)\qt_defaults.props')" />
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtInstall>5.12.12_msvc2017_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <QtInstall>5.12.12_msvc2017_64</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') OR !Exists('$(QtMsBuild)\Qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">famitracker</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</PostBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">famitracker</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;../../deps/Windows/SDL;../../deps/boost_1_64_0;../../deps/rtmidi;.;Source;..\..\common;Source\APU;release;/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>release\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NOMINMAX;NULL=0;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>
+      </ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>sdl.lib;rtmidi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\deps\Windows\SDL\x64;..\..\deps\rtmidi\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\famitracker.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NOMINMAX;NULL=0;QT_NO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>cd release &amp; del famitracker.lib &amp; dir *.obj &amp; lib -out:famitracker.lib *.obj</Command>
+      <Message>cd release &amp; del famitracker.lib &amp; dir *.obj &amp; lib -out:famitracker.lib *.obj</Message>
+    </PostBuildEvent>
+    <QtMoc>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <QtMocDir>$(Configuration)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+    </QtMoc>
+    <QtRcc>
+      <Compression>default</Compression>
+      <InitFuncName>resource</InitFuncName>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <QtRccDir>$(Configuration)</QtRccDir>
+      <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;../../deps/Windows/SDL;../../deps/boost_1_64_0;../../deps/rtmidi;.;Source;..\..\common;Source\APU;debug;/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>debug\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NOMINMAX;NULL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>sdl.lib;rtmidi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\deps\Windows\SDL\x64;..\..\deps\rtmidi\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <OutputFile>$(OutDir)\famitracker.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;NOMINMAX;NULL=0;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>cd debug &amp; del famitracker.lib &amp; dir *.obj &amp; lib -out:famitracker.lib *.obj</Command>
+      <Message>cd debug &amp; del famitracker.lib &amp; dir *.obj &amp; lib -out:famitracker.lib *.obj</Message>
+    </PostBuildEvent>
+    <QtMoc>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <QtMocDir>$(Configuration)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+    </QtMoc>
+    <QtRcc>
+      <InitFuncName>resource</InitFuncName>
+      <Compression>default</Compression>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <QtRccDir>$(Configuration)</QtRccDir>
+      <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\APU\APU.cpp" />
+    <ClCompile Include="Source\AboutDlg.cpp" />
+    <ClCompile Include="Source\Accelerator.cpp" />
+    <ClCompile Include="Source\Action.cpp" />
+    <ClCompile Include="Source\Blip_Buffer\Blip_Buffer.cpp" />
+    <ClCompile Include="Source\ChannelHandler.cpp" />
+    <ClCompile Include="Source\ChannelMap.cpp" />
+    <ClCompile Include="Source\Channels2A03.cpp" />
+    <ClCompile Include="Source\ChannelsDlg.cpp" />
+    <ClCompile Include="Source\ChannelsFDS.cpp" />
+    <ClCompile Include="Source\ChannelsMMC5.cpp" />
+    <ClCompile Include="Source\ChannelsN163.cpp" />
+    <ClCompile Include="Source\ChannelsS5B.cpp" />
+    <ClCompile Include="Source\ChannelsVRC6.cpp" />
+    <ClCompile Include="Source\ChannelsVRC7.cpp" />
+    <ClCompile Include="Source\Chunk.cpp" />
+    <ClCompile Include="Source\ChunkRenderBinary.cpp" />
+    <ClCompile Include="Source\ChunkRenderText.cpp" />
+    <ClCompile Include="Source\Clipboard.cpp" />
+    <ClCompile Include="Source\CommandLineExport.cpp" />
+    <ClCompile Include="Source\CommentsDlg.cpp" />
+    <ClCompile Include="Source\Compiler.cpp" />
+    <ClCompile Include="Source\ConfigAppearance.cpp" />
+    <ClCompile Include="Source\ConfigGeneral.cpp" />
+    <ClCompile Include="Source\ConfigMIDI.cpp" />
+    <ClCompile Include="Source\ConfigMixer.cpp" />
+    <ClCompile Include="Source\ConfigShortcuts.cpp" />
+    <ClCompile Include="Source\ConfigSound.cpp" />
+    <ClCompile Include="Source\ConfigWindow.cpp" />
+    <ClCompile Include="Source\ControlPanelDlg.cpp" />
+    <ClCompile Include="Source\CreateWaveDlg.cpp" />
+    <ClCompile Include="Source\CustomControls.cpp" />
+    <ClCompile Include="Source\CustomExporter.cpp" />
+    <ClCompile Include="Source\CustomExporter_C_Interface.cpp" />
+    <ClCompile Include="Source\CustomExporters.cpp" />
+    <ClCompile Include="Source\APU\DPCM.cpp" />
+    <ClCompile Include="Source\DSample.cpp" />
+    <ClCompile Include="Source\DialogReBar.cpp" />
+    <ClCompile Include="Source\DirectSound.cpp" />
+    <ClCompile Include="Source\DocumentFile.cpp" />
+    <ClCompile Include="Source\DocumentWrapper.cpp" />
+    <ClCompile Include="Source\ExportDialog.cpp" />
+    <ClCompile Include="Source\APU\FDS.cpp" />
+    <ClCompile Include="Source\APU\FDSSound.cpp" />
+    <ClCompile Include="Source\FamiTracker.cpp" />
+    <ClCompile Include="Source\FamiTrackerDoc.cpp" />
+    <ClCompile Include="Source\FamiTrackerView.cpp" />
+    <ClCompile Include="Source\FFT\Fft.cpp" />
+    <ClCompile Include="Source\FrameAction.cpp" />
+    <ClCompile Include="Source\FrameEditor.cpp" />
+    <ClCompile Include="Source\GraphEditor.cpp" />
+    <ClCompile Include="Source\Graphics.cpp" />
+    <ClCompile Include="Source\Instrument.cpp" />
+    <ClCompile Include="Source\Instrument2A03.cpp" />
+    <ClCompile Include="Source\InstrumentEditDlg.cpp" />
+    <ClCompile Include="Source\InstrumentEditPanel.cpp" />
+    <ClCompile Include="Source\InstrumentEditor2A03.cpp" />
+    <ClCompile Include="Source\InstrumentEditorDPCM.cpp" />
+    <ClCompile Include="Source\InstrumentEditorFDS.cpp" />
+    <ClCompile Include="Source\InstrumentEditorFDSEnvelope.cpp" />
+    <ClCompile Include="Source\InstrumentEditorN163.cpp" />
+    <ClCompile Include="Source\InstrumentEditorN163Wave.cpp" />
+    <ClCompile Include="Source\InstrumentEditorS5B.cpp" />
+    <ClCompile Include="Source\InstrumentEditorVRC6.cpp" />
+    <ClCompile Include="Source\InstrumentEditorVRC7.cpp" />
+    <ClCompile Include="Source\InstrumentFDS.cpp" />
+    <ClCompile Include="Source\InstrumentFileTree.cpp" />
+    <ClCompile Include="Source\InstrumentListCtrl.cpp" />
+    <ClCompile Include="Source\InstrumentN163.cpp" />
+    <ClCompile Include="Source\InstrumentS5B.cpp" />
+    <ClCompile Include="Source\InstrumentVRC6.cpp" />
+    <ClCompile Include="Source\InstrumentVRC7.cpp" />
+    <ClCompile Include="Source\MIDI.cpp" />
+    <ClCompile Include="Source\APU\MMC5.cpp" />
+    <ClCompile Include="Source\MainFrm.cpp" />
+    <ClCompile Include="Source\APU\Mixer.cpp" />
+    <ClCompile Include="Source\ModSequenceEditor.cpp" />
+    <ClCompile Include="Source\ModuleImportDlg.cpp" />
+    <ClCompile Include="Source\ModulePropertiesDlg.cpp" />
+    <ClCompile Include="Source\APU\N163.cpp" />
+    <ClCompile Include="Source\APU\Noise.cpp" />
+    <ClCompile Include="Source\PCMImport.cpp" />
+    <ClCompile Include="Source\PatternAction.cpp" />
+    <ClCompile Include="Source\PatternCompiler.cpp" />
+    <ClCompile Include="Source\PatternData.cpp" />
+    <ClCompile Include="Source\PatternEditor.cpp" />
+    <ClCompile Include="Source\PatternEditorTypes.cpp" />
+    <ClCompile Include="Source\APU\S5B.cpp" />
+    <ClCompile Include="Source\SampleEditorDlg.cpp" />
+    <ClCompile Include="Source\SampleEditorView.cpp" />
+    <ClCompile Include="Source\Sequence.cpp" />
+    <ClCompile Include="Source\SequenceEditor.cpp" />
+    <ClCompile Include="Source\SequenceSetting.cpp" />
+    <ClCompile Include="Source\Settings.cpp" />
+    <ClCompile Include="Source\SizeEditor.cpp" />
+    <ClCompile Include="Source\SoundGen.cpp" />
+    <ClCompile Include="Source\SpeedDlg.cpp" />
+    <ClCompile Include="Source\APU\Square.cpp" />
+    <ClCompile Include="Source\TextExporter.cpp" />
+    <ClCompile Include="Source\TrackerChannel.cpp" />
+    <ClCompile Include="Source\APU\Triangle.cpp" />
+    <ClCompile Include="Source\APU\VRC6.cpp" />
+    <ClCompile Include="Source\APU\VRC7.cpp" />
+    <ClCompile Include="Source\VisualizerScope.cpp" />
+    <ClCompile Include="Source\VisualizerSpectrum.cpp" />
+    <ClCompile Include="Source\VisualizerStatic.cpp" />
+    <ClCompile Include="Source\VisualizerWnd.cpp" />
+    <ClCompile Include="Source\WavProgressDlg.cpp" />
+    <ClCompile Include="Source\WaveEditor.cpp" />
+    <ClCompile Include="Source\WaveFile.cpp" />
+    <ClCompile Include="..\..\common\cqtmfc.cpp" />
+    <ClCompile Include="cqtmfc_famitracker.cpp" />
+    <ClCompile Include="Source\APU\emu2149.c" />
+    <ClCompile Include="Source\APU\emu2413.c" />
+    <ClCompile Include="Source\resampler\resample.cpp" />
+    <ClCompile Include="Source\resampler\sinc.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\APU\2413tone.h" />
+    <QtMoc Include="Source\APU\APU.h" />
+    <ClInclude Include="Source\AboutDlg.h" />
+    <ClInclude Include="Source\Accelerator.h" />
+    <ClInclude Include="Source\Action.h" />
+    <ClInclude Include="Source\Blip_Buffer\Blip_Buffer.h" />
+    <ClInclude Include="Source\APU\Channel.h" />
+    <ClInclude Include="Source\ChannelHandler.h" />
+    <ClInclude Include="Source\ChannelMap.h" />
+    <ClInclude Include="Source\Channels2A03.h" />
+    <ClInclude Include="Source\ChannelsDlg.h" />
+    <ClInclude Include="Source\ChannelsFDS.h" />
+    <ClInclude Include="Source\ChannelsMMC5.h" />
+    <ClInclude Include="Source\ChannelsN163.h" />
+    <ClInclude Include="Source\ChannelsS5B.h" />
+    <ClInclude Include="Source\ChannelsVRC6.h" />
+    <ClInclude Include="Source\ChannelsVRC7.h" />
+    <ClInclude Include="Source\Chunk.h" />
+    <ClInclude Include="Source\ChunkRenderBinary.h" />
+    <ClInclude Include="Source\ChunkRenderText.h" />
+    <ClInclude Include="Source\Clipboard.h" />
+    <ClInclude Include="Source\ColorScheme.h" />
+    <ClInclude Include="Source\CommandLineExport.h" />
+    <ClInclude Include="Source\CommentsDlg.h" />
+    <ClInclude Include="Source\Common.h" />
+    <ClInclude Include="Source\Compiler.h" />
+    <ClInclude Include="Source\FFT\Complex.h" />
+    <ClInclude Include="Source\ConfigAppearance.h" />
+    <ClInclude Include="Source\ConfigGeneral.h" />
+    <ClInclude Include="Source\ConfigMIDI.h" />
+    <ClInclude Include="Source\ConfigMixer.h" />
+    <ClInclude Include="Source\ConfigShortcuts.h" />
+    <ClInclude Include="Source\ConfigSound.h" />
+    <ClInclude Include="Source\ConfigWindow.h" />
+    <ClInclude Include="Source\ControlPanelDlg.h" />
+    <ClInclude Include="Source\CreateWaveDlg.h" />
+    <ClInclude Include="Source\CustomControls.h" />
+    <ClInclude Include="Source\CustomExporter.h" />
+    <ClInclude Include="Source\CustomExporterInterfaces.h" />
+    <ClInclude Include="Source\CustomExporter_C_Interface.h" />
+    <ClInclude Include="Source\CustomExporters.h" />
+    <ClInclude Include="Source\APU\DPCM.h" />
+    <ClInclude Include="Source\DSample.h" />
+    <ClInclude Include="Source\DialogReBar.h" />
+    <QtMoc Include="Source\DirectSound.h" />
+    <ClInclude Include="Source\DocumentFile.h" />
+    <ClInclude Include="Source\DocumentWrapper.h" />
+    <ClInclude Include="Source\Driver.h" />
+    <ClInclude Include="Source\ExportDialog.h" />
+    <ClInclude Include="Source\APU\External.h" />
+    <ClInclude Include="Source\APU\FDS.H" />
+    <ClInclude Include="Source\APU\FDSSound.h" />
+    <ClInclude Include="Source\FamiTracker.h" />
+    <ClInclude Include="Source\FamiTrackerDoc.h" />
+    <ClInclude Include="Source\FamiTrackerTypes.h" />
+    <ClInclude Include="Source\FamiTrackerView.h" />
+    <ClInclude Include="Source\FFT\Fft.h" />
+    <ClInclude Include="Source\FrameEditor.h" />
+    <ClInclude Include="Source\GraphEditor.h" />
+    <ClInclude Include="Source\Graphics.h" />
+    <ClInclude Include="Source\Instrument.h" />
+    <ClInclude Include="Source\InstrumentEditDlg.h" />
+    <ClInclude Include="Source\InstrumentEditPanel.h" />
+    <ClInclude Include="Source\InstrumentEditor2A03.h" />
+    <QtMoc Include="Source\InstrumentEditorDPCM.h" />
+    <ClInclude Include="Source\InstrumentEditorFDS.h" />
+    <ClInclude Include="Source\InstrumentEditorFDSEnvelope.h" />
+    <ClInclude Include="Source\InstrumentEditorN163.h" />
+    <ClInclude Include="Source\InstrumentEditorN163Wave.h" />
+    <ClInclude Include="Source\InstrumentEditorS5B.h" />
+    <ClInclude Include="Source\InstrumentEditorVRC6.h" />
+    <ClInclude Include="Source\InstrumentEditorVRC7.h" />
+    <ClInclude Include="Source\InstrumentFileTree.h" />
+    <ClInclude Include="Source\MIDI.h" />
+    <ClInclude Include="Source\APU\MMC5.H" />
+    <ClInclude Include="Source\MainFrm.h" />
+    <ClInclude Include="Source\APU\Mixer.h" />
+    <ClInclude Include="Source\ModSequenceEditor.h" />
+    <ClInclude Include="Source\ModuleImportDlg.h" />
+    <ClInclude Include="Source\ModulePropertiesDlg.h" />
+    <ClInclude Include="Source\APU\N163.H" />
+    <ClInclude Include="Source\APU\Noise.h" />
+    <ClInclude Include="Source\PCMImport.h" />
+    <ClInclude Include="Source\PatternCompiler.h" />
+    <ClInclude Include="Source\PatternData.h" />
+    <ClInclude Include="Source\PatternEditor.h" />
+    <ClInclude Include="Source\PatternEditorTypes.h" />
+    <ClInclude Include="Source\APU\S5B.h" />
+    <ClInclude Include="Source\SampleEditorDlg.h" />
+    <ClInclude Include="Source\SampleEditorView.h" />
+    <ClInclude Include="Source\Sequence.h" />
+    <ClInclude Include="Source\SequenceEditor.h" />
+    <ClInclude Include="Source\SequenceSetting.h" />
+    <ClInclude Include="Source\Settings.h" />
+    <ClInclude Include="Source\SizeEditor.h" />
+    <ClInclude Include="Source\SoundGen.h" />
+    <ClInclude Include="Source\SpeedDlg.h" />
+    <ClInclude Include="Source\APU\Square.h" />
+    <ClInclude Include="Source\TextExporter.h" />
+    <ClInclude Include="Source\TrackerChannel.h" />
+    <ClInclude Include="Source\APU\Triangle.h" />
+    <ClInclude Include="Source\APU\Types.h" />
+    <ClInclude Include="Source\APU\VRC6.H" />
+    <ClInclude Include="Source\APU\VRC7.h" />
+    <ClInclude Include="Source\VisualizerScope.h" />
+    <ClInclude Include="Source\VisualizerSpectrum.h" />
+    <ClInclude Include="Source\VisualizerStatic.h" />
+    <ClInclude Include="Source\VisualizerWnd.h" />
+    <ClInclude Include="Source\WavProgressDlg.h" />
+    <ClInclude Include="Source\WaveEditor.h" />
+    <ClInclude Include="Source\WaveFile.h" />
+    <ClInclude Include="..\..\common\afxmsg_.h" />
+    <ClInclude Include="Source\drivers\config.h" />
+    <QtMoc Include="..\..\common\cqtmfc.h" />
+    <ClInclude Include="cqtmfc_famitracker.h" />
+    <ClInclude Include="Source\drivers\drv_2a03.h" />
+    <ClInclude Include="Source\drivers\drv_fds.h" />
+    <ClInclude Include="Source\drivers\drv_mmc5.h" />
+    <ClInclude Include="Source\drivers\drv_n163.h" />
+    <ClInclude Include="Source\drivers\drv_vrc6.h" />
+    <ClInclude Include="Source\drivers\drv_vrc7.h" />
+    <ClInclude Include="Source\APU\emu2149.h" />
+    <ClInclude Include="Source\APU\emu2413.h" />
+    <ClInclude Include="Source\resampler\resample.hpp" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Source\resampler\sinc.hpp" />
+    <ClInclude Include="Source\stdafx.h" />
+    <ClInclude Include="version.h" />
+    <ClInclude Include="Source\APU\vrc7tone.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w -I../../deps/Windows/SDL -I../../deps/boost_1_64_0 -I../../deps/rtmidi -Zc:strictStrings- -Zi -MDd -W0 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w -I../../deps/Windows/SDL -I../../deps/boost_1_64_0 -I../../deps/rtmidi -Zc:strictStrings- -O2 -MD -W0 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_predefs.h;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="(2010-12-26).xml" />
+    <None Include="..\..\common\resources\22_bin_rom.png" />
+    <None Include="..\..\common\resources\22_binary_file.png" />
+    <None Include="..\..\common\resources\22_breakpoint.png" />
+    <None Include="..\..\common\resources\22_breakpoint_disabled.png" />
+    <None Include="..\..\common\resources\22_chr_mem.png" />
+    <None Include="..\..\common\resources\22_code_inspector.png" />
+    <None Include="..\..\common\resources\22_cpu_ram.png" />
+    <None Include="..\..\common\resources\22_cpu_registers.png" />
+    <None Include="..\..\common\resources\22_document-new.png" />
+    <None Include="..\..\common\resources\22_document-open.png" />
+    <None Include="..\..\common\resources\22_document-save-all.png" />
+    <None Include="..\..\common\resources\22_document-save-as.png" />
+    <None Include="..\..\common\resources\22_document-save.png" />
+    <None Include="..\..\common\resources\22_edit-clear.png" />
+    <None Include="..\..\common\resources\22_execution.png" />
+    <None Include="..\..\common\resources\22_execution_break.png" />
+    <None Include="..\..\common\resources\22_execution_break_disabled.png" />
+    <None Include="..\..\common\resources\22_execution_pointer.png" />
+    <None Include="..\..\common\resources\22_item_add.png" />
+    <None Include="..\..\common\resources\22_item_remove.png" />
+    <None Include="..\..\common\resources\22_mapper_memory.png" />
+    <None Include="..\..\common\resources\22_nametable.png" />
+    <None Include="..\..\common\resources\22_preferences-desktop-display-color.png" />
+    <None Include="..\..\common\resources\22_preferences-desktop-gaming.png" />
+    <None Include="..\..\common\resources\22_preferences-other.png" />
+    <None Include="..\..\common\resources\22_run-build.png" />
+    <None Include="..\..\common\resources\22_utilities-terminal.png" />
+    <None Include="..\..\common\resources\About.bmp" />
+    <None Include="..\..\common\resources\Actions-arrow-left-double-icon.png" />
+    <None Include="..\..\common\resources\Actions-arrow-right-double-icon.png" />
+    <None Include="..\..\common\resources\Actions-arrow-right-icon.png" />
+    <None Include="..\..\common\resources\Actions-edit-undo-icon.png" />
+    <None Include="..\..\common\resources\Actions-games-solve-icon.png" />
+    <None Include="..\..\common\resources\Application.ico" />
+    <None Include="..\..\common\resources\Document.ico" />
+    <None Include="..\..\common\resources\FamiTracker-Exe.ico" />
+    <None Include="..\..\common\resources\Inst_2A03.ico" />
+    <None Include="..\..\common\resources\Inst_2A03inv.ico" />
+    <None Include="..\..\common\resources\Inst_2A07.ico" />
+    <None Include="..\..\common\resources\Inst_FDS.ico" />
+    <None Include="..\..\common\resources\Inst_N163.ico" />
+    <None Include="..\..\common\resources\Inst_S5B.ico" />
+    <None Include="..\..\common\resources\Inst_VRC6.ico" />
+    <None Include="..\..\common\resources\Inst_VRC7.ico" />
+    <None Include="..\..\common\resources\InstrumentToolbar-16.bmp" />
+    <None Include="..\..\common\resources\InstrumentToolbar-256.bmp" />
+    <None Include="..\..\common\resources\LeftArrow.ico" />
+    <None Include="..\..\common\resources\MainToolbar-16.bmp" />
+    <None Include="..\..\common\resources\MainToolbar-256.bmp" />
+    <None Include="..\..\common\resources\NESICIDE.mk_in" />
+    <None Include="..\..\common\resources\NesCarts" />
+    <None Include="..\..\common\resources\Pause-icon.png" />
+    <None Include="..\..\common\resources\RR_bomb.png" />
+    <None Include="..\..\common\resources\RR_bug.png" />
+    <None Include="..\..\common\resources\RR_cursor.png" />
+    <None Include="..\..\common\resources\RR_cut_red.png" />
+    <None Include="..\..\common\resources\RR_film.png" />
+    <None Include="..\..\common\resources\RR_film_add.png" />
+    <None Include="..\..\common\resources\RR_film_delete.png" />
+    <None Include="..\..\common\resources\RR_font.png" />
+    <None Include="..\..\common\resources\RR_graphics_bank.png" />
+    <None Include="..\..\common\resources\RR_magifier_zoom_out.png" />
+    <None Include="..\..\common\resources\RR_magnifier.png" />
+    <None Include="..\..\common\resources\RR_magnifier_zoom_in.png" />
+    <None Include="..\..\common\resources\RR_music.png" />
+    <None Include="..\..\common\resources\RR_page_asm.png" />
+    <None Include="..\..\common\resources\RR_page_white.png" />
+    <None Include="..\..\common\resources\RR_page_white_add.png" />
+    <None Include="..\..\common\resources\RR_page_white_delete.png" />
+    <None Include="..\..\common\resources\RR_page_white_paint.png" />
+    <None Include="..\..\common\resources\RR_paintcan.png" />
+    <None Include="..\..\common\resources\RR_pencil.png" />
+    <None Include="..\..\common\resources\RR_shape_circle_filled.png" />
+    <None Include="..\..\common\resources\RR_shape_circle_hollow.png" />
+    <None Include="..\..\common\resources\RR_shape_flip_horizontal.png" />
+    <None Include="..\..\common\resources\RR_shape_flip_vertical.png" />
+    <None Include="..\..\common\resources\RR_shape_line.png" />
+    <None Include="..\..\common\resources\RR_shape_rotate_anticlockwise.png" />
+    <None Include="..\..\common\resources\RR_shape_rotate_clockwise.png" />
+    <None Include="..\..\common\resources\RR_shape_square_filled.png" />
+    <None Include="..\..\common\resources\RR_shape_square_hollow.png" />
+    <None Include="..\..\common\resources\RightArrow.ico" />
+    <None Include="..\..\common\resources\SampleBg.bmp" />
+    <None Include="..\..\common\resources\Toolbar-d5.bmp" />
+    <None Include="..\..\common\resources\Toolbar.bmp" />
+    <None Include="..\..\common\resources\appicon.png" />
+    <None Include="..\..\common\resources\application-x-mplayer2.png" />
+    <None Include="..\..\common\resources\applications-system.png" />
+    <None Include="..\..\common\resources\applications-system.svg" />
+    <None Include="..\..\common\resources\applications-utilities.png" />
+    <None Include="..\..\common\resources\applications-utilities.svg" />
+    <None Include="..\..\common\resources\bash.png" />
+    <None Include="..\..\common\resources\bash.svg" />
+    <None Include="..\..\common\resources\case-sensitive.png" />
+    <None Include="..\..\common\resources\case-sensitive.svg" />
+    <None Include="..\..\common\resources\chardevice.png" />
+    <None Include="..\..\common\resources\chardevice.svg" />
+    <None Include="..\..\common\resources\compile_16.png" />
+    <None Include="..\..\common\resources\compile_16.svg" />
+    <None Include="..\..\common\resources\continue-icon-cpu.png" />
+    <None Include="..\..\common\resources\continue-icon-cpu.svg" />
+    <None Include="..\..\common\resources\continue-icon-ppu.png" />
+    <None Include="..\..\common\resources\continue-icon-ppu.svg" />
+    <None Include="..\..\common\resources\controller.icns" />
+    <None Include="..\..\common\resources\controller.png" />
+    <None Include="..\..\common\resources\controller.svg" />
+    <None Include="..\..\common\resources\document-export.png" />
+    <None Include="..\..\common\resources\document-export.svg" />
+    <None Include="..\..\common\resources\document-import.png" />
+    <None Include="..\..\common\resources\document-import.svg" />
+    <None Include="..\..\common\resources\document-open.png" />
+    <None Include="..\..\common\resources\document-open.svg" />
+    <None Include="..\..\common\resources\document-properties.png" />
+    <None Include="..\..\common\resources\document-properties.svg" />
+    <None Include="..\..\common\resources\drive-harddisk.svg" />
+    <None Include="..\..\common\resources\edit_delete.png" />
+    <None Include="..\..\common\resources\error-mark.png" />
+    <None Include="..\..\common\resources\error-mark.svg" />
+    <None Include="..\..\common\resources\find.png" />
+    <None Include="..\..\common\resources\folder-system.png" />
+    <None Include="..\..\common\resources\folder-system.svg" />
+    <None Include="..\..\common\resources\folder_closed.png" />
+    <None Include="..\..\common\resources\folder_open.png" />
+    <None Include="..\..\common\resources\gb.png" />
+    <None Include="..\..\common\resources\gplv3.png" />
+    <None Include="..\..\common\resources\help-about.png" />
+    <None Include="..\..\common\resources\ico00001.ico" />
+    <None Include="..\..\common\resources\ico00002.ico" />
+    <None Include="..\..\common\resources\ico00003.ico" />
+    <None Include="..\..\common\resources\ico00004.ico" />
+    <None Include="..\..\common\resources\ico00005.ico" />
+    <None Include="..\..\common\resources\icon1.ico" />
+    <None Include="..\..\common\resources\icon2.ico" />
+    <None Include="..\..\common\resources\icon3.ico" />
+    <None Include="..\..\common\resources\icons8-pin.png" />
+    <None Include="..\..\common\resources\icons8-sort_down.png" />
+    <None Include="..\..\common\resources\icons8-sort_up.png" />
+    <None Include="..\..\common\resources\icons8-swiss_army_knife.png" />
+    <None Include="..\..\common\resources\inst_toolbar.bmp" />
+    <None Include="..\..\common\resources\key_black_pressed.bmp" />
+    <None Include="..\..\common\resources\key_black_unpressed.bmp" />
+    <None Include="..\..\common\resources\key_white_pressed.bmp" />
+    <None Include="..\..\common\resources\key_white_unpressed.bmp" />
+    <None Include="..\..\common\resources\logo.png" />
+    <None Include="..\..\common\resources\paintcan.png" />
+    <None Include="..\..\common\resources\pen.png" />
+    <None Include="..\..\common\resources\regular-expression.png" />
+    <None Include="..\..\common\resources\regular-expression.svg" />
+    <QtRcc Include="..\..\common\resource.qrc" />
+    <None Include="..\..\common\resources\select_tool.png" />
+    <None Include="..\..\common\resources\selection_all_tool.png" />
+    <None Include="..\..\common\resources\stepinto_6.png" />
+    <None Include="..\..\common\resources\stepover_6.png" />
+    <None Include="..\..\common\resources\stepreturn_6.png" />
+    <None Include="..\..\common\resources\stock_exit.png" />
+    <None Include="..\..\common\resources\stock_exit.svg" />
+    <None Include="..\..\common\resources\stock_media-pause.png" />
+    <None Include="..\..\common\resources\stock_media-pause.svg" />
+    <None Include="..\..\common\resources\stock_media-play.png" />
+    <None Include="..\..\common\resources\stock_media-play.svg" />
+    <None Include="..\..\common\resources\stock_media-rec.png" />
+    <None Include="..\..\common\resources\stock_media-rec.svg" />
+    <None Include="..\..\common\resources\stock_media-stop.png" />
+    <None Include="..\..\common\resources\stock_media-stop.svg" />
+    <None Include="..\..\common\resources\stock_right.png" />
+    <None Include="..\..\common\resources\stock_right.svg" />
+    <None Include="..\..\common\resources\stock_save-as.png" />
+    <None Include="..\..\common\resources\stock_save-as.svg" />
+    <None Include="..\..\common\resources\stock_save.png" />
+    <None Include="..\..\common\resources\stock_save.svg" />
+    <None Include="..\..\common\resources\style.png" />
+    <None Include="..\..\common\resources\style.svg" />
+    <None Include="..\..\common\resources\system-run.png" />
+    <None Include="..\..\common\resources\system-run.svg" />
+    <None Include="..\..\common\resources\toolbar1.bmp" />
+    <None Include="..\..\common\resources\turbo_ver01_by_ogr.png" />
+    <None Include="..\..\common\resources\usa.png" />
+    <None Include="..\..\common\resources\vaus.png" />
+    <None Include="..\..\common\resources\view_sort_ascending.png" />
+    <None Include="..\..\common\resources\view_sort_descending.png" />
+    <None Include="..\..\common\resources\window_new.png" />
+    <None Include="..\..\common\resources\window_new.svg" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="$(QtMsBuild)\qt.targets" Condition="Exists('$(QtMsBuild)\qt.targets')" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

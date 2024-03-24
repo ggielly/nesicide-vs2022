@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D52CA5CD-C878-3D47-BAEA-3DC5210AE1CB}</ProjectGuid>
+    <RootNamespace>nes-emulator</RootNamespace>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.22621.0</WindowsTargetPlatformMinVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v143</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>nes-emulator</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v143</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>nes-emulator</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(QtMsBuild)\qt_defaults.props" Condition="Exists('$(QtMsBuild)\qt_defaults.props')" />
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtInstall>5.12.12_msvc2017_64</QtInstall>
+    <QtModules>
+    </QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <QtInstall>5.12.12_msvc2017_64</QtInstall>
+    <QtModules>
+    </QtModules>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') OR !Exists('$(QtMsBuild)\Qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">nes-emulator</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">nes-emulator</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;common;emulator;..\..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>false</ExceptionHandling>
+      <ObjectFileName>release\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;XML_SAVE_STATE;QT_NO_DEBUG;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>
+      </ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\nes-emulator.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;XML_SAVE_STATE;QT_NO_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;common;emulator;..\..\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>false</ExceptionHandling>
+      <ObjectFileName>debug\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;XML_SAVE_STATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <OutputFile>$(OutDir)\nes-emulator.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;XML_SAVE_STATE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\common\cbreakpointinfo.cpp" />
+    <ClCompile Include="emulator\ccodedatalogger.cpp" />
+    <ClCompile Include="emulator\cjoypadlogger.cpp" />
+    <ClCompile Include="emulator\cmarker.cpp" />
+    <ClCompile Include="emulator\cmemory.cpp" />
+    <ClCompile Include="emulator\cnes.cpp" />
+    <ClCompile Include="emulator\cnes6502.cpp" />
+    <ClCompile Include="emulator\cnesapu.cpp" />
+    <ClCompile Include="emulator\cnesbreakpointinfo.cpp" />
+    <ClCompile Include="emulator\cnesio.cpp" />
+    <ClCompile Include="emulator\cnesios.cpp" />
+    <ClCompile Include="emulator\cnesppu.cpp" />
+    <ClCompile Include="emulator\cnesrom.cpp" />
+    <ClCompile Include="emulator\cnesrommapper001.cpp" />
+    <ClCompile Include="emulator\cnesrommapper002.cpp" />
+    <ClCompile Include="emulator\cnesrommapper003.cpp" />
+    <ClCompile Include="emulator\cnesrommapper004.cpp" />
+    <ClCompile Include="emulator\cnesrommapper005.cpp" />
+    <ClCompile Include="emulator\cnesrommapper007.cpp" />
+    <ClCompile Include="emulator\cnesrommapper009.cpp" />
+    <ClCompile Include="emulator\cnesrommapper010.cpp" />
+    <ClCompile Include="emulator\cnesrommapper011.cpp" />
+    <ClCompile Include="emulator\cnesrommapper013.cpp" />
+    <ClCompile Include="emulator\cnesrommapper016.cpp" />
+    <ClCompile Include="emulator\cnesrommapper018.cpp" />
+    <ClCompile Include="emulator\cnesrommapper019.cpp" />
+    <ClCompile Include="emulator\cnesrommapper021.cpp" />
+    <ClCompile Include="emulator\cnesrommapper022.cpp" />
+    <ClCompile Include="emulator\cnesrommapper023.cpp" />
+    <ClCompile Include="emulator\cnesrommapper024.cpp" />
+    <ClCompile Include="emulator\cnesrommapper025.cpp" />
+    <ClCompile Include="emulator\cnesrommapper026.cpp" />
+    <ClCompile Include="emulator\cnesrommapper028.cpp" />
+    <ClCompile Include="emulator\cnesrommapper033.cpp" />
+    <ClCompile Include="emulator\cnesrommapper034.cpp" />
+    <ClCompile Include="emulator\cnesrommapper065.cpp" />
+    <ClCompile Include="emulator\cnesrommapper068.cpp" />
+    <ClCompile Include="emulator\cnesrommapper069.cpp" />
+    <ClCompile Include="emulator\cnesrommapper073.cpp" />
+    <ClCompile Include="emulator\cnesrommapper075.cpp" />
+    <ClCompile Include="emulator\cnesrommapper111.cpp" />
+    <ClCompile Include="common\cnessystempalette.cpp" />
+    <ClCompile Include="emulator\ctracer.cpp" />
+    <ClCompile Include="nes_emulator_core.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="emulator\ccodedatalogger.h" />
+    <ClInclude Include="emulator\cjoypadlogger.h" />
+    <ClInclude Include="emulator\cmarker.h" />
+    <ClInclude Include="emulator\cmemory.h" />
+    <ClInclude Include="emulator\cnes.h" />
+    <ClInclude Include="emulator\cnes6502.h" />
+    <ClInclude Include="emulator\cnesapu.h" />
+    <ClInclude Include="emulator\cnesbreakpointinfo.h" />
+    <ClInclude Include="emulator\cnesio.h" />
+    <ClInclude Include="emulator\cnesios.h" />
+    <ClInclude Include="emulator\cnesppu.h" />
+    <ClInclude Include="emulator\cnesrom.h" />
+    <ClInclude Include="emulator\cnesrommapper001.h" />
+    <ClInclude Include="emulator\cnesrommapper002.h" />
+    <ClInclude Include="emulator\cnesrommapper003.h" />
+    <ClInclude Include="emulator\cnesrommapper004.h" />
+    <ClInclude Include="emulator\cnesrommapper005.h" />
+    <ClInclude Include="emulator\cnesrommapper007.h" />
+    <ClInclude Include="emulator\cnesrommapper009.h" />
+    <ClInclude Include="emulator\cnesrommapper010.h" />
+    <ClInclude Include="emulator\cnesrommapper011.h" />
+    <ClInclude Include="emulator\cnesrommapper013.h" />
+    <ClInclude Include="emulator\cnesrommapper016.h" />
+    <ClInclude Include="emulator\cnesrommapper018.h" />
+    <ClInclude Include="emulator\cnesrommapper019.h" />
+    <ClInclude Include="emulator\cnesrommapper021.h" />
+    <ClInclude Include="emulator\cnesrommapper022.h" />
+    <ClInclude Include="emulator\cnesrommapper023.h" />
+    <ClInclude Include="emulator\cnesrommapper024.h" />
+    <ClInclude Include="emulator\cnesrommapper025.h" />
+    <ClInclude Include="emulator\cnesrommapper026.h" />
+    <ClInclude Include="emulator\cnesrommapper028.h" />
+    <ClInclude Include="emulator\cnesrommapper033.h" />
+    <ClInclude Include="emulator\cnesrommapper034.h" />
+    <ClInclude Include="emulator\cnesrommapper065.h" />
+    <ClInclude Include="emulator\cnesrommapper068.h" />
+    <ClInclude Include="emulator\cnesrommapper069.h" />
+    <ClInclude Include="emulator\cnesrommapper073.h" />
+    <ClInclude Include="emulator\cnesrommapper075.h" />
+    <ClInclude Include="emulator\cnesrommapper111.h" />
+    <ClInclude Include="common\cnessystempalette.h" />
+    <ClInclude Include="emulator\ctracer.h" />
+    <ClInclude Include="nes_emulator_core.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="$(QtMsBuild)\qt.targets" Condition="Exists('$(QtMsBuild)\qt.targets')" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

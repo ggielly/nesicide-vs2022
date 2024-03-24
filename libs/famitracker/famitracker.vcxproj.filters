@@ -1,0 +1,1337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\APU\APU.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AboutDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Accelerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Action.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Blip_Buffer\Blip_Buffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChannelHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChannelMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Channels2A03.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChannelsDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChannelsFDS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChannelsMMC5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChannelsN163.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChannelsS5B.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChannelsVRC6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChannelsVRC7.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Chunk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChunkRenderBinary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ChunkRenderText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Clipboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CommandLineExport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CommentsDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Compiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConfigAppearance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConfigGeneral.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConfigMIDI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConfigMixer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConfigShortcuts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConfigSound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ConfigWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ControlPanelDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CreateWaveDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CustomControls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CustomExporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CustomExporter_C_Interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CustomExporters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\DPCM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DSample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DialogReBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DirectSound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DocumentFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DocumentWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ExportDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\FDS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\FDSSound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FamiTracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FamiTrackerDoc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FamiTrackerView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FFT\Fft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FrameAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FrameEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GraphEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Instrument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Instrument2A03.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditor2A03.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditorDPCM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditorFDS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditorFDSEnvelope.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditorN163.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditorN163Wave.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditorS5B.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditorVRC6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentEditorVRC7.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentFDS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentFileTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentListCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentN163.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentS5B.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentVRC6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InstrumentVRC7.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MIDI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\MMC5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MainFrm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\Mixer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModSequenceEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleImportDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModulePropertiesDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\N163.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\Noise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PCMImport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PatternAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PatternCompiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PatternData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PatternEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PatternEditorTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\S5B.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SampleEditorDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SampleEditorView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Sequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SequenceEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SequenceSetting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SizeEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SoundGen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SpeedDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\Square.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TextExporter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TrackerChannel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\Triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\VRC6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\VRC7.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VisualizerScope.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VisualizerSpectrum.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VisualizerStatic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VisualizerWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\WavProgressDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\WaveEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\WaveFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\cqtmfc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cqtmfc_famitracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\emu2149.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\APU\emu2413.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\resampler\resample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\resampler\sinc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\APU\2413tone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="Source\APU\APU.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="Source\AboutDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Accelerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Action.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Blip_Buffer\Blip_Buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\Channel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChannelHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChannelMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Channels2A03.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChannelsDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChannelsFDS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChannelsMMC5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChannelsN163.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChannelsS5B.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChannelsVRC6.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChannelsVRC7.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Chunk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChunkRenderBinary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ChunkRenderText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Clipboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ColorScheme.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CommandLineExport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CommentsDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Compiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FFT\Complex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConfigAppearance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConfigGeneral.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConfigMIDI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConfigMixer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConfigShortcuts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConfigSound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ConfigWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ControlPanelDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CreateWaveDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CustomControls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CustomExporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CustomExporterInterfaces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CustomExporter_C_Interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CustomExporters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\DPCM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DSample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DialogReBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="Source\DirectSound.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="Source\DocumentFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DocumentWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Driver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ExportDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\External.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\FDS.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\FDSSound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FamiTracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FamiTrackerDoc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FamiTrackerTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FamiTrackerView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FFT\Fft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FrameEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GraphEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Instrument.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InstrumentEditDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InstrumentEditPanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InstrumentEditor2A03.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="Source\InstrumentEditorDPCM.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="Source\InstrumentEditorFDS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InstrumentEditorFDSEnvelope.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InstrumentEditorN163.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InstrumentEditorN163Wave.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InstrumentEditorS5B.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InstrumentEditorVRC6.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InstrumentEditorVRC7.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InstrumentFileTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MIDI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\MMC5.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MainFrm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\Mixer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModSequenceEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleImportDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModulePropertiesDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\N163.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\Noise.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PCMImport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PatternCompiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PatternData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PatternEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PatternEditorTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\S5B.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SampleEditorDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SampleEditorView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Sequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SequenceEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SequenceSetting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SizeEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SoundGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SpeedDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\Square.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TextExporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TrackerChannel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\Triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\Types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\VRC6.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\VRC7.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VisualizerScope.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VisualizerSpectrum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VisualizerStatic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VisualizerWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\WavProgressDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\WaveEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\WaveFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\afxmsg_.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\drivers\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="..\..\common\cqtmfc.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="cqtmfc_famitracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\drivers\drv_2a03.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\drivers\drv_fds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\drivers\drv_mmc5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\drivers\drv_n163.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\drivers\drv_vrc6.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\drivers\drv_vrc7.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\emu2149.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\emu2413.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\resampler\resample.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\resampler\sinc.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\APU\vrc7tone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="(2010-12-26).xml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_bin_rom.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_binary_file.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_breakpoint.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_breakpoint_disabled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_chr_mem.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_code_inspector.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_cpu_ram.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_cpu_registers.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_document-new.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_document-open.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_document-save-all.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_document-save-as.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_document-save.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_edit-clear.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_execution.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_execution_break.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_execution_break_disabled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_execution_pointer.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_item_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_item_remove.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_mapper_memory.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_nametable.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_preferences-desktop-display-color.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_preferences-desktop-gaming.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_preferences-other.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_run-build.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\22_utilities-terminal.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\About.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Actions-arrow-left-double-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Actions-arrow-right-double-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Actions-arrow-right-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Actions-edit-undo-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Actions-games-solve-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Application.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Document.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\FamiTracker-Exe.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_2A03.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_2A03inv.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_2A07.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_FDS.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_N163.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_S5B.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_VRC6.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Inst_VRC7.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\InstrumentToolbar-16.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\InstrumentToolbar-256.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\LeftArrow.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\MainToolbar-16.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\MainToolbar-256.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\NESICIDE.mk_in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\NesCarts">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Pause-icon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_bomb.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_bug.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_cursor.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_cut_red.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_film.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_film_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_film_delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_font.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_graphics_bank.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_magifier_zoom_out.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_magnifier.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_magnifier_zoom_in.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_music.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_page_asm.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_page_white.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_page_white_add.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_page_white_delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_page_white_paint.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_paintcan.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_pencil.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_circle_filled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_circle_hollow.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_flip_horizontal.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_flip_vertical.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_line.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_rotate_anticlockwise.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_rotate_clockwise.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_square_filled.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RR_shape_square_hollow.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\RightArrow.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\SampleBg.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Toolbar-d5.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\Toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\appicon.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\application-x-mplayer2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\applications-system.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\applications-system.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\applications-utilities.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\applications-utilities.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\bash.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\bash.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\case-sensitive.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\case-sensitive.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\chardevice.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\chardevice.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\compile_16.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\compile_16.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\continue-icon-cpu.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\continue-icon-cpu.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\continue-icon-ppu.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\continue-icon-ppu.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\controller.icns">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\controller.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\controller.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-export.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-export.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-import.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-import.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-open.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-open.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-properties.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\document-properties.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\drive-harddisk.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\edit_delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\error-mark.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\error-mark.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\find.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\folder-system.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\folder-system.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\folder_closed.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\folder_open.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\gb.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\gplv3.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\help-about.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\ico00001.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\ico00002.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\ico00003.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\ico00004.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\ico00005.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icon1.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icon2.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icon3.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icons8-pin.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icons8-sort_down.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icons8-sort_up.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\icons8-swiss_army_knife.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\inst_toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\key_black_pressed.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\key_black_unpressed.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\key_white_pressed.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\key_white_unpressed.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\logo.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\paintcan.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\pen.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\regular-expression.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\regular-expression.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="..\..\common\resource.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="..\..\common\resources\select_tool.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\selection_all_tool.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stepinto_6.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stepover_6.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stepreturn_6.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_exit.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_exit.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-pause.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-pause.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-play.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-play.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-rec.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-rec.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-stop.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_media-stop.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_right.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_right.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_save-as.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_save-as.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_save.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\stock_save.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\style.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\style.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\system-run.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\system-run.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\toolbar1.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\turbo_ver01_by_ogr.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\usa.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\vaus.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\view_sort_ascending.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\view_sort_descending.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\window_new.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\common\resources\window_new.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
