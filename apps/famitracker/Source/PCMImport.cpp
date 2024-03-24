@@ -43,8 +43,8 @@ class resampler : public jarh::resample<resampler>
 {
 	typedef jarh::resample<resampler> base;
 public:
-	resampler(const jarh::sinc& sinc, float ratio, int channels, int smpsize,
-	          size_t nbsamples, CFile& cfile)
+	resampler(const jarh::sinc& sinc, const float ratio, const int channels, const int smpsize,
+	          const size_t nbsamples, CFile& cfile)
 	// TODO: cutoff is currently fixed to a value (.9f), make it modifiable.
 		: base(sinc), channels_(channels), smpsize_(smpsize),
 		  nbsamples_(nbsamples), remain_(nbsamples), cfile_(cfile)
@@ -286,7 +286,7 @@ BOOL CPCMImport::OnInitDialog()
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void CPCMImport::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CPCMImport::OnHScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	CSliderCtrl* pQualitySlider = static_cast<CSliderCtrl*>(GetDlgItem(IDC_QUALITY));
 	CSliderCtrl* pVolumeSlider = static_cast<CSliderCtrl*>(GetDlgItem(IDC_VOLUME));

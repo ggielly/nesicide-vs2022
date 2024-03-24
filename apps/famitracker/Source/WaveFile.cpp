@@ -21,7 +21,7 @@
 #include <windows.h>
 #include "WaveFile.h"
 
-bool CWaveFile::OpenFile(LPTSTR Filename, int SampleRate, int SampleSize, int Channels)
+bool CWaveFile::OpenFile(const LPTSTR Filename, const int SampleRate, const int SampleSize, const int Channels)
 {
 	// Open a wave file for streaming
 	//
@@ -86,7 +86,7 @@ void CWaveFile::CloseFile()
 	mmioClose(hmmioOut, 0);
 }
 
-void CWaveFile::WriteWave(char* Data, int Size)
+void CWaveFile::WriteWave(char* Data, const int Size)
 {
 	// Save data to the file
 	//

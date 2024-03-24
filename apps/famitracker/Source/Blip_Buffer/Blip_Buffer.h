@@ -80,8 +80,8 @@ public:
 	// not documented yet
 	typedef unsigned long blip_resampled_time_t;
 	void remove_silence(long count);
-	blip_resampled_time_t resampled_duration(int t) const { return t * factor_; }
-	blip_resampled_time_t resampled_time(blip_time_t t) const { return t * factor_ + offset_; }
+	blip_resampled_time_t resampled_duration(const int t) const { return t * factor_; }
+	blip_resampled_time_t resampled_time(const blip_time_t t) const { return t * factor_ + offset_; }
 	blip_resampled_time_t clock_rate_factor(long clock_rate) const;
 public:
 	Blip_Buffer();
@@ -89,8 +89,8 @@ public:
 
 	// Deprecated
 	typedef blip_resampled_time_t resampled_time_t;
-	blargg_err_t sample_rate(long r) { return set_sample_rate(r); }
-	blargg_err_t sample_rate(long r, int msec) { return set_sample_rate(r, msec); }
+	blargg_err_t sample_rate(const long r) { return set_sample_rate(r); }
+	blargg_err_t sample_rate(const long r, const int msec) { return set_sample_rate(r, msec); }
 private:
 	// noncopyable
 	Blip_Buffer(const Blip_Buffer&);
@@ -165,7 +165,7 @@ class Blip_Synth
 {
 public:
 	// Set overall volume of waveform
-	void volume(double v) { impl.volume_unit(v * (1.0 / (range < 0 ? -range : range))); }
+	void volume(const double v) { impl.volume_unit(v * (1.0 / (range < 0 ? -range : range))); }
 
 	// Configure low-pass filter (see notes.txt)
 	void treble_eq(blip_eq_t const& eq) { impl.treble_eq(eq); }
@@ -189,18 +189,18 @@ public:
 	// rather than the one set with output(). Delta can be positive or negative.
 	// The actual change in amplitude is delta * (volume / range)
 	void offset(blip_time_t, int delta, Blip_Buffer*) const;
-	void offset(blip_time_t t, int delta) const { offset(t, delta, impl.buf); }
+	void offset(const blip_time_t t, const int delta) const { offset(t, delta, impl.buf); }
 
 	// Works directly in terms of fractional output samples. Contact author for more.
 	void offset_resampled(blip_resampled_time_t, int delta, Blip_Buffer*) const;
 
 	// Same as offset(), except code is inlined for higher performance
-	void offset_inline(blip_time_t t, int delta, Blip_Buffer* buf) const
+	void offset_inline(const blip_time_t t, const int delta, Blip_Buffer* buf) const
 	{
 		offset_resampled(t * buf->factor_ + buf->offset_, delta, buf);
 	}
 
-	void offset_inline(blip_time_t t, int delta) const
+	void offset_inline(const blip_time_t t, const int delta) const
 	{
 		offset_resampled(t * impl.buf->factor_ + impl.buf->offset_, delta, impl.buf);
 	}
@@ -253,7 +253,7 @@ public:
 	long read_raw() const { return accum; }
 
 	// Advance to next sample
-	void next(int bass_shift = 9) { accum += *buf++ - (accum >> bass_shift); }
+	void next(const int bass_shift = 9) { accum += *buf++ - (accum >> bass_shift); }
 
 	// End reading samples from buffer. The number of samples read must now be removed
 	// using Blip_Buffer::remove_samples().
@@ -290,7 +290,7 @@ const int blip_best_quality = blip_high_quality;
 	buf [rev + 1 - r] = t1; }
 
 template <int quality, int range>
-inline void Blip_Synth<quality, range>::offset_resampled(blip_resampled_time_t time,
+inline void Blip_Synth<quality, range>::offset_resampled(const blip_resampled_time_t time,
                                                          int delta, Blip_Buffer* blip_buf) const
 {
 	// Fails if time is beyond end of Blip_Buffer, due to a bug in caller code or the
@@ -335,25 +335,25 @@ inline void Blip_Synth<quality, range>::offset_resampled(blip_resampled_time_t t
 #undef BLIP_REV
 
 template <int quality, int range>
-void Blip_Synth<quality, range>::offset(blip_time_t t, int delta, Blip_Buffer* buf) const
+void Blip_Synth<quality, range>::offset(const blip_time_t t, const int delta, Blip_Buffer* buf) const
 {
 	offset_resampled(t * buf->factor_ + buf->offset_, delta, buf);
 }
 
 template <int quality, int range>
-void Blip_Synth<quality, range>::update(blip_time_t t, int amp)
+void Blip_Synth<quality, range>::update(const blip_time_t t, const int amp)
 {
 	int delta = amp - impl.last_amp;
 	impl.last_amp = amp;
 	offset_resampled(t * impl.buf->factor_ + impl.buf->offset_, delta, impl.buf);
 }
 
-inline blip_eq_t::blip_eq_t(double t) :
+inline blip_eq_t::blip_eq_t(const double t) :
 	treble(t), rolloff_freq(0), sample_rate(44100), cutoff_freq(0)
 {
 }
 
-inline blip_eq_t::blip_eq_t(double t, long rf, long sr, long cf) :
+inline blip_eq_t::blip_eq_t(const double t, const long rf, const long sr, const long cf) :
 	treble(t), rolloff_freq(rf), sample_rate(sr), cutoff_freq(cf)
 {
 }
@@ -363,7 +363,7 @@ inline long Blip_Buffer::samples_avail() const { return (long)(offset_ >> BLIP_B
 inline long Blip_Buffer::sample_rate() const { return sample_rate_; }
 inline int Blip_Buffer::output_latency() const { return blip_widest_impulse_ / 2; }
 inline long Blip_Buffer::clock_rate() const { return clock_rate_; }
-inline void Blip_Buffer::clock_rate(long cps) { factor_ = clock_rate_factor(clock_rate_ = cps); }
+inline void Blip_Buffer::clock_rate(const long cps) { factor_ = clock_rate_factor(clock_rate_ = cps); }
 
 inline int Blip_Reader::begin(Blip_Buffer& blip_buf)
 {

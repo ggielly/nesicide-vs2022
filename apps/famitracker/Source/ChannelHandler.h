@@ -105,7 +105,7 @@ public:
 	};
 	virtual void SetPitch(int Pitch);
 
-	virtual void SetChannelID(int ID) { m_iChannelID = ID; }
+	virtual void SetChannelID(const int ID) { m_iChannelID = ID; }
 
 	// 
 	// Internal virtual functions

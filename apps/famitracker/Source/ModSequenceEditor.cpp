@@ -44,7 +44,7 @@ CModSequenceEditor::~CModSequenceEditor()
 {
 }
 
-BOOL CModSequenceEditor::CreateEx(DWORD dwExStyle, LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle,
+BOOL CModSequenceEditor::CreateEx(const DWORD dwExStyle, const LPCTSTR lpszClassName, const LPCTSTR lpszWindowName, const DWORD dwStyle,
                                   const RECT& rect, CWnd* pParentWnd)
 {
 	CRect newRect;
@@ -60,7 +60,7 @@ BOOL CModSequenceEditor::CreateEx(DWORD dwExStyle, LPCTSTR lpszClassName, LPCTST
 	return 0;
 }
 
-void FillItem(CDC* pDC, int Index, int Value, bool Remove)
+void FillItem(CDC* pDC, const int Index, const int Value, const bool Remove)
 {
 	const int POS[] = {0, 7, 14, 21, 28, 35, 42, 52};
 	const int VAL[] = {3, 2, 1, 0, 7, 6, 5, 4};
@@ -101,7 +101,7 @@ void CModSequenceEditor::SetInstrument(CInstrumentFDS* pInst)
 	RedrawWindow();
 }
 
-void CModSequenceEditor::OnMouseMove(UINT nFlags, CPoint point)
+void CModSequenceEditor::OnMouseMove(const UINT nFlags, const CPoint point)
 {
 	if (nFlags & MK_LBUTTON)
 		EditSequence(point);
@@ -109,14 +109,14 @@ void CModSequenceEditor::OnMouseMove(UINT nFlags, CPoint point)
 	CWnd::OnMouseMove(nFlags, point);
 }
 
-void CModSequenceEditor::OnLButtonDown(UINT nFlags, CPoint point)
+void CModSequenceEditor::OnLButtonDown(const UINT nFlags, const CPoint point)
 {
 	EditSequence(point);
 
 	CWnd::OnLButtonDown(nFlags, point);
 }
 
-void CModSequenceEditor::EditSequence(CPoint point)
+void CModSequenceEditor::EditSequence(const CPoint point)
 {
 	const int VALUES[] = {3, 2, 1, 0, 7, 6, 5, 4};
 

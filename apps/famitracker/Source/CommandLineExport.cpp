@@ -37,7 +37,7 @@ public:
 	{
 	};
 
-	void WriteLog(LPCTSTR text)
+	void WriteLog(const LPCTSTR text)
 	{
 		m_pFile->WriteString(text);
 	};

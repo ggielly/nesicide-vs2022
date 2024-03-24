@@ -52,7 +52,7 @@ void CInstrumentEditorFDSEnvelope::DoDataExchange(CDataExchange* pDX)
 	CInstrumentEditPanel::DoDataExchange(pDX);
 }
 
-void CInstrumentEditorFDSEnvelope::SelectInstrument(int Instrument)
+void CInstrumentEditorFDSEnvelope::SelectInstrument(const int Instrument)
 {
 	if (m_pInstrument)
 		m_pInstrument->Release();
@@ -88,7 +88,7 @@ BOOL CInstrumentEditorFDSEnvelope::OnInitDialog()
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void CInstrumentEditorFDSEnvelope::SetSequenceString(CString Sequence, bool Changed)
+void CInstrumentEditorFDSEnvelope::SetSequenceString(const CString Sequence, bool Changed)
 {
 	SetDlgItemText(IDC_SEQUENCE_STRING, Sequence);
 }

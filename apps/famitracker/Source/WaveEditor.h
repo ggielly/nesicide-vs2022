@@ -78,7 +78,7 @@ public:
 class CWaveEditorFDS : public CWaveEditor
 {
 public:
-	CWaveEditorFDS(int sx, int sy, int lx, int ly) : CWaveEditor(sx, sy, lx, ly), m_pInstrument(NULL)
+	CWaveEditorFDS(const int sx, const int sy, const int lx, const int ly) : CWaveEditor(sx, sy, lx, ly), m_pInstrument(NULL)
 	{
 	};
 	void SetInstrument(CInstrumentFDS* pInst);
@@ -88,7 +88,7 @@ protected:
 	virtual int GetMaxSamples() const;
 	virtual void DrawRect(CDC* pDC, int x, int y, int sx, int sy) const;
 	virtual bool GetLineMode() const { return m_bLineMode; };
-	virtual void SetLineMode(bool Mode) { m_bLineMode = Mode; };
+	virtual void SetLineMode(const bool Mode) { m_bLineMode = Mode; };
 
 protected:
 	static bool m_bLineMode;
@@ -101,7 +101,7 @@ protected:
 class CWaveEditorN163 : public CWaveEditor
 {
 public:
-	CWaveEditorN163(int sx, int sy, int lx, int ly) : CWaveEditor(sx, sy, lx, ly), m_pInstrument(NULL), m_iWaveIndex(0)
+	CWaveEditorN163(const int sx, const int sy, const int lx, const int ly) : CWaveEditor(sx, sy, lx, ly), m_pInstrument(NULL), m_iWaveIndex(0)
 	{
 	};
 	void SetLength(int Length);
@@ -113,7 +113,7 @@ protected:
 	virtual int GetMaxSamples() const;
 	virtual void DrawRect(CDC* pDC, int x, int y, int sx, int sy) const;
 	virtual bool GetLineMode() const { return m_bLineMode; };
-	virtual void SetLineMode(bool Mode) { m_bLineMode = Mode; };
+	virtual void SetLineMode(const bool Mode) { m_bLineMode = Mode; };
 
 protected:
 	static bool m_bLineMode;

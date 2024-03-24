@@ -46,12 +46,12 @@ protected:
 	virtual void ModifyLoopPoint(CPoint point, bool Redraw);
 	virtual void ModifyReleasePoint(CPoint point, bool Redraw);
 	virtual void ModifyReleased();
-	void PaintBuffer(CDC* pBackDC, CDC* pFrontDC);
+	void PaintBuffer(CDC* pBackDC, CDC* pFrontDC) const;
 	void CursorChanged(int x);
 	bool IsEditLine() const;
 
 	// Drawing
-	virtual void DrawRange(CDC* pDC, int Max, int Min) const;
+	virtual void DrawRange(CDC* p_dc, int Max, int Min) const;
 	void DrawBackground(CDC* pDC, int Lines, bool DrawMarks, int MarkOffset) const;
 	void DrawLoopPoint(CDC* pDC, int StepWidth) const;
 	void DrawReleasePoint(CDC* pDC, int StepWidth) const;

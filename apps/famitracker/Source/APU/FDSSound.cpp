@@ -15,7 +15,7 @@ void LogTableInitialize(void);
 static uint32 lineartbl[(1 << LIN_BITS) + 1];
 static uint32 logtbl[1 << LOG_BITS];
 
-uint32 LinearToLog(int32 l)
+uint32 LinearToLog(const int32 l)
 {
 	return (l < 0) ? (lineartbl[-l] + 1) : lineartbl[l];
 }
@@ -245,7 +245,7 @@ static const uint8 wave_delta_table[8] = {
 	0,256 - (4 << FM_DEPTH),256 - (2 << FM_DEPTH),256 - (1 << FM_DEPTH),
 };
 
-void __fastcall FDSSoundWrite(uint16 address, uint8 value)
+void __fastcall FDSSoundWrite(const uint16 address, const uint8 value)
 {
 	if (0x4040 <= address && address <= 0x407F)
 	{
@@ -323,7 +323,7 @@ void __fastcall FDSSoundWrite(uint16 address, uint8 value)
 	}
 }
 
-uint8 __fastcall FDSSoundRead(uint16 address)
+uint8 __fastcall FDSSoundRead(const uint16 address)
 {
 	if (0x4040 <= address && address <= 0x407f)
 	{
@@ -336,7 +336,7 @@ uint8 __fastcall FDSSoundRead(uint16 address)
 	return 0;
 }
 
-static uint32 DivFix(uint32 p1, uint32 p2, uint32 fix)
+static uint32 DivFix(uint32 p1, const uint32 p2, uint32 fix)
 {
 	uint32 ret;
 	ret = p1 / p2;

@@ -102,7 +102,7 @@ BOOL CSampleEditorDlg::OnInitDialog()
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void CSampleEditorDlg::OnSize(UINT nType, int cx, int cy)
+void CSampleEditorDlg::OnSize(const UINT nType, const int cx, const int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
 	MoveControls();
@@ -228,7 +228,7 @@ void CSampleEditorDlg::OnBnClickedPlay()
 	SetTimer(TMR_PLAY_CURSOR, 10, NULL);
 }
 
-void CSampleEditorDlg::OnTimer(UINT_PTR nIDEvent)
+void CSampleEditorDlg::OnTimer(const UINT_PTR nIDEvent)
 {
 	// Update play cursor
 
@@ -348,7 +348,7 @@ void CSampleEditorDlg::UpdateSampleView()
 	pZoom->SetRange(0, 10);
 }
 
-void CSampleEditorDlg::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+void CSampleEditorDlg::OnKeyDown(const UINT nChar, const UINT nRepCnt, const UINT nFlags)
 {
 	switch (nChar)
 	{
@@ -380,7 +380,7 @@ void CSampleEditorDlg::CopySample(CDSample* pTarget)
 	pTarget->Allocate(m_pSample->GetSize(), m_pSample->GetData());
 }
 
-void CSampleEditorDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CSampleEditorDlg::OnHScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	int Pitch = static_cast<CSliderCtrl*>(GetDlgItem(IDC_PITCH))->GetPos();
 

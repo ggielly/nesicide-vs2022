@@ -41,37 +41,37 @@ public:
 	CPatternData(unsigned int PatternLength, unsigned int Speed, unsigned int Tempo);
 	~CPatternData();
 
-	char GetNote(unsigned int Channel, unsigned int Pattern, unsigned int Row) const
+	char GetNote(const unsigned int Channel, const unsigned int Pattern, const unsigned int Row) const
 	{
 		stChanNote* pNote = GetPatternData(Channel, Pattern, Row);
 		return pNote == NULL ? 0 : pNote->Note;
 	};
 
-	char GetOctave(unsigned int Channel, unsigned int Pattern, unsigned int Row) const
+	char GetOctave(const unsigned int Channel, const unsigned int Pattern, const unsigned int Row) const
 	{
 		stChanNote* pNote = GetPatternData(Channel, Pattern, Row);
 		return pNote == NULL ? 0 : pNote->Octave;
 	};
 
-	char GetInstrument(unsigned int Channel, unsigned int Pattern, unsigned int Row) const
+	char GetInstrument(const unsigned int Channel, const unsigned int Pattern, const unsigned int Row) const
 	{
 		stChanNote* pNote = GetPatternData(Channel, Pattern, Row);
 		return pNote == NULL ? 0 : pNote->Instrument;
 	};
 
-	char GetVolume(unsigned int Channel, unsigned int Pattern, unsigned int Row) const
+	char GetVolume(const unsigned int Channel, const unsigned int Pattern, const unsigned int Row) const
 	{
 		stChanNote* pNote = GetPatternData(Channel, Pattern, Row);
 		return pNote == NULL ? 0 : pNote->Vol;
 	};
 
-	char GetEffect(unsigned int Channel, unsigned int Pattern, unsigned int Row, unsigned int Column) const
+	char GetEffect(const unsigned int Channel, const unsigned int Pattern, const unsigned int Row, const unsigned int Column) const
 	{
 		stChanNote* pNote = GetPatternData(Channel, Pattern, Row);
 		return pNote == NULL ? 0 : pNote->EffNumber[Column];
 	};
 
-	char GetEffectParam(unsigned int Channel, unsigned int Pattern, unsigned int Row, unsigned int Column) const
+	char GetEffectParam(const unsigned int Channel, const unsigned int Pattern, const unsigned int Row, const unsigned int Column) const
 	{
 		stChanNote* pNote = GetPatternData(Channel, Pattern, Row);
 		return pNote == NULL ? 0 : pNote->EffParam[Column];
@@ -81,12 +81,12 @@ public:
 	bool IsPatternEmpty(unsigned int Channel, unsigned int Pattern) const;
 	bool IsPatternInUse(unsigned int Channel, unsigned int Pattern) const;
 
-	int GetEffectColumnCount(int Channel) const
+	int GetEffectColumnCount(const int Channel) const
 	{
 		return m_iEffectColumns[Channel];
 	};
 
-	void SetEffectColumnCount(int Channel, int Count)
+	void SetEffectColumnCount(const int Channel, const int Count)
 	{
 		m_iEffectColumns[Channel] = Count;
 	};
@@ -116,22 +116,22 @@ public:
 		return m_iSongTempo;
 	};
 
-	void SetPatternLength(unsigned int Length)
+	void SetPatternLength(const unsigned int Length)
 	{
 		m_iPatternLength = Length;
 	};
 
-	void SetFrameCount(unsigned int Count)
+	void SetFrameCount(const unsigned int Count)
 	{
 		m_iFrameCount = Count;
 	};
 
-	void SetSongSpeed(unsigned int Speed)
+	void SetSongSpeed(const unsigned int Speed)
 	{
 		m_iSongSpeed = Speed;
 	};
 
-	void SetSongTempo(unsigned int Tempo)
+	void SetSongTempo(const unsigned int Tempo)
 	{
 		m_iSongTempo = Tempo;
 	};

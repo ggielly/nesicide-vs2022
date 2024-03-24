@@ -30,7 +30,7 @@ class CMixer;
 class CChannel
 {
 public:
-	CChannel(CMixer* pMixer, int ID, int Chip) :
+	CChannel(CMixer* pMixer, const int ID, const int Chip) :
 		m_pMixer(pMixer),
 		m_iChanId(ID),
 		m_iChip(Chip),
@@ -51,7 +51,7 @@ public:
 	}
 
 protected:
-	inline virtual void Mix(int32 Value)
+	inline virtual void Mix(const int32 Value)
 	{
 		if (m_iLastValue != Value)
 		{
@@ -79,7 +79,7 @@ protected:
 class CExChannel
 {
 public:
-	CExChannel(CMixer* pMixer, uint8 Chip, uint8 ID) :
+	CExChannel(CMixer* pMixer, const uint8 Chip, const uint8 ID) :
 		m_pMixer(pMixer),
 		m_iChip(Chip),
 		m_iChanId(ID),
@@ -94,7 +94,7 @@ public:
 	}
 
 protected:
-	inline void Mix(int32 Value)
+	inline void Mix(const int32 Value)
 	{
 		int32 Delta = Value - m_iLastValue;
 		if (Delta)

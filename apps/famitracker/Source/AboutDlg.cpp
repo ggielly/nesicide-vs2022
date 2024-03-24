@@ -50,7 +50,7 @@ HBRUSH CLinkLabel::CtlColor(CDC* pDC, UINT /*nCtlColor*/)
 	return (HBRUSH)GetStockObject(NULL_BRUSH);
 }
 
-void CLinkLabel::OnLButtonUp(UINT nFlags, CPoint point)
+void CLinkLabel::OnLButtonUp(const UINT nFlags, const CPoint point)
 {
 	ShellExecute(NULL, _T("open"), m_strAddress, NULL, NULL, SW_SHOWNORMAL);
 	CStatic::OnLButtonUp(nFlags, point);
@@ -68,7 +68,7 @@ void CLinkLabel::OnMouseLeave()
 	CStatic::OnMouseLeave();
 }
 
-void CLinkLabel::OnMouseMove(UINT nFlags, CPoint point)
+void CLinkLabel::OnMouseMove(const UINT nFlags, const CPoint point)
 {
 	if (!m_bHover)
 	{
@@ -99,7 +99,7 @@ CHead::CHead()
 {
 }
 
-void CHead::DrawItem(LPDRAWITEMSTRUCT lpDraw)
+void CHead::DrawItem(const LPDRAWITEMSTRUCT lpDraw)
 {
 	CDC* pDC = CDC::FromHandle(lpDraw->hDC);
 

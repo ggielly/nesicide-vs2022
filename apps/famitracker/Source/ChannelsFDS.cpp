@@ -39,7 +39,7 @@ CChannelHandlerFDS::CChannelHandlerFDS() :
 	m_bResetMod = false;
 }
 
-void CChannelHandlerFDS::HandleNoteData(stChanNote* pNoteData, int EffColumns)
+void CChannelHandlerFDS::HandleNoteData(stChanNote* pNoteData, const int EffColumns)
 {
 	m_iPostEffect = 0;
 	m_iPostEffectParam = 0;
@@ -68,7 +68,7 @@ void CChannelHandlerFDS::HandleNoteData(stChanNote* pNoteData, int EffColumns)
 		m_iModulationSpeed = (m_iModulationSpeed & 0xF00) | m_iEffModSpeedLo;
 }
 
-void CChannelHandlerFDS::HandleCustomEffects(int EffNum, int EffParam)
+void CChannelHandlerFDS::HandleCustomEffects(const int EffNum, const int EffParam)
 {
 	if (EffNum == EF_PORTA_DOWN)
 	{
@@ -104,7 +104,7 @@ void CChannelHandlerFDS::HandleCustomEffects(int EffNum, int EffParam)
 	}
 }
 
-bool CChannelHandlerFDS::HandleInstrument(int Instrument, bool Trigger, bool NewInstrument)
+bool CChannelHandlerFDS::HandleInstrument(const int Instrument, const bool Trigger, const bool NewInstrument)
 {
 	CFamiTrackerDoc* pDocument = m_pSoundGen->GetDocument();
 	CInstrumentContainer<CInstrumentFDS> instContainer(pDocument, Instrument); // TODO check this
@@ -157,7 +157,7 @@ void CChannelHandlerFDS::HandleRelease()
 	}
 }
 
-void CChannelHandlerFDS::HandleNote(int Note, int Octave)
+void CChannelHandlerFDS::HandleNote(const int Note, const int Octave)
 {
 	// Trigger a new note
 	m_iNote = RunNote(Octave, Note);

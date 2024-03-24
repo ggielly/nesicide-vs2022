@@ -54,7 +54,7 @@ public:
 		memset(&ClipInfo, 0, sizeof(ClipInfo));
 	}
 
-	CPatternClipData(int Channels, int Rows)
+	CPatternClipData(const int Channels, const int Rows)
 	{
 		memset(&ClipInfo, 0, sizeof(ClipInfo));
 		Size = Channels * Rows;

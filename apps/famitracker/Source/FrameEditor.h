@@ -40,7 +40,7 @@ public:
 		memset(&ClipInfo, 0, sizeof(ClipInfo));
 	}
 
-	CFrameClipData(int Channels, int Frames)
+	CFrameClipData(const int Channels, const int Frames)
 	{
 		memset(&ClipInfo, 0, sizeof(ClipInfo));
 		Alloc(Channels * Frames);

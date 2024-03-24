@@ -127,7 +127,7 @@ void CFrameEditor::AssignDocument(CFamiTrackerDoc* pDoc, CFamiTrackerView* pView
 
 // CFrameEditor message handlers
 
-int CFrameEditor::OnCreate(LPCREATESTRUCT lpCreateStruct)
+int CFrameEditor::OnCreate(const LPCREATESTRUCT lpCreateStruct)
 {
 	if (CWnd::OnCreate(lpCreateStruct) == -1)
 		return -1;
@@ -446,7 +446,7 @@ void CFrameEditor::InvalidateFrameData()
 	m_bInvalidated = true;
 }
 
-void CFrameEditor::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CFrameEditor::OnVScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	switch (nSBCode)
 	{
@@ -476,7 +476,7 @@ void CFrameEditor::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 	CWnd::OnVScroll(nSBCode, nPos, pScrollBar);
 }
 
-void CFrameEditor::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CFrameEditor::OnHScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	switch (nSBCode)
 	{
@@ -519,7 +519,7 @@ void CFrameEditor::OnKillFocus(CWnd* pNewWnd)
 	theApp.GetAccelerator()->SetAccelerator(NULL);
 }
 
-void CFrameEditor::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+void CFrameEditor::OnKeyDown(const UINT nChar, const UINT nRepCnt, const UINT nFlags)
 {
 	const int PAGE_SIZE = 4;
 
@@ -718,7 +718,7 @@ void CFrameEditor::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	CWnd::OnKeyDown(nChar, nRepCnt, nFlags);
 }
 
-void CFrameEditor::OnTimer(UINT_PTR nIDEvent)
+void CFrameEditor::OnTimer(const UINT_PTR nIDEvent)
 {
 	if (m_bInputEnable)
 	{
@@ -748,7 +748,7 @@ BOOL CFrameEditor::PreTranslateMessage(MSG* pMsg)
 	return CWnd::PreTranslateMessage(pMsg);
 }
 
-int CFrameEditor::GetRowFromPoint(const CPoint& point, bool DropTarget) const
+int CFrameEditor::GetRowFromPoint(const CPoint& point, const bool DropTarget) const
 {
 	// Translate a point value to a row
 	int Delta = ((point.y - TOP_OFFSET) / ROW_HEIGHT) - m_iMiddleRow;
@@ -769,14 +769,14 @@ int CFrameEditor::GetChannelFromPoint(const CPoint& point) const
 	return (point.x - ROW_COLUMN_WIDTH - 2) / FRAME_ITEM_WIDTH;
 }
 
-unsigned int CFrameEditor::CalcWidth(int Channels) const
+unsigned int CFrameEditor::CalcWidth(const int Channels) const
 {
 	return ROW_COLUMN_WIDTH + FRAME_ITEM_WIDTH * Channels + 25;
 }
 
 //// Mouse ////////////////////////////////////////////////////////////////////////////////////////
 
-void CFrameEditor::OnLButtonDown(UINT nFlags, CPoint point)
+void CFrameEditor::OnLButtonDown(const UINT nFlags, CPoint point)
 {
 	ScaleMouse(point);
 
@@ -824,7 +824,7 @@ void CFrameEditor::OnLButtonDown(UINT nFlags, CPoint point)
 	CWnd::OnLButtonDown(nFlags, point);
 }
 
-void CFrameEditor::OnLButtonUp(UINT nFlags, CPoint point)
+void CFrameEditor::OnLButtonUp(const UINT nFlags, CPoint point)
 {
 	ScaleMouse(point);
 
@@ -869,7 +869,7 @@ void CFrameEditor::OnLButtonUp(UINT nFlags, CPoint point)
 	CWnd::OnLButtonUp(nFlags, point);
 }
 
-void CFrameEditor::OnMouseMove(UINT nFlags, CPoint point)
+void CFrameEditor::OnMouseMove(const UINT nFlags, CPoint point)
 {
 	ScaleMouse(point);
 
@@ -915,7 +915,7 @@ void CFrameEditor::OnMouseMove(UINT nFlags, CPoint point)
 	CWnd::OnMouseMove(nFlags, point);
 }
 
-void CFrameEditor::OnNcMouseMove(UINT nHitTest, CPoint point)
+void CFrameEditor::OnNcMouseMove(const UINT nHitTest, const CPoint point)
 {
 	m_iHiglightLine = -1;
 	InvalidateFrameData();
@@ -923,7 +923,7 @@ void CFrameEditor::OnNcMouseMove(UINT nHitTest, CPoint point)
 	CWnd::OnNcMouseMove(nHitTest, point);
 }
 
-void CFrameEditor::OnLButtonDblClk(UINT nFlags, CPoint point)
+void CFrameEditor::OnLButtonDblClk(const UINT nFlags, CPoint point)
 {
 	// Select channel and enable edit mode
 	ScaleMouse(point);
@@ -944,7 +944,7 @@ void CFrameEditor::OnLButtonDblClk(UINT nFlags, CPoint point)
 	CWnd::OnLButtonDblClk(nFlags, point);
 }
 
-void CFrameEditor::OnRButtonUp(UINT nFlags, CPoint point)
+void CFrameEditor::OnRButtonUp(const UINT nFlags, CPoint point)
 {
 	ScaleMouse(point);
 	/*
@@ -959,7 +959,7 @@ void CFrameEditor::OnRButtonUp(UINT nFlags, CPoint point)
 	CWnd::OnRButtonUp(nFlags, point);
 }
 
-BOOL CFrameEditor::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
+BOOL CFrameEditor::OnMouseWheel(const UINT nFlags, const short zDelta, const CPoint pt)
 {
 	if (zDelta > 0)
 	{
@@ -990,7 +990,7 @@ void CFrameEditor::AutoScroll(const CPoint& point)
 	}
 }
 
-void CFrameEditor::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
+void CFrameEditor::OnContextMenu(CWnd* /*pWnd*/, const CPoint point)
 {
 	// Popup menu
 	CMenu *pPopupMenu, PopupMenuBar;
@@ -1173,7 +1173,7 @@ void CFrameEditor::OnEditDelete()
 	m_pMainFrame->AddAction(pAction);
 }
 
-void CFrameEditor::Paste(unsigned int Track, CFrameClipData* pClipData)
+void CFrameEditor::Paste(const unsigned int Track, CFrameClipData* pClipData)
 {
 	const int Rows = pClipData->ClipInfo.Rows;
 	const int Channels = pClipData->ClipInfo.Channels;
@@ -1189,7 +1189,7 @@ void CFrameEditor::Paste(unsigned int Track, CFrameClipData* pClipData)
 	}
 }
 
-void CFrameEditor::PasteNew(unsigned int Track, CFrameClipData* pClipData)
+void CFrameEditor::PasteNew(const unsigned int Track, CFrameClipData* pClipData)
 {
 	const int Rows = pClipData->ClipInfo.Rows;
 	const int Channels = pClipData->ClipInfo.Channels;
@@ -1242,7 +1242,7 @@ void CFrameEditor::OnModuleMoveFrameUp()
 	m_pMainFrame->OnModuleMoveframeup();
 }
 
-void CFrameEditor::OnSize(UINT nType, int cx, int cy)
+void CFrameEditor::OnSize(const UINT nType, const int cx, const int cy)
 {
 	CWnd::OnSize(nType, cx, cy);
 
@@ -1347,7 +1347,7 @@ void CFrameEditor::UpdateDrag(const CPoint& point)
 	Invalidate();
 }
 
-BOOL CFrameEditor::DropData(COleDataObject* pDataObject, DROPEFFECT dropEffect)
+BOOL CFrameEditor::DropData(COleDataObject* pDataObject, const DROPEFFECT dropEffect)
 {
 	// Drag'n'drop operation completed
 
@@ -1412,8 +1412,8 @@ BOOL CFrameEditor::DropData(COleDataObject* pDataObject, DROPEFFECT dropEffect)
 	return TRUE;
 }
 
-void CFrameEditor::PerformDragOperation(unsigned int Track, CFrameClipData* pClipData, int DragTarget, bool bDelete,
-                                        bool bNewPatterns)
+void CFrameEditor::PerformDragOperation(const unsigned int Track, CFrameClipData* pClipData, int DragTarget, const bool bDelete,
+                                        const bool bNewPatterns)
 {
 	const int SelStart = pClipData->ClipInfo.OleInfo.SourceRowStart;
 	const int SelEnd = pClipData->ClipInfo.OleInfo.SourceRowEnd;
@@ -1486,12 +1486,12 @@ bool CFrameEditor::IsClipboardAvailable() const
 
 // CFrameEditorDropTarget ////////////
 
-void CFrameEditorDropTarget::SetClipBoardFormat(UINT iClipboard)
+void CFrameEditorDropTarget::SetClipBoardFormat(const UINT iClipboard)
 {
 	m_iClipboard = iClipboard;
 }
 
-DROPEFFECT CFrameEditorDropTarget::OnDragEnter(CWnd* pWnd, COleDataObject* pDataObject, DWORD dwKeyState, CPoint point)
+DROPEFFECT CFrameEditorDropTarget::OnDragEnter(CWnd* pWnd, COleDataObject* pDataObject, const DWORD dwKeyState, const CPoint point)
 {
 	CFrameWnd* pMainFrame = dynamic_cast<CFrameWnd*>(theApp.m_pMainWnd);
 
@@ -1529,13 +1529,13 @@ DROPEFFECT CFrameEditorDropTarget::OnDragEnter(CWnd* pWnd, COleDataObject* pData
 	return m_nDropEffect;
 }
 
-DROPEFFECT CFrameEditorDropTarget::OnDragOver(CWnd* pWnd, COleDataObject* pDataObject, DWORD dwKeyState, CPoint point)
+DROPEFFECT CFrameEditorDropTarget::OnDragOver(CWnd* pWnd, COleDataObject* pDataObject, DWORD dwKeyState, const CPoint point)
 {
 	m_pParent->UpdateDrag(point);
 	return m_nDropEffect;
 }
 
-BOOL CFrameEditorDropTarget::OnDrop(CWnd* pWnd, COleDataObject* pDataObject, DROPEFFECT dropEffect, CPoint point)
+BOOL CFrameEditorDropTarget::OnDrop(CWnd* pWnd, COleDataObject* pDataObject, const DROPEFFECT dropEffect, const CPoint point)
 {
 	m_nDropEffect = DROPEFFECT_NONE;
 	m_pParent->UpdateDrag(point);
@@ -1560,7 +1560,7 @@ bool CFrameEditorDropTarget::CopyToNewPatterns() const
 
 // CFrameClipData //////////////////////////////////////////////////////////////
 
-void CFrameClipData::Alloc(int Size)
+void CFrameClipData::Alloc(const int Size)
 {
 	iSize = Size;
 	pFrames = new int[Size];
@@ -1571,7 +1571,7 @@ SIZE_T CFrameClipData::GetAllocSize() const
 	return sizeof(ClipInfo) + sizeof(int) * iSize;
 }
 
-void CFrameClipData::ToMem(HGLOBAL hMem)
+void CFrameClipData::ToMem(const HGLOBAL hMem)
 {
 	// From CPatternClipData to memory
 	ASSERT(hMem != NULL);
@@ -1587,7 +1587,7 @@ void CFrameClipData::ToMem(HGLOBAL hMem)
 	}
 }
 
-void CFrameClipData::FromMem(HGLOBAL hMem)
+void CFrameClipData::FromMem(const HGLOBAL hMem)
 {
 	// From memory to CPatternClipData
 	ASSERT(hMem != NULL);
@@ -1608,7 +1608,7 @@ void CFrameClipData::FromMem(HGLOBAL hMem)
 	}
 }
 
-int CFrameClipData::GetFrame(int Frame, int Channel) const
+int CFrameClipData::GetFrame(const int Frame, const int Channel) const
 {
 	ASSERT(Frame >= 0 && Frame < ClipInfo.Rows);
 	ASSERT(Channel >= 0 && Channel < ClipInfo.Channels);
@@ -1616,7 +1616,7 @@ int CFrameClipData::GetFrame(int Frame, int Channel) const
 	return *(pFrames + (Frame * ClipInfo.Channels + Channel));
 }
 
-void CFrameClipData::SetFrame(int Frame, int Channel, int Pattern)
+void CFrameClipData::SetFrame(const int Frame, const int Channel, const int Pattern)
 {
 	ASSERT(Frame >= 0 && Frame < ClipInfo.Rows);
 	ASSERT(Channel >= 0 && Channel < ClipInfo.Channels);

@@ -39,25 +39,25 @@ bool CChannelHandlerS5B::m_bRegsDirty = false;
 
 // Class functions
 
-void CChannelHandlerS5B::SetEnvelopeHigh(int Val)
+void CChannelHandlerS5B::SetEnvelopeHigh(const int Val)
 {
 	m_iEnvFreqHi = Val;
 	m_bRegsDirty = true;
 }
 
-void CChannelHandlerS5B::SetEnvelopeLow(int Val)
+void CChannelHandlerS5B::SetEnvelopeLow(const int Val)
 {
 	m_iEnvFreqLo = Val;
 	m_bRegsDirty = true;
 }
 
-void CChannelHandlerS5B::SetEnvelopeType(int Val)
+void CChannelHandlerS5B::SetEnvelopeType(const int Val)
 {
 	m_iEnvType = Val;
 	m_bRegsDirty = true;
 }
 
-void CChannelHandlerS5B::SetMode(int Chan, int Square, int Noise)
+void CChannelHandlerS5B::SetMode(const int Chan, const int Square, const int Noise)
 {
 	int initModes = m_iModes;
 
@@ -82,7 +82,7 @@ void CChannelHandlerS5B::SetMode(int Chan, int Square, int Noise)
 	}
 }
 
-void CChannelHandlerS5B::SetNoiseFreq(int Freq)
+void CChannelHandlerS5B::SetNoiseFreq(const int Freq)
 {
 	m_iNoiseFreq = Freq;
 	m_bRegsDirty = true;
@@ -128,12 +128,12 @@ bool NoteValid(int Note)
 }
 */
 
-void CChannelHandlerS5B::HandleNoteData(stChanNote* pNoteData, int EffColumns)
+void CChannelHandlerS5B::HandleNoteData(stChanNote* pNoteData, const int EffColumns)
 {
 	CChannelHandler::HandleNoteData(pNoteData, EffColumns);
 }
 
-void CChannelHandlerS5B::HandleCustomEffects(int EffNum, int EffParam)
+void CChannelHandlerS5B::HandleCustomEffects(const int EffNum, const int EffParam)
 {
 	if (!CheckCommonEffects(EffNum, EffParam))
 	{
@@ -163,7 +163,7 @@ void CChannelHandlerS5B::HandleCustomEffects(int EffNum, int EffParam)
 	}
 }
 
-bool CChannelHandlerS5B::HandleInstrument(int Instrument, bool Trigger, bool NewInstrument)
+bool CChannelHandlerS5B::HandleInstrument(const int Instrument, const bool Trigger, bool NewInstrument)
 {
 	CFamiTrackerDoc* pDocument = m_pSoundGen->GetDocument();
 	CInstrumentContainer<CInstrumentS5B> instContainer(pDocument, Instrument);
@@ -206,7 +206,7 @@ void CChannelHandlerS5B::HandleRelease()
 	}
 }
 
-void CChannelHandlerS5B::HandleNote(int Note, int Octave)
+void CChannelHandlerS5B::HandleNote(const int Note, const int Octave)
 {
 	m_iNote = RunNote(Octave, Note);
 	m_iSeqVolume = 0xF;
@@ -228,7 +228,7 @@ void CChannelHandlerS5B::ProcessChannel()
 		RunSequence(i);
 }
 
-void CChannelHandlerS5B::WriteReg(int Reg, int Value)
+void CChannelHandlerS5B::WriteReg(const int Reg, const int Value)
 {
 	m_pAPU->ExternalWrite(0xC000, Reg);
 	m_pAPU->ExternalWrite(0xE000, Value);

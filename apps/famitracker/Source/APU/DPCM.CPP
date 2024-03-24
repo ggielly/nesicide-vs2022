@@ -29,8 +29,8 @@ const uint16 CDPCM::DMC_PERIODS_PAL[] = {
 	398, 354, 316, 298, 276, 236, 210, 198, 176, 148, 132, 118, 98, 78, 66, 50
 };
 
-CDPCM::CDPCM(CMixer* pMixer, CSampleMem* pSampleMem, int ID) : CChannel(pMixer, ID, SNDCHIP_NONE),
-                                                               m_pSampleMem(pSampleMem)
+CDPCM::CDPCM(CMixer* pMixer, CSampleMem* pSampleMem, const int ID) : CChannel(pMixer, ID, SNDCHIP_NONE),
+                                                                     m_pSampleMem(pSampleMem)
 {
 	PERIOD_TABLE = DMC_PERIODS_NTSC;
 
@@ -59,7 +59,7 @@ void CDPCM::Reset()
 	EndFrame();
 }
 
-void CDPCM::Write(uint16 Address, uint8 Value)
+void CDPCM::Write(const uint16 Address, const uint8 Value)
 {
 	switch (Address)
 	{
@@ -82,7 +82,7 @@ void CDPCM::Write(uint16 Address, uint8 Value)
 	}
 }
 
-void CDPCM::WriteControl(uint8 Value)
+void CDPCM::WriteControl(const uint8 Value)
 {
 	if ((Value & 1) == 1)
 	{

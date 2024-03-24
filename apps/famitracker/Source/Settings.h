@@ -53,7 +53,7 @@ enum PATHS
 class CSettingBase
 {
 public:
-	CSettingBase(LPCTSTR pSection, LPCTSTR pEntry) : m_pSection(pSection), m_pEntry(pEntry)
+	CSettingBase(const LPCTSTR pSection, const LPCTSTR pEntry) : m_pSection(pSection), m_pEntry(pEntry)
 	{
 	};
 
@@ -75,8 +75,8 @@ template <class T>
 class CSettingType : public CSettingBase
 {
 public:
-	CSettingType(LPCTSTR pSection, LPCTSTR pEntry, T defaultVal, T* pVar) : CSettingBase(pSection, pEntry),
-	                                                                        m_tDefaultValue(defaultVal), m_pVariable(pVar)
+	CSettingType(const LPCTSTR pSection, const LPCTSTR pEntry, T defaultVal, T* pVar) : CSettingBase(pSection, pEntry),
+	                                                                                    m_tDefaultValue(defaultVal), m_pVariable(pVar)
 	{
 	};
 	virtual void Load();

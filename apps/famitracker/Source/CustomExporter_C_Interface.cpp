@@ -51,7 +51,7 @@ void GetInterface(FamitrackerDocInterface* iface)
 }
 
 //overall document functions
-void GetNoteData(unsigned int Frame, unsigned int Channel, unsigned int Row, stChanNote* Data)
+void GetNoteData(const unsigned int Frame, const unsigned int Channel, const unsigned int Row, stChanNote* Data)
 {
 	if (NULL == _doc)
 	{
@@ -92,7 +92,7 @@ unsigned int GetSongSpeed()
 }
 
 //sequence functions
-int GetSequenceCount(int Type)
+int GetSequenceCount(const int Type)
 {
 	if (NULL == _doc)
 	{
@@ -102,7 +102,7 @@ int GetSequenceCount(int Type)
 	return _doc->GetSequenceCount(Type);
 }
 
-SequenceHandle GetSequence(int Index, int Type)
+SequenceHandle GetSequence(const int Index, const int Type)
 {
 	if (NULL == _doc)
 	{
@@ -112,7 +112,7 @@ SequenceHandle GetSequence(int Index, int Type)
 	return static_cast<SequenceHandle>(_doc->GetSequence(Index, Type));
 }
 
-signed char GetItem(SequenceHandle sequence, int Index)
+signed char GetItem(const SequenceHandle sequence, const int Index)
 {
 	if (NULL == sequence)
 	{
@@ -124,7 +124,7 @@ signed char GetItem(SequenceHandle sequence, int Index)
 	return sequenceInterface->GetItem(Index);
 }
 
-unsigned int GetItemCount(SequenceHandle sequence)
+unsigned int GetItemCount(const SequenceHandle sequence)
 {
 	if (NULL == sequence)
 	{
@@ -136,7 +136,7 @@ unsigned int GetItemCount(SequenceHandle sequence)
 	return sequenceInterface->GetItemCount();
 }
 
-unsigned int GetLoopPoint(SequenceHandle sequence)
+unsigned int GetLoopPoint(const SequenceHandle sequence)
 {
 	if (NULL == sequence)
 	{
@@ -159,7 +159,7 @@ int GetInstrumentCount()
 	return _doc->GetInstrumentCount();
 }
 
-Instrument2A03Handle Get2A03Instrument(int Instrument)
+Instrument2A03Handle Get2A03Instrument(const int Instrument)
 {
 	if (NULL == _doc)
 	{
@@ -169,7 +169,7 @@ Instrument2A03Handle Get2A03Instrument(int Instrument)
 	return static_cast<Instrument2A03Handle>(_doc->Get2A03Instrument(Instrument));
 }
 
-int GetSeqEnable(Instrument2A03Handle instrument, int Index)
+int GetSeqEnable(const Instrument2A03Handle instrument, const int Index)
 {
 	if (NULL == instrument)
 	{
@@ -181,7 +181,7 @@ int GetSeqEnable(Instrument2A03Handle instrument, int Index)
 	return instrumentInterface->GetSeqEnable(Index);
 }
 
-int GetSeqIndex(Instrument2A03Handle instrument, int Index)
+int GetSeqIndex(const Instrument2A03Handle instrument, const int Index)
 {
 	if (NULL == instrument)
 	{
@@ -194,7 +194,7 @@ int GetSeqIndex(Instrument2A03Handle instrument, int Index)
 }
 
 //effect functions
-unsigned int GetNoteEffectType(unsigned int Frame, unsigned int Channel, unsigned int Row, int Index)
+unsigned int GetNoteEffectType(const unsigned int Frame, const unsigned int Channel, const unsigned int Row, const int Index)
 {
 	if (NULL == _doc)
 	{
@@ -204,7 +204,7 @@ unsigned int GetNoteEffectType(unsigned int Frame, unsigned int Channel, unsigne
 	return _doc->GetNoteEffectType(Frame, Channel, Row, Index);
 }
 
-unsigned int GetNoteEffectParam(unsigned int Frame, unsigned int Channel, unsigned int Row, int Index)
+unsigned int GetNoteEffectParam(const unsigned int Frame, const unsigned int Channel, const unsigned int Row, const int Index)
 {
 	if (NULL == _doc)
 	{
@@ -225,7 +225,7 @@ int GetSampleCount()
 	return _doc->GetSampleCount();
 }
 
-void GetSampleName(unsigned int Index, char* Name)
+void GetSampleName(const unsigned int Index, char* Name)
 {
 	if (NULL == _doc)
 	{
@@ -235,7 +235,7 @@ void GetSampleName(unsigned int Index, char* Name)
 	_doc->GetSampleName(Index, Name);
 }
 
-int GetSampleSize(unsigned int Sample)
+int GetSampleSize(const unsigned int Sample)
 {
 	if (NULL == _doc)
 	{
@@ -245,7 +245,7 @@ int GetSampleSize(unsigned int Sample)
 	return _doc->GetSampleSize(Sample);
 }
 
-char GetSampleData(unsigned int Sample, unsigned int Offset)
+char GetSampleData(const unsigned int Sample, const unsigned int Offset)
 {
 	if (NULL == _doc)
 	{
@@ -256,7 +256,7 @@ char GetSampleData(unsigned int Sample, unsigned int Offset)
 }
 
 //DPCM instrument functions
-char GetSample(Instrument2A03Handle instrument, int Octave, int Note)
+char GetSample(const Instrument2A03Handle instrument, const int Octave, const int Note)
 {
 	if (NULL == instrument)
 	{
@@ -268,7 +268,7 @@ char GetSample(Instrument2A03Handle instrument, int Octave, int Note)
 	return instrumentInterface->GetSample(Octave, Note);
 }
 
-char GetSamplePitch(Instrument2A03Handle instrument, int Octave, int Note)
+char GetSamplePitch(const Instrument2A03Handle instrument, const int Octave, const int Note)
 {
 	if (NULL == instrument)
 	{
@@ -280,7 +280,7 @@ char GetSamplePitch(Instrument2A03Handle instrument, int Octave, int Note)
 	return instrumentInterface->GetSamplePitch(Octave, Note);
 }
 
-char GetSampleLoopOffset(Instrument2A03Handle instrument, int Octave, int Note)
+char GetSampleLoopOffset(const Instrument2A03Handle instrument, const int Octave, const int Note)
 {
 	if (NULL == instrument)
 	{

@@ -452,7 +452,7 @@ void CChunkRenderText::WriteFileString(const CStringA& str, CFile* pFile) const
 	pFile->Write(const_cast<CStringA&>(str).GetBuffer(), str.GetLength());
 }
 
-void CChunkRenderText::StoreByteString(const char* pData, int Len, CStringA& str, int LineBreak) const
+void CChunkRenderText::StoreByteString(const char* pData, const int Len, CStringA& str, const int LineBreak) const
 {
 	str.Append("\t.byte ");
 
@@ -469,7 +469,7 @@ void CChunkRenderText::StoreByteString(const char* pData, int Len, CStringA& str
 	str.Append("\n");
 }
 
-void CChunkRenderText::StoreByteString(const CChunk* pChunk, CStringA& str, int LineBreak) const
+void CChunkRenderText::StoreByteString(const CChunk* pChunk, CStringA& str, const int LineBreak) const
 {
 	int len = pChunk->GetLength();
 

@@ -85,7 +85,7 @@ void CCommentsDlg::OnBnClickedCancel()
 	EndDialog(0);
 }
 
-void CCommentsDlg::OnSize(UINT nType, int cx, int cy)
+void CCommentsDlg::OnSize(const UINT nType, const int cx, const int cy)
 {
 	CDialog::OnSize(nType, cx, cy);
 

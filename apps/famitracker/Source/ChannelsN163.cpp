@@ -46,7 +46,7 @@ void CChannelHandlerN163::ResetChannel()
 	m_iWaveIndex = 0;
 }
 
-void CChannelHandlerN163::HandleNoteData(stChanNote* pNoteData, int EffColumns)
+void CChannelHandlerN163::HandleNoteData(stChanNote* pNoteData, const int EffColumns)
 {
 	m_iPostEffect = 0;
 	m_iPostEffectParam = 0;
@@ -66,7 +66,7 @@ void CChannelHandlerN163::HandleNoteData(stChanNote* pNoteData, int EffColumns)
 	}
 }
 
-void CChannelHandlerN163::HandleCustomEffects(int EffNum, int EffParam)
+void CChannelHandlerN163::HandleCustomEffects(const int EffNum, const int EffParam)
 {
 	if (EffNum == EF_PORTA_DOWN)
 	{
@@ -104,7 +104,7 @@ void CChannelHandlerN163::HandleCustomEffects(int EffNum, int EffParam)
 	}
 }
 
-bool CChannelHandlerN163::HandleInstrument(int Instrument, bool Trigger, bool NewInstrument)
+bool CChannelHandlerN163::HandleInstrument(const int Instrument, const bool Trigger, const bool NewInstrument)
 {
 	CFamiTrackerDoc* pDocument = m_pSoundGen->GetDocument();
 	CInstrumentContainer<CInstrumentN163> instContainer(pDocument, Instrument);
@@ -157,7 +157,7 @@ void CChannelHandlerN163::HandleRelease()
 	}
 }
 
-void CChannelHandlerN163::HandleNote(int Note, int Octave)
+void CChannelHandlerN163::HandleNote(const int Note, const int Octave)
 {
 	// New note
 	m_iNote = RunNote(Octave, Note);
@@ -239,23 +239,23 @@ void CChannelHandlerN163::ClearRegisters()
 	m_iDutyPeriod = 0;
 }
 
-void CChannelHandlerN163::WriteReg(int Reg, int Value)
+void CChannelHandlerN163::WriteReg(const int Reg, const int Value)
 {
 	WriteExternalRegister(0xF800, Reg);
 	WriteExternalRegister(0x4800, Value);
 }
 
-void CChannelHandlerN163::SetAddress(char Addr, bool AutoInc)
+void CChannelHandlerN163::SetAddress(const char Addr, const bool AutoInc)
 {
 	WriteExternalRegister(0xF800, (AutoInc ? 0x80 : 0) | Addr);
 }
 
-void CChannelHandlerN163::WriteData(char Data)
+void CChannelHandlerN163::WriteData(const char Data)
 {
 	WriteExternalRegister(0x4800, Data);
 }
 
-void CChannelHandlerN163::WriteData(int Addr, char Data)
+void CChannelHandlerN163::WriteData(const int Addr, const char Data)
 {
 	SetAddress(Addr, false);
 	WriteData(Data);

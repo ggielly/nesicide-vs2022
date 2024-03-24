@@ -261,7 +261,7 @@ void CModulePropertiesDlg::OnEnChangeSongname()
 	m_pDocument->UpdateAllViews(NULL, UPDATE_TRACK);
 }
 
-void CModulePropertiesDlg::SelectSong(int Song)
+void CModulePropertiesDlg::SelectSong(const int Song)
 {
 	CListCtrl* pSongList = static_cast<CListCtrl*>(GetDlgItem(IDC_SONGLIST));
 	ASSERT(Song >= 0);
@@ -325,7 +325,7 @@ void CModulePropertiesDlg::OnCbnSelchangeExpansion()
 	SetDlgItemText(IDC_CHANNELS_NR, channelsStr);
 }
 
-void CModulePropertiesDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CModulePropertiesDlg::OnHScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	CSliderCtrl* pSlider = static_cast<CSliderCtrl*>(GetDlgItem(IDC_CHANNELS));
 

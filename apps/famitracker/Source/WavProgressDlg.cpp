@@ -66,7 +66,7 @@ void CWavProgressDlg::OnBnClickedCancel()
 	EndDialog(0);
 }
 
-void CWavProgressDlg::BeginRender(CString& File, render_end_t LengthType, int LengthParam, int Track)
+void CWavProgressDlg::BeginRender(CString& File, const render_end_t LengthType, const int LengthParam, const int Track)
 {
 	m_iSongEndType = LengthType;
 	m_iSongEndParam = LengthParam;
@@ -103,7 +103,7 @@ BOOL CWavProgressDlg::OnInitDialog()
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void CWavProgressDlg::OnTimer(UINT_PTR nIDEvent)
+void CWavProgressDlg::OnTimer(const UINT_PTR nIDEvent)
 {
 	// Update progress status
 	CString Text;

@@ -58,7 +58,7 @@ void CInstrumentEditorFDS::DoDataExchange(CDataExchange* pDX)
 	CInstrumentEditPanel::DoDataExchange(pDX);
 }
 
-void CInstrumentEditorFDS::SelectInstrument(int Instrument)
+void CInstrumentEditorFDS::SelectInstrument(const int Instrument)
 {
 	if (m_pInstrument)
 		m_pInstrument->Release();
@@ -273,7 +273,7 @@ void CInstrumentEditorFDS::OnModDelayChange()
 	theApp.GetSoundGenerator()->WaveChanged();
 }
 
-void CInstrumentEditorFDS::PreviewNote(unsigned char Key)
+void CInstrumentEditorFDS::PreviewNote(const unsigned char Key)
 {
 	CFamiTrackerView::GetView()->PreviewNote(Key);
 }
@@ -316,7 +316,7 @@ void CInstrumentEditorFDS::OnBnClickedPasteWave()
 	}
 }
 
-void CInstrumentEditorFDS::ParseWaveString(LPCTSTR pString)
+void CInstrumentEditorFDS::ParseWaveString(const LPCTSTR pString)
 {
 	std::string str(pString);
 
@@ -374,7 +374,7 @@ void CInstrumentEditorFDS::OnBnClickedPasteTable()
 	}
 }
 
-void CInstrumentEditorFDS::ParseTableString(LPCTSTR pString)
+void CInstrumentEditorFDS::ParseTableString(const LPCTSTR pString)
 {
 	std::string str(pString);
 
@@ -403,7 +403,7 @@ void CInstrumentEditorFDS::OnBnClickedEnableFm()
 	*/
 }
 
-void CInstrumentEditorFDS::EnableModControls(bool enable)
+void CInstrumentEditorFDS::EnableModControls(const bool enable)
 {
 	if (!enable)
 	{

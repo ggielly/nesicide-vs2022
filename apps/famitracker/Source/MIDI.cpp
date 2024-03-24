@@ -37,7 +37,7 @@
 
 CMIDI* CMIDI::m_pInstance = NULL;
 
-void CALLBACK CMIDI::MidiInProc(HMIDIIN hMidiIn, UINT wMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2)
+void CALLBACK CMIDI::MidiInProc(HMIDIIN hMidiIn, const UINT wMsg, DWORD dwInstance, const DWORD dwParam1, DWORD dwParam2)
 {
 	// MIDI input callback function
 
@@ -183,21 +183,21 @@ int CMIDI::GetNumOutputDevices() const
 	return midiOutGetNumDevs();
 }
 
-void CMIDI::GetInputDeviceString(int Num, CString& Text) const
+void CMIDI::GetInputDeviceString(const int Num, CString& Text) const
 {
 	MIDIINCAPS InCaps;
 	midiInGetDevCaps(Num, &InCaps, sizeof(MIDIINCAPS));
 	Text = InCaps.szPname;
 }
 
-void CMIDI::GetOutputDeviceString(int Num, CString& Text) const
+void CMIDI::GetOutputDeviceString(const int Num, CString& Text) const
 {
 	MIDIOUTCAPS OutCaps;
 	midiOutGetDevCaps(Num, &OutCaps, sizeof(MIDIOUTCAPS));
 	Text = OutCaps.szPname;
 }
 
-void CMIDI::SetInputDevice(int Device, bool MasterSync)
+void CMIDI::SetInputDevice(const int Device, const bool MasterSync)
 {
 	m_iInDevice = Device;
 	m_bMasterSync = MasterSync;
@@ -206,7 +206,7 @@ void CMIDI::SetInputDevice(int Device, bool MasterSync)
 	OpenDevices();
 }
 
-void CMIDI::SetOutputDevice(int Device)
+void CMIDI::SetOutputDevice(const int Device)
 {
 	m_iOutDevice = Device;
 
@@ -214,7 +214,7 @@ void CMIDI::SetOutputDevice(int Device)
 	OpenDevices();
 }
 
-void CMIDI::Enqueue(unsigned char MsgType, unsigned char MsgChannel, unsigned char Data1, unsigned char Data2)
+void CMIDI::Enqueue(const unsigned char MsgType, const unsigned char MsgChannel, const unsigned char Data1, const unsigned char Data2)
 {
 	m_csQueue.Lock();
 
@@ -229,7 +229,7 @@ void CMIDI::Enqueue(unsigned char MsgType, unsigned char MsgChannel, unsigned ch
 	m_csQueue.Unlock();
 }
 
-void CMIDI::Event(unsigned char Status, unsigned char Data1, unsigned char Data2)
+void CMIDI::Event(const unsigned char Status, const unsigned char Data1, const unsigned char Data2)
 {
 	const unsigned char MsgType = Status >> 4;
 	const unsigned char MsgChannel = Status & 0x0F;
@@ -311,7 +311,7 @@ void CMIDI::ToggleInput()
 	m_bInStarted = !m_bInStarted;
 }
 
-void CMIDI::WriteNote(unsigned char Channel, unsigned char Note, unsigned char Octave, unsigned char Velocity)
+void CMIDI::WriteNote(const unsigned char Channel, const unsigned char Note, unsigned char Octave, unsigned char Velocity)
 {
 	static unsigned int LastNote[MAX_CHANNELS]; // Quick hack
 	//	static unsigned int LastVolume[MAX_CHANNELS];

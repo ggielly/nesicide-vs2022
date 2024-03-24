@@ -32,7 +32,7 @@
  *
  */
 
-void CVisualizerBase::Create(int Width, int Height)
+void CVisualizerBase::Create(const int Width, const int Height)
 {
 	memset(&m_bmi, 0, sizeof(BITMAPINFO));
 	m_bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
@@ -45,7 +45,7 @@ void CVisualizerBase::Create(int Width, int Height)
 	m_iHeight = Height;
 }
 
-void CVisualizerBase::SetSampleData(short* pSamples, unsigned int iCount)
+void CVisualizerBase::SetSampleData(short* pSamples, const unsigned int iCount)
 {
 	m_pSamples = pSamples;
 	m_iSampleCount = iCount;
@@ -58,7 +58,7 @@ void CVisualizerBase::SetSampleData(short* pSamples, unsigned int iCount)
 
 // Thread entry helper
 
-UINT CVisualizerWnd::ThreadProcFunc(LPVOID pParam)
+UINT CVisualizerWnd::ThreadProcFunc(const LPVOID pParam)
 {
 	CVisualizerWnd* pObj = reinterpret_cast<CVisualizerWnd*>(pParam);
 
@@ -124,7 +124,7 @@ void CVisualizerWnd::NextState()
 
 // CSampleWindow message handlers
 
-void CVisualizerWnd::SetSampleRate(int SampleRate)
+void CVisualizerWnd::SetSampleRate(const int SampleRate)
 {
 	for (int i = 0; i < 4; ++i)
 	{
@@ -135,7 +135,7 @@ void CVisualizerWnd::SetSampleRate(int SampleRate)
 	}
 }
 
-void CVisualizerWnd::FlushSamples(short* pSamples, int Count)
+void CVisualizerWnd::FlushSamples(short* pSamples, const int Count)
 {
 	if (!m_bThreadRunning)
 		return;
@@ -208,8 +208,8 @@ UINT CVisualizerWnd::ThreadProc()
 	return 0;
 }
 
-BOOL CVisualizerWnd::CreateEx(DWORD dwExStyle, LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle,
-                              const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext)
+BOOL CVisualizerWnd::CreateEx(const DWORD dwExStyle, const LPCTSTR lpszClassName, const LPCTSTR lpszWindowName, const DWORD dwStyle,
+                              const RECT& rect, CWnd* pParentWnd, const UINT nID, CCreateContext* pContext)
 {
 	// This is saved
 	m_iCurrentState = theApp.GetSettings()->SampleWinState;
@@ -236,13 +236,13 @@ BOOL CVisualizerWnd::CreateEx(DWORD dwExStyle, LPCTSTR lpszClassName, LPCTSTR lp
 	return Result;
 }
 
-void CVisualizerWnd::OnLButtonDown(UINT nFlags, CPoint point)
+void CVisualizerWnd::OnLButtonDown(const UINT nFlags, const CPoint point)
 {
 	NextState();
 	CWnd::OnLButtonDown(nFlags, point);
 }
 
-void CVisualizerWnd::OnLButtonDblClk(UINT nFlags, CPoint point)
+void CVisualizerWnd::OnLButtonDblClk(const UINT nFlags, const CPoint point)
 {
 	NextState();
 	CWnd::OnLButtonDblClk(nFlags, point);
@@ -266,7 +266,7 @@ void CVisualizerWnd::OnPaint()
 	m_csBuffer.Unlock();
 }
 
-void CVisualizerWnd::OnRButtonUp(UINT nFlags, CPoint point)
+void CVisualizerWnd::OnRButtonUp(const UINT nFlags, const CPoint point)
 {
 	CMenu PopupMenuBar;
 	PopupMenuBar.LoadMenu(IDR_SAMPLE_WND_POPUP);

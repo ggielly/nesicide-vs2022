@@ -132,7 +132,7 @@ void CInstrumentVRC6::SaveFile(CInstrumentFile* pFile, const CFamiTrackerDoc* pD
 	}
 }
 
-bool CInstrumentVRC6::LoadFile(CInstrumentFile* pFile, int iVersion, CFamiTrackerDoc* pDoc)
+bool CInstrumentVRC6::LoadFile(CInstrumentFile* pFile, const int iVersion, CFamiTrackerDoc* pDoc)
 {
 	// Sequences
 	stSequence OldSequence;
@@ -234,24 +234,24 @@ bool CInstrumentVRC6::CanRelease() const
 	return false;
 }
 
-int CInstrumentVRC6::GetSeqEnable(int Index) const
+int CInstrumentVRC6::GetSeqEnable(const int Index) const
 {
 	return m_iSeqEnable[Index];
 }
 
-int CInstrumentVRC6::GetSeqIndex(int Index) const
+int CInstrumentVRC6::GetSeqIndex(const int Index) const
 {
 	return m_iSeqIndex[Index];
 }
 
-void CInstrumentVRC6::SetSeqEnable(int Index, int Value)
+void CInstrumentVRC6::SetSeqEnable(const int Index, const int Value)
 {
 	if (m_iSeqEnable[Index] != Value)
 		InstrumentChanged();
 	m_iSeqEnable[Index] = Value;
 }
 
-void CInstrumentVRC6::SetSeqIndex(int Index, int Value)
+void CInstrumentVRC6::SetSeqIndex(const int Index, const int Value)
 {
 	if (m_iSeqIndex[Index] != Value)
 		InstrumentChanged();

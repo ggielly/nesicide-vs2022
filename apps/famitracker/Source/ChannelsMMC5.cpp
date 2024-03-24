@@ -34,7 +34,7 @@ CChannelHandlerMMC5::CChannelHandlerMMC5() : CChannelHandler(0x7FF, 0x0F)
 {
 }
 
-void CChannelHandlerMMC5::HandleNoteData(stChanNote* pNoteData, int EffColumns)
+void CChannelHandlerMMC5::HandleNoteData(stChanNote* pNoteData, const int EffColumns)
 {
 	m_iPostEffect = 0;
 	m_iPostEffectParam = 0;
@@ -52,7 +52,7 @@ void CChannelHandlerMMC5::HandleNoteData(stChanNote* pNoteData, int EffColumns)
 	}
 }
 
-void CChannelHandlerMMC5::HandleCustomEffects(int EffNum, int EffParam)
+void CChannelHandlerMMC5::HandleCustomEffects(const int EffNum, const int EffParam)
 {
 	if (!CheckCommonEffects(EffNum, EffParam))
 	{
@@ -75,7 +75,7 @@ void CChannelHandlerMMC5::HandleCustomEffects(int EffNum, int EffParam)
 	}
 }
 
-bool CChannelHandlerMMC5::HandleInstrument(int Instrument, bool Trigger, bool NewInstrument)
+bool CChannelHandlerMMC5::HandleInstrument(const int Instrument, const bool Trigger, bool NewInstrument)
 {
 	CFamiTrackerDoc* pDocument = m_pSoundGen->GetDocument();
 	CInstrumentContainer<CInstrument2A03> instContainer(pDocument, Instrument);
@@ -117,7 +117,7 @@ void CChannelHandlerMMC5::HandleRelease()
 	}
 }
 
-void CChannelHandlerMMC5::HandleNote(int Note, int Octave)
+void CChannelHandlerMMC5::HandleNote(const int Note, const int Octave)
 {
 	m_iNote = RunNote(Octave, Note);
 	m_iDutyPeriod = m_iDefaultDuty;

@@ -129,7 +129,7 @@ void CSequenceEditor::OnPaint()
 	dc.TextOut(120, rect.bottom - 19, LengthStr);
 }
 
-LRESULT CSequenceEditor::OnSizeChange(WPARAM wParam, LPARAM lParam)
+LRESULT CSequenceEditor::OnSizeChange(const WPARAM wParam, LPARAM lParam)
 {
 	// Number of sequence items has changed
 	m_pSequence->SetItemCount(wParam);
@@ -140,7 +140,7 @@ LRESULT CSequenceEditor::OnSizeChange(WPARAM wParam, LPARAM lParam)
 	return TRUE;
 }
 
-LRESULT CSequenceEditor::OnCursorChange(WPARAM wParam, LPARAM lParam)
+LRESULT CSequenceEditor::OnCursorChange(const WPARAM wParam, const LPARAM lParam)
 {
 	// Graph cursor has changed
 	CDC* pDC = GetDC();
@@ -166,7 +166,7 @@ LRESULT CSequenceEditor::OnCursorChange(WPARAM wParam, LPARAM lParam)
 	return TRUE;
 }
 
-LRESULT CSequenceEditor::OnSequenceChanged(WPARAM wParam, LPARAM lParam)
+LRESULT CSequenceEditor::OnSequenceChanged(const WPARAM wParam, LPARAM lParam)
 {
 	if (this == NULL) // TODO: is this needed?
 		return FALSE;
@@ -192,13 +192,13 @@ void CSequenceEditor::ChangedSetting()
 	RedrawWindow();
 }
 
-void CSequenceEditor::SetMaxValues(int MaxVol, int MaxDuty)
+void CSequenceEditor::SetMaxValues(const int MaxVol, const int MaxDuty)
 {
 	m_iMaxVol = MaxVol;
 	m_iMaxDuty = MaxDuty;
 }
 
-void CSequenceEditor::SequenceChangedMessage(bool Changed)
+void CSequenceEditor::SequenceChangedMessage(const bool Changed)
 {
 	CString Text;
 
@@ -229,7 +229,7 @@ void CSequenceEditor::SequenceChangedMessage(bool Changed)
 
 //const int SEQ_SUNSOFT_NOISE = SEQ_DUTYCYCLE + 1;
 
-void CSequenceEditor::SelectSequence(CSequence* pSequence, int Type, int InstrumentType)
+void CSequenceEditor::SelectSequence(CSequence* pSequence, const int Type, const int InstrumentType)
 {
 	// Select a sequence to edit
 	m_pSequence = pSequence;
@@ -296,7 +296,7 @@ void CSequenceEditor::DestroyGraphEditor()
 	}
 }
 
-void CSequenceEditor::OnLButtonDown(UINT nFlags, CPoint point)
+void CSequenceEditor::OnLButtonDown(const UINT nFlags, const CPoint point)
 {
 	CWnd::OnLButtonDown(nFlags, point);
 	// Set focus to parent to allow keyboard note preview

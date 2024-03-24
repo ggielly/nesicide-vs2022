@@ -122,7 +122,7 @@ void CSizeEditor::OnPaint()
 	dc.SelectObject(pOldFont);
 }
 
-BOOL CSizeEditor::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
+BOOL CSizeEditor::OnSetCursor(CWnd* pWnd, const UINT nHitTest, const UINT message)
 {
 	if (m_bSizeCursor)
 	{
@@ -132,7 +132,7 @@ BOOL CSizeEditor::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 	return CWnd::OnSetCursor(pWnd, nHitTest, message);
 }
 
-void CSizeEditor::OnLButtonDown(UINT nFlags, CPoint point)
+void CSizeEditor::OnLButtonDown(const UINT nFlags, const CPoint point)
 {
 	CRect rect;
 	GetClientRect(rect);
@@ -156,12 +156,12 @@ void CSizeEditor::OnLButtonUp(UINT nFlags, CPoint point)
 	RedrawWindow(NULL);
 }
 
-void CSizeEditor::OnLButtonDblClk(UINT nFlags, CPoint point)
+void CSizeEditor::OnLButtonDblClk(const UINT nFlags, const CPoint point)
 {
 	MouseAction(nFlags, point);
 }
 
-void CSizeEditor::OnMouseMove(UINT nFlags, CPoint point)
+void CSizeEditor::OnMouseMove(const UINT nFlags, const CPoint point)
 {
 	CRect rect;
 	GetClientRect(rect);
@@ -190,7 +190,7 @@ void CSizeEditor::OnMouseMove(UINT nFlags, CPoint point)
 	}
 }
 
-void CSizeEditor::MouseAction(UINT nFlags, CPoint point)
+void CSizeEditor::MouseAction(const UINT nFlags, const CPoint point)
 {
 	CRect rect;
 	GetClientRect(rect);
@@ -235,7 +235,7 @@ void CSizeEditor::DecreaseValue()
 	m_pParentWnd->PostMessage(WM_SIZE_CHANGE, (LPARAM)m_iValue);
 }
 
-void CSizeEditor::SetValue(int Value)
+void CSizeEditor::SetValue(const int Value)
 {
 	m_iValue = Value;
 	RedrawWindow(NULL);
@@ -246,7 +246,7 @@ int CSizeEditor::GetValue() const
 	return m_iValue;
 }
 
-void CSizeEditor::OnTimer(UINT_PTR nIDEvent)
+void CSizeEditor::OnTimer(const UINT_PTR nIDEvent)
 {
 	SetTimer(0, CHANGE_SPEED, NULL);
 

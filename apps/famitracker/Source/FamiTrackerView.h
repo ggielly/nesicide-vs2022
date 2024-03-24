@@ -63,7 +63,7 @@ public:
 
 	// Instruments
 	bool SwitchToInstrument() const { return m_bSwitchToInstrument; };
-	void SwitchToInstrument(bool Switch) { m_bSwitchToInstrument = Switch; };
+	void SwitchToInstrument(const bool Switch) { m_bSwitchToInstrument = Switch; };
 
 	// Scrolling/viewing no-editing functions
 	void MoveCursorNextChannel();

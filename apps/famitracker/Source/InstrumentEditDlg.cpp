@@ -104,7 +104,7 @@ BOOL CInstrumentEditDlg::OnInitDialog()
 	// EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void CInstrumentEditDlg::InsertPane(CInstrumentEditPanel* pPanel, bool Show)
+void CInstrumentEditDlg::InsertPane(CInstrumentEditPanel* pPanel, const bool Show)
 {
 	CRect Rect, ParentRect;
 	CTabCtrl* pTabControl = static_cast<CTabCtrl*>(GetDlgItem(IDC_INST_TAB));
@@ -147,7 +147,7 @@ void CInstrumentEditDlg::ClearPanels()
 	m_iInstrument = -1;
 }
 
-void CInstrumentEditDlg::SetCurrentInstrument(int Index)
+void CInstrumentEditDlg::SetCurrentInstrument(const int Index)
 {
 	CFamiTrackerDoc* pDoc = CFamiTrackerDoc::GetDoc();
 	CInstrumentContainer<CInstrument> instContainer(pDoc, Index);
@@ -317,7 +317,7 @@ void CInstrumentEditDlg::OnPaint()
 	BackDC.SelectObject(pOldBmp);
 }
 
-void CInstrumentEditDlg::ChangeNoteState(int Note)
+void CInstrumentEditDlg::ChangeNoteState(const int Note)
 {
 	// A MIDI key number or -1 to disable
 
@@ -327,7 +327,7 @@ void CInstrumentEditDlg::ChangeNoteState(int Note)
 		RedrawWindow(CRect(KEYBOARD_LEFT, KEYBOARD_TOP, 580, KEYBOARD_TOP + 100), 0, RDW_INVALIDATE);
 }
 
-void CInstrumentEditDlg::SwitchOnNote(int x, int y)
+void CInstrumentEditDlg::SwitchOnNote(const int x, const int y)
 {
 	CFamiTrackerView* pView = CFamiTrackerView::GetView();
 	CMainFrame* pFrameWnd = static_cast<CMainFrame*>(GetParent());
@@ -431,7 +431,7 @@ void CInstrumentEditDlg::SwitchOnNote(int x, int y)
 	}
 }
 
-void CInstrumentEditDlg::SwitchOffNote(bool ForceHalt)
+void CInstrumentEditDlg::SwitchOffNote(const bool ForceHalt)
 {
 	stChanNote NoteData;
 
@@ -451,20 +451,20 @@ void CInstrumentEditDlg::SwitchOffNote(bool ForceHalt)
 	m_iLastKey = -1;
 }
 
-void CInstrumentEditDlg::OnLButtonDown(UINT nFlags, CPoint point)
+void CInstrumentEditDlg::OnLButtonDown(const UINT nFlags, CPoint point)
 {
 	ScaleMouse(point);
 	SwitchOnNote(point.x, point.y);
 	CDialog::OnLButtonDown(nFlags, point);
 }
 
-void CInstrumentEditDlg::OnLButtonUp(UINT nFlags, CPoint point)
+void CInstrumentEditDlg::OnLButtonUp(const UINT nFlags, const CPoint point)
 {
 	SwitchOffNote(false);
 	CDialog::OnLButtonUp(nFlags, point);
 }
 
-void CInstrumentEditDlg::OnMouseMove(UINT nFlags, CPoint point)
+void CInstrumentEditDlg::OnMouseMove(const UINT nFlags, CPoint point)
 {
 	ScaleMouse(point);
 
@@ -474,7 +474,7 @@ void CInstrumentEditDlg::OnMouseMove(UINT nFlags, CPoint point)
 	CDialog::OnMouseMove(nFlags, point);
 }
 
-void CInstrumentEditDlg::OnLButtonDblClk(UINT nFlags, CPoint point)
+void CInstrumentEditDlg::OnLButtonDblClk(const UINT nFlags, const CPoint point)
 {
 	SwitchOnNote(point.x, point.y);
 	CDialog::OnLButtonDblClk(nFlags, point);
@@ -502,7 +502,7 @@ void CInstrumentEditDlg::OnCancel()
 	DestroyWindow();
 }
 
-void CInstrumentEditDlg::OnNcLButtonUp(UINT nHitTest, CPoint point)
+void CInstrumentEditDlg::OnNcLButtonUp(const UINT nHitTest, const CPoint point)
 {
 	// Mouse was released outside the client area
 	SwitchOffNote(true);

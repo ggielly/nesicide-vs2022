@@ -43,7 +43,7 @@ CChannelHandler2A03::CChannelHandler2A03() :
 {
 }
 
-void CChannelHandler2A03::HandleNoteData(stChanNote* pNoteData, int EffColumns)
+void CChannelHandler2A03::HandleNoteData(stChanNote* pNoteData, const int EffColumns)
 {
 	m_iPostEffect = 0;
 	m_iPostEffectParam = 0;
@@ -63,7 +63,7 @@ void CChannelHandler2A03::HandleNoteData(stChanNote* pNoteData, int EffColumns)
 	}
 }
 
-void CChannelHandler2A03::HandleCustomEffects(int EffNum, int EffParam)
+void CChannelHandler2A03::HandleCustomEffects(const int EffNum, const int EffParam)
 {
 #define GET_SLIDE_SPEED(x) (((x & 0xF0) >> 3) + 1)
 
@@ -100,7 +100,7 @@ void CChannelHandler2A03::HandleCustomEffects(int EffNum, int EffParam)
 	}
 }
 
-bool CChannelHandler2A03::HandleInstrument(int Instrument, bool Trigger, bool NewInstrument)
+bool CChannelHandler2A03::HandleInstrument(const int Instrument, const bool Trigger, bool NewInstrument)
 {
 	CFamiTrackerDoc* pDocument = m_pSoundGen->GetDocument();
 	CInstrumentContainer<CInstrument2A03> instContainer(pDocument, Instrument);
@@ -158,7 +158,7 @@ void CChannelHandler2A03::HandleRelease()
 		*/
 }
 
-void CChannelHandler2A03::HandleNote(int Note, int Octave)
+void CChannelHandler2A03::HandleNote(const int Note, const int Octave)
 {
 	m_iNote = RunNote(Octave, Note);
 	m_iDutyPeriod = m_iDefaultDuty;
@@ -361,7 +361,7 @@ CNoiseChan::CNoiseChan() : CChannelHandler2A03()
 	*/
 }
 
-void CNoiseChan::HandleNote(int Note, int Octave)
+void CNoiseChan::HandleNote(const int Note, const int Octave)
 {
 	int NewNote = MIDI_NOTE(Octave, Note);
 	int NesFreq = TriggerNote(NewNote);
@@ -386,7 +386,7 @@ void CNoiseChan::HandleNote(int Note, int Octave)
 	m_iSeqVolume = m_iInitVolume;
 }
 
-void CNoiseChan::SetupSlide(int Type, int EffParam)
+void CNoiseChan::SetupSlide(const int Type, const int EffParam)
 {
 	CChannelHandler::SetupSlide(Type, EffParam);
 
@@ -474,7 +474,7 @@ CDPCMChan::CDPCMChan(CSampleMem* pSampleMem) :
 {
 }
 
-void CDPCMChan::HandleNoteData(stChanNote* pNoteData, int EffColumns)
+void CDPCMChan::HandleNoteData(stChanNote* pNoteData, const int EffColumns)
 {
 	m_iCustomPitch = -1;
 	m_iRetrigger = 0;
@@ -487,7 +487,7 @@ void CDPCMChan::HandleNoteData(stChanNote* pNoteData, int EffColumns)
 	CChannelHandler::HandleNoteData(pNoteData, EffColumns);
 }
 
-void CDPCMChan::HandleCustomEffects(int EffNum, int EffParam)
+void CDPCMChan::HandleCustomEffects(const int EffNum, const int EffParam)
 {
 	switch (EffNum)
 	{
@@ -535,7 +535,7 @@ void CDPCMChan::HandleRelease()
 	m_bRelease = true;
 }
 
-void CDPCMChan::HandleNote(int Note, int Octave)
+void CDPCMChan::HandleNote(const int Note, const int Octave)
 {
 	CFamiTrackerDoc* pDocument = m_pSoundGen->GetDocument();
 	CInstrumentContainer<CInstrument2A03> instContainer(pDocument, m_iInstrument);

@@ -53,14 +53,14 @@ END_MESSAGE_MAP()
 // CSpeedDlg message handlers
 
 
-int CSpeedDlg::GetSpeedFromDlg(int InitialSpeed)
+int CSpeedDlg::GetSpeedFromDlg(const int InitialSpeed)
 {
 	m_iSpeed = InitialSpeed;
 	CDialog::DoModal();
 	return m_iSpeed;
 }
 
-void CSpeedDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CSpeedDlg::OnHScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	CDialog::OnHScroll(nSBCode, nPos, pScrollBar);
 	m_iSpeed = ((CSliderCtrl*)pScrollBar)->GetPos();

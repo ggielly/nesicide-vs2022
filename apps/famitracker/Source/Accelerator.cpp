@@ -102,7 +102,7 @@ const int CAccelerator::ACCEL_COUNT = sizeof(CAccelerator::DEFAULT_TABLE) / size
 LPCTSTR CAccelerator::SHORTCUTS_SECTION = _T("Shortcuts");
 
 // Translate internal modifier -> windows modifier
-static BYTE GetMod(int Mod)
+static BYTE GetMod(const int Mod)
 {
 	return ((Mod & MOD_CONTROL) ? FCONTROL : 0) | ((Mod & MOD_SHIFT) ? FSHIFT : 0) | ((Mod & MOD_ALT) ? FALT : 0);
 }
@@ -125,43 +125,43 @@ CAccelerator::~CAccelerator()
 	SAFE_RELEASE_ARRAY(m_pAccelTable);
 }
 
-LPCTSTR CAccelerator::GetItemName(int Item) const
+LPCTSTR CAccelerator::GetItemName(const int Item) const
 {
 	ASSERT(Item < ACCEL_COUNT);
 	return m_pEntriesTable[Item].name;
 }
 
-int CAccelerator::GetItemKey(int Item) const
+int CAccelerator::GetItemKey(const int Item) const
 {
 	ASSERT(Item < ACCEL_COUNT);
 	return m_pEntriesTable[Item].key;
 }
 
-int CAccelerator::GetItemMod(int Item) const
+int CAccelerator::GetItemMod(const int Item) const
 {
 	ASSERT(Item < ACCEL_COUNT);
 	return m_pEntriesTable[Item].mod;
 }
 
-int CAccelerator::GetDefaultKey(int Item) const
+int CAccelerator::GetDefaultKey(const int Item) const
 {
 	ASSERT(Item < ACCEL_COUNT);
 	return DEFAULT_TABLE[Item].key;
 }
 
-int CAccelerator::GetDefaultMod(int Item) const
+int CAccelerator::GetDefaultMod(const int Item) const
 {
 	ASSERT(Item < ACCEL_COUNT);
 	return DEFAULT_TABLE[Item].mod;
 }
 
-LPCTSTR CAccelerator::GetItemModName(int Item) const
+LPCTSTR CAccelerator::GetItemModName(const int Item) const
 {
 	ASSERT(Item < ACCEL_COUNT);
 	return MOD_NAMES[m_pEntriesTable[Item].mod];
 }
 
-LPCTSTR CAccelerator::GetItemKeyName(int Item) const
+LPCTSTR CAccelerator::GetItemKeyName(const int Item) const
 {
 	if (m_pEntriesTable[Item].key > 0)
 	{
@@ -171,7 +171,7 @@ LPCTSTR CAccelerator::GetItemKeyName(int Item) const
 	return _T("None");
 }
 
-LPCTSTR CAccelerator::GetVKeyName(int virtualKey) const
+LPCTSTR CAccelerator::GetVKeyName(const int virtualKey) const
 {
 	unsigned int scanCode = MapVirtualKey(virtualKey, MAPVK_VK_TO_VSC);
 
@@ -196,14 +196,14 @@ LPCTSTR CAccelerator::GetVKeyName(int virtualKey) const
 	return _T("");
 }
 
-void CAccelerator::StoreShortcut(int Item, int Key, int Mod)
+void CAccelerator::StoreShortcut(const int Item, const int Key, const int Mod)
 {
 	ASSERT(Item < ACCEL_COUNT);
 	m_pEntriesTable[Item].key = Key;
 	m_pEntriesTable[Item].mod = Mod;
 }
 
-bool CAccelerator::GetShortcutString(int id, CString& str) const
+bool CAccelerator::GetShortcutString(const int id, CString& str) const
 {
 	for (int i = 0; i < ACCEL_COUNT; ++i)
 	{
@@ -277,7 +277,7 @@ void CAccelerator::Setup()
 	m_hAccel = CreateAcceleratorTable(m_pAccelTable, ACCEL_COUNT);
 }
 
-BOOL CAccelerator::Translate(HWND hWnd, MSG* pMsg)
+BOOL CAccelerator::Translate(const HWND hWnd, MSG* pMsg)
 {
 	if (m_hAdditionalAccel)
 	{
@@ -307,7 +307,7 @@ void CAccelerator::Shutdown()
 	}
 }
 
-void CAccelerator::SetAccelerator(HACCEL hAccel)
+void CAccelerator::SetAccelerator(const HACCEL hAccel)
 {
 	m_hAdditionalAccel = hAccel;
 }

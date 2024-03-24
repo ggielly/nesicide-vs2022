@@ -15,11 +15,11 @@ public:
 	{
 	}
 
-	Complex(double re): _re(re), _im(0.0)
+	Complex(const double re): _re(re), _im(0.0)
 	{
 	}
 
-	Complex(double re, double im): _re(re), _im(im)
+	Complex(const double re, const double im): _re(re), _im(im)
 	{
 	}
 

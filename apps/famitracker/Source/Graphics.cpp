@@ -23,7 +23,7 @@
 #include "stdafx.h"
 #include "Graphics.h"
 
-void GradientRectTriple(CDC* pDC, int x, int y, int w, int h, COLORREF c1, COLORREF c2, COLORREF c3)
+void GradientRectTriple(CDC* pDC, const int x, const int y, const int w, const int h, const COLORREF c1, const COLORREF c2, const COLORREF c3)
 {
 	// c1 -> c2 -> c3
 	TRIVERTEX Vertices[4];
@@ -65,7 +65,7 @@ void GradientRectTriple(CDC* pDC, int x, int y, int w, int h, COLORREF c1, COLOR
 	pDC->GradientFill(Vertices, 4, Rects, 2, GRADIENT_FILL_RECT_V);
 }
 
-void GradientBar(CDC* pDC, int x, int y, int w, int h, COLORREF col_fg, COLORREF col_bg)
+void GradientBar(CDC* pDC, const int x, const int y, const int w, const int h, const COLORREF col_fg, const COLORREF col_bg)
 {
 	TRIVERTEX Vertices[2];
 	GRADIENT_RECT Rect;
@@ -94,7 +94,7 @@ void GradientBar(CDC* pDC, int x, int y, int w, int h, COLORREF col_fg, COLORREF
 	pDC->GradientFill(Vertices, 2, &Rect, 1, GRADIENT_FILL_RECT_V);
 }
 
-void GradientRect(CDC* pDC, int x, int y, int w, int h, COLORREF top_col, COLORREF bottom_col)
+void GradientRect(CDC* pDC, const int x, const int y, const int w, const int h, const COLORREF top_col, const COLORREF bottom_col)
 {
 	TRIVERTEX Vertices[2];
 	GRADIENT_RECT Rect;
@@ -119,7 +119,7 @@ void GradientRect(CDC* pDC, int x, int y, int w, int h, COLORREF top_col, COLORR
 	pDC->GradientFill(Vertices, 2, &Rect, 1, GRADIENT_FILL_RECT_V);
 }
 
-void BlurBuffer(COLORREF* pBuffer, int Width, int Height, const int* pColorDecay)
+void BlurBuffer(COLORREF* pBuffer, const int Width, const int Height, const int* pColorDecay)
 {
 	for (int x = 1; x < Width - 1; ++x)
 	{
@@ -167,7 +167,7 @@ void BlurBuffer(COLORREF* pBuffer, int Width, int Height, const int* pColorDecay
 	}
 }
 
-void PutPixel(COLORREF* pBuffer, int Width, int Height, float x, float y, COLORREF col)
+void PutPixel(COLORREF* pBuffer, const int Width, const int Height, float x, float y, const COLORREF col)
 {
 	if (x < 0.0f)
 		x = 0.0f;

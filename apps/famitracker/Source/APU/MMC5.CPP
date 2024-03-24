@@ -54,7 +54,7 @@ void CMMC5::Reset()
 	m_pSquare2->Write(0x01, 0x08);
 }
 
-void CMMC5::Write(uint16 Address, uint8 Value)
+void CMMC5::Write(const uint16 Address, const uint8 Value)
 {
 	if (Address >= 0x5C00 && Address <= 0x5FF5)
 	{
@@ -100,7 +100,7 @@ void CMMC5::Write(uint16 Address, uint8 Value)
 	}
 }
 
-uint8 CMMC5::Read(uint16 Address, bool& Mapped)
+uint8 CMMC5::Read(const uint16 Address, bool& Mapped)
 {
 	if (Address >= 0x5C00 && Address <= 0x5FF5)
 	{
@@ -127,7 +127,7 @@ void CMMC5::EndFrame()
 	m_pSquare2->EndFrame();
 }
 
-void CMMC5::Process(uint32 Time)
+void CMMC5::Process(const uint32 Time)
 {
 	m_pSquare1->Process(Time);
 	m_pSquare2->Process(Time);

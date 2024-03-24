@@ -93,12 +93,12 @@ void CRefCounter::Release()
 
 // File load / store
 
-void CInstrumentFile::WriteInt(unsigned int Value)
+void CInstrumentFile::WriteInt(const unsigned int Value)
 {
 	Write(&Value, sizeof(int));
 }
 
-void CInstrumentFile::WriteChar(unsigned char Value)
+void CInstrumentFile::WriteChar(const unsigned char Value)
 {
 	Write(&Value, sizeof(char));
 }

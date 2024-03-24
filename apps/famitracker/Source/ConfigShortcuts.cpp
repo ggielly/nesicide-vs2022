@@ -157,7 +157,7 @@ BOOL CConfigShortcuts::PreTranslateMessage(MSG* pMsg)
 	return CPropertyPage::PreTranslateMessage(pMsg);
 }
 
-void CConfigShortcuts::KeyPressed(int Key)
+void CConfigShortcuts::KeyPressed(const int Key)
 {
 	switch (Key)
 	{
@@ -175,7 +175,7 @@ void CConfigShortcuts::KeyPressed(int Key)
 	SetupKey(Key);
 }
 
-void CConfigShortcuts::KeyReleased(int Key)
+void CConfigShortcuts::KeyReleased(const int Key)
 {
 	switch (Key)
 	{
@@ -191,7 +191,7 @@ void CConfigShortcuts::KeyReleased(int Key)
 	}
 }
 
-void CConfigShortcuts::SetupKey(int Key)
+void CConfigShortcuts::SetupKey(const int Key)
 {
 	int Mod = (m_bShift ? MOD_SHIFT : 0) | (m_bControl ? MOD_CONTROL : 0) | (m_bAlt ? MOD_ALT : 0);
 
@@ -204,7 +204,7 @@ void CConfigShortcuts::SetupKey(int Key)
 	SetModified();
 }
 
-void CConfigShortcuts::StoreKey(int Item, int Key, int Mod)
+void CConfigShortcuts::StoreKey(const int Item, const int Key, const int Mod)
 {
 	// Store in temp. list
 	CAccelerator* pAccel = theApp.GetAccelerator();
@@ -235,7 +235,7 @@ void CConfigShortcuts::OnBnClickedClear()
 	SetModified();
 }
 
-CString CConfigShortcuts::AssembleKeyString(int Mod, int Key)
+CString CConfigShortcuts::AssembleKeyString(const int Mod, const int Key)
 {
 	CAccelerator* pAccel = theApp.GetAccelerator();
 	CString KeyStr;

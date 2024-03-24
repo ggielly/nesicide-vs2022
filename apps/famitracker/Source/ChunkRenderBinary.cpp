@@ -36,13 +36,13 @@ CBinaryFileWriter::CBinaryFileWriter(CFile* pFile) : m_pFile(pFile), m_iDataWrit
 {
 }
 
-void CBinaryFileWriter::Store(const void* pData, unsigned int Size)
+void CBinaryFileWriter::Store(const void* pData, const unsigned int Size)
 {
 	m_pFile->Write(pData, Size);
 	m_iDataWritten += Size;
 }
 
-void CBinaryFileWriter::Fill(unsigned int Size)
+void CBinaryFileWriter::Fill(const unsigned int Size)
 {
 	char d = 0;
 	for (unsigned int i = 0; i < Size; ++i)
@@ -114,14 +114,14 @@ void CChunkRenderBinary::StoreSample(const CDSample* pDSample)
  *
  */
 
-CChunkRenderNSF::CChunkRenderNSF(CFile* pFile, unsigned int StartAddr) :
+CChunkRenderNSF::CChunkRenderNSF(CFile* pFile, const unsigned int StartAddr) :
 	CBinaryFileWriter(pFile),
 	m_iStartAddr(StartAddr),
 	m_iSampleAddr(0)
 {
 }
 
-void CChunkRenderNSF::StoreDriver(const char* pDriver, unsigned int Size)
+void CChunkRenderNSF::StoreDriver(const char* pDriver, const unsigned int Size)
 {
 	// Store NSF driver
 	Store(pDriver, Size);
@@ -256,11 +256,11 @@ int CChunkRenderNSF::GetAbsoluteAddr() const
  *
  */
 
-CChunkRenderNES::CChunkRenderNES(CFile* pFile, unsigned int StartAddr) : CChunkRenderNSF(pFile, StartAddr)
+CChunkRenderNES::CChunkRenderNES(CFile* pFile, const unsigned int StartAddr) : CChunkRenderNSF(pFile, StartAddr)
 {
 }
 
-void CChunkRenderNES::StoreCaller(const void* pData, unsigned int Size)
+void CChunkRenderNES::StoreCaller(const void* pData, const unsigned int Size)
 {
 	while (GetBank() < 7)
 		AllocateNewBank();

@@ -55,7 +55,7 @@ BEGIN_MESSAGE_MAP(CWaveEditor, CWnd)
 		ON_WM_MBUTTONDOWN()
 END_MESSAGE_MAP()
 
-CWaveEditor::CWaveEditor(int sx, int sy, int lx, int ly)
+CWaveEditor::CWaveEditor(const int sx, const int sy, const int lx, const int ly)
 	: m_iSX(sx), m_iSY(sy), m_iLX(lx), m_iLY(ly)
 {
 	m_bDrawLine = false;
@@ -65,7 +65,7 @@ CWaveEditor::~CWaveEditor()
 {
 }
 
-BOOL CWaveEditor::CreateEx(DWORD dwExStyle, LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle,
+BOOL CWaveEditor::CreateEx(const DWORD dwExStyle, const LPCTSTR lpszClassName, const LPCTSTR lpszWindowName, const DWORD dwStyle,
                            const RECT& rect, CWnd* pParentWnd)
 {
 	CRect newRect;
@@ -141,7 +141,7 @@ void CWaveEditor::OnPaint()
 		DrawLine(&dc);
 }
 
-void CWaveEditor::OnMouseMove(UINT nFlags, CPoint point)
+void CWaveEditor::OnMouseMove(const UINT nFlags, const CPoint point)
 {
 	static CPoint last_point;
 
@@ -163,7 +163,7 @@ void CWaveEditor::OnMouseMove(UINT nFlags, CPoint point)
 	CWnd::OnMouseMove(nFlags, point);
 }
 
-void CWaveEditor::OnLButtonDown(UINT nFlags, CPoint point)
+void CWaveEditor::OnLButtonDown(const UINT nFlags, const CPoint point)
 {
 	SetCapture();
 	EditWave(point);
@@ -177,13 +177,13 @@ void CWaveEditor::OnLButtonDown(UINT nFlags, CPoint point)
 	CWnd::OnLButtonDown(nFlags, point);
 }
 
-void CWaveEditor::OnLButtonUp(UINT nFlags, CPoint point)
+void CWaveEditor::OnLButtonUp(const UINT nFlags, const CPoint point)
 {
 	ReleaseCapture();
 	CWnd::OnLButtonUp(nFlags, point);
 }
 
-void CWaveEditor::OnMButtonDown(UINT nFlags, CPoint point)
+void CWaveEditor::OnMButtonDown(const UINT nFlags, const CPoint point)
 {
 	SetCapture();
 	m_ptLineStart = m_ptLineEnd = point;
@@ -192,7 +192,7 @@ void CWaveEditor::OnMButtonDown(UINT nFlags, CPoint point)
 	CWnd::OnMButtonDown(nFlags, point);
 }
 
-void CWaveEditor::OnMButtonUp(UINT nFlags, CPoint point)
+void CWaveEditor::OnMButtonUp(const UINT nFlags, const CPoint point)
 {
 	ReleaseCapture();
 	m_ptLineStart = m_ptLineEnd = CPoint(0, 0);
@@ -203,7 +203,7 @@ void CWaveEditor::OnMButtonUp(UINT nFlags, CPoint point)
 	CWnd::OnMButtonUp(nFlags, point);
 }
 
-void CWaveEditor::EditWave(CPoint pt1, CPoint pt2)
+void CWaveEditor::EditWave(const CPoint pt1, const CPoint pt2)
 {
 	int x1 = min(pt2.x, pt1.x);
 	int x2 = max(pt2.x, pt1.x);
@@ -229,7 +229,7 @@ void CWaveEditor::EditWave(CPoint pt1, CPoint pt2)
 	}
 }
 
-void CWaveEditor::EditWave(CPoint point)
+void CWaveEditor::EditWave(const CPoint point)
 {
 	int index = (point.x) / m_iSX;
 	int sample = (m_iLY - 1) - (point.y / m_iSY);
@@ -289,7 +289,7 @@ void CWaveEditor::WaveChanged()
 	GetParent()->PostMessage(WM_USER_WAVE_CHANGED);
 }
 
-void CWaveEditor::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
+void CWaveEditor::OnContextMenu(CWnd* /*pWnd*/, const CPoint point)
 {
 	CMenu menu;
 
@@ -324,13 +324,13 @@ void CWaveEditorFDS::SetInstrument(CInstrumentFDS* pInst)
 	WaveChanged();
 }
 
-int CWaveEditorFDS::GetSample(int i) const
+int CWaveEditorFDS::GetSample(const int i) const
 {
 	ASSERT(m_pInstrument != NULL);
 	return m_pInstrument->GetSample(i);
 }
 
-void CWaveEditorFDS::SetSample(int i, int s)
+void CWaveEditorFDS::SetSample(const int i, const int s)
 {
 	ASSERT(m_pInstrument != NULL);
 	m_pInstrument->SetSample(i, s);
@@ -342,7 +342,7 @@ int CWaveEditorFDS::GetMaxSamples() const
 	return CInstrumentFDS::WAVE_SIZE;
 }
 
-void CWaveEditorFDS::DrawRect(CDC* pDC, int x, int y, int sx, int sy) const
+void CWaveEditorFDS::DrawRect(CDC* pDC, const int x, const int y, const int sx, const int sy) const
 {
 	pDC->FillSolidRect(x, y, sx, sy, 0x000000);
 }
@@ -355,18 +355,18 @@ void CWaveEditorN163::SetInstrument(CInstrumentN163* pInst)
 	WaveChanged();
 }
 
-void CWaveEditorN163::SetWave(int i)
+void CWaveEditorN163::SetWave(const int i)
 {
 	m_iWaveIndex = i;
 }
 
-int CWaveEditorN163::GetSample(int i) const
+int CWaveEditorN163::GetSample(const int i) const
 {
 	ASSERT(m_pInstrument != NULL);
 	return m_pInstrument->GetSample(m_iWaveIndex, i);
 }
 
-void CWaveEditorN163::SetSample(int i, int s)
+void CWaveEditorN163::SetSample(const int i, const int s)
 {
 	ASSERT(m_pInstrument != NULL);
 	m_pInstrument->SetSample(m_iWaveIndex, i, s);
@@ -378,7 +378,7 @@ int CWaveEditorN163::GetMaxSamples() const
 	return m_pInstrument->GetWaveSize();
 }
 
-void CWaveEditorN163::DrawRect(CDC* pDC, int x, int y, int sx, int sy) const
+void CWaveEditorN163::DrawRect(CDC* pDC, const int x, const int y, const int sx, const int sy) const
 {
 	const COLORREF BOX_COLOR = 0x808000;
 	const COLORREF BOX_COLOR_HI = 0xB0B030;
@@ -388,7 +388,7 @@ void CWaveEditorN163::DrawRect(CDC* pDC, int x, int y, int sx, int sy) const
 	pDC->Draw3dRect(x, y, sx, sy, BOX_COLOR_HI, BOX_COLOR_LO);
 }
 
-void CWaveEditorN163::SetLength(int Length)
+void CWaveEditorN163::SetLength(const int Length)
 {
 	m_iLX = Length;
 	m_iSX = 320 / Length;

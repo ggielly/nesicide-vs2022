@@ -26,7 +26,7 @@ const uint8 CTriangle::TRIANGLE_WAVE[] = {
 	0x0F, 0x0E, 0x0D, 0x0C, 0x0B, 0x0A, 0x09, 0x08, 0x07, 0x06, 0x05, 0x04, 0x03, 0x02, 0x01, 0x00
 };
 
-CTriangle::CTriangle(CMixer* pMixer, int ID) : CChannel(pMixer, ID, SNDCHIP_NONE)
+CTriangle::CTriangle(CMixer* pMixer, const int ID) : CChannel(pMixer, ID, SNDCHIP_NONE)
 {
 	m_iStepGen = 0;
 	m_iLoop = 0;
@@ -52,7 +52,7 @@ void CTriangle::Reset()
 	EndFrame();
 }
 
-void CTriangle::Write(uint16 Address, uint8 Value)
+void CTriangle::Write(const uint16 Address, const uint8 Value)
 {
 	switch (Address)
 	{
@@ -75,7 +75,7 @@ void CTriangle::Write(uint16 Address, uint8 Value)
 	}
 }
 
-void CTriangle::WriteControl(uint8 Value)
+void CTriangle::WriteControl(const uint8 Value)
 {
 	m_iControlReg = Value & 1;
 

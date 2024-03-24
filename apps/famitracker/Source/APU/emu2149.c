@@ -64,21 +64,21 @@ internal_refresh (PSG * psg)
 }
 
 void
-PSG_set_rate (PSG * psg, uint32_t r)
+PSG_set_rate (PSG * psg, const uint32_t r)
 {
   psg->rate = r ? r : 44100;
   internal_refresh (psg);
 }
 
 void
-PSG_set_quality (PSG * psg, uint32_t q)
+PSG_set_quality (PSG * psg, const uint32_t q)
 {
   psg->quality = q;
   internal_refresh (psg);
 }
 
 PSG *
-PSG_new (uint32_t c, uint32_t r)
+PSG_new (const uint32_t c, const uint32_t r)
 {
   PSG *psg;
 
@@ -95,7 +95,7 @@ PSG_new (uint32_t c, uint32_t r)
 }
 
 void
-PSG_setVolumeMode (PSG * psg, int type)
+PSG_setVolumeMode (PSG * psg, const int type)
 {
   switch (type)
   {
@@ -112,7 +112,7 @@ PSG_setVolumeMode (PSG * psg, int type)
 }
 
 uint32_t
-PSG_setMask (PSG *psg, uint32_t mask)
+PSG_setMask (PSG *psg, const uint32_t mask)
 {
   uint32_t ret = 0;
   if(psg)
@@ -124,7 +124,7 @@ PSG_setMask (PSG *psg, uint32_t mask)
 }
 
 uint32_t
-PSG_toggleMask (PSG *psg, uint32_t mask)
+PSG_toggleMask (PSG *psg, const uint32_t mask)
 {
   uint32_t ret = 0;
   if(psg)
@@ -184,14 +184,14 @@ PSG_readIO (PSG * psg)
 }
 
 uint8_t
-PSG_readReg (PSG * psg, uint32_t reg)
+PSG_readReg (PSG * psg, const uint32_t reg)
 {
   return (uint8_t) (psg->reg[reg & 0x1f]);
 
 }
 
 void
-PSG_writeIO (PSG * psg, uint32_t adr, uint32_t val)
+PSG_writeIO (PSG * psg, const uint32_t adr, const uint32_t val)
 {
   if (adr & 1)
     PSG_writeReg (psg, psg->adr, val);
@@ -313,7 +313,7 @@ PSG_calc (PSG * psg)
 }
 
 void
-PSG_writeReg (PSG * psg, uint32_t reg, uint32_t val)
+PSG_writeReg (PSG * psg, const uint32_t reg, uint32_t val)
 {
   int c;
 
@@ -378,7 +378,7 @@ PSG_writeReg (PSG * psg, uint32_t reg, uint32_t val)
   return;
 }
 
-int32_t PSG_getchanvol(int i)
+int32_t PSG_getchanvol(const int i)
 {
 	return psg_volumes[i];
 }

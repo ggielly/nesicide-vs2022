@@ -202,7 +202,7 @@ BOOL CSampleEditorView::OnEraseBkgnd(CDC* pDC)
 	return FALSE;
 }
 
-void CSampleEditorView::OnMouseMove(UINT nFlags, CPoint point)
+void CSampleEditorView::OnMouseMove(const UINT nFlags, const CPoint point)
 {
 	double Sample = double(point.x) * m_dSampleStep;
 	int Offset = int(Sample / (8.0 * 64.0));
@@ -230,7 +230,7 @@ void CSampleEditorView::OnMouseMove(UINT nFlags, CPoint point)
 	CStatic::OnMouseMove(nFlags, point);
 }
 
-void CSampleEditorView::OnLButtonDown(UINT nFlags, CPoint point)
+void CSampleEditorView::OnLButtonDown(const UINT nFlags, const CPoint point)
 {
 	if (!m_iSize)
 		return;
@@ -248,7 +248,7 @@ void CSampleEditorView::OnLButtonDown(UINT nFlags, CPoint point)
 	CStatic::OnLButtonDown(nFlags, point);
 }
 
-void CSampleEditorView::OnLButtonUp(UINT nFlags, CPoint point)
+void CSampleEditorView::OnLButtonUp(const UINT nFlags, const CPoint point)
 {
 	// Sets the start cursor
 
@@ -284,7 +284,7 @@ void CSampleEditorView::OnLButtonUp(UINT nFlags, CPoint point)
 	CStatic::OnLButtonUp(nFlags, point);
 }
 
-void CSampleEditorView::DrawPlayCursor(int Pos)
+void CSampleEditorView::DrawPlayCursor(const int Pos)
 {
 	CDC* pDC = GetDC();
 	int x = int((double(Pos + m_iStartCursor) * 8.0 * 64.0 - m_iViewStart) / m_dSampleStep);
@@ -320,7 +320,7 @@ void CSampleEditorView::DrawStartCursor()
 	ReleaseDC(pDC);
 }
 
-void CSampleEditorView::ExpandSample(CDSample* pSample, int Start)
+void CSampleEditorView::ExpandSample(CDSample* pSample, const int Start)
 {
 	// Expand DPCM to PCM
 	//
@@ -383,7 +383,7 @@ void CSampleEditorView::ExpandSample(CDSample* pSample, int Start)
 	}
 }
 
-int CSampleEditorView::GetBlock(int Pixel) const
+int CSampleEditorView::GetBlock(const int Pixel) const
 {
 	// Convert pixel to selection block
 	double Sample = double(Pixel) * m_dSampleStep;
@@ -393,7 +393,7 @@ int CSampleEditorView::GetBlock(int Pixel) const
 	return Pos;
 }
 
-int CSampleEditorView::GetPixel(int Block) const
+int CSampleEditorView::GetPixel(const int Block) const
 {
 	return int((double(Block) * 128.0) / m_dSampleStep);
 }
@@ -408,7 +408,7 @@ void CSampleEditorView::UpdateInfo()
 	GetParent()->SetDlgItemText(IDC_INFO, Text);
 }
 
-void CSampleEditorView::OnSize(UINT nType, int cx, int cy)
+void CSampleEditorView::OnSize(const UINT nType, const int cx, const int cy)
 {
 	CStatic::OnSize(nType, cx, cy);
 
@@ -459,7 +459,7 @@ void CSampleEditorView::OnLeft()
 	DrawStartCursor();
 }
 
-void CSampleEditorView::OnContextMenu(CWnd* pWnd, CPoint point)
+void CSampleEditorView::OnContextMenu(CWnd* pWnd, const CPoint point)
 {
 	CMenu contextMenu;
 	contextMenu.LoadMenu(IDR_SAMPLE_EDITOR_POPUP);
@@ -490,7 +490,7 @@ void CSampleEditorView::PreSubclassWindow()
 	CStatic::PreSubclassWindow();
 }
 
-void CSampleEditorView::SetZoom(float Factor)
+void CSampleEditorView::SetZoom(const float Factor)
 {
 	// Set zoom, 1.0f = no zoom, 0.0f = max zoom
 	//
@@ -541,7 +541,7 @@ float CSampleEditorView::GetMaxZoomFactor() const
 	return float(m_clientRect.Width() / 2) / float(m_iSize);
 }
 
-void CSampleEditorView::SetScroll(UINT nPos)
+void CSampleEditorView::SetScroll(const UINT nPos)
 {
 	if (nPos < 0 || nPos > (unsigned)m_iScrollMax)
 		return;
@@ -555,7 +555,7 @@ void CSampleEditorView::SetScroll(UINT nPos)
 	Invalidate();
 }
 
-void CSampleEditorView::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CSampleEditorView::OnHScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	switch (nSBCode)
 	{

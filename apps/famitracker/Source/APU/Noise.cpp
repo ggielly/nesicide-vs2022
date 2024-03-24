@@ -29,7 +29,7 @@ const uint16 CNoise::NOISE_PERIODS_PAL[] = {
 	4, 8, 14, 30, 60, 88, 118, 148, 188, 236, 354, 472, 708, 944, 1890, 3778
 };
 
-CNoise::CNoise(CMixer* pMixer, int ID) : CChannel(pMixer, ID, SNDCHIP_NONE)
+CNoise::CNoise(CMixer* pMixer, const int ID) : CChannel(pMixer, ID, SNDCHIP_NONE)
 {
 	m_iLooping = 0;
 	m_iEnvelopeFix = 0;
@@ -64,7 +64,7 @@ void CNoise::Reset()
 	EndFrame();
 }
 
-void CNoise::Write(uint16 Address, uint8 Value)
+void CNoise::Write(const uint16 Address, const uint8 Value)
 {
 	switch (Address)
 	{
@@ -89,7 +89,7 @@ void CNoise::Write(uint16 Address, uint8 Value)
 	}
 }
 
-void CNoise::WriteControl(uint8 Value)
+void CNoise::WriteControl(const uint8 Value)
 {
 	m_iControlReg = Value & 1;
 

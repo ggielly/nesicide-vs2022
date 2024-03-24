@@ -87,7 +87,7 @@ bool CDocumentFile::EndDocument()
 	return true;
 }
 
-void CDocumentFile::CreateBlock(const char* ID, int Version)
+void CDocumentFile::CreateBlock(const char* ID, const int Version)
 {
 	memset(m_cBlockID, 0, 16);
 	strcpy(m_cBlockID, ID);
@@ -141,12 +141,12 @@ void CDocumentFile::WriteBlockData(T Value)
 	WriteBlock(reinterpret_cast<const char*>(&Value), sizeof(Value));
 }
 
-void CDocumentFile::WriteBlockInt(int Value)
+void CDocumentFile::WriteBlockInt(const int Value)
 {
 	WriteBlockData(Value);
 }
 
-void CDocumentFile::WriteBlockChar(char Value)
+void CDocumentFile::WriteBlockChar(const char Value)
 {
 	WriteBlockData(Value);
 }
@@ -262,7 +262,7 @@ int CDocumentFile::GetBlockVersion() const
 	return m_iBlockVersion;
 }
 
-void CDocumentFile::RollbackPointer(int count)
+void CDocumentFile::RollbackPointer(const int count)
 {
 	m_iBlockPointer -= count;
 }
@@ -307,7 +307,7 @@ CString CDocumentFile::ReadString()
 	return str;
 }
 
-void CDocumentFile::GetBlock(void* Buffer, int Size)
+void CDocumentFile::GetBlock(void* Buffer, const int Size)
 {
 	ASSERT(Size < MAX_BLOCK_SIZE);
 	ASSERT(Buffer != NULL);

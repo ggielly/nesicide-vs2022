@@ -276,7 +276,7 @@ bool CInstrumentN163::LoadFile(CInstrumentFile* pFile, int iVersion, CFamiTracke
 	return true;
 }
 
-int CInstrumentN163::Compile(CFamiTrackerDoc* pDoc, CChunk* pChunk, int Index)
+int CInstrumentN163::Compile(CFamiTrackerDoc* pDoc, CChunk* pChunk, const int Index)
 {
 	int ModSwitch = 0;
 	int StoredBytes = 0;
@@ -374,19 +374,19 @@ bool CInstrumentN163::CanRelease() const
 	return false;
 }
 
-int CInstrumentN163::GetSeqEnable(int Index) const
+int CInstrumentN163::GetSeqEnable(const int Index) const
 {
 	ASSERT(Index < SEQ_COUNT);
 	return m_iSeqEnable[Index];
 }
 
-int CInstrumentN163::GetSeqIndex(int Index) const
+int CInstrumentN163::GetSeqIndex(const int Index) const
 {
 	ASSERT(Index < SEQ_COUNT);
 	return m_iSeqIndex[Index];
 }
 
-void CInstrumentN163::SetSeqEnable(int Index, int Value)
+void CInstrumentN163::SetSeqEnable(const int Index, const int Value)
 {
 	ASSERT(Index < SEQ_COUNT);
 	if (m_iSeqEnable[Index] != Value)
@@ -394,7 +394,7 @@ void CInstrumentN163::SetSeqEnable(int Index, int Value)
 	m_iSeqEnable[Index] = Value;
 }
 
-void CInstrumentN163::SetSeqIndex(int Index, int Value)
+void CInstrumentN163::SetSeqIndex(const int Index, const int Value)
 {
 	ASSERT(Index < SEQ_COUNT);
 	if (m_iSeqIndex[Index] != Value)
@@ -407,13 +407,13 @@ int CInstrumentN163::GetWaveSize() const
 	return m_iWaveSize;
 }
 
-void CInstrumentN163::SetWaveSize(int size)
+void CInstrumentN163::SetWaveSize(const int size)
 {
 	m_iWaveSize = size;
 	InstrumentChanged();
 }
 
-int CInstrumentN163::GetSample(int wave, int pos) const
+int CInstrumentN163::GetSample(const int wave, const int pos) const
 {
 	ASSERT(wave < MAX_WAVE_COUNT);
 	ASSERT(pos < MAX_WAVE_SIZE);
@@ -421,7 +421,7 @@ int CInstrumentN163::GetSample(int wave, int pos) const
 	return m_iSamples[wave][pos];
 }
 
-void CInstrumentN163::SetSample(int wave, int pos, int sample)
+void CInstrumentN163::SetSample(const int wave, const int pos, const int sample)
 {
 	ASSERT(wave < MAX_WAVE_COUNT);
 	ASSERT(pos < MAX_WAVE_SIZE);
@@ -435,7 +435,7 @@ int CInstrumentN163::GetWavePos() const
 	return m_iWavePos;
 }
 
-void CInstrumentN163::SetWavePos(int pos)
+void CInstrumentN163::SetWavePos(const int pos)
 {
 	m_iWavePos = pos;
 	InstrumentChanged();
@@ -452,7 +452,7 @@ bool CInstrumentN106::GetAutoWavePos() const
 	return m_bAutoWavePos;
 }
 */
-void CInstrumentN163::SetWaveCount(int count)
+void CInstrumentN163::SetWaveCount(const int count)
 {
 	ASSERT(count <= MAX_WAVE_COUNT);
 	m_iWaveCount = count;

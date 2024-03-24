@@ -251,7 +251,7 @@ void CInstrument2A03::SaveFile(CInstrumentFile* pFile, const CFamiTrackerDoc* pD
 	}
 }
 
-bool CInstrument2A03::LoadFile(CInstrumentFile* pFile, int iVersion, CFamiTrackerDoc* pDoc)
+bool CInstrument2A03::LoadFile(CInstrumentFile* pFile, const int iVersion, CFamiTrackerDoc* pDoc)
 {
 	// Reads an FTI file
 	//
@@ -473,80 +473,80 @@ bool CInstrument2A03::CanRelease() const
 	return false;
 }
 
-int CInstrument2A03::GetSeqEnable(int Index) const
+int CInstrument2A03::GetSeqEnable(const int Index) const
 {
 	return m_iSeqEnable[Index];
 }
 
-int CInstrument2A03::GetSeqIndex(int Index) const
+int CInstrument2A03::GetSeqIndex(const int Index) const
 {
 	return m_iSeqIndex[Index];
 }
 
-void CInstrument2A03::SetSeqEnable(int Index, int Value)
+void CInstrument2A03::SetSeqEnable(const int Index, const int Value)
 {
 	if (m_iSeqEnable[Index] != Value)
 		InstrumentChanged();
 	m_iSeqEnable[Index] = Value;
 }
 
-void CInstrument2A03::SetSeqIndex(int Index, int Value)
+void CInstrument2A03::SetSeqIndex(const int Index, const int Value)
 {
 	if (m_iSeqIndex[Index] != Value)
 		InstrumentChanged();
 	m_iSeqIndex[Index] = Value;
 }
 
-char CInstrument2A03::GetSample(int Octave, int Note) const
+char CInstrument2A03::GetSample(const int Octave, const int Note) const
 {
 	return m_cSamples[Octave][Note];
 }
 
-char CInstrument2A03::GetSamplePitch(int Octave, int Note) const
+char CInstrument2A03::GetSamplePitch(const int Octave, const int Note) const
 {
 	return m_cSamplePitch[Octave][Note];
 }
 
-bool CInstrument2A03::GetSampleLoop(int Octave, int Note) const
+bool CInstrument2A03::GetSampleLoop(const int Octave, const int Note) const
 {
 	return (m_cSamplePitch[Octave][Note] & 0x80) == 0x80;
 }
 
-char CInstrument2A03::GetSampleLoopOffset(int Octave, int Note) const
+char CInstrument2A03::GetSampleLoopOffset(const int Octave, const int Note) const
 {
 	return m_cSampleLoopOffset[Octave][Note];
 }
 
-char CInstrument2A03::GetSampleDeltaValue(int Octave, int Note) const
+char CInstrument2A03::GetSampleDeltaValue(const int Octave, const int Note) const
 {
 	return m_cSampleDelta[Octave][Note];
 }
 
-void CInstrument2A03::SetSample(int Octave, int Note, char Sample)
+void CInstrument2A03::SetSample(const int Octave, const int Note, const char Sample)
 {
 	m_cSamples[Octave][Note] = Sample;
 	InstrumentChanged();
 }
 
-void CInstrument2A03::SetSamplePitch(int Octave, int Note, char Pitch)
+void CInstrument2A03::SetSamplePitch(const int Octave, const int Note, const char Pitch)
 {
 	m_cSamplePitch[Octave][Note] = Pitch;
 	InstrumentChanged();
 }
 
-void CInstrument2A03::SetSampleLoop(int Octave, int Note, bool Loop)
+void CInstrument2A03::SetSampleLoop(const int Octave, const int Note, const bool Loop)
 {
 	m_cSamplePitch[Octave][Note] = (m_cSamplePitch[Octave][Note] & 0x7F) | (Loop ? 0x80 : 0);
 	InstrumentChanged();
 }
 
-void CInstrument2A03::SetSampleLoopOffset(int Octave, int Note, char Offset)
+void CInstrument2A03::SetSampleLoopOffset(const int Octave, const int Note, const char Offset)
 {
 	m_cSampleLoopOffset[Octave][Note] = Offset;
 	InstrumentChanged();
 }
 
-void CInstrument2A03::SetSampleDeltaValue(int Octave, int Note, char Value)
+void CInstrument2A03::SetSampleDeltaValue(const int Octave, const int Note, const char Value)
 {
 	m_cSampleDelta[Octave][Note] = Value;
 	InstrumentChanged();

@@ -109,14 +109,14 @@ BOOL CConfigMixer::OnApply()
 	return CPropertyPage::OnApply();
 }
 
-void CConfigMixer::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+void CConfigMixer::OnVScroll(const UINT nSBCode, const UINT nPos, CScrollBar* pScrollBar)
 {
 	UpdateData(TRUE);
 	SetModified();
 	CPropertyPage::OnVScroll(nSBCode, nPos, pScrollBar);
 }
 
-void CConfigMixer::SetupSlider(int nID) const
+void CConfigMixer::SetupSlider(const int nID) const
 {
 	CSliderCtrl* pSlider = static_cast<CSliderCtrl*>(GetDlgItem(nID));
 	pSlider->SetRange(-LEVEL_RANGE * LEVEL_SCALE, LEVEL_RANGE * LEVEL_SCALE);
@@ -136,7 +136,7 @@ void CConfigMixer::UpdateLevels()
 	UpdateLevel(IDC_LEVEL_S5B, m_iLevelS5B);
 }
 
-void CConfigMixer::UpdateLevel(int nID, int Level)
+void CConfigMixer::UpdateLevel(const int nID, const int Level)
 {
 	CString str, str2;
 	str.Format(_T("%+.1f dB"), float(-Level) / float(LEVEL_SCALE));

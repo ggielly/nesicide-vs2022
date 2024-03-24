@@ -20,13 +20,13 @@ public:
 	void Transform();
 	void CopyIn(/*SampleIter& iter*/int SampleCount, short* Samples);
 
-	double GetIntensity(int i) const
+	double GetIntensity(const int i) const
 	{
 		//      Assert (i < _Points);
 		return m_X[i].Mod() / m_sqrtPoints;
 	}
 
-	int GetFrequency(int point) const
+	int GetFrequency(const int point) const
 	{
 		// return frequency in Hz of a given point
 		//        Assert (point < _Points);
@@ -34,14 +34,14 @@ public:
 		return x / m_Points;
 	}
 
-	int HzToPoint(int freq) const
+	int HzToPoint(const int freq) const
 	{
 		return (long)m_Points * freq / m_sampleRate;
 	}
 
 	int MaxFreq() const { return m_sampleRate; }
 
-	int Tape(int i) const
+	int Tape(const int i) const
 	{
 		//        Assert (i < _Points);
 		return (int)m_aTape[i];
@@ -49,7 +49,7 @@ public:
 
 private:
 
-	void PutAt(int i, double val)
+	void PutAt(const int i, const double val)
 	{
 		m_X [m_aBitRev[i]] = Complex(val);
 	}

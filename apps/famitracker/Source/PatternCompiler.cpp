@@ -107,7 +107,7 @@ CPatternCompiler::~CPatternCompiler()
 {
 }
 
-void CPatternCompiler::CompileData(int Track, int Pattern, int Channel)
+void CPatternCompiler::CompileData(const int Track, const int Pattern, const int Channel)
 {
 	int EffColumns = m_pDocument->GetEffColumns(Track, Channel) + 1;
 
@@ -588,12 +588,12 @@ void CPatternCompiler::CompileData(int Track, int Pattern, int Channel)
 	//	OptimizeString();
 }
 
-unsigned char CPatternCompiler::Command(int cmd) const
+unsigned char CPatternCompiler::Command(const int cmd) const
 {
 	return (cmd << 1) | 0x80;
 }
 
-unsigned int CPatternCompiler::FindInstrument(int Instrument) const
+unsigned int CPatternCompiler::FindInstrument(const int Instrument) const
 {
 	if (Instrument == MAX_INSTRUMENTS)
 		return MAX_INSTRUMENTS;
@@ -607,13 +607,13 @@ unsigned int CPatternCompiler::FindInstrument(int Instrument) const
 	return 0; // Could not find the instrument
 }
 
-unsigned int CPatternCompiler::FindSample(int Instrument, int Octave, int Key) const
+unsigned int CPatternCompiler::FindSample(const int Instrument, const int Octave, const int Key) const
 {
 	return (*m_pDPCMList)[Instrument][Octave][Key - 1];
 }
 
-CPatternCompiler::stSpacingInfo CPatternCompiler::ScanNoteLengths(int Track, unsigned int StartRow, int Pattern,
-                                                                  int Channel)
+CPatternCompiler::stSpacingInfo CPatternCompiler::ScanNoteLengths(const int Track, const unsigned int StartRow, const int Pattern,
+                                                                  const int Channel)
 {
 	stChanNote NoteData;
 	int StartSpace = -1, Space = 0, SpaceCount = 0;
@@ -681,7 +681,7 @@ CPatternCompiler::stSpacingInfo CPatternCompiler::ScanNoteLengths(int Track, uns
 	return Info;
 }
 
-void CPatternCompiler::WriteData(unsigned char Value)
+void CPatternCompiler::WriteData(const unsigned char Value)
 {
 	m_vData.push_back(Value);
 	m_iHash += Value; // Simple CRC-hash
@@ -708,7 +708,7 @@ void CPatternCompiler::WriteDuration()
 }
 
 // Returns the size of the block at 'position' in the data array. A block is terminated by a note
-int CPatternCompiler::GetBlockSize(int Position)
+int CPatternCompiler::GetBlockSize(const int Position)
 {
 	unsigned int Pos = Position;
 
@@ -859,7 +859,7 @@ unsigned int CPatternCompiler::GetHash() const
 	return m_iHash;
 }
 
-void CPatternCompiler::Print(LPCTSTR text) const
+void CPatternCompiler::Print(const LPCTSTR text) const
 {
 	if (m_pLogger != NULL)
 		m_pLogger->WriteLog(text);

@@ -28,7 +28,7 @@
  *
  */
 
-CTrackerChannel::CTrackerChannel(LPCTSTR pName, const int iChip, const int iID) :
+CTrackerChannel::CTrackerChannel(const LPCTSTR pName, const int iChip, const int iID) :
 	m_pChannelName(pName),
 	m_iChip(iChip),
 	m_iChannelID(iID),
@@ -64,12 +64,12 @@ const int CTrackerChannel::GetColumnCount() const
 	return m_iColumnCount;
 }
 
-void CTrackerChannel::SetColumnCount(int Count)
+void CTrackerChannel::SetColumnCount(const int Count)
 {
 	m_iColumnCount = Count;
 }
 
-void CTrackerChannel::SetNote(stChanNote& Note, note_prio_t Priority)
+void CTrackerChannel::SetNote(stChanNote& Note, const note_prio_t Priority)
 {
 	m_csNoteLock.Lock();
 
@@ -114,7 +114,7 @@ void CTrackerChannel::Reset()
 	m_csNoteLock.Unlock();
 }
 
-void CTrackerChannel::SetVolumeMeter(int Value)
+void CTrackerChannel::SetVolumeMeter(const int Value)
 {
 	m_iVolumeMeter = Value;
 }
@@ -124,7 +124,7 @@ int CTrackerChannel::GetVolumeMeter() const
 	return m_iVolumeMeter;
 }
 
-void CTrackerChannel::SetPitch(int Pitch)
+void CTrackerChannel::SetPitch(const int Pitch)
 {
 	m_iPitch = Pitch;
 }
@@ -134,7 +134,7 @@ int CTrackerChannel::GetPitch() const
 	return m_iPitch;
 }
 
-bool CTrackerChannel::IsInstrumentCompatible(int Instrument, CFamiTrackerDoc* pDoc) const
+bool CTrackerChannel::IsInstrumentCompatible(const int Instrument, CFamiTrackerDoc* pDoc) const
 {
 	int InstType = pDoc->GetInstrumentType(Instrument);
 

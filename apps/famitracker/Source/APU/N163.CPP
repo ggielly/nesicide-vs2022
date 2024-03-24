@@ -112,7 +112,7 @@ void CN163::Process(uint32 Time)
 	}
 }
 
-void CN163::Mix(int32 Value, uint32 Time, uint8 ChanID)
+void CN163::Mix(const int32 Value, const uint32 Time, const uint8 ChanID)
 {
 	// N163 amplitude:
 	// One channel: 1.1V P-P
@@ -135,7 +135,7 @@ void CN163::EndFrame()
 	m_iGlobalTime = 0;
 }
 
-void CN163::Write(uint16 Address, uint8 Value)
+void CN163::Write(const uint16 Address, const uint8 Value)
 {
 	int Area = m_iExpandAddr & 0x7F;
 
@@ -164,7 +164,7 @@ void CN163::Write(uint16 Address, uint8 Value)
 	}
 }
 
-uint8 CN163::Read(uint16 Address, bool& Mapped)
+uint8 CN163::Read(const uint16 Address, bool& Mapped)
 {
 	uint16 ReadAddr;
 
@@ -181,7 +181,7 @@ uint8 CN163::Read(uint16 Address, bool& Mapped)
 	return 0;
 }
 
-uint8 CN163::ReadMem(uint8 Reg)
+uint8 CN163::ReadMem(const uint8 Reg)
 {
 	int ChanArea = 0x80 - ((m_iChansInUse + 1) << 3);
 	int Chan = (Reg & 0x3F) >> 3;
@@ -199,7 +199,7 @@ uint8 CN163::ReadMem(uint8 Reg)
 // N163 channels
 //
 
-CN163Chan::CN163Chan(CMixer* pMixer, int ID, uint8* pWaveData) :
+CN163Chan::CN163Chan(CMixer* pMixer, const int ID, uint8* pWaveData) :
 	CExChannel(pMixer, SNDCHIP_N163, ID),
 	m_pWaveData(pWaveData)
 {
@@ -228,7 +228,7 @@ void CN163Chan::EndFrame()
 	m_iTime = 0;
 }
 
-void CN163Chan::Write(uint16 Address, uint8 Value)
+void CN163Chan::Write(const uint16 Address, const uint8 Value)
 {
 	switch (Address)
 	{
@@ -297,7 +297,7 @@ void CN163Chan::Process(uint32 Time, uint8 ChannelsActive, CN163* pParent)
 	m_iTime += Time;
 }
 
-uint8 CN163Chan::ReadMem(uint8 Reg)
+uint8 CN163Chan::ReadMem(const uint8 Reg)
 {
 	switch (Reg & 7)
 	{
