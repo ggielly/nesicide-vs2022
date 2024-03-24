@@ -8,39 +8,40 @@
 #include "cpropertyenumlistmodel.h"
 #include "cpropertysymboldelegate.h"
 
-namespace Ui {
-   class PropertyEditorDialog;
+namespace Ui
+{
+	class PropertyEditorDialog;
 }
 
 class PropertyEditorDialog : public QDialog
 {
-   Q_OBJECT
+	Q_OBJECT
 
 public:
-   explicit PropertyEditorDialog(QWidget *parent = 0);
-   ~PropertyEditorDialog();
+	explicit PropertyEditorDialog(QWidget* parent = 0);
+	~PropertyEditorDialog() override;
 
-   QString propertyName() { return property.name; }
-   propertyTypeEnum propertyType() { return property.type; }
-   QString propertyValue() { return property.value; }
+	QString propertyName() { return property.name; }
+	propertyTypeEnum propertyType() { return property.type; }
+	QString propertyValue() { return property.value; }
 
-   void setPropertyName(QString name) { property.name = name; }
-   void setPropertyType(propertyTypeEnum type) { property.type = type; }
-   void setPropertyValue(QString value) { property.value = value; }
+	void setPropertyName(QString name) { property.name = name; }
+	void setPropertyType(propertyTypeEnum type) { property.type = type; }
+	void setPropertyValue(QString value) { property.value = value; }
 
 protected:
-   void showEvent(QShowEvent *event);
-   void keyPressEvent(QKeyEvent *event);
+	void showEvent(QShowEvent* event) override;
+	void keyPressEvent(QKeyEvent* event) override;
 
 private:
-   Ui::PropertyEditorDialog *ui;
-   CPropertyEnumListModel* enumModel;
-   CPropertySymbolDelegate* enumSymbolDelegate;
-   PropertyItem property;
+	Ui::PropertyEditorDialog* ui;
+	CPropertyEnumListModel* enumModel;
+	CPropertySymbolDelegate* enumSymbolDelegate;
+	PropertyItem property;
 
 private slots:
-   void on_type_currentIndexChanged(int index);
-   void on_buttonBox_accepted();
+	void on_type_currentIndexChanged(int index);
+	void on_buttonBox_accepted();
 };
 
 #endif // PROPERTYEDITORDIALOG_H

@@ -591,12 +591,12 @@ bool CFamiTrackerApp::CheckSingleInstance(CFTCommandLineInfo& cmdInfo)
 					data.dwData = cmdInfo.m_bPlay ? IPC_LOAD_PLAY : IPC_LOAD;
 					data.cbData = (DWORD)((_tcslen(pFilePath) + 1) * sizeof(TCHAR));
 					data.lpData = pFilePath;
-					DWORD result;
-					SendMessageTimeout(hWnd, WM_COPYDATA, NULL, (LPARAM)&data, SMTO_NORMAL, 100, (DWORD_PTR)&result);
+					DWORD_PTR result;
+					result = SendMessage(hWnd, WM_COPYDATA, NULL, (LPARAM)&data);
 					UnmapViewOfFile(pBuf);
 					CloseHandle(hMapFile);
 					TRACE("App: Found another instance, shutting down\n");
-					// Then close the program
+					// Then close the program  
 					return true;
 				}
 

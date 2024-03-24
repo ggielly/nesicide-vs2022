@@ -25,19 +25,19 @@ CC64DBG::~CC64DBG()
 {
 }
 
-void CC64DBG::CODEBROWSERTOOLTIP ( int32_t tipType, uint32_t addr, char* tooltipBuffer )
+void CC64DBG::CODEBROWSERTOOLTIP(int32_t tipType, uint32_t addr, char* tooltipBuffer)
 {
-   char* ptr = tooltipBuffer;
-   ptr += sprintf ( ptr, "<pre>" );
+	char* ptr = tooltipBuffer;
+	ptr += sprintf(ptr, "<pre>");
 
-   if ( tipType == TOOLTIP_BYTES )
-   {
-      ptr += sprintf ( ptr, "6502 @ %X<br>RAM  @ %X", addr, addr );
-   }
-   else if ( tipType == TOOLTIP_INFO )
-   {
-      ptr += sprintf ( ptr, "%s", OPCODEINFO(c64GetMemory(addr)) );
-   }
+	if (tipType == TOOLTIP_BYTES)
+	{
+		ptr += sprintf(ptr, "6502 @ %X<br>RAM  @ %X", addr, addr);
+	}
+	else if (tipType == TOOLTIP_INFO)
+	{
+		ptr += sprintf(ptr, "%s", OPCODEINFO(c64GetMemory(addr)));
+	}
 
-   ptr += sprintf ( ptr, "</pre>" );
+	ptr += sprintf(ptr, "</pre>");
 }

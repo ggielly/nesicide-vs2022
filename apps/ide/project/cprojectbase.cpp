@@ -4,45 +4,45 @@
 
 CProjectBase::CProjectBase()
 {
-   m_name = "";
-   m_path = "";
-   m_editor = NULL;
-   m_deleted = false;
-   m_includeInBuild = true;
+	m_name = "";
+	m_path = "";
+	m_editor = NULL;
+	m_deleted = false;
+	m_includeInBuild = true;
 }
 
 CProjectBase::~CProjectBase()
 {
-   if ( m_editor )
-   {
-      delete m_editor;
-   }
+	if (m_editor)
+	{
+		delete m_editor;
+	}
 }
 
 IProjectTreeViewItem* findProjectItem(QString uuid)
 {
-   IProjectTreeViewItemIterator iter(CNesicideProject::instance()->getProject());
+	IProjectTreeViewItemIterator iter(CNesicideProject::instance()->getProject());
 
-   while ( iter.current() != NULL )
-   {
-      IProjectTreeViewItem* pItem = iter.current();
+	while (iter.current() != NULL)
+	{
+		IProjectTreeViewItem* pItem = iter.current();
 
-      if ( pItem->uuid() == uuid )
-      {
-         return pItem;
-      }
+		if (pItem->uuid() == uuid)
+		{
+			return pItem;
+		}
 
-      iter.next();
-   }
+		iter.next();
+	}
 
-   return NULL;
+	return NULL;
 }
 
 void CProjectBase::closeItemEvent()
 {
-   if ( m_editor )
-   {
-      delete m_editor;
-   }
-   m_editor = NULL;
+	if (m_editor)
+	{
+		delete m_editor;
+	}
+	m_editor = NULL;
 }

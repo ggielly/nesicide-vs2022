@@ -10,30 +10,34 @@
 
 class CBinaryFiles : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CBinaryFiles(IProjectTreeViewItem* parent);
-   virtual ~CBinaryFiles();
+	CBinaryFiles(IProjectTreeViewItem* parent);
+	~CBinaryFiles() override;
 
-   // Helper functions
-   void initializeProject();
-   void terminateProject();
+	// Helper functions
+	void initializeProject();
+	void terminateProject();
 
-   QList<CBinaryFile*>& getBinaryFileList() { return m_binaryFiles; }
+	QList<CBinaryFile*>& getBinaryFileList() { return m_binaryFiles; }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   QString caption() const;
-   virtual void openItemEvent(CProjectTabWidget*) {}
+	// IProjectTreeViewItem Interface Implmentation
+	QString caption() const override;
 
-   // ICenterWidgetItem Interface Implementation
+	void openItemEvent(CProjectTabWidget*) override
+	{
+	}
+
+	// ICenterWidgetItem Interface Implementation
 
 private:
-   // Contained children
-   QList<CBinaryFile*> m_binaryFiles;
+	// Contained children
+	QList<CBinaryFile*> m_binaryFiles;
 };
 
 #endif // CBINARYFILES_H

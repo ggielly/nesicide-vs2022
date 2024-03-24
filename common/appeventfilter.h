@@ -6,20 +6,21 @@
 
 class AppEventFilter : public QObject
 {
-    Q_OBJECT
-public:
-    explicit AppEventFilter(QObject *parent = 0);
+	Q_OBJECT
 
-    bool eventFilter(QObject *obj, QEvent *event);
+public:
+	explicit AppEventFilter(QObject* parent = 0);
+
+	bool eventFilter(QObject* obj, QEvent* event) override;
 
 signals:
-    void applicationActivationChanged(bool activated);
+	void applicationActivationChanged(bool activated);
 
 public slots:
 
 
 private:
-    bool inActivationEvent;
+	bool inActivationEvent;
 };
 
 #endif // APPEVENTFILTER_H

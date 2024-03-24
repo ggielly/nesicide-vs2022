@@ -6,15 +6,15 @@
 class CCartridgeModel : public CSubModel
 {
 public:
-   CCartridgeModel();
+	CCartridgeModel();
 
-   QList<QUuid> getPrgRomUuids() const;
-   QList<QUuid> getChrRomUuids() const;
+	QList<QUuid> getPrgRomUuids() const;
+	QList<QUuid> getChrRomUuids() const;
 
-   QList<QUuid> getUuids() const;
-   QString getName(const QUuid& uuid) const;
+	QList<QUuid> getUuids() const override;
+	QString getName(const QUuid& uuid) const override;
 
-   CDesignerEditorBase* createEditorWidget(const QUuid&) const;
+	CDesignerEditorBase* createEditorWidget(const QUuid&) const override;
 };
 
 #endif // CCARTRIDGEMODEL_H

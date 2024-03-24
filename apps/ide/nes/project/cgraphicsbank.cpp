@@ -7,12 +7,12 @@
 
 CGraphicsBank::CGraphicsBank(IProjectTreeViewItem* parent)
 {
-   // Add node to tree
-   InitTreeItem("",parent);
+	// Add node to tree
+	InitTreeItem("", parent);
 
-   // Allocate attributes
-   m_bankItems.clear();
-   m_bankSize = MEM_8KB;
+	// Allocate attributes
+	m_bankItems.clear();
+	m_bankSize = MEM_8KB;
 }
 
 CGraphicsBank::~CGraphicsBank()
@@ -21,122 +21,123 @@ CGraphicsBank::~CGraphicsBank()
 
 QList<IChrRomBankItem*> CGraphicsBank::getGraphics()
 {
-   return m_bankItems;
+	return m_bankItems;
 }
 
 uint32_t CGraphicsBank::getSize()
 {
-   return m_bankSize;
+	return m_bankSize;
 }
 
 bool CGraphicsBank::serialize(QDomDocument& doc, QDomNode& node)
 {
-   QDomElement element = addElement( doc, node, "graphicsbank" );
-   element.setAttribute("name", m_name);
-   element.setAttribute("uuid", uuid());
-   element.setAttribute("size", m_bankSize);
+	QDomElement element = addElement(doc, node, "graphicsbank");
+	element.setAttribute("name", m_name);
+	element.setAttribute("uuid", uuid());
+	element.setAttribute("size", m_bankSize);
 
-   if ( m_editor && m_editor->isModified() )
-   {
-      editor()->onSave();
-   }
+	if (m_editor && m_editor->isModified())
+	{
+		editor()->onSave();
+	}
 
-   for (int i=0; i < m_bankItems.count(); i++)
-   {
-      QDomElement graphicsItemElement = addElement( doc, element, "graphicitem" );
-      IProjectTreeViewItem* projectItem = dynamic_cast<IProjectTreeViewItem*>(m_bankItems.at(i));
-      graphicsItemElement.setAttribute("uuid", projectItem->uuid() );
-   }
+	for (int i = 0; i < m_bankItems.count(); i++)
+	{
+		QDomElement graphicsItemElement = addElement(doc, element, "graphicitem");
+		auto projectItem = dynamic_cast<IProjectTreeViewItem*>(m_bankItems.at(i));
+		graphicsItemElement.setAttribute("uuid", projectItem->uuid());
+	}
 
-   return true;
+	return true;
 }
 
 void CGraphicsBank::exportAsPNG()
 {
-   QString fileName = QFileDialog::getSaveFileName(NULL,"Export Graphics Bank as PNG",QDir::currentPath());
-   QByteArray chrData;
-   QByteArray imgData;
-   int idx;
-   QImage imgOut;
+	QString fileName = QFileDialog::getSaveFileName(NULL, "Export Graphics Bank as PNG", QDir::currentPath());
+	QByteArray chrData;
+	QByteArray imgData;
+	int idx;
+	QImage imgOut;
 
-   if ( !fileName.isEmpty() )
-   {
-      for ( idx = 0; idx < m_bankItems.count(); idx++ )
-      {
-         IChrRomBankItem* item = dynamic_cast<IChrRomBankItem*>(m_bankItems.at(idx));
-         if ( item )
-         {
-            chrData += item->getChrRomBankItemData();
-         }
-      }
-      imgOut = CImageConverters::toIndexed8(chrData);
+	if (!fileName.isEmpty())
+	{
+		for (idx = 0; idx < m_bankItems.count(); idx++)
+		{
+			auto item = dynamic_cast<IChrRomBankItem*>(m_bankItems.at(idx));
+			if (item)
+			{
+				chrData += item->getChrRomBankItemData();
+			}
+		}
+		imgOut = CImageConverters::toIndexed8(chrData);
 
-      imgOut.save(fileName,"png");
-   }
+		imgOut.save(fileName, "png");
+	}
 }
 
 bool CGraphicsBank::deserialize(QDomDocument& /*doc*/, QDomNode& node, QString& errors)
 {
-   QDomElement element = node.toElement();
+	QDomElement element = node.toElement();
 
-   if (element.isNull())
-   {
-      return false;
-   }
+	if (element.isNull())
+	{
+		return false;
+	}
 
-   if (!element.hasAttribute("name"))
-   {
-      errors.append("Missing required attribute 'name' of element <source name='?'>\n");
-      return false;
-   }
+	if (!element.hasAttribute("name"))
+	{
+		errors.append("Missing required attribute 'name' of element <source name='?'>\n");
+		return false;
+	}
 
-   if (!element.hasAttribute("uuid"))
-   {
-      errors.append("Missing required attribute 'uuid' of element <source name='"+element.attribute("name")+"'>\n");
-      return false;
-   }
+	if (!element.hasAttribute("uuid"))
+	{
+		errors.append(
+			"Missing required attribute 'uuid' of element <source name='" + element.attribute("name") + "'>\n");
+		return false;
+	}
 
-   // Default size is 8KB
-   m_bankSize = element.attribute("size","8192").toInt();
+	// Default size is 8KB
+	m_bankSize = element.attribute("size", "8192").toInt();
 
-   m_name = element.attribute("name");
+	m_name = element.attribute("name");
 
-   setUuid(element.attribute("uuid"));
+	setUuid(element.attribute("uuid"));
 
-   m_bankItems.clear();
+	m_bankItems.clear();
 
-   QDomNode childNode = node.firstChild();
+	QDomNode childNode = node.firstChild();
 
-   if (!childNode.isNull())
-   {
-      do
-      {
-         if (childNode.nodeName() == "graphicitem")
-         {
-            QDomElement graphicItem = childNode.toElement();
+	if (!childNode.isNull())
+	{
+		do
+		{
+			if (childNode.nodeName() == "graphicitem")
+			{
+				QDomElement graphicItem = childNode.toElement();
 
-            IProjectTreeViewItem* projectItem = findProjectItem(graphicItem.attribute("uuid"));
-            IChrRomBankItem* pItem = dynamic_cast<IChrRomBankItem*>(projectItem);
+				IProjectTreeViewItem* projectItem = findProjectItem(graphicItem.attribute("uuid"));
+				auto pItem = dynamic_cast<IChrRomBankItem*>(projectItem);
 
-            if ( pItem )
-            {
-               m_bankItems.append(pItem);
-            }
+				if (pItem)
+				{
+					m_bankItems.append(pItem);
+				}
+			}
+			else
+			{
+				return false;
+			}
+		}
+		while (!(childNode = childNode.nextSibling()).isNull());
+	}
 
-         }
-         else
-         {
-            return false;
-         }
-      } while (!(childNode = childNode.nextSibling()).isNull());
-   }
-
-   return true;
+	return true;
 }
 
 QString CGraphicsBank::caption() const
 {
-   return m_name;
+	return m_name;
 }
 
 // CPTODO: CHECK TO MAKE SURE THIS IS IN NEW INFRASTRUCTURE JSOLO
@@ -182,41 +183,41 @@ QString CGraphicsBank::caption() const
 
 void CGraphicsBank::openItemEvent(CProjectTabWidget* tabWidget)
 {
-   if (m_editor)
-   {
-      tabWidget->setCurrentWidget(m_editor);
-   }
-   else
-   {
-      m_editor = new GraphicsBankEditorForm(m_bankSize,m_bankItems,this);
-      tabWidget->addTab(m_editor, this->caption());
-      tabWidget->setCurrentWidget(m_editor);
-   }
+	if (m_editor)
+	{
+		tabWidget->setCurrentWidget(m_editor);
+	}
+	else
+	{
+		m_editor = new GraphicsBankEditorForm(m_bankSize, m_bankItems, this);
+		tabWidget->addTab(m_editor, this->caption());
+		tabWidget->setCurrentWidget(m_editor);
+	}
 }
 
 void CGraphicsBank::saveItemEvent()
 {
-   m_bankItems = editor()->bankItems();
-   m_bankSize = editor()->bankSize();
+	m_bankItems = editor()->bankItems();
+	m_bankSize = editor()->bankSize();
 
-   if ( m_editor )
-   {
-      m_editor->setModified(false);
-   }
+	if (m_editor)
+	{
+		m_editor->setModified(false);
+	}
 }
 
 bool CGraphicsBank::onNameChanged(QString newName)
 {
-   if (m_name != newName)
-   {
-      m_name = newName;
+	if (m_name != newName)
+	{
+		m_name = newName;
 
-      if ( m_editor )
-      {
-         QTabWidget* tabWidget = (QTabWidget*)m_editor->parentWidget()->parentWidget();
-         tabWidget->setTabText(tabWidget->indexOf(m_editor), newName);
-      }
-   }
+		if (m_editor)
+		{
+			auto tabWidget = (QTabWidget*)m_editor->parentWidget()->parentWidget();
+			tabWidget->setTabText(tabWidget->indexOf(m_editor), newName);
+		}
+	}
 
-   return true;
+	return true;
 }

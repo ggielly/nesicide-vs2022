@@ -8,31 +8,35 @@
 
 class CCHRROMBanks : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CCHRROMBanks(IProjectTreeViewItem* parent);
-   virtual ~CCHRROMBanks();
+	CCHRROMBanks(IProjectTreeViewItem* parent);
+	~CCHRROMBanks() override;
 
-   // Helper functions
-   void initializeProject();
-   void terminateProject();
+	// Helper functions
+	void initializeProject();
+	void terminateProject();
 
-   // Member Getters
-   QList<CCHRROMBank*>& getChrRomBanks() { return m_chrRomBanks; }
+	// Member Getters
+	QList<CCHRROMBank*>& getChrRomBanks() { return m_chrRomBanks; }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   QString caption() const;
-   virtual void openItemEvent(CProjectTabWidget*) {}
+	// IProjectTreeViewItem Interface Implmentation
+	QString caption() const override;
 
-   // ICenterWidgetItem Interface Implementation
+	void openItemEvent(CProjectTabWidget*) override
+	{
+	}
+
+	// ICenterWidgetItem Interface Implementation
 
 private:
-   // Contained children
-   QList<CCHRROMBank*> m_chrRomBanks;
+	// Contained children
+	QList<CCHRROMBank*> m_chrRomBanks;
 };
 
 #endif // CCHRROMBANKS_H

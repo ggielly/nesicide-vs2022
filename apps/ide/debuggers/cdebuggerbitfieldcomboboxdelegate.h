@@ -8,25 +8,27 @@
 
 class CDebuggerBitfieldComboBoxDelegate : public QStyledItemDelegate
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CDebuggerBitfieldComboBoxDelegate();
+	CDebuggerBitfieldComboBoxDelegate();
 
-   void setBitfield ( CBitfieldData* pBitfield )
-   {
-      m_pBitfield = pBitfield;
-   }
-   QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option,
-                         const QModelIndex& index) const;
+	void setBitfield(CBitfieldData* pBitfield)
+	{
+		m_pBitfield = pBitfield;
+	}
 
-   void setEditorData(QWidget* editor, const QModelIndex& index) const;
-   void setModelData(QWidget* editor, QAbstractItemModel* model,
-                     const QModelIndex& index) const;
-   void updateEditorGeometry(QWidget* editor,
-                             const QStyleOptionViewItem& option, const QModelIndex& index) const;
+	QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option,
+	                      const QModelIndex& index) const override;
+
+	void setEditorData(QWidget* editor, const QModelIndex& index) const override;
+	void setModelData(QWidget* editor, QAbstractItemModel* model,
+	                  const QModelIndex& index) const override;
+	void updateEditorGeometry(QWidget* editor,
+	                          const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 
 private:
-   CBitfieldData* m_pBitfield;
+	CBitfieldData* m_pBitfield;
 };
 
 #endif // CDEBUGGERBITFIELDCOMBOBOXDELEGATE_H

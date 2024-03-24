@@ -21,19 +21,21 @@ class CPrgRomUuid;
 class IUuidVisitor
 {
 public:
-   ~IUuidVisitor() { }
+	~IUuidVisitor()
+	{
+	}
 
-   virtual void visit(CUuid&)=0;
-   virtual void visit(CAttributeUuid&)=0;
-   virtual void visit(CBinaryFileUuid&)=0;
-   virtual void visit(CFilterUuid&)=0;
-   virtual void visit(CGraphicsBankUuid&)=0;
-   virtual void visit(CSourceFileUuid&)=0;
-   virtual void visit(CTileStampUuid&)=0;
-   virtual void visit(CMusicFileUuid&)=0;
+	virtual void visit(CUuid&) =0;
+	virtual void visit(CAttributeUuid&) =0;
+	virtual void visit(CBinaryFileUuid&) =0;
+	virtual void visit(CFilterUuid&) =0;
+	virtual void visit(CGraphicsBankUuid&) =0;
+	virtual void visit(CSourceFileUuid&) =0;
+	virtual void visit(CTileStampUuid&) =0;
+	virtual void visit(CMusicFileUuid&) =0;
 
-   virtual void visit(CChrRomUuid&)=0;
-   virtual void visit(CPrgRomUuid&)=0;
+	virtual void visit(CChrRomUuid&) =0;
+	virtual void visit(CPrgRomUuid&) =0;
 };
 
 // ------------------------------------------------------------------------
@@ -43,73 +45,103 @@ public:
 class CUuid
 {
 public:
-   CUuid(QUuid uuid) : uuid(uuid) { }
-   QUuid uuid;
+	CUuid(QUuid uuid) : uuid(uuid)
+	{
+	}
 
-   virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
+	QUuid uuid;
+
+	virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
 };
 
 class CAttributeUuid : public CUuid
 {
 public:
-   CAttributeUuid(QUuid uuid) : CUuid(uuid) { }
-   virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
+	CAttributeUuid(QUuid uuid) : CUuid(uuid)
+	{
+	}
+
+	void accept(IUuidVisitor& visitor) override { visitor.visit(*this); }
 };
 
 class CBinaryFileUuid : public CUuid
 {
 public:
-   CBinaryFileUuid(QUuid uuid) : CUuid(uuid) { }
-   virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
+	CBinaryFileUuid(QUuid uuid) : CUuid(uuid)
+	{
+	}
+
+	void accept(IUuidVisitor& visitor) override { visitor.visit(*this); }
 };
 
 class CFilterUuid : public CUuid
 {
 public:
-   CFilterUuid(QUuid uuid) : CUuid(uuid) { }
-   virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
+	CFilterUuid(QUuid uuid) : CUuid(uuid)
+	{
+	}
+
+	void accept(IUuidVisitor& visitor) override { visitor.visit(*this); }
 };
 
 class CGraphicsBankUuid : public CUuid
 {
 public:
-   CGraphicsBankUuid(QUuid uuid) : CUuid(uuid) { }
-   virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
+	CGraphicsBankUuid(QUuid uuid) : CUuid(uuid)
+	{
+	}
+
+	void accept(IUuidVisitor& visitor) override { visitor.visit(*this); }
 };
 
 class CSourceFileUuid : public CUuid
 {
 public:
-   CSourceFileUuid(QUuid uuid) : CUuid(uuid) { }
-   virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
+	CSourceFileUuid(QUuid uuid) : CUuid(uuid)
+	{
+	}
+
+	void accept(IUuidVisitor& visitor) override { visitor.visit(*this); }
 };
 
 class CTileStampUuid : public CUuid
 {
 public:
-   CTileStampUuid(QUuid uuid) : CUuid(uuid) { }
-   virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
+	CTileStampUuid(QUuid uuid) : CUuid(uuid)
+	{
+	}
+
+	void accept(IUuidVisitor& visitor) override { visitor.visit(*this); }
 };
 
 class CMusicFileUuid : public CUuid
 {
 public:
-   CMusicFileUuid(QUuid uuid) : CUuid(uuid) { }
-   virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
+	CMusicFileUuid(QUuid uuid) : CUuid(uuid)
+	{
+	}
+
+	void accept(IUuidVisitor& visitor) override { visitor.visit(*this); }
 };
 
 class CChrRomUuid : public CUuid
 {
 public:
-   CChrRomUuid(QUuid uuid) : CUuid(uuid) { }
-   virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
+	CChrRomUuid(QUuid uuid) : CUuid(uuid)
+	{
+	}
+
+	void accept(IUuidVisitor& visitor) override { visitor.visit(*this); }
 };
 
 class CPrgRomUuid : public CUuid
 {
 public:
-   CPrgRomUuid(QUuid uuid) : CUuid(uuid) { }
-   virtual void accept(IUuidVisitor& visitor) { visitor.visit(*this); }
+	CPrgRomUuid(QUuid uuid) : CUuid(uuid)
+	{
+	}
+
+	void accept(IUuidVisitor& visitor) override { visitor.visit(*this); }
 };
 
 #endif // IUUIDVISITOR_H

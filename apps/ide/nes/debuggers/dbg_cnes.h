@@ -14,12 +14,12 @@
 class CNESDBG
 {
 public:
-   CNESDBG();
-   virtual ~CNESDBG();
+	CNESDBG();
+	virtual ~CNESDBG();
 
-   // This method retrieves information to be displayed in ToolTips
-   // for the Code Browser window.
-   static void CODEBROWSERTOOLTIP ( int32_t tipType, uint32_t addr, char* tooltipBuffer );
+	// This method retrieves information to be displayed in ToolTips
+	// for the Code Browser window.
+	static void CODEBROWSERTOOLTIP(int32_t tipType, uint32_t addr, char* tooltipBuffer);
 };
 
 #endif

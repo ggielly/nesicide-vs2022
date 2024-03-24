@@ -28,34 +28,34 @@ CNESDBG::~CNESDBG()
 {
 }
 
-void CNESDBG::CODEBROWSERTOOLTIP ( int32_t tipType, uint32_t addr, char* tooltipBuffer )
+void CNESDBG::CODEBROWSERTOOLTIP(int32_t tipType, uint32_t addr, char* tooltipBuffer)
 {
-   char* ptr = tooltipBuffer;
-   ptr += sprintf ( ptr, "<pre>" );
+	char* ptr = tooltipBuffer;
+	ptr += sprintf(ptr, "<pre>");
 
-   if ( tipType == TOOLTIP_BYTES )
-   {
-      if ( addr < 0x800 )
-      {
-         ptr += sprintf ( ptr, "6502 @ %X<br>RAM  @ %X", addr, addr );
-      }
-      else if ( addr < 0x6000 )
-      {
-         ptr += sprintf ( ptr, "6502  @ %X<br>EXRAM @ %X", addr, nesGetPhysicalAddressFromAddress(addr) );
-      }
-      else if ( addr < 0x8000 )
-      {
-         ptr += sprintf ( ptr, "6502 @ %X<br>SRAM @ %X", addr, nesGetPhysicalAddressFromAddress(addr) );
-      }
-      else
-      {
-         ptr += sprintf ( ptr, "6502    @ %X<br>PRG-ROM @ %X", addr, nesGetPhysicalAddressFromAddress(addr) );
-      }
-   }
-   else if ( tipType == TOOLTIP_INFO )
-   {
-      ptr += sprintf ( ptr, "%s", OPCODEINFO(nesGetMemory(addr)) );
-   }
+	if (tipType == TOOLTIP_BYTES)
+	{
+		if (addr < 0x800)
+		{
+			ptr += sprintf(ptr, "6502 @ %X<br>RAM  @ %X", addr, addr);
+		}
+		else if (addr < 0x6000)
+		{
+			ptr += sprintf(ptr, "6502  @ %X<br>EXRAM @ %X", addr, nesGetPhysicalAddressFromAddress(addr));
+		}
+		else if (addr < 0x8000)
+		{
+			ptr += sprintf(ptr, "6502 @ %X<br>SRAM @ %X", addr, nesGetPhysicalAddressFromAddress(addr));
+		}
+		else
+		{
+			ptr += sprintf(ptr, "6502    @ %X<br>PRG-ROM @ %X", addr, nesGetPhysicalAddressFromAddress(addr));
+		}
+	}
+	else if (tipType == TOOLTIP_INFO)
+	{
+		ptr += sprintf(ptr, "%s", OPCODEINFO(nesGetMemory(addr)));
+	}
 
-   ptr += sprintf ( ptr, "</pre>" );
+	ptr += sprintf(ptr, "</pre>");
 }

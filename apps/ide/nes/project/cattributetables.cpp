@@ -4,94 +4,94 @@
 
 CAttributeTables::CAttributeTables(IProjectTreeViewItem* parent)
 {
-   // Add node to tree
-   InitTreeItem(":/resources/folder_closed.png",parent);
+	// Add node to tree
+	InitTreeItem(":/resources/folder_closed.png", parent);
 }
 
 CAttributeTables::~CAttributeTables()
 {
-   // Remove any allocated children
-   for ( int i = 0; i < m_attributeTables.count(); i++ )
-   {
-      delete m_attributeTables.at(i);
-   }
+	// Remove any allocated children
+	for (int i = 0; i < m_attributeTables.count(); i++)
+	{
+		delete m_attributeTables.at(i);
+	}
 
-   // Initialize this node's attributes
-   m_attributeTables.clear();
+	// Initialize this node's attributes
+	m_attributeTables.clear();
 }
 
 void CAttributeTables::initializeProject()
 {
-   // Remove any allocated children
-   for ( int i = 0; i < m_attributeTables.count(); i++ )
-   {
-      removeChild(m_attributeTables.at(i));
-      delete m_attributeTables.at(i);
-   }
+	// Remove any allocated children
+	for (int i = 0; i < m_attributeTables.count(); i++)
+	{
+		removeChild(m_attributeTables.at(i));
+		delete m_attributeTables.at(i);
+	}
 
-   // Initialize this node's attributes
-   m_attributeTables.clear();
+	// Initialize this node's attributes
+	m_attributeTables.clear();
 }
 
 void CAttributeTables::terminateProject()
 {
-   // Remove any allocated children
-   for ( int i = 0; i < m_attributeTables.count(); i++ )
-   {
-      removeChild(m_attributeTables.at(i));
-      delete m_attributeTables.at(i);
-   }
+	// Remove any allocated children
+	for (int i = 0; i < m_attributeTables.count(); i++)
+	{
+		removeChild(m_attributeTables.at(i));
+		delete m_attributeTables.at(i);
+	}
 
-   // Initialize this node's attributes
-   m_attributeTables.clear();
+	// Initialize this node's attributes
+	m_attributeTables.clear();
 }
 
 bool CAttributeTables::serialize(QDomDocument& doc, QDomNode& node)
 {
-   QDomElement attributeTablesElement = addElement( doc, node, "attributetables" );
+	QDomElement attributeTablesElement = addElement(doc, node, "attributetables");
 
-   for (int i = 0; i < m_attributeTables.count(); i++)
-   {
-      if (!m_attributeTables.at(i)->serialize(doc, attributeTablesElement))
-      {
-         return false;
-      }
-   }
+	for (int i = 0; i < m_attributeTables.count(); i++)
+	{
+		if (!m_attributeTables.at(i)->serialize(doc, attributeTablesElement))
+		{
+			return false;
+		}
+	}
 
-   return true;
+	return true;
 }
 
 bool CAttributeTables::deserialize(QDomDocument& doc, QDomNode& node, QString& errors)
 {
-   QDomNode childNode = node.firstChild();
+	QDomNode childNode = node.firstChild();
 
-   if (!childNode.isNull())
-   {
-      do
-      {
-         if (childNode.nodeName() == "attributetable")
-         {
-            CAttributeTable* pNewAttributeTable = new CAttributeTable(this);
-            m_attributeTables.append(pNewAttributeTable);
-            appendChild(pNewAttributeTable);
+	if (!childNode.isNull())
+	{
+		do
+		{
+			if (childNode.nodeName() == "attributetable")
+			{
+				auto pNewAttributeTable = new CAttributeTable(this);
+				m_attributeTables.append(pNewAttributeTable);
+				appendChild(pNewAttributeTable);
 
-            if (!pNewAttributeTable->deserialize(doc,childNode,errors))
-            {
-               return false;
-            }
-         }
-         else
-         {
-            return false;
-         }
-      }
-      while (!(childNode = childNode.nextSibling()).isNull());
-   }
+				if (!pNewAttributeTable->deserialize(doc, childNode, errors))
+				{
+					return false;
+				}
+			}
+			else
+			{
+				return false;
+			}
+		}
+		while (!(childNode = childNode.nextSibling()).isNull());
+	}
 
-   return true;
+	return true;
 }
 
 QString CAttributeTables::caption() const
 {
-   return QString("Palettes");
+	return QString("Palettes");
 }

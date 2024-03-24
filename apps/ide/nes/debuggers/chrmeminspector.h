@@ -10,13 +10,15 @@
 
 class CHRMEMInspector : public CDebuggerBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CHRMEMInspector(QWidget *parent = 0);
-   virtual ~CHRMEMInspector();
+	CHRMEMInspector(QWidget* parent = 0);
+	~CHRMEMInspector() override;
+
 protected:
-   CHRROMDisplayDialog* dialog;
-   QFrame* frame;
+	CHRROMDisplayDialog* dialog;
+	QFrame* frame;
 };
 
 #endif // CHRMEMINSPECTOR_H

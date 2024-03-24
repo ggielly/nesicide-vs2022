@@ -9,34 +9,38 @@ class CDesignerEditorBase;
 
 class CSubModel : public QObject
 {
-   Q_OBJECT
+	Q_OBJECT
 signals:
-   void reset();
+	void reset();
 
 public:
-   virtual ~CSubModel() { }
+	~CSubModel() override
+	{
+	}
 
-   // Retrieve a list of all UUIDs in this model.
-   virtual QList<QUuid> getUuids() const=0;
+	// Retrieve a list of all UUIDs in this model.
+	virtual QList<QUuid> getUuids() const =0;
 
-   // Get the name of an object.
-   virtual QString getName(const QUuid&) const=0;
+	// Get the name of an object.
+	virtual QString getName(const QUuid&) const =0;
 
-   // Workaround methods.
-   virtual CDesignerEditorBase* createEditorWidget(const QUuid& uuid) const=0;
+	// Workaround methods.
+	virtual CDesignerEditorBase* createEditorWidget(const QUuid& uuid) const =0;
 
 protected:
-   CNesicideProject* m_pNesicideProject;
+	CNesicideProject* m_pNesicideProject;
 
-   friend class CProjectModel;
+	friend class CProjectModel;
 
-   CSubModel() : m_pNesicideProject(NULL) { }
+	CSubModel() : m_pNesicideProject(NULL)
+	{
+	}
 
-   void setProject(CNesicideProject *project)
-   {
-      m_pNesicideProject = project;
-      emit reset();
-   }
+	void setProject(CNesicideProject* project)
+	{
+		m_pNesicideProject = project;
+		emit reset();
+	}
 };
 
 

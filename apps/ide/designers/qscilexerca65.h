@@ -9,59 +9,60 @@
 
 class QsciLexerCA65 : public QsciLexerCustom
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   // Styles
-   enum
-   {
-      CA65_Default,
-      CA65_Opcode,
-      CA65_Label,
-      CA65_Keyword,
-      CA65_QuotedString,
-      CA65_Comment,
-      CA65_Number
-   };
+	// Styles
+	enum
+	{
+		CA65_Default,
+		CA65_Opcode,
+		CA65_Label,
+		CA65_Keyword,
+		CA65_QuotedString,
+		CA65_Comment,
+		CA65_Number
+	};
 
-   QsciLexerCA65(QObject *parent = 0);
-   virtual ~QsciLexerCA65();
+	QsciLexerCA65(QObject* parent = 0);
+	~QsciLexerCA65() override;
 
-   virtual const char* language() const { return "CA65"; }
-   virtual QString description(int style) const;
-   virtual void styleText(int start,int end);
+	const char* language() const override { return "CA65"; }
+	QString description(int style) const override;
+	void styleText(int start, int end) override;
 
-   const char *blockEnd(int *style = 0) const;
-   const char *blockStart(int *style = 0) const;
-   const char *blockStartKeyword(int *style = 0) const;
-   
-   virtual bool eolFill(int /*style*/) const { return true; }
+	const char* blockEnd(int* style = 0) const override;
+	const char* blockStart(int* style = 0) const override;
+	const char* blockStartKeyword(int* style = 0) const override;
 
-   virtual QColor defaultColor() const;
-   virtual QColor defaultColor(int style) const;
+	bool eolFill(int /*style*/) const override { return true; }
 
-   virtual QColor defaultPaper() const;
-   virtual QColor defaultPaper(int style) const;
-   virtual QColor paper(int style) const;
+	virtual QColor defaultColor() const;
+	QColor defaultColor(int style) const override;
 
-   virtual QFont defaultFont() const;
-   virtual QFont defaultFont(int style) const;
+	virtual QColor defaultPaper() const;
+	QColor defaultPaper(int style) const override;
+	QColor paper(int style) const override;
 
-   virtual const char *wordCharacters() const;
+	virtual QFont defaultFont() const;
+	QFont defaultFont(int style) const override;
 
-   virtual int styleBitsNeeded() const { return 8; }
+	const char* wordCharacters() const override;
 
-   bool readSettings(QSettings &qs,const char *prefix = "/Scintilla");
-   bool writeSettings(QSettings &qs,const char *prefix = "/Scintilla");
+	int styleBitsNeeded() const override { return 8; }
 
-protected:
-   bool readProperties(QSettings &qs,const QString &prefix);
-   bool writeProperties(QSettings &qs,const QString &prefix) const;
+	bool readSettings(QSettings& qs, const char* prefix = "/Scintilla");
+	bool writeSettings(QSettings& qs, const char* prefix = "/Scintilla");
 
 protected:
-   QRegExp opcodeRegex;
-   QRegExp keywordRegex;
-   QRegExp labelRegex;
-   QRegExp numberRegex;
+	bool readProperties(QSettings& qs, const QString& prefix) override;
+	bool writeProperties(QSettings& qs, const QString& prefix) const override;
+
+protected:
+	QRegExp opcodeRegex;
+	QRegExp keywordRegex;
+	QRegExp labelRegex;
+	QRegExp numberRegex;
 };
 
 #endif // QSCILEXERCA65_H

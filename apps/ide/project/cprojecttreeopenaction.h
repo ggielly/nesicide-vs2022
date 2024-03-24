@@ -11,27 +11,28 @@ class CProjectTabWidget;
 
 class CProjectTreeOpenAction : public QObject, public IUuidVisitor
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CProjectTreeOpenAction(CProjectTabWidget* tabWidget, CProjectModel* project);
+	CProjectTreeOpenAction(CProjectTabWidget* tabWidget, CProjectModel* project);
 
-   virtual void visit(CUuid&);
-   virtual void visit(CAttributeUuid&);
-   virtual void visit(CBinaryFileUuid&);
-   virtual void visit(CFilterUuid&);
-   virtual void visit(CGraphicsBankUuid&);
-   virtual void visit(CSourceFileUuid&);
-   virtual void visit(CTileStampUuid&);
-   virtual void visit(CMusicFileUuid&);
+	void visit(CUuid&) override;
+	void visit(CAttributeUuid&) override;
+	void visit(CBinaryFileUuid&) override;
+	void visit(CFilterUuid&) override;
+	void visit(CGraphicsBankUuid&) override;
+	void visit(CSourceFileUuid&) override;
+	void visit(CTileStampUuid&) override;
+	void visit(CMusicFileUuid&) override;
 
-   virtual void visit(CChrRomUuid&);
-   virtual void visit(CPrgRomUuid&);
+	void visit(CChrRomUuid&) override;
+	void visit(CPrgRomUuid&) override;
 
 private:
-   CProjectTabWidget*  m_tabWidget;
-   CProjectModel*      m_project;
+	CProjectTabWidget* m_tabWidget;
+	CProjectModel* m_project;
 
-   void doVisit(CSubModel* model, const QUuid& uuid);
+	void doVisit(CSubModel* model, const QUuid& uuid);
 };
 
 #endif // CPROJECTTREEOPENACTION_H

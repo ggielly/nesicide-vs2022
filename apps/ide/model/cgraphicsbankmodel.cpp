@@ -1,4 +1,3 @@
-
 #include "cgraphicsbankmodel.h"
 
 #include "model/projectsearcher.h"
@@ -7,69 +6,68 @@
 #include "graphicsbankeditorform.h"
 
 CGraphicsBankModel::CGraphicsBankModel()
-   : CSubModel()
+	: CSubModel()
 {
 }
 
 
 QList<QUuid> CGraphicsBankModel::getUuids() const
 {
-   if (m_pNesicideProject == NULL)
-      return QList<QUuid>();
+	if (m_pNesicideProject == NULL)
+		return QList<QUuid>();
 
-   return ProjectSearcher::findUuidsOfType<CGraphicsBank>(m_pNesicideProject);
+	return ProjectSearcher::findUuidsOfType<CGraphicsBank>(m_pNesicideProject);
 }
 
-QString CGraphicsBankModel::getName(const QUuid &uuid) const
+QString CGraphicsBankModel::getName(const QUuid& uuid) const
 {
-   if (m_pNesicideProject == NULL)
-      return QString();
+	if (m_pNesicideProject == NULL)
+		return QString();
 
-   CGraphicsBank* bank = ProjectSearcher::findItemByUuid<CGraphicsBank>(m_pNesicideProject, uuid);
-   return bank != NULL ? bank->caption() : QString();
+	CGraphicsBank* bank = ProjectSearcher::findItemByUuid<CGraphicsBank>(m_pNesicideProject, uuid);
+	return bank != NULL ? bank->caption() : QString();
 }
 
 
-QUuid CGraphicsBankModel::newGraphicsBank(const QString &name)
+QUuid CGraphicsBankModel::newGraphicsBank(const QString& name)
 {
-   if (m_pNesicideProject == NULL)
-      return QUuid();
+	if (m_pNesicideProject == NULL)
+		return QUuid();
 
-   CGraphicsBanks* banks = m_pNesicideProject->getProject()->getGraphicsBanks();
-   CGraphicsBank* pGraphicsBank = new CGraphicsBank(banks);
-   pGraphicsBank->setName(name);
-   banks->getGraphicsBanks().append(pGraphicsBank);
-   banks->appendChild(pGraphicsBank);
+	CGraphicsBanks* banks = m_pNesicideProject->getProject()->getGraphicsBanks();
+	auto pGraphicsBank = new CGraphicsBank(banks);
+	pGraphicsBank->setName(name);
+	banks->getGraphicsBanks().append(pGraphicsBank);
+	banks->appendChild(pGraphicsBank);
 
-   m_pNesicideProject->setDirty(true);
-   emit graphicsBankAdded(pGraphicsBank->uuid());
-   return pGraphicsBank->uuid();
+	m_pNesicideProject->setDirty(true);
+	emit graphicsBankAdded(pGraphicsBank->uuid());
+	return pGraphicsBank->uuid();
 }
 
-void CGraphicsBankModel::deleteGraphicsBank(const QUuid &uuid)
+void CGraphicsBankModel::deleteGraphicsBank(const QUuid& uuid)
 {
-   if (m_pNesicideProject == NULL)
-      return;
+	if (m_pNesicideProject == NULL)
+		return;
 
-   CGraphicsBank* bank = ProjectSearcher::findItemByUuid<CGraphicsBank>(m_pNesicideProject, uuid);
-   if (bank == NULL)
-      return;
+	CGraphicsBank* bank = ProjectSearcher::findItemByUuid<CGraphicsBank>(m_pNesicideProject, uuid);
+	if (bank == NULL)
+		return;
 
-   m_pNesicideProject->getProject()->getGraphicsBanks()->removeChild(bank);
-   m_pNesicideProject->getProject()->getGraphicsBanks()->getGraphicsBanks().removeAll(bank);
-   delete bank;
+	m_pNesicideProject->getProject()->getGraphicsBanks()->removeChild(bank);
+	m_pNesicideProject->getProject()->getGraphicsBanks()->getGraphicsBanks().removeAll(bank);
+	delete bank;
 
-   emit graphicsBankDeleted(uuid);
+	emit graphicsBankDeleted(uuid);
 }
 
 
-CDesignerEditorBase *CGraphicsBankModel::createEditorWidget(const QUuid &uuid) const
+CDesignerEditorBase* CGraphicsBankModel::createEditorWidget(const QUuid& uuid) const
 {
-   CGraphicsBank* bank = ProjectSearcher::findItemByUuid<CGraphicsBank>(m_pNesicideProject, uuid);
-   if (bank == NULL)
-      return NULL;
-   // Data item needs to know its editor.
-   bank->setEditor(new GraphicsBankEditorForm(bank->getSize(),bank->getGraphics(), bank));
-   return bank->editor();
+	CGraphicsBank* bank = ProjectSearcher::findItemByUuid<CGraphicsBank>(m_pNesicideProject, uuid);
+	if (bank == NULL)
+		return NULL;
+	// Data item needs to know its editor.
+	bank->setEditor(new GraphicsBankEditorForm(bank->getSize(), bank->getGraphics(), bank));
+	return bank->editor();
 }
-

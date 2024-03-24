@@ -11,9 +11,9 @@
 class CSourceAssembler
 {
 public:
-   CSourceAssembler();
-   bool assemble();
-   void clean();
+	CSourceAssembler();
+	bool assemble();
+	void clean();
 };
 
 #endif // CSOURCEASSEMBLER_H

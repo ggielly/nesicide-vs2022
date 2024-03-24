@@ -7,24 +7,25 @@
 
 class TilificationThread : public QThread
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   explicit TilificationThread(QObject *parent = 0);
+	explicit TilificationThread(QObject* parent = 0);
 
 protected:
-   void run();
+	void run() override;
 
 signals:
-   void tilificationComplete(QByteArray output);
+	void tilificationComplete(QByteArray output);
 
 public slots:
-   void prepareToTilify();
-   void addToTilificator(IChrRomBankItem* item);
-   void tilify();
+	void prepareToTilify();
+	void addToTilificator(IChrRomBankItem* item);
+	void tilify();
 
 private:
-   QList<IChrRomBankItem*> m_input;
-   QByteArray m_output;
+	QList<IChrRomBankItem*> m_input;
+	QByteArray m_output;
 };
 
 #endif // TILIFICATIONTHREAD_H

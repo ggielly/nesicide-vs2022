@@ -8,31 +8,35 @@
 
 class CPRGROMBanks : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CPRGROMBanks(IProjectTreeViewItem* parent);
-   virtual ~CPRGROMBanks();
+	CPRGROMBanks(IProjectTreeViewItem* parent);
+	~CPRGROMBanks() override;
 
-   // Helper functions
-   void initializeProject();
-   void terminateProject();
+	// Helper functions
+	void initializeProject();
+	void terminateProject();
 
-   // Member Getters
-   QList<CPRGROMBank*>& getPrgRomBanks() { return m_prgRomBanks; }
+	// Member Getters
+	QList<CPRGROMBank*>& getPrgRomBanks() { return m_prgRomBanks; }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   QString caption() const;
-   virtual void openItemEvent(CProjectTabWidget*) {}
+	// IProjectTreeViewItem Interface Implmentation
+	QString caption() const override;
 
-   // ICenterWidgetItem Interface Implementation
+	void openItemEvent(CProjectTabWidget*) override
+	{
+	}
+
+	// ICenterWidgetItem Interface Implementation
 
 private:
-   // Contained children
-   QList<CPRGROMBank*> m_prgRomBanks;
+	// Contained children
+	QList<CPRGROMBank*> m_prgRomBanks;
 };
 
 #endif // CPRGROMBANKS_H

@@ -9,23 +9,24 @@
 
 class CPropertyValueDelegate : public QStyledItemDelegate
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CPropertyValueDelegate();
+	CPropertyValueDelegate();
 
-   void setItem(PropertyItem item) { m_item = item; }
+	void setItem(PropertyItem item) { m_item = item; }
 
-   QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option,
-                         const QModelIndex& index) const;
+	QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option,
+	                      const QModelIndex& index) const override;
 
-   void setEditorData(QWidget* editor, const QModelIndex& index) const;
-   void setModelData(QWidget* editor, QAbstractItemModel* model,
-                     const QModelIndex& index) const;
-   void updateEditorGeometry(QWidget* editor,
-                             const QStyleOptionViewItem& option, const QModelIndex& index) const;
+	void setEditorData(QWidget* editor, const QModelIndex& index) const override;
+	void setModelData(QWidget* editor, QAbstractItemModel* model,
+	                  const QModelIndex& index) const override;
+	void updateEditorGeometry(QWidget* editor,
+	                          const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 
 private:
-   PropertyItem m_item;
+	PropertyItem m_item;
 };
 
 #endif // CPROPERTYVALUEDELEGATE_H

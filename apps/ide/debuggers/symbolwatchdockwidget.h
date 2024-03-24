@@ -10,71 +10,72 @@
 
 #include "ui_symbolwatchdockwidget.h"
 
-namespace Ui {
-   class SymbolWatchDockWidget;
+namespace Ui
+{
+	class SymbolWatchDockWidget;
 }
 
 class SymbolWatchDockWidget : public CDebuggerBase, public IXMLSerializable, private Ui::SymbolWatchDockWidget
 {
-   Q_OBJECT
+	Q_OBJECT
 
 public:
-   explicit SymbolWatchDockWidget(QWidget *parent = 0);
-   virtual ~SymbolWatchDockWidget();
+	explicit SymbolWatchDockWidget(QWidget* parent = 0);
+	~SymbolWatchDockWidget() override;
 
-   // IXMLSerializable interface
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable interface
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
 protected:
-   void keyPressEvent(QKeyEvent *event);
-   void dragEnterEvent(QDragEnterEvent *event);
-   void dragMoveEvent(QDragMoveEvent *event);
-   void dropEvent(QDropEvent *event);
-   void contextMenuEvent(QContextMenuEvent *event);
-   void showEvent(QShowEvent *event);
-   void hideEvent(QHideEvent *event);
-   void createNesUi();
-   void destroyNesUi();
-   void createC64Ui();
-   void destroyC64Ui();
+	void keyPressEvent(QKeyEvent* event) override;
+	void dragEnterEvent(QDragEnterEvent* event) override;
+	void dragMoveEvent(QDragMoveEvent* event) override;
+	void dropEvent(QDropEvent* event) override;
+	void contextMenuEvent(QContextMenuEvent* event) override;
+	void showEvent(QShowEvent* event) override;
+	void hideEvent(QHideEvent* event) override;
+	void createNesUi();
+	void destroyNesUi();
+	void createC64Ui();
+	void destroyC64Ui();
 
 private:
-   CSymbolWatchModel* watchModel;
-   CDebuggerSymbolDelegate* watchSymbolDelegate;
-   CDebuggerNumericItemDelegate* watchValueDelegate;
-   CSymbolWatchModel* ramModel;
-   CDebuggerNumericItemDelegate* ramValueDelegate;
-   CSymbolWatchModel* sramModel;
-   CDebuggerNumericItemDelegate* sramValueDelegate;
-   CSymbolWatchModel* exramModel;
-   CDebuggerNumericItemDelegate* exramValueDelegate;
-   QWidget *sramTab;
-   QGridLayout *sramGridLayout;
-   QTableView *sram;
-   QWidget *exramTab;
-   QGridLayout *exramGridLayout;
-   QTableView *exram;
-   QString m_targetLoaded;
+	CSymbolWatchModel* watchModel;
+	CDebuggerSymbolDelegate* watchSymbolDelegate;
+	CDebuggerNumericItemDelegate* watchValueDelegate;
+	CSymbolWatchModel* ramModel;
+	CDebuggerNumericItemDelegate* ramValueDelegate;
+	CSymbolWatchModel* sramModel;
+	CDebuggerNumericItemDelegate* sramValueDelegate;
+	CSymbolWatchModel* exramModel;
+	CDebuggerNumericItemDelegate* exramValueDelegate;
+	QWidget* sramTab;
+	QGridLayout* sramGridLayout;
+	QTableView* sram;
+	QWidget* exramTab;
+	QGridLayout* exramGridLayout;
+	QTableView* exram;
+	QString m_targetLoaded;
 
 signals:
-   void breakpointsChanged();
+	void breakpointsChanged();
 
 private slots:
-   void on_actionGo_to_Definition_triggered();
-   void updateUi();
-   void updateVariables();
-   void addWatchedItem(QString item);
-   void on_actionRemove_symbol_triggered();
-   void on_actionBreak_on_CPU_access_here_triggered();
-   void on_actionBreak_on_CPU_read_here_triggered();
-   void on_actionBreak_on_CPU_write_here_triggered();
-   void updateTargetMachine(QString target);
-   void on_watch_doubleClicked(const QModelIndex &index);
-   void on_ram_doubleClicked(const QModelIndex &index);
-   void sram_doubleClicked(const QModelIndex &index);
-   void exram_doubleClicked(const QModelIndex &index);
-   void on_tabWidget_currentChanged(int index);
+	void on_actionGo_to_Definition_triggered();
+	void updateUi();
+	void updateVariables();
+	void addWatchedItem(QString item);
+	void on_actionRemove_symbol_triggered();
+	void on_actionBreak_on_CPU_access_here_triggered();
+	void on_actionBreak_on_CPU_read_here_triggered();
+	void on_actionBreak_on_CPU_write_here_triggered();
+	void updateTargetMachine(QString target);
+	void on_watch_doubleClicked(const QModelIndex& index);
+	void on_ram_doubleClicked(const QModelIndex& index);
+	void sram_doubleClicked(const QModelIndex& index);
+	void exram_doubleClicked(const QModelIndex& index);
+	void on_tabWidget_currentChanged(int index);
 };
 
 #endif // SYMBOLWATCHDOCKWIDGET_H

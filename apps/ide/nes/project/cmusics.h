@@ -8,33 +8,37 @@
 
 class CMusics : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CMusics(IProjectTreeViewItem* parent);
-   virtual ~CMusics();
+	CMusics(IProjectTreeViewItem* parent);
+	~CMusics() override;
 
-   // Helper functions
-   void initializeProject();
-   void terminateProject();
+	// Helper functions
+	void initializeProject();
+	void terminateProject();
 
-   CMusicItem* addMusicFile(QString fileName);
-   void removeMusicFile(CMusicItem* item);
+	CMusicItem* addMusicFile(QString fileName);
+	void removeMusicFile(CMusicItem* item);
 
-   QList<CMusicItem*>& getMusicList() { return m_musics; }
+	QList<CMusicItem*>& getMusicList() { return m_musics; }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   QString caption() const;
-   virtual void openItemEvent(CProjectTabWidget*) {}
+	// IProjectTreeViewItem Interface Implmentation
+	QString caption() const override;
 
-   // ICenterWidgetItem Interface Implementation
+	void openItemEvent(CProjectTabWidget*) override
+	{
+	}
+
+	// ICenterWidgetItem Interface Implementation
 
 private:
-   // Contained children
-   QList<CMusicItem*> m_musics;
+	// Contained children
+	QList<CMusicItem*> m_musics;
 };
 
 #endif // CMUSICS_H

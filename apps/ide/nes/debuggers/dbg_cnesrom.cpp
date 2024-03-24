@@ -33,18 +33,18 @@ static CROMDBG __init ATTRIBUTE_UNUSED;
 
 CROMDBG::CROMDBG()
 {
-   CROMDBG::RESET ();
+	CROMDBG::RESET();
 }
 
 CROMDBG::~CROMDBG()
 {
 }
 
-void CROMDBG::RESET ( void )
+void CROMDBG::RESET(void)
 {
-   RESET ( 0 );
+	RESET(0);
 }
 
-void CROMDBG::RESET ( uint32_t /*mapper*/ )
+void CROMDBG::RESET(uint32_t /*mapper*/)
 {
 }

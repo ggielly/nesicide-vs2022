@@ -10,34 +10,39 @@
 
 namespace Ui
 {
-class PRGROMDisplayDialog;
+	class PRGROMDisplayDialog;
 }
 
 class PRGROMDisplayDialog : public CDesignerEditorBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   PRGROMDisplayDialog(uint8_t* bankData,IProjectTreeViewItem* link = 0,QWidget* parent = 0);
-   virtual ~PRGROMDisplayDialog();
-   void setRomData(unsigned char* data)
-   {
-      m_data = data;
-   }
+	PRGROMDisplayDialog(uint8_t* bankData, IProjectTreeViewItem* link = 0, QWidget* parent = 0);
+	~PRGROMDisplayDialog() override;
+
+	void setRomData(unsigned char* data)
+	{
+		m_data = data;
+	}
 
 protected:
-   void changeEvent(QEvent* e);
-   void showEvent(QShowEvent* e);
+	void changeEvent(QEvent* e) override;
+	void showEvent(QShowEvent* e) override;
 
 protected:
-   unsigned char* m_data;
+	unsigned char* m_data;
 
 private:
-   Ui::PRGROMDisplayDialog *ui;
-   QHexEdit                *m_editor;
+	Ui::PRGROMDisplayDialog* ui;
+	QHexEdit* m_editor;
 
 private slots:
-   void applyEnvironmentSettingsToTab();
-   void updateTargetMachine(QString /*target*/) {}
+	void applyEnvironmentSettingsToTab() override;
+
+	void updateTargetMachine(QString /*target*/)
+	{
+	}
 };
 
 #endif // PRGROMDISPLAYDIALOG_H

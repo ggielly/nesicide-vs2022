@@ -3,29 +3,30 @@
 
 #include "cdebuggerbase.h"
 
-namespace Ui {
-   class PPUInformationDockWidget;
+namespace Ui
+{
+	class PPUInformationDockWidget;
 }
 
 class PPUInformationDockWidget : public CDebuggerBase
 {
-   Q_OBJECT
+	Q_OBJECT
 
 public:
-   explicit PPUInformationDockWidget(QWidget *parent = 0);
-   virtual ~PPUInformationDockWidget();
+	explicit PPUInformationDockWidget(QWidget* parent = 0);
+	~PPUInformationDockWidget() override;
 
 protected:
-   void showEvent(QShowEvent* e);
-   void hideEvent(QHideEvent* e);
-   void changeEvent(QEvent* e);
+	void showEvent(QShowEvent* e) override;
+	void hideEvent(QHideEvent* e) override;
+	void changeEvent(QEvent* e) override;
 
 public slots:
-   void updateInformation();
-   void updateTargetMachine(QString target);
+	void updateInformation();
+	void updateTargetMachine(QString target);
 
 private:
-   Ui::PPUInformationDockWidget *ui;
+	Ui::PPUInformationDockWidget* ui;
 };
 
 #endif // PPUINFORMATIONDOCKWIDGET_H

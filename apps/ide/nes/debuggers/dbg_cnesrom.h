@@ -10,11 +10,11 @@
 class CROMDBG
 {
 public:
-   CROMDBG();
-   virtual ~CROMDBG();
+	CROMDBG();
+	virtual ~CROMDBG();
 
-   static void RESET ( void );
-   static void RESET ( uint32_t mapper );
+	static void RESET(void);
+	static void RESET(uint32_t mapper);
 };
 
 #endif

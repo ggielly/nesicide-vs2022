@@ -8,19 +8,19 @@
 class QsciAPIsCA65 : public QsciAPIs
 {
 public:
-   QsciAPIsCA65(QsciLexer *lexer);
-   virtual ~QsciAPIsCA65();
+	QsciAPIsCA65(QsciLexer* lexer);
+	~QsciAPIsCA65() override;
 
-   //! \reimp
-   virtual void updateAutoCompletionList(const QStringList &context,
-           QStringList &list);
+	//! \reimp
+	void updateAutoCompletionList(const QStringList& context,
+	                              QStringList& list) override;
 
-   //! \reimp
-   virtual void autoCompletionSelected(const QString &sel);
+	//! \reimp
+	void autoCompletionSelected(const QString& sel) override;
 
-   //! \reimp
-   virtual QStringList callTips(const QStringList &context, int commas,
-           QsciScintilla::CallTipsStyle style, QList<int> &shifts);
+	//! \reimp
+	QStringList callTips(const QStringList& context, int commas,
+	                     QsciScintilla::CallTipsStyle style, QList<int>& shifts) override;
 };
 
 #endif // QSCIAPISCA65_H

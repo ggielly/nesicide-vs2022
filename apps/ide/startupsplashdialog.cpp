@@ -2,13 +2,13 @@
 #include "ui_startupsplashdialog.h"
 
 StartupSplashDialog::StartupSplashDialog(QWidget* parent) :
-   QDialog(parent, Qt::SplashScreen),
-   ui(new Ui::StartupSplashDialog)
+	QDialog(parent, Qt::SplashScreen),
+	ui(new Ui::StartupSplashDialog)
 {
-   ui->setupUi(this);
+	ui->setupUi(this);
 }
 
 StartupSplashDialog::~StartupSplashDialog()
 {
-   delete ui;
+	delete ui;
 }

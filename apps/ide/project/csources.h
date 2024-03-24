@@ -9,34 +9,38 @@
 
 class CSources : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CSources(IProjectTreeViewItem* parent);
-   virtual ~CSources();
+	CSources(IProjectTreeViewItem* parent);
+	~CSources() override;
 
-   // Helper functions
-   void initializeProject();
-   void terminateProject();
+	// Helper functions
+	void initializeProject();
+	void terminateProject();
 
-   CSourceItem* addSourceFile(QString fileName);
-   void removeSourceFile(CSourceItem* item);
+	CSourceItem* addSourceFile(QString fileName);
+	void removeSourceFile(CSourceItem* item);
 
-   // Member Getters
-   QList<CSourceItem*>& getSourceItems() { return m_sourceItems; }
+	// Member Getters
+	QList<CSourceItem*>& getSourceItems() { return m_sourceItems; }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   QString caption() const;
-   virtual void openItemEvent(CProjectTabWidget*) {}
+	// IProjectTreeViewItem Interface Implmentation
+	QString caption() const override;
 
-   // ICenterWidgetItem Interface Implementation
+	void openItemEvent(CProjectTabWidget*) override
+	{
+	}
+
+	// ICenterWidgetItem Interface Implementation
 
 private:
-   // Contained children
-   QList<CSourceItem*> m_sourceItems;
+	// Contained children
+	QList<CSourceItem*> m_sourceItems;
 };
 
 #endif // CSOURCES_H

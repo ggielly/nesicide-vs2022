@@ -9,10 +9,10 @@
 
 CCHRROMBank::CCHRROMBank(IProjectTreeViewItem* parent)
 {
-   // Add node to tree
-   InitTreeItem("",parent);
+	// Add node to tree
+	InitTreeItem("", parent);
 
-   // Allocate attributes
+	// Allocate attributes
 }
 
 CCHRROMBank::~ CCHRROMBank()
@@ -21,19 +21,19 @@ CCHRROMBank::~ CCHRROMBank()
 
 bool CCHRROMBank::serialize(QDomDocument& /*doc*/, QDomNode& /*node*/)
 {
-   // Don't carry the ROM data around with the project.
-   return true;
+	// Don't carry the ROM data around with the project.
+	return true;
 }
 
 bool CCHRROMBank::deserialize(QDomDocument& /*doc*/, QDomNode& /*node*/, QString& /*errors*/)
 {
-   // Don't carry the ROM data around with the project.
-   return true;
+	// Don't carry the ROM data around with the project.
+	return true;
 }
 
 QString CCHRROMBank::caption() const
 {
-   return "CHR Bank " + QString("%1").arg(m_bankIndex,2,16,QChar('0'));
+	return "CHR Bank " + QString("%1").arg(m_bankIndex, 2, 16, QChar('0'));
 }
 
 // CPTODO: CHECK TO MAKE SURE THIS IS IN NEW INFRASTRUCTURE JSOLO
@@ -63,53 +63,55 @@ QString CCHRROMBank::caption() const
 
 void CCHRROMBank::exportAsPNG()
 {
-   QString fileName = QFileDialog::getSaveFileName(NULL,"Export CHR-ROM Bank as PNG",QDir::currentPath(),"PNG Files (*.png)");
+	QString fileName = QFileDialog::getSaveFileName(NULL, "Export CHR-ROM Bank as PNG", QDir::currentPath(),
+	                                                "PNG Files (*.png)");
 
-   if ( !fileName.isEmpty() )
-   {
+	if (!fileName.isEmpty())
+	{
 #if QT_VERSION >= 0x040700
-      QByteArray chrData;
-      chrData.setRawData((const char*)getBankData(),MEM_8KB);
+		QByteArray chrData;
+		chrData.setRawData((const char*)getBankData(),MEM_8KB);
 #else
       QByteArray chrData((const char*)getBankData(),MEM_8KB);
 #endif
-      QImage imgOut = CImageConverters::toIndexed8(chrData);
+		QImage imgOut = CImageConverters::toIndexed8(chrData);
 
-      imgOut.save(fileName,"png");
-   }
+		imgOut.save(fileName, "png");
+	}
 }
 
 void CCHRROMBank::importFromPNG()
 {
-   NESEmulatorThread* emulator = dynamic_cast<NESEmulatorThread*>(CObjectRegistry::instance()->getObject("Emulator"));
-   QString fileName = QFileDialog::getOpenFileName(NULL,"Import CHR-ROM Bank from PNG",QDir::currentPath(),"PNG Files (*.png)");
-   QByteArray chrData;
-   QByteArray imgData;
-   QImage imgIn;
-   CCHRROMBanks* chrRomBanks = CNesicideProject::instance()->getCartridge()->getChrRomBanks();
+	auto emulator = dynamic_cast<NESEmulatorThread*>(CObjectRegistry::instance()->getObject("Emulator"));
+	QString fileName = QFileDialog::getOpenFileName(NULL, "Import CHR-ROM Bank from PNG", QDir::currentPath(),
+	                                                "PNG Files (*.png)");
+	QByteArray chrData;
+	QByteArray imgData;
+	QImage imgIn;
+	CCHRROMBanks* chrRomBanks = CNesicideProject::instance()->getCartridge()->getChrRomBanks();
 
-   if ( !fileName.isEmpty() )
-   {
-      imgIn.load(fileName);
+	if (!fileName.isEmpty())
+	{
+		imgIn.load(fileName);
 
-      chrData = CImageConverters::fromIndexed8(imgIn);
+		chrData = CImageConverters::fromIndexed8(imgIn);
 
-      setBankData(chrData.constData());
+		setBankData(chrData.constData());
 
-      emulator->primeEmulator();
-   }
+		emulator->primeEmulator();
+	}
 }
 
 void CCHRROMBank::openItemEvent(CProjectTabWidget* tabWidget)
 {
-   if (m_editor)
-   {
-      tabWidget->setCurrentWidget(m_editor);
-   }
-   else
-   {
-      m_editor = new CHRROMDisplayDialog(false, (qint8*)m_bankData,this);
-      tabWidget->addTab(m_editor, this->caption());
-      tabWidget->setCurrentWidget(m_editor);
-   }
+	if (m_editor)
+	{
+		tabWidget->setCurrentWidget(m_editor);
+	}
+	else
+	{
+		m_editor = new CHRROMDisplayDialog(false, (qint8*)m_bankData, this);
+		tabWidget->addTab(m_editor, this->caption());
+		tabWidget->setCurrentWidget(m_editor);
+	}
 }

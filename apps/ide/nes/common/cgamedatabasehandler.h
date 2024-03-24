@@ -13,55 +13,61 @@
 class CGameDatabaseHandler
 {
 public:
-   static CGameDatabaseHandler *instance()
-   {
-      if ( !_instance )
-      {
-         _instance = new CGameDatabaseHandler();
-      }
-      return _instance;
-   }
-   bool initialize(QString fileName);
+	static CGameDatabaseHandler* instance()
+	{
+		if (!_instance)
+		{
+			_instance = new CGameDatabaseHandler();
+		}
+		return _instance;
+	}
 
-   // Database information.
-   QString getGameDBTimestamp();
-   QString getGameDBAuthor();
+	bool initialize(QString fileName);
 
-   // Database searching.
-   bool find(CCartridge* pCartridge);
+	// Database information.
+	QString getGameDBTimestamp();
+	QString getGameDBAuthor();
 
-   // Game values.
-   QString getName()
-   {
-      GAME_DATA("name");
-   }
-   QString getPublisher()
-   {
-      GAME_DATA("publisher");
-   }
-   QString getDate()
-   {
-      GAME_DATA("date");
-   }
-   int getRegion();
+	// Database searching.
+	bool find(CCartridge* pCartridge);
 
-   // Cartridge values.
-   QString getSystem()
-   {
-      CART_DATA("system");
-   }
-   QString getSHA1()
-   {
-      CART_DATA("sha1").toUpper();
-   }
+	// Game values.
+	QString getName()
+	{
+		GAME_DATA("name");
+	}
+
+	QString getPublisher()
+	{
+		GAME_DATA("publisher");
+	}
+
+	QString getDate()
+	{
+		GAME_DATA("date");
+	}
+
+	int getRegion();
+
+	// Cartridge values.
+	QString getSystem()
+	{
+		CART_DATA("system");
+	}
+
+	QString getSHA1()
+	{
+		CART_DATA("sha1").toUpper();
+	}
+
 private:
-   static CGameDatabaseHandler *_instance;
-   CGameDatabaseHandler();
+	static CGameDatabaseHandler* _instance;
+	CGameDatabaseHandler();
 
 protected:
-   QDomDocument m_db;
-   QDomNode     m_game;
-   QDomNode     m_cartridge;
+	QDomDocument m_db;
+	QDomNode m_game;
+	QDomNode m_cartridge;
 };
 
 #endif // CGAMEDATABASEHANDLER_H

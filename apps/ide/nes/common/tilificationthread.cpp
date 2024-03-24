@@ -2,45 +2,45 @@
 
 #include "nes_emulator_core.h"
 
-TilificationThread::TilificationThread(QObject *parent) :
-   QThread(parent)
+TilificationThread::TilificationThread(QObject* parent) :
+	QThread(parent)
 {
 }
 
 void TilificationThread::prepareToTilify()
 {
-   m_input.clear();
-   m_output.clear();
+	m_input.clear();
+	m_output.clear();
 }
 
 void TilificationThread::addToTilificator(IChrRomBankItem* input)
 {
-   m_input.append(input);
+	m_input.append(input);
 }
 
 void TilificationThread::tilify()
 {
-   start();
+	start();
 }
 
 void TilificationThread::run()
 {
-   QByteArray tileDataIn;
-   QByteArray tileDataLockMap;
-   int idx1;
-   int idx2;
-   bool newTile;
-   unsigned int* pSrc;
-   unsigned int* pDst;
-   const char* tileSrc;
-   const char* tileDst;
+	QByteArray tileDataIn;
+	QByteArray tileDataLockMap;
+	int idx1;
+	int idx2;
+	bool newTile;
+	unsigned int* pSrc;
+	unsigned int* pDst;
+	const char* tileSrc;
+	const char* tileDst;
 
 #if 1
-// disable tilification for now until I sort out how to incorporate it best.
-   for ( idx1 = 0; idx1 < m_input.count(); idx1++ )
-   {
-      m_output.append(m_input.at(idx1)->getChrRomBankItemData());
-   }
+	// disable tilification for now until I sort out how to incorporate it best.
+	for (idx1 = 0; idx1 < m_input.count(); idx1++)
+	{
+		m_output.append(m_input.at(idx1)->getChrRomBankItemData());
+	}
 #else
    for ( idx1 = 0; idx1 < m_input.count(); idx1++ )
    {
@@ -127,5 +127,5 @@ void TilificationThread::run()
    }
 #endif
 
-   emit tilificationComplete(m_output);
+	emit tilificationComplete(m_output);
 }

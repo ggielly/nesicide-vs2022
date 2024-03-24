@@ -7,32 +7,33 @@
 
 #include "debuggerupdatethread.h"
 
-namespace Ui {
-   class JoypadLoggerDockWidget;
+namespace Ui
+{
+	class JoypadLoggerDockWidget;
 }
 
 class JoypadLoggerDockWidget : public CDebuggerBase
 {
-   Q_OBJECT
+	Q_OBJECT
 
 public:
-   explicit JoypadLoggerDockWidget(QWidget *parent = 0);
-   virtual ~JoypadLoggerDockWidget();
+	explicit JoypadLoggerDockWidget(QWidget* parent = 0);
+	~JoypadLoggerDockWidget() override;
 
 protected:
-   void showEvent(QShowEvent* event);
-   void hideEvent(QHideEvent* event);
-   void changeEvent(QEvent* e);
+	void showEvent(QShowEvent* event) override;
+	void hideEvent(QHideEvent* event) override;
+	void changeEvent(QEvent* e) override;
 
 public slots:
-   void renderData();
-   void updateTargetMachine(QString target);
+	void renderData();
+	void updateTargetMachine(QString target);
 
 private:
-   Ui::JoypadLoggerDockWidget *ui;
-//   char* imgData;
-//   PanZoomRenderer* renderer;
-//   DebuggerUpdateThread* pThread;
+	Ui::JoypadLoggerDockWidget* ui;
+	//   char* imgData;
+	//   PanZoomRenderer* renderer;
+	//   DebuggerUpdateThread* pThread;
 };
 
 #endif // JOYPADLOGGERDOCKWIDGET_H

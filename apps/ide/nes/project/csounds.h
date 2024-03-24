@@ -8,30 +8,34 @@
 
 class CSounds : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CSounds(IProjectTreeViewItem* parent);
-   virtual ~CSounds();
+	CSounds(IProjectTreeViewItem* parent);
+	~CSounds() override;
 
-   // Helper functions
-   void initializeProject();
-   void terminateProject();
+	// Helper functions
+	void initializeProject();
+	void terminateProject();
 
-   CMusics* getMusics() { return m_pMusics; }
+	CMusics* getMusics() { return m_pMusics; }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   QString caption() const;
-   virtual void openItemEvent(CProjectTabWidget*) {}
+	// IProjectTreeViewItem Interface Implmentation
+	QString caption() const override;
 
-   // ICenterWidgetItem Interface Implementation
+	void openItemEvent(CProjectTabWidget*) override
+	{
+	}
+
+	// ICenterWidgetItem Interface Implementation
 
 private:
-   // Contained children
-   CMusics* m_pMusics;
+	// Contained children
+	CMusics* m_pMusics;
 };
 
 #endif // CSOUNDS_H

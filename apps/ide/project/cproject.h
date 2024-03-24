@@ -10,40 +10,44 @@
 
 class CProject : public CProjectBase
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   CProject(IProjectTreeViewItem* parent);
-   virtual ~CProject();
+	CProject(IProjectTreeViewItem* parent);
+	~CProject() override;
 
-   // Helper functions
-   void initializeProject();
-   void terminateProject();
+	// Helper functions
+	void initializeProject();
+	void terminateProject();
 
-   CProjectPrimitives* getProjectPrimitives() { return m_pProjectPrimitives; }
-   CSources* getSources() { return m_pSources; }
-   CBinaryFiles* getBinaryFiles() { return m_pBinaryFiles; }
-   CGraphicsBanks* getGraphicsBanks() { return m_pGraphicsBanks; }
-   CSounds* getSounds() { return m_pSounds; }
+	CProjectPrimitives* getProjectPrimitives() { return m_pProjectPrimitives; }
+	CSources* getSources() { return m_pSources; }
+	CBinaryFiles* getBinaryFiles() { return m_pBinaryFiles; }
+	CGraphicsBanks* getGraphicsBanks() { return m_pGraphicsBanks; }
+	CSounds* getSounds() { return m_pSounds; }
 
-   // IXMLSerializable Interface Implementation
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable Interface Implementation
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
-   // IProjectTreeViewItem Interface Implmentation
-   QString caption() const;
-   virtual void openItemEvent(CProjectTabWidget*) {}
+	// IProjectTreeViewItem Interface Implmentation
+	QString caption() const override;
 
-   // ICenterWidgetItem Interface Implementation
+	void openItemEvent(CProjectTabWidget*) override
+	{
+	}
+
+	// ICenterWidgetItem Interface Implementation
 
 private:
-   // Attributes
+	// Attributes
 
-   // Contained children
-   CProjectPrimitives* m_pProjectPrimitives;
-   CSources* m_pSources;
-   CBinaryFiles* m_pBinaryFiles;
-   CGraphicsBanks* m_pGraphicsBanks;
-   CSounds* m_pSounds;
+	// Contained children
+	CProjectPrimitives* m_pProjectPrimitives;
+	CSources* m_pSources;
+	CBinaryFiles* m_pBinaryFiles;
+	CGraphicsBanks* m_pGraphicsBanks;
+	CSounds* m_pSounds;
 };
 
 #endif // CPROJECT_H

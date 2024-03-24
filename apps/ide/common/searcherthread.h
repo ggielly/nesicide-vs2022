@@ -7,48 +7,52 @@
 
 class SearcherWorker : public QObject
 {
-   Q_OBJECT
-public:
-   SearcherWorker ( QObject* parent = 0 );
-   virtual ~SearcherWorker ();
+	Q_OBJECT
 
-   void search(QDir dir, QString searchText, QString pattern, bool subfolders, bool sourceSearchPaths, bool useRegex, bool caseSensitive);
+public:
+	SearcherWorker(QObject* parent = 0);
+	~SearcherWorker() override;
+
+	void search(QDir dir, QString searchText, QString pattern, bool subfolders, bool sourceSearchPaths, bool useRegex,
+	            bool caseSensitive);
 
 signals:
-   void searchDone(int found);
+	void searchDone(int found);
 
 protected:
-   void doSearch(QDir dir,int* finds);
-   bool m_isTerminating;
-   QDir m_dir;
-   QString m_searchText;
-   QString m_pattern;
-   bool m_subfolders;
-   bool m_sourceSearchPaths;
-   bool m_useRegex;
-   bool m_caseSensitive;
-   int m_found;
+	void doSearch(QDir dir, int* finds);
+	bool m_isTerminating;
+	QDir m_dir;
+	QString m_searchText;
+	QString m_pattern;
+	bool m_subfolders;
+	bool m_sourceSearchPaths;
+	bool m_useRegex;
+	bool m_caseSensitive;
+	int m_found;
 };
 
 class SearcherThread : public QObject
 {
-   Q_OBJECT
+	Q_OBJECT
+
 public:
-   SearcherThread ( QObject* parent = 0 );
-   virtual ~SearcherThread ();
+	SearcherThread(QObject* parent = 0);
+	~SearcherThread() override;
 
 public slots:
-   void search(QDir dir, QString searchText, QString pattern, bool subfolders, bool sourceSearchPaths, bool useRegex, bool caseSensitive)
-   {
-      pWorker->search(dir,searchText,pattern,subfolders,sourceSearchPaths,useRegex,caseSensitive);
-   }
+	void search(QDir dir, QString searchText, QString pattern, bool subfolders, bool sourceSearchPaths, bool useRegex,
+	            bool caseSensitive)
+	{
+		pWorker->search(dir, searchText, pattern, subfolders, sourceSearchPaths, useRegex, caseSensitive);
+	}
 
 signals:
-   void searchDone(int found);
+	void searchDone(int found);
 
 protected:
-   SearcherWorker *pWorker;
-   QThread        *pThread;
+	SearcherWorker* pWorker;
+	QThread* pThread;
 };
 
 #endif // SEARCHERTHREAD_H

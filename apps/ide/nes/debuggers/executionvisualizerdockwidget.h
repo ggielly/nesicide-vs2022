@@ -11,46 +11,47 @@
 
 #include "ixmlserializable.h"
 
-namespace Ui {
-   class ExecutionVisualizerDockWidget;
+namespace Ui
+{
+	class ExecutionVisualizerDockWidget;
 }
 
 class ExecutionVisualizerDockWidget : public CDebuggerBase, public IXMLSerializable
 {
-   Q_OBJECT
+	Q_OBJECT
 
 public:
-   explicit ExecutionVisualizerDockWidget(QWidget *parent = 0);
-   virtual ~ExecutionVisualizerDockWidget();
+	explicit ExecutionVisualizerDockWidget(QWidget* parent = 0);
+	~ExecutionVisualizerDockWidget() override;
 
-   // IXMLSerializable interface
-   virtual bool serialize(QDomDocument& doc, QDomNode& node);
-   virtual bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors);
+	// IXMLSerializable interface
+	bool serialize(QDomDocument& doc, QDomNode& node) override;
+	bool deserialize(QDomDocument& doc, QDomNode& node, QString& errors) override;
 
 protected:
-   void showEvent(QShowEvent* event);
-   void hideEvent(QHideEvent* event);
-   void changeEvent(QEvent* event);
-   void keyPressEvent(QKeyEvent* event);
-   void contextMenuEvent(QContextMenuEvent *event);
+	void showEvent(QShowEvent* event) override;
+	void hideEvent(QHideEvent* event) override;
+	void changeEvent(QEvent* event) override;
+	void keyPressEvent(QKeyEvent* event) override;
+	void contextMenuEvent(QContextMenuEvent* event) override;
 
 public slots:
-   void renderData();
-   void updateTargetMachine(QString target);
+	void renderData();
+	void updateTargetMachine(QString target);
 
 private slots:
-   void on_actionRemove_Marker_triggered();
-   void on_actionReset_Marker_Data_triggered();
-   void tableView_currentChanged(QModelIndex index,QModelIndex);
+	void on_actionRemove_Marker_triggered();
+	void on_actionReset_Marker_Data_triggered();
+	void tableView_currentChanged(QModelIndex index, QModelIndex);
 
 signals:
-   void breakpointsChanged();
+	void breakpointsChanged();
 
 private:
-   Ui::ExecutionVisualizerDockWidget *ui;
-   CExecutionMarkerDisplayModel *model;
-   PanZoomRenderer* renderer;
-   DebuggerUpdateThread* pThread;
+	Ui::ExecutionVisualizerDockWidget* ui;
+	CExecutionMarkerDisplayModel* model;
+	PanZoomRenderer* renderer;
+	DebuggerUpdateThread* pThread;
 };
 
 #endif // EXECUTIONVISUALIZERDOCKWIDGET_H

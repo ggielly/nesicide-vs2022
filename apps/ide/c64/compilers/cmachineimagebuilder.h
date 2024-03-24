@@ -7,9 +7,10 @@
 class CMachineImageBuilder
 {
 public:
-   CMachineImageBuilder();
-   bool build();
-   void clean();
+	CMachineImageBuilder();
+	bool build();
+	void clean();
+
 private:
 };
 
