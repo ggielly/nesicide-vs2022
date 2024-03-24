@@ -1,0 +1,680 @@
+<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" FontFamily="Segoe UI" FontSize="12">
+  <FlowDocument.Tag><![CDATA[{
+  "timestamp": "2024-03-10 19:42:19",
+  "files": {
+    "D:\\Consoles\\NES\\nesicide-vs\\libs\\nes\\nes-emulator.vcxproj": {
+      "before": "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",
+      "after": "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"
+    }
+  }
+}]]></FlowDocument.Tag>
+  <Section Margin="0,24" TextAlignment="Center">
+    <Paragraph FontSize="24" FontWeight="Bold" Margin="12,0">
+      <LineBreak />
+      <Span Foreground="Gray">Qt Visual Studio Tools</Span>
+    </Paragraph>
+    <Paragraph FontSize="42" Margin="12,0" FontWeight="Bold">
+      <Span TextDecorations="Underline">Project Format Conversion</Span>
+    </Paragraph>
+    <Paragraph Margin="12,8" FontSize="18">
+      <Span>Report generated on 2024-03-10 19:42:19</Span>
+    </Paragraph>
+  </Section>
+  <Section>
+    <Paragraph FontSize="32" FontWeight="Bold" Margin="12,0">
+      <Span>Files</Span>
+    </Paragraph>
+    <Paragraph Margin="24,12,0,0">
+      <Span FontFamily="Consolas" FontSize="14" Background="WhiteSmoke"><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+      <LineBreak />
+      <Hyperlink NavigateUri="file://D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj?before">[Before]</Hyperlink>
+      <Hyperlink NavigateUri="file://D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj?after">[After]</Hyperlink>
+      <Hyperlink NavigateUri="file://D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj?diff&amp;before&amp;after">
+                        [Diff before/after]
+                    </Hyperlink>
+      <Hyperlink NavigateUri="file://D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj?diff&amp;before&amp;current">
+                        [Diff before/current]
+                    </Hyperlink>
+      <Hyperlink NavigateUri="file://D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj?diff&amp;after&amp;current">
+                        [Diff after/current]
+                    </Hyperlink>
+      <LineBreak />
+    </Paragraph>
+  </Section>
+  <Section>
+    <Paragraph FontSize="32" FontWeight="Bold" Margin="12,0">
+      <Span>Changes</Span>
+    </Paragraph>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Replacing paths with "$(QTDIR)"]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      <AdditionalIncludeDirectories>.;.;common;emulator;..\..\common;]]></Span><Span Background="LightCoral"><![CDATA[D:\Qt\Qt5.12.12\5.12.12\msvc2017_64\mkspecs\win32-msvc]]></Span><Span><![CDATA[;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      <AdditionalIncludeDirectories>.;.;common;emulator;..\..\common;]]></Span><Span Background="LightGreen"><![CDATA[$(QTDIR)\mkspecs\win32-msvc]]></Span><Span><![CDATA[;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      <AdditionalIncludeDirectories>.;.;common;emulator;..\..\common;]]></Span><Span Background="LightCoral"><![CDATA[D:\Qt\Qt5.12.12\5.12.12\msvc2017_64\mkspecs\win32-msvc]]></Span><Span><![CDATA[;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      <AdditionalIncludeDirectories>.;.;common;emulator;..\..\common;]]></Span><Span Background="LightGreen"><![CDATA[$(QTDIR)\mkspecs\win32-msvc]]></Span><Span><![CDATA[;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Converting custom build steps to Qt/MSBuild items]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      ]]></Span><Span Background="LightCoral"><![CDATA[<AdditionalIncludeDirectories>.;.;]]></Span><Span><![CDATA[common;emulator;..\..\common;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      ]]></Span><Span Background="LightGreen"><![CDATA[<AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;]]></Span><Span><![CDATA[common;emulator;..\..\common;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      ]]></Span><Span Background="LightCoral"><![CDATA[<AdditionalIncludeDirectories>.;.;]]></Span><Span><![CDATA[common;emulator;..\..\common;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      ]]></Span><Span Background="LightGreen"><![CDATA[<AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;]]></Span><Span><![CDATA[common;emulator;..\..\common;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Enabling multi-processor compilation]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[      <MultiProcessorCompilation>true</MultiProcessorCompilation>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[      <MultiProcessorCompilation>true</MultiProcessorCompilation>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Project format version]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[    ]]></Span><Span Background="LightCoral"><![CDATA[<Keyword>Qt4VSv1.0</Keyword>]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[    ]]></Span><Span Background="LightGreen"><![CDATA[<Keyword>QtVS_v304</Keyword>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Fallback for QTMSBUILD environment variable]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Default Qt properties]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <Import Project="$(QtMsBuild)\qt_defaults.props" Condition="Exists('$(QtMsBuild)\qt_defaults.props')" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Qt build settings]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Warn if Qt/MSBuild is not found]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') OR !Exists('$(QtMsBuild)\Qt.props')">]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  </Target>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Qt property sheet]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Import Project="$(QtMsBuild)\Qt.props" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <Import Project="$(QtMsBuild)\Qt.props" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Qt targets]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <Import Project="$(QtMsBuild)\qt.targets" Condition="Exists('$(QtMsBuild)\qt.targets')" />]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Copying Qt build reference to QtInstall project property]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)]]></Span><Span Background="LightCoral"><![CDATA['=='Release|x64'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)]]></Span><Span Background="LightGreen"><![CDATA['=='Release|x64'">]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[  ]]></Span><Span Background="LightCoral"><![CDATA[<PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[    ]]></Span><Span Background="LightGreen"><![CDATA[<QtInstall>5.12.12_msvc2017_64</QtInstall>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  </PropertyGroup>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <QtInstall>5.12.12_msvc2017_64</QtInstall>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[  </PropertyGroup>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Removing Qt module include paths from compiler properties]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;common;emulator;..\..\common;]]></Span><Span Background="LightCoral"><![CDATA[$(QTDIR)\mkspecs\win32-msvc;]]></Span><Span><![CDATA[%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;common;emulator;..\..\common;]]></Span><Span><![CDATA[%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;common;emulator;..\..\common;]]></Span><Span Background="LightCoral"><![CDATA[$(QTDIR)\mkspecs\win32-msvc;]]></Span><Span><![CDATA[%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;common;emulator;..\..\common;]]></Span><Span><![CDATA[%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Removing Qt lib path from linker properties]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      ]]></Span><Span Background="LightCoral"><![CDATA[<AdditionalLibraryDirectories>$(QTDIR)\lib;%]]></Span><Span><![CDATA[(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      ]]></Span><Span Background="LightGreen"><![CDATA[<AdditionalLibraryDirectories>%]]></Span><Span><![CDATA[(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      ]]></Span><Span Background="LightCoral"><![CDATA[<AdditionalLibraryDirectories>$(QTDIR)\lib;%]]></Span><Span><![CDATA[(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span><![CDATA[      ]]></Span><Span Background="LightGreen"><![CDATA[<AdditionalLibraryDirectories>%]]></Span><Span><![CDATA[(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+    <Paragraph FontSize="20" FontWeight="Bold" Margin="12">
+      <Span><![CDATA[🡺 Adding Qt module names to QtModules project property]]></Span>
+    </Paragraph>
+    <Table CellSpacing="0" BorderBrush="Gray" BorderThickness="0.5">
+      <Table.Columns>
+        <TableColumn />
+        <TableColumn />
+      </Table.Columns>
+      <TableRowGroup>
+        <TableRow Background="Orange">
+          <TableCell ColumnSpan="2" BorderThickness="0.5" BorderBrush="Gray">
+            <Paragraph Margin="10,5" FontWeight="Bold">
+              <Span><![CDATA[D:\Consoles\NES\nesicide-vs\libs\nes\nes-emulator.vcxproj]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <QtModules></QtModules>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell ColumnSpan="2" Background="WhiteSmoke" BorderBrush="Gray" BorderThickness="0.5" />
+        </TableRow>
+        <TableRow>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0" />
+          </TableCell>
+          <TableCell BorderThickness="0, 0, 0.5, 0" BorderBrush="Gray">
+            <Paragraph FontFamily="Consolas" Margin="4, 0">
+              <Span Background="LightGreen"><![CDATA[    <QtModules></QtModules>]]></Span>
+            </Paragraph>
+          </TableCell>
+        </TableRow>
+      </TableRowGroup>
+    </Table>
+  </Section>
+  <Section>
+    <Paragraph />
+  </Section>
+</FlowDocument>
+<!--Wldfu3B2TVxWaVY1jvOc7L4VtBUM597H+PeTivOiwd4=-->
