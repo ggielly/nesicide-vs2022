@@ -33,13 +33,13 @@ enum edit_t
 class CGraphEditor : public CWnd
 {
 public:
-	CGraphEditor(CSequence* pSequence);
+	CGraphEditor(CSequence* p_sequence);
 	virtual ~CGraphEditor();
 DECLARE_DYNAMIC(CGraphEditor)
 
 protected:
 	int GetItemWidth() const;
-	virtual void Initialize();
+	virtual void initialize();
 	virtual int GetItemHeight() const = 0;
 	virtual void HighlightItem(CPoint point) = 0;
 	virtual void ModifyItem(CPoint point, bool Redraw);
@@ -51,20 +51,20 @@ protected:
 	bool IsEditLine() const;
 
 	// Drawing
-	virtual void DrawRange(CDC* p_dc, int Max, int Min) const;
-	void DrawBackground(CDC* pDC, int Lines, bool DrawMarks, int MarkOffset) const;
+	virtual void draw_range(CDC* p_dc, int max, int Min) const;
+	void DrawBackground(CDC* pDC, int lines, bool DrawMarks, int MarkOffset) const;
 	void DrawLoopPoint(CDC* pDC, int StepWidth) const;
 	void DrawReleasePoint(CDC* pDC, int StepWidth) const;
 	void DrawLine(CDC* pDC) const;
 
-	void DrawRect(CDC* pDC, int x, int y, int w, int h) const;
+	static void DrawRect(CDC* pDC, int x, int y, int w, int h);
 	void DrawPlayRect(CDC* pDC, int x, int y, int w, int h) const;
 	void DrawCursorRect(CDC* pDC, int x, int y, int w, int h) const;
 	void DrawShadowRect(CDC* pDC, int x, int y, int w, int h) const;
 
 private:
 	template <COLORREF COL_BG1, COLORREF COL_BG2, COLORREF COL_EDGE1, COLORREF COL_EDGE2>
-	void DrawRect(CDC* pDC, int x, int y, int w, int h, bool flat) const;
+	static void DrawRect(CDC* pDC, int x, int y, int w, int h, bool flat);
 
 protected:
 	static const int GRAPH_LEFT = 28; // Left side marigin
@@ -95,15 +95,15 @@ protected:
 DECLARE_MESSAGE_MAP()
 public:
 	virtual afx_msg void OnPaint();
-	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	afx_msg static BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
-	afx_msg void OnTimer(UINT nIDEvent);
-	BOOL CreateEx(DWORD dwExStyle, LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect,
-	              CWnd* pParentWnd, UINT nID, LPVOID lpParam = NULL);
+	afx_msg void on_timer(UINT nIDEvent);
+	BOOL CreateEx(DWORD dw_ex_style, LPCTSTR lpsz_class_name, LPCTSTR lpsz_window_name, DWORD dw_style, const RECT& rect,
+	              CWnd* p_parent_wnd, UINT n_id, LPVOID lp_param = NULL);
 	afx_msg void OnSetFocus(CWnd* pOldWnd);
 	afx_msg void OnKillFocus(CWnd* pNewWnd);
 };
@@ -140,7 +140,7 @@ private:
 	int m_iScrollMax;
 	CScrollBar* m_pScrollBar;
 protected:
-	void Initialize();
+	void initialize();
 	void DrawRange(CDC* pDC, int Max, int Min);
 	afx_msg void OnPaint();
 	afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
