@@ -18,9 +18,7 @@
 ** must bear this legend.
 */
 
-//#include <boost/scoped_array.hpp>
-#include <../../deps/boost_1_84_0/boost/scoped_array.hpp>
-
+#include <boost/scoped_array.hpp>
 #include <map>
 #include <vector>
 #include "stdafx.h"
