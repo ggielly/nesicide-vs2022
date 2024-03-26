@@ -1,0 +1,34 @@
+name: build-artifact
+on: push
+env:
+  commithash: ""
+jobs:
+  build-matrix:
+    runs-on: windows-2022
+    strategy:
+      matrix:
+        platform: [x64, Win32]
+        configuration: [Release, Debug, ASAN-Release, ASAN-Debug]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+          fetch-depth: 0
+      - uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: '3.1.8'
+      - name: Set commit hash variable
+        shell: powershell
+        run: echo "commithash=$(git describe --tags)" >> $env:GITHUB_ENV
+      - name: Build program
+        shell: cmd
+        run: |
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsamd64_x86.bat"
+          call msbuild -m:5 -nologo -p:Configuration="${{ matrix.configuration }}" -p:Platform="${{ matrix.platform }}"
+          if %ERRORLEVEL%==1 exit %ERRORLEVEL%
+          call release.bat ${{ matrix.configuration }} ${{ matrix.platform }} ${{ env.commithash }}_${{ github.run_id }}
+      - name: Upload binaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: Dn-FamiTracker_${{ env.commithash }}_${{ github.run_id }}_${{ matrix.platform }}_${{ matrix.configuration }}
+          path: distribute/*_${{ matrix.platform }}_${{ matrix.configuration }}.7z

@@ -177,11 +177,7 @@
     <GenerateManifest>false</GenerateManifest>
     <LibraryWPath>$(WindowsSDK_MetadataPath);</LibraryWPath>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
-<<<<<<< HEAD
-    <OutDir>..\ide\</OutDir>
     <TargetName>famitracker</TargetName>
-=======
->>>>>>> parent of 71b953c (Clean)
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ASAN-Release|x64'">
     <GenerateManifest>false</GenerateManifest>
