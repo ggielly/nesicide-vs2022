@@ -125,7 +125,7 @@ QUuid CProjectTreeWidget::getUuidAt(const QPoint& pos)
 
 QUuid CProjectTreeWidget::getUuidOf(const QTreeWidgetItem* item)
 {
-	if (item == NULL)
+	if (item == nullptr)
 		return QUuid();
 
 	return item->data(0, Qt::UserRole).toString();
@@ -133,13 +133,13 @@ QUuid CProjectTreeWidget::getUuidOf(const QTreeWidgetItem* item)
 
 bool CProjectTreeWidget::containsUuid(const QUuid& uuid)
 {
-	return findTreeWidgetItem(uuid) != NULL;
+	return findTreeWidgetItem(uuid) != nullptr;
 }
 
 void CProjectTreeWidget::setCurrentUuid(const QUuid& uuid)
 {
 	QTreeWidgetItem* item = findTreeWidgetItem(uuid);
-	if (item != NULL)
+	if (item != nullptr)
 	{
 		this->setCurrentItem(item);
 	}
@@ -150,7 +150,7 @@ void CProjectTreeWidget::addItem(CProjectModel* project, const QUuid& uuid, cons
 	QTreeWidgetItem* item = buildNodeFromUuid(project, uuid);
 
 	QTreeWidgetItem* parentItem = findTreeWidgetItem(parentUuid);
-	if (parentItem == NULL)
+	if (parentItem == nullptr)
 		this->addTopLevelItem(item);
 	else
 		parentItem->addChild(item);
@@ -161,7 +161,7 @@ void CProjectTreeWidget::setParent(const QUuid& child, const QUuid& parent)
 	QTreeWidgetItem* childItem = findTreeWidgetItem(child);
 	QTreeWidgetItem* parentItem = findTreeWidgetItem(parent);
 
-	if (parentItem == NULL || childItem == NULL)
+	if (parentItem == nullptr || childItem == nullptr)
 		return;
 
 	if (childItem->parent())
@@ -205,5 +205,5 @@ QTreeWidgetItem* CProjectTreeWidget::findTreeWidgetItem(const QUuid& uuid)
 		++it;
 	}
 
-	return NULL;
+	return nullptr;
 }

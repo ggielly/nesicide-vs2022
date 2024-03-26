@@ -16,7 +16,7 @@ class CodeProfilerDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	explicit CodeProfilerDockWidget(QWidget* parent = 0);
+	explicit CodeProfilerDockWidget(QWidget* parent = nullptr);
 	~CodeProfilerDockWidget() override;
 
 protected:

@@ -53,7 +53,7 @@ bool CGraphicsBank::serialize(QDomDocument& doc, QDomNode& node)
 
 void CGraphicsBank::exportAsPNG()
 {
-	QString fileName = QFileDialog::getSaveFileName(NULL, "Export Graphics Bank as PNG", QDir::currentPath());
+	QString fileName = QFileDialog::getSaveFileName(nullptr, "Export Graphics Bank as PNG", QDir::currentPath());
 	QByteArray chrData;
 	QByteArray imgData;
 	int idx;

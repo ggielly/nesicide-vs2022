@@ -11,7 +11,7 @@ class CChrRomItemListDisplayModel : public QAbstractListModel
 	Q_OBJECT
 
 public:
-	CChrRomItemListDisplayModel(QObject* parent = 0);
+	CChrRomItemListDisplayModel(QObject* parent = nullptr);
 	~CChrRomItemListDisplayModel() override;
 	QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const override;
 	QVariant data(const QModelIndex& index, int role) const override;

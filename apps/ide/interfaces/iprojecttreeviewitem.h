@@ -16,7 +16,7 @@
 class IProjectTreeViewItem
 {
 public:
-	void InitTreeItem(QString iconResource, IProjectTreeViewItem* parent = 0)
+	void InitTreeItem(QString iconResource, IProjectTreeViewItem* parent = nullptr)
 	{
 		parentItem = parent;
 		ident = new QUuid();
@@ -145,8 +145,8 @@ class IProjectTreeViewItemIterator
 public:
 	IProjectTreeViewItemIterator()
 	{
-		m_pBase = NULL; // CPTODO: fix this!
-		m_pAt = NULL; // CPTODO: fix this!
+		m_pBase = nullptr; // CPTODO: fix this!
+		m_pAt = nullptr; // CPTODO: fix this!
 		m_nodeIndex = 0;
 	}
 
@@ -172,7 +172,7 @@ public:
 	void next()
 	{
 		IProjectTreeViewItem* pNode = m_pBase;
-		IProjectTreeViewItem* pAt = NULL;
+		IProjectTreeViewItem* pAt = nullptr;
 
 		m_nodeIndex++;
 		m_node = 0;

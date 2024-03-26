@@ -256,7 +256,7 @@ void BreakpointDockWidget::dropEvent(QDropEvent* event)
 			{
 				QString str;
 				str.sprintf("Cannot add breakpoint, maximum of %d already used.", NUM_BREAKPOINTS);
-				QMessageBox::information(0, "Error", str);
+				QMessageBox::information(nullptr, "Error", str);
 			}
 
 			emit breakpointsChanged();

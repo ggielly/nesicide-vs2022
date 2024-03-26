@@ -18,7 +18,7 @@ class AttributeTableEditorForm : public CDesignerEditorBase
 	Q_OBJECT
 
 public:
-	AttributeTableEditorForm(QList<uint8_t> palette, IProjectTreeViewItem* link = 0, QWidget* parent = 0);
+	AttributeTableEditorForm(QList<uint8_t> palette, IProjectTreeViewItem* link = nullptr, QWidget* parent = nullptr);
 	~AttributeTableEditorForm() override;
 
 	// Member getters
@@ -52,7 +52,7 @@ public:
 	AttributeTableChangeColorCommand(AttributeTableEditorForm* pEditor,
 	                                 int colorIdx,
 	                                 uint8_t oldColor,
-	                                 QUndoCommand* parent = 0);
+	                                 QUndoCommand* parent = nullptr);
 	int id() const override { return ATTRIBUTE_TABLE_CHAGE_COLOR_COMMAND; }
 	bool mergeWith(const QUndoCommand* command) override;
 	void redo() override;

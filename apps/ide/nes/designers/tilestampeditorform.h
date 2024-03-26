@@ -50,7 +50,7 @@ class TileStampEditorForm : public CDesignerEditorBase
 public:
 	explicit TileStampEditorForm(QByteArray data, QByteArray attr, QString attrTblUUID,
 	                             QList<PropertyItem> tileProperties, int xSize, int ySize, bool grid,
-	                             IProjectTreeViewItem* link, QWidget* parent = 0);
+	                             IProjectTreeViewItem* link, QWidget* parent = nullptr);
 	~TileStampEditorForm() override;
 
 	QByteArray tileData(bool useOverlay = false);
@@ -186,7 +186,7 @@ public:
 	TileStampPaintCommand(TileStampEditorForm* pEditor,
 	                      QByteArray oldTileData,
 	                      QByteArray oldAttributeData,
-	                      QUndoCommand* parent = 0);
+	                      QUndoCommand* parent = nullptr);
 	int id() const override { return TILE_STAMP_PAINT_COMMAND; }
 	bool mergeWith(const QUndoCommand* command) override;
 	void redo() override;
@@ -206,7 +206,7 @@ public:
 	TileStampResizeCommand(TileStampEditorForm* pEditor,
 	                       int oldXSize,
 	                       int oldYSize,
-	                       QUndoCommand* parent = 0);
+	                       QUndoCommand* parent = nullptr);
 	int id() const override { return TILE_STAMP_RESIZE_COMMAND; }
 	bool mergeWith(const QUndoCommand* command) override;
 	void redo() override;

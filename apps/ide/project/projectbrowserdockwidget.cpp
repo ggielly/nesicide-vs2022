@@ -63,15 +63,15 @@ struct SortTopLevelItems
 // Class methods
 //--------------------------------------------------------------------------------------
 ProjectBrowserDockWidget::ProjectBrowserDockWidget(CProjectTabWidget* pTarget, QWidget* parent)
-	: QDockWidget(parent), ui(new Ui::ProjectBrowserDockWidget), m_pProjectModel(NULL)
+	: QDockWidget(parent), ui(new Ui::ProjectBrowserDockWidget), m_pProjectModel(nullptr)
 {
 	ui->setupUi(this);
 
 	m_pTarget = pTarget;
 
-	setProjectModel(NULL);
+	setProjectModel(nullptr);
 
-	m_pItemDelegate = new ItemDelegate(NULL, 23);
+	m_pItemDelegate = new ItemDelegate(nullptr, 23);
 	ui->openProjectItems->setItemDelegate(m_pItemDelegate);
 
 	ui->projectTreeWidget->setHeaderLabel("Project Items");
@@ -215,10 +215,10 @@ void ProjectBrowserDockWidget::itemOpened(int tabId)
 	QUuid uuid;
 	QWidget* tab = m_pTarget->widget(tabId);
 	auto editor = dynamic_cast<CDesignerEditorBase*>(tab);
-	if (editor != NULL)
+	if (editor != nullptr)
 	{
 		IProjectTreeViewItem* item = editor->treeLink();
-		if (item != NULL)
+		if (item != nullptr)
 		{
 			uuid = item->uuid();
 		}
@@ -330,7 +330,7 @@ void ProjectBrowserDockWidget::buildProjectTree()
 	ui->projectTreeWidget->clear();
 
 	// If no tree to construct, nothing more to do.
-	if (m_pProjectModel == NULL)
+	if (m_pProjectModel == nullptr)
 		return;
 
 	// Create a node for each uuid.
@@ -369,7 +369,7 @@ void ProjectBrowserDockWidget::buildProjectTree()
 
 static void sortChildrenOf(QTreeWidgetItem* parent, CProjectTreeWidget* widget, CProjectModel* model)
 {
-	if (parent == NULL)
+	if (parent == nullptr)
 		return;
 
 	QList<QTreeWidgetItem*> children = parent->takeChildren();

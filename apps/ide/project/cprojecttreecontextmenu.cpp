@@ -192,7 +192,7 @@ bool CProjectTreeContextMenu::confirmChoice(const QString& caption, const QStrin
 
 QList<QString> CProjectTreeContextMenu::selectExistingFiles(const QString& caption)
 {
-	return QFileDialog::getOpenFileNames(NULL, caption, QDir::currentPath(), "All Files (*.*)");
+	return QFileDialog::getOpenFileNames(nullptr, caption, QDir::currentPath(), "All Files (*.*)");
 }
 
 QString CProjectTreeContextMenu::selectNewFileName()

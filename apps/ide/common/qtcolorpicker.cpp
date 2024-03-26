@@ -171,7 +171,7 @@ class ColorPickerItem : public QFrame
 
 public:
 	ColorPickerItem(const QColor& color = Qt::white, const QString& text = QString::null,
-	                QWidget* parent = 0);
+	                QWidget* parent = nullptr);
 	~ColorPickerItem() override;
 
 	QColor color() const;
@@ -207,7 +207,7 @@ class ColorPickerPopup : public QFrame
 
 public:
 	ColorPickerPopup(int width, bool withColorDialog,
-	                 QWidget* parent = 0);
+	                 QWidget* parent = nullptr);
 	~ColorPickerPopup() override;
 
 	void insertColor(const QColor& col, const QString& text, int index);
@@ -269,7 +269,7 @@ private:
 */
 QtColorPicker::QtColorPicker(QWidget* parent,
                              int cols, bool enableColorDialog)
-	: QPushButton(parent), popup(0), withColorDialog(enableColorDialog), withColorPopup(true)
+	: QPushButton(parent), popup(nullptr), withColorDialog(enableColorDialog), withColorPopup(true)
 {
 	setFocusPolicy(Qt::StrongFocus);
 	setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
@@ -602,11 +602,11 @@ ColorPickerPopup::ColorPickerPopup(int width, bool withColorDialog,
 	}
 	else
 	{
-		moreButton = 0;
+		moreButton = nullptr;
 	}
 
-	eventLoop = 0;
-	grid = 0;
+	eventLoop = nullptr;
+	grid = nullptr;
 	regenerateGrid();
 }
 
@@ -638,7 +638,7 @@ ColorPickerItem* ColorPickerPopup::find(const QColor& col) const
 		}
 	}
 
-	return 0;
+	return nullptr;
 }
 
 /*! \internal
@@ -649,7 +649,7 @@ ColorPickerItem* ColorPickerPopup::find(const QColor& col) const
 void ColorPickerPopup::insertColor(const QColor& col, const QString& text, int index)
 {
 	// Don't add colors that we have already.
-	ColorPickerItem* existingItem = NULL; //find(col);
+	ColorPickerItem* existingItem = nullptr; //find(col);
 	ColorPickerItem* lastSelectedItem = find(lastSelected());
 
 	if (existingItem)
@@ -715,7 +715,7 @@ void ColorPickerPopup::exec()
 	QEventLoop e;
 	eventLoop = &e;
 	(void)e.exec();
-	eventLoop = 0;
+	eventLoop = nullptr;
 }
 
 /*! \internal
@@ -726,7 +726,7 @@ void ColorPickerPopup::updateSelected()
 	QLayoutItem* layoutItem;
 	int i = 0;
 
-	while ((layoutItem = grid->itemAt(i)) != 0)
+	while ((layoutItem = grid->itemAt(i)) != nullptr)
 	{
 		QWidget* w = layoutItem->widget();
 
@@ -866,7 +866,7 @@ void ColorPickerPopup::keyPressEvent(QKeyEvent* e)
 				QLayoutItem* layoutItem;
 				int i = 0;
 
-				while ((layoutItem = grid->itemAt(i)) != 0)
+				while ((layoutItem = grid->itemAt(i)) != nullptr)
 				{
 					QWidget* w = layoutItem->widget();
 
@@ -896,7 +896,7 @@ void ColorPickerPopup::keyPressEvent(QKeyEvent* e)
 				QLayoutItem* layoutItem;
 				int i = 0;
 
-				while ((layoutItem = grid->itemAt(i)) != 0)
+				while ((layoutItem = grid->itemAt(i)) != nullptr)
 				{
 					QWidget* w = layoutItem->widget();
 

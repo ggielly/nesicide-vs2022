@@ -10,7 +10,7 @@ class CDebuggerRegisterDisplayModel : public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	CDebuggerRegisterDisplayModel(regDBFunc regDB, QObject* parent = 0);
+	CDebuggerRegisterDisplayModel(regDBFunc regDB, QObject* parent = nullptr);
 	~CDebuggerRegisterDisplayModel() override;
 	QVariant data(const QModelIndex& index, int role) const override;
 	Qt::ItemFlags flags(const QModelIndex& index) const override;

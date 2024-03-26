@@ -12,7 +12,7 @@
 
 #include <QDir>
 
-MusicEditorForm* MusicEditorForm::_instance = NULL;
+MusicEditorForm* MusicEditorForm::_instance = nullptr;
 
 MusicEditorForm* MusicEditorForm::instance()
 {
@@ -91,7 +91,7 @@ void MusicEditorForm::onSave()
 
 void MusicEditorForm::onClose()
 {
-	openFile(NULL);
+	openFile(nullptr);
 }
 
 QMessageBox::StandardButton MusicEditorForm::onCloseQuery()

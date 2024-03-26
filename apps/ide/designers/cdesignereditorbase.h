@@ -13,7 +13,7 @@ class CDesignerEditorBase : public QMainWindow, public ICenterWidgetItem
 	Q_OBJECT
 
 public:
-	explicit CDesignerEditorBase(IProjectTreeViewItem* link, QWidget* parent = 0);
+	explicit CDesignerEditorBase(IProjectTreeViewItem* link, QWidget* parent = nullptr);
 
 	~CDesignerEditorBase() override
 	{

@@ -12,7 +12,7 @@ class QsciLexerCC65 : public QsciLexerCPP
 	Q_OBJECT
 
 public:
-	QsciLexerCC65(QObject* parent = 0);
+	QsciLexerCC65(QObject* parent = nullptr);
 	~QsciLexerCC65() override;
 
 	virtual QFont defaultFont() const;

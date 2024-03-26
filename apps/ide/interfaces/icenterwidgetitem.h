@@ -8,7 +8,7 @@
 class ICenterWidgetItem
 {
 public:
-	void InitTabItem(IProjectTreeViewItem* link = 0)
+	void InitTabItem(IProjectTreeViewItem* link = nullptr)
 	{
 		_treeLink = link;
 	}

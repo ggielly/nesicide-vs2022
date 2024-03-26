@@ -1,7 +1,7 @@
 #include "cdebuggerbitfieldcomboboxdelegate.h"
 
 CDebuggerBitfieldComboBoxDelegate::CDebuggerBitfieldComboBoxDelegate()
-	: m_pBitfield(NULL)
+	: m_pBitfield(nullptr)
 {
 }
 

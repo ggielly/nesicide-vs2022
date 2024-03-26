@@ -47,7 +47,7 @@ NESEmulatorDockWidget::NESEmulatorDockWidget(QWidget* parent) :
 
 NESEmulatorDockWidget::~NESEmulatorDockWidget()
 {
-	nesSetTVOut(NULL);
+	nesSetTVOut(nullptr);
 	delete ui;
 	delete renderer;
 	delete imgData;

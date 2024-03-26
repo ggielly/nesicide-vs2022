@@ -70,9 +70,9 @@ BreakpointDialog::BreakpointDialog(CBreakpointInfo* pBreakpoints, int bp, QWidge
 		ui->resolve->setChecked(false);
 	}
 
-	m_pRegister = NULL;
-	m_pBitfield = NULL;
-	m_pEvent = NULL;
+	m_pRegister = nullptr;
+	m_pBitfield = nullptr;
+	m_pEvent = nullptr;
 
 	if (bp >= 0)
 	{
@@ -108,7 +108,7 @@ void BreakpointDialog::changeEvent(QEvent* e)
 
 void BreakpointDialog::on_type_currentIndexChanged(int index)
 {
-	CBreakpointEventInfo** pBreakpointEventInfo = NULL;
+	CBreakpointEventInfo** pBreakpointEventInfo = nullptr;
 	int idx;
 
 	ui->item1label->setText("Data1:");
@@ -302,12 +302,12 @@ void BreakpointDialog::on_reg_currentIndexChanged(int index)
 			}
 			else
 			{
-				m_pRegister = NULL;
+				m_pRegister = nullptr;
 			}
 
 			break;
 		default:
-			m_pRegister = NULL;
+			m_pRegister = nullptr;
 			break;
 		}
 
@@ -348,7 +348,7 @@ void BreakpointDialog::on_bitfield_currentIndexChanged(int index)
 		}
 		else
 		{
-			m_pBitfield = NULL;
+			m_pBitfield = nullptr;
 		}
 
 		if (m_pBitfield)
@@ -390,7 +390,7 @@ void BreakpointDialog::on_event_currentIndexChanged(int)
 			break;
 		default:
 			// No events...
-			m_pEvent = NULL;
+			m_pEvent = nullptr;
 			break;
 		}
 
@@ -434,7 +434,7 @@ void BreakpointDialog::on_event_currentIndexChanged(int)
 void BreakpointDialog::on_addr1_textChanged(QString text)
 {
 	ui->addr2->setText(text);
-	DisplayResolutions(NULL);
+	DisplayResolutions(nullptr);
 }
 
 void BreakpointDialog::DisplayResolutions(BreakpointInfo* pBreakpoint)
@@ -453,7 +453,7 @@ void BreakpointDialog::DisplayResolutions(BreakpointInfo* pBreakpoint)
 	auto compiler = dynamic_cast<CompilerThread*>(CObjectRegistry::instance()->getObject("Compiler"));
 
 	// Get address from UI
-	originalAddr = ui->addr1->text().toInt(0, 16);
+	originalAddr = ui->addr1->text().toInt(nullptr, 16);
 
 	// Only display resolutions for addresses in PRG-ROM space.
 	if (originalAddr < MEM_32KB)
@@ -646,9 +646,9 @@ void BreakpointDialog::on_addBreakpoint_clicked()
 		break;
 	case eBreakpointItemAddress:
 		// Address item...
-		item1 = ui->addr1->text().toInt(0, 16);
-		item2 = ui->addr2->text().toInt(0, 16);
-		mask = ui->mask->text().toInt(0, 16);
+		item1 = ui->addr1->text().toInt(nullptr, 16);
+		item2 = ui->addr2->text().toInt(nullptr, 16);
+		mask = ui->mask->text().toInt(nullptr, 16);
 		maskExclusive = (ui->itemMaskScope->currentIndex() == 0) ? true : false;
 		break;
 	case eBreakpointItemRegister:
@@ -667,8 +667,8 @@ void BreakpointDialog::on_addBreakpoint_clicked()
 
 		if (m_pEvent)
 		{
-			item1 = ui->eventData1->text().toInt(0, m_pEvent->GetElementRadix());
-			item2 = ui->eventData2->text().toInt(0, m_pEvent->GetElementRadix());
+			item1 = ui->eventData1->text().toInt(nullptr, m_pEvent->GetElementRadix());
+			item2 = ui->eventData2->text().toInt(nullptr, m_pEvent->GetElementRadix());
 			event = ui->event->currentIndex();
 		}
 
@@ -682,7 +682,7 @@ void BreakpointDialog::on_addBreakpoint_clicked()
 		break;
 	case eBreakpointDataPure:
 		// Direct value data...
-		data = ui->data1->text().toInt(0, 16);
+		data = ui->data1->text().toInt(nullptr, 16);
 		break;
 	case eBreakpointDataPick:
 		// Picklist data...
@@ -747,5 +747,5 @@ void BreakpointDialog::on_addBreakpoint_clicked()
 
 void BreakpointDialog::on_resolve_clicked()
 {
-	DisplayResolutions(NULL);
+	DisplayResolutions(nullptr);
 }

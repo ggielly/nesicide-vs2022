@@ -15,7 +15,7 @@ class ExecutionInspectorDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	explicit ExecutionInspectorDockWidget(QWidget* parent = 0);
+	explicit ExecutionInspectorDockWidget(QWidget* parent = nullptr);
 	~ExecutionInspectorDockWidget() override;
 
 protected:

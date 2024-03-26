@@ -13,7 +13,7 @@ QWidget* CPropertyValueDelegate::createEditor(QWidget* parent,
 	QComboBox* comboBox;
 	CheckBoxList* checkComboBox;
 	QStringList itemsStrList;
-	QWidget* widget = NULL;
+	QWidget* widget = nullptr;
 	int idx = 0;
 
 	switch (m_item.type)

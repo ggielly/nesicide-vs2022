@@ -20,7 +20,7 @@ class CChrRomItemTableDisplayModel : public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	CChrRomItemTableDisplayModel(bool editable, QObject* parent = 0);
+	CChrRomItemTableDisplayModel(bool editable, QObject* parent = nullptr);
 	~CChrRomItemTableDisplayModel() override;
 	QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const override;
 	QVariant data(const QModelIndex& index, int role) const override;

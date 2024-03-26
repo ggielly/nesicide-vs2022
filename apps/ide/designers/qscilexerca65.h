@@ -24,16 +24,16 @@ public:
 		CA65_Number
 	};
 
-	QsciLexerCA65(QObject* parent = 0);
+	QsciLexerCA65(QObject* parent = nullptr);
 	~QsciLexerCA65() override;
 
 	const char* language() const override { return "CA65"; }
 	QString description(int style) const override;
 	void styleText(int start, int end) override;
 
-	const char* blockEnd(int* style = 0) const override;
-	const char* blockStart(int* style = 0) const override;
-	const char* blockStartKeyword(int* style = 0) const override;
+	const char* blockEnd(int* style = nullptr) const override;
+	const char* blockStart(int* style = nullptr) const override;
+	const char* blockStartKeyword(int* style = nullptr) const override;
 
 	bool eolFill(int /*style*/) const override { return true; }
 

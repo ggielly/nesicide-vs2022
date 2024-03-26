@@ -262,7 +262,7 @@ void CProjectTabWidget::snapToTab(QString item)
 	QString filePath;
 	QString uuid;
 	QString symbol;
-	CDesignerEditorBase* editor = NULL;
+	CDesignerEditorBase* editor = nullptr;
 
 	qDebug(item.toUtf8().data());
 	// Make sure item is something we care about
@@ -271,18 +271,18 @@ void CProjectTabWidget::snapToTab(QString item)
 		splits = item.split(QRegExp("[,():]"), QString::SkipEmptyParts);
 		if (splits.count() == 2)
 		{
-			addr = splits.at(1).toInt(NULL, 16);
+			addr = splits.at(1).toInt(nullptr, 16);
 			absAddr = addr;
 		}
 		else if (splits.count() == 3)
 		{
-			addr = splits.at(2).toInt(NULL, 16);
+			addr = splits.at(2).toInt(nullptr, 16);
 			absAddr = addr;
 		}
 		else if (splits.count() == 4)
 		{
-			addr = splits.at(3).toInt(NULL, 16);
-			absAddr = (splits.at(1).toInt(NULL, 16) * MEM_8KB) + splits.at(2).toInt(NULL, 16);
+			addr = splits.at(3).toInt(nullptr, 16);
+			absAddr = (splits.at(1).toInt(nullptr, 16) * MEM_8KB) + splits.at(2).toInt(nullptr, 16);
 		}
 		file = QDir::cleanPath(CCC65Interface::instance()->getSourceFileFromPhysicalAddress(addr, absAddr));
 	}
@@ -459,7 +459,7 @@ void CProjectTabWidget::snapToTab(QString item)
 		{
 			QString str;
 			str.sprintf("Locate %s...", file.toLatin1().constData());
-			QString newDir = QFileDialog::getOpenFileName(0, str, QDir::currentPath(), QString(),NULL,
+			QString newDir = QFileDialog::getOpenFileName(nullptr, str, QDir::currentPath(), QString(), nullptr,
 			                                              QFileDialog::DontUseNativeDialog);
 			if (!newDir.isEmpty())
 			{

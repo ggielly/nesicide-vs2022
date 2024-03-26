@@ -16,7 +16,7 @@ class EmulatorPrefsDialog : public QDialog
 	Q_OBJECT
 
 public:
-	explicit EmulatorPrefsDialog(QString target, QWidget* parent = 0);
+	explicit EmulatorPrefsDialog(QString target, QWidget* parent = nullptr);
 	~EmulatorPrefsDialog() override;
 
 	// Interface to retrieve values from QSettings and store them

@@ -10,7 +10,7 @@ class CDebuggerBase : public QDockWidget
 	Q_OBJECT
 
 public:
-	explicit CDebuggerBase(QWidget* parent = 0);
+	explicit CDebuggerBase(QWidget* parent = nullptr);
 	~CDebuggerBase() override;
 
 signals:

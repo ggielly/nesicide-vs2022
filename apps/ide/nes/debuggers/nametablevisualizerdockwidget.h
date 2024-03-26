@@ -17,7 +17,7 @@ class NameTableVisualizerDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	explicit NameTableVisualizerDockWidget(QWidget* parent = 0);
+	explicit NameTableVisualizerDockWidget(QWidget* parent = nullptr);
 	~NameTableVisualizerDockWidget() override;
 
 protected:

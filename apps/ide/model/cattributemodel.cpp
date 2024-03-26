@@ -12,7 +12,7 @@ CAttributeModel::CAttributeModel()
 
 QList<QUuid> CAttributeModel::getUuids() const
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return QList<QUuid>();
 
 	return ProjectSearcher::findUuidsOfType<CAttributeTable>(m_pNesicideProject);
@@ -21,13 +21,13 @@ QList<QUuid> CAttributeModel::getUuids() const
 QString CAttributeModel::getName(const QUuid& uuid) const
 {
 	CAttributeTable* palette = ProjectSearcher::findItemByUuid<CAttributeTable>(m_pNesicideProject, uuid);
-	return palette != NULL ? palette->caption() : QString();
+	return palette != nullptr ? palette->caption() : QString();
 }
 
 
 QUuid CAttributeModel::newPalette(const QString& name)
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return QUuid();
 
 	CAttributeTables* attributes = m_pNesicideProject->getProject()->getProjectPrimitives()->getAttributeTables();
@@ -43,11 +43,11 @@ QUuid CAttributeModel::newPalette(const QString& name)
 
 void CAttributeModel::deletePalette(const QUuid& uuid)
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return;
 
 	CAttributeTable* palette = ProjectSearcher::findItemByUuid<CAttributeTable>(m_pNesicideProject, uuid);
-	if (palette == NULL)
+	if (palette == nullptr)
 		return;
 
 	CAttributeTables* attributes = m_pNesicideProject->getProject()->getProjectPrimitives()->getAttributeTables();
@@ -63,8 +63,8 @@ void CAttributeModel::deletePalette(const QUuid& uuid)
 CDesignerEditorBase* CAttributeModel::createEditorWidget(const QUuid& uuid) const
 {
 	CAttributeTable* palette = ProjectSearcher::findItemByUuid<CAttributeTable>(m_pNesicideProject, uuid);
-	if (palette == NULL)
-		return NULL;
+	if (palette == nullptr)
+		return nullptr;
 
 	// Item must know editor due to current architecture.
 	palette->setEditor(new AttributeTableEditorForm(palette->getPalette(), palette));

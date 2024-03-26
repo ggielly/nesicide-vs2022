@@ -27,7 +27,7 @@ class CSymbolWatchModel : public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	explicit CSymbolWatchModel(bool editable, QObject* parent = 0);
+	explicit CSymbolWatchModel(bool editable, QObject* parent = nullptr);
 	~CSymbolWatchModel() override;
 	Qt::ItemFlags flags(const QModelIndex& index) const override;
 	QVariant data(const QModelIndex& index, int role) const override;

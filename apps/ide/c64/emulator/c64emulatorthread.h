@@ -16,7 +16,7 @@ class TcpClient : public QObject
 	Q_OBJECT
 
 public:
-	explicit TcpClient(QString monitorIPAddress, int monitorPort, QObject* parent = 0);
+	explicit TcpClient(QString monitorIPAddress, int monitorPort, QObject* parent = nullptr);
 	~TcpClient() override;
 
 private:
@@ -51,7 +51,7 @@ class C64EmulatorThread : public QThread, public IXMLSerializable
 	Q_OBJECT
 
 public:
-	C64EmulatorThread(QObject* parent = 0);
+	C64EmulatorThread(QObject* parent = nullptr);
 	~C64EmulatorThread() override;
 	void kill();
 

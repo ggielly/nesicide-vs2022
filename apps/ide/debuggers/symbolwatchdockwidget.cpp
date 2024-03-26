@@ -578,7 +578,7 @@ void SymbolWatchDockWidget::on_actionBreak_on_CPU_write_here_triggered()
 		{
 			QString str;
 			str.sprintf("Cannot add breakpoint, maximum of %d already used.", NUM_BREAKPOINTS);
-			QMessageBox::information(0, "Error", str);
+			QMessageBox::information(nullptr, "Error", str);
 		}
 		else
 		{
@@ -644,7 +644,7 @@ void SymbolWatchDockWidget::on_actionBreak_on_CPU_read_here_triggered()
 		{
 			QString str;
 			str.sprintf("Cannot add breakpoint, maximum of %d already used.", NUM_BREAKPOINTS);
-			QMessageBox::information(0, "Error", str);
+			QMessageBox::information(nullptr, "Error", str);
 		}
 		else
 		{
@@ -710,7 +710,7 @@ void SymbolWatchDockWidget::on_actionBreak_on_CPU_access_here_triggered()
 		{
 			QString str;
 			str.sprintf("Cannot add breakpoint, maximum of %d already used.", NUM_BREAKPOINTS);
-			QMessageBox::information(0, "Error", str);
+			QMessageBox::information(nullptr, "Error", str);
 		}
 		else
 		{

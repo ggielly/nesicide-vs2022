@@ -19,7 +19,7 @@ class CodeBrowserDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	explicit CodeBrowserDockWidget(CBreakpointInfo* pBreakpoints, QWidget* parent = 0);
+	explicit CodeBrowserDockWidget(CBreakpointInfo* pBreakpoints, QWidget* parent = nullptr);
 	~CodeBrowserDockWidget() override;
 
 protected:

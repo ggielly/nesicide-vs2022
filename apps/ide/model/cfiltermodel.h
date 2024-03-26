@@ -30,7 +30,7 @@ public:
 	// Data Setters
 	void addToFilter(const QUuid& filterUuid, const QUuid& uuid);
 
-	CDesignerEditorBase* createEditorWidget(const QUuid&) const override { return NULL; }
+	CDesignerEditorBase* createEditorWidget(const QUuid&) const override { return nullptr; }
 
 private:
 	friend class CProjectModel;

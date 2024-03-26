@@ -11,8 +11,8 @@ class CRendererBase : public QOpenGLWidget
 	Q_OBJECT
 
 public:
-	CRendererBase(int sizeX, int sizeY, int textureSizeXY, int maxZoom, int8_t* imageData, QWidget* parent = 0);
-	CRendererBase(int sizeX, int sizeY, int maxZoom, int8_t* imageData, QWidget* parent = 0);
+	CRendererBase(int sizeX, int sizeY, int textureSizeXY, int maxZoom, int8_t* imageData, QWidget* parent = nullptr);
+	CRendererBase(int sizeX, int sizeY, int maxZoom, int8_t* imageData, QWidget* parent = nullptr);
 	~CRendererBase() override;
 
 	void initializeGL() override;

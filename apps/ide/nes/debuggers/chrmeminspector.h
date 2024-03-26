@@ -13,7 +13,7 @@ class CHRMEMInspector : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	CHRMEMInspector(QWidget* parent = 0);
+	CHRMEMInspector(QWidget* parent = nullptr);
 	~CHRMEMInspector() override;
 
 protected:

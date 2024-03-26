@@ -54,7 +54,7 @@ signals:
 	void closeUuidRequest(const QUuid& uuid);
 
 public:
-	explicit ProjectBrowserDockWidget(CProjectTabWidget* pTarget, QWidget* parent = 0);
+	explicit ProjectBrowserDockWidget(CProjectTabWidget* pTarget, QWidget* parent = nullptr);
 	~ProjectBrowserDockWidget() override;
 
 	void setProjectModel(CProjectModel* model);

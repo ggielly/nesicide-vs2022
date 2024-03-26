@@ -17,7 +17,7 @@ class JoypadLoggerDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	explicit JoypadLoggerDockWidget(QWidget* parent = 0);
+	explicit JoypadLoggerDockWidget(QWidget* parent = nullptr);
 	~JoypadLoggerDockWidget() override;
 
 protected:

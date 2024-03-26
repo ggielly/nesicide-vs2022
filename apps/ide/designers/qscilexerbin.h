@@ -18,7 +18,7 @@ public:
 		Bin_Default
 	};
 
-	QsciLexerBin(QObject* parent = 0);
+	QsciLexerBin(QObject* parent = nullptr);
 	~QsciLexerBin() override;
 
 	const char* language() const override { return "Bin"; }

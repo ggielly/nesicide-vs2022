@@ -73,7 +73,7 @@ class CProjectTabWidget : public QTabWidget
 	Q_OBJECT
 
 public:
-	explicit CProjectTabWidget(QWidget* parent = 0);
+	explicit CProjectTabWidget(QWidget* parent = nullptr);
 
 	int addTab(QWidget* page, const QString& label);
 	int addTab(QWidget* page, const QIcon& icon, const QString& label);

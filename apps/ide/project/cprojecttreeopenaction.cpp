@@ -74,10 +74,10 @@ void CProjectTreeOpenAction::doVisit(CSubModel* model, const QUuid& uuid)
 
 		// If tab is an editor, check uuid.
 		auto editor = dynamic_cast<CDesignerEditorBase*>(tab);
-		if (editor != NULL)
+		if (editor != nullptr)
 		{
 			IProjectTreeViewItem* item = editor->treeLink();
-			if (item != NULL && item->uuid() == uuid.toString())
+			if (item != nullptr && item->uuid() == uuid.toString())
 			{
 				// Found the item, bring to front instead of opening it.
 				m_tabWidget->setCurrentIndex(i);
@@ -88,7 +88,7 @@ void CProjectTreeOpenAction::doVisit(CSubModel* model, const QUuid& uuid)
 
 	// Not found, open new tab.
 	CDesignerEditorBase* pEditor = model->createEditorWidget(uuid);
-	if (pEditor == NULL)
+	if (pEditor == nullptr)
 		return;
 
 	m_tabWidget->addTab(pEditor, model->getName(uuid));

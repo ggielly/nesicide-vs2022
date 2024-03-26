@@ -20,7 +20,7 @@ class SymbolWatchDockWidget : public CDebuggerBase, public IXMLSerializable, pri
 	Q_OBJECT
 
 public:
-	explicit SymbolWatchDockWidget(QWidget* parent = 0);
+	explicit SymbolWatchDockWidget(QWidget* parent = nullptr);
 	~SymbolWatchDockWidget() override;
 
 	// IXMLSerializable interface

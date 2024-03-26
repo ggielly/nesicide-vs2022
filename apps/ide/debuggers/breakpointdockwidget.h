@@ -19,7 +19,7 @@ class BreakpointDockWidget : public CDebuggerBase, public IXMLSerializable
 	Q_OBJECT
 
 public:
-	BreakpointDockWidget(CBreakpointInfo* pBreakpoints, QWidget* parent = 0);
+	BreakpointDockWidget(CBreakpointInfo* pBreakpoints, QWidget* parent = nullptr);
 	~BreakpointDockWidget() override;
 
 	// IXMLSerializable interface

@@ -2,7 +2,7 @@
 
 #include <QSettings>
 
-CDockWidgetRegistry* CDockWidgetRegistry::_instance = NULL;
+CDockWidgetRegistry* CDockWidgetRegistry::_instance = nullptr;
 
 CDockWidgetRegistry::CDockWidgetRegistry()
 {
@@ -11,7 +11,7 @@ CDockWidgetRegistry::CDockWidgetRegistry()
 
 QWidget* CDockWidgetRegistry::getWidget(const QString& name)
 {
-	QWidget* widget = NULL;
+	QWidget* widget = nullptr;
 	mutex->lock();
 	if (widgets.contains(name))
 	{

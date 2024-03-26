@@ -57,7 +57,7 @@ class MainWindow : public QMainWindow, private Ui::MainWindow
 	Q_OBJECT
 
 public:
-	MainWindow(CProjectModel* projectModel, QWidget* parent = 0);
+	MainWindow(CProjectModel* projectModel, QWidget* parent = nullptr);
 	~MainWindow() override;
 
 protected:

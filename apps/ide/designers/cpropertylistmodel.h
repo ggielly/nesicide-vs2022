@@ -20,7 +20,7 @@ class CPropertyListModel : public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	explicit CPropertyListModel(bool editable, QObject* parent = 0);
+	explicit CPropertyListModel(bool editable, QObject* parent = nullptr);
 	~CPropertyListModel() override;
 	Qt::ItemFlags flags(const QModelIndex& index) const override;
 	QVariant data(const QModelIndex& index, int role) const override;

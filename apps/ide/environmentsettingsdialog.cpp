@@ -199,7 +199,7 @@ EnvironmentSettingsDialog::EnvironmentSettingsDialog(QWidget* parent) :
 
 EnvironmentSettingsDialog::~EnvironmentSettingsDialog()
 {
-	m_lexer = NULL;
+	m_lexer = nullptr;
 	delete m_scintilla;
 	delete m_defaultLexer;
 	delete m_cc65Lexer;
@@ -403,7 +403,7 @@ void EnvironmentSettingsDialog::setupCodeEditor(int index)
 	m_ca65Lexer->readSettings(settings, "CodeEditor");
 
 	// Clear current lexer first!
-	m_scintilla->setLexer(NULL);
+	m_scintilla->setLexer(nullptr);
 
 	switch (index)
 	{

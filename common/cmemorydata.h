@@ -34,10 +34,10 @@ public:
 	                setMemFunc set,
 	                rowHeadingFunc rowHeading,
 	                bool cellsSelectable,
-	                cellColorComponentFunc cellRed = NULL,
-	                cellColorComponentFunc cellGreen = NULL,
-	                cellColorComponentFunc cellBlue = NULL,
-	                cellsEditableFunc cellsEditable = NULL): m_extent(0), m_mirroredExtent(0)
+	                cellColorComponentFunc cellRed = nullptr,
+	                cellColorComponentFunc cellGreen = nullptr,
+	                cellColorComponentFunc cellBlue = nullptr,
+	                cellsEditableFunc cellsEditable = nullptr): m_extent(0), m_mirroredExtent(0)
 	{
 		m_type = type;
 		m_base = base;

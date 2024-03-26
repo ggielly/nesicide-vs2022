@@ -6,7 +6,7 @@
 class CPaletteItemDelegate : public QItemDelegate
 {
 public:
-	CPaletteItemDelegate(QObject* pParent = 0) : QItemDelegate(pParent)
+	CPaletteItemDelegate(QObject* pParent = nullptr) : QItemDelegate(pParent)
 	{
 	}
 

@@ -197,7 +197,7 @@ bool CTileStamp::deserialize(QDomDocument&, QDomNode& node, QString& errors)
 			m_tile.clear();
 			while (cdataString.length())
 			{
-				byte = cdataString.left(2).toInt(0, 16);
+				byte = cdataString.left(2).toInt(nullptr, 16);
 				cdataString = cdataString.right(cdataString.length() - 2);
 				m_tile.append(byte);
 			}
@@ -210,7 +210,7 @@ bool CTileStamp::deserialize(QDomDocument&, QDomNode& node, QString& errors)
 			m_attr.clear();
 			while (cdataString.length())
 			{
-				byte = cdataString.left(2).toInt(0, 16);
+				byte = cdataString.left(2).toInt(nullptr, 16);
 				cdataString = cdataString.right(cdataString.length() - 2);
 				m_attr.append(byte);
 			}

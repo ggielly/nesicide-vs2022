@@ -25,7 +25,7 @@ QMessageBox::StandardButton CDesignerEditorBase::onCloseQuery()
 {
 	if (isModified())
 	{
-		return QMessageBox::question(0, QString("Confirm Close"),
+		return QMessageBox::question(nullptr, QString("Confirm Close"),
 		                             QString("This file has unsaved changes that\n"
 			                             "will be lost if closed without saving.\n"
 			                             "Do you want to save it?"),

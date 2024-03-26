@@ -98,7 +98,7 @@ static const char* CA65_keyword[] =
 	"warning",
 	"word",
 	"zeropage",
-	NULL
+	nullptr
 };
 
 static const char* CA65_mnemonics[] =
@@ -181,7 +181,7 @@ static const char* CA65_mnemonics[] =
 	"INX",
 	"BEQ",
 	"SED",
-	NULL
+	nullptr
 };
 
 QsciLexerCA65::QsciLexerCA65(QObject*/*parent*/)

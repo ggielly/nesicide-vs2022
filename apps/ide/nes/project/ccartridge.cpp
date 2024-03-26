@@ -54,7 +54,7 @@ CCartridge::~CCartridge()
 
 void CCartridge::exportROM()
 {
-	QString fileName = QFileDialog::getSaveFileName(NULL, "Export NES ROM", QDir::currentPath(), "iNES Files (*.nes)");
+	QString fileName = QFileDialog::getSaveFileName(nullptr, "Export NES ROM", QDir::currentPath(), "iNES Files (*.nes)");
 
 	if (!fileName.isEmpty())
 	{

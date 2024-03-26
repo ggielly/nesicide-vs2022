@@ -20,7 +20,7 @@ class CExecutionMarkerDisplayModel : public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	explicit CExecutionMarkerDisplayModel(QObject* parent = 0);
+	explicit CExecutionMarkerDisplayModel(QObject* parent = nullptr);
 	~CExecutionMarkerDisplayModel() override;
 	Qt::ItemFlags flags(const QModelIndex& index) const override;
 	QVariant data(const QModelIndex& index, int role) const override;

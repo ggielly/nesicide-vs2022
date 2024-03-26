@@ -10,7 +10,7 @@
 
 PRGROMDisplayDialog::PRGROMDisplayDialog(uint8_t* bankData, IProjectTreeViewItem* link, QWidget* parent) :
 	CDesignerEditorBase(link, parent),
-	m_data(0),
+	m_data(nullptr),
 	ui(new Ui::PRGROMDisplayDialog)
 {
 	ui->setupUi(this);

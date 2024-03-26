@@ -13,7 +13,7 @@ class SearchBar : public QWidget
 	Q_OBJECT
 
 public:
-	explicit SearchBar(QString settingsPrefix, QWidget* parent = 0);
+	explicit SearchBar(QString settingsPrefix, QWidget* parent = nullptr);
 	~SearchBar() override;
 
 	void showCloseButton(bool show);

@@ -10,7 +10,7 @@ CBinaryFileModel::CBinaryFileModel()
 
 QList<QUuid> CBinaryFileModel::getUuids() const
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return QList<QUuid>();
 
 	return ProjectSearcher::findUuidsOfType<CBinaryFile>(m_pNesicideProject);
@@ -31,7 +31,7 @@ QString CBinaryFileModel::getFileName(const QUuid& uuid) const
 
 QUuid CBinaryFileModel::addExistingBinaryFile(const QString& path)
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return QUuid();
 
 	QDir dir(QDir::currentPath());
@@ -52,11 +52,11 @@ QUuid CBinaryFileModel::addExistingBinaryFile(const QString& path)
 
 void CBinaryFileModel::removeBinaryFile(const QUuid& uuid)
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return;
 
 	CBinaryFile* file = ProjectSearcher::findItemByUuid<CBinaryFile>(m_pNesicideProject, uuid);
-	if (file == NULL)
+	if (file == nullptr)
 		return;
 
 	CBinaryFiles* binaryFiles = m_pNesicideProject->getProject()->getBinaryFiles();

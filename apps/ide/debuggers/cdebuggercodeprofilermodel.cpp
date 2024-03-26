@@ -146,7 +146,7 @@ void CDebuggerCodeProfilerModel::update()
 
 			if (absAddr != -1)
 			{
-				pLogger = NULL;
+				pLogger = nullptr;
 				if (addr >= 0x8000)
 				{
 					pLogger = nesGetPhysicalPRGROMCodeDataLoggerDatabase(absAddr);

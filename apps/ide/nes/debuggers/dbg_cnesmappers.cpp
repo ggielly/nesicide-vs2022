@@ -212,7 +212,7 @@ MapperInfo mapper[] =
 	{"Maxi 15", 234},
 	{"Golden Game 150-in-1", 235},
 	{"Sachen 74LS374N", 243},
-	{NULL, 256},
+	{nullptr, 256},
 	{"?", 256} // Unknown index, not parsed typically when going through the list...
 };
 

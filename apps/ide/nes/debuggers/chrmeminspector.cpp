@@ -5,7 +5,7 @@ CHRMEMInspector::CHRMEMInspector(QWidget*/*parent*/)
 	frame = new QFrame(this);
 	frame->setFrameRect(this->rect());
 
-	dialog = new CHRROMDisplayDialog(true, NULL, NULL, frame);
+	dialog = new CHRROMDisplayDialog(true, nullptr, nullptr, frame);
 	setWidget(dialog);
 
 	QObject::connect(dialog,SIGNAL(addStatusBarWidget(QWidget*)), this,SIGNAL(addStatusBarWidget(QWidget*)));

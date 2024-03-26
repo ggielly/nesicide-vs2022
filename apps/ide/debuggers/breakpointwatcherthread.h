@@ -9,7 +9,7 @@ class BreakpointWatcherWorker : public QObject
 	Q_OBJECT
 
 public:
-	BreakpointWatcherWorker(QObject* parent = 0);
+	BreakpointWatcherWorker(QObject* parent = nullptr);
 	~BreakpointWatcherWorker() override;
 
 	void breakpoint();
@@ -24,7 +24,7 @@ class BreakpointWatcherThread : public QObject
 	Q_OBJECT
 
 public:
-	BreakpointWatcherThread(QObject* parent = 0);
+	BreakpointWatcherThread(QObject* parent = nullptr);
 	~BreakpointWatcherThread() override;
 
 signals:

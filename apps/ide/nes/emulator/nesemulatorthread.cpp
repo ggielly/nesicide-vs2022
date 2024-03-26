@@ -95,7 +95,7 @@ extern "C" void SDL_Emulator(void* userdata, uint8_t* stream, int32_t len)
 SDL_Callback nesSDLCallback;
 
 NESEmulatorThread::NESEmulatorThread(QObject*)
-	: pThread(NULL),
+	: pThread(nullptr),
 	  pWorker(new NESEmulatorWorker())
 {
 	// Enable callbacks from the external emulator library.
@@ -138,7 +138,7 @@ NESEmulatorThread::~NESEmulatorThread()
 		sdlHooks.removeAt(idx);
 	}
 
-	pWorker = NULL;
+	pWorker = nullptr;
 
 	pThread->quit();
 	pThread->deleteLater();
@@ -230,9 +230,9 @@ bool NESEmulatorThread::deserializeContent(QFile& fileIn)
 }
 
 NESEmulatorWorker::NESEmulatorWorker(QObject*)
-	: nesBreakpointSemaphore(NULL),
-	  nesAudioSemaphore(NULL),
-	  pTimer(NULL)
+	: nesBreakpointSemaphore(nullptr),
+	  nesAudioSemaphore(nullptr),
+	  pTimer(nullptr)
 {
 	m_joy[CONTROLLER1] = 0;
 	m_joy[CONTROLLER2] = 0;
@@ -245,7 +245,7 @@ NESEmulatorWorker::NESEmulatorWorker(QObject*)
 	m_isResetting = false;
 	m_isExiting = false;
 	m_debugFrame = 0;
-	m_pCartridge = NULL;
+	m_pCartridge = nullptr;
 
 	nesBreakpointSemaphore = new QSemaphore(0);
 	nesAudioSemaphore = new QSemaphore(0);
@@ -643,7 +643,7 @@ void NESEmulatorWorker::process()
 			// Reload the cartridge image...
 			// This internally causes a NES reset.
 			loadCartridge();
-			m_pCartridge = NULL;
+			m_pCartridge = nullptr;
 
 			// Trigger inspector updates...
 			nesDisassemble();
@@ -1016,7 +1016,7 @@ bool NESEmulatorWorker::deserialize(QDomDocument& doc, QDomNode& /*node*/, QStri
 					cdataString = cdataSection.data();
 					for (idx = 0; idx < MEM_64KB; idx++)
 					{
-						byte = cdataString.left(2).toInt(0, 16);
+						byte = cdataString.left(2).toInt(nullptr, 16);
 						cdataString = cdataString.right(cdataString.length() - 2);
 						nesLoadSRAMDataPhysical(idx, byte);
 					}

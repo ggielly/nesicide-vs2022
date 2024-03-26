@@ -19,7 +19,7 @@ class CPropertyEnumListModel : public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	explicit CPropertyEnumListModel(bool editable, QObject* parent = 0);
+	explicit CPropertyEnumListModel(bool editable, QObject* parent = nullptr);
 	~CPropertyEnumListModel() override;
 	Qt::ItemFlags flags(const QModelIndex& index) const override;
 	QVariant data(const QModelIndex& index, int role) const override;

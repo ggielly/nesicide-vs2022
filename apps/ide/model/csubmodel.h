@@ -32,7 +32,7 @@ protected:
 
 	friend class CProjectModel;
 
-	CSubModel() : m_pNesicideProject(NULL)
+	CSubModel() : m_pNesicideProject(nullptr)
 	{
 	}
 

@@ -8,7 +8,7 @@ class CChrRomBankItemDelegate : public QStyledItemDelegate
 	Q_OBJECT
 
 public:
-	explicit CChrRomBankItemDelegate(QObject* parent = 0);
+	explicit CChrRomBankItemDelegate(QObject* parent = nullptr);
 
 	QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option,
 	                      const QModelIndex& index) const override;

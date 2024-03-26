@@ -10,7 +10,7 @@ class SearcherWorker : public QObject
 	Q_OBJECT
 
 public:
-	SearcherWorker(QObject* parent = 0);
+	SearcherWorker(QObject* parent = nullptr);
 	~SearcherWorker() override;
 
 	void search(QDir dir, QString searchText, QString pattern, bool subfolders, bool sourceSearchPaths, bool useRegex,
@@ -37,7 +37,7 @@ class SearcherThread : public QObject
 	Q_OBJECT
 
 public:
-	SearcherThread(QObject* parent = 0);
+	SearcherThread(QObject* parent = nullptr);
 	~SearcherThread() override;
 
 public slots:

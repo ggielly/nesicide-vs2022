@@ -13,7 +13,7 @@ class PPUInformationDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	explicit PPUInformationDockWidget(QWidget* parent = 0);
+	explicit PPUInformationDockWidget(QWidget* parent = nullptr);
 	~PPUInformationDockWidget() override;
 
 protected:

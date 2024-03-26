@@ -57,7 +57,7 @@ CHRROMDisplayDialog::CHRROMDisplayDialog(bool usePPU, qint8* data, IProjectTreeV
 		QObject::connect(compiler,SIGNAL(compileDone(bool)), this,SLOT(compiler_compileDone(bool)));
 
 		// No thread necessary.
-		pThread = NULL;
+		pThread = nullptr;
 	}
 
 	ui->frame->layout()->addWidget(renderer);

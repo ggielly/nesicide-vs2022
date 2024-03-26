@@ -9,7 +9,7 @@ class AppEventFilter : public QObject
 	Q_OBJECT
 
 public:
-	explicit AppEventFilter(QObject* parent = 0);
+	explicit AppEventFilter(QObject* parent = nullptr);
 
 	bool eventFilter(QObject* obj, QEvent* event) override;
 

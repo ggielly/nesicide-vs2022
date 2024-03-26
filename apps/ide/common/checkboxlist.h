@@ -21,7 +21,7 @@ class CheckBoxList : public QComboBox
 	Q_OBJECT;
 
 public:
-	CheckBoxList(QWidget* widget = 0);
+	CheckBoxList(QWidget* widget = nullptr);
 	~CheckBoxList() override;
 	bool eventFilter(QObject* object, QEvent* event) override;
 	void paintEvent(QPaintEvent*) override;

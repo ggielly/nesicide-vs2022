@@ -63,7 +63,7 @@ QString CCHRROMBank::caption() const
 
 void CCHRROMBank::exportAsPNG()
 {
-	QString fileName = QFileDialog::getSaveFileName(NULL, "Export CHR-ROM Bank as PNG", QDir::currentPath(),
+	QString fileName = QFileDialog::getSaveFileName(nullptr, "Export CHR-ROM Bank as PNG", QDir::currentPath(),
 	                                                "PNG Files (*.png)");
 
 	if (!fileName.isEmpty())
@@ -83,7 +83,7 @@ void CCHRROMBank::exportAsPNG()
 void CCHRROMBank::importFromPNG()
 {
 	auto emulator = dynamic_cast<NESEmulatorThread*>(CObjectRegistry::instance()->getObject("Emulator"));
-	QString fileName = QFileDialog::getOpenFileName(NULL, "Import CHR-ROM Bank from PNG", QDir::currentPath(),
+	QString fileName = QFileDialog::getOpenFileName(nullptr, "Import CHR-ROM Bank from PNG", QDir::currentPath(),
 	                                                "PNG Files (*.png)");
 	QByteArray chrData;
 	QByteArray imgData;

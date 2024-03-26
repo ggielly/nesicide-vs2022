@@ -9,7 +9,7 @@ class QKeymapItemEdit : public QLineEdit
 	Q_OBJECT
 
 public:
-	explicit QKeymapItemEdit(QWidget* parent = 0);
+	explicit QKeymapItemEdit(QWidget* parent = nullptr);
 
 protected:
 	bool event(QEvent*) override;

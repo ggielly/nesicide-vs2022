@@ -216,15 +216,15 @@ void CodeBrowserDockWidget::snapTo(QString item)
 
 		if (splits.count() == 2)
 		{
-			addr = splits.at(1).toInt(NULL, 16);
+			addr = splits.at(1).toInt(nullptr, 16);
 		}
 		else if (splits.count() == 3)
 		{
-			addr = splits.at(2).toInt(NULL, 16);
+			addr = splits.at(2).toInt(nullptr, 16);
 		}
 		else if (splits.count() == 4)
 		{
-			addr = splits.at(3).toInt(NULL, 16);
+			addr = splits.at(3).toInt(nullptr, 16);
 		}
 
 		if (!m_loadedTarget.compare("nes", Qt::CaseInsensitive))
@@ -338,7 +338,7 @@ void CodeBrowserDockWidget::on_actionBreak_on_CPU_execution_here_triggered()
 		{
 			QString str;
 			str.sprintf("Cannot add breakpoint, maximum of %d already used.", NUM_BREAKPOINTS);
-			QMessageBox::information(0, "Error", str);
+			QMessageBox::information(nullptr, "Error", str);
 		}
 		else
 		{

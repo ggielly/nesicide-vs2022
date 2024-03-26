@@ -13,7 +13,7 @@ class StartupSplashDialog : public QDialog
 	Q_OBJECT
 
 public:
-	explicit StartupSplashDialog(QWidget* parent = 0);
+	explicit StartupSplashDialog(QWidget* parent = nullptr);
 	~StartupSplashDialog() override;
 
 private:

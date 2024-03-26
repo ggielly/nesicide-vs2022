@@ -9,7 +9,7 @@ class DebuggerUpdateWorker : public QObject
 	Q_OBJECT
 
 public:
-	explicit DebuggerUpdateWorker(void (*func)(), QObject* parent = 0);
+	explicit DebuggerUpdateWorker(void (*func)(), QObject* parent = nullptr);
 	~DebuggerUpdateWorker() override;
 
 	void changeFunction(void (*func)()) { _func = func; }
@@ -27,7 +27,7 @@ class DebuggerUpdateThread : public QObject
 	Q_OBJECT
 
 public:
-	explicit DebuggerUpdateThread(void (*func)(), QObject* parent = 0);
+	explicit DebuggerUpdateThread(void (*func)(), QObject* parent = nullptr);
 	~DebuggerUpdateThread() override;
 
 	void changeFunction(void (*func)()) { pWorker->changeFunction(func); }

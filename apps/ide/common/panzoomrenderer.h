@@ -16,9 +16,9 @@ class PanZoomRenderer : public QWidget
 	Q_OBJECT
 
 public:
-	PanZoomRenderer(int sizeX, int sizeY, int maxZoom, int8_t* imageData, bool showPalette, QWidget* parent = 0);
+	PanZoomRenderer(int sizeX, int sizeY, int maxZoom, int8_t* imageData, bool showPalette, QWidget* parent = nullptr);
 	PanZoomRenderer(int sizeX, int sizeY, int textureSizeXY, int maxZoom, int8_t* imageData, bool showPalette,
-	                QWidget* parent = 0);
+	                QWidget* parent = nullptr);
 	void commonConstructor(bool showPalette);
 	~PanZoomRenderer() override;
 	void reloadData(int8_t* imageData) { renderer->reloadData(imageData); }

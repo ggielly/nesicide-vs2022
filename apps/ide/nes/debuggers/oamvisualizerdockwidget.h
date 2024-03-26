@@ -17,7 +17,7 @@ class OAMVisualizerDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	explicit OAMVisualizerDockWidget(QWidget* parent = 0);
+	explicit OAMVisualizerDockWidget(QWidget* parent = nullptr);
 	~OAMVisualizerDockWidget() override;
 
 protected:

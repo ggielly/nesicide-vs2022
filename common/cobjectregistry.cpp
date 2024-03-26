@@ -1,6 +1,6 @@
 #include "cobjectregistry.h"
 
-CObjectRegistry* CObjectRegistry::_instance = NULL;
+CObjectRegistry* CObjectRegistry::_instance = nullptr;
 
 CObjectRegistry::CObjectRegistry()
 {
@@ -9,7 +9,7 @@ CObjectRegistry::CObjectRegistry()
 
 QObject* CObjectRegistry::getObject(const QString& name)
 {
-	QObject* object = NULL;
+	QObject* object = nullptr;
 
 	mutex->lock();
 	if (objects.contains(name))

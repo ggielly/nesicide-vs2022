@@ -203,7 +203,7 @@ void ProjectPropertiesDialog::updateUI(int colid)
 	}
 
 	QTableWidgetItem* selectedItem = ui->tableWidget->selectedItems().first();
-	int selectedIdx = selectedItem->text().toInt(0, 16);
+	int selectedIdx = selectedItem->text().toInt(nullptr, 16);
 
 	ui->colorValueLabel->setText("#" +
 		QString(hexStr[(currentPalette.at(selectedIdx).red() >> 4) & 0xF]) +
@@ -317,13 +317,13 @@ void ProjectPropertiesDialog::on_ImportPalettePushButton_clicked()
 
 		if (!file.open(QFile::ReadOnly))
 		{
-			QMessageBox::information(0, "Error", "Error opening palette file.");
+			QMessageBox::information(nullptr, "Error", "Error opening palette file.");
 			return;
 		}
 
 		if (!doc.setContent(&file))
 		{
-			QMessageBox::information(0, "Error", "Could not parse palette file.");
+			QMessageBox::information(nullptr, "Error", "Could not parse palette file.");
 			file.close();
 			return;
 		}
@@ -334,7 +334,7 @@ void ProjectPropertiesDialog::on_ImportPalettePushButton_clicked()
 
 		if (root.tagName() != "nesicidepalette")
 		{
-			QMessageBox::information(0, "Error", "Invalid root in palette file.");
+			QMessageBox::information(nullptr, "Error", "Invalid root in palette file.");
 			return;
 		}
 
@@ -379,7 +379,7 @@ void ProjectPropertiesDialog::on_redHorizontalSlider_actionTriggered(int action)
 	action = action;
 	// Try to get the selected item
 	QList<QTableWidgetItem*> sel = ui->tableWidget->selectedItems();
-	QTableWidgetItem* item = sel.isEmpty() ? 0 : sel.first();
+	QTableWidgetItem* item = sel.isEmpty() ? nullptr : sel.first();
 
 	// Don't do anything if we changed to an invalid item
 	if (!item)
@@ -387,7 +387,7 @@ void ProjectPropertiesDialog::on_redHorizontalSlider_actionTriggered(int action)
 		return;
 	}
 
-	int selectedIdx = item->text().toInt(0, 16);
+	int selectedIdx = item->text().toInt(nullptr, 16);
 
 	// Set the background color of the selected table cell to the values of our rgb dials
 	currentPalette.replace(selectedIdx, QColor(ui->redHorizontalSlider->value(),
@@ -403,7 +403,7 @@ void ProjectPropertiesDialog::on_greenHorizontalSlider_actionTriggered(int actio
 	action = action;
 	// Try to get the selected item
 	QList<QTableWidgetItem*> sel = ui->tableWidget->selectedItems();
-	QTableWidgetItem* item = sel.isEmpty() ? 0 : sel.first();
+	QTableWidgetItem* item = sel.isEmpty() ? nullptr : sel.first();
 
 	// Don't do anything if we changed to an invalid item
 	if (!item)
@@ -411,7 +411,7 @@ void ProjectPropertiesDialog::on_greenHorizontalSlider_actionTriggered(int actio
 		return;
 	}
 
-	int selectedIdx = item->text().toInt(0, 16);
+	int selectedIdx = item->text().toInt(nullptr, 16);
 
 	// Set the background color of the selected table cell to the values of our rgb dials
 	currentPalette.replace(selectedIdx, QColor(ui->redHorizontalSlider->value(),
@@ -426,7 +426,7 @@ void ProjectPropertiesDialog::on_blueHorizontalSlider_actionTriggered(int /*acti
 {
 	// Try to get the selected item
 	QList<QTableWidgetItem*> sel = ui->tableWidget->selectedItems();
-	QTableWidgetItem* item = sel.isEmpty() ? 0 : sel.first();
+	QTableWidgetItem* item = sel.isEmpty() ? nullptr : sel.first();
 
 	// Don't do anything if we changed to an invalid item
 	if (!item)
@@ -434,7 +434,7 @@ void ProjectPropertiesDialog::on_blueHorizontalSlider_actionTriggered(int /*acti
 		return;
 	}
 
-	int selectedIdx = item->text().toInt(0, 16);
+	int selectedIdx = item->text().toInt(nullptr, 16);
 
 	// Set the background color of the selected table cell to the values of our rgb dials
 	currentPalette.replace(selectedIdx, QColor(ui->redHorizontalSlider->value(),
@@ -603,7 +603,7 @@ void ProjectPropertiesDialog::serializeLinkerConfig()
 			}
 			else
 			{
-				QMessageBox::critical(0, "File I/O Error",
+				QMessageBox::critical(nullptr, "File I/O Error",
 				                      "Could not write linker config file:\n" + ui->linkerConfigFile->text());
 			}
 		}
@@ -630,7 +630,7 @@ void ProjectPropertiesDialog::deserializeLinkerConfig()
 			}
 			else
 			{
-				QMessageBox::critical(0, "File I/O Error",
+				QMessageBox::critical(nullptr, "File I/O Error",
 				                      "Could not read linker config file:\n" + ui->linkerConfigFile->text());
 			}
 		}
@@ -793,7 +793,7 @@ void ProjectPropertiesDialog::serializeCustomRules(QString rulesFile)
 			}
 			else
 			{
-				QMessageBox::critical(0, "File I/O Error", "Could not write custom rules file:\n" + rulesFile);
+				QMessageBox::critical(nullptr, "File I/O Error", "Could not write custom rules file:\n" + rulesFile);
 			}
 		}
 
@@ -819,7 +819,7 @@ void ProjectPropertiesDialog::deserializeCustomRules()
 			}
 			else
 			{
-				QMessageBox::critical(0, "File I/O Error",
+				QMessageBox::critical(nullptr, "File I/O Error",
 				                      "Could not read custom rules file:\n" + ui->customRuleFiles->currentText());
 			}
 		}

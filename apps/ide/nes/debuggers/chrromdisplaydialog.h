@@ -22,7 +22,7 @@ class CHRROMDisplayDialog : public CDesignerEditorBase
 	Q_OBJECT
 
 public:
-	CHRROMDisplayDialog(bool usePPU, qint8* data, IProjectTreeViewItem* link = 0, QWidget* parent = 0);
+	CHRROMDisplayDialog(bool usePPU, qint8* data, IProjectTreeViewItem* link = nullptr, QWidget* parent = nullptr);
 	~CHRROMDisplayDialog() override;
 
 protected:

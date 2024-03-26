@@ -21,7 +21,7 @@ class ExecutionVisualizerDockWidget : public CDebuggerBase, public IXMLSerializa
 	Q_OBJECT
 
 public:
-	explicit ExecutionVisualizerDockWidget(QWidget* parent = 0);
+	explicit ExecutionVisualizerDockWidget(QWidget* parent = nullptr);
 	~ExecutionVisualizerDockWidget() override;
 
 	// IXMLSerializable interface

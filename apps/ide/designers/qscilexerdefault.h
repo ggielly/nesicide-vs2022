@@ -18,7 +18,7 @@ public:
 		Default_Default
 	};
 
-	QsciLexerDefault(QObject* parent = 0);
+	QsciLexerDefault(QObject* parent = nullptr);
 	~QsciLexerDefault() override;
 
 	const char* language() const override { return "Default"; }

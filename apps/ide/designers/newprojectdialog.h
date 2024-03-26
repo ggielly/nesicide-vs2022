@@ -15,7 +15,7 @@ class NewProjectDialog : public QDialog
 
 public:
 	NewProjectDialog(QString windowTitle = "New", QString defName = "", QString defPath = "", bool addOnsOnly = false,
-	                 QWidget* parent = 0);
+	                 QWidget* parent = nullptr);
 	~NewProjectDialog() override;
 	QString getName();
 	QString getPath();

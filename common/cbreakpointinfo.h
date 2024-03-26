@@ -75,8 +75,8 @@ class CBreakpointEventInfo
 {
 public:
 	CBreakpointEventInfo(const char* name, bool (*evalFunc)(struct _BreakpointInfo* pBreakpoint, int data),
-	                     int elements, const char* displayFormat, int elementRadix, const char* item1Name = NULL,
-	                     const char* item2Name = NULL)
+	                     int elements, const char* displayFormat, int elementRadix, const char* item1Name = nullptr,
+	                     const char* item2Name = nullptr)
 	{
 		m_name = name;
 		m_evalFunc = evalFunc;

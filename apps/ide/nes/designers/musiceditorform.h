@@ -33,7 +33,7 @@ public:
 	QMessageBox::StandardButton onCloseQuery() override;
 
 private:
-	MusicEditorForm(QString fileName, QByteArray musicData, IProjectTreeViewItem* link = 0, QWidget* parent = 0);
+	MusicEditorForm(QString fileName, QByteArray musicData, IProjectTreeViewItem* link = nullptr, QWidget* parent = nullptr);
 	Ui::MusicEditorForm* ui;
 	QString m_fileName;
 	static MusicEditorForm* _instance;

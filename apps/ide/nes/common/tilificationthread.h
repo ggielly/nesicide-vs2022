@@ -10,7 +10,7 @@ class TilificationThread : public QThread
 	Q_OBJECT
 
 public:
-	explicit TilificationThread(QObject* parent = 0);
+	explicit TilificationThread(QObject* parent = nullptr);
 
 protected:
 	void run() override;

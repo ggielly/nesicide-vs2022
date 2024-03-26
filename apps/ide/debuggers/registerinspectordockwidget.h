@@ -20,7 +20,7 @@ class RegisterInspectorDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	RegisterInspectorDockWidget(regDBFunc regDB, CBreakpointInfo* pBreakpoints, QWidget* parent = 0);
+	RegisterInspectorDockWidget(regDBFunc regDB, CBreakpointInfo* pBreakpoints, QWidget* parent = nullptr);
 	~RegisterInspectorDockWidget() override;
 
 protected:

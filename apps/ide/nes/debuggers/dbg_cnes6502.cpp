@@ -2584,7 +2584,7 @@ const char* OPCODEINFO(const char* op)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 const char* OPCODECHECK(uint8_t idx, const char* op)
@@ -2594,7 +2594,7 @@ const char* OPCODECHECK(uint8_t idx, const char* op)
 		return (m_6502opcode + idx)->name;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 uint8_t OPCODESIZE(uint8_t op)
@@ -2623,7 +2623,7 @@ static QColor dmaColor[] =
 	QColor(0, 0, 0) // eNESSource_Mapper -- not a valid target.
 };
 
-static int8_t* CodeDataLoggerTV = NULL;
+static int8_t* CodeDataLoggerTV = nullptr;
 
 int8_t* CPUCODEDATALOGGERTV() { return CodeDataLoggerTV; }
 
@@ -2952,7 +2952,7 @@ void RENDERCPUCODEDATALOGGER()
 	}
 }
 
-static int8_t* ExecutionVisualizerTV = NULL;
+static int8_t* ExecutionVisualizerTV = nullptr;
 
 int8_t* CPUEXECUTIONVISUALIZERTV() { return ExecutionVisualizerTV; }
 

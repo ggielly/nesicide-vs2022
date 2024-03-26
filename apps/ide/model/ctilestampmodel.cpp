@@ -10,7 +10,7 @@ CTileStampModel::CTileStampModel()
 
 QList<QUuid> CTileStampModel::getUuids() const
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return QList<QUuid>();
 
 	return ProjectSearcher::findUuidsOfType<CTileStamp>(m_pNesicideProject);
@@ -18,7 +18,7 @@ QList<QUuid> CTileStampModel::getUuids() const
 
 QString CTileStampModel::getName(const QUuid& uuid) const
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return QString();
 
 	CTileStamp* tile = ProjectSearcher::findItemByUuid<CTileStamp>(m_pNesicideProject, uuid);
@@ -28,7 +28,7 @@ QString CTileStampModel::getName(const QUuid& uuid) const
 
 QUuid CTileStampModel::newTileStamp(const QString& name)
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return QUuid();
 
 	CTileStamps* pTileStamps = m_pNesicideProject->getProject()->getProjectPrimitives()->getTileStamps();
@@ -44,7 +44,7 @@ QUuid CTileStampModel::newTileStamp(const QString& name)
 
 QUuid CTileStampModel::newScreen(const QString& name)
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return QUuid();
 
 	CTileStamps* pTileStamps = m_pNesicideProject->getProject()->getProjectPrimitives()->getTileStamps();
@@ -61,11 +61,11 @@ QUuid CTileStampModel::newScreen(const QString& name)
 
 void CTileStampModel::deleteTileStamp(const QUuid& uuid)
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return;
 
 	CTileStamp* pTileStamp = ProjectSearcher::findItemByUuid<CTileStamp>(m_pNesicideProject, uuid);
-	if (pTileStamp == NULL)
+	if (pTileStamp == nullptr)
 		return;
 
 	m_pNesicideProject->getProject()->getProjectPrimitives()->getTileStamps()->removeChild(pTileStamp);
@@ -79,8 +79,8 @@ void CTileStampModel::deleteTileStamp(const QUuid& uuid)
 CDesignerEditorBase* CTileStampModel::createEditorWidget(const QUuid& uuid) const
 {
 	CTileStamp* tile = ProjectSearcher::findItemByUuid<CTileStamp>(m_pNesicideProject, uuid);
-	if (tile == NULL)
-		return NULL;
+	if (tile == nullptr)
+		return nullptr;
 
 	int x, y;
 	tile->getSize(&x, &y);

@@ -15,7 +15,7 @@ class MapperInformationDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	explicit MapperInformationDockWidget(QWidget* parent = 0);
+	explicit MapperInformationDockWidget(QWidget* parent = nullptr);
 	~MapperInformationDockWidget() override;
 
 protected:

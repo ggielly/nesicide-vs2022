@@ -51,7 +51,7 @@ void NewFileDialog::on_pathBrowse_clicked()
 
 	QString path = settings.value("LastFileBasePath").toString();
 
-	QString value = QFileDialog::getSaveFileName(this, "Path", path, "",NULL, QFileDialog::ShowDirsOnly);
+	QString value = QFileDialog::getSaveFileName(this, "Path", path, "", nullptr, QFileDialog::ShowDirsOnly);
 
 	if (!value.isEmpty())
 	{

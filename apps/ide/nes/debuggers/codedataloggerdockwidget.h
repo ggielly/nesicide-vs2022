@@ -24,7 +24,7 @@ class CodeDataLoggerDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	explicit CodeDataLoggerDockWidget(QWidget* parent = 0);
+	explicit CodeDataLoggerDockWidget(QWidget* parent = nullptr);
 	~CodeDataLoggerDockWidget() override;
 
 protected:

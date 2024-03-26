@@ -11,7 +11,7 @@ class CProjectTreeWidget : public QTreeWidget
 	Q_OBJECT
 
 public:
-	explicit CProjectTreeWidget(QWidget* parent = 0);
+	explicit CProjectTreeWidget(QWidget* parent = nullptr);
 
 	QUuid getUuidAt(const QPoint& pos);
 	QUuid getUuidOf(const QTreeWidgetItem* item);

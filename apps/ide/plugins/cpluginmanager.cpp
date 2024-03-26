@@ -10,7 +10,7 @@
 
 static int luabind_compiler_logger_print(lua_State* lua);
 
-CPluginManager* CPluginManager::_instance = NULL;
+CPluginManager* CPluginManager::_instance = nullptr;
 
 QHash<QString, QDomDocument*> CPluginManager::plugins;
 
@@ -235,7 +235,7 @@ int CPluginManager::report(lua_State* L, int status)
 		{
 			const char* msg = lua_tostring(L, -1);
 
-			if (msg == NULL)
+			if (msg == nullptr)
 			{
 				msg = "(error object is not a string)";
 			}

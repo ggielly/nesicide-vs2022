@@ -13,7 +13,7 @@ class SourceNavigator : public QWidget
 	Q_OBJECT
 
 public:
-	explicit SourceNavigator(QWidget* parent = 0);
+	explicit SourceNavigator(QWidget* parent = nullptr);
 	~SourceNavigator() override;
 
 	void shutdown();

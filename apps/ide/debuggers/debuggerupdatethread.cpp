@@ -2,9 +2,9 @@
 
 #include "dbg_cnesppu.h"
 
-QThread* DebuggerUpdateThread::pThread = NULL;
+QThread* DebuggerUpdateThread::pThread = nullptr;
 int DebuggerUpdateThread::resourceCount = -1;
-QMutex* DebuggerUpdateThread::pMutex = NULL;
+QMutex* DebuggerUpdateThread::pMutex = nullptr;
 bool DebuggerUpdateThread::silenced = true;
 
 DebuggerUpdateWorker::DebuggerUpdateWorker(void (*func)(), QObject*/*parent*/) :
@@ -53,7 +53,7 @@ DebuggerUpdateThread::DebuggerUpdateThread(void (*func)(), QObject*/*parent*/)
 DebuggerUpdateThread::~DebuggerUpdateThread()
 {
 	delete pWorker;
-	pWorker = NULL;
+	pWorker = nullptr;
 
 	pMutex->lock();
 	resourceCount--;

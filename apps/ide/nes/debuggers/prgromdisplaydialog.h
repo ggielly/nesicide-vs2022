@@ -18,7 +18,7 @@ class PRGROMDisplayDialog : public CDesignerEditorBase
 	Q_OBJECT
 
 public:
-	PRGROMDisplayDialog(uint8_t* bankData, IProjectTreeViewItem* link = 0, QWidget* parent = 0);
+	PRGROMDisplayDialog(uint8_t* bankData, IProjectTreeViewItem* link = nullptr, QWidget* parent = nullptr);
 	~PRGROMDisplayDialog() override;
 
 	void setRomData(unsigned char* data)

@@ -10,7 +10,7 @@ class CBreakpointDisplayModel : public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	CBreakpointDisplayModel(CBreakpointInfo* pBreakpoints, QObject* parent = 0);
+	CBreakpointDisplayModel(CBreakpointInfo* pBreakpoints, QObject* parent = nullptr);
 	~CBreakpointDisplayModel() override;
 	Qt::ItemFlags flags(const QModelIndex& index) const override;
 	QVariant data(const QModelIndex& index, int role) const override;

@@ -24,7 +24,7 @@ public:
 		Output_Search
 	};
 
-	explicit OutputPaneDockWidget(QWidget* parent = 0);
+	explicit OutputPaneDockWidget(QWidget* parent = nullptr);
 	~OutputPaneDockWidget() override;
 
 	void initialize();

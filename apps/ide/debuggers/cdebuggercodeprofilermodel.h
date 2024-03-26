@@ -40,7 +40,7 @@ class CDebuggerCodeProfilerModel : public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	explicit CDebuggerCodeProfilerModel(QObject* parent = 0);
+	explicit CDebuggerCodeProfilerModel(QObject* parent = nullptr);
 	~CDebuggerCodeProfilerModel() override;
 	Qt::ItemFlags flags(const QModelIndex& index) const override;
 	QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const override;

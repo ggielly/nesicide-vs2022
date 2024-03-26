@@ -8,7 +8,7 @@ class ColorPushButton : public QPushButton
 	Q_OBJECT
 
 public:
-	explicit ColorPushButton(QWidget* parent = 0);
+	explicit ColorPushButton(QWidget* parent = nullptr);
 
 	void setCurrentColor(QColor color) { m_color = color; }
 	QColor currentColor() { return m_color; }

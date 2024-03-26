@@ -11,7 +11,7 @@ CMusicItem::~CMusicItem()
 {
 	// This is a singleton so the instance will be deleted elsewhere.
 	// Prevent the base class from deleting anything.
-	m_editor = NULL;
+	m_editor = nullptr;
 }
 
 QByteArray CMusicItem::musicData()
@@ -152,7 +152,7 @@ bool CMusicItem::exportData()
 
 	bool ok = editor->exportData();
 
-	openFile(NULL);
+	openFile(nullptr);
 
 	return ok;
 }

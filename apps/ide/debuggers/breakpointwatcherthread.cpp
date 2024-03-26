@@ -22,7 +22,7 @@ BreakpointWatcherWorker::~BreakpointWatcherWorker()
 
 void BreakpointWatcherWorker::breakpoint()
 {
-	CBreakpointInfo* pBreakpoints = NULL;
+	CBreakpointInfo* pBreakpoints = nullptr;
 	int idx;
 	char hitMsg[512];
 

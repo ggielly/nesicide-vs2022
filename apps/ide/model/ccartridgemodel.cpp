@@ -9,7 +9,7 @@ CCartridgeModel::CCartridgeModel()
 
 QList<QUuid> CCartridgeModel::getPrgRomUuids() const
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return QList<QUuid>();
 
 	return ProjectSearcher::findUuidsOfType<CPRGROMBank>(m_pNesicideProject);
@@ -17,7 +17,7 @@ QList<QUuid> CCartridgeModel::getPrgRomUuids() const
 
 QList<QUuid> CCartridgeModel::getChrRomUuids() const
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return QList<QUuid>();
 
 	return ProjectSearcher::findUuidsOfType<CCHRROMBank>(m_pNesicideProject);
@@ -34,11 +34,11 @@ QList<QUuid> CCartridgeModel::getUuids() const
 QString CCartridgeModel::getName(const QUuid& uuid) const
 {
 	CPRGROMBank* prgBank = ProjectSearcher::findItemByUuid<CPRGROMBank>(m_pNesicideProject, uuid);
-	if (prgBank != NULL)
+	if (prgBank != nullptr)
 		return prgBank->caption();
 
 	CCHRROMBank* chrBank = ProjectSearcher::findItemByUuid<CCHRROMBank>(m_pNesicideProject, uuid);
-	if (chrBank != NULL)
+	if (chrBank != nullptr)
 		return chrBank->caption();
 
 	return QString();
@@ -47,7 +47,7 @@ QString CCartridgeModel::getName(const QUuid& uuid) const
 CDesignerEditorBase* CCartridgeModel::createEditorWidget(const QUuid& uuid) const
 {
 	CPRGROMBank* prgBank = ProjectSearcher::findItemByUuid<CPRGROMBank>(m_pNesicideProject, uuid);
-	if (prgBank != NULL)
+	if (prgBank != nullptr)
 	{
 		// Item must know editor due to current architecture.
 		prgBank->setEditor(new PRGROMDisplayDialog(prgBank->getBankData(), prgBank));
@@ -55,12 +55,12 @@ CDesignerEditorBase* CCartridgeModel::createEditorWidget(const QUuid& uuid) cons
 	}
 
 	CCHRROMBank* chrBank = ProjectSearcher::findItemByUuid<CCHRROMBank>(m_pNesicideProject, uuid);
-	if (chrBank != NULL)
+	if (chrBank != nullptr)
 	{
 		// Item must know editor due to current architecture.
 		chrBank->setEditor(new CHRROMDisplayDialog(false, reinterpret_cast<qint8*>(chrBank->getBankData()), chrBank));
 		return chrBank->editor();
 	}
 
-	return NULL;
+	return nullptr;
 }

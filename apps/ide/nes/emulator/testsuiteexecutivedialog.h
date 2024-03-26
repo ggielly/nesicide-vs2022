@@ -17,7 +17,7 @@ class TestSuiteExecutiveDialog : public QDialog
 	Q_OBJECT
 
 public:
-	explicit TestSuiteExecutiveDialog(QWidget* parent = 0);
+	explicit TestSuiteExecutiveDialog(QWidget* parent = nullptr);
 	~TestSuiteExecutiveDialog() override;
 
 protected:

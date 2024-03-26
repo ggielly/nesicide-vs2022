@@ -6,7 +6,7 @@
 
 #include "nes_emulator_core.h"
 
-CGameDatabaseHandler* CGameDatabaseHandler::_instance = NULL;
+CGameDatabaseHandler* CGameDatabaseHandler::_instance = nullptr;
 
 CGameDatabaseHandler::CGameDatabaseHandler()
 {

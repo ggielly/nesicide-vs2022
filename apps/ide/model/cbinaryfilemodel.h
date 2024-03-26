@@ -27,7 +27,7 @@ public:
 	// -- Setters --
 	void setBinaryData(const QUuid& uuid, const QByteArray& newBinaryData);
 
-	CDesignerEditorBase* createEditorWidget(const QUuid&) const override { return NULL; }
+	CDesignerEditorBase* createEditorWidget(const QUuid&) const override { return nullptr; }
 
 private:
 	friend class CProjectModel;

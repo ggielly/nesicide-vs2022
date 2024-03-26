@@ -40,7 +40,7 @@ protected:
 private:
 	static AppSettings* _instance;
 
-	AppSettings(QObject* parent = 0) : QObject(parent)
+	AppSettings(QObject* parent = nullptr) : QObject(parent)
 	{
 	};
 

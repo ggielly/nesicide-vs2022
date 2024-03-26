@@ -134,7 +134,7 @@ void C64EmulatorThread::viceError(QProcess::ProcessError error)
 	switch (error)
 	{
 	case QProcess::FailedToStart:
-		result = QMessageBox::warning(0, "VICE not found!", "The VICE Commodore 64 emulator, x64sc, failed to start.\n"
+		result = QMessageBox::warning(nullptr, "VICE not found!", "The VICE Commodore 64 emulator, x64sc, failed to start.\n"
 		                              "Please set the path to it in NESICIDE's Emulator Preferences dialog.", "Exit",
 		                              "Fix", "", 1, -1);
 
@@ -166,7 +166,7 @@ void C64EmulatorThread::viceFinished(int /*exitCode*/, QProcess::ExitStatus /*ex
 
 	str += m_pViceApp->readAll();
 
-	int result = QMessageBox::warning(0, "VICE exited!", str, "Exit", "Fix", "", 1, -1);
+	int result = QMessageBox::warning(nullptr, "VICE exited!", str, "Exit", "Fix", "", 1, -1);
 
 	if (result == 1)
 	{

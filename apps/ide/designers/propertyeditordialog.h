@@ -18,7 +18,7 @@ class PropertyEditorDialog : public QDialog
 	Q_OBJECT
 
 public:
-	explicit PropertyEditorDialog(QWidget* parent = 0);
+	explicit PropertyEditorDialog(QWidget* parent = nullptr);
 	~PropertyEditorDialog() override;
 
 	QString propertyName() { return property.name; }

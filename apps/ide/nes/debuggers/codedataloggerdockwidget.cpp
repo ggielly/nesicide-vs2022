@@ -215,7 +215,7 @@ void CodeDataLoggerDockWidget::on_displaySelect_currentIndexChanged(int index)
 
 void CodeDataLoggerDockWidget::on_exportData_clicked()
 {
-	QString fileName = QFileDialog::getSaveFileName(NULL, "Export Code/Data Log", QDir::currentPath(),
+	QString fileName = QFileDialog::getSaveFileName(nullptr, "Export Code/Data Log", QDir::currentPath(),
 	                                                "Code+Data Log File (*.cdl)");
 	int addr;
 	int size = nesGetPRGROMSize();

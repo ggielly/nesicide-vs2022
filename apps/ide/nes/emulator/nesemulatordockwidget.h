@@ -17,7 +17,7 @@ class NESEmulatorDockWidget : public QDockWidget
 	Q_OBJECT
 
 public:
-	explicit NESEmulatorDockWidget(QWidget* parent = 0);
+	explicit NESEmulatorDockWidget(QWidget* parent = nullptr);
 	~NESEmulatorDockWidget() override;
 
 	void setLinearInterpolation(bool enabled) { renderer->setLinearInterpolation(enabled); }

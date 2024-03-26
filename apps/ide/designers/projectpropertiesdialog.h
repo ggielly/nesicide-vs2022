@@ -22,7 +22,7 @@ class ProjectPropertiesDialog : public QDialog
 	Q_OBJECT
 
 public:
-	ProjectPropertiesDialog(QWidget* parent = 0);
+	ProjectPropertiesDialog(QWidget* parent = nullptr);
 	~ProjectPropertiesDialog() override;
 
 protected:

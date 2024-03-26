@@ -1,6 +1,6 @@
 #include "appsettings.h"
 
-AppSettings* AppSettings::_instance = NULL;
+AppSettings* AppSettings::_instance = nullptr;
 
 void AppSettings::setAppMode(AppMode mode)
 {

@@ -18,7 +18,7 @@
 //--------------------------------------------------------------------------------------
 CProjectModel::CProjectModel()
 {
-	m_pNesicideProject = NULL;
+	m_pNesicideProject = nullptr;
 
 	m_pAttributeModel = new CAttributeModel();
 	m_pBinaryFileModel = new CBinaryFileModel();
@@ -76,7 +76,7 @@ void CProjectModel::setProject(CNesicideProject* project)
 QList<QUuid> CProjectModel::getUuids() const
 {
 	QList<QUuid> uuids;
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return uuids;
 
 	// Extract the uuids of all project items, but
@@ -99,7 +99,7 @@ QList<QUuid> CProjectModel::getUuids() const
 
 void CProjectModel::visitDataItem(const QUuid& uuid, IUuidVisitor& visitor)
 {
-	if (m_pNesicideProject == NULL)
+	if (m_pNesicideProject == nullptr)
 		return;
 
 	// If a filter, not in the project tree; search for it first.
@@ -112,13 +112,13 @@ void CProjectModel::visitDataItem(const QUuid& uuid, IUuidVisitor& visitor)
 
 	// Find project item with target uuid
 	IProjectTreeViewItemIterator iter(m_pNesicideProject);
-	while (iter.current() != NULL)
+	while (iter.current() != nullptr)
 	{
 		if (iter.current()->uuid() == uuid.toString())
 		{
 			// Convert item to ProjectBase.
 			auto item = dynamic_cast<CProjectBase*>(iter.current());
-			if (item == NULL)
+			if (item == nullptr)
 				return;
 
 			// Construct Uuid of correct type depending on the class name.

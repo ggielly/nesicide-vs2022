@@ -6,7 +6,7 @@ CProjectBase::CProjectBase()
 {
 	m_name = "";
 	m_path = "";
-	m_editor = NULL;
+	m_editor = nullptr;
 	m_deleted = false;
 	m_includeInBuild = true;
 }
@@ -23,7 +23,7 @@ IProjectTreeViewItem* findProjectItem(QString uuid)
 {
 	IProjectTreeViewItemIterator iter(CNesicideProject::instance()->getProject());
 
-	while (iter.current() != NULL)
+	while (iter.current() != nullptr)
 	{
 		IProjectTreeViewItem* pItem = iter.current();
 
@@ -35,7 +35,7 @@ IProjectTreeViewItem* findProjectItem(QString uuid)
 		iter.next();
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void CProjectBase::closeItemEvent()
@@ -44,5 +44,5 @@ void CProjectBase::closeItemEvent()
 	{
 		delete m_editor;
 	}
-	m_editor = NULL;
+	m_editor = nullptr;
 }

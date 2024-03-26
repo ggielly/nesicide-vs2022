@@ -37,9 +37,9 @@ static char resolutionBuffer[2048];
 CodeEditorForm::CodeEditorForm(QString fileName, QString sourceCode, IProjectTreeViewItem* link, QWidget* parent) :
 	CDesignerEditorBase(link, parent),
 	ui(new Ui::CodeEditorForm),
-	m_scintilla(NULL),
-	m_lexer(NULL),
-	m_apis(NULL)
+	m_scintilla(nullptr),
+	m_lexer(nullptr),
+	m_apis(nullptr)
 {
 	auto codeBrowser = dynamic_cast<QDockWidget*>(CDockWidgetRegistry::instance()->getWidget("Assembly Browser"));
 	auto breakpoints = dynamic_cast<QDockWidget*>(CDockWidgetRegistry::instance()->getWidget("Breakpoints"));
@@ -56,7 +56,7 @@ CodeEditorForm::CodeEditorForm(QString fileName, QString sourceCode, IProjectTre
 	// Create the status-bar widget.
 	info = new QLabel(this);
 
-	m_pBreakpoints = NULL;
+	m_pBreakpoints = nullptr;
 
 	m_scintilla = new QsciScintilla();
 
@@ -308,7 +308,7 @@ void CodeEditorForm::onSave()
 		// This editor does not live in the project, create a temporary
 		// unlinked project item and do the save through it.
 		QDir dir = QDir::currentPath();
-		CSourceItem sourceItem(NULL);
+		CSourceItem sourceItem(nullptr);
 
 		sourceItem.setEditor(this);
 		sourceItem.setName(dir.fromNativeSeparators(dir.relativeFilePath(m_fileName)));
@@ -316,7 +316,7 @@ void CodeEditorForm::onSave()
 		sourceItem.serializeContent();
 		// Be sure to clear the editor otherwise the object gets deleted when
 		// the destructor for this temporary is called.
-		sourceItem.setEditor(NULL);
+		sourceItem.setEditor(nullptr);
 	}
 }
 
@@ -792,7 +792,7 @@ void CodeEditorForm::setBreakpoint(int line, int addr, int absAddr)
 		{
 			QString str;
 			str.sprintf("Cannot add breakpoint, maximum of %d already used.", NUM_BREAKPOINTS);
-			QMessageBox::information(0, "Error", str);
+			QMessageBox::information(nullptr, "Error", str);
 		}
 		else
 		{
@@ -1057,7 +1057,7 @@ void CodeEditorForm::resolveLineAddress(int line, int* addr, int* absAddr)
 			asmAddrs.append((*addr));
 			asmAbsAddrs.append((*absAddr));
 		}
-		selStr = QInputDialog::getItem(0, "Help!", "Line has multiple possible matches, pick one:", asmChunks, 0, false,
+		selStr = QInputDialog::getItem(nullptr, "Help!", "Line has multiple possible matches, pick one:", asmChunks, 0, false,
 		                               &ok);
 
 		if (!ok)
@@ -1271,18 +1271,18 @@ void CodeEditorForm::snapTo(QString item)
 		splits = item.split(QRegExp("[,():]"), QString::SkipEmptyParts);
 		if (splits.count() == 2)
 		{
-			addr = splits.at(1).toInt(NULL, 16);
+			addr = splits.at(1).toInt(nullptr, 16);
 			absAddr = addr;
 		}
 		else if (splits.count() == 3)
 		{
-			addr = splits.at(2).toInt(NULL, 16);
+			addr = splits.at(2).toInt(nullptr, 16);
 			absAddr = addr;
 		}
 		else if (splits.count() == 4)
 		{
-			addr = splits.at(3).toInt(NULL, 16);
-			absAddr = (splits.at(1).toInt(NULL, 16) * MEM_8KB) + splits.at(2).toInt(NULL, 16);
+			addr = splits.at(3).toInt(nullptr, 16);
+			absAddr = (splits.at(1).toInt(nullptr, 16) * MEM_8KB) + splits.at(2).toInt(nullptr, 16);
 		}
 		fileName = QDir::cleanPath(CCC65Interface::instance()->getSourceFileFromPhysicalAddress(addr, absAddr));
 		if (fileName == m_fileName)
@@ -1447,7 +1447,7 @@ void CodeEditorForm::applyEnvironmentSettingsToTab()
 		m_scintilla->setMarkerBackgroundColor(m_lexer->defaultPaper(), Marker_Highlight);
 	}
 
-	if (m_lexer == NULL)
+	if (m_lexer == nullptr)
 	{
 		m_language = Language_Default;
 		m_scintilla->setLexer();

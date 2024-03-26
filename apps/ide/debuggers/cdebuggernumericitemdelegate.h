@@ -10,7 +10,7 @@ class CDebuggerNumericItemDelegate : public QStyledItemDelegate
 	Q_OBJECT
 
 public:
-	explicit CDebuggerNumericItemDelegate(QObject* parent = 0);
+	explicit CDebuggerNumericItemDelegate(QObject* parent = nullptr);
 
 	QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option,
 	                      const QModelIndex& index) const override;

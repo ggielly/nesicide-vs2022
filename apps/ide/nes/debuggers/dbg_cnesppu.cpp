@@ -85,7 +85,7 @@ static QColor color[] =
 
 static QColor renderColor = QColor(0, 0, 255);
 
-static int8_t* CodeDataLoggerTV = NULL;
+static int8_t* CodeDataLoggerTV = nullptr;
 
 int8_t* PPUCODEDATALOGGERTV() { return CodeDataLoggerTV; }
 
@@ -179,7 +179,7 @@ void RENDERPPUCODEDATALOGGER(void)
 	}
 }
 
-static int8_t* _CHRMEMTV = NULL;
+static int8_t* _CHRMEMTV = nullptr;
 
 int8_t* CHRMEMTV() { return _CHRMEMTV; }
 
@@ -266,7 +266,7 @@ void RENDERCHRMEM(void)
 	}
 }
 
-static int8_t* _OAMTV = NULL;
+static int8_t* _OAMTV = nullptr;
 
 int8_t* OAMTV() { return _OAMTV; }
 
@@ -402,7 +402,7 @@ void RENDEROAM(void)
 	}
 }
 
-static int8_t* NameTableTV = NULL;
+static int8_t* NameTableTV = nullptr;
 
 int8_t* NAMETABLETV() { return NameTableTV; }
 

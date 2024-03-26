@@ -21,7 +21,7 @@ class MemoryInspectorDockWidget : public CDebuggerBase
 	Q_OBJECT
 
 public:
-	explicit MemoryInspectorDockWidget(memDBFunc memDB, CBreakpointInfo* pBreakpoints, QWidget* parent = 0);
+	explicit MemoryInspectorDockWidget(memDBFunc memDB, CBreakpointInfo* pBreakpoints, QWidget* parent = nullptr);
 	~MemoryInspectorDockWidget() override;
 
 protected:

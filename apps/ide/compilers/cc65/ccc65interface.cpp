@@ -11,7 +11,7 @@
 
 #include "environmentsettingsdialog.h"
 
-CCC65Interface* CCC65Interface::_instance = NULL;
+CCC65Interface* CCC65Interface::_instance = nullptr;
 
 // This utility compares two file paths regardless of original slashery.
 bool fileNamesAreIdentical(QString file1, QString file2)
@@ -33,9 +33,9 @@ static const char* asmTargetRuleFmt =
 	"\t$(ASSEMBLE) $(ASFLAGS) -o $@ $<\r\n\r\n";
 
 CCC65Interface::CCC65Interface()
-	: dbgInfo(NULL),
+	: dbgInfo(nullptr),
 	  targetMachine("none"),
-	  process(NULL)
+	  process(nullptr)
 {
 	qRegisterMetaType<QProcess::ExitStatus>("QProcess::ExitStatus");
 	qRegisterMetaType<QProcess::ProcessError>("QProcess::ProcessError");
@@ -55,7 +55,7 @@ void CCC65Interface::updateTargetMachine(QString target)
 void CCC65Interface::clear()
 {
 	cc65_free_dbginfo(dbgInfo);
-	dbgInfo = 0;
+	dbgInfo = nullptr;
 }
 
 QStringList CCC65Interface::getAssemblerSourcesFromProject()
@@ -480,7 +480,7 @@ bool CCC65Interface::captureDebugInfo()
 
 	dbgInfo = cc65_read_dbginfo(dbgInfoFile.toLatin1().constData(), ErrorFunc);
 
-	if (dbgInfo == 0)
+	if (dbgInfo == nullptr)
 	{
 		return false;
 	}
@@ -536,7 +536,7 @@ bool CCC65Interface::isBuildUpToDate()
 
 		if (exitCode == 1)
 		{
-			QMessageBox::warning(NULL, "Consistency problem!", outdated);
+			QMessageBox::warning(nullptr, "Consistency problem!", outdated);
 			ok = false;
 		}
 

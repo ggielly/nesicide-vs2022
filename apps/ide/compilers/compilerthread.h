@@ -15,7 +15,7 @@ class CompilerWorker : public QObject
 	Q_OBJECT
 
 public:
-	CompilerWorker(QObject* parent = 0);
+	CompilerWorker(QObject* parent = nullptr);
 	~CompilerWorker() override;
 
 	bool assembledOk() { return m_assembledOk; }
@@ -40,7 +40,7 @@ class CompilerThread : public QObject
 	Q_OBJECT
 
 public:
-	CompilerThread(QObject* parent = 0);
+	CompilerThread(QObject* parent = nullptr);
 	~CompilerThread() override;
 
 	bool assembledOk() { return pWorker->assembledOk(); }

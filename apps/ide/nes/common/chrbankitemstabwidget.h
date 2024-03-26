@@ -15,7 +15,7 @@ class ChrBankItemsTabWidget : public QTabWidget
 	Q_OBJECT
 
 public:
-	explicit ChrBankItemsTabWidget(QWidget* parent = 0);
+	explicit ChrBankItemsTabWidget(QWidget* parent = nullptr);
 	~ChrBankItemsTabWidget() override;
 
 	void setItems(QList<IChrRomBankItem*> items);

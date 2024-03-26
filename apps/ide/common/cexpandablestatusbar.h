@@ -13,7 +13,7 @@ class CExpandableStatusBar : public QFrame
 	Q_OBJECT
 
 public:
-	explicit CExpandableStatusBar(QWidget* parent = 0);
+	explicit CExpandableStatusBar(QWidget* parent = nullptr);
 
 	void addPermanentWidget(QWidget* widget, int stretch = 0);
 	void addExpandingWidget(QWidget* widget, int stretch = 0);

@@ -19,7 +19,7 @@ class EnvironmentSettingsDialog : public QDialog
 	Q_OBJECT
 
 public:
-	EnvironmentSettingsDialog(QWidget* parent = 0);
+	EnvironmentSettingsDialog(QWidget* parent = nullptr);
 	~EnvironmentSettingsDialog() override;
 
 	// Interface to retrieve values from QSettings and store them

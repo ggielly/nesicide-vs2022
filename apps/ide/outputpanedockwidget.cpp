@@ -395,8 +395,8 @@ void OutputPaneDockWidget::eraseSearchPane()
 void OutputPaneDockWidget::contextMenuEvent(QContextMenuEvent* event)
 {
 	QMenu menu;
-	QAction clear("Clear", 0);
-	QAction logToFile("Log to file", 0);
+	QAction clear("Clear", nullptr);
+	QAction logToFile("Log to file", nullptr);
 	QAction* chosen;
 
 	menu.addAction(&clear);

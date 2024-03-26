@@ -14,7 +14,7 @@ class SearchWidget : public QWidget
 	Q_OBJECT
 
 public:
-	explicit SearchWidget(QWidget* parent = 0);
+	explicit SearchWidget(QWidget* parent = nullptr);
 	~SearchWidget() override;
 
 protected:

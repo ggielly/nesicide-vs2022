@@ -344,7 +344,7 @@ int CSymbolWatchModel::resolveSymbol(QString text, int addr)
 		}
 		if (selIdx < 0)
 		{
-			selStr = QInputDialog::getItem(0, "Help!", "Symbol has multiple possible matches, pick one:", symbols, 0,
+			selStr = QInputDialog::getItem(nullptr, "Help!", "Symbol has multiple possible matches, pick one:", symbols, 0,
 			                               false, &ok);
 			if (ok)
 			{
@@ -387,8 +387,8 @@ void CSymbolWatchModel::sort(int column, Qt::SortOrder order)
 				case SymbolWatchCol_Size:
 				case SymbolWatchCol_Value:
 					// These columns require integer sort.
-					uiData1 = data(index(idx1, column), Qt::DisplayRole).toString().toInt(NULL, 16);
-					uiData2 = data(index(idx2, column), Qt::DisplayRole).toString().toInt(NULL, 16);
+					uiData1 = data(index(idx1, column), Qt::DisplayRole).toString().toInt(nullptr, 16);
+					uiData2 = data(index(idx2, column), Qt::DisplayRole).toString().toInt(nullptr, 16);
 					switch (order)
 					{
 					case Qt::AscendingOrder:

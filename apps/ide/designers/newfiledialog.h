@@ -13,7 +13,7 @@ class NewFileDialog : public QDialog
 	Q_OBJECT
 
 public:
-	NewFileDialog(QString windowTitle = "New", QString defName = "", QString defPath = "", QWidget* parent = 0);
+	NewFileDialog(QString windowTitle = "New", QString defName = "", QString defPath = "", QWidget* parent = nullptr);
 	~NewFileDialog() override;
 	QString getName();
 	QString getPath();

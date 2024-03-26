@@ -28,13 +28,13 @@
 
 #include "SDL.h"
 
-OutputPaneDockWidget* output = NULL;
-ProjectBrowserDockWidget* m_pProjectBrowser = NULL;
+OutputPaneDockWidget* output = nullptr;
+ProjectBrowserDockWidget* m_pProjectBrowser = nullptr;
 
 MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 	QMainWindow(parent),
-	m_pNESEmulatorThread(NULL),
-	m_pC64EmulatorThread(NULL),
+	m_pNESEmulatorThread(nullptr),
+	m_pC64EmulatorThread(nullptr),
 	m_pProjectModel(projectModel)
 {
 	int idx;
@@ -466,7 +466,7 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 		+ argv_c64project.count() > 1)
 	{
 		QString error = "Conflicting command line arguments:\n\n" + argv.join(" ");
-		QMessageBox::information(0, "Command Line Error", error);
+		QMessageBox::information(nullptr, "Command Line Error", error);
 		QApplication::exit(-1);
 	}
 
@@ -518,11 +518,11 @@ MainWindow::~MainWindow()
 	tabWidget->clear();
 
 	delete breakpointWatcher;
-	breakpointWatcher = NULL;
+	breakpointWatcher = nullptr;
 	delete compiler;
-	compiler = NULL;
+	compiler = nullptr;
 	delete searcher;
-	searcher = NULL;
+	searcher = nullptr;
 
 	delete testSuiteExecutive;
 
@@ -1770,7 +1770,7 @@ void MainWindow::destroyC64Ui()
 	m_pC64EmulatorThread->wait();
 
 	delete m_pC64EmulatorThread;
-	m_pC64EmulatorThread = NULL;
+	m_pC64EmulatorThread = nullptr;
 
 	CObjectRegistry::instance()->removeObject("Emulator");
 

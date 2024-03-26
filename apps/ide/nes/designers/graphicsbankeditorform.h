@@ -23,8 +23,8 @@ class GraphicsBankEditorForm : public CDesignerEditorBase
 	Q_OBJECT
 
 public:
-	GraphicsBankEditorForm(uint32_t size, QList<IChrRomBankItem*> bankItems, IProjectTreeViewItem* link = 0,
-	                       QWidget* parent = 0);
+	GraphicsBankEditorForm(uint32_t size, QList<IChrRomBankItem*> bankItems, IProjectTreeViewItem* link = nullptr,
+	                       QWidget* parent = nullptr);
 	~GraphicsBankEditorForm() override;
 	void updateChrRomBankItemList(QList<IChrRomBankItem*> bankItems);
 

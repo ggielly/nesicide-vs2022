@@ -15,7 +15,7 @@ class NESEmulatorWorker : public QObject, public IXMLSerializable
 	Q_OBJECT
 
 public:
-	NESEmulatorWorker(QObject* parent = 0);
+	NESEmulatorWorker(QObject* parent = nullptr);
 	~NESEmulatorWorker() override;
 
 	// IXMLSerializable Interface Implementation
@@ -91,7 +91,7 @@ class NESEmulatorThread : public QObject, public IXMLSerializable
 	Q_OBJECT
 
 public:
-	NESEmulatorThread(QObject* parent = 0);
+	NESEmulatorThread(QObject* parent = nullptr);
 	~NESEmulatorThread() override;
 
 	// IXMLSerializable Interface Implementation

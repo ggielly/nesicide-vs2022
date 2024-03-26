@@ -234,7 +234,7 @@ void MemoryInspectorDockWidget::on_actionBreak_on_CPU_access_here_triggered()
 	{
 		QString str;
 		str.sprintf("Cannot add breakpoint, maximum of %d already used.", NUM_BREAKPOINTS);
-		QMessageBox::information(0, "Error", str);
+		QMessageBox::information(nullptr, "Error", str);
 	}
 }
 
@@ -264,7 +264,7 @@ void MemoryInspectorDockWidget::on_actionBreak_on_CPU_read_here_triggered()
 	{
 		QString str;
 		str.sprintf("Cannot add breakpoint, maximum of %d already used.", NUM_BREAKPOINTS);
-		QMessageBox::information(0, "Error", str);
+		QMessageBox::information(nullptr, "Error", str);
 	}
 }
 
@@ -294,7 +294,7 @@ void MemoryInspectorDockWidget::on_actionBreak_on_CPU_write_here_triggered()
 	{
 		QString str;
 		str.sprintf("Cannot add breakpoint, maximum of %d already used.", NUM_BREAKPOINTS);
-		QMessageBox::information(0, "Error", str);
+		QMessageBox::information(nullptr, "Error", str);
 	}
 }
 
@@ -324,15 +324,15 @@ void MemoryInspectorDockWidget::snapToHandler(QString item)
 
 			if (splits.count() == 2)
 			{
-				addr = splits.at(1).toInt(NULL, 16);
+				addr = splits.at(1).toInt(nullptr, 16);
 			}
 			else if (splits.count() == 3)
 			{
-				addr = splits.at(2).toInt(NULL, 16);
+				addr = splits.at(2).toInt(nullptr, 16);
 			}
 			else if (splits.count() == 4)
 			{
-				addr = splits.at(3).toInt(NULL, 16);
+				addr = splits.at(3).toInt(nullptr, 16);
 			}
 
 			if ((addr >= low) &&

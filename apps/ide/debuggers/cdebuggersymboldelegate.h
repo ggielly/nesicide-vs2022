@@ -8,7 +8,7 @@ class CDebuggerSymbolDelegate : public QStyledItemDelegate
 	Q_OBJECT
 
 public:
-	explicit CDebuggerSymbolDelegate(QObject* parent = 0);
+	explicit CDebuggerSymbolDelegate(QObject* parent = nullptr);
 
 	QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option,
 	                      const QModelIndex& index) const override;
