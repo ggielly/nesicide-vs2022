@@ -112,7 +112,7 @@ CROMMapper004::~CROMMapper004()
 {
 }
 
-void CROMMapper004::RESET ( bool soft )
+void CROMMapper004::RESET (const bool soft )
 {
    int32_t idx;
 
@@ -145,7 +145,7 @@ void CROMMapper004::RESET ( bool soft )
    // CHR ROM/RAM already set up in CROM::RESET()...
 }
 
-void CROMMapper004::SYNCPPU ( uint32_t ppuCycle, uint32_t ppuAddr )
+void CROMMapper004::SYNCPPU (const uint32_t ppuCycle, const uint32_t ppuAddr )
 {
    bool zero = false;
    uint16_t ppuAddrA12 = ppuAddr&0x1000;
@@ -254,12 +254,12 @@ void CROMMapper004::SETPPU ( void )
    }
 }
 
-uint32_t CROMMapper004::DEBUGINFO ( uint32_t addr )
+uint32_t CROMMapper004::DEBUGINFO (const uint32_t addr )
 {
    return m_reg [ (((addr-MEM_32KB)/MEM_8KB)*2)+(addr&0x0001) ];
 }
 
-void CROMMapper004::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper004::HMAPPER (const uint32_t addr, const uint8_t data )
 {
    int32_t reg = (((addr-0x8000)/0x2000)*2)+(addr&0x0001);
    m_reg [ reg ] = data;

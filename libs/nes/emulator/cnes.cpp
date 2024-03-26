@@ -61,7 +61,7 @@ CNES::~CNES()
    delete m_tracer;
 }
 
-uint8_t CNES::_MEM ( uint32_t addr )
+uint8_t CNES::_MEM (const uint32_t addr )
 {
    if ( addr < 0x800 )
    {
@@ -85,7 +85,7 @@ uint8_t CNES::_MEM ( uint32_t addr )
    }
 }
 
-const char* CNES::DISASSEMBLY ( uint32_t addr )
+const char* CNES::DISASSEMBLY (const uint32_t addr )
 {
    if ( addr < 0x800 )
    {
@@ -115,7 +115,7 @@ void CNES::DISASSEMBLE ( void )
    CART()->DISASSEMBLE();
 }
 
-void CNES::PRINTABLEADDR ( char* buffer, uint32_t addr )
+void CNES::PRINTABLEADDR ( char* buffer, const uint32_t addr )
 {
    if ( addr < 0x5C00 )
    {
@@ -127,7 +127,7 @@ void CNES::PRINTABLEADDR ( char* buffer, uint32_t addr )
    }
 }
 
-void CNES::PRINTABLEADDR ( char* buffer, uint32_t addr, uint32_t absAddr )
+void CNES::PRINTABLEADDR ( char* buffer, const uint32_t addr, const uint32_t absAddr )
 {
    if ( addr < 0x5C00 )
    {
@@ -139,7 +139,7 @@ void CNES::PRINTABLEADDR ( char* buffer, uint32_t addr, uint32_t absAddr )
    }
 }
 
-uint32_t CNES::SLOC2VIRTADDR ( uint16_t sloc )
+uint32_t CNES::SLOC2VIRTADDR (const uint16_t sloc )
 {
    if ( CPU()->__PC() < 0x800 )
    {
@@ -163,7 +163,7 @@ uint32_t CNES::SLOC2VIRTADDR ( uint16_t sloc )
    }
 }
 
-uint16_t CNES::ADDR2SLOC ( uint32_t addr )
+uint16_t CNES::ADDR2SLOC (const uint32_t addr )
 {
    if ( addr < 0x800 )
    {
@@ -187,7 +187,7 @@ uint16_t CNES::ADDR2SLOC ( uint32_t addr )
    }
 }
 
-uint32_t CNES::SLOC ( uint32_t addr )
+uint32_t CNES::SLOC (const uint32_t addr )
 {
    if ( addr < 0x800 )
    {
@@ -211,7 +211,7 @@ uint32_t CNES::SLOC ( uint32_t addr )
    }
 }
 
-uint32_t CNES::PHYSADDR ( uint32_t addr )
+uint32_t CNES::PHYSADDR (const uint32_t addr )
 {
    if ( addr < 0x800 )
    {
@@ -235,7 +235,7 @@ uint32_t CNES::PHYSADDR ( uint32_t addr )
    }
 }
 
-void CNES::FRONTLOAD ( uint32_t mapper )
+void CNES::FRONTLOAD (const uint32_t mapper )
 {
    if ( mapper != CART()->MAPPER() )
    {
@@ -247,7 +247,7 @@ void CNES::FRONTLOAD ( uint32_t mapper )
    CART()->ClearPRGBanks();
 }
 
-void CNES::RESET ( bool soft )
+void CNES::RESET (const bool soft )
 {
 // CP ALWAYS DO   if ( nesIsDebuggable )
    {
@@ -277,7 +277,7 @@ void CNES::STEPCPUBREAKPOINT ( void )
    m_bStepCPUBreakpoint = true;
 }
 
-void CNES::STEPPPUBREAKPOINT ( bool goFrame )
+void CNES::STEPPPUBREAKPOINT (const bool goFrame )
 {
    m_bStepPPUBreakpoint = true;
    if ( goFrame )
@@ -292,7 +292,7 @@ void CNES::STEPPPUBREAKPOINT ( bool goFrame )
    }
 }
 
-void CNES::CHECKBREAKPOINT ( eBreakpointTarget target, eBreakpointType type, int32_t data, int32_t event )
+void CNES::CHECKBREAKPOINT (const eBreakpointTarget target, eBreakpointType type, const int32_t data, const int32_t event )
 {
    int32_t idx;
    BreakpointInfo* pBreakpoint;

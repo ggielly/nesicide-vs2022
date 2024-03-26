@@ -103,23 +103,23 @@ public:
    {
       return AddSample ( 0, eTracer_RESET, eNESSource_CPU, 0, 0, 0 );
    }
-   inline TracerInfo* AddNMI ( uint32_t cycle, int8_t source )
+   inline TracerInfo* AddNMI (const uint32_t cycle, const int8_t source )
    {
       return AddSample ( cycle, eTracer_NMI, source, 0, 0, 0 );
    }
-   inline TracerInfo* AddIRQ ( uint32_t cycle, int8_t source )
+   inline TracerInfo* AddIRQ (const uint32_t cycle, const int8_t source )
    {
       return AddSample ( cycle, eTracer_IRQ, source, 0, 0, 0 );
    }
-   inline TracerInfo* AddIRQRelease ( uint32_t cycle, int8_t source )
+   inline TracerInfo* AddIRQRelease (const uint32_t cycle, const int8_t source )
    {
       return AddSample ( cycle, eTracer_IRQRelease, source, 0, 0, 0 );
    }
-   inline TracerInfo* AddStolenCycle ( uint32_t cycle, int8_t source )
+   inline TracerInfo* AddStolenCycle (const uint32_t cycle, const int8_t source )
    {
       return AddSample ( cycle, eTracer_StolenCycle, source, 0, 0, 0 );
    }
-   inline TracerInfo* AddGarbageFetch( uint32_t cycle, int8_t target, uint16_t addr )
+   inline TracerInfo* AddGarbageFetch(const uint32_t cycle, const int8_t target, const uint16_t addr )
    {
       return AddSample ( cycle, eTracer_GarbageRead, eNESSource_PPU, target, addr, 0 );
    }
@@ -136,7 +136,7 @@ public:
    TracerInfo* GetLastCPUSample ( void );
    void SetDisassembly ( TracerInfo* pS, uint8_t* szD );
    void SetRegisters ( TracerInfo* pS, uint8_t a, uint8_t x, uint8_t y, uint8_t sp, uint8_t f );
-   void SetEffectiveAddress ( TracerInfo* pS, uint32_t ea )
+   void SetEffectiveAddress ( TracerInfo* pS, const uint32_t ea )
    {
       if ( pS )
       {
@@ -156,7 +156,7 @@ public:
       return m_ppuSamples;
    }
 
-   void SetFrame(uint32_t frame)
+   void SetFrame(const uint32_t frame)
    {
       m_frame = frame;
    }

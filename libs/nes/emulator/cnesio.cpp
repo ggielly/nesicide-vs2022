@@ -36,7 +36,7 @@ uint8_t   CIOVaus::m_ioPotLatch [] = { 0x00, 0x00 };
 uint8_t   CIOVaus::m_last4016 = 0x00;
 uint8_t   CIOVaus::m_trimPot [] = { 0x54, 0x54 };
 
-uint32_t CIO::IO ( uint32_t addr )
+uint32_t CIO::IO (const uint32_t addr )
 {
    uint32_t data = 0xFF;
 
@@ -60,7 +60,7 @@ void CIO::IO ( uint32_t addr, uint8_t data )
    return;
 }
 
-uint32_t CIO::_IO ( uint32_t addr )
+uint32_t CIO::_IO (const uint32_t addr )
 {
    uint32_t data = 0xFF;
 
@@ -84,7 +84,7 @@ void CIO::_IO ( uint32_t addr, uint8_t data )
    return;
 }
 
-uint32_t CIOStandardJoypad::IO ( uint32_t addr )
+uint32_t CIOStandardJoypad::IO (const uint32_t addr )
 {
    uint32_t data = 0xFF;
 
@@ -106,7 +106,7 @@ uint32_t CIOStandardJoypad::IO ( uint32_t addr )
    return data;
 }
 
-void CIOStandardJoypad::IO ( uint32_t addr, uint8_t data )
+void CIOStandardJoypad::IO (const uint32_t addr, const uint8_t data )
 {
    switch ( addr )
    {
@@ -123,7 +123,7 @@ void CIOStandardJoypad::IO ( uint32_t addr, uint8_t data )
    }
 }
 
-uint32_t CIOStandardJoypad::_IO ( uint32_t addr )
+uint32_t CIOStandardJoypad::_IO (const uint32_t addr )
 {
    uint32_t data = 0xFF;
 
@@ -141,7 +141,7 @@ uint32_t CIOStandardJoypad::_IO ( uint32_t addr )
    return data;
 }
 
-void CIOStandardJoypad::_IO ( uint32_t addr, uint8_t data )
+void CIOStandardJoypad::_IO (const uint32_t addr, const uint8_t data )
 {
    switch ( addr )
    {
@@ -158,7 +158,7 @@ void CIOStandardJoypad::_IO ( uint32_t addr, uint8_t data )
    }
 }
 
-void CIOTurboJoypad::IO ( uint32_t addr, uint8_t data )
+void CIOTurboJoypad::IO (const uint32_t addr, const uint8_t data )
 {
    switch ( addr )
    {
@@ -218,7 +218,7 @@ void CIOTurboJoypad::IO ( uint32_t addr, uint8_t data )
    }
 }
 
-uint32_t CIOTurboJoypad::_IO ( uint32_t addr )
+uint32_t CIOTurboJoypad::_IO (const uint32_t addr )
 {
    uint32_t data = 0xFF;
 
@@ -236,7 +236,7 @@ uint32_t CIOTurboJoypad::_IO ( uint32_t addr )
    return data;
 }
 
-void CIOTurboJoypad::_IO ( uint32_t addr, uint8_t data )
+void CIOTurboJoypad::_IO (const uint32_t addr, const uint8_t data )
 {
    switch ( addr )
    {
@@ -253,7 +253,7 @@ void CIOTurboJoypad::_IO ( uint32_t addr, uint8_t data )
    }
 }
 
-uint32_t CIOZapper::IO ( uint32_t addr )
+uint32_t CIOZapper::IO (const uint32_t addr )
 {
    uint32_t data = 0xFF;
    int32_t px, py, wx1, wy1, wx2, wy2;
@@ -356,7 +356,7 @@ void CIOZapper::IO ( uint32_t addr, uint8_t data )
    // Writes to zapper have no effect...
 }
 
-uint32_t CIOZapper::_IO ( uint32_t addr )
+uint32_t CIOZapper::_IO (const uint32_t addr )
 {
    uint32_t data = CIO::_IO(addr);
 
@@ -377,7 +377,7 @@ void CIOZapper::_IO ( uint32_t addr, uint8_t data )
    // Writes to zapper have no effect...
 }
 
-uint32_t CIOVaus::IO ( uint32_t addr )
+uint32_t CIOVaus::IO (const uint32_t addr )
 {
    uint32_t data = 0xFF;
 
@@ -397,7 +397,7 @@ uint32_t CIOVaus::IO ( uint32_t addr )
    return data;
 }
 
-void CIOVaus::IO ( uint32_t addr, uint8_t data )
+void CIOVaus::IO (const uint32_t addr, const uint8_t data )
 {
    int32_t px1, py1;
    int32_t px2, py2;
@@ -428,7 +428,7 @@ void CIOVaus::IO ( uint32_t addr, uint8_t data )
    }
 }
 
-uint32_t CIOVaus::_IO ( uint32_t addr )
+uint32_t CIOVaus::_IO (const uint32_t addr )
 {
    uint32_t data = 0xFF;
 
@@ -446,7 +446,7 @@ uint32_t CIOVaus::_IO ( uint32_t addr )
    return data;
 }
 
-void CIOVaus::_IO ( uint32_t addr, uint8_t data )
+void CIOVaus::_IO (const uint32_t addr, const uint8_t data )
 {
    int32_t px1, py1;
    int32_t px2, py2;
@@ -477,7 +477,7 @@ void CIOVaus::_IO ( uint32_t addr, uint8_t data )
    }
 }
 
-void CIOVaus::SPECIAL(int32_t port,int32_t special)
+void CIOVaus::SPECIAL(const int32_t port, const int32_t special)
 {
    m_trimPot[port] = special;
 }

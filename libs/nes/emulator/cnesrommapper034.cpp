@@ -74,7 +74,7 @@ CROMMapper034::~CROMMapper034()
 {
 }
 
-void CROMMapper034::RESET ( bool soft )
+void CROMMapper034::RESET (const bool soft )
 {
    m_mapper = 34;
 
@@ -86,7 +86,7 @@ void CROMMapper034::RESET ( bool soft )
    // CHR ROM/RAM already set up in CROM::RESET()...
 }
 
-uint32_t CROMMapper034::LMAPPER ( uint32_t addr )
+uint32_t CROMMapper034::LMAPPER (const uint32_t addr )
 {
    if ( (addr >= 0x7ffd) && (addr < 0x8000) )
    {
@@ -99,7 +99,7 @@ uint32_t CROMMapper034::LMAPPER ( uint32_t addr )
    return 0xA1; // garbage
 }
 
-void CROMMapper034::LMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper034::LMAPPER (const uint32_t addr, const uint8_t data )
 {
    uint8_t bank;
 
@@ -152,7 +152,7 @@ uint32_t CROMMapper034::DEBUGINFO ( uint32_t addr )
    return m_reg[3];
 }
 
-void CROMMapper034::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper034::HMAPPER ( uint32_t addr, const uint8_t data )
 {
    uint8_t bank;
 

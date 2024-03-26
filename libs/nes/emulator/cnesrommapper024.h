@@ -33,7 +33,7 @@ struct VRC6PulseChannel
       dutyCycle = 0;
       mode = 0;
    }
-   void REG(uint32_t addr, uint8_t data)
+   void REG(const uint32_t addr, const uint8_t data)
    {
       switch ( addr&0x03 )
       {
@@ -54,7 +54,7 @@ struct VRC6PulseChannel
       }
    }
    void TIMERTICK();
-   void SETDAC(uint8_t value)
+   void SETDAC(const uint8_t value)
    {
       dacAverage[dacSamples] = value;
       dac = value;
@@ -104,7 +104,7 @@ struct VRC6SawtoothChannel
       accumulatorCount = 0;
       accumulatorDivider = 0;
    }
-   void REG(uint32_t addr, uint8_t data)
+   void REG(const uint32_t addr, const uint8_t data)
    {
       switch ( addr&0x03 )
       {
@@ -123,7 +123,7 @@ struct VRC6SawtoothChannel
       }
    }
    void TIMERTICK();
-   void SETDAC(uint8_t value)
+   void SETDAC(const uint8_t value)
    {
       dacAverage[dacSamples] = value;
       dac = value;
@@ -157,7 +157,7 @@ public:
    uint32_t DEBUGINFO ( uint32_t addr );
    uint16_t AMPLITUDE ( void );
 
-   static void SOUNDENABLE(uint32_t mask) { m_soundEnableMask = mask; }
+   static void SOUNDENABLE(const uint32_t mask) { m_soundEnableMask = mask; }
 
 protected:
    // VRC6

@@ -164,7 +164,7 @@ CAPU::CAPU()
    MACHINE_SPECIFIC_EMULATE = &CAPU::EMULATE_NTSC_DENDY;
 }
 
-uint8_t* CAPU::PLAY ( uint16_t samples )
+uint8_t* CAPU::PLAY (const uint16_t samples )
 {
    uint16_t* waveBuf;
    
@@ -256,7 +256,7 @@ uint16_t CAPU::AMPLITUDE ( void )
    return outDownsampled;
 }
 
-void CAPU::SEQTICK ( int32_t sequence )
+void CAPU::SEQTICK (const int32_t sequence )
 {
    bool clockedLengthCounter = false;
    bool clockedLinearCounter = false;
@@ -447,7 +447,7 @@ CAPUOscillator::CAPUOscillator(uint8_t periodAdjust) :
    }
 }
 
-void CAPUOscillator::APU ( uint32_t addr, uint8_t data )
+void CAPUOscillator::APU (const uint32_t addr, const uint8_t data )
 {
    *(m_reg+(addr&0x03)) = data;
 }
@@ -626,7 +626,7 @@ static int32_t m_squareSeq [ 4 ] [ 8 ] =
    { 1, 0, 0, 1, 1, 1, 1, 1 }
 };
 
-void CAPUSquare::APU ( uint32_t addr, uint8_t data )
+void CAPUSquare::APU (const uint32_t addr, const uint8_t data )
 {
    CAPUOscillator::APU ( addr, data );
 
@@ -777,7 +777,7 @@ static int32_t m_triangleSeq [ 32 ] =
    0x8, 0x9, 0xA, 0xB, 0xC, 0xD, 0xE, 0xF
 };
 
-void CAPUTriangle::APU ( uint32_t addr, uint8_t data )
+void CAPUTriangle::APU (const uint32_t addr, const uint8_t data )
 {
    CAPUOscillator::APU ( addr, data );
 
@@ -918,7 +918,7 @@ static uint16_t m_noisePeriod [ 3 ][ 16 ] =
    }
 };
 
-void CAPUNoise::APU ( uint32_t addr, uint8_t data )
+void CAPUNoise::APU (const uint32_t addr, const uint8_t data )
 {
    CAPUOscillator::APU ( addr, data );
 
@@ -1088,7 +1088,7 @@ void CAPUDMC::RESET ( void )
    m_period = (*(*(m_dmcPeriod+CNES::NES()->VIDEOMODE())));
 }
 
-void CAPUDMC::APU ( uint32_t addr, uint8_t data )
+void CAPUDMC::APU (const uint32_t addr, const uint8_t data )
 {
    CAPUOscillator::APU ( addr, data );
 
@@ -1120,7 +1120,7 @@ void CAPUDMC::APU ( uint32_t addr, uint8_t data )
    }
 }
 
-void CAPUDMC::ENABLE ( bool enabled )
+void CAPUDMC::ENABLE (const bool enabled )
 {
    CAPUOscillator::ENABLE(enabled);
 
@@ -1139,7 +1139,7 @@ void CAPUDMC::ENABLE ( bool enabled )
    }
 }
 
-void CAPUDMC::DMASAMPLE ( uint8_t data )
+void CAPUDMC::DMASAMPLE (const uint8_t data )
 {
    m_sampleBuffer = data;
 
@@ -1695,7 +1695,7 @@ void CAPU::RELEASEIRQ ( void )
    }
 }
 
-uint32_t CAPU::APU ( uint32_t addr )
+uint32_t CAPU::APU (const uint32_t addr )
 {
    uint32_t data = 0x00;
 
@@ -1727,7 +1727,7 @@ uint32_t CAPU::APU ( uint32_t addr )
    return data;
 }
 
-void CAPU::APU ( uint32_t addr, uint8_t data )
+void CAPU::APU (const uint32_t addr, const uint8_t data )
 {
    // For APU recording...
    m_APUreg [ addr&0x1F ] = data;

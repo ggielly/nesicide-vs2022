@@ -144,7 +144,7 @@ CROMMapper026::~CROMMapper026()
 {
 }
 
-void CROMMapper026::RESET ( bool soft )
+void CROMMapper026::RESET (const bool soft )
 {
    m_mapper = 26;
 
@@ -227,7 +227,7 @@ void CROMMapper026::SYNCCPU ( bool write, uint16_t addr, uint8_t data )
    }
 }
 
-uint32_t CROMMapper026::DEBUGINFO ( uint32_t addr )
+uint32_t CROMMapper026::DEBUGINFO (const uint32_t addr )
 {
    switch ( addr )
    {
@@ -310,7 +310,7 @@ uint32_t CROMMapper026::DEBUGINFO ( uint32_t addr )
    return 0xA1; // garbage
 }
 
-void CROMMapper026::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper026::HMAPPER (const uint32_t addr, const uint8_t data )
 {
    uint32_t reg = 0;
 

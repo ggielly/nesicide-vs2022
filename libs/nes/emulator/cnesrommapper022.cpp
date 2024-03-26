@@ -89,7 +89,7 @@ CROMMapper022::~CROMMapper022()
 {
 }
 
-void CROMMapper022::RESET ( bool soft )
+void CROMMapper022::RESET (const bool soft )
 {
    m_mapper = 22;
 
@@ -103,7 +103,7 @@ void CROMMapper022::RESET ( bool soft )
    // CHR ROM/RAM already set up in CROM::RESET()...
 }
 
-uint32_t CROMMapper022::DEBUGINFO ( uint32_t addr )
+uint32_t CROMMapper022::DEBUGINFO (const uint32_t addr )
 {
    switch ( addr )
    {
@@ -177,7 +177,7 @@ uint32_t CROMMapper022::DEBUGINFO ( uint32_t addr )
    return 0xA1; // garbage
 }
 
-void CROMMapper022::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper022::HMAPPER (const uint32_t addr, const uint8_t data )
 {
    uint32_t reg = 0;
 

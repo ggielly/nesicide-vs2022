@@ -31,7 +31,7 @@ CJoypadLogger::~CJoypadLogger()
    delete [] m_pSampleBuffer;
 }
 
-bool CJoypadLogger::ReallocateLoggerMemory(int newDepth)
+bool CJoypadLogger::ReallocateLoggerMemory(const int newDepth)
 {
    bool ok = true;
 
@@ -49,7 +49,7 @@ bool CJoypadLogger::ReallocateLoggerMemory(int newDepth)
    return ok;
 }
 
-JoypadLoggerInfo* CJoypadLogger::AddSample(unsigned int cycle, unsigned char data)
+JoypadLoggerInfo* CJoypadLogger::AddSample(const unsigned int cycle, const unsigned char data)
 {
    JoypadLoggerInfo* pSample = NULL;
 
@@ -93,14 +93,14 @@ JoypadLoggerInfo* CJoypadLogger::GetLastSample ( void )
    return pSample;
 }
 
-JoypadLoggerInfo* CJoypadLogger::GetSample ( unsigned int sample )
+JoypadLoggerInfo* CJoypadLogger::GetSample (const unsigned int sample )
 {
    int getsample = sample;
 
    return m_pSampleBuffer+getsample;
 }
 
-void CJoypadLogger::SetSample ( unsigned int sample, unsigned char data )
+void CJoypadLogger::SetSample (const unsigned int sample, const unsigned char data )
 {
    JoypadLoggerInfo* pSample = GetSample ( sample );
 

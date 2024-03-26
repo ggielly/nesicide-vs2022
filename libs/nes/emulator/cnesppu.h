@@ -214,25 +214,25 @@ public:
    void PPU ( uint32_t addr, uint8_t data );
 
    // Read a byte from the PPU's internal OAM memory.
-   inline uint32_t OAM ( uint32_t oam, uint32_t sprite )
+   inline uint32_t OAM (const uint32_t oam, const uint32_t sprite )
    {
       return *(m_PPUoam+(sprite*OAM_SIZE)+oam);
    }
 
    // Write a byte to the PPU's internal OAM memory.
-   inline void OAM ( uint32_t oam, uint32_t sprite, uint8_t data )
+   inline void OAM (const uint32_t oam, const uint32_t sprite, const uint8_t data )
    {
       *(m_PPUoam+(sprite*OAM_SIZE)+oam) = data;
    }
 
    // Read a byte from the PPU's internal OAM memory.
-   inline uint32_t _OAM ( uint32_t oam, uint32_t sprite )
+   inline uint32_t _OAM (const uint32_t oam, const uint32_t sprite )
    {
       return *(m_PPUoam+(sprite*OAM_SIZE)+oam);
    }
 
    // Write a byte to the PPU's internal OAM memory.
-   inline void _OAM ( uint32_t oam, uint32_t sprite, uint8_t data )
+   inline void _OAM (const uint32_t oam, const uint32_t sprite, const uint8_t data )
    {
       *(m_PPUoam+(sprite*OAM_SIZE)+oam) = data;
    }
@@ -279,7 +279,7 @@ public:
 
    // Accessor methods to set up or clear the state of the OAM memory
    // maintained internally by the PPU object.
-   void OAMSET ( uint32_t addr, uint8_t* data, uint32_t length )
+   void OAMSET (const uint32_t addr, uint8_t* data, const uint32_t length )
    {
       memcpy(m_PPUoam+addr,data,length);
    }
@@ -307,7 +307,7 @@ public:
    // VBLANK flag in the PPU registers is choked by the reading of the
    // PPU register containing the VBLANK flag at a precise point within
    // the PPU frame.
-   inline void VBLANKCHOKED ( bool choked )
+   inline void VBLANKCHOKED (const bool choked )
    {
       m_vblankChoked = choked;
    }
@@ -321,7 +321,7 @@ public:
    // Interface to handle the special case where assertion of NMI can be
    // choked by reading PPU register $2002 at precise points within the
    // PPU frame.
-   inline void NMICHOKED ( bool choked )
+   inline void NMICHOKED (const bool choked )
    {
       m_nmiChoked = choked;
    }
@@ -333,7 +333,7 @@ public:
    // Interface to handle the special case where assertion of NMI can be
    // forced to occur more than once during VBLANK if the PPU's NMI enablement
    // bit is cleared and re-set during the VBLANK period.
-   inline void NMIREENABLED ( bool reenabled )
+   inline void NMIREENABLED (const bool reenabled )
    {
       m_nmiReenabled = reenabled;
    }
@@ -352,7 +352,7 @@ public:
    // about the internal state of the PPU without affecting said internal state.
    // It is also used by the emulation to determine what steps to perform as
    // part of the emulation process (ie. generate an NMI to the CPU core or not?)
-   inline uint32_t _PPU ( uint32_t addr )
+   inline uint32_t _PPU (const uint32_t addr )
    {
       return *(m_PPUreg+(addr&0x0007));
    }
@@ -362,7 +362,7 @@ public:
    // of the PPU from the perspective of the emulated machine, not because any
    // emulated code made it change.  For example, setting or clearing the VBLANK
    // flag are not necessarily dependent on executed code.
-   inline void _PPU ( uint32_t addr, uint8_t data )
+   inline void _PPU (const uint32_t addr, const uint8_t data )
    {
       *(m_PPUreg+(addr&0x0007)) = data;
    }
@@ -370,7 +370,7 @@ public:
    // Silently read from a memory location visible to the PPU.
    // This routine is used by the debuggers to gather PPU information without
    // impacting the state of the emulation or the visual aspect of any inspectors.
-   inline uint32_t _MEM ( uint32_t addr )
+   inline uint32_t _MEM (const uint32_t addr )
    {
       return LOAD(addr,0,0,false);
    }
@@ -378,7 +378,7 @@ public:
    // Silently write to a memory location visible to the PPU.
    // This routine is used by the debuggers to change PPU information without
    // impacting the state of the emulation or the visual aspect of any inspectors.
-   inline void _MEM ( uint32_t addr, uint8_t data )
+   inline void _MEM (const uint32_t addr, const uint8_t data )
    {
       STORE(addr,data,0,0,false);
    }
@@ -386,19 +386,19 @@ public:
    // Silently read from memory locations visible to the PPU.
    // These routines are used by the debuggers to gather PPU information without
    // impacting the state of the emulation.
-   inline uint8_t _NAMETABLE ( uint16_t addr )
+   inline uint8_t _NAMETABLE (const uint16_t addr )
    {
       return _MEM(addr);
    }
-   inline uint8_t _ATTRTABLE ( uint16_t addr )
+   inline uint8_t _ATTRTABLE (const uint16_t addr )
    {
       return _MEM(addr);
    }
-   inline uint8_t MEM(uint16_t addr)
+   inline uint8_t MEM(const uint16_t addr)
    {
       return _MEM(addr);
    }
-   inline uint8_t _PATTERNDATA ( uint16_t addr )
+   inline uint8_t _PATTERNDATA (const uint16_t addr )
    {
       return _MEM( addr );
    }
@@ -449,11 +449,11 @@ public:
    // register values are stored so that a representation of the visible portions
    // of the nametable may be overlaid upon the actual nametable in the nametable visual
    // inspector.
-   inline uint16_t _SCROLLX ( int32_t x, int32_t y )
+   inline uint16_t _SCROLLX (const int32_t x, const int32_t y )
    {
       return *(*(m_2005x+x)+y);
    }
-   inline uint16_t _SCROLLY ( int32_t x, int32_t y )
+   inline uint16_t _SCROLLY (const int32_t x, const int32_t y )
    {
       return *(*(m_2005y+x)+y);
    }

@@ -114,7 +114,7 @@ static bool cpuAlwaysFireEvent(BreakpointInfo* pBreakpoint,int data)
    return true;
 }
 
-static bool cpuUndocumentedExactEvent(BreakpointInfo* pBreakpoint,int data)
+static bool cpuUndocumentedExactEvent(BreakpointInfo* pBreakpoint, const int data)
 {
    // If opcode executing is one specified, break...
    if ( pBreakpoint->item1 == data )
@@ -125,7 +125,7 @@ static bool cpuUndocumentedExactEvent(BreakpointInfo* pBreakpoint,int data)
    return false;
 }
 
-static bool cpuExecuteExactEvent(BreakpointInfo* pBreakpoint,int data)
+static bool cpuExecuteExactEvent(BreakpointInfo* pBreakpoint, const int data)
 {
    // If opcode executing is one specified, break...
    if ( pBreakpoint->item1 == data )
@@ -307,7 +307,7 @@ static bool apuDMAEvent(BreakpointInfo* pBreakpoint,int data)
    return true;
 }
 
-static bool apuDACEvent(BreakpointInfo* pBreakpoint,int data)
+static bool apuDACEvent(BreakpointInfo* pBreakpoint, const int data)
 {
    if ( data == pBreakpoint->item1 )
       return true;
@@ -888,7 +888,7 @@ static bool ppuSpriteDmaEvent(BreakpointInfo* pBreakpoint,int data)
    return false;
 }
 
-static bool ppuSpriteInMultiplexerEvent(BreakpointInfo* pBreakpoint,int data)
+static bool ppuSpriteInMultiplexerEvent(BreakpointInfo* pBreakpoint, const int data)
 {
    if ( data == pBreakpoint->item1 )
    {
@@ -898,7 +898,7 @@ static bool ppuSpriteInMultiplexerEvent(BreakpointInfo* pBreakpoint,int data)
    return false;
 }
 
-static bool ppuSpriteSelectedEvent(BreakpointInfo* pBreakpoint,int data)
+static bool ppuSpriteSelectedEvent(BreakpointInfo* pBreakpoint, const int data)
 {
    if ( data == pBreakpoint->item1 )
    {
@@ -908,7 +908,7 @@ static bool ppuSpriteSelectedEvent(BreakpointInfo* pBreakpoint,int data)
    return false;
 }
 
-static bool ppuSpriteRenderingEvent(BreakpointInfo* pBreakpoint,int data)
+static bool ppuSpriteRenderingEvent(BreakpointInfo* pBreakpoint, const int data)
 {
    if ( data == pBreakpoint->item1 )
    {
@@ -918,7 +918,7 @@ static bool ppuSpriteRenderingEvent(BreakpointInfo* pBreakpoint,int data)
    return false;
 }
 
-static bool ppuAddressEqualsEvent(BreakpointInfo* pBreakpoint,int data)
+static bool ppuAddressEqualsEvent(BreakpointInfo* pBreakpoint, const int data)
 {
    if ( data == pBreakpoint->item1 )
    {
@@ -1050,7 +1050,7 @@ void nesDisableDebug ( void )
    __nesdebug = false;
 }
 
-void nesSetBreakOnKIL ( bool breakOnKIL )
+void nesSetBreakOnKIL (const bool breakOnKIL )
 {
    CNES::NES()->CPU()->BREAKONKIL(breakOnKIL);
 }
@@ -1090,7 +1090,7 @@ uint32_t nesGetNumColors ( void )
    return 64;
 }
 
-void nesSetSystemMode ( uint32_t mode )
+void nesSetSystemMode (const uint32_t mode )
 {
    CNES::NES()->VIDEOMODE(mode);
 }
@@ -1100,27 +1100,27 @@ uint32_t nesGetSystemMode ( void )
    return CNES::NES()->VIDEOMODE();
 }
 
-void nesGetPrintableAddress ( char* buffer, uint32_t virtAddr )
+void nesGetPrintableAddress ( char* buffer, const uint32_t virtAddr )
 {
    CNES::NES()->PRINTABLEADDR(buffer,virtAddr);
 }
 
-void nesGetPrintablePhysicalAddress ( char* buffer, uint32_t virtAddr, uint32_t physAddr )
+void nesGetPrintablePhysicalAddress ( char* buffer, const uint32_t virtAddr, const uint32_t physAddr )
 {
    CNES::NES()->PRINTABLEADDR(buffer,virtAddr,physAddr);
 }
 
-void nesSetControllerType ( int32_t port, int32_t type )
+void nesSetControllerType (const int32_t port, const int32_t type )
 {
    CNES::NES()->CONTROLLER(port,type);
 }
 
-void nesSetControllerScreenPosition ( int32_t port, int32_t px, int32_t py, int32_t wx1, int32_t wy1, int32_t wx2, int32_t wy2 )
+void nesSetControllerScreenPosition (const int32_t port, const int32_t px, const int32_t py, const int32_t wx1, const int32_t wy1, const int32_t wx2, const int32_t wy2 )
 {
    CNES::NES()->CONTROLLERPOSITION(port,px,py,wx1,wy1,wx2,wy2);
 }
 
-void nesSetControllerSpecial ( int32_t port, int32_t special )
+void nesSetControllerSpecial (const int32_t port, const int32_t special )
 {
    // Note this function must be called after nesSetControllerType is
    // called otherwise the wrong controller type's special setting will
@@ -1131,7 +1131,7 @@ void nesSetControllerSpecial ( int32_t port, int32_t special )
    }
 }
 
-void nesEnableBreakpoints ( bool enable )
+void nesEnableBreakpoints (const bool enable )
 {
    CNES::NES()->BREAKPOINTS(enable);
 }
@@ -1157,32 +1157,32 @@ void nesResetInputRecording ( void )
    CIOStandardJoypad::LOGGER(1)->ClearSampleBuffer();
 }
 
-void nesSetInputPlayback ( bool enable )
+void nesSetInputPlayback (const bool enable )
 {
    CNES::NES()->REPLAY(enable);
 }
 
-void nesSetInputRecording ( bool enable )
+void nesSetInputRecording (const bool enable )
 {
    CNES::NES()->RECORD(enable);
 }
 
-uint32_t nesGetInputSamplesAvailable ( int32_t port )
+uint32_t nesGetInputSamplesAvailable (const int32_t port )
 {
    return CIOStandardJoypad::LOGGER(port)->GetNumSamples();
 }
 
-JoypadLoggerInfo* nesGetInputSample ( int32_t port, int sample )
+JoypadLoggerInfo* nesGetInputSample (const int32_t port, const int sample )
 {
    return CIOStandardJoypad::LOGGER(port)->GetSample(sample);
 }
 
-void nesSetInputSample ( int32_t port, JoypadLoggerInfo* sample )
+void nesSetInputSample (const int32_t port, JoypadLoggerInfo* sample )
 {
    CIOStandardJoypad::LOGGER(port)->AddSample(sample->cycle,sample->data);
 }
 
-void nesGetInputSamples ( int32_t port, JoypadLoggerInfo** samples )
+void nesGetInputSamples (const int32_t port, JoypadLoggerInfo** samples )
 {
    (*samples) = CIOStandardJoypad::LOGGER(port)->GetSample(0);
 }
@@ -1214,12 +1214,12 @@ CCodeDataLogger* nesGetCpuCodeDataLoggerDatabase ( void )
    return CNES::NES()->CPU()->LOGGER();
 }
 
-CCodeDataLogger* nesGetVirtualPRGROMCodeDataLoggerDatabase ( uint32_t addr )
+CCodeDataLogger* nesGetVirtualPRGROMCodeDataLoggerDatabase (const uint32_t addr )
 {
    return CNES::NES()->CART()->LOGGERVIRT(addr);
 }
 
-CCodeDataLogger* nesGetPhysicalPRGROMCodeDataLoggerDatabase ( uint32_t addr )
+CCodeDataLogger* nesGetPhysicalPRGROMCodeDataLoggerDatabase (const uint32_t addr )
 {
    return CNES::NES()->CART()->LOGGERPHYS(addr);
 }
@@ -1229,12 +1229,12 @@ CCodeDataLogger* nesGetEXRAMCodeDataLoggerDatabase ( void )
    return CNES::NES()->CART()->EXRAMLOGGER();
 }
 
-CCodeDataLogger* nesGetVirtualSRAMCodeDataLoggerDatabase ( uint32_t addr )
+CCodeDataLogger* nesGetVirtualSRAMCodeDataLoggerDatabase (const uint32_t addr )
 {
    return CNES::NES()->CART()->SRAMLOGGERVIRT(addr);
 }
 
-CCodeDataLogger* nesGetPhysicalSRAMCodeDataLoggerDatabase ( uint32_t addr )
+CCodeDataLogger* nesGetPhysicalSRAMCodeDataLoggerDatabase (const uint32_t addr )
 {
    return CNES::NES()->CART()->SRAMLOGGERPHYS(addr);
 }
@@ -1364,32 +1364,32 @@ void nesDisassembleSingle ( uint8_t* pOpcode, char* buffer )
    DISASSEMBLE(pOpcode,buffer);
 }
 
-const char* nesGetDisassemblyAtAddress ( uint32_t addr )
+const char* nesGetDisassemblyAtAddress (const uint32_t addr )
 {
    return CNES::NES()->DISASSEMBLY(addr);
 }
 
-void nesGetDisassemblyAtPhysicalAddress ( uint32_t physAddr, char* buffer )
+void nesGetDisassemblyAtPhysicalAddress (const uint32_t physAddr, char* buffer )
 {
    CNES::NES()->CART()->PRGROMDISASSEMBLYATPHYSADDR(physAddr,buffer);
 }
 
-uint32_t nesGetVirtualAddressFromSLOC ( uint16_t sloc )
+uint32_t nesGetVirtualAddressFromSLOC (const uint16_t sloc )
 {
    return CNES::NES()->SLOC2VIRTADDR(sloc);
 }
 
-uint16_t nesGetSLOCFromAddress ( uint32_t addr )
+uint16_t nesGetSLOCFromAddress (const uint32_t addr )
 {
    return CNES::NES()->ADDR2SLOC(addr);
 }
 
-uint32_t nesGetSLOC ( uint32_t addr )
+uint32_t nesGetSLOC (const uint32_t addr )
 {
    return CNES::NES()->SLOC(addr);
 }
 
-uint32_t nesGetPhysicalAddressFromAddress ( uint32_t addr )
+uint32_t nesGetPhysicalAddressFromAddress (const uint32_t addr )
 {
    return CNES::NES()->PHYSADDR(addr);
 }
@@ -1402,7 +1402,7 @@ void nesClearOpcodeMasks ( void )
    CNES::NES()->CART()->EXRAMOPCODEMASKCLR ();
 }
 
-void nesSetOpcodeMask ( uint32_t addr, uint8_t mask )
+void nesSetOpcodeMask (const uint32_t addr, const uint8_t mask )
 {
    CNES::NES()->CART()->PRGROMOPCODEMASKATPHYSADDR(addr, mask);
 }
@@ -1412,17 +1412,17 @@ void nesSetTVOut ( int8_t* tv )
    CNES::NES()->PPU()->TV ( tv );
 }
 
-void nesFrontload ( uint32_t mapper )
+void nesFrontload (const uint32_t mapper )
 {
    CNES::NES()->FRONTLOAD(mapper);
 }
 
-void nesLoadPRGROMBank ( uint32_t bank, uint8_t* bankData )
+void nesLoadPRGROMBank (const uint32_t bank, uint8_t* bankData )
 {
    CNES::NES()->CART()->SetPRGBank ( bank, bankData );
 }
 
-void nesLoadCHRROMBank ( uint32_t bank, uint8_t* bankData )
+void nesLoadCHRROMBank (const uint32_t bank, uint8_t* bankData )
 {
    CNES::NES()->CART()->SetCHRBank ( bank, bankData );
 }
@@ -1452,7 +1452,7 @@ void nesSetFourScreen ( void )
    CNES::NES()->PPU()->MIRROR(-1,true);
 }
 
-void nesReset ( bool soft )
+void nesReset (const bool soft )
 {
    CNES::NES()->RESET(soft);
 }
@@ -1467,7 +1467,7 @@ void nesRun ( uint32_t* joypads )
    CNES::NES()->RUN(joypads);
 }
 
-uint8_t* nesGetAudioSamples ( uint16_t samples )
+uint8_t* nesGetAudioSamples (const uint16_t samples )
 {
    return CNES::NES()->CPU()->APU()->PLAY(samples);
 }
@@ -1487,7 +1487,7 @@ uint32_t nesGetCPUCycle ( void )
    return CNES::NES()->CPU()->_CYCLES();
 }
 
-void nesSetGotoAddress ( uint32_t addr )
+void nesSetGotoAddress (const uint32_t addr )
 {
    if ( addr == 0xFFFFFFFF )
    {
@@ -1515,24 +1515,24 @@ int8_t* nesGetTVOut ( void )
 }
 
 #include "cnesrommapper005.h"
-void nesSetMMC5AudioChannelMask ( uint32_t mask )
+void nesSetMMC5AudioChannelMask (const uint32_t mask )
 {
    CROMMapper005::SOUNDENABLE(mask);
 }
 
 #include "cnesrommapper024.h"
-void nesSetVRC6AudioChannelMask ( uint32_t mask )
+void nesSetVRC6AudioChannelMask (const uint32_t mask )
 {
    CROMMapper024::SOUNDENABLE(mask);
 }
 
 #include "cnesrommapper019.h"
-void nesSetN106AudioChannelMask ( uint32_t mask )
+void nesSetN106AudioChannelMask (const uint32_t mask )
 {
    CROMMapper019::SOUNDENABLE(mask);
 }
 
-void nesSetAudioChannelMask ( uint8_t mask )
+void nesSetAudioChannelMask (const uint8_t mask )
 {
    CNES::NES()->CPU()->APU()->MUTE(mask);
 }
@@ -1552,7 +1552,7 @@ uint32_t nesGetCPUProgramCounterOfLastSync( void )
    return CNES::NES()->CPU()->__PCSYNC();
 }
 
-void nesSetCPURegister ( uint32_t addr, uint32_t data )
+void nesSetCPURegister (const uint32_t addr, const uint32_t data )
 {
    switch ( addr )
    {
@@ -1586,7 +1586,7 @@ void nesSetCPURegister ( uint32_t addr, uint32_t data )
    }
 }
 
-uint32_t nesGetCPURegister( uint32_t addr )
+uint32_t nesGetCPURegister(const uint32_t addr )
 {
    switch ( addr )
    {
@@ -1656,62 +1656,62 @@ uint32_t nesGetCPUFlagCarry ( void )
    return CNES::NES()->CPU()->_C();
 }
 
-void nesSetCPUFlagNegative ( uint32_t set )
+void nesSetCPUFlagNegative (const uint32_t set )
 {
    CNES::NES()->CPU()->_N(set);
 }
 
-void nesSetCPUFlagOverflow ( uint32_t set )
+void nesSetCPUFlagOverflow (const uint32_t set )
 {
    CNES::NES()->CPU()->_V(set);
 }
 
-void nesSetCPUFlagBreak ( uint32_t set )
+void nesSetCPUFlagBreak (const uint32_t set )
 {
    CNES::NES()->CPU()->_B(set);
 }
 
-void nesSetCPUFlagDecimal ( uint32_t set )
+void nesSetCPUFlagDecimal (const uint32_t set )
 {
    CNES::NES()->CPU()->_D(set);
 }
 
-void nesSetCPUFlagInterrupt ( uint32_t set )
+void nesSetCPUFlagInterrupt (const uint32_t set )
 {
    CNES::NES()->CPU()->_I(set);
 }
 
-void nesSetCPUFlagZero ( uint32_t set )
+void nesSetCPUFlagZero (const uint32_t set )
 {
    CNES::NES()->CPU()->_Z(set);
 }
 
-void nesSetCPUFlagCarry ( uint32_t set )
+void nesSetCPUFlagCarry (const uint32_t set )
 {
    CNES::NES()->CPU()->_C(set);
 }
 
-uint32_t nesGetPPUMemory ( uint32_t addr )
+uint32_t nesGetPPUMemory (const uint32_t addr )
 {
    return CNES::NES()->PPU()->_MEM(addr);
 }
 
-void nesSetPPUMemory ( uint32_t addr, uint32_t data )
+void nesSetPPUMemory (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->PPU()->_MEM(addr,data);
 }
 
-uint32_t nesGetCPUMemory ( uint32_t addr )
+uint32_t nesGetCPUMemory (const uint32_t addr )
 {
    return CNES::NES()->CPU()->_MEM(addr);
 }
 
-void nesSetCPUMemory ( uint32_t addr, uint32_t data )
+void nesSetCPUMemory (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->CPU()->_MEM(addr,data);
 }
 
-uint8_t nesGetMemory ( uint32_t addr )
+uint8_t nesGetMemory (const uint32_t addr )
 {
    return CNES::NES()->_MEM(addr);
 }
@@ -1721,22 +1721,22 @@ uint32_t nesGetPPUCycle ( void )
    return CNES::NES()->PPU()->_CYCLES();
 }
 
-uint32_t nesGetPPURegister ( uint32_t addr )
+uint32_t nesGetPPURegister (const uint32_t addr )
 {
    return CNES::NES()->PPU()->_PPU(addr);
 }
 
-void nesSetPPURegister ( uint32_t addr, uint32_t data )
+void nesSetPPURegister (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->PPU()->_PPU(addr,data);
 }
 
-uint16_t nesGetScrollXAtXY ( int32_t x, int32_t y )
+uint16_t nesGetScrollXAtXY (const int32_t x, const int32_t y )
 {
    return CNES::NES()->PPU()->_SCROLLX(x,y);
 }
 
-uint16_t nesGetScrollYAtXY ( int32_t x, int32_t y )
+uint16_t nesGetScrollYAtXY (const int32_t x, const int32_t y )
 {
    return CNES::NES()->PPU()->_SCROLLY(x,y);
 }
@@ -1768,12 +1768,12 @@ uint32_t nesGetAPUCycle ( void )
    return CNES::NES()->CPU()->APU()->CYCLES();
 }
 
-uint32_t nesGetAPURegister ( uint32_t addr )
+uint32_t nesGetAPURegister (const uint32_t addr )
 {
    return CNES::NES()->CPU()->APU()->_APU(addr);
 }
 
-void nesSetAPURegister ( uint32_t addr, uint32_t data )
+void nesSetAPURegister (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->CPU()->APU()->_APU(addr,data);
 }
@@ -1850,32 +1850,32 @@ uint8_t nesGetMapper ( void )
    return CNES::NES()->CART()->MAPPER();
 }
 
-uint32_t nesMapperLowRead ( uint32_t addr )
+uint32_t nesMapperLowRead (const uint32_t addr )
 {
    return CNES::NES()->CART()->DEBUGINFO(addr);
 }
 
-void nesMapperLowWrite ( uint32_t addr, uint32_t data )
+void nesMapperLowWrite (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->CART()->LMAPPER(addr,data);
 }
 
-uint32_t nesMapperHighRead ( uint32_t addr )
+uint32_t nesMapperHighRead (const uint32_t addr )
 {
    return CNES::NES()->CART()->DEBUGINFO(addr);
 }
 
-void nesMapperHighWrite ( uint32_t addr, uint32_t data )
+void nesMapperHighWrite (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->CART()->HMAPPER(addr,data);
 }
 
-uint32_t nesGetPPUOAM ( uint32_t addr )
+uint32_t nesGetPPUOAM (const uint32_t addr )
 {
    return CNES::NES()->PPU()->_OAM(addr&3,addr>>2);
 }
 
-void nesSetPPUOAM ( uint32_t addr, uint32_t data )
+void nesSetPPUOAM (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->PPU()->_OAM(addr&3,addr>>2,data);
 }
@@ -1910,57 +1910,57 @@ int32_t nesGetPPUFlipFlop ( void )
    return CNES::NES()->PPU()->_PPUFLIPFLOP();
 }
 
-uint32_t nesGetPRGROMPhysicalAddress ( uint32_t addr )
+uint32_t nesGetPRGROMPhysicalAddress (const uint32_t addr )
 {
    return CNES::NES()->CART()->PRGROMPHYSADDR(addr);
 }
 
-uint32_t nesGetCHRMEMPhysicalAddress ( uint32_t addr )
+uint32_t nesGetCHRMEMPhysicalAddress (const uint32_t addr )
 {
    return CNES::NES()->CART()->CHRMEMPHYSADDR(addr);
 }
 
-uint32_t nesGetPRGROMData ( uint32_t addr )
+uint32_t nesGetPRGROMData (const uint32_t addr )
 {
    return CNES::NES()->CART()->PRGROM(addr);
 }
 
-uint32_t nesGetCHRMEMData ( uint32_t addr )
+uint32_t nesGetCHRMEMData (const uint32_t addr )
 {
    return CNES::NES()->CART()->CHRMEM(addr);
 }
 
-void nesSetCHRMEMData ( uint32_t addr, uint32_t data )
+void nesSetCHRMEMData (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->CART()->CHRMEM(addr,data);
 }
 
-uint32_t nesGetSRAMPhysicalAddress ( uint32_t addr )
+uint32_t nesGetSRAMPhysicalAddress (const uint32_t addr )
 {
    return CNES::NES()->CART()->SRAMPHYSADDR(addr);
 }
 
-uint32_t nesGetSRAMDataVirtual ( uint32_t addr )
+uint32_t nesGetSRAMDataVirtual (const uint32_t addr )
 {
    return CNES::NES()->CART()->SRAMVIRT(addr);
 }
 
-void nesSetSRAMDataVirtual ( uint32_t addr, uint32_t data )
+void nesSetSRAMDataVirtual (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->CART()->SRAMVIRT(addr,data);
 }
 
-uint32_t nesGetSRAMDataPhysical ( uint32_t addr )
+uint32_t nesGetSRAMDataPhysical (const uint32_t addr )
 {
    return CNES::NES()->CART()->SRAMPHYS(addr);
 }
 
-void nesSetSRAMDataPhysical ( uint32_t addr, uint32_t data )
+void nesSetSRAMDataPhysical (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->CART()->SRAMPHYS(addr,data);
 }
 
-void nesLoadSRAMDataPhysical ( uint32_t addr, uint32_t data )
+void nesLoadSRAMDataPhysical (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->CART()->SRAMPHYS(addr,data,false);
 }
@@ -1970,27 +1970,27 @@ bool nesIsSRAMDirty ()
    return CNES::NES()->CART()->SRAMDIRTY();
 }
 
-uint32_t nesGetEXRAMPhysicalAddress ( uint32_t addr )
+uint32_t nesGetEXRAMPhysicalAddress (const uint32_t addr )
 {
    return CNES::NES()->CART()->EXRAMPHYSADDR(addr);
 }
 
-uint32_t nesGetEXRAMData ( uint32_t addr )
+uint32_t nesGetEXRAMData (const uint32_t addr )
 {
    return CNES::NES()->CART()->EXRAM(addr);
 }
 
-void nesSetEXRAMData ( uint32_t addr, uint32_t data )
+void nesSetEXRAMData (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->CART()->EXRAM(addr,data);
 }
 
-uint32_t nesGetVRAMData ( uint32_t addr )
+uint32_t nesGetVRAMData (const uint32_t addr )
 {
    return CNES::NES()->CART()->VRAM(addr);
 }
 
-void nesSetVRAMData ( uint32_t addr, uint32_t data )
+void nesSetVRAMData (const uint32_t addr, const uint32_t data )
 {
    CNES::NES()->CART()->VRAM(addr,data);
 }
@@ -2010,32 +2010,32 @@ uint32_t nesMapperRemappedVMEMSize ( void )
    return CNES::NES()->CART()->VRAMMEMORY()->TOTALSIZE();
 }
 
-uint32_t nesGetPaletteRedComponent(uint32_t idx)
+uint32_t nesGetPaletteRedComponent(const uint32_t idx)
 {
    return CBasePalette::GetPaletteR(idx)&0xFF;
 }
 
-uint32_t nesGetPaletteGreenComponent(uint32_t idx)
+uint32_t nesGetPaletteGreenComponent(const uint32_t idx)
 {
    return CBasePalette::GetPaletteG(idx)&0xFF;
 }
 
-uint32_t nesGetPaletteBlueComponent(uint32_t idx)
+uint32_t nesGetPaletteBlueComponent(const uint32_t idx)
 {
    return CBasePalette::GetPaletteB(idx)&0xFF;
 }
 
-void    nesSetPaletteRedComponent(uint32_t idx,uint32_t r)
+void    nesSetPaletteRedComponent(const uint32_t idx, const uint32_t r)
 {
    CBasePalette::SetPaletteR(idx,r&0xFF);
 }
 
-void    nesSetPaletteGreenComponent(uint32_t idx,uint32_t g)
+void    nesSetPaletteGreenComponent(const uint32_t idx, const uint32_t g)
 {
    CBasePalette::SetPaletteG(idx,g&0xFF);
 }
 
-void    nesSetPaletteBlueComponent(uint32_t idx,uint32_t b)
+void    nesSetPaletteBlueComponent(const uint32_t idx, const uint32_t b)
 {
    CBasePalette::SetPaletteB(idx,b&0xFF);
 }

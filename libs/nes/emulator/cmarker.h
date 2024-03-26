@@ -43,7 +43,7 @@ public:
    {
       return MAX_MARKER_SETS;
    }
-   MarkerSetInfo* GetMarker(int32_t marker)
+   MarkerSetInfo* GetMarker(const int32_t marker)
    {
       return m_marker+marker;
    }

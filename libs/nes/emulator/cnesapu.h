@@ -47,13 +47,13 @@ public:
    // An APU channel should know what channel ID it has.  This isn't
    // useful in the APU itself but is needed by the debugger inspectors
    // and designers that need to do specific things to specific APU channels.
-   void SetChannel ( int32_t channel )
+   void SetChannel (const int32_t channel )
    {
       m_channel = channel;
    }
 
    // This method mutes or unmutes this channel.
-   void MUTE(bool mute) { m_muted = !!mute; }
+   void MUTE(const bool mute) { m_muted = !!mute; }
 
    // This method returns the mute state of the channel.
    bool MUTED() { return !!m_muted; }
@@ -65,7 +65,7 @@ public:
    // This method turns the channel on or off.  The length counter
    // disables the channel when it expires.  Writes to APU register
    // $4015 change the enabled state of the channels.
-   inline void ENABLE ( bool enabled )
+   inline void ENABLE (const bool enabled )
    {
       m_enabled = enabled;
 
@@ -105,7 +105,7 @@ public:
    inline uint32_t CLKDIVIDER ( void );
 
    // These routines set/get the channels' DAC value.
-   inline void SETDAC ( uint8_t dac )
+   inline void SETDAC (const uint8_t dac )
    {
       uint8_t oldDac = m_dac;
       m_dacAverage[m_dacSamples] = dac;
@@ -489,7 +489,7 @@ public:
    {
       return m_dmcIrqAsserted;
    }
-   void IRQASSERTED ( bool asserted )
+   void IRQASSERTED (const bool asserted )
    {
       m_dmcIrqAsserted = asserted;
    }
@@ -583,7 +583,7 @@ public:
    void EMULATE_PAL ( void );
    uint8_t* PLAY ( uint16_t samples );
 
-   void DMASAMPLE ( uint8_t data )
+   void DMASAMPLE (const uint8_t data )
    {
       m_dmc.DMASAMPLE ( data );
    }
@@ -596,7 +596,7 @@ public:
                ((!m_noise.MUTED())<<3)|
                ((!m_dmc.MUTED())<<4) );
    }
-   void MUTE ( uint8_t mask )
+   void MUTE (const uint8_t mask )
    {
       m_square[0].MUTE(!(mask&0x01));
       m_square[1].MUTE(!(mask&0x02));
@@ -605,15 +605,15 @@ public:
       m_dmc.MUTE(!(mask&0x10));
    }
 
-   uint32_t _APU ( uint32_t addr )
+   uint32_t _APU (const uint32_t addr )
    {
       return *(m_APUreg+(addr&0x1F));
    }
-   void _APU ( uint32_t addr, uint8_t data )
+   void _APU (const uint32_t addr, const uint8_t data )
    {
       *(m_APUreg+(addr&0x1F)) = data;
    }
-   inline uint8_t DIRTY ( uint32_t addr )
+   inline uint8_t DIRTY (const uint32_t addr )
    {
       uint8_t updated = *(m_APUregDirty+(addr&0x1F));
       *(m_APUregDirty+(addr&0x1F))=0;
@@ -624,7 +624,7 @@ public:
    inline void SEQTICK ( int32_t sequence );
    inline uint16_t AMPLITUDE ( void );
 
-   inline void RESETCYCLECOUNTER ( uint32_t cycle )
+   inline void RESETCYCLECOUNTER (const uint32_t cycle )
    {
       m_cycles = cycle;
    }

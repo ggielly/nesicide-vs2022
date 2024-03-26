@@ -41,7 +41,7 @@ CROMMapper028::~CROMMapper028()
 {
 }
 
-void CROMMapper028::RESET ( bool soft )
+void CROMMapper028::RESET (const bool soft )
 {
    m_mapper = 28;
 
@@ -163,7 +163,7 @@ uint32_t CROMMapper028::DEBUGINFO ( uint32_t addr )
    return 0xA1;
 }
 
-void CROMMapper028::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper028::HMAPPER ( uint32_t addr, const uint8_t data )
 {
 	if ( ((m_reg_sel&0x02) == 0) && ((m_mirror&0x02) == 0) )
    {
@@ -200,7 +200,7 @@ uint32_t CROMMapper028::LMAPPER ( uint32_t addr )
    return data;
 }
 
-void CROMMapper028::LMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper028::LMAPPER ( uint32_t addr, const uint8_t data )
 {
    m_reg_sel = (data&0x01)|((data&0x80)>>6);
    SETCPU();

@@ -58,7 +58,7 @@ CROMMapper111::~CROMMapper111()
 {
 }
 
-void CROMMapper111::RESET ( bool soft )
+void CROMMapper111::RESET (const bool soft )
 {
    m_mapper = 111;
 
@@ -74,7 +74,7 @@ uint32_t CROMMapper111::DEBUGINFO ( uint32_t addr )
    return m_reg;
 }
 
-void CROMMapper111::LMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper111::LMAPPER ( uint32_t addr, const uint8_t data )
 {
    uint8_t bank;
 

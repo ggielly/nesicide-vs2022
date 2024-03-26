@@ -79,7 +79,7 @@ CROMMapper068::~CROMMapper068()
 {
 }
 
-void CROMMapper068::RESET ( bool soft )
+void CROMMapper068::RESET (const bool soft )
 {
    int32_t idx;
 
@@ -100,7 +100,7 @@ void CROMMapper068::RESET ( bool soft )
    // CHR ROM/RAM already set up in CROM::RESET()...
 }
 
-uint32_t CROMMapper068::DEBUGINFO ( uint32_t addr )
+uint32_t CROMMapper068::DEBUGINFO (const uint32_t addr )
 {
    switch ( addr&0xF000 )
    {
@@ -132,7 +132,7 @@ uint32_t CROMMapper068::DEBUGINFO ( uint32_t addr )
    return 0xA1; // garbage
 }
 
-void CROMMapper068::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper068::HMAPPER (const uint32_t addr, const uint8_t data )
 {
    switch ( addr&0xF000 )
    {

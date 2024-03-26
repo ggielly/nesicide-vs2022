@@ -332,7 +332,7 @@ CCodeDataLogger* CNAMETABLEFILLER::LOGGERATPHYSADDR (uint32_t physAddr)
    return m_bank[0].LOGGER();
 }
 
-uint8_t CNAMETABLEFILLER::MEM (uint32_t addr)
+uint8_t CNAMETABLEFILLER::MEM (const uint32_t addr)
 {
    if ( (addr&MEM_1KB) < 0x3C0 )
    {
@@ -344,7 +344,7 @@ uint8_t CNAMETABLEFILLER::MEM (uint32_t addr)
    }
 }
 
-void CNAMETABLEFILLER::MEM (uint32_t addr, uint8_t data)
+void CNAMETABLEFILLER::MEM (const uint32_t addr, const uint8_t data)
 {
    if ( (addr&MEM_1KB) < 0x3C0 )
    {
@@ -356,7 +356,7 @@ void CNAMETABLEFILLER::MEM (uint32_t addr, uint8_t data)
    }
 }
 
-uint8_t CNAMETABLEFILLER::MEMATPHYSADDR (uint32_t absAddr)
+uint8_t CNAMETABLEFILLER::MEMATPHYSADDR (const uint32_t absAddr)
 {
    if ( (absAddr&MEM_1KB) < 0x3C0 )
    {
@@ -368,7 +368,7 @@ uint8_t CNAMETABLEFILLER::MEMATPHYSADDR (uint32_t absAddr)
    }
 }
 
-void CNAMETABLEFILLER::MEMATPHYSADDR (uint32_t absAddr, uint8_t data)
+void CNAMETABLEFILLER::MEMATPHYSADDR (const uint32_t absAddr, const uint8_t data)
 {
    if ( (absAddr&MEM_1KB) < 0x3C0 )
    {
@@ -401,7 +401,7 @@ CROMMapper005::~CROMMapper005()
    delete m_pFILLmemory;
 }
 
-void CROMMapper005::RESET ( bool soft )
+void CROMMapper005::RESET (const bool soft )
 {   
    m_dbCartRegisters = dbRegisters;
 
@@ -447,7 +447,7 @@ void CROMMapper005::RESET ( bool soft )
    SETPPU();
 }
 
-void CROMMapper005::SYNCCPU ( bool write, uint16_t addr, uint8_t data )
+void CROMMapper005::SYNCCPU (const bool write, const uint16_t addr, const uint8_t data )
 {
    if ( write )
    {
@@ -475,7 +475,7 @@ void CROMMapper005::SYNCCPU ( bool write, uint16_t addr, uint8_t data )
    m_dmc.TIMERTICK();
 }
 
-void CROMMapper005::SYNCPPU ( uint32_t ppuCycle, uint32_t ppuAddr )
+void CROMMapper005::SYNCPPU (const uint32_t ppuCycle, const uint32_t ppuAddr )
 {
    int32_t scanline = CYCLE_TO_VISY(ppuCycle);
    int32_t rasterX = CYCLE_TO_VISX(ppuCycle);
@@ -750,7 +750,7 @@ void CROMMapper005::SETPPU ( void )
    }
 }
 
-uint32_t CROMMapper005::HMAPPER ( uint32_t addr )
+uint32_t CROMMapper005::HMAPPER (const uint32_t addr )
 {
    if ( (m_prgRAM[0]) && (addr < 0xA000) )
    {
@@ -770,7 +770,7 @@ uint32_t CROMMapper005::HMAPPER ( uint32_t addr )
    }
 }
 
-void CROMMapper005::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper005::HMAPPER (const uint32_t addr, const uint8_t data )
 {
    // if PRG RAM has been mapped in it will already be there...
    // first check to ensure writes allowed...
@@ -780,7 +780,7 @@ void CROMMapper005::HMAPPER ( uint32_t addr, uint8_t data )
    }
 }
 
-uint32_t CROMMapper005::DEBUGINFO ( uint32_t addr )
+uint32_t CROMMapper005::DEBUGINFO (const uint32_t addr )
 {
    switch ( addr )
    {
@@ -926,7 +926,7 @@ uint32_t CROMMapper005::DEBUGINFO ( uint32_t addr )
    return 0;
 }
 
-uint32_t CROMMapper005::LMAPPER ( uint32_t addr )
+uint32_t CROMMapper005::LMAPPER (const uint32_t addr )
 {
    uint8_t data = 0xff;
 
@@ -963,7 +963,7 @@ uint32_t CROMMapper005::LMAPPER ( uint32_t addr )
    return data;
 }
 
-void CROMMapper005::LMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper005::LMAPPER (const uint32_t addr, uint8_t data )
 {
    uint8_t prgRAM;
    int32_t sc1 = -1, sc2 = -1, sc3 = -1, sc4 = -1;
@@ -1268,7 +1268,7 @@ void CROMMapper005::LMAPPER ( uint32_t addr, uint8_t data )
    }
 }
 
-uint32_t CROMMapper005::CHRMEM ( uint32_t addr )
+uint32_t CROMMapper005::CHRMEM (const uint32_t addr )
 {
    if ( m_exRamMode == 1 )
    {
@@ -1280,7 +1280,7 @@ uint32_t CROMMapper005::CHRMEM ( uint32_t addr )
    return m_CHRmemory.MEM(addr);
 }
 
-uint32_t CROMMapper005::VRAM ( uint32_t addr )
+uint32_t CROMMapper005::VRAM (const uint32_t addr )
 {
    if ( m_exRamMode == 0 )
    {

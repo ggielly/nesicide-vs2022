@@ -235,7 +235,7 @@ void CPPU::EMULATE(uint32_t cycles)
    }
 }
 
-uint32_t CPPU::LOAD ( uint32_t addr, int8_t source, int8_t type, bool trace )
+uint32_t CPPU::LOAD ( uint32_t addr, const int8_t source, const int8_t type, const bool trace )
 {
    uint8_t data = 0xFF;
 
@@ -296,7 +296,7 @@ uint32_t CPPU::LOAD ( uint32_t addr, int8_t source, int8_t type, bool trace )
    return data;
 }
 
-void CPPU::STORE ( uint32_t addr, uint8_t data, int8_t source, int8_t type, bool trace )
+void CPPU::STORE ( uint32_t addr, const uint8_t data, const int8_t source, const int8_t type, const bool trace )
 {
    addr &= 0x3FFF;
 
@@ -363,7 +363,7 @@ void CPPU::STORE ( uint32_t addr, uint8_t data, int8_t source, int8_t type, bool
    }
 }
 
-uint32_t CPPU::RENDER ( uint32_t addr, int8_t target )
+uint32_t CPPU::RENDER (const uint32_t addr, const int8_t target )
 {
    uint32_t data;
 
@@ -389,7 +389,7 @@ uint32_t CPPU::RENDER ( uint32_t addr, int8_t target )
    return data;
 }
 
-void CPPU::GARBAGE ( uint32_t addr, int8_t target )
+void CPPU::GARBAGE (const uint32_t addr, const int8_t target )
 {
    uint32_t data;
 
@@ -433,7 +433,7 @@ void CPPU::EXTRA ()
    }
 }
 
-void CPPU::RESET ( bool soft )
+void CPPU::RESET (const bool soft )
 {
    startVblank = (CNES::NES()->VIDEOMODE()==MODE_NTSC)?PPU_CYCLE_START_VBLANK_NTSC:(CNES::NES()->VIDEOMODE()==MODE_PAL)?PPU_CYCLE_START_VBLANK_PAL:PPU_CYCLE_START_VBLANK_DENDY;
    quietScanlines = (CNES::NES()->VIDEOMODE()==MODE_NTSC)?SCANLINES_QUIET_NTSC:(CNES::NES()->VIDEOMODE()==MODE_PAL)?SCANLINES_QUIET_PAL:SCANLINES_QUIET_DENDY;
@@ -488,7 +488,7 @@ void CPPU::RESET ( bool soft )
    }
 }
 
-uint32_t CPPU::PPU ( uint32_t addr )
+uint32_t CPPU::PPU (const uint32_t addr )
 {
    uint8_t data = 0xFF;
    uint16_t fixAddr;
@@ -595,7 +595,7 @@ uint32_t CPPU::PPU ( uint32_t addr )
    return data;
 }
 
-void CPPU::PPU ( uint32_t addr, uint8_t data )
+void CPPU::PPU (const uint32_t addr, const uint8_t data )
 {
    uint16_t fixAddr;
    uint16_t oldPpuAddr;
@@ -738,7 +738,7 @@ void CPPU::PPU ( uint32_t addr, uint8_t data )
    }
 }
 
-void CPPU::MIRROR ( int32_t oneScreen, bool vert )
+void CPPU::MIRROR (const int32_t oneScreen, const bool vert )
 {
    m_oneScreen = oneScreen;
 
@@ -1189,7 +1189,7 @@ void CPPU::RENDERSCANLINE ( int32_t scanlines )
    }
 }
 
-void CPPU::PIXELRGB ( int32_t x, int32_t y, uint8_t* r, uint8_t* g, uint8_t* b )
+void CPPU::PIXELRGB (const int32_t x, const int32_t y, uint8_t* r, uint8_t* g, uint8_t* b )
 {
    if ( (x>=0) && (x<=255) && (y>=0) && (y<=239) )
    {
@@ -1204,7 +1204,7 @@ void CPPU::PIXELRGB ( int32_t x, int32_t y, uint8_t* r, uint8_t* g, uint8_t* b )
    }
 }
 
-void CPPU::GATHERBKGND ( int8_t phase )
+void CPPU::GATHERBKGND (const int8_t phase )
 {
    static uint16_t patternIdx;
    static BackgroundBufferData bkgndTemp;
@@ -1357,7 +1357,7 @@ void CPPU::GATHERBKGND ( int8_t phase )
    }
 }
 
-void CPPU::BUILDSPRITELIST ( int32_t scanline, int32_t cycle )
+void CPPU::BUILDSPRITELIST ( int32_t scanline, const int32_t cycle )
 {
    static SpriteTemporaryMemoryData  devNull;
    static SpriteTemporaryMemoryData* pSprite = &devNull;

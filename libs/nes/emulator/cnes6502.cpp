@@ -581,13 +581,13 @@ void C6502::EMULATE ( int32_t cycles )
    }
 }
 
-void C6502::APUDMAREQ ( uint16_t addr )
+void C6502::APUDMAREQ (const uint16_t addr )
 {
    m_dmaRequest = 3;
    m_readDmaAddr = addr;
 }
 
-void C6502::ADVANCE ( bool stealing )
+void C6502::ADVANCE (const bool stealing )
 {
    // If this cycle is being stolen, don't check whether IRQ/NMI needs to happen.
    if ( !stealing )
@@ -3282,7 +3282,7 @@ void C6502::BRK ( void )
    return;
 }
 
-void C6502::ASSERTIRQ ( int8_t source )
+void C6502::ASSERTIRQ (const int8_t source )
 {
    m_irqAsserted = true;
 
@@ -3302,7 +3302,7 @@ void C6502::ASSERTIRQ ( int8_t source )
    }
 }
 
-void C6502::RELEASEIRQ ( int8_t source )
+void C6502::RELEASEIRQ (const int8_t source )
 {
    if ( nesIsDebuggable )
    {
@@ -3331,7 +3331,7 @@ void C6502::ASSERTNMI ()
    }
 }
 
-void C6502::RESET ( bool soft )
+void C6502::RESET (const bool soft )
 {
    m_killed = false;
 
@@ -3404,7 +3404,7 @@ void C6502::RESET ( bool soft )
    }
 }
 
-uint8_t C6502::LOAD ( uint32_t addr, int8_t* pTarget )
+uint8_t C6502::LOAD (const uint32_t addr, int8_t* pTarget )
 {
    uint8_t data = C6502::OPENBUS();
 
@@ -3471,7 +3471,7 @@ uint8_t C6502::LOAD ( uint32_t addr, int8_t* pTarget )
    return data;
 }
 
-void C6502::STORE ( uint32_t addr, uint8_t data, int8_t* pTarget )
+void C6502::STORE (const uint32_t addr, const uint8_t data, int8_t* pTarget )
 {
    if ( addr < 0x2000 )
    {
@@ -3701,7 +3701,7 @@ uint8_t C6502::EXTRAFETCH ()
    return data;
 }
 
-uint8_t C6502::DMA ( uint32_t addr )
+uint8_t C6502::DMA (const uint32_t addr )
 {
    int8_t target;
    uint8_t data;
@@ -3738,7 +3738,7 @@ uint8_t C6502::DMA ( uint32_t addr )
    return data;
 }
 
-void C6502::DMA ( uint32_t srcAddr, uint32_t dstAddr, uint8_t data )
+void C6502::DMA (const uint32_t srcAddr, const uint32_t dstAddr, const uint8_t data )
 {
    TracerInfo* pSample = NULL;
    int8_t target = -1;
@@ -3784,7 +3784,7 @@ void C6502::DMA ( uint32_t srcAddr, uint32_t dstAddr, uint8_t data )
    }
 }
 
-uint8_t C6502::MEM ( uint32_t addr )
+uint8_t C6502::MEM (const uint32_t addr )
 {
    int8_t target;
    uint8_t data;
@@ -3847,7 +3847,7 @@ uint8_t C6502::MEM ( uint32_t addr )
    return data;
 }
 
-void C6502::MEM ( uint32_t addr, uint8_t data )
+void C6502::MEM (const uint32_t addr, const uint8_t data )
 {
    TracerInfo* pSample = NULL;
    int8_t target;
@@ -3919,7 +3919,7 @@ void C6502::MEM ( uint32_t addr, uint8_t data )
    }
 }
 
-uint8_t C6502::STEAL ( uint32_t addr, uint8_t source )
+uint8_t C6502::STEAL (const uint32_t addr, const uint8_t source )
 {
    int8_t target;
    uint8_t data;
@@ -3985,21 +3985,21 @@ uint8_t C6502::STEAL ( uint32_t addr, uint8_t source )
    return data;
 }
 
-uint8_t C6502::_MEM ( uint32_t addr )
+uint8_t C6502::_MEM (const uint32_t addr )
 {
    int8_t target;
 
    return LOAD ( addr, &target );
 }
 
-void C6502::_MEM ( uint32_t addr, uint8_t data )
+void C6502::_MEM (const uint32_t addr, const uint8_t data )
 {
    int8_t target;
 
    STORE ( addr, data, &target );
 }
 
-uint32_t C6502::MAKEADDR ( int32_t amode, uint8_t* data )
+uint32_t C6502::MAKEADDR (const int32_t amode, uint8_t* data )
 {
    uint16_t addr = 0x00, addrpre;
 
@@ -4078,7 +4078,7 @@ void C6502::DISASSEMBLE ()
    }
 }
 
-void C6502::DISASSEMBLE ( char** disassembly, uint8_t* binary, int32_t binaryLength, uint8_t* opcodeMask, uint16_t* sloc2addr, uint16_t* addr2sloc, uint32_t* sourceLength )
+void C6502::DISASSEMBLE ( char** disassembly, uint8_t* binary, const int32_t binaryLength, uint8_t* opcodeMask, uint16_t* sloc2addr, uint16_t* addr2sloc, uint32_t* sourceLength )
 {
    CNES6502_opcode* pOp;
    int32_t opSize;
@@ -4162,12 +4162,12 @@ void C6502::DISASSEMBLE ( char** disassembly, uint8_t* binary, int32_t binaryLen
    }
 }
 
-void C6502::PRINTABLEADDR ( char* buffer, uint32_t addr )
+void C6502::PRINTABLEADDR ( char* buffer, const uint32_t addr )
 {
    m_6502memory.PRINTABLEADDR(buffer,addr);
 }
 
-void C6502::PRINTABLEADDR ( char* buffer, uint32_t addr, uint32_t absAddr )
+void C6502::PRINTABLEADDR ( char* buffer, const uint32_t addr, const uint32_t absAddr )
 {
    m_6502memory.PRINTABLEADDR(buffer,addr,absAddr);
 }

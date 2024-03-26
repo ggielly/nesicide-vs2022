@@ -24,15 +24,15 @@
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-inline uint8_t red(uint32_t rgb)
+inline uint8_t red(const uint32_t rgb)
 {
    return (rgb>>24)&0xFF;
 }
-inline uint8_t green(uint32_t rgb)
+inline uint8_t green(const uint32_t rgb)
 {
    return (rgb>>16)&0xFF;
 }
-inline uint8_t blue(uint32_t rgb)
+inline uint8_t blue(const uint32_t rgb)
 {
    return (rgb>>8)&0xFF;
 }

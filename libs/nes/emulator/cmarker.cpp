@@ -44,7 +44,7 @@ CMarker::CMarker()
    }
 }
 
-void CMarker::RemoveMarker(int32_t marker)
+void CMarker::RemoveMarker(const int32_t marker)
 {
    m_marker [ marker ].state = eMarkerSet_Invalid;
 }
@@ -59,7 +59,7 @@ void CMarker::RemoveAllMarkers(void)
    }
 }
 
-void CMarker::ZeroMarker(int32_t marker)
+void CMarker::ZeroMarker(const int32_t marker)
 {
    m_marker [ marker ].startCpuCycle = MARKER_NOT_MARKED;
    m_marker [ marker ].startPpuFrame = MARKER_NOT_MARKED;
@@ -82,7 +82,7 @@ void CMarker::ZeroAllMarkers(void)
    }
 }
 
-int CMarker::AddSpecificMarker(int32_t marker,uint32_t addr,uint32_t absAddr)
+int CMarker::AddSpecificMarker(const int32_t marker, const uint32_t addr, const uint32_t absAddr)
 {
    m_marker [ marker ].state = eMarkerSet_Started;
    m_marker [ marker ].startAddr = addr;
@@ -102,7 +102,7 @@ int CMarker::AddSpecificMarker(int32_t marker,uint32_t addr,uint32_t absAddr)
    return marker;
 }
 
-int CMarker::AddMarker(uint32_t addr,uint32_t absAddr)
+int CMarker::AddMarker(const uint32_t addr, const uint32_t absAddr)
 {
    int32_t marker = -1;
 
@@ -118,7 +118,7 @@ int CMarker::AddMarker(uint32_t addr,uint32_t absAddr)
    return marker;
 }
 
-void CMarker::CompleteMarker(int32_t marker,uint32_t addr,uint32_t absAddr)
+void CMarker::CompleteMarker(const int32_t marker, const uint32_t addr, const uint32_t absAddr)
 {
    m_marker [ marker ].state = eMarkerSet_Complete;
    m_marker [ marker ].endAddr = addr;
@@ -146,7 +146,7 @@ int CMarker::FindInProgressMarker(void)
    return marker;
 }
 
-void CMarker::UpdateMarkers(uint32_t absAddr, uint32_t cpuCycle, uint32_t ppuFrame, uint32_t ppuCycle)
+void CMarker::UpdateMarkers(const uint32_t absAddr, const uint32_t cpuCycle, const uint32_t ppuFrame, const uint32_t ppuCycle)
 {
    int32_t marker;
 

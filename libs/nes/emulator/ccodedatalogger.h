@@ -45,23 +45,23 @@ public:
    void ClearData ( void );
    void LogAccess ( uint32_t cycle, uint32_t addr, uint8_t data, int8_t type, int8_t source );
    uint32_t GetMask() { return m_mask; }
-   uint32_t GetCount ( uint32_t addr )
+   uint32_t GetCount (const uint32_t addr )
    {
       return (*(m_pLogger+(addr&m_mask))).count;
    }
-   uint32_t GetCycle ( uint32_t addr )
+   uint32_t GetCycle (const uint32_t addr )
    {
       return (*(m_pLogger+(addr&m_mask))).cycle;
    }
-   uint32_t GetCPUAddr ( uint32_t addr )
+   uint32_t GetCPUAddr (const uint32_t addr )
    {
       return (*(m_pLogger+(addr&m_mask))).cpuAddr;
    }
-   uint32_t GetType ( uint32_t addr )
+   uint32_t GetType (const uint32_t addr )
    {
       return (*(m_pLogger+(addr&m_mask))).type;
    }
-   uint32_t GetSource ( uint32_t addr )
+   uint32_t GetSource (const uint32_t addr )
    {
       return (*(m_pLogger+(addr&m_mask))).source;
    }
@@ -71,7 +71,7 @@ public:
    }
    void GetPrintable ( uint32_t addr, int32_t subItem, char* str );
    uint32_t GetLastLoadAddr ( uint32_t addr );
-   LoggerInfo* GetLogEntry ( uint32_t addr )
+   LoggerInfo* GetLogEntry (const uint32_t addr )
    {
       return (m_pLogger+(addr&m_mask));
    }

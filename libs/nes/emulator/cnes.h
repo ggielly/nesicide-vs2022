@@ -66,7 +66,7 @@ public:
    }
 
    // Accessor methods to get/set the current video mode.
-   inline void VIDEOMODE ( int32_t mode )
+   inline void VIDEOMODE (const int32_t mode )
    {
       m_videoMode = mode;
    }
@@ -76,18 +76,18 @@ public:
    }
 
    // Accessor methods to get/set the controller type.
-   inline void CONTROLLER ( int32_t port, int32_t type )
+   inline void CONTROLLER (const int32_t port, const int32_t type )
    {
       m_controllerType[port] = type;
    }
-   inline int32_t CONTROLLER ( int32_t port )
+   inline int32_t CONTROLLER (const int32_t port )
    {
       return m_controllerType[port];
    }
 
    // Accessor method to set the controller's screen coordinates
    // for controllers that are screen-relative such as Zapper.
-   inline void CONTROLLERPOSITION ( int32_t port, int32_t px, int32_t py, int32_t wx1, int32_t wy1, int32_t wx2, int32_t wy2 )
+   inline void CONTROLLERPOSITION (const int32_t port, const int32_t px, const int32_t py, const int32_t wx1, const int32_t wy1, const int32_t wx2, const int32_t wy2 )
    {
       m_controllerPositionX[port] = px;
       m_controllerPositionY[port] = py;
@@ -96,7 +96,7 @@ public:
       m_windowX2 = wx2;
       m_windowY2 = wy2;
    }
-   inline void CONTROLLERPOSITION ( int32_t port, int32_t* px, int32_t* py, int32_t* wx1, int32_t* wy1, int32_t* wx2, int32_t* wy2 )
+   inline void CONTROLLERPOSITION (const int32_t port, int32_t* px, int32_t* py, int32_t* wx1, int32_t* wy1, int32_t* wx2, int32_t* wy2 )
    {
       (*px) = m_controllerPositionX[port];
       (*py) = m_controllerPositionY[port];
@@ -124,7 +124,7 @@ public:
    // as normal but the joypad inputs are fed in from previously
    // recorded emulation runs.  At present this only works "sort of well"
    // for emulation runs that start from NES reset.
-   void REPLAY ( bool enable )
+   void REPLAY (const bool enable )
    {
       m_bReplay = enable;
    }
@@ -137,7 +137,7 @@ public:
    // engine is in input record mode.  If input is being recorded,
    // it can be played back on a subsequent emulation run by using
    // the REPLAY API.
-   void RECORD ( bool enable )
+   void RECORD (const bool enable )
    {
       m_bRecord = enable;
    }
@@ -165,7 +165,7 @@ public:
    // during an emulation hard-reset (which is caused whenever a new
    // ROM image is loaded) to prevent the emulation engine from getting
    // hung up on a set breakpoint during the ROM image switchover.
-   void BREAKPOINTS ( bool enable ) { m_bBreakpointsEnabled = enable; }
+   void BREAKPOINTS (const bool enable ) { m_bBreakpointsEnabled = enable; }
 
    // This method retrieves the database of currently active breakpoints.
    // It is used by the debugger inspectors to determine whether or not

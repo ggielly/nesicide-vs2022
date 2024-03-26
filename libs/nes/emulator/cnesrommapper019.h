@@ -37,7 +37,7 @@ struct N106WaveChannel
       instrumentStep = 0;
       volume = 0;
    }
-   void REG(uint32_t addr, uint8_t data)
+   void REG(const uint32_t addr, const uint8_t data)
    {
       switch ( addr&0x07 )
       {
@@ -63,7 +63,7 @@ struct N106WaveChannel
       }
    }
    void TIMERTICK(uint8_t enabled);
-   void SETDAC(uint8_t value)
+   void SETDAC(const uint8_t value)
    {
       dacAverage[dacSamples] = value;
       dac = value;
@@ -98,7 +98,7 @@ public:
    void SYNCCPU ( bool write, uint16_t addr, uint8_t data );
    uint32_t DEBUGINFO ( uint32_t addr );
    uint16_t AMPLITUDE ( void );
-   static void SOUNDENABLE ( uint32_t mask ) { m_soundEnableMask = mask; }
+   static void SOUNDENABLE (const uint32_t mask ) { m_soundEnableMask = mask; }
 
 protected:
    // N106

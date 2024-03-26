@@ -54,7 +54,7 @@ CROMMapper011::~CROMMapper011()
 {
 }
 
-void CROMMapper011::RESET ( bool soft )
+void CROMMapper011::RESET (const bool soft )
 {
    m_dbCartRegisters = dbRegisters;
 
@@ -71,7 +71,7 @@ uint32_t CROMMapper011::DEBUGINFO ( uint32_t addr )
    return m_reg;
 }
 
-void CROMMapper011::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper011::HMAPPER ( uint32_t addr, const uint8_t data )
 {
    uint8_t bank;
 

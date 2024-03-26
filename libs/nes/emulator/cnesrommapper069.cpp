@@ -83,7 +83,7 @@ CROMMapper069::~CROMMapper069()
 {
 }
 
-void CROMMapper069::RESET ( bool soft )
+void CROMMapper069::RESET (const bool soft )
 {
    int32_t idx;
 
@@ -162,12 +162,12 @@ void CROMMapper069::SETPPU ( void )
    m_CHRmemory.REMAP(7,m_chr[7]);
 }
 
-uint32_t CROMMapper069::DEBUGINFO ( uint32_t addr )
+uint32_t CROMMapper069::DEBUGINFO (const uint32_t addr )
 {
    return m_reg [ ((addr-MEM_32KB)/MEM_8KB) ];
 }
 
-void CROMMapper069::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper069::HMAPPER (const uint32_t addr, const uint8_t data )
 {
    int32_t reg = ((addr-0x8000)/MEM_8KB);
    m_reg [ reg ] = data;
@@ -257,7 +257,7 @@ void CROMMapper069::HMAPPER ( uint32_t addr, uint8_t data )
    }
 }
 
-uint32_t CROMMapper069::LMAPPER ( uint32_t addr )
+uint32_t CROMMapper069::LMAPPER (const uint32_t addr )
 {
    uint8_t data = CNES::NES()->CPU()->OPENBUS();
 
@@ -276,7 +276,7 @@ uint32_t CROMMapper069::LMAPPER ( uint32_t addr )
    return data;
 }
 
-void CROMMapper069::LMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper069::LMAPPER (const uint32_t addr, const uint8_t data )
 {
    if ( addr >= 0x6000 )
    {

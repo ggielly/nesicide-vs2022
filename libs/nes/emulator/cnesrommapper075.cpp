@@ -75,7 +75,7 @@ CROMMapper075::~CROMMapper075()
 {
 }
 
-void CROMMapper075::RESET ( bool soft )
+void CROMMapper075::RESET (const bool soft )
 {
    int32_t idx;
 
@@ -128,12 +128,12 @@ void CROMMapper075::SETPPU ( void )
    m_CHRmemory.REMAP(7,(m_chr[7]<<2)+3);
 }
 
-uint32_t CROMMapper075::DEBUGINFO ( uint32_t addr )
+uint32_t CROMMapper075::DEBUGINFO (const uint32_t addr )
 {
    return m_reg [ ((addr-MEM_32KB)/MEM_8KB) ];
 }
 
-void CROMMapper075::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper075::HMAPPER (const uint32_t addr, const uint8_t data )
 {
    int reg = 0;
 

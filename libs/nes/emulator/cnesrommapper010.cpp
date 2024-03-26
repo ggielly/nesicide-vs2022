@@ -91,7 +91,7 @@ CROMMapper010::~CROMMapper010()
 {
 }
 
-void CROMMapper010::RESET ( bool soft )
+void CROMMapper010::RESET (const bool soft )
 {
    m_dbCartRegisters = dbRegisters;
 
@@ -117,7 +117,7 @@ void CROMMapper010::RESET ( bool soft )
    m_CHRmemory.REMAP(7,(m_latch1FE<<2)+3);
 }
 
-uint32_t CROMMapper010::DEBUGINFO ( uint32_t addr )
+uint32_t CROMMapper010::DEBUGINFO (const uint32_t addr )
 {
    switch ( addr&0xF000 )
    {
@@ -144,7 +144,7 @@ uint32_t CROMMapper010::DEBUGINFO ( uint32_t addr )
    return 0xFF;
 }
 
-void CROMMapper010::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper010::HMAPPER (const uint32_t addr, const uint8_t data )
 {
    int32_t reg = 0;
 
@@ -235,7 +235,7 @@ void CROMMapper010::HMAPPER ( uint32_t addr, uint8_t data )
    }
 }
 
-void CROMMapper010::SYNCPPU ( uint32_t ppuCycle, uint32_t ppuAddr )
+void CROMMapper010::SYNCPPU ( uint32_t ppuCycle, const uint32_t ppuAddr )
 {
    if ( (ppuAddr&0x1FF0) == 0x0FD0 )
    {

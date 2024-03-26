@@ -25,7 +25,7 @@
 uint32_t CCodeDataLogger::m_curCycle = 0;
 LoggerInfo* CCodeDataLogger::m_pLastLoad = NULL;
 
-CCodeDataLogger::CCodeDataLogger(uint32_t size, uint32_t mask)
+CCodeDataLogger::CCodeDataLogger(const uint32_t size, const uint32_t mask)
 {
    m_size = size;
    m_mask = mask;
@@ -50,7 +50,7 @@ void CCodeDataLogger::ClearData ( void )
    m_maxCount = 1;
 }
 
-uint32_t CCodeDataLogger::GetLastLoadAddr ( uint32_t addr )
+uint32_t CCodeDataLogger::GetLastLoadAddr (const uint32_t addr )
 {
    uint32_t laddr = 0xFFFFFFFF;
 
@@ -64,7 +64,7 @@ uint32_t CCodeDataLogger::GetLastLoadAddr ( uint32_t addr )
    return laddr;
 }
 
-void CCodeDataLogger::LogAccess ( uint32_t cycle, uint32_t addr, uint8_t data, int8_t type, int8_t source )
+void CCodeDataLogger::LogAccess (const uint32_t cycle, const uint32_t addr, uint8_t data, const int8_t type, const int8_t source )
 {
    LoggerInfo* pLogger = m_pLogger+(addr&m_mask);
 
@@ -99,7 +99,7 @@ void CCodeDataLogger::LogAccess ( uint32_t cycle, uint32_t addr, uint8_t data, i
    m_curCycle = cycle;
 }
 
-void CCodeDataLogger::GetPrintable ( uint32_t addr, int32_t subItem, char* str )
+void CCodeDataLogger::GetPrintable (const uint32_t addr, const int32_t subItem, char* str )
 {
    LoggerInfo* pLogger = m_pLogger+(addr&m_mask);
 

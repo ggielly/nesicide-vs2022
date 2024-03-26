@@ -31,7 +31,7 @@ public:
    uint32_t BASEADDR() const;
 
    // Support functions for inline disassembly
-   inline void OPCODEMASK ( uint32_t addr, uint8_t mask )
+   inline void OPCODEMASK ( uint32_t addr, const uint8_t mask )
    {
       addr &= m_sizeMask;
       if ( (*(m_opcodeMask+addr)) != mask )
@@ -40,7 +40,7 @@ public:
       }
       *(m_opcodeMask+addr) = mask;
    }
-   inline void OPCODEMASKATPHYSADDR ( uint32_t absAddr, uint8_t mask )
+   inline void OPCODEMASKATPHYSADDR ( uint32_t absAddr, const uint8_t mask )
    {
       absAddr &= m_sizeMask;
       *(m_opcodeMask+absAddr) = mask;
@@ -54,7 +54,7 @@ public:
       }
       m_opcodeMaskDirty = true;
    }
-   uint32_t SLOC2VIRTADDR ( uint16_t sloc )
+   uint32_t SLOC2VIRTADDR (const uint16_t sloc )
    {
       if ( sloc < m_size )
       {
@@ -100,7 +100,7 @@ public:
       return *(m_memory+addr);
    }
 
-   inline void MEM (uint32_t addr, uint8_t data)
+   inline void MEM (uint32_t addr, const uint8_t data)
    {
       addr &= m_sizeMask;
       *(m_memory+addr) = data;
@@ -148,27 +148,27 @@ public:
 
    void RESET ( bool soft );
 
-   inline CMEMORYBANK* PHYSBANK(uint32_t bank) const { return &m_bank[bank]; }
-   inline CMEMORYBANK* VIRTBANK(uint32_t bank) const { return m_pBank[bank]; }
+   inline CMEMORYBANK* PHYSBANK(const uint32_t bank) const { return &m_bank[bank]; }
+   inline CMEMORYBANK* VIRTBANK(const uint32_t bank) const { return m_pBank[bank]; }
 
    virtual uint32_t TOTALSIZE() const { return m_totalPhysSize; }
 
    // Code/Data logger support functions
-   virtual CCodeDataLogger* LOGGER (uint32_t virtAddr = 0)
+   virtual CCodeDataLogger* LOGGER (const uint32_t virtAddr = 0)
    {
       return ((*m_pBank+virtBankFromVirtAddr(virtAddr)))->LOGGER();
    }
-   virtual CCodeDataLogger* LOGGERATPHYSADDR (uint32_t physAddr)
+   virtual CCodeDataLogger* LOGGERATPHYSADDR (const uint32_t physAddr)
    {
       return (m_bank+physBankFromPhysAddr(physAddr))->LOGGER();
    }
 
    // Support functions for inline disassembly
-   virtual void OPCODEMASK ( uint32_t virtAddr, uint8_t mask )
+   virtual void OPCODEMASK (const uint32_t virtAddr, const uint8_t mask )
    {
       (*(m_pBank+virtBankFromVirtAddr(virtAddr)))->OPCODEMASK(virtAddr,mask);
    }
-   virtual void OPCODEMASKATPHYSADDR ( uint32_t physAddr, uint8_t mask )
+   virtual void OPCODEMASKATPHYSADDR (const uint32_t physAddr, const uint8_t mask )
    {
       (m_bank+physBankFromPhysAddr(physAddr))->OPCODEMASK(physAddr,mask);
    }
@@ -182,15 +182,15 @@ public:
    }
    uint32_t SLOC2VIRTADDR ( uint16_t sloc );
    uint16_t ADDR2SLOC ( uint32_t virtAddr );
-   virtual uint32_t SLOC ( uint32_t virtAddr )
+   virtual uint32_t SLOC (const uint32_t virtAddr )
    {
       return (*(m_pBank+virtBankFromVirtAddr(virtAddr)))->SLOC();
    }
-   virtual const char* DISASSEMBLY ( uint32_t virtAddr )
+   virtual const char* DISASSEMBLY (const uint32_t virtAddr )
    {
       return (*(m_pBank+virtBankFromVirtAddr(virtAddr)))->DISASSEMBLY(virtAddr);
    }
-   virtual const char* DISASSEMBLYATPHYSADDR ( uint32_t physAddr, char* buffer )
+   virtual const char* DISASSEMBLYATPHYSADDR (const uint32_t physAddr, char* buffer )
    {
       return ::DISASSEMBLE((m_bank+physBankFromPhysAddr(physAddr))->MEMPTR(physAddr),buffer);
    }
@@ -217,37 +217,37 @@ public:
       }
    }
 
-   virtual uint8_t* MEMPTR (uint32_t addr)
+   virtual uint8_t* MEMPTR (const uint32_t addr)
    {
       return (*(m_pBank+virtBankFromVirtAddr(addr)))->MEMPTR(addr);
    }
 
-   virtual uint8_t MEM (uint32_t addr)
+   virtual uint8_t MEM (const uint32_t addr)
    {
       return (*(m_pBank+virtBankFromVirtAddr(addr)))->MEM(addr);
    }
 
-   virtual void MEM (uint32_t addr, uint8_t data)
+   virtual void MEM (const uint32_t addr, const uint8_t data)
    {
       (*(m_pBank+virtBankFromVirtAddr(addr)))->MEM(addr,data);
    }
 
-   virtual uint8_t MEMATPHYSADDR (uint32_t absAddr)
+   virtual uint8_t MEMATPHYSADDR (const uint32_t absAddr)
    {
       return (m_bank+physBankFromPhysAddr(absAddr))->MEM(absAddr);
    }
 
-   virtual void MEMATPHYSADDR (uint32_t absAddr, uint8_t data)
+   virtual void MEMATPHYSADDR (const uint32_t absAddr, const uint8_t data)
    {
       (m_bank+physBankFromPhysAddr(absAddr))->MEM(absAddr,data);
    }
 
-   virtual void REMAP(uint32_t virt, uint32_t phys)
+   virtual void REMAP(const uint32_t virt, const uint32_t phys)
    {
       (*(m_pBank+virt)) = m_bank+phys;
    }
 
-   virtual void REMAPEXT(uint32_t virt, CMEMORYBANK* phys)
+   virtual void REMAPEXT(const uint32_t virt, CMEMORYBANK* phys)
    {
       (*(m_pBank+virt)) = phys;
    }
@@ -257,12 +257,12 @@ public:
       return m_bankSize;
    }
 
-   inline uint32_t offsetFromBase(uint32_t addr) const
+   inline uint32_t offsetFromBase(const uint32_t addr) const
    {
       return addr-m_virtBaseAddress;
    }
 
-   inline uint32_t virtBankFromVirtAddr(uint32_t virtAddr) const
+   inline uint32_t virtBankFromVirtAddr(const uint32_t virtAddr) const
    {
       int offsetMinusBase = offsetFromBase(virtAddr);
       if ( offsetMinusBase < 0 )
@@ -277,13 +277,13 @@ public:
       return (offsetFromBase(virtAddr)&m_totalVirtSizeMask)>>m_bankBits;
    }
 
-   inline uint32_t offsetInBank(uint32_t addr) const
+   inline uint32_t offsetInBank(const uint32_t addr) const
    {
       // Return the inside-bank portion of addr.
       return addr&m_bankSizeMask;
    }
 
-   inline uint32_t physBankFromPhysAddr(uint32_t physAddr) const
+   inline uint32_t physBankFromPhysAddr(const uint32_t physAddr) const
    {
       // Return the bank within the physical constraint of the number
       // of physical banks (bank slots in storage media) that the
@@ -291,7 +291,7 @@ public:
       return (physAddr>>m_bankBits)&m_numPhysBanksMask;
    }
 
-   inline uint32_t physBankFromVirtAddr(uint32_t virtAddr) const
+   inline uint32_t physBankFromVirtAddr(const uint32_t virtAddr) const
    {
       // Return the bank within the physical constraint of the number
       // of physical banks (bank slots in storage media) that the
@@ -300,7 +300,7 @@ public:
       return (*(m_pBank+virtBankFromVirtAddr(virtAddr)))->BANKNUM();
    }
 
-   inline uint32_t physAddrFromVirtAddr(uint32_t virtAddr) const
+   inline uint32_t physAddrFromVirtAddr(const uint32_t virtAddr) const
    {
       return (physBankFromVirtAddr(virtAddr)<<m_bankBits)+offsetInBank(virtAddr);
    }

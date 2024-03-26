@@ -47,7 +47,7 @@
 #include "cnesrommapper075.h"
 #include "cnesrommapper111.h"
 
-CROM* CARTFACTORY(uint32_t mapper)
+CROM* CARTFACTORY(const uint32_t mapper)
 {
    switch ( mapper )
    {
@@ -112,7 +112,7 @@ CROM* CARTFACTORY(uint32_t mapper)
    }
 }
 
-CROM::CROM(uint32_t mapper)
+CROM::CROM(const uint32_t mapper)
    : m_PRGROMmemory(CMEMORY(0x8000,MEM_8KB,NUM_ROM_BANKS,4)),
      m_CHRmemory(CMEMORY(0,MEM_1KB,NUM_CHR_BANKS,8)),
      m_pSRAMmemory(new COPENBUS()),
@@ -135,13 +135,13 @@ CROM::~CROM()
    delete m_pVRAMmemory;
 }
 
-void CROM::SetPRGBank ( int32_t bank, uint8_t* data )
+void CROM::SetPRGBank (const int32_t bank, uint8_t* data )
 {
    m_PRGROMmemory.PHYSBANK(bank)->MEMSET(data);
    m_numPrgBanks++;
 }
 
-void CROM::SetCHRBank ( int32_t bank, uint8_t* data )
+void CROM::SetCHRBank (const int32_t bank, uint8_t* data )
 {
    uint8_t ibank;
    for ( ibank = 0; ibank < 8; ibank++ )
@@ -163,7 +163,7 @@ void CROM::DoneLoadingBanks ()
    m_SRAMdirty = false;
 }
 
-void CROM::RESET ( bool soft )
+void CROM::RESET (const bool soft )
 {
    if ( m_mapper == 0 )
    {
@@ -216,7 +216,7 @@ void CROM::RESET ( bool soft )
    }
 }
 
-uint32_t CROM::LMAPPER ( uint32_t addr )
+uint32_t CROM::LMAPPER (const uint32_t addr )
 {
    uint8_t data = CNES::NES()->CPU()->OPENBUS();
 
@@ -235,7 +235,7 @@ uint32_t CROM::LMAPPER ( uint32_t addr )
    return data;
 }
 
-void CROM::LMAPPER ( uint32_t addr, uint8_t data )
+void CROM::LMAPPER (const uint32_t addr, const uint8_t data )
 {
    if ( addr >= 0x6000 )
    {
@@ -258,7 +258,7 @@ void CROM::DISASSEMBLE ()
    }
 }
 
-void CROM::PRINTABLEADDR ( char* buffer, uint32_t addr )
+void CROM::PRINTABLEADDR ( char* buffer, const uint32_t addr )
 {
    if ( addr >= 0x8000 )
    {
@@ -274,7 +274,7 @@ void CROM::PRINTABLEADDR ( char* buffer, uint32_t addr )
    }
 }
 
-void CROM::PRINTABLEADDR ( char* buffer, uint32_t addr, uint32_t absAddr )
+void CROM::PRINTABLEADDR ( char* buffer, const uint32_t addr, const uint32_t absAddr )
 {
    if ( addr >= 0x8000 )
    {
@@ -290,32 +290,32 @@ void CROM::PRINTABLEADDR ( char* buffer, uint32_t addr, uint32_t absAddr )
    }
 }
 
-uint32_t CROM::PRGROMSLOC2VIRTADDR ( uint16_t sloc )
+uint32_t CROM::PRGROMSLOC2VIRTADDR (const uint16_t sloc )
 {
    return m_PRGROMmemory.SLOC2VIRTADDR(sloc);
 }
 
-uint32_t CROM::SRAMSLOC2VIRTADDR ( uint16_t sloc )
+uint32_t CROM::SRAMSLOC2VIRTADDR (const uint16_t sloc )
 {
    return m_pSRAMmemory->SLOC2VIRTADDR(sloc);
 }
 
-uint32_t CROM::EXRAMSLOC2VIRTADDR ( uint16_t sloc )
+uint32_t CROM::EXRAMSLOC2VIRTADDR (const uint16_t sloc )
 {
    return m_pEXRAMmemory->SLOC2VIRTADDR(sloc);
 }
 
-uint16_t CROM::PRGROMADDR2SLOC ( uint32_t addr )
+uint16_t CROM::PRGROMADDR2SLOC (const uint32_t addr )
 {
    return m_PRGROMmemory.ADDR2SLOC(addr);
 }
 
-uint16_t CROM::SRAMADDR2SLOC ( uint32_t addr )
+uint16_t CROM::SRAMADDR2SLOC (const uint32_t addr )
 {
    return m_pSRAMmemory->ADDR2SLOC(addr);
 }
 
-uint16_t CROM::EXRAMADDR2SLOC ( uint32_t addr )
+uint16_t CROM::EXRAMADDR2SLOC (const uint32_t addr )
 {
    return m_pEXRAMmemory->ADDR2SLOC(addr);
 }

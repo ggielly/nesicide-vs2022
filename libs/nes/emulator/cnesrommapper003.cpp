@@ -54,7 +54,7 @@ CROMMapper003::~CROMMapper003()
 {
 }
 
-void CROMMapper003::RESET ( bool soft )
+void CROMMapper003::RESET (const bool soft )
 {
    m_dbCartRegisters = dbRegisters;
 
@@ -71,7 +71,7 @@ uint32_t CROMMapper003::DEBUGINFO ( uint32_t addr )
    return m_reg;
 }
 
-void CROMMapper003::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper003::HMAPPER ( uint32_t addr, const uint8_t data )
 {
    m_reg = data&0x3; // avoid latch diode protection bits
                      // https://wiki.nesdev.com/w/index.php/CNROM

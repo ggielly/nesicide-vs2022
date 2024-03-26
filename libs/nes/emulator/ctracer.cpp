@@ -39,7 +39,7 @@ CTracer::~CTracer()
    delete [] m_pSamples;
 }
 
-bool CTracer::ReallocateTracerMemory(int32_t newDepth)
+bool CTracer::ReallocateTracerMemory(const int32_t newDepth)
 {
    bool ok = true;
 
@@ -57,7 +57,7 @@ bool CTracer::ReallocateTracerMemory(int32_t newDepth)
    return ok;
 }
 
-TracerInfo* CTracer::AddSample(uint32_t cycle, int8_t type, int8_t source, int8_t target, uint16_t addr, uint8_t data)
+TracerInfo* CTracer::AddSample(const uint32_t cycle, const int8_t type, const int8_t source, const int8_t target, const uint16_t addr, const uint8_t data)
 {
    TracerInfo* pSample = m_pSamples + m_cursor;
    TracerInfo* pTargetSample = NULL;
@@ -184,7 +184,7 @@ TracerInfo* CTracer::GetLastCPUSample ( void )
    return (m_pSamples+getsample)->pCPUSample;
 }
 
-TracerInfo* CTracer::GetSample ( uint32_t sample )
+TracerInfo* CTracer::GetSample (const uint32_t sample )
 {
    int32_t getsample = m_cursor-(sample+1);
 
@@ -196,7 +196,7 @@ TracerInfo* CTracer::GetSample ( uint32_t sample )
    return m_pSamples+getsample;
 }
 
-TracerInfo* CTracer::GetCPUSample ( uint32_t sample )
+TracerInfo* CTracer::GetCPUSample (const uint32_t sample )
 {
    int32_t getsample = m_cpuCursor-(sample+1);
 
@@ -208,7 +208,7 @@ TracerInfo* CTracer::GetCPUSample ( uint32_t sample )
    return (m_pSamples+getsample)->pCPUSample;
 }
 
-TracerInfo* CTracer::GetPPUSample ( uint32_t sample )
+TracerInfo* CTracer::GetPPUSample (const uint32_t sample )
 {
    int32_t getsample = m_ppuCursor-(sample+1);
 
@@ -233,7 +233,7 @@ void CTracer::SetDisassembly ( TracerInfo* pS, uint8_t* szD )
    }
 }
 
-void CTracer::SetRegisters ( TracerInfo* pS, uint8_t a, uint8_t x, uint8_t y, uint8_t sp, uint8_t f )
+void CTracer::SetRegisters ( TracerInfo* pS, const uint8_t a, const uint8_t x, const uint8_t y, const uint8_t sp, const uint8_t f )
 {
    if ( pS )
    {

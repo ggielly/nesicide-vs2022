@@ -57,7 +57,7 @@ public:
    void SETPPU ( void );
    uint32_t DEBUGINFO ( uint32_t addr );
    uint16_t AMPLITUDE ( void );
-   static void SOUNDENABLE ( uint32_t mask ) { m_soundEnableMask = mask; }
+   static void SOUNDENABLE (const uint32_t mask ) { m_soundEnableMask = mask; }
 
    // Internal accessors for mapper information inspector...
    // Note: called directly!

@@ -86,7 +86,7 @@ CROMMapper001::~CROMMapper001()
 {
 }
 
-void CROMMapper001::RESET ( bool soft )
+void CROMMapper001::RESET (const bool soft )
 {
    int32_t idx;
 
@@ -117,12 +117,12 @@ void CROMMapper001::SYNCCPU( bool write, uint16_t addr, uint8_t data )
    m_cpuCycle++;
 }
 
-uint32_t CROMMapper001::DEBUGINFO ( uint32_t addr )
+uint32_t CROMMapper001::DEBUGINFO (const uint32_t addr )
 {
    return m_reg [ (addr-MEM_32KB)/MEM_8KB ];
 }
 
-void CROMMapper001::HMAPPER ( uint32_t addr, uint8_t data )
+void CROMMapper001::HMAPPER (const uint32_t addr, const uint8_t data )
 {
    uint8_t bank = 0;
 

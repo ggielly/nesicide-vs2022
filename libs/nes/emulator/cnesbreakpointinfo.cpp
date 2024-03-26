@@ -15,7 +15,7 @@ CNESBreakpointInfo::~CNESBreakpointInfo()
 {
 }
 
-void CNESBreakpointInfo::ModifyBreakpoint ( BreakpointInfo* pBreakpoint, int type, eBreakpointItemType itemType, int event, int item1, int item1Physical, int item2, int mask, bool maskExclusive, eBreakpointConditionType conditionType, int condition, eBreakpointDataType dataType, int data, bool enabled )
+void CNESBreakpointInfo::ModifyBreakpoint ( BreakpointInfo* pBreakpoint, int type, const eBreakpointItemType itemType, const int event, const int item1, const int item1Physical, const int item2, const int mask, const bool maskExclusive, const eBreakpointConditionType conditionType, const int condition, const eBreakpointDataType dataType, const int data, const bool enabled )
 {
    pBreakpoint->hit = false;
    pBreakpoint->enabled = enabled;
@@ -91,7 +91,7 @@ void CNESBreakpointInfo::ModifyBreakpoint ( BreakpointInfo* pBreakpoint, int typ
    pBreakpoint->data = data;
 }
 
-void CNESBreakpointInfo::GetPrintable ( int idx, char* msg )
+void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
 {
    CRegisterData* pRegister;
    CBitfieldData* pBitfield;
@@ -1842,7 +1842,7 @@ void CNESBreakpointInfo::GetPrintable ( int idx, char* msg )
    }
 }
 
-void CNESBreakpointInfo::GetHitPrintable ( int idx, char* hmsg )
+void CNESBreakpointInfo::GetHitPrintable (const int idx, char* hmsg )
 {
    char*          msg = hmsg;
 
