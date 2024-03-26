@@ -1777,6 +1777,7 @@
     <None Include="..\..\common\resources\window_new.svg">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\deps\Windows\Lua\lua.h">

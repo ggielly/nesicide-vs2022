@@ -5,7 +5,7 @@ static char __nesicide_version__[] = "v2.0.0"
 " DEBUG";
 #endif
 
-char* nesicideGetVersion()
+char* nesicide_get_version()
 {
 	return __nesicide_version__;
 }

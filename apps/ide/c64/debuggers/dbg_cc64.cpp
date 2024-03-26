@@ -18,14 +18,12 @@
 #include "dbg_cnes6502.h" // For OPCODEINFO only!
 
 CC64DBG::CC64DBG()
-{
-}
+= default;
 
 CC64DBG::~CC64DBG()
-{
-}
+= default;
 
-void CC64DBG::CODEBROWSERTOOLTIP(int32_t tipType, uint32_t addr, char* tooltipBuffer)
+void CC64DBG::codebrowsertooltip(const int32_t tipType, const uint32_t addr, char* tooltipBuffer)
 {
 	char* ptr = tooltipBuffer;
 	ptr += sprintf(ptr, "<pre>");

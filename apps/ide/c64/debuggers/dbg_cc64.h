@@ -19,7 +19,7 @@ public:
 
 	// This method retrieves information to be displayed in ToolTips
 	// for the Code Browser window.
-	static void CODEBROWSERTOOLTIP(int32_t tipType, uint32_t addr, char* tooltipBuffer);
+	static void codebrowsertooltip(int32_t tipType, uint32_t addr, char* tooltipBuffer);
 };
 
 #endif

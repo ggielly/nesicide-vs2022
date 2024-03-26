@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs />
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>D:\Consoles\NES\nesicide-vs\apps\Dn-FamiTracker-main\Dn-FamiTracker.rc</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>D:\Consoles\NES\nesicide-vs\apps\Dn-FamiTracker-main\res\export_report.htm</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

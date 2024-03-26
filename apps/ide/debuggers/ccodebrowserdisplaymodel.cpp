@@ -76,7 +76,7 @@ QVariant CCodeBrowserDisplayModel::data(const QModelIndex& index, int role) cons
 					}
 					else if (!CNesicideProject::instance()->getProjectTarget().compare("c64", Qt::CaseInsensitive))
 					{
-						CC64DBG::CODEBROWSERTOOLTIP(TOOLTIP_INFO, addr, m_modelStringBuffer);
+						CC64DBG::codebrowsertooltip(TOOLTIP_INFO, addr, m_modelStringBuffer);
 					}
 					return QVariant(m_modelStringBuffer);
 				}
@@ -93,7 +93,7 @@ QVariant CCodeBrowserDisplayModel::data(const QModelIndex& index, int role) cons
 						}
 						else if (!CNesicideProject::instance()->getProjectTarget().compare("c64", Qt::CaseInsensitive))
 						{
-							CC64DBG::CODEBROWSERTOOLTIP(TOOLTIP_BYTES, addr + (index.column() - CodeBrowserCol_Opcode),
+							CC64DBG::codebrowsertooltip(TOOLTIP_BYTES, addr + (index.column() - CodeBrowserCol_Opcode),
 							                            m_modelStringBuffer);
 						}
 						return QVariant(m_modelStringBuffer);
