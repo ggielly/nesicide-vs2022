@@ -37,7 +37,7 @@ public:
 	                cellColorComponentFunc cellRed = NULL,
 	                cellColorComponentFunc cellGreen = NULL,
 	                cellColorComponentFunc cellBlue = NULL,
-	                cellsEditableFunc cellsEditable = NULL)
+	                cellsEditableFunc cellsEditable = NULL): m_extent(0), m_mirroredExtent(0)
 	{
 		m_type = type;
 		m_base = base;

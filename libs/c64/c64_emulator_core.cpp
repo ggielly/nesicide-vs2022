@@ -3,7 +3,7 @@
 #include "cc646502.h"
 #include "cc64sid.h"
 
-static char __emu_version__ [] = "v2.0.0"
+static char emu_version_[] = "v2.0.0"
 #if defined ( QT_NO_DEBUG )
 " RELEASE";
 #else
@@ -12,7 +12,7 @@ static char __emu_version__ [] = "v2.0.0"
 
 char* c64GetVersion()
 {
-   return __emu_version__;
+   return emu_version_;
 }
 
 const char* hex_char = "0123456789ABCDEF";
@@ -29,7 +29,7 @@ void c64DisableDebug ( void )
    __c64debug = false;
 }
 
-static void (*breakpointHook)(void) = NULL;
+static void (*breakpointHook)(void) = nullptr;
 
 void c64SetBreakpointHook ( void (*hook)(void) )
 {
@@ -49,17 +49,17 @@ uint32_t c64GetNumColors ( void )
    return 16;
 }
 
-void c64GetPrintableAddress ( char* buffer, uint32_t addr )
+void c64GetPrintableAddress ( char* buffer, const uint32_t addr )
 {
    sprintf(buffer,"%04X",addr);
 }
 
-void c64GetPrintablePhysicalAddress ( char* buffer, uint32_t addr, uint32_t absAddr )
+void c64GetPrintablePhysicalAddress ( char* buffer, const uint32_t addr, uint32_t /*absAddr*/ )
 {
    sprintf(buffer,"%04X",addr);
 }
 
-void c64EnableBreakpoints ( bool enable )
+void c64EnableBreakpoints ( bool /*enable*/ )
 {
 }
 
@@ -69,100 +69,100 @@ void c64StepCpu ( void )
 
 CBreakpointInfo* c64GetBreakpointDatabase ( void )
 {
-   return CC646502::BREAKPOINTS();
+   return cc646502::BREAKPOINTS();
 }
 
 CRegisterDatabase* c64GetCpuRegisterDatabase()
 {
-   return CC646502::REGISTERS();
+   return cc646502::REGISTERS();
 }
 
 CMemoryDatabase* c64GetCpuMemoryDatabase()
 {
-   return CC646502::MEMORY();
+   return cc646502::MEMORY();
 }
 
 void c64Disassemble ()
 {
-   CC646502::DISASSEMBLE();
+   cc646502::DISASSEMBLE();
 }
 
-void c64DisassembleSingle ( uint8_t* pOpcode, char* buffer )
+void c64DisassembleSingle (const uint8_t* pOpcode, char* buffer )
 {
-   CC646502::Disassemble(pOpcode,buffer);
+   cc646502::Disassemble(pOpcode,buffer);
 }
 
-char* c64GetDisassemblyAtAddress ( uint32_t addr )
+char* c64GetDisassemblyAtAddress (const uint32_t addr )
 {
-   return CC646502::DISASSEMBLY(addr);
+   return cc646502::DISASSEMBLY(addr);
 }
 
-void c64GetDisassemblyAtPhysicalAddress ( uint32_t absAddr, char* buffer )
+void c64GetDisassemblyAtPhysicalAddress (const uint32_t absAddr, char* buffer )
 {
-   CC646502::DISASSEMBLYATPHYSADDR(absAddr,buffer);
+   cc646502::DISASSEMBLYATPHYSADDR(absAddr,buffer);
 }
 
-uint32_t c64GetPhysicalAddressFromAddress ( uint32_t addr )
+uint32_t c64GetPhysicalAddressFromAddress (const uint32_t addr )
 {
    return addr;
 }
 
-uint32_t c64GetAddressFromSLOC ( uint16_t sloc )
+uint32_t c64GetAddressFromSLOC (const uint16_t sloc )
 {
-   return CC646502::SLOC2VIRTADDR(sloc);
+   return cc646502::SLOC2VIRTADDR(sloc);
 }
 
-uint16_t c64GetSLOCFromAddress ( uint32_t addr )
+uint16_t c64GetSLOCFromAddress (const uint32_t addr )
 {
-   return CC646502::ADDR2SLOC(addr);
+   return cc646502::ADDR2SLOC(addr);
 }
 
-uint32_t c64GetSLOC ( uint32_t addr )
+uint32_t c64GetSLOC ( uint32_t /*addr*/ )
 {
-   return CC646502::SLOC();
+   return cc646502::SLOC();
 }
 
 void c64ClearOpcodeMasks ( void )
 {
-   CC646502::OPCODEMASKCLR ();
+   cc646502::OPCODEMASKCLR ();
 }
 
-void c64SetOpcodeMask ( uint32_t addr, uint8_t mask )
+void c64SetOpcodeMask (const uint32_t addr, const uint8_t mask )
 {
-   CC646502::OPCODEMASK(addr, mask);
+   cc646502::OPCODEMASK(addr, mask);
 }
 
-void c64SetGotoAddress ( uint32_t addr )
+void c64SetGotoAddress (const uint32_t addr )
 {
-   CC646502::GOTO(addr);
+   cc646502::GOTO(addr);
 }
 
 uint32_t c64GetGotoAddress ( void )
 {
-   return CC646502::GOTO();
+   return cc646502::GOTO();
 }
 
-void c64SetCPURegister ( uint32_t addr, uint32_t data )
+void c64SetCPURegister (const uint32_t addr, const uint32_t data )
 {
    switch ( addr )
    {
    case CPU_PC:
-      CC646502::__PC(data);
+      cc646502::__PC(data);
       break;
    case CPU_SP:
-      CC646502::_SP(data);
+      cc646502::_SP(data);
       break;
    case CPU_A:
-      CC646502::_A(data);
+      cc646502::_A(data);
       break;
    case CPU_X:
-      CC646502::_X(data);
+      cc646502::_X(data);
       break;
    case CPU_Y:
-      CC646502::_Y(data);
+      cc646502::_Y(data);
       break;
    case CPU_F:
-      CC646502::_F(data);
+      cc646502::_F(data);
       break;
    case VECTOR_IRQ:
       // Can't chage.
@@ -176,27 +176,27 @@ void c64SetCPURegister ( uint32_t addr, uint32_t data )
    }
 }
 
-uint32_t c64GetCPURegister( uint32_t addr )
+uint32_t c64GetCPURegister(const uint32_t addr )
 {
    switch ( addr )
    {
    case CPU_PC:
-      return CC646502::__PC();
+      return cc646502::__PC();
       break;
    case CPU_SP:
-      return CC646502::_SP();
+      return cc646502::_SP();
       break;
    case CPU_A:
-      return CC646502::_A();
+      return cc646502::_A();
       break;
    case CPU_X:
-      return CC646502::_X();
+      return cc646502::_X();
       break;
    case CPU_Y:
-      return CC646502::_Y();
+      return cc646502::_Y();
       break;
    case CPU_F:
-      return CC646502::_F();
+      return cc646502::_F();
       break;
    case VECTOR_IRQ:
       break;
@@ -243,75 +243,75 @@ uint32_t c64GetCPUFlagCarry ( void )
    return 0;
 }
 
-void c64SetCPUFlagNegative ( uint32_t set )
+void c64SetCPUFlagNegative ( uint32_t /*set*/ )
 {
 }
 
-void c64SetCPUFlagOverflow ( uint32_t set )
+void c64SetCPUFlagOverflow ( uint32_t /*set*/ )
 {
 }
 
-void c64SetCPUFlagBreak ( uint32_t set )
+void c64SetCPUFlagBreak ( uint32_t /*set*/ )
 {
 }
 
-void c64SetCPUFlagDecimal ( uint32_t set )
+void c64SetCPUFlagDecimal ( uint32_t /*set*/ )
 {
 }
 
-void c64SetCPUFlagInterrupt ( uint32_t set )
+void c64SetCPUFlagInterrupt ( uint32_t /*set*/ )
 {
 }
 
-void c64SetCPUFlagZero ( uint32_t set )
+void c64SetCPUFlagZero ( uint32_t /*set*/ )
 {
 }
 
-void c64SetCPUFlagCarry ( uint32_t set )
+void c64SetCPUFlagCarry ( uint32_t /*set*/ )
 {
 }
 
-uint32_t c64GetMemory ( uint32_t addr )
+uint32_t c64GetMemory (const uint32_t addr )
 {
-   return CC646502::_MEM(addr);
+   return cc646502::_MEM(addr);
 }
 
-void c64SetMemory ( uint32_t addr, uint32_t data )
+void c64SetMemory (const uint32_t addr, const uint32_t data )
 {
-   CC646502::_MEM(addr,data);
+   cc646502::_MEM(addr,data);
 }
 
-uint32_t c64GetPaletteRedComponent(uint32_t idx)
+uint32_t c64GetPaletteRedComponent(uint32_t /*idx*/)
 {
 //   return CBasePalette::GetPaletteR(idx)&0xFF;
    return 0;
 }
 
-uint32_t c64GetPaletteGreenComponent(uint32_t idx)
+uint32_t c64GetPaletteGreenComponent(uint32_t /*idx*/)
 {
 //   return CBasePalette::GetPaletteG(idx)&0xFF;
    return 0;
 }
 
-uint32_t c64GetPaletteBlueComponent(uint32_t idx)
+uint32_t c64GetPaletteBlueComponent(uint32_t /*idx*/)
 {
 //   return CBasePalette::GetPaletteB(idx)&0xFF;
    return 0;
 }
 
-void    c64SetPaletteRedComponent(uint32_t idx,uint32_t r)
+void    c64SetPaletteRedComponent(uint32_t /*idx*/,uint32_t /*r*/)
 {
 //   CBasePalette::SetPaletteR(idx,r&0xFF);
    return;
 }
 
-void    c64SetPaletteGreenComponent(uint32_t idx,uint32_t g)
+void    c64SetPaletteGreenComponent(uint32_t /*idx*/,uint32_t /*g*/)
 {
 //   CBasePalette::SetPaletteG(idx,g&0xFF);
    return;
 }
 
-void    c64SetPaletteBlueComponent(uint32_t idx,uint32_t b)
+void    c64SetPaletteBlueComponent(uint32_t /*idx*/,uint32_t /*b*/)
 {
 //   CBasePalette::SetPaletteB(idx,b&0xFF);
    return;
@@ -322,22 +322,22 @@ CRegisterDatabase* c64GetSidRegisterDatabase()
    return CSID::REGISTERS();
 }
 
-uint32_t c64GetSID8Register ( uint32_t addr )
+uint32_t c64GetSID8Register (const uint32_t addr )
 {
    return CSID::_MEM8(addr);
 }
 
-uint32_t c64GetSID16Register ( uint32_t addr )
+uint32_t c64GetSID16Register (const uint32_t addr )
 {
    return CSID::_MEM16(addr);
 }
 
-void c64SetSID8Register ( uint32_t addr, uint32_t data )
+void c64SetSID8Register (const uint32_t addr, const uint32_t data )
 {
    CSID::_MEM8(addr,data);
 }
 
-void c64SetSID16Register ( uint32_t addr, uint32_t data )
+void c64SetSID16Register (const uint32_t addr, const uint32_t data )
 {
    CSID::_MEM16(addr,data);
 }

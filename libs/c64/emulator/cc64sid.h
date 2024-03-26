@@ -5,7 +5,7 @@
 
 #include "cregisterdata.h"
 
-class CSID
+class CSID final
 {
 public:
    CSID();
@@ -23,25 +23,25 @@ public:
    }
 
    // Return the contents of a memory location visible to the SID.
-   static uint8_t _MEM8 ( uint32_t addr )
+   static uint8_t _MEM8 (const uint32_t addr )
    {
       return *(m_SIDmemory+(addr-SID_BASE));
    }
 
    // Modify the contents of a memory location visible to the SID.
-   static void _MEM8 ( uint32_t addr, uint8_t data )
+   static void _MEM8 (const uint32_t addr, const uint8_t data )
    {
       *(m_SIDmemory+(addr-SID_BASE)) = data;
    }
 
    // Return the contents of a memory location visible to the SID.
-   static uint16_t _MEM16 ( uint32_t addr )
+   static uint16_t _MEM16 (const uint32_t addr )
    {
       return *(uint16_t*)(m_SIDmemory+(addr-SID_BASE));
    }
 
    // Modify the contents of a memory location visible to the SID.
-   static void _MEM16 ( uint32_t addr, uint16_t data )
+   static void _MEM16 (const uint32_t addr, const uint16_t data )
    {
       *(uint16_t*)(m_SIDmemory+(addr-SID_BASE)) = data;
    }

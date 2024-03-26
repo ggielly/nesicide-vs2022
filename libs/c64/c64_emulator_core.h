@@ -161,7 +161,7 @@ uint32_t c64GetPaletteRedComponent(uint32_t idx);
 uint32_t c64GetPaletteGreenComponent(uint32_t idx);
 uint32_t c64GetPaletteBlueComponent(uint32_t idx);
 void c64Disassemble ();
-void c64DisassembleSingle ( uint8_t* pOpcode, char* buffer );
+void c64DisassembleSingle (const uint8_t* pOpcode, char* buffer );
 char* c64GetDisassemblyAtAddress ( uint32_t addr );
 void c64GetDisassemblyAtPhysicalAddress ( uint32_t absAddr, char* buffer );
 uint32_t c64GetAddressFromSLOC ( uint16_t sloc );

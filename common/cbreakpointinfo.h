@@ -171,15 +171,15 @@ public:
 	                         int item1Physical, int item2, int mask, bool maskExclusive,
 	                         eBreakpointConditionType conditionType, int condition, eBreakpointDataType dataType,
 	                         int data, bool enabled);
-	int AddBreakpoint(BreakpointInfo* pBreakpoint);
+	int add_breakpoint(const BreakpointInfo* pBreakpoint);
 	int AddBreakpoint(int type, eBreakpointItemType itemType, int event, int item1, int item1Physical, int item2,
 	                  int mask, bool maskExclusive, eBreakpointConditionType conditionType, int condition,
 	                  eBreakpointDataType dataType, int data, bool enabled);
-	void ModifyBreakpoint(int bp, BreakpointInfo* pBreakpoint);
+	void ModifyBreakpoint(int bp, const BreakpointInfo* pBreakpoint);
 	void RemoveBreakpoint(int index);
-	int FindExactMatch(int type, eBreakpointItemType itemType, int event, int item1, int item1Physical, int item2,
-	                   int mask, bool maskExclusive, eBreakpointConditionType conditionType, int condition,
-	                   eBreakpointDataType dataType, int data);
+	int FindExactMatch(int type, eBreakpointItemType itemType, int event, int item1, int item1_physical, int item2,
+	                   int mask, bool maskExclusive, eBreakpointConditionType condition_type, int condition,
+	                   eBreakpointDataType data_type, int data) const;
 	void ToggleEnabled(int bp);
 	void SetEnabled(int bp, bool enabled);
 	BreakpointStatus GetStatus(int idx);

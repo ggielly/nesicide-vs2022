@@ -115,7 +115,7 @@ static CBasePalette __init;
 #pragma warning(default: 4101)
 
 
-void CBasePalette::CalculateVariants ( void )
+void CBasePalette::calculate_variants ( void )
 {
    int idx1, idx2;
    int temp;

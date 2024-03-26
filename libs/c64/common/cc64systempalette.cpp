@@ -24,20 +24,20 @@
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
-inline uint8_t red(uint32_t rgb)
+inline uint8_t red(const uint32_t rgb)
 {
    return (rgb>>24)&0xFF;
 }
-inline uint8_t green(uint32_t rgb)
+inline uint8_t green(const uint32_t rgb)
 {
    return (rgb>>16)&0xFF;
 }
-inline uint8_t blue(uint32_t rgb)
+inline uint8_t blue(const uint32_t rgb)
 {
    return (rgb>>8)&0xFF;
 }
 
-uint32_t CBasePalette::m_paletteBase [ 16 ] =
+uint32_t CBasePalette::m_palette_base_ [ 16 ] =
 {
    RGB_VALUE ( 102, 102, 102 ),
    RGB_VALUE ( 0, 42, 136 ),
@@ -57,19 +57,17 @@ uint32_t CBasePalette::m_paletteBase [ 16 ] =
    RGB_VALUE ( 0, 0, 0 )
 };
 
-int8_t   CBasePalette::m_paletteRGBs [ 16 ] [ 3 ];
+int8_t   CBasePalette::m_palette_rg_bs_ [ 16 ] [ 3 ];
 
 //static CBasePalette __init __attribute((unused));
-static CBasePalette __init;
+static CBasePalette init;
 
-void CBasePalette::CalculateVariants ( void )
+void CBasePalette::calculate_variants ( void )
 {
-   int idx;
-
-   for ( idx = 0; idx < 16; idx++ )
+	for ( int idx = 0; idx < 16; idx++ )
    {
-      m_paletteRGBs [ idx ] [ 0 ] = red(m_paletteBase[idx]);
-      m_paletteRGBs [ idx ] [ 1 ] = green(m_paletteBase[idx]);
-      m_paletteRGBs [ idx ] [ 2 ] = blue(m_paletteBase[idx]);
+      m_palette_rg_bs_ [ idx ] [ 0 ] = red(m_palette_base_[idx]);
+      m_palette_rg_bs_ [ idx ] [ 1 ] = green(m_palette_base_[idx]);
+      m_palette_rg_bs_ [ idx ] [ 2 ] = blue(m_palette_base_[idx]);
    }
 }

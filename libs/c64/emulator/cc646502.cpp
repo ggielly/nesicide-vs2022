@@ -95,8 +95,8 @@ static const char* columnHeadings [] =
 
 static CRegisterDatabase* dbRegisters = new CRegisterDatabase(eMemory_CPUregs,1,9,9,tblCPURegisters,rowHeadings,columnHeadings);
 
-CRegisterDatabase* CC646502::m_dbRegisters = dbRegisters;
-CBreakpointInfo* CC646502::m_breakpoints;
+CRegisterDatabase* cc646502::m_dbRegisters = dbRegisters;
+CBreakpointInfo* cc646502::m_breakpoints;
 
 static CMemoryDatabase* dbMemory = new CMemoryDatabase(eMemory_CPU,
                                                        0x0000,
@@ -108,16 +108,16 @@ static CMemoryDatabase* dbMemory = new CMemoryDatabase(eMemory_CPU,
                                                        c64GetPrintableAddress,
                                                        true);
 
-CMemoryDatabase* CC646502::m_dbMemory = dbMemory;
+CMemoryDatabase* cc646502::m_dbMemory = dbMemory;
 
-uint8_t*  CC646502::m_6502memory = NULL;
-uint8_t   CC646502::m_a;
-uint8_t   CC646502::m_x;
-uint8_t   CC646502::m_y;
-uint8_t   CC646502::m_f;
-uint16_t  CC646502::m_pc;
-uint8_t   CC646502::m_sp;
-uint32_t  CC646502::m_pcGoto = 0xFFFFFFFF;
+uint8_t*  cc646502::m_6502memory = nullptr;
+uint8_t   cc646502::m_a;
+uint8_t   cc646502::m_x;
+uint8_t   cc646502::m_y;
+uint8_t   cc646502::m_f;
+uint16_t  cc646502::m_pc;
+uint8_t   cc646502::m_sp;
+uint32_t  cc646502::m_pcGoto = 0xFFFFFFFF;
 
 #if 0
 CMarker*         CC646502::m_marker = NULL;
@@ -125,11 +125,11 @@ CMarker*         CC646502::m_marker = NULL;
 CCodeDataLogger* CC646502::m_logger = NULL;
 #endif
 
-uint8_t*   CC646502::m_RAMopcodeMask = NULL;
-char**     CC646502::m_RAMdisassembly = NULL;
-uint16_t*  CC646502::m_RAMsloc2addr = NULL;
-uint32_t*  CC646502::m_RAMaddr2sloc = NULL;
-uint32_t   CC646502::m_RAMsloc = 0;
+uint8_t*   cc646502::m_RAMopcodeMask = nullptr;
+char**     cc646502::m_RAMdisassembly = nullptr;
+uint16_t*  cc646502::m_RAMsloc2addr = nullptr;
+uint32_t*  cc646502::m_RAMaddr2sloc = nullptr;
+uint32_t   cc646502::m_RAMsloc = 0;
 
 static int32_t opcode_size [ NUM_ADDRESSING_MODES ] =
 {
@@ -427,13 +427,13 @@ static CC646502_opcode m_6502opcode [ 256 ] =
 
 //static CC646502 __init __attribute((unused));
 // Patch for MSVC
-static CC646502 __init;
+static cc646502 __init;
 
-CC646502::CC646502()
+cc646502::cc646502()
 {
    int32_t addr;
 
-   m_breakpoints = new CC64BreakpointInfo();
+   m_breakpoints = new cc64_breakpoint_info();
 
    m_RAMdisassembly = new char*[MEM_64KB];
    for ( addr = 0; addr < MEM_64KB; addr++ )
@@ -453,7 +453,7 @@ CC646502::CC646502()
 #endif
 }
 
-CC646502::~CC646502()
+cc646502::~cc646502()
 {
    int32_t addr;
 
@@ -477,7 +477,7 @@ CC646502::~CC646502()
 #endif
 }
 
-char* CC646502::Disassemble ( uint8_t* pOpcode, char* buffer )
+char* cc646502::Disassemble (const uint8_t* pOpcode, char* buffer )
 {
    char* lbuffer = buffer;
    CC646502_opcode* pOp = m_6502opcode+(*pOpcode);
@@ -520,7 +520,7 @@ char* CC646502::Disassemble ( uint8_t* pOpcode, char* buffer )
 
    return lbuffer;
 }
-void CC646502::DISASSEMBLE ()
+void cc646502::DISASSEMBLE ()
 {
    DISASSEMBLE ( m_RAMdisassembly,
                  m_6502memory,
@@ -531,7 +531,7 @@ void CC646502::DISASSEMBLE ()
                  &(m_RAMsloc) );
 }
 
-void CC646502::DISASSEMBLE ( char** disassembly, uint8_t* binary, int32_t binaryLength, uint8_t* opcodeMask, uint16_t* sloc2addr, uint32_t* addr2sloc, uint32_t* sourceLength )
+void cc646502::DISASSEMBLE ( char** disassembly, const uint8_t* binary, const int32_t binaryLength, const uint8_t* opcodeMask, uint16_t* sloc2addr, uint32_t* addr2sloc, uint32_t* sourceLength )
 {
    CC646502_opcode* pOp;
    int32_t opSize;

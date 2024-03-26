@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>D:\Consoles\NES\nesicide-vs\common\</FILEPATH>
+      <FILENAME>cmemorydata.h</FILENAME>
+      <LINE>28</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>La variable 'CMemoryDatabase::m_extent' n'est pas initialisée. Initialisez toujours une variable membre (type.6).</DESCRIPTION>
+    <FUNCTION>CMemoryDatabase::{ctor}</FUNCTION>
+    <DECORATED>??0CMemoryDatabase@@QEAA@HHHHPEBDP6AII@ZP6AXII@ZP6AXPEADI@Z_N111P6A_NXZ@Z</DECORATED>
+    <FUNCLINE>28</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>CMemoryDatabase::m_extent</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>D:\Consoles\NES\nesicide-vs\common\</FILEPATH>
+      <FILENAME>cregisterdata.h</FILENAME>
+      <LINE>20</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>La variable 'CBitfieldData::m_value' n'est pas initialisée. Initialisez toujours une variable membre (type.6).</DESCRIPTION>
+    <FUNCTION>CBitfieldData::{ctor}</FUNCTION>
+    <DECORATED>??0CBitfieldData@@QEAA@PEBDDD0HZZ</DECORATED>
+    <FUNCLINE>20</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>CBitfieldData::m_value</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>D:\Consoles\NES\nesicide-vs\common\</FILEPATH>
+      <FILENAME>cbreakpointinfo.cpp</FILENAME>
+      <LINE>3</LINE>
+      <COLUMN>17</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>La variable 'CBreakpointInfo::m_breakpoint' n'est pas initialisée. Initialisez toujours une variable membre (type.6).</DESCRIPTION>
+    <FUNCTION>CBreakpointInfo::{ctor}</FUNCTION>
+    <DECORATED>??0CBreakpointInfo@@QEAA@XZ</DECORATED>
+    <FUNCLINE>3</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>CBreakpointInfo::m_breakpoint</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT></DEFECTS>

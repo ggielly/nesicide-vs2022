@@ -5,17 +5,16 @@
 #include "cc646502.h"
 #include "cc64sid.h"
 
-CC64BreakpointInfo::CC64BreakpointInfo()
-{
-}
+cc64_breakpoint_info::cc64_breakpoint_info()
+= default;
 
-void CC64BreakpointInfo::ModifyBreakpoint ( BreakpointInfo* pBreakpoint, int type, eBreakpointItemType itemType, int event, int item1, int item1Physical, int item2, int mask, bool maskExclusive, eBreakpointConditionType conditionType, int condition, eBreakpointDataType dataType, int data, bool enabled )
+void cc64_breakpoint_info::ModifyBreakpoint ( BreakpointInfo* p_breakpoint, int type, const eBreakpointItemType item_type, const int event, const int item1, const int item1_physical, const int item2, const int mask, const bool mask_exclusive, const eBreakpointConditionType condition_type, const int condition, const eBreakpointDataType data_type, const int data, const bool enabled )
 {
-   pBreakpoint->hit = false;
-   pBreakpoint->enabled = enabled;
-   pBreakpoint->itemActual = -1;
-   pBreakpoint->type = (eBreakpointType)type;
-   pBreakpoint->pEvent = NULL;
+   p_breakpoint->hit = false;
+   p_breakpoint->enabled = enabled;
+   p_breakpoint->itemActual = -1;
+   p_breakpoint->type = static_cast<eBreakpointType>(type);
+   p_breakpoint->pEvent = nullptr;
 
    switch ( type )
    {
@@ -23,28 +22,28 @@ void CC64BreakpointInfo::ModifyBreakpoint ( BreakpointInfo* pBreakpoint, int typ
       case eBreakOnCPUMemoryAccess:
       case eBreakOnCPUMemoryRead:
       case eBreakOnCPUMemoryWrite:
-         pBreakpoint->target = eBreakInCPU;
+         p_breakpoint->target = eBreakInCPU;
          break;
    }
 
-   pBreakpoint->conditionType = conditionType;
-   pBreakpoint->condition = condition;
-   pBreakpoint->itemType = itemType;
-   pBreakpoint->event = event;
+   p_breakpoint->conditionType = condition_type;
+   p_breakpoint->condition = condition;
+   p_breakpoint->itemType = item_type;
+   p_breakpoint->event = event;
 
    // Events not supported yet.
-   pBreakpoint->pEvent = NULL;
+   p_breakpoint->pEvent = nullptr;
 
-   pBreakpoint->item1 = item1;
-   pBreakpoint->item1Physical = item1Physical;
-   pBreakpoint->item2 = item2;
-   pBreakpoint->itemMask = mask;
-   pBreakpoint->itemMaskExclusive = maskExclusive;
-   pBreakpoint->dataType = dataType;
-   pBreakpoint->data = data;
+   p_breakpoint->item1 = item1;
+   p_breakpoint->item1Physical = item1_physical;
+   p_breakpoint->item2 = item2;
+   p_breakpoint->itemMask = mask;
+   p_breakpoint->itemMaskExclusive = mask_exclusive;
+   p_breakpoint->dataType = data_type;
+   p_breakpoint->data = data;
 }
 
-void CC64BreakpointInfo::GetPrintable ( int idx, char* msg )
+void cc64_breakpoint_info::GetPrintable (const int idx, char* msg )
 {
    char printableAddress[32];
 
@@ -441,7 +440,7 @@ void CC64BreakpointInfo::GetPrintable ( int idx, char* msg )
    }
 }
 
-void CC64BreakpointInfo::GetHitPrintable ( int idx, char* hmsg )
+void cc64_breakpoint_info::GetHitPrintable (const int idx, char* hmsg )
 {
    char*          msg = hmsg;
 

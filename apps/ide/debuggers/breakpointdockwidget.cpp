@@ -340,7 +340,7 @@ void BreakpointDockWidget::on_tableView_doubleClicked(QModelIndex index)
 		result = bd.exec();
 		if (result)
 		{
-			m_pBreakpoints->AddBreakpoint(bd.getBreakpoint());
+			m_pBreakpoints->add_breakpoint(bd.getBreakpoint());
 			emit breakpointsChanged();
 			emit markProjectDirty(true);
 		}
@@ -362,7 +362,7 @@ void BreakpointDockWidget::on_actionAdd_Breakpoint_triggered()
 	result = bd.exec();
 	if (result)
 	{
-		m_pBreakpoints->AddBreakpoint(bd.getBreakpoint());
+		m_pBreakpoints->add_breakpoint(bd.getBreakpoint());
 		emit breakpointsChanged();
 		emit markProjectDirty(true);
 	}
@@ -519,7 +519,7 @@ bool BreakpointDockWidget::deserialize(QDomDocument& /*doc*/, QDomNode& node, QS
 					breakpoint.condition = element.attribute("condition").toInt();
 					breakpoint.dataType = (eBreakpointDataType)element.attribute("datatype").toInt();
 					breakpoint.data = element.attribute("data").toInt();
-					m_pBreakpoints->AddBreakpoint(&breakpoint);
+					m_pBreakpoints->add_breakpoint(&breakpoint);
 					breakpointNode = breakpointNode.nextSibling();
 				}
 

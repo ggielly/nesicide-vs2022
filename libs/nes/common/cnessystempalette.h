@@ -83,33 +83,33 @@ public:
    static inline void SetPalette ( int idx, uint32_t color )
    {
       m_paletteVariants[0][idx] = color;
-      CalculateVariants ();
+      calculate_variants ();
    }
    static inline void SetPaletteR ( int idx, uint8_t r )
    {
       setRed(m_paletteVariants[0][idx],r);
-      CalculateVariants ();
+      calculate_variants ();
    }
    static inline void SetPaletteG ( int idx, uint8_t g )
    {
       setGreen(m_paletteVariants[0][idx],g);
-      CalculateVariants ();
+      calculate_variants ();
    }
    static inline void SetPaletteB ( int idx, uint8_t b )
    {
       setBlue(m_paletteVariants[0][idx],b);
-      CalculateVariants ();
+      calculate_variants ();
    }
-   static void CalculateVariants ( void );
+   static void calculate_variants ( void );
    static void RestoreBase ( void )
    {
       memcpy ( m_paletteVariants[0], m_paletteBase, sizeof(m_paletteBase) );
-      CalculateVariants ();
+      calculate_variants ();
    }
    CBasePalette()
    {
       memcpy ( m_paletteVariants[0], m_paletteBase, sizeof(m_paletteBase) );
-      CalculateVariants ();
+      calculate_variants ();
    };
 
 protected:

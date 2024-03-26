@@ -3,15 +3,15 @@
 
 #include "cbreakpointinfo.h"
 
-class CC64BreakpointInfo : public CBreakpointInfo
+class cc64_breakpoint_info final : public CBreakpointInfo
 {
 public:
-   CC64BreakpointInfo();
-   void GetPrintable ( int idx, char* msg );
-   void GetHitPrintable ( int idx, char* hmsg );
+   cc64_breakpoint_info();
+   void GetPrintable ( int idx, char* msg ) override;
+   void GetHitPrintable ( int idx, char* hmsg ) override;
 
 protected:
-   void ModifyBreakpoint ( BreakpointInfo* pBreakpoint, int type, eBreakpointItemType itemType, int event, int item1, int item1Physical, int item2, int mask, bool maskExclusive, eBreakpointConditionType conditionType, int condition, eBreakpointDataType dataType, int data, bool enabled );
+   void ModifyBreakpoint ( BreakpointInfo* p_breakpoint, int type, eBreakpointItemType item_type, int event, int item1, int item1_physical, int item2, int mask, bool mask_exclusive, eBreakpointConditionType condition_type, int condition, eBreakpointDataType data_type, int data, bool enabled ) override;
 };
 
 #endif // CBREAKPOINTINFO_H

@@ -14,7 +14,7 @@
 class CBasePalette
 {
 public:
-   static inline uint8_t GetPaletteIndex ( int8_t red, int8_t green, int8_t blue )
+   static inline uint8_t GetPaletteIndex (const int8_t red, const int8_t green, const int8_t blue )
    {
       int i;
       for ( i = 0; i < 16; i++ )
@@ -28,31 +28,31 @@ public:
       }
       return -1;
    }
-   static inline uint32_t GetPalette ( int idx )
+   static inline uint32_t GetPalette (const int idx )
    {
-      return *(m_paletteBase+idx);
+      return *(m_palette_base_+idx);
    }
-   static inline int8_t GetPaletteR ( int idx )
+   static inline int8_t GetPaletteR (const int idx )
    {
-      return *(*(m_paletteRGBs+idx)+0);
+      return *(*(m_palette_rg_bs_+idx)+0);
    }
-   static inline int8_t GetPaletteG ( int idx )
+   static inline int8_t GetPaletteG (const int idx )
    {
-      return *(*(m_paletteRGBs+idx)+1);
+      return *(*(m_palette_rg_bs_+idx)+1);
    }
-   static inline int8_t GetPaletteB ( int idx )
+   static inline int8_t GetPaletteB (const int idx )
    {
-      return *(*(m_paletteRGBs+idx)+2);
+      return *(*(m_palette_rg_bs_+idx)+2);
    }
-   static void CalculateVariants ( void );
+   static void calculate_variants ( void );
    CBasePalette()
    {
-      CalculateVariants ();
+      calculate_variants ();
    };
 
 protected:
-   static uint32_t m_paletteBase[16];
-   static int8_t   m_paletteRGBs[16][3];
+   static uint32_t m_palette_base_[16];
+   static int8_t   m_palette_rg_bs_[16][3];
 };
 
 #endif
