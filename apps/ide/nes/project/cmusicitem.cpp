@@ -128,7 +128,7 @@ void CMusicItem::openItemEvent(CProjectTabWidget* tabWidget)
 	}
 	else
 	{
-		MusicEditorForm* editor = MusicEditorForm::instance();
+		music_editor_form* editor = music_editor_form::instance();
 
 		// Music Item must know their editor widget due to current architecture.
 		openFile(this->caption());
@@ -142,7 +142,7 @@ void CMusicItem::openItemEvent(CProjectTabWidget* tabWidget)
 
 bool CMusicItem::exportData()
 {
-	MusicEditorForm* editor = MusicEditorForm::instance();
+	music_editor_form* editor = music_editor_form::instance();
 
 	// Music Item must know their editor widget due to current architecture.
 	openFile(this->caption());

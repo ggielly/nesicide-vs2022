@@ -1055,11 +1055,11 @@ void nesSetBreakOnKIL (const bool breakOnKIL )
    CNES::NES()->CPU()->BREAKONKIL(breakOnKIL);
 }
 
-static void (*breakpointHook)(void) = NULL;
+static void (*breakpoint_hook)(void) = NULL;
 
 void nesSetBreakpointHook ( void (*hook)(void) )
 {
-   breakpointHook = hook;
+   breakpoint_hook = hook;
 }
 
 static void (*audioHook)(void) = NULL;
@@ -1071,9 +1071,9 @@ void nesSetAudioHook ( void (*hook)(void) )
 
 void nesBreak ( void )
 {
-   if ( breakpointHook )
+   if ( breakpoint_hook )
    {
-      breakpointHook();
+      breakpoint_hook();
    }
 }
 

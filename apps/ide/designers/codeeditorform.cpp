@@ -731,7 +731,7 @@ void CodeEditorForm::updateToolTip(QString symbol)
 				}
 				else if (!CNesicideProject::instance()->getProjectTarget().compare("c64", Qt::CaseInsensitive))
 				{
-					c64GetPrintablePhysicalAddress(address, addr, absAddr);
+					c64_get_printable_physical_address(address, addr, absAddr);
 				}
 
 				file = CCC65Interface::instance()->getSourceFileFromSymbol(symbol);
@@ -1047,7 +1047,7 @@ void CodeEditorForm::resolveLineAddress(int line, int* addr, int* absAddr)
 			}
 			else if (!CNesicideProject::instance()->getProjectTarget().compare("c64", Qt::CaseInsensitive))
 			{
-				c64GetPrintablePhysicalAddress(resolutionBuffer, (*addr), (*absAddr));
+				c64_get_printable_physical_address(resolutionBuffer, (*addr), (*absAddr));
 				c64GetDisassemblyAtPhysicalAddress((*absAddr), resolutionBuffer);
 			}
 			asmChunk = resolutionBuffer;
@@ -1154,7 +1154,7 @@ void CodeEditorForm::annotateText()
 								else if (!CNesicideProject::instance()->getProjectTarget().compare(
 									"c64", Qt::CaseInsensitive))
 								{
-									c64GetPrintablePhysicalAddress(address, addr, absAddr);
+									c64_get_printable_physical_address(address, addr, absAddr);
 								}
 								pAnnotationBuffer += sprintf(pAnnotationBuffer, "%s:", address);
 								pAnnotationBuffer += sprintf(pAnnotationBuffer, disassembly);

@@ -12,62 +12,65 @@
 
 #include <QDir>
 
-MusicEditorForm* MusicEditorForm::_instance = nullptr;
 
-MusicEditorForm* MusicEditorForm::instance()
+
+music_editor_form* music_editor_form::instance_ = nullptr;
+
+music_editor_form* music_editor_form::instance()
 {
-	if (!_instance)
+	if (!instance_)
 	{
-		_instance = new MusicEditorForm(QString(), QByteArray());
+		instance_ = new music_editor_form(QString(), QByteArray());
 	}
 
-	return _instance;
+	return instance_;
 }
 
-MusicEditorForm::MusicEditorForm(QString fileName, QByteArray musicData, IProjectTreeViewItem* link, QWidget* parent) :
+music_editor_form::music_editor_form([[maybe_unused]] const QString& file_name, [[maybe_unused]] const QByteArray&
+                                     music_data, IProjectTreeViewItem* link, QWidget* parent) :
 	CDesignerEditorBase(link, parent),
-	ui(new Ui::MusicEditorForm)
+	ui_(new Ui::MusicEditorForm)
 {
-	ui->setupUi(this);
+	ui_->setupUi(this);
 
 	// Initialize FamiTracker...
 	ideifyFamiTracker();
 	qtMfcInit(this);
 	AfxGetApp()->InitInstance();
 
-	auto pMainFrame = (CMainFrame*)AfxGetMainWnd();
+	const auto pMainFrame = static_cast<CMainFrame*>(AfxGetMainWnd());
 	setCentralWidget(pMainFrame->toQWidget());
 	pMainFrame->toQWidget()->setAcceptDrops(true);
 
-	QObject::connect(AfxGetApp()->m_pMainWnd,SIGNAL(addToolBarWidget(QToolBar*)), this,
-	                 SIGNAL(addToolBarWidget(QToolBar*)));
-	QObject::connect(AfxGetApp()->m_pMainWnd,SIGNAL(removeToolBarWidget(QToolBar*)), this,
-	                 SIGNAL(removeToolBarWidget(QToolBar*)));
-	QObject::connect(AfxGetApp()->m_pMainWnd,SIGNAL(editor_modificationChanged(bool)), this,
-	                 SLOT(editor_modificationChanged(bool)));
+	connect(AfxGetApp()->m_pMainWnd,SIGNAL(addToolBarWidget(QToolBar*)), this,
+	        SIGNAL(addToolBarWidget(QToolBar*)));
+	connect(AfxGetApp()->m_pMainWnd,SIGNAL(removeToolBarWidget(QToolBar*)), this,
+	        SIGNAL(removeToolBarWidget(QToolBar*)));
+	connect(AfxGetApp()->m_pMainWnd,SIGNAL(editor_modificationChanged(bool)), this,
+	        SLOT(editor_modificationChanged(bool)));
 }
 
-MusicEditorForm::~MusicEditorForm()
+music_editor_form::~music_editor_form()
 {
 	// Close FamiTracker.
 	AfxGetMainWnd()->OnClose();
 	AfxGetApp()->ExitInstance();
 
-	delete ui;
+	delete ui_;
 }
 
-void MusicEditorForm::editor_modificationChanged(bool m)
+void music_editor_form::editor_modification_changed(bool m)
 {
 	setModified(m);
 
 	emit editor_modified(m);
 }
 
-void MusicEditorForm::documentSaved()
+void music_editor_form::document_saved()
 {
 }
 
-void MusicEditorForm::documentClosed()
+void music_editor_form::document_closed()
 {
 	//   QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "FamiTracker");
 
@@ -80,7 +83,7 @@ void MusicEditorForm::documentClosed()
 	//   exit(0);
 }
 
-void MusicEditorForm::onSave()
+void music_editor_form::onSave()
 {
 	CDesignerEditorBase::onSave();
 
@@ -89,12 +92,12 @@ void MusicEditorForm::onSave()
 	setModified(false);
 }
 
-void MusicEditorForm::onClose()
+void music_editor_form::onClose()
 {
 	openFile(nullptr);
 }
 
-QMessageBox::StandardButton MusicEditorForm::onCloseQuery()
+QMessageBox::StandardButton music_editor_form::onCloseQuery()
 {
 	QMessageBox::StandardButton doSave;
 
@@ -102,7 +105,7 @@ QMessageBox::StandardButton MusicEditorForm::onCloseQuery()
 	if (doSave == QMessageBox::No)
 	{
 		// Need to nix the MFC modified flag.
-		auto pDoc = (CFamiTrackerDoc*)AfxGetMainWnd()->GetActiveDocument();
+		auto pDoc = static_cast<CFamiTrackerDoc*>(AfxGetMainWnd()->GetActiveDocument());
 
 		pDoc->SetModifiedFlag(FALSE);
 	}
@@ -110,7 +113,7 @@ QMessageBox::StandardButton MusicEditorForm::onCloseQuery()
 	return doSave;
 }
 
-bool MusicEditorForm::exportData()
+bool music_editor_form::exportData()
 {
 	//   AfxGetMainWnd()->SendMessage(ID_FILE_EXPORTTEXT);
 	auto pDoc = static_cast<CFamiTrackerDoc*>(AfxGetMainWnd()->GetActiveDocument());

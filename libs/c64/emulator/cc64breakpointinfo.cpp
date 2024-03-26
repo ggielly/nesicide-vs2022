@@ -50,7 +50,7 @@ void cc64_breakpoint_info::GetPrintable (const int idx, char* msg )
    switch ( m_breakpoint[idx].type )
    {
       case eBreakOnCPUExecution:
-         c64GetPrintablePhysicalAddress(printableAddress,
+         c64_get_printable_physical_address(printableAddress,
                                             m_breakpoint[idx].item1,
                                             m_breakpoint[idx].item1Physical);
 

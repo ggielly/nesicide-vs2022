@@ -23,7 +23,7 @@ public:
 	// Member Setters
 	void setMusicData(QByteArray musicData);
 
-	MusicEditorForm* editor() { return dynamic_cast<MusicEditorForm*>(m_editor); }
+	music_editor_form* editor() { return dynamic_cast<music_editor_form*>(m_editor); }
 
 	// IXMLSerializable Interface Implementation
 	bool serialize(QDomDocument& doc, QDomNode& node) override;

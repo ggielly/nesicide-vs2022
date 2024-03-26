@@ -415,7 +415,7 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 	CPluginManager::instance()->loadPlugins();
 
 	// Instantiate music editor form single instance...
-	MusicEditorForm::instance();
+	music_editor_form::instance();
 
 	// Set up UI in "Coding" mode.
 	AppSettings::instance()->setAppMode(AppSettings::CodingMode);
@@ -513,7 +513,7 @@ MainWindow::~MainWindow()
 	killTimer(m_periodicTimer);
 
 	// Destroy music editor form single instance...
-	delete MusicEditorForm::instance();
+	delete music_editor_form::instance();
 
 	tabWidget->clear();
 

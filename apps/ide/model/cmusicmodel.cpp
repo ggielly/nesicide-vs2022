@@ -126,7 +126,7 @@ void CMusicModel::setRelativePath(const QUuid& uuid, const QString& path)
 
 CDesignerEditorBase* CMusicModel::createEditorWidget(const QUuid& uuid) const
 {
-	MusicEditorForm* editor = MusicEditorForm::instance();
+	music_editor_form* editor = music_editor_form::instance();
 	CMusicItem* file = ProjectSearcher::findItemByUuid<CMusicItem>(m_pNesicideProject, uuid);
 	if (file == nullptr)
 		return nullptr;

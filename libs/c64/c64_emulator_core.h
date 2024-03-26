@@ -156,7 +156,7 @@ CMemoryDatabase* c64GetCpuMemoryDatabase ( void );
 // General debug interfaces.
 void c64EnableDebug ( void );
 void c64DisableDebug ( void );
-uint32_t c64GetNumColors ( void );
+uint32_t c64_get_num_colors ( void );
 uint32_t c64GetPaletteRedComponent(uint32_t idx);
 uint32_t c64GetPaletteGreenComponent(uint32_t idx);
 uint32_t c64GetPaletteBlueComponent(uint32_t idx);
@@ -171,10 +171,10 @@ uint32_t c64GetPhysicalAddressFromAddress ( uint32_t addr );
 void c64ClearOpcodeMasks ( void );
 void c64SetOpcodeMask ( uint32_t addr, uint8_t mask );
 void c64SetBreakpointHook ( void (*hook)(void) );
-void c64EnableBreakpoints ( bool enable );
+void c64_enable_breakpoints ( bool enable );
 void c64StepCpu ( void );
-void c64GetPrintableAddress ( char* buffer, uint32_t addr );
-void c64GetPrintablePhysicalAddress ( char* buffer, uint32_t addr, uint32_t absAddr );
+void c64_get_printable_address ( char* buffer, uint32_t addr );
+void c64_get_printable_physical_address ( char* buffer, uint32_t addr, uint32_t absAddr );
 
 // 6502 debug interfaces.
 void c64SetGotoAddress ( uint32_t addr );

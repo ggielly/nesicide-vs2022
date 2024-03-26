@@ -14,18 +14,18 @@ namespace Ui
 	class MusicEditorForm;
 }
 
-class MusicEditorForm : public CDesignerEditorBase
+class music_editor_form : public CDesignerEditorBase
 {
 	Q_OBJECT
 
 public:
 	// This takes place of the constructor and provides a singleton instance.
-	static MusicEditorForm* instance();
+	static music_editor_form* instance();
 	QString fileName() { return m_fileName; }
-	void setFileName(QString fileName) { m_fileName = fileName; }
+	void setFileName(const QString& file_name) { m_fileName = file_name; }
 	void setTreeLink(IProjectTreeViewItem* link) { InitTabItem(link); }
 	bool exportData();
-	~MusicEditorForm() override;
+	~music_editor_form() override;
 
 	// ICenterWidgetItem Interface Implmentation
 	void onSave() override;
@@ -33,19 +33,19 @@ public:
 	QMessageBox::StandardButton onCloseQuery() override;
 
 private:
-	MusicEditorForm(QString fileName, QByteArray musicData, IProjectTreeViewItem* link = nullptr, QWidget* parent = nullptr);
-	Ui::MusicEditorForm* ui;
+	music_editor_form(const QString& file_name, const QByteArray& music_data, IProjectTreeViewItem* link = nullptr, QWidget* parent = nullptr);
+	Ui::MusicEditorForm* ui_;
 	QString m_fileName;
-	static MusicEditorForm* _instance;
+	static music_editor_form* instance_;
 
 public slots:
-	void updateTargetMachine(QString /*target*/)
+	static void updateTargetMachine(QString /*target*/)
 	{
 	}
 
-	void editor_modificationChanged(bool m);
-	void documentSaved();
-	void documentClosed();
+	void editor_modification_changed(bool m);
+	void document_saved();
+	void document_closed();
 };
 
 #endif // MUSICEDITORFORM_H

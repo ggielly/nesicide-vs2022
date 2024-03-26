@@ -105,7 +105,7 @@ static CMemoryDatabase* dbMemory = new CMemoryDatabase(eMemory_CPU,
                                                        "CPU RAM",
                                                        c64GetMemory,
                                                        c64SetMemory,
-                                                       c64GetPrintableAddress,
+                                                       c64_get_printable_address,
                                                        true);
 
 CMemoryDatabase* cc646502::m_dbMemory = dbMemory;

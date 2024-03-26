@@ -15,7 +15,7 @@ char* c64GetVersion()
    return emu_version_;
 }
 
-const char* hex_char = "0123456789ABCDEF";
+//const char* hex_char = "0123456789ABCDEF";
 
 bool __c64debug = false;
 
@@ -29,37 +29,44 @@ void c64DisableDebug ( void )
    __c64debug = false;
 }
 
-static void (*breakpointHook)(void) = nullptr;
+
+static void (*breakpoint_hook)(void) = nullptr;
 
 void c64SetBreakpointHook ( void (*hook)(void) )
 {
-   breakpointHook = hook;
+   breakpoint_hook = hook;
 }
 
 void c64Break ( void )
 {
-   if ( breakpointHook )
+   if ( breakpoint_hook )
    {
-      breakpointHook();
+      breakpoint_hook();
    }
 }
 
-uint32_t c64GetNumColors ( void )
+uint32_t c64_get_num_colors ( void )
 {
    return 16;
 }
 
-void c64GetPrintableAddress ( char* buffer, const uint32_t addr )
+auto c64_get_printable_address(char* buffer, const uint32_t addr) -> void
 {
-   sprintf(buffer,"%04X",addr);
+	//sprintf(buffer, "%04X", addr);
+    // Use sprintf_s with appropriate buffer size and format specifier
+    const int result = sprintf_s(buffer, sizeof(buffer), "%04X", addr);
+
 }
 
-void c64GetPrintablePhysicalAddress ( char* buffer, const uint32_t addr, uint32_t /*absAddr*/ )
+auto c64_get_printable_physical_address(char* buffer, const uint32_t addr, uint32_t /*absAddr*/) -> void
 {
-   sprintf(buffer,"%04X",addr);
+  // sprintf(buffer,"%04X",addr);
+  // Use sprintf_s with appropriate buffer size and format specifier
+  const int result = sprintf_s(buffer, sizeof(buffer), "%04X", addr);
+
 }
 
-void c64EnableBreakpoints ( bool /*enable*/ )
+auto c64_enable_breakpoints(bool /*enable*/) -> void
 {
 }
 

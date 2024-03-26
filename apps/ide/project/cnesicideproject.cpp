@@ -78,7 +78,7 @@ void CNesicideProject::initializeProject()
 	}
 	else if (!m_projectTarget.compare("c64", Qt::CaseInsensitive))
 	{
-		for (int col = 0; col < c64GetNumColors(); col++)
+		for (int col = 0; col < c64_get_num_colors(); col++)
 		{
 			m_projectPaletteEntries.append(QColor(c64GetPaletteRedComponent(col),
 			                                      c64GetPaletteGreenComponent(col),
@@ -293,7 +293,7 @@ bool CNesicideProject::serialize(QDomDocument& doc, QDomNode& node)
 	}
 	else if (!m_projectTarget.compare("c64", Qt::CaseInsensitive))
 	{
-		for (int indexOfCurrentPaletteEntry = 0; indexOfCurrentPaletteEntry < c64GetNumColors();
+		for (int indexOfCurrentPaletteEntry = 0; indexOfCurrentPaletteEntry < c64_get_num_colors();
 		     indexOfCurrentPaletteEntry++)
 		{
 			QDomElement elm = addElement(doc, rootPaletteElement, "entry");
@@ -386,7 +386,7 @@ bool CNesicideProject::deserialize(QDomDocument& doc, QDomNode& /*node*/, QStrin
 	}
 	else if (!m_projectTarget.compare("c64", Qt::CaseInsensitive))
 	{
-		for (int color = 0; color < c64GetNumColors(); color++)
+		for (int color = 0; color < c64_get_num_colors(); color++)
 		{
 			m_projectPaletteEntries.append(QColor(c64GetPaletteRedComponent(color),
 			                                      c64GetPaletteGreenComponent(color),
@@ -503,7 +503,7 @@ bool CNesicideProject::deserialize(QDomDocument& doc, QDomNode& /*node*/, QStrin
 						}
 						else if (!m_projectTarget.compare("c64", Qt::CaseInsensitive))
 						{
-							numColors = c64GetNumColors();
+							numColors = c64_get_num_colors();
 						}
 
 						QDomNode paletteNode = property.firstChild();

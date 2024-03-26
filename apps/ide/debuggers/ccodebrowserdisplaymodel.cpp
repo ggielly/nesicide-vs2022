@@ -186,7 +186,7 @@ QVariant CCodeBrowserDisplayModel::data(const QModelIndex& index, int role) cons
 		}
 		else if (!CNesicideProject::instance()->getProjectTarget().compare("c64", Qt::CaseInsensitive))
 		{
-			c64GetPrintableAddress(m_modelStringBuffer, addr);
+			c64_get_printable_address(m_modelStringBuffer, addr);
 		}
 		return QVariant(m_modelStringBuffer);
 		break;

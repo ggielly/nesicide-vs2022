@@ -191,7 +191,7 @@ void C64EmulatorThread::kill()
 	unlockRequestQueue();
 
 	// Force hard-reset of the machine...
-	c64EnableBreakpoints(false);
+	c64_enable_breakpoints(false);
 
 	// Get outta here!
 	exit();
@@ -220,7 +220,7 @@ void C64EmulatorThread::primeEmulator()
 void C64EmulatorThread::resetEmulator()
 {
 	// Force hard-reset of the machine...
-	c64EnableBreakpoints(false);
+	c64_enable_breakpoints(false);
 
 	if (CNesicideProject::instance()->isInitialized())
 	{
