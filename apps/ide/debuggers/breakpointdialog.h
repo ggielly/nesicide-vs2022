@@ -27,7 +27,7 @@ private:
 	Ui::BreakpointDialog* ui;
 	CBreakpointInfo* m_pBreakpoints;
 	CRegisterData* m_p_register_;
-	CBitfieldData* m_p_bitfield_;
+	CBitfieldData* m_pBitfield;
 	CBreakpointEventInfo* m_pEvent;
 	void DisplayBreakpoint(int idx);
 	void DisplayResolutions(BreakpointInfo* pBreakpoint);

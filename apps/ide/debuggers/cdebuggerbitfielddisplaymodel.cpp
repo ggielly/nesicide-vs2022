@@ -1,8 +1,7 @@
 #include "cdebuggerbitfielddisplaymodel.h"
 
-#include <cregisterdata.h>
-
-#include <cstdio> // needed for sprintf_s
+//#include <cregisterdata.h>
+//#include <cstdio> // needed for sprintf_s
 
 #include "cregisterdata.h"
 

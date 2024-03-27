@@ -13,9 +13,9 @@ class CDebuggerBitfieldComboBoxDelegate : public QStyledItemDelegate
 public:
 	CDebuggerBitfieldComboBoxDelegate();
 
-	void set_bitfield(CBitfieldData* p_bitfield)
+	void set_bitfield(CBitfieldData* pbitfield)
 	{
-		m_p_bitfield_ = p_bitfield;
+		m_pBitfield = pbitfield;
 	}
 
 	QWidget* createEditor(QWidget* parent, const QStyleOptionViewItem& option,
@@ -28,7 +28,7 @@ public:
 	                          const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 
 private:
-
+	CBitfieldData* m_pBitfield;
 };
 
 #endif // CDEBUGGERBITFIELDCOMBOBOXDELEGATE_H

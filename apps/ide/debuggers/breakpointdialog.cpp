@@ -73,7 +73,7 @@ BreakpointDialog::BreakpointDialog(CBreakpointInfo* p_breakpoints, const int bp,
 	}
 
 	m_p_register_ = nullptr;
-	m_p_bitfield_ = nullptr;
+	m_pBitfield = nullptr;
 	m_pEvent = nullptr;
 
 	if (bp >= 0)
@@ -342,22 +342,22 @@ void BreakpointDialog::on_bitfield_current_index_changed(const int index)
 	{
 		if (index >= 0)
 		{
-			m_p_bitfield_ = m_p_register_->GetBitfield(index);
+			m_pBitfield = m_p_register_->GetBitfield(index);
 		}
 		else
 		{
-			m_p_bitfield_ = nullptr;
+			m_pBitfield = nullptr;
 		}
 
-		if (m_p_bitfield_)
+		if (m_pBitfield)
 		{
-			if (m_p_bitfield_->GetNumValues())
+			if (m_pBitfield->GetNumValues())
 			{
 				ui->dataWidget->setCurrentIndex(eBreakpointDataPick);
 
-				for (int idx = 0; idx < m_p_bitfield_->GetNumValues(); idx++)
+				for (int idx = 0; idx < m_pBitfield->GetNumValues(); idx++)
 				{
-					ui->data2->addItem(m_p_bitfield_->GetValueByIndex(idx));
+					ui->data2->addItem(m_pBitfield->GetValueByIndex(idx));
 				}
 			}
 			else
