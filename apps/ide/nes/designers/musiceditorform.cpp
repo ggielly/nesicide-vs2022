@@ -73,14 +73,27 @@ void music_editor_form::document_saved()
 void music_editor_form::document_closed()
 {
 	//   QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "FamiTracker");
-
 	//   settings.setValue("FamiTrackerWindowGeometry",saveGeometry());
 	//   settings.setValue("FamiTrackerWindowState",saveState());
-
 	//   // TODO: Handle unsaved documents or other pre-close stuffs
 	//   theApp.ExitInstance();
-
 	//   exit(0);
+
+
+		// Save window geometry
+		// (Using QSettings for persistent app data storage)
+		QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "FamiTracker");
+		settings.setValue("FamiTrackerWindowGeometry", saveGeometry());
+
+		// Save window state
+		settings.setValue("FamiTrackerWindowState", saveState());
+
+		// TODO: Handle unsaved documents or other pre-close tasks
+		// (This section should be implemented based on the application's specific requirements)
+
+		// Close the application
+		// (Using the appropriate MFC method for application termination)
+		exit(0);
 }
 
 void music_editor_form::onSave()
