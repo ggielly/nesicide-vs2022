@@ -21,10 +21,10 @@
 #include "cregisterdata.h"
 
 // Mapper 007 Registers
-static CBitfieldData* tbl8000_FFFFBitfields [] =
+static c_bitfield_data* tbl8000_FFFFBitfields [] =
 {
-   new CBitfieldData("Mirroring", 4, 1, "%X", 2, "One-screen at 2000", "One-screen at 2400"),
-   new CBitfieldData("PRG Bank", 0, 3, "%X", 0)
+   new c_bitfield_data("Mirroring", 4, 1, "%X", 2, "One-screen at 2000", "One-screen at 2400"),
+   new c_bitfield_data("PRG Bank", 0, 3, "%X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

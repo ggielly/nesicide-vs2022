@@ -297,7 +297,7 @@ void CNES::CHECKBREAKPOINT (const eBreakpointTarget target, eBreakpointType type
    int32_t idx;
    BreakpointInfo* pBreakpoint;
    CRegisterData* pRegister;
-   CBitfieldData* pBitfield;
+   c_bitfield_data* pBitfield;
    uint32_t addr = 0;
    uint32_t absAddr = 0;
    int32_t value = 0;
@@ -488,38 +488,38 @@ void CNES::CHECKBREAKPOINT (const eBreakpointTarget target, eBreakpointType type
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfEqual) &&
-                                     (pBreakpoint->data == pBitfield->GetValueRaw(value)) )
+                                     (pBreakpoint->data == pBitfield->get_value_raw(value)) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfNotEqual) &&
-                                     (pBreakpoint->data != pBitfield->GetValueRaw(value)) )
+                                     (pBreakpoint->data != pBitfield->get_value_raw(value)) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfLessThan) &&
-                                     (pBitfield->GetValueRaw(value) < pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value) < pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfGreaterThan) &&
-                                     (pBitfield->GetValueRaw(value) > pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value) > pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfExclusiveMask) &&
-                                     (pBitfield->GetValueRaw(value)&pBreakpoint->data) &&
-                                     ((pBitfield->GetValueRaw(value)&(~pBreakpoint->data)) == 0) )
+                                     (pBitfield->get_value_raw(value)&pBreakpoint->data) &&
+                                     ((pBitfield->get_value_raw(value)&(~pBreakpoint->data)) == 0) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfInclusiveMask) &&
-                                     (pBitfield->GetValueRaw(value)&pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value)&pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
@@ -659,38 +659,38 @@ void CNES::CHECKBREAKPOINT (const eBreakpointTarget target, eBreakpointType type
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfEqual) &&
-                                     (pBreakpoint->data == pBitfield->GetValueRaw(value)) )
+                                     (pBreakpoint->data == pBitfield->get_value_raw(value)) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfNotEqual) &&
-                                     (pBreakpoint->data != pBitfield->GetValueRaw(value)) )
+                                     (pBreakpoint->data != pBitfield->get_value_raw(value)) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfLessThan) &&
-                                     (pBitfield->GetValueRaw(value) < pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value) < pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfGreaterThan) &&
-                                     (pBitfield->GetValueRaw(value) > pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value) > pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfExclusiveMask) &&
-                                     (pBitfield->GetValueRaw(value)&pBreakpoint->data) &&
-                                     ((pBitfield->GetValueRaw(value)&(~pBreakpoint->data)) == 0) )
+                                     (pBitfield->get_value_raw(value)&pBreakpoint->data) &&
+                                     ((pBitfield->get_value_raw(value)&(~pBreakpoint->data)) == 0) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfInclusiveMask) &&
-                                     (pBitfield->GetValueRaw(value)&pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value)&pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
@@ -715,38 +715,38 @@ void CNES::CHECKBREAKPOINT (const eBreakpointTarget target, eBreakpointType type
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfEqual) &&
-                                     (pBreakpoint->data == pBitfield->GetValueRaw(value)) )
+                                     (pBreakpoint->data == pBitfield->get_value_raw(value)) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfNotEqual) &&
-                                     (pBreakpoint->data != pBitfield->GetValueRaw(value)) )
+                                     (pBreakpoint->data != pBitfield->get_value_raw(value)) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfLessThan) &&
-                                     (pBitfield->GetValueRaw(value) < pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value) < pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfGreaterThan) &&
-                                     (pBitfield->GetValueRaw(value) > pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value) > pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfExclusiveMask) &&
-                                     (pBitfield->GetValueRaw(value)&pBreakpoint->data) &&
-                                     ((pBitfield->GetValueRaw(value)&(~pBreakpoint->data)) == 0) )
+                                     (pBitfield->get_value_raw(value)&pBreakpoint->data) &&
+                                     ((pBitfield->get_value_raw(value)&(~pBreakpoint->data)) == 0) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfInclusiveMask) &&
-                                     (pBitfield->GetValueRaw(value)&pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value)&pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
@@ -778,38 +778,38 @@ void CNES::CHECKBREAKPOINT (const eBreakpointTarget target, eBreakpointType type
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfEqual) &&
-                                     (pBreakpoint->data == pBitfield->GetValueRaw(value)) )
+                                     (pBreakpoint->data == pBitfield->get_value_raw(value)) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfNotEqual) &&
-                                     (pBreakpoint->data != pBitfield->GetValueRaw(value)) )
+                                     (pBreakpoint->data != pBitfield->get_value_raw(value)) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfLessThan) &&
-                                     (pBitfield->GetValueRaw(value) < pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value) < pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfGreaterThan) &&
-                                     (pBitfield->GetValueRaw(value) > pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value) > pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfExclusiveMask) &&
-                                     (pBitfield->GetValueRaw(value)&pBreakpoint->data) &&
-                                     ((pBitfield->GetValueRaw(value)&(~pBreakpoint->data)) == 0) )
+                                     (pBitfield->get_value_raw(value)&pBreakpoint->data) &&
+                                     ((pBitfield->get_value_raw(value)&(~pBreakpoint->data)) == 0) )
                            {
                               pBreakpoint->hit = true;
                               force = true;
                            }
                            else if ( (pBreakpoint->condition == eBreakIfInclusiveMask) &&
-                                     (pBitfield->GetValueRaw(value)&pBreakpoint->data) )
+                                     (pBitfield->get_value_raw(value)&pBreakpoint->data) )
                            {
                               pBreakpoint->hit = true;
                               force = true;

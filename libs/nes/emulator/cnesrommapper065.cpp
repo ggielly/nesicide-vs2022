@@ -20,39 +20,39 @@
 #include "cnesppu.h"
 
 // Mapper 068 Registers
-static CBitfieldData* tbl8000Bitfields [] =
+static c_bitfield_data* tbl8000Bitfields [] =
 {
-   new CBitfieldData("PRG Bank", 0, 8, "%02X", 0)
+   new c_bitfield_data("PRG Bank", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tbl9001Bitfields [] =
+static c_bitfield_data* tbl9001Bitfields [] =
 {
-   new CBitfieldData("Mirroring", 7, 1, "%X", 2, "Vertical", "Horizontal")
+   new c_bitfield_data("Mirroring", 7, 1, "%X", 2, "Vertical", "Horizontal")
 };
 
-static CBitfieldData* tbl9003Bitfields [] =
+static c_bitfield_data* tbl9003Bitfields [] =
 {
-   new CBitfieldData("IRQ Enabled", 7, 1, "%X", 2, "No", "Yes")
+   new c_bitfield_data("IRQ Enabled", 7, 1, "%X", 2, "No", "Yes")
 };
 
-static CBitfieldData* tbl9004Bitfields [] =
+static c_bitfield_data* tbl9004Bitfields [] =
 {
-   new CBitfieldData("Reload Trigger", 0, 8, "%X", 0)
+   new c_bitfield_data("Reload Trigger", 0, 8, "%X", 0)
 };
 
-static CBitfieldData* tbl9005Bitfields [] =
+static c_bitfield_data* tbl9005Bitfields [] =
 {
-   new CBitfieldData("IRQ Reload MSB", 0, 8, "%X", 0)
+   new c_bitfield_data("IRQ Reload MSB", 0, 8, "%X", 0)
 };
 
-static CBitfieldData* tbl9006Bitfields [] =
+static c_bitfield_data* tbl9006Bitfields [] =
 {
-   new CBitfieldData("IRQ Reload LSB", 0, 8, "%X", 0)
+   new c_bitfield_data("IRQ Reload LSB", 0, 8, "%X", 0)
 };
 
-static CBitfieldData* tblB000Bitfields [] =
+static c_bitfield_data* tblB000Bitfields [] =
 {
-   new CBitfieldData("CHR Bank", 0, 8, "%02X", 0)
+   new c_bitfield_data("CHR Bank", 0, 8, "%02X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

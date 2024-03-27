@@ -327,7 +327,7 @@ public:
    // Accessor method for stack popping.
    inline uint32_t POP ( void )
    {
-      INCSP();
+      INCSP()
       return GETSTACKDATA();
    }
 

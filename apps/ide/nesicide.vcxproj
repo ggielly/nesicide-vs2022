@@ -52,6 +52,8 @@
     <QtHeaderSearchPath>D:\Qt\Qt5.12.12\5.12.12\msvc2017_64\include;$(QtHeaderSearchPath)</QtHeaderSearchPath>
     <QtQMakeTemplate>vcapp</QtQMakeTemplate>
     <QtPlugin>false</QtPlugin>
+    <QtQMLDebugEnable>true</QtQMLDebugEnable>
+    <QtOptionsBuildLog>true</QtOptionsBuildLog>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') OR !Exists('$(QtMsBuild)\Qt.props')">
     <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
@@ -160,7 +162,7 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level3</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>"C:\Program Files (x86)\Windows Kits\10\lib\10.0.22621.0\um\x64\opengl32.lib";nes-emulator.lib;c64-emulator.lib;famitracker.lib;sdl.lib;lua51.lib;qscintilla2_qt5d.lib;qhexeditd.lib;rtmidi.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -195,6 +197,7 @@
       <DynamicSource>output</DynamicSource>
       <QtMocDir>$(Configuration)</QtMocDir>
       <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+      <ParallelProcess>false</ParallelProcess>
     </QtMoc>
     <QtUic>
       <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>

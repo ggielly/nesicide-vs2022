@@ -20,55 +20,55 @@
 #include "cbreakpointinfo.h"
 
 // CPU Registers
-static CBitfieldData* tblCPUPCBitfields [] =
+static c_bitfield_data* tblCPUPCBitfields [] =
 {
-   new CBitfieldData("Instruction Pointer", 0, 16, "%04X", 0),
+   new c_bitfield_data("Instruction Pointer", 0, 16, "%04X", 0),
 };
 
-static CBitfieldData* tblCPUABitfields [] =
+static c_bitfield_data* tblCPUABitfields [] =
 {
-   new CBitfieldData("Accumulator", 0, 8, "%02X", 0),
+   new c_bitfield_data("Accumulator", 0, 8, "%02X", 0),
 };
 
-static CBitfieldData* tblCPUXBitfields [] =
+static c_bitfield_data* tblCPUXBitfields [] =
 {
-   new CBitfieldData("X Index", 0, 8, "%02X", 0),
+   new c_bitfield_data("X Index", 0, 8, "%02X", 0),
 };
 
-static CBitfieldData* tblCPUYBitfields [] =
+static c_bitfield_data* tblCPUYBitfields [] =
 {
-   new CBitfieldData("Y Index", 0, 8, "%02X", 0),
+   new c_bitfield_data("Y Index", 0, 8, "%02X", 0),
 };
 
-static CBitfieldData* tblCPUSPBitfields [] =
+static c_bitfield_data* tblCPUSPBitfields [] =
 {
-   new CBitfieldData("Stack Pointer", 0, 12, "%03X", 0),
+   new c_bitfield_data("Stack Pointer", 0, 12, "%03X", 0),
 };
 
-static CBitfieldData* tblCPUFBitfields [] =
+static c_bitfield_data* tblCPUFBitfields [] =
 {
-   new CBitfieldData("Negative", 7, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Overflow", 6, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Break", 4, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Decimal Mode", 3, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Interrupt", 2, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Zero", 1, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Carry", 0, 1, "%X", 2, "No", "Yes")
+   new c_bitfield_data("Negative", 7, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Overflow", 6, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Break", 4, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Decimal Mode", 3, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Interrupt", 2, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Zero", 1, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Carry", 0, 1, "%X", 2, "No", "Yes")
 };
 
-static CBitfieldData* tblCPUNMIVectorBitfields [] =
+static c_bitfield_data* tblCPUNMIVectorBitfields [] =
 {
-   new CBitfieldData("NMI Vector", 0, 16, "%04X", 0),
+   new c_bitfield_data("NMI Vector", 0, 16, "%04X", 0),
 };
 
-static CBitfieldData* tblCPUIRQVectorBitfields [] =
+static c_bitfield_data* tblCPUIRQVectorBitfields [] =
 {
-   new CBitfieldData("IRQ Vector", 0, 16, "%04X", 0),
+   new c_bitfield_data("IRQ Vector", 0, 16, "%04X", 0),
 };
 
-static CBitfieldData* tblCPURESETVectorBitfields [] =
+static c_bitfield_data* tblCPURESETVectorBitfields [] =
 {
-   new CBitfieldData("RESET Vector", 0, 16, "%04X", 0),
+   new c_bitfield_data("RESET Vector", 0, 16, "%04X", 0),
 };
 
 static CRegisterData* tblCPURegisters [] =
@@ -150,99 +150,99 @@ static CBreakpointEventInfo* m_db6502BreakpointEvents [] =
 };
 
 // APU Registers
-static CBitfieldData* tblAPUSQCTRLBitfields [] =
+static c_bitfield_data* tblAPUSQCTRLBitfields [] =
 {
-   new CBitfieldData("Duty Cycle", 6, 2, "%X", 4, "25%", "50%", "75%", "12.5%"),
-   new CBitfieldData("Channel State", 5, 1, "%X", 2, "Running", "Halted"),
-   new CBitfieldData("Envelope Disabled", 4, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Volume/Envelope", 0, 4, "%X", 0)
+   new c_bitfield_data("Duty Cycle", 6, 2, "%X", 4, "25%", "50%", "75%", "12.5%"),
+   new c_bitfield_data("Channel State", 5, 1, "%X", 2, "Running", "Halted"),
+   new c_bitfield_data("Envelope Disabled", 4, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Volume/Envelope", 0, 4, "%X", 0)
 };
 
-static CBitfieldData* tblAPUSQSWEEPBitfields [] =
+static c_bitfield_data* tblAPUSQSWEEPBitfields [] =
 {
-   new CBitfieldData("Sweep Enabled", 7, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Sweep Divider", 4, 3, "%X", 0),
-   new CBitfieldData("Sweep Direction", 3, 1, "%X", 2, "Down", "Up"),
-   new CBitfieldData("Sweep Shift", 0, 3, "%X", 0)
+   new c_bitfield_data("Sweep Enabled", 7, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Sweep Divider", 4, 3, "%X", 0),
+   new c_bitfield_data("Sweep Direction", 3, 1, "%X", 2, "Down", "Up"),
+   new c_bitfield_data("Sweep Shift", 0, 3, "%X", 0)
 };
 
-static CBitfieldData* tblAPUPERIODLOBitfields [] =
+static c_bitfield_data* tblAPUPERIODLOBitfields [] =
 {
-   new CBitfieldData("Period Low-bits", 0, 8, "%02X", 0)
+   new c_bitfield_data("Period Low-bits", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tblAPUPERIODLENBitfields [] =
+static c_bitfield_data* tblAPUPERIODLENBitfields [] =
 {
-   new CBitfieldData("Length", 3, 5, "%X", 32, "0A","FE","14","02","28","04","50","06","A0","08","3C","0A","0E","0C","1A","0E","0C","10","18","12","30","14","60","16","C0","18","48","1A","10","1C","20","1E"),
-   new CBitfieldData("Period High-bits", 0, 3, "%X", 0)
+   new c_bitfield_data("Length", 3, 5, "%X", 32, "0A","FE","14","02","28","04","50","06","A0","08","3C","0A","0E","0C","1A","0E","0C","10","18","12","30","14","60","16","C0","18","48","1A","10","1C","20","1E"),
+   new c_bitfield_data("Period High-bits", 0, 3, "%X", 0)
 };
 
-static CBitfieldData* tblAPUTRICTRLBitfields [] =
+static c_bitfield_data* tblAPUTRICTRLBitfields [] =
 {
-   new CBitfieldData("Channel State", 7, 1, "%X", 2, "Running", "Halted"),
-   new CBitfieldData("Linear Counter Reload", 0, 6, "%X", 0)
+   new c_bitfield_data("Channel State", 7, 1, "%X", 2, "Running", "Halted"),
+   new c_bitfield_data("Linear Counter Reload", 0, 6, "%X", 0)
 };
 
-static CBitfieldData* tblAPUDMZBitfields [] =
+static c_bitfield_data* tblAPUDMZBitfields [] =
 {
-   new CBitfieldData("Unused", 0, 8, "%02X", 0),
+   new c_bitfield_data("Unused", 0, 8, "%02X", 0),
 };
 
-static CBitfieldData* tblAPUNZCTRLBitfields [] =
+static c_bitfield_data* tblAPUNZCTRLBitfields [] =
 {
-   new CBitfieldData("Channel State", 5, 1, "%X", 2, "Running", "Halted"),
-   new CBitfieldData("Envelope Disabled", 4, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Volume/Envelope", 0, 4, "%X", 0)
+   new c_bitfield_data("Channel State", 5, 1, "%X", 2, "Running", "Halted"),
+   new c_bitfield_data("Envelope Disabled", 4, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Volume/Envelope", 0, 4, "%X", 0)
 };
 
-static CBitfieldData* tblAPUNZPERIODBitfields [] =
+static c_bitfield_data* tblAPUNZPERIODBitfields [] =
 {
-   new CBitfieldData("Mode", 7, 1, "%X", 2, "32,767 samples", "93 samples"),
-   new CBitfieldData("Period", 0, 4, "%X", 16, "004","008","010","020","040","060","080","0A0","0CA","0FE","17C","1FC","2FA","3F8","7F2","FE4")
+   new c_bitfield_data("Mode", 7, 1, "%X", 2, "32,767 samples", "93 samples"),
+   new c_bitfield_data("Period", 0, 4, "%X", 16, "004","008","010","020","040","060","080","0A0","0CA","0FE","17C","1FC","2FA","3F8","7F2","FE4")
 };
 
-static CBitfieldData* tblAPUNZLENBitfields [] =
+static c_bitfield_data* tblAPUNZLENBitfields [] =
 {
-   new CBitfieldData("Length", 3, 5, "%X", 32, "0A","FE","14","02","28","04","50","06","A0","08","3C","0A","0E","0C","1A","0E","0C","10","18","12","30","14","60","16","C0","18","48","1A","10","1C","20","1E")
+   new c_bitfield_data("Length", 3, 5, "%X", 32, "0A","FE","14","02","28","04","50","06","A0","08","3C","0A","0E","0C","1A","0E","0C","10","18","12","30","14","60","16","C0","18","48","1A","10","1C","20","1E")
 };
 
-static CBitfieldData* tblAPUDMCCTRLBitfields [] =
+static c_bitfield_data* tblAPUDMCCTRLBitfields [] =
 {
-   new CBitfieldData("IRQ Enabled", 7, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Loop", 6, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Period", 0, 4, "%X", 16, "1AC","17C","154","140","11E","0FE","0E2","0D6","0BE","0A0","08E","080","06A","054","048","036")
+   new c_bitfield_data("IRQ Enabled", 7, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Loop", 6, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Period", 0, 4, "%X", 16, "1AC","17C","154","140","11E","0FE","0E2","0D6","0BE","0A0","08E","080","06A","054","048","036")
 };
 
-static CBitfieldData* tblAPUDMCVOLBitfields [] =
+static c_bitfield_data* tblAPUDMCVOLBitfields [] =
 {
-   new CBitfieldData("Volume", 0, 7, "%02X", 0)
+   new c_bitfield_data("Volume", 0, 7, "%02X", 0)
 };
 
-static CBitfieldData* tblAPUDMCADDRBitfields [] =
+static c_bitfield_data* tblAPUDMCADDRBitfields [] =
 {
-   new CBitfieldData("Sample Address", 0, 8, "%02X", 0)
+   new c_bitfield_data("Sample Address", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tblAPUDMCLENBitfields [] =
+static c_bitfield_data* tblAPUDMCLENBitfields [] =
 {
-   new CBitfieldData("Sample Length", 0, 8, "%02X", 0)
+   new c_bitfield_data("Sample Length", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tblAPUCTRLBitfields [] =
+static c_bitfield_data* tblAPUCTRLBitfields [] =
 {
-   new CBitfieldData("DMC IRQ", 7, 1, "%X", 2, "Not Asserted", "Asserted"),
-   new CBitfieldData("Frame IRQ", 6, 1, "%X", 2, "Not Asserted", "Asserted"),
-   new CBitfieldData("Delta Modulation Channel", 4, 1, "%X", 2, "Disabled", "Enabled"),
-   new CBitfieldData("Noise Channel", 3, 1, "%X", 2, "Disabled", "Enabled"),
-   new CBitfieldData("Triangle Channel", 2, 1, "%X", 2, "Disabled", "Enabled"),
-   new CBitfieldData("Square2 Channel", 1, 1, "%X", 2, "Disabled", "Enabled"),
-   new CBitfieldData("Square1 Channel", 0, 1, "%X", 2, "Disabled", "Enabled"),
+   new c_bitfield_data("DMC IRQ", 7, 1, "%X", 2, "Not Asserted", "Asserted"),
+   new c_bitfield_data("Frame IRQ", 6, 1, "%X", 2, "Not Asserted", "Asserted"),
+   new c_bitfield_data("Delta Modulation Channel", 4, 1, "%X", 2, "Disabled", "Enabled"),
+   new c_bitfield_data("Noise Channel", 3, 1, "%X", 2, "Disabled", "Enabled"),
+   new c_bitfield_data("Triangle Channel", 2, 1, "%X", 2, "Disabled", "Enabled"),
+   new c_bitfield_data("Square2 Channel", 1, 1, "%X", 2, "Disabled", "Enabled"),
+   new c_bitfield_data("Square1 Channel", 0, 1, "%X", 2, "Disabled", "Enabled"),
 };
 
-static CBitfieldData* tblAPUMASKBitfields [] =
+static c_bitfield_data* tblAPUMASKBitfields [] =
 {
-   new CBitfieldData("Sequencer Mode", 7, 1, "%X", 2, "4-step", "5-step"),
-   new CBitfieldData("IRQ", 6, 1, "%X", 2, "Enabled", "Disabled")
+   new c_bitfield_data("Sequencer Mode", 7, 1, "%X", 2, "4-step", "5-step"),
+   new c_bitfield_data("IRQ", 6, 1, "%X", 2, "Enabled", "Disabled")
 };
 
 static CRegisterData* tblAPURegisters [] =
@@ -327,59 +327,59 @@ static CBreakpointEventInfo* m_dbApuBreakpointEvents [] =
 };
 
 // PPU Registers
-static CBitfieldData* tblPPUCTRLBitfields [] =
+static c_bitfield_data* tblPPUCTRLBitfields [] =
 {
-   new CBitfieldData("Generate NMI", 7, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("PPU Master/Slave", 6, 1, "%X", 2, "Master", "Slave"),
-   new CBitfieldData("Sprite Size", 5, 1, "%X", 2, "8x8", "8x16"),
-   new CBitfieldData("Playfield Pattern Table", 4, 1, "%X", 2, "0000", "1000"),
-   new CBitfieldData("Sprite Pattern Table", 3, 1, "%X", 2, "0000", "1000"),
-   new CBitfieldData("VRAM Address Increment", 2, 1, "%X", 2, "+1", "+32"),
-   new CBitfieldData("NameTable", 0, 2, "%X", 4, "NT1", "NT2", "NT3", "NT4")
+   new c_bitfield_data("Generate NMI", 7, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("PPU Master/Slave", 6, 1, "%X", 2, "Master", "Slave"),
+   new c_bitfield_data("Sprite Size", 5, 1, "%X", 2, "8x8", "8x16"),
+   new c_bitfield_data("Playfield Pattern Table", 4, 1, "%X", 2, "0000", "1000"),
+   new c_bitfield_data("Sprite Pattern Table", 3, 1, "%X", 2, "0000", "1000"),
+   new c_bitfield_data("VRAM Address Increment", 2, 1, "%X", 2, "+1", "+32"),
+   new c_bitfield_data("NameTable", 0, 2, "%X", 4, "NT1", "NT2", "NT3", "NT4")
 };
 
-static CBitfieldData* tblPPUMASKBitfields [] =
+static c_bitfield_data* tblPPUMASKBitfields [] =
 {
-   new CBitfieldData("Blue Emphasis", 7, 1, "%X", 2, "Off", "On"),
-   new CBitfieldData("Green Emphasis", 6, 1, "%X", 2, "Off", "On"),
-   new CBitfieldData("Red Emphasis", 5, 1, "%X", 2, "Off", "On"),
-   new CBitfieldData("Sprite Rendering", 4, 1, "%X", 2, "Off", "On"),
-   new CBitfieldData("Playfield Rendering", 3, 1, "%X", 2, "Off", "On"),
-   new CBitfieldData("Sprite Clipping", 2, 1, "%X", 2, "Yes", "No"),
-   new CBitfieldData("Playfield Clipping", 1, 1, "%X", 2, "Yes", "No"),
-   new CBitfieldData("Greyscale", 0, 1, "%X", 2, "No", "Yes")
+   new c_bitfield_data("Blue Emphasis", 7, 1, "%X", 2, "Off", "On"),
+   new c_bitfield_data("Green Emphasis", 6, 1, "%X", 2, "Off", "On"),
+   new c_bitfield_data("Red Emphasis", 5, 1, "%X", 2, "Off", "On"),
+   new c_bitfield_data("Sprite Rendering", 4, 1, "%X", 2, "Off", "On"),
+   new c_bitfield_data("Playfield Rendering", 3, 1, "%X", 2, "Off", "On"),
+   new c_bitfield_data("Sprite Clipping", 2, 1, "%X", 2, "Yes", "No"),
+   new c_bitfield_data("Playfield Clipping", 1, 1, "%X", 2, "Yes", "No"),
+   new c_bitfield_data("Greyscale", 0, 1, "%X", 2, "No", "Yes")
 };
 
-static CBitfieldData* tblPPUSTATUSBitfields [] =
+static c_bitfield_data* tblPPUSTATUSBitfields [] =
 {
-   new CBitfieldData("Vertical Blank", 7, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Sprite 0 Hit", 6, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Sprite Overflow", 5, 1, "%X", 2, "No", "Yes")
+   new c_bitfield_data("Vertical Blank", 7, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Sprite 0 Hit", 6, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Sprite Overflow", 5, 1, "%X", 2, "No", "Yes")
 };
 
-static CBitfieldData* tblOAMADDRBitfields [] =
+static c_bitfield_data* tblOAMADDRBitfields [] =
 {
-   new CBitfieldData("OAM Address", 0, 8, "%02X", 0)
+   new c_bitfield_data("OAM Address", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tblOAMDATABitfields [] =
+static c_bitfield_data* tblOAMDATABitfields [] =
 {
-   new CBitfieldData("OAM Data", 0, 8, "%02X", 0)
+   new c_bitfield_data("OAM Data", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tblPPUSCROLLBitfields [] =
+static c_bitfield_data* tblPPUSCROLLBitfields [] =
 {
-   new CBitfieldData("PPU Scroll", 0, 8, "%02X", 0)
+   new c_bitfield_data("PPU Scroll", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tblPPUADDRBitfields [] =
+static c_bitfield_data* tblPPUADDRBitfields [] =
 {
-   new CBitfieldData("PPU Address", 0, 8, "%02X", 0)
+   new c_bitfield_data("PPU Address", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tblPPUDATABitfields [] =
+static c_bitfield_data* tblPPUDATABitfields [] =
 {
-   new CBitfieldData("PPU Data", 0, 8, "%02X", 0)
+   new c_bitfield_data("PPU Data", 0, 8, "%02X", 0)
 };
 
 static CRegisterData* tblPPURegisters [] =
@@ -407,27 +407,27 @@ static const char* tblPpuColumnHeadings [] =
 static CRegisterDatabase* m_dbPpuRegisters = new CRegisterDatabase(eMemory_PPUregs,1,8,8,tblPPURegisters,tblPpuRowHeadings,tblPpuColumnHeadings);
 
 // OAM 'Registers'
-static CBitfieldData* tblOAMYBitfields [] =
+static c_bitfield_data* tblOAMYBitfields [] =
 {
-   new CBitfieldData("Y Position", 0, 8, "%02X", 0),
+   new c_bitfield_data("Y Position", 0, 8, "%02X", 0),
 };
 
-static CBitfieldData* tblOAMPATBitfields [] =
+static c_bitfield_data* tblOAMPATBitfields [] =
 {
-   new CBitfieldData("Tile Index", 0, 8, "%02X", 0),
+   new c_bitfield_data("Tile Index", 0, 8, "%02X", 0),
 };
 
-static CBitfieldData* tblOAMATTBitfields [] =
+static c_bitfield_data* tblOAMATTBitfields [] =
 {
-   new CBitfieldData("Flip Vertical", 7, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Flip Horizontal", 6, 1, "%X", 2, "No", "Yes"),
-   new CBitfieldData("Priority", 5, 1, "%X", 2, "In-front of Playfield", "Behind Playfield"),
-   new CBitfieldData("Palette Index", 0, 2, "%X", 4, "3F10", "3F14", "3F18", "3F1C")
+   new c_bitfield_data("Flip Vertical", 7, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Flip Horizontal", 6, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("Priority", 5, 1, "%X", 2, "In-front of Playfield", "Behind Playfield"),
+   new c_bitfield_data("Palette Index", 0, 2, "%X", 4, "3F10", "3F14", "3F18", "3F1C")
 };
 
-static CBitfieldData* tblOAMXBitfields [] =
+static c_bitfield_data* tblOAMXBitfields [] =
 {
-   new CBitfieldData("X Position", 0, 8, "%02X", 0),
+   new c_bitfield_data("X Position", 0, 8, "%02X", 0),
 };
 
 static CRegisterData* tblOAMRegisters [] =

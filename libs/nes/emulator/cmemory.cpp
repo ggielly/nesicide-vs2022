@@ -204,12 +204,12 @@ uint32_t CMEMORY::SLOC2VIRTADDR ( uint16_t sloc )
 
    for ( bank = 0; bank < m_numVirtBanks; bank++ )
    {
-      slocSoFar += m_pBank[bank]->SLOC();
+      slocSoFar += m_pBank[bank]->sloc();
       addr += m_bankSize;
       if ( sloc <= slocSoFar )
       {
          addr -= m_bankSize;
-         slocSoFar -= m_pBank[bank]->SLOC();
+         slocSoFar -= m_pBank[bank]->sloc();
 
          sloc -= slocSoFar;
          break;
@@ -231,7 +231,7 @@ uint16_t CMEMORY::ADDR2SLOC (const uint32_t virtAddr )
 
    for ( bank = 0; bank < virtBank; bank++ )
    {
-      slocSoFar += m_pBank[bank]->SLOC();
+      slocSoFar += m_pBank[bank]->sloc();
    }
 
    return slocSoFar+m_pBank[virtBank]->ADDR2SLOC(offsetInBank(virtAddr));

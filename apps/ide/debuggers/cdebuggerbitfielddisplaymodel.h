@@ -10,7 +10,7 @@ class CDebuggerBitfieldDisplayModel : public QAbstractTableModel
 	Q_OBJECT
 
 public:
-	CDebuggerBitfieldDisplayModel(regDBFunc regDB, QObject* parent = nullptr);
+	CDebuggerBitfieldDisplayModel(regDBFunc reg_db, QObject* parent = nullptr);
 	~CDebuggerBitfieldDisplayModel() override;
 	QVariant data(const QModelIndex& index, int role) const override;
 	Qt::ItemFlags flags(const QModelIndex& index) const override;

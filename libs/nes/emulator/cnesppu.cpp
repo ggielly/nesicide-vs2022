@@ -821,13 +821,13 @@ void CPPU::VBLANKSCANLINES ( void )
    // Set VBLANK flag...
    if ( !VBLANKCHOKED() )
    {
-      wPPU ( PPUSTATUS, rPPU(PPUSTATUS)|PPUSTATUS_VBLANK );
+      wPPU ( PPUSTATUS, rPPU(PPUSTATUS)|PPUSTATUS_VBLANK )
    }
 
    EMULATE(vblankScanlines*PPU_CYCLES_PER_SCANLINE);
 
    // Clear VBLANK, Sprite 0 Hit flag and sprite overflow...
-   wPPU ( PPUSTATUS, rPPU(PPUSTATUS)&(~(PPUSTATUS_VBLANK|PPUSTATUS_SPRITE_0_HIT|PPUSTATUS_SPRITE_OVFLO)) );
+   wPPU ( PPUSTATUS, rPPU(PPUSTATUS)&(~(PPUSTATUS_VBLANK|PPUSTATUS_SPRITE_0_HIT|PPUSTATUS_SPRITE_OVFLO)) )
 }
 
 void CPPU::PIXELPIPELINES ( int32_t pickoff, uint8_t* a, uint8_t* b1, uint8_t* b2 )
@@ -1057,7 +1057,7 @@ void CPPU::RENDERSCANLINE ( int32_t scanlines )
                {
                   if ( ((rPPU(PPUMASK)&(PPUMASK_RENDER_BKGND|PPUMASK_RENDER_SPRITES)) == (PPUMASK_RENDER_BKGND|PPUMASK_RENDER_SPRITES)) )
                   {
-                     wPPU ( PPUSTATUS, rPPU(PPUSTATUS)|PPUSTATUS_SPRITE_0_HIT );
+                     wPPU ( PPUSTATUS, rPPU(PPUSTATUS)|PPUSTATUS_SPRITE_0_HIT )
 
                      if ( nesIsDebuggable )
                      {
@@ -1432,7 +1432,7 @@ void CPPU::BUILDSPRITELIST ( int32_t scanline, const int32_t cycle )
                {
                   if ( !(rPPU(PPUSTATUS)&PPUSTATUS_SPRITE_OVFLO) )
                   {
-                     wPPU(PPUSTATUS,rPPU(PPUSTATUS)|PPUSTATUS_SPRITE_OVFLO );
+                     wPPU(PPUSTATUS,rPPU(PPUSTATUS)|PPUSTATUS_SPRITE_OVFLO )
 
                      if ( nesIsDebuggable )
                      {

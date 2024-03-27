@@ -35,17 +35,17 @@ public:
    bool IsPRGRemappable() const { return m_prgRemappable; }
    bool IsCHRRemappable() const { return m_chrRemappable; }
    void DoneLoadingBanks ( void );
-   uint32_t NUMPRGROMBANKS ( void )
+   uint32_t NUMPRGROMBANKS ( void ) const
    {
       return m_numPrgBanks;
    }
-   uint32_t NUMCHRROMBANKS ( void )
+   uint32_t NUMCHRROMBANKS ( void ) const
    {
       return m_numChrBanks;
    }
 
    // Operations
-   bool IsWriteProtected ( void )
+   bool IsWriteProtected ( void ) const
    {
       return (m_numChrBanks>0);
    }
@@ -135,7 +135,7 @@ public:
 
    // Mapper interfaces
    virtual void RESET ( bool soft );
-   uint32_t MAPPER ( void )
+   uint32_t MAPPER(void) const
    {
       return m_mapper;
    }
@@ -224,7 +224,7 @@ public:
    {
       return m_pSRAMmemory->SLOC(addr);
    }
-   bool SRAMDIRTY() { return m_SRAMdirty; }
+   bool SRAMDIRTY() const { return m_SRAMdirty; }
    inline void EXRAMOPCODEMASK (const uint32_t addr, const uint8_t mask )
    {
       m_pEXRAMmemory->OPCODEMASK(addr,mask);

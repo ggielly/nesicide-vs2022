@@ -94,7 +94,7 @@ void CNESBreakpointInfo::ModifyBreakpoint ( BreakpointInfo* pBreakpoint, int typ
 void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
 {
    CRegisterData* pRegister;
-   CBitfieldData* pBitfield;
+   c_bitfield_data* pBitfield;
    char printableAddress[32];
 
    switch ( m_breakpoint[idx].type )
@@ -1249,43 +1249,43 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                case eBreakIfAnything:
                   sprintf ( msg, "Break if %s::%s is '%s'",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
                   break;
                case eBreakIfEqual:
                   sprintf ( msg, "Break if %s::%s is '%s'",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
                   break;
                case eBreakIfNotEqual:
                   sprintf ( msg, "Break if %s::%s is not '%s'",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
                   break;
                case eBreakIfGreaterThan:
                   sprintf ( msg, "Break if %s::%s is greater than %X",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfLessThan:
                   sprintf ( msg, "Break if %s::%s is less than %X",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             m_breakpoint[idx].data );
                   break;
             case eBreakIfExclusiveMask:
                msg += sprintf ( msg, "Break if %s::%s contains anything exclusively in the mask %02X",
                                 pRegister->GetName(),
-                                pBitfield->GetName(),
+                                pBitfield->get_name(),
                                 m_breakpoint[idx].data );
                break;
             case eBreakIfInclusiveMask:
                msg += sprintf ( msg, "Break if %s::%s contains anything inclusively in the mask %02X",
                                 pRegister->GetName(),
-                                pBitfield->GetName(),
+                                pBitfield->get_name(),
                                 m_breakpoint[idx].data );
                break;
             }
@@ -1298,48 +1298,48 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                case eBreakIfAnything:
                   sprintf ( msg, "Break if %s::%s is accessed",
                             pRegister->GetName(),
-                            pBitfield->GetName() );
+                            pBitfield->get_name() );
                   break;
                case eBreakIfEqual:
                   msg += sprintf ( msg, "Break if %s::%s is ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfNotEqual:
                   msg += sprintf ( msg, "Break if %s::%s is not ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfGreaterThan:
                   msg += sprintf ( msg, "Break if %s::%s is greater than ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfLessThan:
                   msg += sprintf ( msg, "Break if %s::%s is less than ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
             case eBreakIfExclusiveMask:
                msg += sprintf ( msg, "Break if %s::%s contains anything exclusively in the mask ",
                                 pRegister->GetName(),
-                                pBitfield->GetName() );
-               sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                pBitfield->get_name() );
+               sprintf ( msg, pBitfield->get_display_format(),
                          m_breakpoint[idx].data );
                break;
             case eBreakIfInclusiveMask:
                msg += sprintf ( msg, "Break if %s::%s contains anything inclusively in the mask ",
                                 pRegister->GetName(),
-                                pBitfield->GetName() );
-               sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                pBitfield->get_name() );
+               sprintf ( msg, pBitfield->get_display_format(),
                          m_breakpoint[idx].data );
                break;
             }
@@ -1494,42 +1494,42 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                case eBreakIfAnything:
                   sprintf ( msg, "Break if %s::%s is accessed",
                             pRegister->GetName(),
-                            pBitfield->GetName() );
+                            pBitfield->get_name() );
                   break;
                case eBreakIfEqual:
                   sprintf ( msg, "Break if %s::%s is '%s'",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
                   break;
                case eBreakIfNotEqual:
                   sprintf ( msg, "Break if %s::%s is not '%s'",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
                   break;
                case eBreakIfGreaterThan:
                   sprintf ( msg, "Break if %s::%s is greater than %X",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfLessThan:
                   sprintf ( msg, "Break if %s::%s is less than %X",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             m_breakpoint[idx].data );
                   break;
             case eBreakIfExclusiveMask:
                msg += sprintf ( msg, "Break if %s::%s contains anything exclusively in the mask %02X",
                                 pRegister->GetName(),
-                                pBitfield->GetName(),
+                                pBitfield->get_name(),
                                 m_breakpoint[idx].data );
                break;
             case eBreakIfInclusiveMask:
                msg += sprintf ( msg, "Break if %s::%s contains anything inclusively in the mask %02X",
                                 pRegister->GetName(),
-                                pBitfield->GetName(),
+                                pBitfield->get_name(),
                                 m_breakpoint[idx].data );
                break;
             }
@@ -1542,48 +1542,48 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                case eBreakIfAnything:
                   sprintf ( msg, "Break if %s::%s is accessed",
                             pRegister->GetName(),
-                            pBitfield->GetName() );
+                            pBitfield->get_name() );
                   break;
                case eBreakIfEqual:
                   msg += sprintf ( msg, "Break if %s::%s is ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfNotEqual:
                   msg += sprintf ( msg, "Break if %s::%s is not ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfGreaterThan:
                   msg += sprintf ( msg, "Break if %s::%s is greater than ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfLessThan:
                   msg += sprintf ( msg, "Break if %s::%s is less than ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
             case eBreakIfExclusiveMask:
                msg += sprintf ( msg, "Break if %s::%s contains anything exclusively in the mask ",
                                 pRegister->GetName(),
-                                pBitfield->GetName() );
-               sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                pBitfield->get_name() );
+               sprintf ( msg, pBitfield->get_display_format(),
                          m_breakpoint[idx].data );
                break;
             case eBreakIfInclusiveMask:
                msg += sprintf ( msg, "Break if %s::%s contains anything inclusively in the mask ",
                                 pRegister->GetName(),
-                                pBitfield->GetName() );
-               sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                pBitfield->get_name() );
+               sprintf ( msg, pBitfield->get_display_format(),
                          m_breakpoint[idx].data );
                break;
             }
@@ -1612,42 +1612,42 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                case eBreakIfAnything:
                   sprintf ( msg, "Break if %s::%s is accessed",
                             pRegister->GetName(),
-                            pBitfield->GetName() );
+                            pBitfield->get_name() );
                   break;
                case eBreakIfEqual:
                   sprintf ( msg, "Break if %s::%s is '%s'",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
                   break;
                case eBreakIfNotEqual:
                   sprintf ( msg, "Break if %s::%s is not '%s'",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
                   break;
                case eBreakIfGreaterThan:
                   sprintf ( msg, "Break if %s::%s is greater than %X",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfLessThan:
                   sprintf ( msg, "Break if %s::%s is less than %X",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             m_breakpoint[idx].data );
                   break;
             case eBreakIfExclusiveMask:
                sprintf ( msg, "Break if %s::%s contains anything exclusively in the mask %02X",
                          pRegister->GetName(),
-                         pBitfield->GetName(),
+                         pBitfield->get_name(),
                          m_breakpoint[idx].data );
                break;
             case eBreakIfInclusiveMask:
                sprintf ( msg, "Break if %s::%s contains anything inclusively in the mask %02X",
                          pRegister->GetName(),
-                         pBitfield->GetName(),
+                         pBitfield->get_name(),
                          m_breakpoint[idx].data );
                break;
             }
@@ -1660,48 +1660,48 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                case eBreakIfAnything:
                   sprintf ( msg, "Break if %s::%s is accessed",
                             pRegister->GetName(),
-                            pBitfield->GetName() );
+                            pBitfield->get_name() );
                   break;
                case eBreakIfEqual:
                   msg += sprintf ( msg, "Break if %s::%s is ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfNotEqual:
                   msg += sprintf ( msg, "Break if %s::%s is not ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfGreaterThan:
                   msg += sprintf ( msg, "Break if %s::%s is greater than ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfLessThan:
                   msg += sprintf ( msg, "Break if %s::%s is less than ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
             case eBreakIfExclusiveMask:
                msg += sprintf ( msg, "Break if %s::%s contains anything exclusively in the mask ",
                                 pRegister->GetName(),
-                                pBitfield->GetName() );
-               sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                pBitfield->get_name() );
+               sprintf ( msg, pBitfield->get_display_format(),
                          m_breakpoint[idx].data );
                break;
             case eBreakIfInclusiveMask:
                msg += sprintf ( msg, "Break if %s::%s contains anything inclusively in the mask ",
                                 pRegister->GetName(),
-                                pBitfield->GetName() );
-               sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                pBitfield->get_name() );
+               sprintf ( msg, pBitfield->get_display_format(),
                          m_breakpoint[idx].data );
                break;
             }
@@ -1733,42 +1733,42 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                   case eBreakIfAnything:
                      sprintf ( msg, "Break if %s::%s is accessed",
                                pRegister->GetName(),
-                               pBitfield->GetName() );
+                               pBitfield->get_name() );
                      break;
                   case eBreakIfEqual:
                      sprintf ( msg, "Break if %s::%s is '%s'",
                                pRegister->GetName(),
-                               pBitfield->GetName(),
+                               pBitfield->get_name(),
                                pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
                      break;
                   case eBreakIfNotEqual:
                      sprintf ( msg, "Break if %s::%s is not '%s'",
                                pRegister->GetName(),
-                               pBitfield->GetName(),
+                               pBitfield->get_name(),
                                pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
                      break;
                   case eBreakIfGreaterThan:
                      sprintf ( msg, "Break if %s::%s is greater than %X",
                                pRegister->GetName(),
-                               pBitfield->GetName(),
+                               pBitfield->get_name(),
                                m_breakpoint[idx].data );
                      break;
                   case eBreakIfLessThan:
                      sprintf ( msg, "Break if %s::%s is less than %X",
                                pRegister->GetName(),
-                               pBitfield->GetName(),
+                               pBitfield->get_name(),
                                m_breakpoint[idx].data );
                      break;
                case eBreakIfExclusiveMask:
                   sprintf ( msg, "Break if %s::%s contains anything exclusively in the mask %02X",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfInclusiveMask:
                   sprintf ( msg, "Break if %s::%s contains anything inclusively in the mask %02X",
                             pRegister->GetName(),
-                            pBitfield->GetName(),
+                            pBitfield->get_name(),
                             m_breakpoint[idx].data );
                   break;
                }
@@ -1781,48 +1781,48 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                   case eBreakIfAnything:
                      sprintf ( msg, "Break if %s::%s is accessed",
                                pRegister->GetName(),
-                               pBitfield->GetName() );
+                               pBitfield->get_name() );
                      break;
                   case eBreakIfEqual:
                      msg += sprintf ( msg, "Break if %s::%s is ",
                                       pRegister->GetName(),
-                                      pBitfield->GetName() );
-                     sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                      pBitfield->get_name() );
+                     sprintf ( msg, pBitfield->get_display_format(),
                                m_breakpoint[idx].data );
                      break;
                   case eBreakIfNotEqual:
                      msg += sprintf ( msg, "Break if %s::%s is not ",
                                       pRegister->GetName(),
-                                      pBitfield->GetName() );
-                     sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                      pBitfield->get_name() );
+                     sprintf ( msg, pBitfield->get_display_format(),
                                m_breakpoint[idx].data );
                      break;
                   case eBreakIfGreaterThan:
                      msg += sprintf ( msg, "Break if %s::%s is greater than ",
                                       pRegister->GetName(),
-                                      pBitfield->GetName() );
-                     sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                      pBitfield->get_name() );
+                     sprintf ( msg, pBitfield->get_display_format(),
                                m_breakpoint[idx].data );
                      break;
                   case eBreakIfLessThan:
                      msg += sprintf ( msg, "Break if %s::%s is less than ",
                                       pRegister->GetName(),
-                                      pBitfield->GetName() );
-                     sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                      pBitfield->get_name() );
+                     sprintf ( msg, pBitfield->get_display_format(),
                                m_breakpoint[idx].data );
                      break;
                case eBreakIfExclusiveMask:
                   msg += sprintf ( msg, "Break if %s::%s contains anything exclusively in the mask ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                case eBreakIfInclusiveMask:
                   msg += sprintf ( msg, "Break if %s::%s contains anything inclusively in the mask ",
                                    pRegister->GetName(),
-                                   pBitfield->GetName() );
-                  sprintf ( msg, pBitfield->GetDisplayFormat(),
+                                   pBitfield->get_name() );
+                  sprintf ( msg, pBitfield->get_display_format(),
                             m_breakpoint[idx].data );
                   break;
                }

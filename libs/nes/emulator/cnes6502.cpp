@@ -390,7 +390,7 @@ void C6502::EMULATE ( int32_t cycles )
                   m_pcSync = m_pc;
 
                   // Break 'flag' is cleared after BRK finishes.
-                  cB();
+                  cB()
 
                   // Fetch
                   nmiPending = m_nmiPending;
@@ -428,8 +428,8 @@ void C6502::EMULATE ( int32_t cycles )
                   // If we fetched a BRK we might need to do some special stuff...
                   if ( (!(nmiPending || m_irqPending)) && (*opcodeData) == BRK_IMPLIED )
                   {
-                     INCPC ();
-                     sB ();
+                     INCPC ()
+                     sB ()
                   }
 
                   // Inject BRK if IRQ or NMI are pending...
@@ -440,7 +440,7 @@ void C6502::EMULATE ( int32_t cycles )
 
                   if ( (*opcodeData) != BRK_IMPLIED )
                   {
-                     INCPC ();
+                     INCPC ()
                   }
 
                   // Get information about current opcode...
@@ -470,7 +470,7 @@ void C6502::EMULATE ( int32_t cycles )
 
                      if ( rB() )
                      {
-                        INCPC();
+                        INCPC()
                      }
 
                      // Cause instruction execution...
@@ -486,7 +486,7 @@ void C6502::EMULATE ( int32_t cycles )
                         m_pcGoto = 0xFFFFFFFF;
                      }
 
-                     INCPC ();
+                     INCPC ()
 
                      if ( opcodeSize == 2 )
                      {
@@ -519,7 +519,7 @@ void C6502::EMULATE ( int32_t cycles )
                      m_pcGoto = 0xFFFFFFFF;
                   }
 
-                  INCPC ();
+                  INCPC ()
 
                   // Cause instruction execution...
                   m_phase = -1;
@@ -937,10 +937,10 @@ void C6502::KIL ( void )
 // Immediate   |AAC #arg   |$2B| 2 | 2
 void C6502::ANC ( void )
 {
-   wA ( rA()&(*data) );
-   wN ( rA()&0x80 );
-   wC ( rA()&0x80 );
-   wZ ( !rA() );
+   wA ( rA()&(*data) )
+   wN ( rA()&0x80 )
+   wC ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -955,11 +955,11 @@ void C6502::ANC ( void )
 // Immediate   |ASR #arg   |$4B| 2 | 2
 void C6502::ALR ( void )
 {
-   wA ( (rA()&(*data)) );
-   wC ( rA()&0x01 );
-   wA ( rA()>>1 );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wA ( (rA()&(*data)) )
+   wC ( rA()&0x01 )
+   wA ( rA()>>1 )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -979,29 +979,29 @@ void C6502::ALR ( void )
 // Immediate   |ARR #arg   |$6B| 2 | 2
 void C6502::ARR ( void )
 {
-   wA ( (rC()<<7)|((rA()>>1)&((*data)>>1)) );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wA ( (rC()<<7)|((rA()>>1)&((*data)>>1)) )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    if ( (rA()&0x60) == 0x60 )
    {
-      sC();
-      cV();
+      sC()
+      cV()
    }
    else if ( (rA()&0x60) == 0x00 )
    {
-      cC();
-      cV();
+      cC()
+      cV()
    }
    else if ( (rA()&0x60) == 0x20 )
    {
-      cC();
-      sV();
+      cC()
+      sV()
    }
    else if ( (rA()&0x60) == 0x40 )
    {
-      sC();
-      sV();
+      sC()
+      sV()
    }
 
    return;
@@ -1062,7 +1062,7 @@ void C6502::TAS ( void )
    uint16_t addr;
    uint8_t  val;
 
-   wSP ( rX()&rA() );
+   wSP ( rX()&rA() )
    addr = MAKEADDR ( amode, data );
    val = (rSP()&((*(data+1))+1));
    MEM ( addr, val );
@@ -1132,10 +1132,10 @@ void C6502::XAS ( void )
 // Immediate   |ATX #arg   |$AB| 2 | 2
 void C6502::OAL ( void )
 {
-   wA ( (*data) );
-   wX ( rA() );
-   wN ( rX()&0x80 );
-   wZ ( !rX() );
+   wA ( (*data) )
+   wX ( rA() )
+   wN ( rX()&0x80 )
+   wZ ( !rX() )
 
    return;
 }
@@ -1154,11 +1154,11 @@ void C6502::LAS ( void )
    uint16_t addr;
 
    addr = MAKEADDR ( amode, data );
-   wA ( rSP()&MEM(addr) );
-   wX ( rA() );
-   wSP ( rA() );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wA ( rSP()&MEM(addr) )
+   wX ( rA() )
+   wSP ( rA() )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -1176,12 +1176,12 @@ void C6502::SAX ( void )
 {
    int16_t val;
 
-   wX ( rA()&rX() );
+   wX ( rA()&rX() )
    val = rX()-(*data);
-   wX ( val&0xFF );
-   wN ( rX()&0x80 );
-   wZ ( !rX() );
-   wC ( !(val<0) );
+   wX ( val&0xFF )
+   wN ( rX()&0x80 )
+   wZ ( !rX() )
+   wC ( !(val<0) )
 
    return;
 }
@@ -1211,11 +1211,11 @@ void C6502::ASO ( void )
 
    val <<= 1;
    MEM ( addr, (uint8_t)val );
-   wC ( val&0x100 );
+   wC ( val&0x100 )
    val &= 0xFF;
-   wA ( rA()|val );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wA ( rA()|val )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    // A missing memory cycle here?
    // Synchronize CPU and APU...
@@ -1272,16 +1272,16 @@ void C6502::ORA ( void )
 
    if ( amode == AM_IMMEDIATE )
    {
-      wA ( rA()|(*data) );
+      wA ( rA()|(*data) )
    }
    else
    {
       addr = MAKEADDR ( amode, data );
-      wA ( rA()|MEM(addr) );
+      wA ( rA()|MEM(addr) )
    }
 
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -1304,7 +1304,7 @@ void C6502::ORA ( void )
 void C6502::ASL ( void )
 {
    uint16_t addr = 0x0000;
-   uint16_t val;
+   uint8_t val; // // //
 
    if ( amode == AM_ACCUMULATOR )
    {
@@ -1323,16 +1323,16 @@ void C6502::ASL ( void )
 
    if ( amode == AM_ACCUMULATOR )
    {
-      wA ( (uint8_t)val );
+      wA ( (uint8_t)val )
    }
    else
    {
       MEM ( addr, (uint8_t)val );
    }
 
-   wC ( val&0x100 );
-   wN ( val&0x80 );
-   wZ ( !(val&0xFF) );
+   wC ( val&0x100 )
+   wN ( val&0x80 )
+   wZ ( !(val&0xFF) )
 
    return;
 }
@@ -1349,8 +1349,8 @@ void C6502::ASL ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::PHP ( void )
 {
-   sB();
-   PUSH ( rF() );
+   sB()
+   PUSH ( rF() )
 
    return;
 }
@@ -1385,7 +1385,7 @@ void C6502::BPL ( void )
          MEM ( target );
       }
 
-      wPC ( target );
+      wPC ( target )
 
       if ( rPC() == m_pcGoto )
       {
@@ -1409,7 +1409,7 @@ void C6502::BPL ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::CLC ( void )
 {
-   cC ();
+   cC ()
 
    return;
 }
@@ -1429,12 +1429,12 @@ void C6502::JSR ( void )
    // Synchronize CPU and APU.
    MEM ( GETSTACKADDR() );
 
-   PUSH ( GETHI8(rPC()) );
-   PUSH ( GETLO8(rPC()) );
+   PUSH ( GETHI8(rPC()) )
+   PUSH ( GETLO8(rPC()) )
 
    *(data+1) = FETCH ();
 
-   wPC ( MAKE16(GETUNSIGNED8(data,0),GETUNSIGNED8(data,1)) );
+   wPC ( MAKE16(GETUNSIGNED8(data,0),GETUNSIGNED8(data,1)) )
 
    if ( rPC() == m_pcGoto )
    {
@@ -1469,16 +1469,16 @@ void C6502::AND ( void )
 
    if ( amode == AM_IMMEDIATE )
    {
-      wA ( rA()&(*data) );
+      wA ( rA()&(*data) )
    }
    else
    {
       addr = MAKEADDR ( amode, data );
-      wA ( rA()&MEM(addr) );
+      wA ( rA()&MEM(addr) )
    }
 
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -1506,10 +1506,10 @@ void C6502::BIT ( void )
 
    val = MEM ( addr );
 
-   wN ( val&0x80 );
-   wV ( val&0x40 );
+   wN ( val&0x80 )
+   wV ( val&0x40 )
    val &= rA ();
-   wZ ( !val );
+   wZ ( !val )
 
    return;
 }
@@ -1551,14 +1551,14 @@ void C6502::ROL ( void )
 
    val <<= 1;
    val |= rC();
-   wC ( val&0x100 );
+   wC ( val&0x100 )
    val &= 0xFF;
-   wN ( val&0x80 );
-   wZ ( !val );
+   wN ( val&0x80 )
+   wZ ( !val )
 
    if ( amode == AM_ACCUMULATOR )
    {
-      wA ( (uint8_t)val );
+      wA ( (uint8_t)val )
    }
    else
    {
@@ -1583,7 +1583,7 @@ void C6502::PLP ( void )
    // Synchronize CPU and APU...
    MEM ( GETSTACKADDR() );
 
-   wF ( POP() );
+   wF ( POP() )
 
    return;
 }
@@ -1618,7 +1618,7 @@ void C6502::BMI ( void )
          MEM ( target );
       }
 
-      wPC ( target );
+      wPC ( target )
 
       if ( rPC() == m_pcGoto )
       {
@@ -1642,7 +1642,7 @@ void C6502::BMI ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::SEC ( void )
 {
-   sC ();
+   sC ()
 
    return;
 }
@@ -1668,9 +1668,9 @@ void C6502::RTI ( void )
    f = POP();
    pclo = POP ();
    pchi = POP ();
-   wPC ( MAKE16(pclo,pchi) );
+   wPC ( MAKE16(pclo,pchi) )
 
-   wF ( f );
+   wF ( f )
 
    m_irqPending = false;
 
@@ -1707,16 +1707,16 @@ void C6502::EOR ( void )
 
    if ( amode == AM_IMMEDIATE )
    {
-      wA ( rA()^(*data) );
+      wA ( rA()^(*data) )
    }
    else
    {
       addr = MAKEADDR ( amode, data );
-      wA ( rA()^MEM(addr) );
+      wA ( rA()^MEM(addr) )
    }
 
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -1743,13 +1743,13 @@ void C6502::LSE ( void )
    addr = MAKEADDR ( amode, data );
    val = MEM ( addr );
 
-   wC ( val&0x01 );
+   wC ( val&0x01 )
    val >>= 1;
    val &= 0xFF;
    MEM ( addr, (uint8_t)val );
-   wA ( rA()^val );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wA ( rA()^val )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    // A missing memory cycle here?
    // Synchronize CPU and APU...
@@ -1791,15 +1791,15 @@ void C6502::LSR ( void )
       MEM ( addr, val );
    }
 
-   wC ( val&0x01 );
+   wC ( val&0x01 )
    val >>= 1;
    val &= 0xFF;
-   cN ();
-   wZ ( !val );
+   cN ()
+   wZ ( !val )
 
    if ( amode == AM_ACCUMULATOR )
    {
-      wA ( (uint8_t)val );
+      wA ( (uint8_t)val )
    }
    else
    {
@@ -1821,7 +1821,7 @@ void C6502::LSR ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::PHA ( void )
 {
-   PUSH ( rA() );
+   PUSH ( rA() )
 
    return;
 }
@@ -1839,21 +1839,21 @@ void C6502::PHA ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::JMP ( void )
 {
-   uint32_t addr = MAKE16(GETUNSIGNED8(data,0),GETUNSIGNED8(data,1));
+	const uint32_t addr = MAKE16(GETUNSIGNED8(data,0),GETUNSIGNED8(data,1));
 
    if ( amode == AM_ABSOLUTE )
    {
-      wPC ( addr );
+      wPC ( addr )
    }
    else
    {
       if ( (addr&0xFF) == 0xFF )
       {
-         wPC ( MAKE16(MEM(addr),MEM(addr&0xFF00)) );
+         wPC ( MAKE16(MEM(addr),MEM(addr&0xFF00)) )
       }
       else
       {
-         wPC ( MAKE16(MEM(addr),MEM(addr+1)) );
+         wPC ( MAKE16(MEM(addr),MEM(addr+1)) )
       }
    }
 
@@ -1896,7 +1896,7 @@ void C6502::BVC ( void )
          MEM ( target );
       }
 
-      wPC ( target );
+      wPC ( target )
 
       if ( rPC() == m_pcGoto )
       {
@@ -1920,7 +1920,7 @@ void C6502::BVC ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::CLI ( void )
 {
-   cI ();
+   cI ()
 
    return;
 }
@@ -1946,9 +1946,9 @@ void C6502::RTS ( void )
    pchi = POP ();
 
    // Synchronize CPU and APU...
-   wPC ( (MAKE16(pclo,pchi)) );
+   wPC ( (MAKE16(pclo,pchi)) )
    FETCH ();
-   wPC ( (MAKE16(pclo,pchi))+1 );
+   wPC ( (MAKE16(pclo,pchi))+1 )
 
    if ( rPC() == m_pcGoto )
    {
@@ -1995,11 +1995,11 @@ void C6502::ADC ( void )
 
    result = rA () + val + rC ();
 
-   wV ( !((rA()^val)&0x80) && ((rA()^result)&0x80) );
-   wA ( (uint8_t)result );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
-   wC ( result&0x100 );
+   wV ( !((rA()^val)&0x80) && ((rA()^result)&0x80) )
+   wA ( (uint8_t)result )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
+   wC ( result&0x100 )
 
    return;
 }
@@ -2024,10 +2024,10 @@ void C6502::ADC ( void )
 //
 //    Note: ROR instruction is available on MCS650X microprocessors after
 //          June, 1976.
-void C6502::ROR ( void )
+void C6502::ROR ()
 {
    uint32_t addr = 0x0000;
-   uint16_t val;
+   uint8_t val; // // // possible data loss here uint16_t
 
    if ( amode == AM_ACCUMULATOR )
    {
@@ -2043,19 +2043,19 @@ void C6502::ROR ( void )
    }
 
    val |= ( rC()*0x100 );
-   wC ( val&0x01 );
+   wC ( val&0x01 )
    val >>= 1;
    val &= 0xFF;
-   wN ( val&0x80 );
-   wZ ( !val );
+   wN ( val&0x80 )
+   wZ ( !val )
 
    if ( amode == AM_ACCUMULATOR )
    {
-      wA ( (uint8_t)val );
+      wA ( static_cast<uint8_t>(val) )
    }
    else
    {
-      MEM ( addr, (uint8_t)val );
+      MEM ( addr, static_cast<uint8_t>(val) );
    }
 
    return;
@@ -2077,22 +2077,19 @@ void C6502::ROR ( void )
 // (Indirect),Y|RLA (arg),Y|$33| 2 | 8
 void C6502::RLA ( void )
 {
-   uint32_t addr;
-   uint16_t val;
-
-   addr = MAKEADDR ( amode, data );
-   val = MEM ( addr );
+	const uint32_t addr = MAKEADDR(amode, data);
+   uint16_t val = MEM(addr);
 
    val <<= 1;
    val |= rC();
-   wC ( val&0x100 );
-   val &= 0xFF;
-   wA ( rA()&val );
-   MEM ( addr, (uint8_t)val );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+	wC ( val&0x100 )
+	val &= 0xFF;
+	wA ( rA()&val )
+	MEM ( addr, static_cast<uint8_t>(val) );
+	wN ( rA()&0x80 )
+	wZ ( !rA() )
 
-   // A missing memory cycle here?
+	// A missing memory cycle here?
    // Synchronize CPU and APU...
    ADVANCE ();
 
@@ -2125,18 +2122,18 @@ void C6502::RRA ( void )
    val = MEM ( addr );
 
    val |= ( rC()*0x100 );
-   wC ( val&0x01 );
+   wC ( val&0x01 )
    val >>= 1;
    val &= 0xFF;
    MEM ( addr, (uint8_t)val );
 
    result = rA () + val + rC ();
 
-   wV ( !((rA()^val)&0x80) && ((rA()^result)&0x80) );
-   wA ( (uint8_t)result );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
-   wC ( result&0x100 );
+   wV ( !((rA()^val)&0x80) && ((rA()^result)&0x80) )
+   wA ( (uint8_t)result )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
+   wC ( result&0x100 )
 
    // A missing memory cycle here?
    // Synchronize CPU and APU...
@@ -2160,9 +2157,9 @@ void C6502::PLA ( void )
    // Synchronize CPU and APU...
    MEM ( GETSTACKADDR() );
 
-   wA ( POP() );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wA ( POP() )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -2197,7 +2194,7 @@ void C6502::BVS ( void )
          MEM ( target );
       }
 
-      wPC ( target );
+      wPC ( target )
 
       if ( rPC() == m_pcGoto )
       {
@@ -2220,7 +2217,7 @@ void C6502::BVS ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::SEI ( void )
 {
-   sI ();
+   sI ()
 
    return;
 }
@@ -2307,9 +2304,9 @@ void C6502::STX ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::DEY ( void )
 {
-   wY ( rY()-1 );
-   wN ( rY()&0x80 );
-   wZ ( !rY() );
+   wY ( rY()-1 )
+   wN ( rY()&0x80 )
+   wZ ( !rY() )
 
    return;
 }
@@ -2325,9 +2322,9 @@ void C6502::DEY ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::TXA ( void )
 {
-   wA ( rX() );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wA ( rX() )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -2361,7 +2358,7 @@ void C6502::BCC ( void )
          MEM ( target );
       }
 
-      wPC ( target );
+      wPC ( target )
 
       if ( rPC() == m_pcGoto )
       {
@@ -2385,9 +2382,9 @@ void C6502::BCC ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::TYA ( void )
 {
-   wA ( rY() );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wA ( rY() )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -2403,7 +2400,7 @@ void C6502::TYA ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::TXS ( void )
 {
-   wSP ( rX() );
+   wSP ( rX() )
 
    return;
 }
@@ -2428,16 +2425,16 @@ void C6502::LDY ( void )
 
    if ( amode == AM_IMMEDIATE )
    {
-      wY ( (*data) );
+      wY ( (*data) )
    }
    else
    {
       addr = MAKEADDR ( amode, data );
-      wY ( MEM(addr) );
+      wY ( MEM(addr) )
    }
 
-   wN ( rY()&0x80 );
-   wZ ( !rY() );
+   wN ( rY()&0x80 )
+   wZ ( !rY() )
 
    return;
 }
@@ -2464,19 +2461,19 @@ void C6502::LAX ( void )
 
    if ( amode == AM_IMMEDIATE )
    {
-      wA ( (*data) );
-      wX ( (*data) );
+      wA ( (*data) )
+      wX ( (*data) )
    }
    else
    {
       addr = MAKEADDR ( amode, data );
       val = MEM ( addr ); // Single memory access cycle...
-      wA ( val );
-      wX ( val );
+      wA ( val )
+      wX ( val )
    }
 
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -2505,16 +2502,16 @@ void C6502::LDA ( void )
 
    if ( amode == AM_IMMEDIATE )
    {
-      wA ( (*data) );
+      wA ( (*data) )
    }
    else
    {
       addr = MAKEADDR ( amode, data );
-      wA ( MEM(addr) );
+      wA ( MEM(addr) )
    }
 
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
 
    return;
 }
@@ -2540,16 +2537,16 @@ void C6502::LDX ( void )
 
    if ( amode == AM_IMMEDIATE )
    {
-      wX ( (*data) );
+      wX ( (*data) )
    }
    else
    {
       addr = MAKEADDR ( amode, data );
-      wX ( MEM(addr) );
+      wX ( MEM(addr) )
    }
 
-   wN ( rX()&0x80 );
-   wZ ( !rX() );
+   wN ( rX()&0x80 )
+   wZ ( !rX() )
 
    return;
 }
@@ -2566,9 +2563,9 @@ void C6502::LDX ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::TAY ( void )
 {
-   wY ( rA() );
-   wN ( rY()&0x80 );
-   wZ ( !rY() );
+   wY ( rA() )
+   wN ( rY()&0x80 )
+   wZ ( !rY() )
 
    return;
 }
@@ -2585,9 +2582,9 @@ void C6502::TAY ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::TAX ( void )
 {
-   wX ( rA() );
-   wN ( rX()&0x80 );
-   wZ ( !rX() );
+   wX ( rA() )
+   wN ( rX()&0x80 )
+   wZ ( !rX() )
 
    return;
 }
@@ -2622,7 +2619,7 @@ void C6502::BCS ( void )
          MEM ( target );
       }
 
-      wPC ( target );
+      wPC ( target )
 
       if ( rPC() == m_pcGoto )
       {
@@ -2646,7 +2643,7 @@ void C6502::BCS ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::CLV ( void )
 {
-   cV ();
+   cV ()
 
    return;
 }
@@ -2663,9 +2660,9 @@ void C6502::CLV ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::TSX ( void )
 {
-   wX ( rSP() );
-   wN ( rX()&0x80 );
-   wZ ( !rX() );
+   wX ( rSP() )
+   wN ( rX()&0x80 )
+   wZ ( !rX() )
 
    return;
 }
@@ -2696,11 +2693,11 @@ void C6502::CPY ( void )
       val = MEM ( addr );
    }
 
-   wC ( rY()>=val );
+   wC ( rY()>=val )
    val = rY() - val;
    val &= 0xFF;
-   wN ( val&0x80 );
-   wZ ( !val );
+   wN ( val&0x80 )
+   wZ ( !val )
 
    return;
 }
@@ -2738,11 +2735,11 @@ void C6502::CMP ( void )
       val = MEM ( addr );
    }
 
-   wC ( rA()>=val );
+   wC ( rA()>=val )
    val = rA() - val;
    val &= 0xFF;
-   wN ( val&0x80 );
-   wZ ( !val );
+   wN ( val&0x80 )
+   wZ ( !val )
 
    return;
 }
@@ -2770,11 +2767,11 @@ void C6502::DCM ( void )
    val = MEM ( addr );
    val -= 1;
    MEM ( addr, val );
-   wC ( rA()>=val );
+   wC ( rA()>=val )
    val = rA() - val;
    val &= 0xFF;
-   wN ( val&0x80 );
-   wZ ( !val );
+   wN ( val&0x80 )
+   wZ ( !val )
 
    // A missing memory cycle here?
    // Synchronize CPU and APU...
@@ -2809,8 +2806,8 @@ void C6502::DEC ( void )
 
    val -= 1;
    MEM ( addr, val );
-   wN ( val&0x80 );
-   wZ ( !val );
+   wN ( val&0x80 )
+   wZ ( !val )
 
    return;
 }
@@ -2827,9 +2824,9 @@ void C6502::DEC ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::INY ( void )
 {
-   wY ( rY()+1 );
-   wN ( rY()&0x80 );
-   wZ ( !rY() );
+   wY ( rY()+1 )
+   wN ( rY()&0x80 )
+   wZ ( !rY() )
 
    return;
 }
@@ -2846,9 +2843,9 @@ void C6502::INY ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::DEX ( void )
 {
-   wX ( rX()-1 );
-   wN ( rX()&0x80 );
-   wZ ( !rX() );
+   wX ( rX()-1 )
+   wN ( rX()&0x80 )
+   wZ ( !rX() )
 
    return;
 }
@@ -2883,7 +2880,7 @@ void C6502::BNE ( void )
          MEM ( target );
       }
 
-      wPC ( target );
+      wPC ( target )
 
       if ( rPC() == m_pcGoto )
       {
@@ -2907,7 +2904,7 @@ void C6502::BNE ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::CLD ( void )
 {
-   cD ();
+   cD ()
 
    return;
 }
@@ -2938,11 +2935,11 @@ void C6502::CPX ( void )
       val = MEM ( addr );
    }
 
-   wC ( rX()>=val );
+   wC ( rX()>=val )
    val = rX() - val;
    val &= 0xFF;
-   wN ( val&0x80 );
-   wZ ( !val );
+   wN ( val&0x80 )
+   wZ ( !val )
 
    return;
 }
@@ -2983,11 +2980,11 @@ void C6502::SBC ( void )
 
    result = (rA() - val - (1-rC()));
 
-   wV ( ((rA()^val)&0x80) && ((rA()^result)&0x80) );
-   wA ( (uint8_t)result );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
-   wC ( !(result&0x100) );
+   wV ( ((rA()^val)&0x80) && ((rA()^result)&0x80) )
+   wA ( (uint8_t)result )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
+   wC ( !(result&0x100) )
 
    return;
 }
@@ -3017,8 +3014,8 @@ void C6502::INC ( void )
 
    val++;
    MEM ( addr, val );
-   wN ( val&0x80 );
-   wZ ( !val );
+   wN ( val&0x80 )
+   wZ ( !val )
 
    return;
 }
@@ -3050,11 +3047,11 @@ void C6502::INS ( void )
 
    result = (rA() - val - (1-rC()));
 
-   wV ( ((rA()^val)&0x80) && ((rA()^result)&0x80) );
-   wA ( (uint8_t)result );
-   wN ( rA()&0x80 );
-   wZ ( !rA() );
-   wC ( !(result&0x100) );
+   wV ( ((rA()^val)&0x80) && ((rA()^result)&0x80) )
+   wA ( (uint8_t)result )
+   wN ( rA()&0x80 )
+   wZ ( !rA() )
+   wC ( !(result&0x100) )
 
    // A missing memory cycle here?
    // Synchronize CPU and APU...
@@ -3074,9 +3071,9 @@ void C6502::INS ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::INX ( void )
 {
-   wX ( rX()+1 );
-   wN ( rX()&0x80 );
-   wZ ( !rX() );
+   wX ( rX()+1 )
+   wN ( rX()&0x80 )
+   wZ ( !rX() )
 
    return;
 }
@@ -3149,7 +3146,7 @@ void C6502::BEQ ( void )
          MEM ( target );
       }
 
-      wPC ( target );
+      wPC ( target )
 
       if ( rPC() == m_pcGoto )
       {
@@ -3172,7 +3169,7 @@ void C6502::BEQ ( void )
 //  +----------------+-----------------------+---------+---------+----------+
 void C6502::SED ( void )
 {
-   sD ();
+   sD ()
 
    return;
 }
@@ -3198,15 +3195,15 @@ void C6502::BRK ( void )
    {
       if ( m_instrCycle == 2 )
       {
-         PUSH ( GETHI8(rPC()) );
+         PUSH ( GETHI8(rPC()) )
       }
       else if ( m_instrCycle == 3 )
       {
-         PUSH ( GETLO8((rPC())) );
+         PUSH ( GETLO8((rPC())) )
       }
       else if ( m_instrCycle == 4 )
       {
-         PUSH ( rF() );
+         PUSH ( rF() )
          if ( m_nmiPending )
          {
             doingIrq = false;
@@ -3228,7 +3225,7 @@ void C6502::BRK ( void )
             {
                pchi = MEM(VECTOR_NMI+1);
 
-               wPC ( MAKE16(pclo,pchi) );
+               wPC ( MAKE16(pclo,pchi) )
 
                if ( rPC() == m_pcGoto )
                {
@@ -3242,7 +3239,7 @@ void C6502::BRK ( void )
                   NES()->CHECKBREAKPOINT(eBreakInCPU,eBreakOnCPUEvent,0,CPU_EVENT_NMI_ENTERED);
                }
 
-               sI();
+               sI()
                m_nmiPending = false;
                doingIrq = false;
             }
@@ -3257,7 +3254,7 @@ void C6502::BRK ( void )
             {
                pchi = MEM(VECTOR_IRQ+1);
 
-               wPC ( MAKE16(pclo,pchi) );
+               wPC ( MAKE16(pclo,pchi) )
 
                if ( rPC() == m_pcGoto )
                {
@@ -3271,7 +3268,7 @@ void C6502::BRK ( void )
                   NES()->CHECKBREAKPOINT(eBreakInCPU,eBreakOnCPUEvent,0,CPU_EVENT_IRQ_ENTERED);
                }
 
-               sI();
+               sI()
                m_irqPending = false;
                doingIrq = false;
             }
@@ -3361,13 +3358,13 @@ void C6502::RESET (const bool soft )
    m_nmiAsserted = false;
    m_nmiPending = false;
 
-   wEA ( 0 );
+   wEA ( 0 )
 
    m_pcGoto = 0xFFFFFFFF;
 
-   wF ( 0 );
-   sI ();
-   sB ();
+   wF ( 0 )
+   sI ()
+   sB ()
 
    // Fake cycle -- stuff is being cleared
    MEM(0xFF);
@@ -3376,17 +3373,17 @@ void C6502::RESET (const bool soft )
    MEM(0xFF);
    MEM(0xFF);
 
-   wA ( 0 );
-   wX ( 0 );
-   wY ( 0 );
-   wSP ( 0 );
+   wA ( 0 )
+   wX ( 0 )
+   wY ( 0 )
+   wSP ( 0 )
    MEM ( 0x00 ); // These emulate the three "fake stack pushes" that occur
-   wSP ( 0xFF );
+   wSP ( 0xFF )
    MEM ( 0x00 ); // during the 6502 RESET sequence.  The stack pushes are fake
-   wSP ( 0xFE );
+   wSP ( 0xFE )
    MEM ( 0x00 ); // in that they occur but are READs instead of WRITEs.
-   wSP ( 0xFD );
-   wPC ( MAKE16(MEM(VECTOR_RESET),MEM(VECTOR_RESET+1)) );
+   wSP ( 0xFD )
+   wPC ( MAKE16(MEM(VECTOR_RESET),MEM(VECTOR_RESET+1)) )
 
    m_pcSync = rPC();
    m_pcSyncSet = true;
@@ -3543,13 +3540,13 @@ uint8_t C6502::FETCH ()
 {
    int8_t target;
    uint8_t data;
-   uint8_t instrCycle = m_instrCycle;
+   const uint8_t instrCycle = m_instrCycle;
 
    // Not writing...
    m_write = false;
 
    // Set effective address.
-   wEA ( rPC() );
+   wEA ( rPC() )
    if ( nesIsDebuggable )
    {
       NES()->TRACER()->SetEffectiveAddress ( NES()->TRACER()->GetLastCPUSample(), rEA() );
@@ -3656,7 +3653,7 @@ uint8_t C6502::EXTRAFETCH ()
    m_write = false;
 
    // Set effective address.
-   wEA ( rPC() );
+   wEA ( rPC() )
    if ( nesIsDebuggable )
    {
       NES()->TRACER()->SetEffectiveAddress ( NES()->TRACER()->GetLastCPUSample(), rEA() );
@@ -3793,7 +3790,7 @@ uint8_t C6502::MEM (const uint32_t addr )
    m_write = false;
 
    // Set effective address.
-   wEA ( addr );
+   wEA ( addr )
    if ( nesIsDebuggable )
    {
       NES()->TRACER()->SetEffectiveAddress ( NES()->TRACER()->GetLastCPUSample(), rEA() );
@@ -3856,7 +3853,7 @@ void C6502::MEM (const uint32_t addr, const uint8_t data )
    m_write = true;
 
    // Set effective address.
-   wEA ( addr );
+   wEA ( addr )
    if ( nesIsDebuggable )
    {
       NES()->TRACER()->SetEffectiveAddress ( NES()->TRACER()->GetLastCPUSample(), rEA() );
@@ -3928,7 +3925,7 @@ uint8_t C6502::STEAL (const uint32_t addr, const uint8_t source )
    m_write = false;
 
    // Set effective address.
-   wEA ( addr );
+   wEA ( addr )
    if ( nesIsDebuggable )
    {
       NES()->TRACER()->SetEffectiveAddress ( NES()->TRACER()->GetLastCPUSample(), rEA() );
@@ -4065,7 +4062,7 @@ uint32_t C6502::MAKEADDR (const int32_t amode, uint8_t* data )
    }
 
    // Set "Effective Address" for use by Tracer, Breakpoints, etc...
-   wEA ( addr );
+   wEA ( addr )
 
    return addr;
 }
@@ -4108,7 +4105,7 @@ void C6502::DISASSEMBLE ( char** disassembly, uint8_t* binary, const int32_t bin
       // attempt to provide disassembly for it...
       if ( (mask) && ((i+opSize) < binaryLength) )
       {
-         sprintf_opcode ( ptr, pOp->name );
+         sprintf_opcode ( ptr, pOp->name )
 
          switch ( pOp->amode )
          {
@@ -4151,8 +4148,8 @@ void C6502::DISASSEMBLE ( char** disassembly, uint8_t* binary, const int32_t bin
       }
       else
       {
-         sprintf_db(ptr);
-         sprintf_02x(ptr,binary[i]);
+         sprintf_db(ptr)
+         sprintf_02x(ptr,binary[i])
 
          i++;
          disassembly++;
@@ -4175,7 +4172,7 @@ void C6502::PRINTABLEADDR ( char* buffer, const uint32_t addr, const uint32_t ab
 char* DISASSEMBLE ( uint8_t* pOpcode, char* buffer )
 {
    char* lbuffer = buffer;
-   CNES6502_opcode* pOp = C6502::m_6502opcode+(*pOpcode);
+   const CNES6502_opcode* pOp = C6502::m_6502opcode+(*pOpcode);
 
    if ( pOp->documented )
    {

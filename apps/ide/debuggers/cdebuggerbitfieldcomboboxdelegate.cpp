@@ -16,7 +16,7 @@ QWidget* CDebuggerBitfieldComboBoxDelegate::createEditor(QWidget* parent,
 	{
 		if (m_pBitfield->GetNumValues())
 		{
-			auto editor = new QComboBox(parent);
+			const auto editor = new QComboBox(parent);
 
 			for (idx = 0; idx < m_pBitfield->GetNumValues(); idx++)
 			{
@@ -29,13 +29,13 @@ QWidget* CDebuggerBitfieldComboBoxDelegate::createEditor(QWidget* parent,
 		}
 		else
 		{
-			auto editor = new QLineEdit(parent);
+			const auto editor = new QLineEdit(parent);
 			return editor;
 		}
 	}
 	else
 	{
-		auto editor = new QLineEdit(parent);
+		const auto editor = new QLineEdit(parent);
 		return editor;
 	}
 }
@@ -55,13 +55,13 @@ void CDebuggerBitfieldComboBoxDelegate::setEditorData(QWidget* editor,
 
 		if (m_pBitfield->GetNumValues())
 		{
-			auto comboBox = static_cast<QComboBox*>(editor);
+			const auto comboBox = dynamic_cast<QComboBox*>(editor);
 			comboBox->setCurrentIndex(value);
 			comboBox->showPopup();
 		}
 		else
 		{
-			auto edit = static_cast<QLineEdit*>(editor);
+			const auto edit = dynamic_cast<QLineEdit*>(editor);
 
 			sprintf(data, m_pBitfield->GetDisplayFormat(), value);
 
@@ -70,7 +70,7 @@ void CDebuggerBitfieldComboBoxDelegate::setEditorData(QWidget* editor,
 	}
 	else
 	{
-		auto edit = static_cast<QLineEdit*>(editor);
+		const auto edit = dynamic_cast<QLineEdit*>(editor);
 		edit->setText(index.model()->data(index, Qt::DisplayRole).toString());
 	}
 }
@@ -87,9 +87,9 @@ void CDebuggerBitfieldComboBoxDelegate::setModelData(QWidget* editor, QAbstractI
 	{
 		if (m_pBitfield->GetNumValues())
 		{
-			auto comboBox = static_cast<QComboBox*>(editor);
+			const auto combo_box = dynamic_cast<QComboBox*>(editor);
 
-			int bitfieldValue = comboBox->currentIndex();
+			int bitfieldValue = combo_box->currentIndex();
 
 			value = m_pBitfield->InsertValue(index.model()->data(index, Qt::EditRole).toString().toInt(&ok, 16),
 			                                 bitfieldValue);
@@ -100,7 +100,7 @@ void CDebuggerBitfieldComboBoxDelegate::setModelData(QWidget* editor, QAbstractI
 		}
 		else
 		{
-			auto edit = static_cast<QLineEdit*>(editor);
+			const auto edit = dynamic_cast<QLineEdit*>(editor);
 
 			value = m_pBitfield->InsertValue(index.model()->data(index, Qt::EditRole).toString().toInt(&ok, 16),
 			                                 edit->text().toInt(&ok, 16));

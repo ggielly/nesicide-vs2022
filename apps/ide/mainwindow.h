@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <cstdint>
 #include <QMainWindow>
 #include <QMessageBox>
 #include "cnesicideproject.h"
@@ -40,9 +41,49 @@
 #include "testsuiteexecutivedialog.h"
 
 #include "ui_mainwindow.h"
+#include "c64/emulator/c64emulatorcontrol.h"
+#include "common/cexpandablestatusbar.h"
+#include "common/searchbar.h"
+#include "common/sourcenavigator.h"
+#include "debuggers/breakpointdockwidget.h"
+#include "debuggers/codebrowserdockwidget.h"
+#include "debuggers/codeprofilerdockwidget.h"
+#include "debuggers/executioninspectordockwidget.h"
+#include "debuggers/memoryinspectordockwidget.h"
+#include "debuggers/registerinspectordockwidget.h"
+#include "debuggers/symbolwatchdockwidget.h"
+#include "nes/debuggers/apuinformationdockwidget.h"
+#include "nes/debuggers/chrmeminspector.h"
+#include "nes/debuggers/codedataloggerdockwidget.h"
+#include "nes/debuggers/executionvisualizerdockwidget.h"
+#include "nes/debuggers/joypadloggerdockwidget.h"
+#include "nes/debuggers/mapperinformationdockwidget.h"
+#include "nes/debuggers/nametablevisualizerdockwidget.h"
+#include "nes/debuggers/oamvisualizerdockwidget.h"
+#include "nes/debuggers/ppuinformationdockwidget.h"
+#include "nes/emulator/nesemulatorcontrol.h"
+#include "nes/emulator/nesemulatordockwidget.h"
+#include "nes/emulator/nesemulatorthread.h"
 
 #define MAX_RECENT_FILES 8
 
+class TestSuiteExecutiveDialog;
+class C64EmulatorThread;
+class QMenu;
+class QAction;
+class QKeyEvent;
+class QShowEvent;
+class QHideEvent;
+class QDropEvent;
+class QDragMoveEvent;
+class QDragEnterEvent;
+class QEvent;
+class QStringList;
+class QCloseEvent;
+class QTimerEvent;
+class QDateTime;
+class QWidget;
+class QString;
 class CProjectModel;
 
 namespace Ui
@@ -243,9 +284,11 @@ signals:
 
 public slots:
 	void openRecentFile();
-	auto updateRecentFiles() -> void;
 	void saveRecentFiles(const QString& fileName);
-	void updateRecentFiles() const;
+	void openRecentFile();
+	//auto updateRecentFiles() -> void;
+	void saveRecentFiles(const QString& fileName);
+	// void updateRecentFiles() const;
 	void on_actionExit_triggered();
 	void applicationActivationChanged(bool activated);
 	void createTarget(const QString& target);
@@ -362,6 +405,7 @@ public slots:
 
 private slots:
 	void on_actionManage_Add_Ons_triggered();
+	void updateRecentFiles() const;
 };
 
 #endif // MAINWINDOW_H

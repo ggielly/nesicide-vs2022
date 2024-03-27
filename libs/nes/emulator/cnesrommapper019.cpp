@@ -21,48 +21,48 @@
 #include "cregisterdata.h"
 
 // Mapper 019 Registers
-static CBitfieldData* tbl4800Bitfields [] =
+static c_bitfield_data* tbl4800Bitfields [] =
 {
-   new CBitfieldData("Sound Data", 0, 8, "%02X", 0)
+   new c_bitfield_data("Sound Data", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tbl5000Bitfields [] =
+static c_bitfield_data* tbl5000Bitfields [] =
 {
-   new CBitfieldData("IRQ Counter LSB", 0, 8, "%02X", 0)
+   new c_bitfield_data("IRQ Counter LSB", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tbl5800Bitfields [] =
+static c_bitfield_data* tbl5800Bitfields [] =
 {
-   new CBitfieldData("IRQ Counter MSB", 0, 7, "%X", 0),
-   new CBitfieldData("IRQ Enable", 7, 1, "%X", 2, "No", "Yes"),
+   new c_bitfield_data("IRQ Counter MSB", 0, 7, "%X", 0),
+   new c_bitfield_data("IRQ Enable", 7, 1, "%X", 2, "No", "Yes"),
 };
 
-static CBitfieldData* tbl8000Bitfields [] =
+static c_bitfield_data* tbl8000Bitfields [] =
 {
-   new CBitfieldData("CHR Bank", 0, 8, "%02X", 0)
+   new c_bitfield_data("CHR Bank", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tblC000Bitfields [] =
+static c_bitfield_data* tblC000Bitfields [] =
 {
-   new CBitfieldData("Mirroring", 0, 8, "%02X", 0)
+   new c_bitfield_data("Mirroring", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tblE000Bitfields [] =
+static c_bitfield_data* tblE000Bitfields [] =
 {
-   new CBitfieldData("PRG Bank", 0, 6, "%02X", 0)
+   new c_bitfield_data("PRG Bank", 0, 6, "%02X", 0)
 };
 
-static CBitfieldData* tblE800Bitfields [] =
+static c_bitfield_data* tblE800Bitfields [] =
 {
-   new CBitfieldData("PRG Bank", 0, 6, "%02X", 0),
-   new CBitfieldData("Low CHR RAM", 6, 1, "%X", 2, "Enabled", "Disabled"),
-   new CBitfieldData("High CHR RAM", 7, 1, "%X", 2, "Enabled", "Disabled")
+   new c_bitfield_data("PRG Bank", 0, 6, "%02X", 0),
+   new c_bitfield_data("Low CHR RAM", 6, 1, "%X", 2, "Enabled", "Disabled"),
+   new c_bitfield_data("High CHR RAM", 7, 1, "%X", 2, "Enabled", "Disabled")
 };
 
-static CBitfieldData* tblF800Bitfields [] =
+static c_bitfield_data* tblF800Bitfields [] =
 {
-   new CBitfieldData("Sound Address", 0, 7, "%02X", 0),
-   new CBitfieldData("Sound Address Autoincrement", 7, 1, "%X", 2, "No", "Yes")
+   new c_bitfield_data("Sound Address", 0, 7, "%02X", 0),
+   new c_bitfield_data("Sound Address Autoincrement", 7, 1, "%X", 2, "No", "Yes")
 };
 
 static CRegisterData* tblRegisters [] =

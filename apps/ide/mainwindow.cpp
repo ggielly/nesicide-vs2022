@@ -37,8 +37,6 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 	m_pC64EmulatorThread(nullptr),
 	m_pProjectModel(projectModel)
 {
-	int idx;
-
 	if (!((QCoreApplication::applicationDirPath().contains("Program Files")) ||
 		(QCoreApplication::applicationDirPath().contains("apps/ide")))) // Developer builds
 	{
@@ -112,7 +110,8 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 		envdat += "/cc65/share/cc65/include";
 		qputenv("CC65_INC", envdat.toLatin1());
 	}
-#elif defined(Q_OS_MAC) || defined(Q_OS_MAC64) || defined(Q_OS_MACX)
+	/*
+	#elif defined(Q_OS_MAC) || defined(Q_OS_MAC64) || defined(Q_OS_MACX)
 	if (QCoreApplication::applicationDirPath().contains("apps/ide"))
 	{
 		// Developer build?  Set environment assuming deps/ is at top level.
@@ -235,14 +234,14 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 		qputenv("CC65_INC", envdat.toLatin1());
 	}
 #endif
-
+*/
 	qDebug(QString("PATH=" + qgetenv("PATH")).toUtf8().data());
 	qDebug(QString("CC65_HOME=" + qgetenv("CC65_HOME")).toUtf8().data());
 	qDebug(QString("LD65_LIB=" + qgetenv("LD65_LIB")).toUtf8().data());
 	qDebug(QString("CA65_INC=" + qgetenv("CA65_INC")).toUtf8().data());
 	qDebug(QString("CC65_INC=" + qgetenv("CC65_INC")).toUtf8().data());
 
-	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
+	const QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 
 	// Initialize Environment settings.
 	EnvironmentSettingsDialog::readSettings();
@@ -260,15 +259,15 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 	}
 
 	// Create the search engine thread.
-	auto searcher = new SearcherThread();
+	const auto searcher = new SearcherThread();
 	CObjectRegistry::instance()->addObject("Searcher", searcher);
 
 	// Create the breakpoint watcher thread...
-	auto breakpointWatcher = new BreakpointWatcherThread();
+	const auto breakpointWatcher = new BreakpointWatcherThread();
 	CObjectRegistry::instance()->addObject("Breakpoint Watcher", breakpointWatcher);
 
 	// Create the compiler thread...
-	auto compiler = new CompilerThread();
+	const auto compiler = new CompilerThread();
 	QObject::connect(this, SIGNAL(compile()), compiler, SLOT(compile()));
 	QObject::connect(this, SIGNAL(clean()), compiler, SLOT(clean()));
 	CObjectRegistry::instance()->addObject("Compiler", compiler);
@@ -428,9 +427,9 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 
 	QObject::connect(menuProject, SIGNAL(aboutToShow()), this, SLOT(updateRecentFiles()));
 	m_menuRecentFiles = new QMenu("Recent Projects/Files...", menuProject);
-	for (idx = 0; idx < MAX_RECENT_FILES; idx++)
+	for (int idx = 0; idx < MAX_RECENT_FILES; idx++)
 	{
-		auto action = new QAction("Recent File " + QString::number(idx + 1));
+		const auto action = new QAction("Recent File " + QString::number(idx + 1));
 		QObject::connect(action, SIGNAL(triggered(bool)), this, SLOT(openRecentFile()));
 		m_menuRecentFiles->addAction(action);
 	}
@@ -453,10 +452,10 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 	}
 
 	// Filter for supported files to open.
-	QStringList argv_nesproject = argv.filter(QRegExp(".*[.]nesproject$", Qt::CaseInsensitive));
-	QStringList argv_nes = argv.filter(QRegExp(".*[.]nes$", Qt::CaseInsensitive));
-	QStringList argv_c64project = argv.filter(QRegExp(".*[.]c64project$", Qt::CaseInsensitive));
-	QStringList argv_c64 = argv.filter(QRegExp(".*[.](c64|prg|d64)$", Qt::CaseInsensitive));
+	const QStringList argv_nesproject = argv.filter(QRegExp(".*[.]nesproject$", Qt::CaseInsensitive));
+	const QStringList argv_nes = argv.filter(QRegExp(".*[.]nes$", Qt::CaseInsensitive));
+	const QStringList argv_c64project = argv.filter(QRegExp(".*[.]c64project$", Qt::CaseInsensitive));
+	const QStringList argv_c64 = argv.filter(QRegExp(".*[.](c64|prg|d64)$", Qt::CaseInsensitive));
 	QStringList argv_ftm = argv.filter(QRegExp(".*[.](ftm)$", Qt::CaseInsensitive));
 
 	// Only one file can be specified.
@@ -465,7 +464,7 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 		+ argv_c64.count()
 		+ argv_c64project.count() > 1)
 	{
-		QString error = "Conflicting command line arguments:\n\n" + argv.join(" ");
+		const QString error = "Conflicting command line arguments:\n\n" + argv.join(" ");
 		QMessageBox::information(nullptr, "Command Line Error", error);
 		QApplication::exit(-1);
 	}
@@ -537,13 +536,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::openRecentFile()
 {
-	auto action = dynamic_cast<QAction*>(sender());
-	QString fileName = action->text();
+	const auto action = dynamic_cast<QAction*>(sender());
+	const QString fileName = action->text();
 
 	openAnyFile(fileName);
 }
 
-void MainWindow::updateRecentFiles()
+void MainWindow::updateRecentFiles() const
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 	int idx;
@@ -1369,7 +1368,7 @@ void MainWindow::createNesUi()
 
 void MainWindow::destroyNesUi()
 {
-	auto emulator = dynamic_cast<NESEmulatorThread*>(CObjectRegistry::instance()->getObject("Emulator"));
+	const auto emulator = dynamic_cast<NESEmulatorThread*>(CObjectRegistry::instance()->getObject("Emulator"));
 
 	// If we're set up for NES, clear it.
 	if (m_targetLoaded.compare("nes", Qt::CaseInsensitive))
@@ -1810,7 +1809,7 @@ void MainWindow::dragMoveEvent(QDragMoveEvent* event)
 bool MainWindow::openAnyFile(QString fileName)
 {
 	QFileInfo fileInfo;
-	bool opened = false;
+	const bool opened = false;
 
 	fileInfo.setFile(fileName);
 
@@ -1925,7 +1924,7 @@ void MainWindow::projectDataChangesEvent()
 
 	if (tabWidget->currentIndex() >= 0)
 	{
-		auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->currentWidget());
+		const auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->currentWidget());
 
 		if (projectItem && projectItem->isModified())
 		{
@@ -2085,7 +2084,7 @@ void MainWindow::saveProject(QString fileName)
 	}
 
 	QDomDocument doc;
-	QDomProcessingInstruction instr = doc.createProcessingInstruction("xml", "version='1.0' encoding='UTF-8'");
+	const QDomProcessingInstruction instr = doc.createProcessingInstruction("xml", "version='1.0' encoding='UTF-8'");
 	doc.appendChild(instr);
 
 	if (!CNesicideProject::instance()->serialize(doc, doc))
@@ -2154,7 +2153,7 @@ void MainWindow::on_actionProject_Properties_triggered()
 
 void MainWindow::explodeAddOn(int level, QString projectName, QString addonDirName, QString localDirName)
 {
-	QDir addonDir(addonDirName);
+	const QDir addonDir(addonDirName);
 	QDir localDir;
 	QString localDirPath;
 	QString projectDirPath;
@@ -2235,8 +2234,8 @@ void MainWindow::explodeAddOn(int level, QString projectName, QString addonDirNa
 void MainWindow::explodeTemplate(int level, QString templateName, QString projectName, QString templateDirName,
 	QString localDirName, QString* projectFileName)
 {
-	QDir templateDir(templateDirName);
-	QDir localDir;
+	const QDir templateDir(templateDirName);
+	const QDir localDir;
 	QString localDirTemp;
 	QFileInfoList templateFileInfos = templateDir.entryInfoList();
 
@@ -2310,9 +2309,9 @@ void MainWindow::explodeTemplate(int level, QString templateName, QString projec
 void MainWindow::explodeINESHeaderTemplate(QString templateName, QString projectName, QString templateDirName,
 	QString localDirName)
 {
-	QString templateFileName = ":/templates/NES/" + templateName + "/header.s_in";
-	auto fileInfo = QFileInfo(templateFileName);
-	QDir localDir;
+	const QString templateFileName = ":/templates/NES/" + templateName + "/header.s_in";
+	const auto fileInfo = QFileInfo(templateFileName);
+	const QDir localDir;
 	QString localDirTemp;
 
 	localDirTemp = localDirName;
@@ -2364,7 +2363,7 @@ void MainWindow::on_actionNew_Project_triggered()
 		return;
 	}
 
-	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
+	const QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 	NewProjectDialog dlg("New Project", "Untitled", settings.value("LastProjectBasePath").toString());
 
 	if (dlg.exec() == QDialog::Accepted)
@@ -2429,7 +2428,7 @@ void MainWindow::on_actionNew_Project_triggered()
 void MainWindow::openNesROM(QString fileName, bool runRom)
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
-	QFileInfo fi(fileName);
+	const QFileInfo fi(fileName);
 
 	// Remove any lingering project content
 	m_pProjectBrowser->disableNavigation();
@@ -2454,7 +2453,7 @@ void MainWindow::openNesROM(QString fileName, bool runRom)
 	CNesicideProject::instance()->createProjectFromRom(fileName);
 
 	// Set up some default stuff guessing from the path...
-	QFileInfo fileInfo(fileName);
+	const QFileInfo fileInfo(fileName);
 	QDir::setCurrent(fileInfo.path());
 	CNesicideProject::instance()->setProjectTitle(fileInfo.completeBaseName());
 	CNesicideProject::instance()->setProjectLinkerOutputName(fileInfo.completeBaseName() + ".prg");
@@ -2500,7 +2499,7 @@ void MainWindow::openNesROM(QString fileName, bool runRom)
 void MainWindow::openC64File(QString fileName)
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
-	QFileInfo fi(fileName);
+	const QFileInfo fi(fileName);
 
 	// Remove any lingering project content
 	m_pProjectBrowser->disableNavigation();
@@ -2525,7 +2524,7 @@ void MainWindow::openC64File(QString fileName)
 	//   CNesicideProject::instance()->createProjectFromRom(fileName);
 
 	// Set up some default stuff guessing from the path...
-	QFileInfo fileInfo(fileName);
+	const QFileInfo fileInfo(fileName);
 	QDir::setCurrent(fileInfo.path());
 	CNesicideProject::instance()->setProjectTitle(fileInfo.completeBaseName());
 
@@ -2568,7 +2567,7 @@ void MainWindow::on_actionCreate_Project_from_File_triggered()
 		return;
 	}
 
-	QString romPath = EnvironmentSettingsDialog::romPath();
+	const QString romPath = EnvironmentSettingsDialog::romPath();
 	QString selectedFilter;
 	QString fileName = QFileDialog::getOpenFileName(this, "Open ROM", romPath,
 		"All Files (*.*);;iNES ROM (*.nes);;Commodore 64 Program (*.c64 *.prg);;Commodore 64 Disk Image (*.d64)",
@@ -2624,7 +2623,7 @@ void MainWindow::tabWidget_tabModified(int tab, bool modified)
 
 void MainWindow::windowMenu_triggered()
 {
-	auto action = dynamic_cast<QAction*>(sender());
+	const auto action = dynamic_cast<QAction*>(sender());
 	int tab;
 
 	if (action)
@@ -2654,7 +2653,7 @@ void MainWindow::tabWidget_tabAdded(int tab)
 
 void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
-	auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->widget(index));
+	const auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->widget(index));
 	int tab;
 
 	menuWindow->clear();
@@ -2669,7 +2668,7 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 
 	if (projectItem)
 	{
-		QMessageBox::StandardButton ret = projectItem->onCloseQuery();
+		const QMessageBox::StandardButton ret = projectItem->onCloseQuery();
 		if (ret == QMessageBox::Yes)
 		{
 			projectItem->onSave();
@@ -2786,7 +2785,7 @@ void MainWindow::openNesProject(QString fileName, bool runRom)
 		output->clearAllPanes();
 
 		// Set up some default stuff guessing from the path...
-		QFileInfo fileInfo(fileName);
+		const QFileInfo fileInfo(fileName);
 		QDir::setCurrent(fileInfo.path());
 
 		// Load new project content
@@ -2794,14 +2793,13 @@ void MainWindow::openNesProject(QString fileName, bool runRom)
 		if (!ok)
 		{
 			QMessageBox::warning(this, "Project Load Error", "The project failed to load.\n\n" + errors);
-
 			CNesicideProject::instance()->terminateProject();
 		}
 
 		// Load ROM if it exists.
 		if (!CNesicideProject::instance()->getProjectCartridgeOutputName().isEmpty())
 		{
-			QDir dir(QDir::currentPath());
+			const QDir dir(QDir::currentPath());
 			QString romName;
 			romName = dir.fromNativeSeparators(
 				dir.relativeFilePath(CNesicideProject::instance()->getProjectCartridgeOutputName()));
@@ -2850,11 +2848,10 @@ void MainWindow::openNesProject(QString fileName, bool runRom)
 void MainWindow::openC64Project(QString fileName, bool run)
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
-	QString errors;
-	bool ok;
 
 	if (QFile::exists(fileName))
 	{
+		QString errors;
 		// Keep recent file list updated.
 		saveRecentFiles(fileName);
 
@@ -2887,11 +2884,11 @@ void MainWindow::openC64Project(QString fileName, bool run)
 		output->clearAllPanes();
 
 		// Set up some default stuff guessing from the path...
-		QFileInfo fileInfo(fileName);
+		const QFileInfo fileInfo(fileName);
 		QDir::setCurrent(fileInfo.path());
 
 		// Load new project content
-		ok = CNesicideProject::instance()->deserialize(doc, doc, errors);
+		const bool ok = CNesicideProject::instance()->deserialize(doc, doc, errors);
 		if (!ok)
 		{
 			QMessageBox::warning(this, "Project Load Error", "The project failed to load.\n\n" + errors);
@@ -2902,9 +2899,8 @@ void MainWindow::openC64Project(QString fileName, bool run)
 		// Load C64 image if it exists.
 		if (!CNesicideProject::instance()->getProjectLinkerOutputName().isEmpty())
 		{
-			QDir dir(QDir::currentPath());
-			QString c64Name;
-			c64Name = dir.fromNativeSeparators(
+			const QDir dir(QDir::currentPath());
+			QString c64Name = dir.fromNativeSeparators(
 				dir.relativeFilePath(CNesicideProject::instance()->getProjectLinkerOutputName()));
 
 			// Load debugger info if we can find it.
@@ -2936,8 +2932,8 @@ void MainWindow::on_actionOpen_Project_triggered()
 		return;
 	}
 
-	QString fileName = QFileDialog::getOpenFileName(this, "Open Project", "",
-		"NES Project (*.nesproject);;Commodore 64 Project (*.c64project)");
+	const QString fileName = QFileDialog::getOpenFileName(this, "Open Project", "",
+	                                                      "NES Project (*.nesproject);;Commodore 64 Project (*.c64project)");
 
 	if (fileName.isEmpty())
 	{
@@ -2956,12 +2952,12 @@ void MainWindow::on_actionOpen_Project_triggered()
 
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
-	auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->widget(index));
+	const auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->widget(index));
 	int idx;
 
 	if (projectItem)
 	{
-		QList<QAction*> actions = menuEdit->actions();
+		const QList<QAction*> actions = menuEdit->actions();
 		for (idx = actions.count() - 1; idx >= 2; idx--)
 		{
 			menuEdit->removeAction(actions.at(idx));
@@ -2980,7 +2976,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
 
 void MainWindow::on_actionSave_Active_Document_triggered()
 {
-	auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->currentWidget());
+	const auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->currentWidget());
 
 	if (projectItem)
 	{
@@ -3007,7 +3003,7 @@ void MainWindow::on_actionCompile_Project_triggered()
 		// Try to save all opened editors
 		for (tab = 0; tab < tabWidget->count(); tab++)
 		{
-			auto item = dynamic_cast<ICenterWidgetItem*>(tabWidget->widget(tab));
+			const auto item = dynamic_cast<ICenterWidgetItem*>(tabWidget->widget(tab));
 			if (item)
 			{
 				if (item->isModified())
@@ -3180,7 +3176,7 @@ void MainWindow::on_actionSearch_triggered()
 
 void MainWindow::on_action_About_Nesicide_triggered()
 {
-	auto dlg = new AboutDialog(this);
+	const auto dlg = new AboutDialog(this);
 	dlg->exec();
 	delete dlg;
 }
@@ -3195,11 +3191,11 @@ bool MainWindow::closeProject()
 	// Try to close all opened editors
 	for (idx = tabWidget->count() - 1; idx >= 0; idx--)
 	{
-		auto item = dynamic_cast<ICenterWidgetItem*>(tabWidget->widget(idx));
+		const auto item = dynamic_cast<ICenterWidgetItem*>(tabWidget->widget(idx));
 		if (item)
 		{
 			tabWidget->setCurrentWidget(tabWidget->widget(idx));
-			QMessageBox::StandardButton ret = item->onCloseQuery();
+			const QMessageBox::StandardButton ret = item->onCloseQuery();
 			if (ret == QMessageBox::Yes)
 			{
 				item->onSave();
@@ -3210,9 +3206,9 @@ bool MainWindow::closeProject()
 
 	if (CNesicideProject::instance()->isDirty())
 	{
-		int result = QMessageBox::question(this, "Save Project?",
-			"Your project settings, project content, or debugger content has changed, would you like to save the project?",
-			QMessageBox::Yes, QMessageBox::No, QMessageBox::Cancel);
+		const int result = QMessageBox::question(this, "Save Project?",
+		                                         "Your project settings, project content, or debugger content has changed, would you like to save the project?",
+		                                         QMessageBox::Yes, QMessageBox::No, QMessageBox::Cancel);
 		if (result == QMessageBox::Yes)
 		{
 			on_actionSave_Project_triggered();
@@ -3257,7 +3253,7 @@ bool MainWindow::closeProject()
 
 		CNesicideProject::instance()->terminateProject();
 
-		auto emulator = dynamic_cast<NESEmulatorThread*>(CObjectRegistry::instance()->getObject("Emulator"));
+		const auto emulator = dynamic_cast<NESEmulatorThread*>(CObjectRegistry::instance()->getObject("Emulator"));
 
 		if (emulator)
 		{
@@ -3763,7 +3759,7 @@ void MainWindow::on_actionEnvironment_Settings_triggered()
 {
 	EnvironmentSettingsDialog dlg;
 
-	int result = dlg.exec();
+	const int result = dlg.exec();
 
 	if (result == QDialog::Accepted)
 	{
@@ -3777,23 +3773,23 @@ void MainWindow::updateFromEmulatorPrefs(bool initial)
 	if (initial || EmulatorPrefsDialog::systemSettingsChanged())
 	{
 		// Set TV standard to use.
-		int systemMode = EmulatorPrefsDialog::getTVStandard();
+		const int systemMode = EmulatorPrefsDialog::getTVStandard();
 		actionNTSC->setChecked(systemMode == MODE_NTSC);
 		actionPAL->setChecked(systemMode == MODE_PAL);
 		actionDendy->setChecked(systemMode == MODE_DENDY);
 		nesSetSystemMode(systemMode);
 
-		bool breakOnKIL = EmulatorPrefsDialog::getPauseOnKIL();
+		const bool breakOnKIL = EmulatorPrefsDialog::getPauseOnKIL();
 		nesSetBreakOnKIL(breakOnKIL);
 	}
 
 	if (initial || EmulatorPrefsDialog::audioSettingsChanged())
 	{
-		bool square1 = EmulatorPrefsDialog::getSquare1Enabled();
-		bool square2 = EmulatorPrefsDialog::getSquare2Enabled();
-		bool triangle = EmulatorPrefsDialog::getTriangleEnabled();
-		bool noise = EmulatorPrefsDialog::getNoiseEnabled();
-		bool dmc = EmulatorPrefsDialog::getDMCEnabled();
+		const bool square1 = EmulatorPrefsDialog::getSquare1Enabled();
+		const bool square2 = EmulatorPrefsDialog::getSquare2Enabled();
+		const bool triangle = EmulatorPrefsDialog::getTriangleEnabled();
+		const bool noise = EmulatorPrefsDialog::getNoiseEnabled();
+		const bool dmc = EmulatorPrefsDialog::getDMCEnabled();
 		uint32_t mask = ((square1 << 0) | (square2 << 1) | (triangle << 2) | (noise << 3) | (dmc << 4));
 
 		actionSquare_1->setChecked(square1);
@@ -3803,9 +3799,9 @@ void MainWindow::updateFromEmulatorPrefs(bool initial)
 		actionDelta_Modulation->setChecked(dmc);
 		nesSetAudioChannelMask(mask);
 
-		bool pulse1VRC6 = EmulatorPrefsDialog::getPulse1VRC6Enabled();
-		bool pulse2VRC6 = EmulatorPrefsDialog::getPulse2VRC6Enabled();
-		bool sawtoothVRC6 = EmulatorPrefsDialog::getSawtoothVRC6Enabled();
+		const bool pulse1VRC6 = EmulatorPrefsDialog::getPulse1VRC6Enabled();
+		const bool pulse2VRC6 = EmulatorPrefsDialog::getPulse2VRC6Enabled();
+		const bool sawtoothVRC6 = EmulatorPrefsDialog::getSawtoothVRC6Enabled();
 		mask = ((pulse1VRC6 << 0) | (pulse2VRC6 << 1) | (sawtoothVRC6 << 2));
 
 		actionPulse_1VRC6->setChecked(pulse1VRC6);
@@ -3813,9 +3809,9 @@ void MainWindow::updateFromEmulatorPrefs(bool initial)
 		actionSawtoothVRC6->setChecked(sawtoothVRC6);
 		nesSetVRC6AudioChannelMask(mask);
 
-		bool square1MMC5 = EmulatorPrefsDialog::getSquare1MMC5Enabled();
-		bool square2MMC5 = EmulatorPrefsDialog::getSquare2MMC5Enabled();
-		bool dmcMMC5 = EmulatorPrefsDialog::getDMCMMC5Enabled();
+		const bool square1MMC5 = EmulatorPrefsDialog::getSquare1MMC5Enabled();
+		const bool square2MMC5 = EmulatorPrefsDialog::getSquare2MMC5Enabled();
+		const bool dmcMMC5 = EmulatorPrefsDialog::getDMCMMC5Enabled();
 		mask = ((square1MMC5 << 0) | (square2MMC5 << 1) | (dmcMMC5 << 2));
 
 		actionSquare_1MMC5->setChecked(square1MMC5);
@@ -3823,14 +3819,14 @@ void MainWindow::updateFromEmulatorPrefs(bool initial)
 		actionDMCMMC5->setChecked(dmcMMC5);
 		nesSetMMC5AudioChannelMask(mask);
 
-		bool wave1N106 = EmulatorPrefsDialog::getWave1N106Enabled();
-		bool wave2N106 = EmulatorPrefsDialog::getWave2N106Enabled();
-		bool wave3N106 = EmulatorPrefsDialog::getWave3N106Enabled();
-		bool wave4N106 = EmulatorPrefsDialog::getWave4N106Enabled();
-		bool wave5N106 = EmulatorPrefsDialog::getWave5N106Enabled();
-		bool wave6N106 = EmulatorPrefsDialog::getWave6N106Enabled();
-		bool wave7N106 = EmulatorPrefsDialog::getWave7N106Enabled();
-		bool wave8N106 = EmulatorPrefsDialog::getWave8N106Enabled();
+		const bool wave1N106 = EmulatorPrefsDialog::getWave1N106Enabled();
+		const bool wave2N106 = EmulatorPrefsDialog::getWave2N106Enabled();
+		const bool wave3N106 = EmulatorPrefsDialog::getWave3N106Enabled();
+		const bool wave4N106 = EmulatorPrefsDialog::getWave4N106Enabled();
+		const bool wave5N106 = EmulatorPrefsDialog::getWave5N106Enabled();
+		const bool wave6N106 = EmulatorPrefsDialog::getWave6N106Enabled();
+		const bool wave7N106 = EmulatorPrefsDialog::getWave7N106Enabled();
+		const bool wave8N106 = EmulatorPrefsDialog::getWave8N106Enabled();
 		mask = ((wave1N106 << 0) | (wave2N106 << 1) | (wave3N106 << 2) | (wave4N106 << 3) |
 			(wave5N106 << 4) | (wave6N106 << 5) | (wave7N106 << 6) | (wave8N106 << 7));
 
@@ -3905,7 +3901,7 @@ void MainWindow::on_actionOnline_Help_triggered()
 
 void MainWindow::on_actionLoad_In_Emulator_triggered()
 {
-	auto compiler = dynamic_cast<CompilerThread*>(CObjectRegistry::instance()->getObject("Compiler"));
+	const auto compiler = dynamic_cast<CompilerThread*>(CObjectRegistry::instance()->getObject("Compiler"));
 
 	output->showPane(OutputPaneDockWidget::Output_Build);
 
@@ -3971,13 +3967,13 @@ void MainWindow::on_actionClean_Project_triggered()
 
 void MainWindow::openFile(QString file)
 {
-	QDir dir(QDir::currentPath());
-	QString fileName = dir.fromNativeSeparators(dir.filePath(file));
+	const QDir dir(QDir::currentPath());
+	const QString fileName = dir.fromNativeSeparators(dir.filePath(file));
 	QFile fileIn(fileName);
 
 	if (fileIn.exists() && fileIn.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
-		auto editor = new CodeEditorForm(fileName, QString(fileIn.readAll()));
+		const auto editor = new CodeEditorForm(fileName, QString(fileIn.readAll()));
 
 		fileIn.close();
 
@@ -4031,12 +4027,12 @@ void MainWindow::menuWindow_aboutToShow()
 
 void MainWindow::menuEdit_aboutToShow()
 {
-	auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->currentWidget());
+	const auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->currentWidget());
 	int idx;
 
 	if (projectItem)
 	{
-		QList<QAction*> actions = menuEdit->actions();
+		const QList<QAction*> actions = menuEdit->actions();
 		for (idx = actions.count() - 1; idx >= 2; idx--)
 		{
 			menuEdit->removeAction(actions.at(idx));
@@ -4045,7 +4041,7 @@ void MainWindow::menuEdit_aboutToShow()
 	}
 	else
 	{
-		QList<QAction*> actions = menuEdit->actions();
+		const QList<QAction*> actions = menuEdit->actions();
 		for (idx = actions.count() - 1; idx >= 2; idx--)
 		{
 			menuEdit->removeAction(actions.at(idx));
@@ -4254,7 +4250,7 @@ void MainWindow::applyAddOns(QStringList addOns)
 
 void MainWindow::on_actionManage_Add_Ons_triggered()
 {
-	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
+	const QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 	NewProjectDialog dlg("Add-Ons", CNesicideProject::instance()->getProjectTitle(),
 		settings.value("LastProjectBasePath").toString(), true);
 

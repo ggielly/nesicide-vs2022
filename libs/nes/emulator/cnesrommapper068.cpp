@@ -19,25 +19,25 @@
 #include "cnesppu.h"
 
 // Mapper 068 Registers
-static CBitfieldData* tbl8000Bitfields [] =
+static c_bitfield_data* tbl8000Bitfields [] =
 {
-   new CBitfieldData("CHR Bank", 0, 8, "%02X", 0)
+   new c_bitfield_data("CHR Bank", 0, 8, "%02X", 0)
 };
 
-static CBitfieldData* tblC000Bitfields [] =
+static c_bitfield_data* tblC000Bitfields [] =
 {
-   new CBitfieldData("NT-ROM Bank", 0, 7, "%02X", 0)
+   new c_bitfield_data("NT-ROM Bank", 0, 7, "%02X", 0)
 };
 
-static CBitfieldData* tblE000Bitfields [] =
+static c_bitfield_data* tblE000Bitfields [] =
 {
-   new CBitfieldData("Mirroring", 0, 1, "%X", 2, "Vertical", "Horizontal"),
-   new CBitfieldData("Source", 4, 1, "%X", 2, "Normal mirroring", "Use CHR-ROM")
+   new c_bitfield_data("Mirroring", 0, 1, "%X", 2, "Vertical", "Horizontal"),
+   new c_bitfield_data("Source", 4, 1, "%X", 2, "Normal mirroring", "Use CHR-ROM")
 };
 
-static CBitfieldData* tblF000Bitfields [] =
+static c_bitfield_data* tblF000Bitfields [] =
 {
-   new CBitfieldData("PRG Bank", 0, 8, "%02X", 0)
+   new c_bitfield_data("PRG Bank", 0, 8, "%02X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

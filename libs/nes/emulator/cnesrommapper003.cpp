@@ -20,9 +20,9 @@
 #include "cregisterdata.h"
 
 // Mapper 003 Registers
-static CBitfieldData* tbl8000_FFFFBitfields [] =
+static c_bitfield_data* tbl8000_FFFFBitfields [] =
 {
-   new CBitfieldData("CHR Bank", 0, 8, "%X", 0)
+   new c_bitfield_data("CHR Bank", 0, 8, "%X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

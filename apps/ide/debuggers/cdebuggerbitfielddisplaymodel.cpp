@@ -1,8 +1,9 @@
 #include "cdebuggerbitfielddisplaymodel.h"
+#include <cstdio> // needed for sprintf_s
 
-CDebuggerBitfieldDisplayModel::CDebuggerBitfieldDisplayModel(regDBFunc regDB, QObject*)
+CDebuggerBitfieldDisplayModel::CDebuggerBitfieldDisplayModel(const regDBFunc reg_db, QObject*)
 {
-	m_regDB = regDB;
+	m_regDB = reg_db;
 	m_register = 0;
 	m_modelStringBuffer = new char[512];
 }
@@ -12,68 +13,100 @@ CDebuggerBitfieldDisplayModel::~CDebuggerBitfieldDisplayModel()
 	delete [] m_modelStringBuffer;
 }
 
-QVariant CDebuggerBitfieldDisplayModel::data(const QModelIndex& index, int role) const
+QVariant CDebuggerBitfieldDisplayModel::data(const QModelIndex& index, const int role) const
 {
-	char* pValues = m_modelStringBuffer;
-	int value;
+	char* p_values = m_modelStringBuffer;
 
 	if (!index.isValid())
 	{
-		return QVariant();
+		return {};
 	}
 
-	auto pRegister = (CRegisterData*)index.internalPointer();
+	auto pRegister = static_cast<CRegisterData*>(index.internalPointer());
 	CBitfieldData* pBitfield = pRegister->GetBitfield(index.row());
-	uint32_t regData = pRegister->Get();
+	uint32_t reg_data = pRegister->Get();
+
+/*	if (role == Qt::ToolTipRole)
+	{
+		if (pBitfield->GetNumValues())
+		{
+			p_values += sprintf(p_values, "<pre>");
+
+			for (int value = 0; value < pBitfield->GetNumValues(); value++)
+			{
+				if (value == pBitfield->GetValueRaw(reg_data))
+				{
+					p_values += sprintf(p_values, "<b>%s</b>", pBitfield->GetValueByIndex(value));
+				}
+				else
+				{
+					p_values += sprintf(p_values, "%s", pBitfield->GetValueByIndex(value));
+				}
+
+				if (value < pBitfield->GetNumValues() - 1)
+				{
+					p_values += sprintf(p_values, "\n");
+				}
+			}
+
+			p_values += sprintf(p_values, "</pre>");
+			return {m_modelStringBuffer};
+		}
+	}
+
+	sprintf correction 
+	*/
 
 	if (role == Qt::ToolTipRole)
 	{
 		if (pBitfield->GetNumValues())
 		{
-			pValues += sprintf(pValues, "<pre>");
+			p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer), "<pre>");
 
-			for (value = 0; value < pBitfield->GetNumValues(); value++)
+			for (int value = 0; value < pBitfield->GetNumValues(); value++)
 			{
-				if (value == pBitfield->GetValueRaw(regData))
+				if (value == pBitfield->GetValueRaw(reg_data))
 				{
-					pValues += sprintf(pValues, "<b>%s</b>", pBitfield->GetValueByIndex(value));
+					p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer), "<b>%s</b>", pBitfield->GetValueByIndex(value));
 				}
 				else
 				{
-					pValues += sprintf(pValues, "%s", pBitfield->GetValueByIndex(value));
+					p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer), "%s", pBitfield->GetValueByIndex(value));
 				}
 
 				if (value < pBitfield->GetNumValues() - 1)
 				{
-					pValues += sprintf(pValues, "\n");
+					p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer), "\n");
 				}
 			}
 
-			pValues += sprintf(pValues, "</pre>");
-			return QVariant(m_modelStringBuffer);
+			p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer), "</pre>");
+			return { m_modelStringBuffer };
 		}
 	}
+
+
 
 	if (role == Qt::DisplayRole)
 	{
 		if (pBitfield->GetNumValues())
 		{
-			sprintf(m_modelStringBuffer, "%s", pBitfield->GetValue(regData));
+			sprintf(m_modelStringBuffer, "%s", pBitfield->GetValue(reg_data));
 		}
 		else
 		{
-			sprintf(m_modelStringBuffer, pBitfield->GetDisplayFormat(), pBitfield->GetValueRaw(regData));
+			sprintf(m_modelStringBuffer, pBitfield->GetDisplayFormat(), pBitfield->GetValueRaw(reg_data));
 		}
 
-		return QVariant(m_modelStringBuffer);
+		return {m_modelStringBuffer};
 	}
 	else if (role == Qt::EditRole)
 	{
-		sprintf(m_modelStringBuffer, pBitfield->GetDisplayFormat(), regData);
-		return QVariant(m_modelStringBuffer);
+		sprintf(m_modelStringBuffer, pBitfield->GetDisplayFormat(), reg_data);
+		return {m_modelStringBuffer};
 	}
 
-	return QVariant();
+	return {};
 }
 
 Qt::ItemFlags CDebuggerBitfieldDisplayModel::flags(const QModelIndex&) const
@@ -82,11 +115,11 @@ Qt::ItemFlags CDebuggerBitfieldDisplayModel::flags(const QModelIndex&) const
 	return flags;
 }
 
-QVariant CDebuggerBitfieldDisplayModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant CDebuggerBitfieldDisplayModel::headerData(const int section, const Qt::Orientation orientation, const int role) const
 {
 	if (role != Qt::DisplayRole)
 	{
-		return QVariant();
+		return {};
 	}
 
 	if (orientation == Qt::Horizontal)
@@ -111,7 +144,7 @@ QVariant CDebuggerBitfieldDisplayModel::headerData(int section, Qt::Orientation 
 		}
 	}
 
-	return QVariant(m_modelStringBuffer);
+	return {m_modelStringBuffer};
 }
 
 bool CDebuggerBitfieldDisplayModel::setData(const QModelIndex& index, const QVariant& value, int)
@@ -133,7 +166,7 @@ bool CDebuggerBitfieldDisplayModel::setData(const QModelIndex& index, const QVar
 	return ok;
 }
 
-QModelIndex CDebuggerBitfieldDisplayModel::index(int row, int column, const QModelIndex&) const
+QModelIndex CDebuggerBitfieldDisplayModel::index(const int row, const int column, const QModelIndex&) const
 {
 	if ((row >= 0) && (column >= 0))
 	{
@@ -143,7 +176,7 @@ QModelIndex CDebuggerBitfieldDisplayModel::index(int row, int column, const QMod
 		}
 	}
 
-	return QModelIndex();
+	return {};
 }
 
 int CDebuggerBitfieldDisplayModel::rowCount(const QModelIndex&) const

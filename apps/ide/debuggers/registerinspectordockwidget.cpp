@@ -359,7 +359,7 @@ void RegisterInspectorDockWidget::on_bitfieldView_clicked(QModelIndex index)
 	}
 }
 
-void RegisterInspectorDockWidget::on_bitfieldView_doubleClicked(QModelIndex index)
+void RegisterInspectorDockWidget::on_bitfieldView_doubleClicked(QModelIndex index) const
 {
 	if (m_regDB)
 	{

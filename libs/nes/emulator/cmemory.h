@@ -40,7 +40,7 @@ public:
       }
       *(m_opcodeMask+addr) = mask;
    }
-   inline void OPCODEMASKATPHYSADDR ( uint32_t absAddr, const uint8_t mask )
+   inline void OPCODEMASKATPHYSADDR ( uint32_t absAddr, const uint8_t mask ) const
    {
       absAddr &= m_sizeMask;
       *(m_opcodeMask+absAddr) = mask;
@@ -67,7 +67,7 @@ public:
       addr &= m_sizeMask;
       return *(m_addr2sloc+addr);
    }
-   inline uint32_t SLOC ()
+   inline uint32_t sloc () const
    {
       return m_sloc;
    }
@@ -184,7 +184,7 @@ public:
    uint16_t ADDR2SLOC ( uint32_t virtAddr );
    virtual uint32_t SLOC (const uint32_t virtAddr )
    {
-      return (*(m_pBank+virtBankFromVirtAddr(virtAddr)))->SLOC();
+      return (*(m_pBank+virtBankFromVirtAddr(virtAddr)))->sloc();
    }
    virtual const char* DISASSEMBLY (const uint32_t virtAddr )
    {

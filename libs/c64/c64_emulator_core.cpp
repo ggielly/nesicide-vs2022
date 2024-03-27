@@ -54,7 +54,7 @@ auto c64_get_printable_address(char* buffer, const uint32_t addr) -> void
 {
 	//sprintf(buffer, "%04X", addr);
     // Use sprintf_s with appropriate buffer size and format specifier
-    const int result = sprintf_s(buffer, sizeof(buffer), "%04X", addr);
+    sprintf_s(buffer, sizeof(buffer), "%04X", addr);
 
 }
 
@@ -62,7 +62,7 @@ auto c64_get_printable_physical_address(char* buffer, const uint32_t addr, uint3
 {
   // sprintf(buffer,"%04X",addr);
   // Use sprintf_s with appropriate buffer size and format specifier
-  const int result = sprintf_s(buffer, sizeof(buffer), "%04X", addr);
+  sprintf_s(buffer, sizeof(buffer), "%04X", addr);
 
 }
 
