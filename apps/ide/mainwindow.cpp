@@ -1,32 +1,26 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-
-#include "cdockwidgetregistry.h"
-#include "cobjectregistry.h"
-#include "cpluginmanager.h"
-
-#include "testsuiteexecutivedialog.h"
-#include "cgamedatabasehandler.h"
-#include "appsettings.h"
-
-#include "compilerthread.h"
-#include "ccc65interface.h"
-
-#include "searcherthread.h"
-#include "breakpointwatcherthread.h"
-
-#include "nes_emulator_core.h"
-#include "c64_emulator_core.h"
-
-#include "model/cprojectmodel.h"
-#include "model/cmusicmodel.h"
 
 #include <QApplication>
-#include <QStringList>
 #include <QMessageBox>
 #include <QSettings>
+#include <QStringList>
 
+#include "appsettings.h"
+#include "breakpointwatcherthread.h"
+#include "c64_emulator_core.h"
+#include "ccc65interface.h"
+#include "cdockwidgetregistry.h"
+#include "cgamedatabasehandler.h"
+#include "cobjectregistry.h"
+#include "compilerthread.h"
+#include "cpluginmanager.h"
+#include "nes_emulator_core.h"
 #include "SDL.h"
+#include "searcherthread.h"
+#include "testsuiteexecutivedialog.h"
+#include "ui_mainwindow.h"
+#include "model/cmusicmodel.h"
+#include "model/cprojectmodel.h"
 
 OutputPaneDockWidget* output = nullptr;
 ProjectBrowserDockWidget* m_pProjectBrowser = nullptr;
@@ -44,7 +38,6 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 		QSettings::setPath(QSettings::IniFormat, QSettings::SystemScope, QCoreApplication::applicationDirPath());
 	}
 
-#if defined(Q_OS_WIN)
 	if (QCoreApplication::applicationDirPath().contains("apps/ide"))
 	{
 		// Developer build?  Set environment assuming deps/ is at top level.
@@ -576,7 +569,7 @@ void MainWindow::updateRecentFiles() const
 	}
 }
 
-void MainWindow::saveRecentFiles(const QString file_name)
+void MainWindow::saveRecentFiles(QString file_name)
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 

@@ -280,7 +280,10 @@ void BreakpointDialog::on_type_currentIndexChanged(const int index) const
 }
 
 void BreakpointDialog::on_reg_currentIndexChanged(const int index)
+
+
 {
+	CBreakpointEventInfo** pBreakpointEventInfo = NULL;
 	if (index >= 0)
 	{
 		switch (ui->type->currentIndex())

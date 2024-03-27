@@ -62,37 +62,37 @@ public:
 	}
 	
 
-	char get_width(void) const
+	char GetWidth(void) const
 	{
 		return m_width_;
 	}
 
-	char get_lsb(void) const
+	char GetLsb(void) const
 	{
 		return m_lsb_;
 	}
 
-	char get_msb(void) const
+	char GetMsb(void) const
 	{
 		return m_msb_;
 	}
 
-	int get_num_values(void) const
+	int GetNumValues(void) const
 	{
 		return m_values_;
 	}
 
-	const char* get_name(void) const
+	const char* GetName(void) const
 	{
 		return m_name_;
 	}
 
-	const char* get_display_format(void) const
+	const char* GetDisplayFormat(void) const
 	{
 		return m_display_format_;
 	}
 
-	char* get_value(int data) const
+	char* GetValue(int data) const
 	{
 		//data >>= m_start;
 		assert(m_value_);
@@ -101,7 +101,7 @@ public:
 		return m_value_[data];
 	}
 
-	int get_value_raw(int data) const
+	int GetValueRaw(int data) const
 	{
 		//data >>= m_start;
 		assert(m_value_);
@@ -109,12 +109,12 @@ public:
 		return data; 
 	}
 
-	char* get_value_by_index(const int index) const
+	char* GetValueByIndex(const int index) const
 	{
 		return m_value_[index];
 	}
 
-	int insert_value(int data, int bits_to_insert) const
+	int InsertValue(int data, int bits_to_insert) const
 	{
 		int mask = ((1 << m_width_) - 1);
 		mask <<= m_start_;
@@ -246,7 +246,7 @@ public:
 	CRegisterData** GetRegisters() const { return m_register_; }
 	CRegisterData* GetRegister(const int idx) const { return m_register_[idx]; }
 
-	int get_register_at(const int addr)
+	int GetRegisterAt(const int addr)
 	{
 		for (int idx = 0; idx < m_registers_; idx++)
 		{
@@ -258,11 +258,12 @@ public:
 		return -1;
 	}
 
-	int get_num_registers() const { return m_registers_; }
-	int get_num_rows() const { return m_rows_; }
-	int get_num_columns() const { return m_columns_; }
-	const char* get_row_heading(const int idx) { return m_row_headings_[idx]; }
-	const char* get_column_heading(const int idx) { return m_column_headings_[idx]; }
+	//int GetNumRegisters() const { return m_registers_; }
+	int GetNumRegisters() const { return m_registers_; }
+	int GetNumRows() const { return m_rows_; }
+	int GetNumColumns() const { return m_columns_; }
+	const char* GetRowHeading(const int idx) { return m_row_headings_[idx]; }
+	const char* GetColumnHeading(const int idx) { return m_column_headings_[idx]; }
 
 protected:
 	int m_type;
