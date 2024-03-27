@@ -31,7 +31,7 @@ public:
 	bool removeRows(int row, int count, const QModelIndex& parent = QModelIndex()) override;
 	void insertRow(QString text, const QModelIndex& parent = QModelIndex());
 
-	QString getItems();
+	QString getItems() const;
 	void setItems(QString itemsStr);
 
 public slots:

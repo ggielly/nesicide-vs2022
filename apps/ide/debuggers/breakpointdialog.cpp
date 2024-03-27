@@ -106,7 +106,7 @@ void BreakpointDialog::changeEvent(QEvent* e)
 	}
 }
 
-void BreakpointDialog::on_type_currentIndexChanged(int index)
+void BreakpointDialog::on_type_currentIndexChanged(int index) const
 {
 	CBreakpointEventInfo** pBreakpointEventInfo = nullptr;
 	int idx;

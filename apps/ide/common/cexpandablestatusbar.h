@@ -17,7 +17,7 @@ public:
 
 	void addPermanentWidget(QWidget* widget, int stretch = 0);
 	void addExpandingWidget(QWidget* widget, int stretch = 0);
-	void addWidget(QWidget* widget, int stretch = 0);
+	void addWidget(QWidget* widget, int stretch = 0) const;
 	void removeWidget(QWidget* widget);
 	bool eventFilter(QObject* object, QEvent* event) override;
 

@@ -50,7 +50,7 @@ private:
 public slots:
 	void renderData();
 	void repaintNeeded();
-	void updateTargetMachine(QString target);
+	void updateTargetMachine(QString target) const;
 	void applyProjectPropertiesToTab() override;
 	void applyChangesToTab(QString /*uuid*/) override;
 	void compiler_compileDone(bool bOk);

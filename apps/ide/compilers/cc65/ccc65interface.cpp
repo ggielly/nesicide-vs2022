@@ -578,7 +578,7 @@ bool CCC65Interface::captureINESImage()
 	return CNesicideProject::instance()->createProjectFromRom(nesName, true);
 }
 
-QStringList CCC65Interface::getSourceFiles()
+QStringList CCC65Interface::getSourceFiles() const
 {
 	const cc65_sourceinfo* dbgSources;
 	QStringList files;

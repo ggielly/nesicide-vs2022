@@ -755,7 +755,7 @@ void TileStampEditorForm::on_zoomSlider_valueChanged(int value)
 	updateScrollbars();
 }
 
-void TileStampEditorForm::on_horizontalScrollBar_valueChanged(int /*value*/)
+void TileStampEditorForm::on_horizontalScrollBar_valueChanged(int /*value*/) const
 {
 	renderer->setScrollX(ui->horizontalScrollBar->value());
 	renderer->update();

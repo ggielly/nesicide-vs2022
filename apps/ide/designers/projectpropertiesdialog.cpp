@@ -176,7 +176,7 @@ void ProjectPropertiesDialog::changeEvent(QEvent* e)
 }
 
 
-void ProjectPropertiesDialog::updateUI(int colid)
+void ProjectPropertiesDialog::updateUI(int colid) const
 {
 	for (int i = 0; i <= 0x3F; i++)
 	{

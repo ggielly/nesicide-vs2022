@@ -20,7 +20,7 @@ public:
 	explicit NESEmulatorDockWidget(QWidget* parent = nullptr);
 	~NESEmulatorDockWidget() override;
 
-	void setLinearInterpolation(bool enabled) { renderer->setLinearInterpolation(enabled); }
+	void setLinearInterpolation(bool enabled) const { renderer->setLinearInterpolation(enabled); }
 	void set43Aspect(bool enabled) { renderer->set43Aspect(enabled); }
 	void setScalingFactor(float factor);
 
@@ -43,7 +43,7 @@ private:
 
 private slots:
 	void renderData();
-	void updateTargetMachine(QString target);
+	void updateTargetMachine(QString target) const;
 };
 
 #endif // NESEMULATORDOCKWIDGET_H

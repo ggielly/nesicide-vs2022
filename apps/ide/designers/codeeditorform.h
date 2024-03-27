@@ -66,7 +66,7 @@ public:
 	void showExecutionLine(int linenumber);
 	void highlightLine(int linenumber);
 	QString fileName() { return m_fileName; }
-	void setReadOnly(bool readOnly) { m_scintilla->setReadOnly(readOnly); }
+	void setReadOnly(bool readOnly) const { m_scintilla->setReadOnly(readOnly); }
 	QMenu& editorMenu() override;
 
 	bool isModified() override { return m_scintilla->isModified(); }
@@ -120,7 +120,7 @@ public slots:
 	void editor_copyAvailable(bool yes);
 	void editor_cursorPositionChanged(int line, int index);
 	void external_breakpointsChanged();
-	void compiler_compileStarted();
+	void compiler_compileStarted() const;
 	void compiler_compileDone(bool ok);
 	void emulator_emulatorStarted();
 	void breakpointHit();

@@ -70,7 +70,7 @@ void music_editor_form::document_saved()
 {
 }
 
-void music_editor_form::document_closed()
+void music_editor_form::document_closed() const
 {
 	//   QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "FamiTracker");
 	//   settings.setValue("FamiTrackerWindowGeometry",saveGeometry());

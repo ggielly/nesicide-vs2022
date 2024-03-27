@@ -67,7 +67,7 @@ MemoryInspectorDockWidget::~MemoryInspectorDockWidget()
 	delete delegate;
 }
 
-void MemoryInspectorDockWidget::updateTargetMachine(QString target)
+void MemoryInspectorDockWidget::updateTargetMachine(QString target) const
 {
 	if (target.compare("none"))
 	{

@@ -140,7 +140,7 @@ void ProjectBrowserDockWidget::disableNavigation()
 {
 }
 
-void ProjectBrowserDockWidget::openItems_itemEntered(QTreeWidgetItem* item, int column)
+void ProjectBrowserDockWidget::openItems_itemEntered(QTreeWidgetItem* item, int column) const
 {
 	int idx;
 	int idx1 = ui->openProjectItems->indexOfTopLevelItem(item);

@@ -20,7 +20,7 @@ public:
 
 	void setItems(QList<IChrRomBankItem*> items);
 	QModelIndex currentIndex() const;
-	void setCurrentIndex(QModelIndex index);
+	void setCurrentIndex(QModelIndex index) const;
 
 signals:
 	void tileSelected(QModelIndex index);

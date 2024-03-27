@@ -113,127 +113,127 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 		qputenv("CC65_INC", envdat.toLatin1());
 	}
 #elif defined(Q_OS_MAC) || defined(Q_OS_MAC64) || defined(Q_OS_MACX)
-   if ( QCoreApplication::applicationDirPath().contains("apps/ide") )
-   {
-      // Developer build?  Set environment assuming deps/ is at top level.
-      QString envvar = qgetenv("PATH");
-      QString envdat = "";
-      QDir dir;
-      dir.setPath("../../../../../../deps");
-      envdat += dir.absolutePath();
-      envdat += "/cc65/bin:";
-      dir.setPath("../../../../../../tools");
-      envdat += dir.absolutePath();
-      envdat += "/famitone2/src/text2data:";
-      envdat += dir.absolutePath();
-      envdat += "/famitone2/src/nsf2data:";
-      qputenv("PATH",QString(envdat+envvar).toLatin1());
+	if (QCoreApplication::applicationDirPath().contains("apps/ide"))
+	{
+		// Developer build?  Set environment assuming deps/ is at top level.
+		QString envvar = qgetenv("PATH");
+		QString envdat = "";
+		QDir dir;
+		dir.setPath("../../../../../../deps");
+		envdat += dir.absolutePath();
+		envdat += "/cc65/bin:";
+		dir.setPath("../../../../../../tools");
+		envdat += dir.absolutePath();
+		envdat += "/famitone2/src/text2data:";
+		envdat += dir.absolutePath();
+		envdat += "/famitone2/src/nsf2data:";
+		qputenv("PATH", QString(envdat + envvar).toLatin1());
 
-      dir.setPath("../../../../../../deps");
-      envdat = dir.absolutePath();
-      envdat += "/cc65";
-      qputenv("CC65_HOME",envdat.toLatin1());
+		dir.setPath("../../../../../../deps");
+		envdat = dir.absolutePath();
+		envdat += "/cc65";
+		qputenv("CC65_HOME", envdat.toLatin1());
 
-      envdat = dir.absolutePath();
-      envdat += "/cc65/lib";
-      qputenv("LD65_LIB",envdat.toLatin1());
+		envdat = dir.absolutePath();
+		envdat += "/cc65/lib";
+		qputenv("LD65_LIB", envdat.toLatin1());
 
-      envdat = dir.absolutePath();
-      envdat += "/cc65/asminc";
-      qputenv("CA65_INC",envdat.toLatin1());
+		envdat = dir.absolutePath();
+		envdat += "/cc65/asminc";
+		qputenv("CA65_INC", envdat.toLatin1());
 
-      envdat = dir.absolutePath();
-      envdat += "/cc65/include";
-      qputenv("CC65_INC",envdat.toLatin1());
-   }
-   else
-   {
-      // Set environment.
-      QString envvar = qgetenv("PATH");
-      QString envdat = "";
-      envdat += QCoreApplication::applicationDirPath();
-      envdat += "/cc65/bin:";
-      envdat += QCoreApplication::applicationDirPath();
-      envdat += "/famitone2/bin:";
-      qputenv("PATH",QString(envdat+envvar).toLatin1());
+		envdat = dir.absolutePath();
+		envdat += "/cc65/include";
+		qputenv("CC65_INC", envdat.toLatin1());
+	}
+	else
+	{
+		// Set environment.
+		QString envvar = qgetenv("PATH");
+		QString envdat = "";
+		envdat += QCoreApplication::applicationDirPath();
+		envdat += "/cc65/bin:";
+		envdat += QCoreApplication::applicationDirPath();
+		envdat += "/famitone2/bin:";
+		qputenv("PATH", QString(envdat + envvar).toLatin1());
 
-      envdat = QCoreApplication::applicationDirPath();
-      envdat += "/cc65";
-      qputenv("CC65_HOME",envdat.toLatin1());
+		envdat = QCoreApplication::applicationDirPath();
+		envdat += "/cc65";
+		qputenv("CC65_HOME", envdat.toLatin1());
 
-      envdat = QCoreApplication::applicationDirPath();
-      envdat += "/cc65/share/cc65/lib";
-      qputenv("LD65_LIB",envdat.toLatin1());
+		envdat = QCoreApplication::applicationDirPath();
+		envdat += "/cc65/share/cc65/lib";
+		qputenv("LD65_LIB", envdat.toLatin1());
 
-      envdat = QCoreApplication::applicationDirPath();
-      envdat += "/cc65/share/cc65/asminc";
-      qputenv("CA65_INC",envdat.toLatin1());
+		envdat = QCoreApplication::applicationDirPath();
+		envdat += "/cc65/share/cc65/asminc";
+		qputenv("CA65_INC", envdat.toLatin1());
 
-      envdat = QCoreApplication::applicationDirPath();
-      envdat += "/cc65/share/cc65/include";
-      qputenv("CC65_INC",envdat.toLatin1());
-   }
+		envdat = QCoreApplication::applicationDirPath();
+		envdat += "/cc65/share/cc65/include";
+		qputenv("CC65_INC", envdat.toLatin1());
+	}
 #else
-   if ( QCoreApplication::applicationDirPath().contains("apps/ide") )
-   {
-      // Developer build?  Set environment assuming deps/ is at top level.
-      QString envvar = qgetenv("PATH");
-      QString envdat = "";
-      QDir dir;
-      dir.setPath("../../../../../../deps");
-      envdat += dir.absolutePath();
-      envdat += "/cc65/bin:";
-      dir.setPath("../../../../../../tools");
-      envdat += dir.absolutePath();
-      envdat += "/famitone2/src/text2data:";
-      envdat += dir.absolutePath();
-      envdat += "/famitone2/src/nsf2data:";
-      qputenv("PATH",QString(envdat+envvar).toLatin1());
+	if (QCoreApplication::applicationDirPath().contains("apps/ide"))
+	{
+		// Developer build?  Set environment assuming deps/ is at top level.
+		QString envvar = qgetenv("PATH");
+		QString envdat = "";
+		QDir dir;
+		dir.setPath("../../../../../../deps");
+		envdat += dir.absolutePath();
+		envdat += "/cc65/bin:";
+		dir.setPath("../../../../../../tools");
+		envdat += dir.absolutePath();
+		envdat += "/famitone2/src/text2data:";
+		envdat += dir.absolutePath();
+		envdat += "/famitone2/src/nsf2data:";
+		qputenv("PATH", QString(envdat + envvar).toLatin1());
 
-      dir.setPath("../../../../../../deps");
-      envdat = dir.absolutePath();
-      envdat += "/cc65";
-      qputenv("CC65_HOME",envdat.toLatin1());
+		dir.setPath("../../../../../../deps");
+		envdat = dir.absolutePath();
+		envdat += "/cc65";
+		qputenv("CC65_HOME", envdat.toLatin1());
 
-      envdat = dir.absolutePath();
-      envdat += "/cc65/lib";
-      qputenv("LD65_LIB",envdat.toLatin1());
+		envdat = dir.absolutePath();
+		envdat += "/cc65/lib";
+		qputenv("LD65_LIB", envdat.toLatin1());
 
-      envdat = dir.absolutePath();
-      envdat += "/cc65/asminc";
-      qputenv("CA65_INC",envdat.toLatin1());
+		envdat = dir.absolutePath();
+		envdat += "/cc65/asminc";
+		qputenv("CA65_INC", envdat.toLatin1());
 
-      envdat = dir.absolutePath();
-      envdat += "/cc65/include";
-      qputenv("CC65_INC",envdat.toLatin1());
-   }
-   else
-   {
-      // Set environment.
-      QString envvar = qgetenv("PATH");
-      QString envdat = "";
-      envdat += QCoreApplication::applicationDirPath();
-      envdat += "/cc65/bin:";
-      envdat += QCoreApplication::applicationDirPath();
-      envdat += "/famitone2/bin:";
-      qputenv("PATH",QString(envdat+envvar).toLatin1());
+		envdat = dir.absolutePath();
+		envdat += "/cc65/include";
+		qputenv("CC65_INC", envdat.toLatin1());
+	}
+	else
+	{
+		// Set environment.
+		QString envvar = qgetenv("PATH");
+		QString envdat = "";
+		envdat += QCoreApplication::applicationDirPath();
+		envdat += "/cc65/bin:";
+		envdat += QCoreApplication::applicationDirPath();
+		envdat += "/famitone2/bin:";
+		qputenv("PATH", QString(envdat + envvar).toLatin1());
 
-      envdat = QCoreApplication::applicationDirPath();
-      envdat += "/cc65";
-      qputenv("CC65_HOME",envdat.toLatin1());
+		envdat = QCoreApplication::applicationDirPath();
+		envdat += "/cc65";
+		qputenv("CC65_HOME", envdat.toLatin1());
 
-      envdat = QCoreApplication::applicationDirPath();
-      envdat += "/cc65/share/cc65/lib";
-      qputenv("LD65_LIB",envdat.toLatin1());
+		envdat = QCoreApplication::applicationDirPath();
+		envdat += "/cc65/share/cc65/lib";
+		qputenv("LD65_LIB", envdat.toLatin1());
 
-      envdat = QCoreApplication::applicationDirPath();
-      envdat += "/cc65/share/cc65/asminc";
-      qputenv("CA65_INC",envdat.toLatin1());
+		envdat = QCoreApplication::applicationDirPath();
+		envdat += "/cc65/share/cc65/asminc";
+		qputenv("CA65_INC", envdat.toLatin1());
 
-      envdat = QCoreApplication::applicationDirPath();
-      envdat += "/cc65/share/cc65/include";
-      qputenv("CC65_INC",envdat.toLatin1());
-   }
+		envdat = QCoreApplication::applicationDirPath();
+		envdat += "/cc65/share/cc65/include";
+		qputenv("CC65_INC", envdat.toLatin1());
+	}
 #endif
 
 	qDebug(QString("PATH=" + qgetenv("PATH")).toUtf8().data());
@@ -269,14 +269,14 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 
 	// Create the compiler thread...
 	auto compiler = new CompilerThread();
-	QObject::connect(this,SIGNAL(compile()), compiler,SLOT(compile()));
-	QObject::connect(this,SIGNAL(clean()), compiler,SLOT(clean()));
+	QObject::connect(this, SIGNAL(compile()), compiler, SLOT(compile()));
+	QObject::connect(this, SIGNAL(clean()), compiler, SLOT(clean()));
 	CObjectRegistry::instance()->addObject("Compiler", compiler);
 
 	// Create the Test Suite executive modeless dialog...
 	testSuiteExecutive = new TestSuiteExecutiveDialog(this);
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), testSuiteExecutive,SLOT(updateTargetMachine(QString)));
-	QObject::connect(testSuiteExecutive,SIGNAL(openNesROM(QString,bool)), this,SLOT(openNesROM(QString,bool)));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), testSuiteExecutive, SLOT(updateTargetMachine(QString)));
+	QObject::connect(testSuiteExecutive, SIGNAL(openNesROM(QString, bool)), this, SLOT(openNesROM(QString, bool)));
 
 	// Initialize preferences dialogs.
 	EmulatorPrefsDialog::readSettings();
@@ -291,20 +291,20 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 
 	setupUi(this);
 
-	QObject::connect(CNesicideProject::instance(),SIGNAL(createTarget(QString)), this,SLOT(createTarget(QString)));
+	QObject::connect(CNesicideProject::instance(), SIGNAL(createTarget(QString)), this, SLOT(createTarget(QString)));
 
-	QObject::connect(tabWidget,SIGNAL(tabModified(int,bool)), this,SLOT(tabWidget_tabModified(int,bool)));
-	QObject::connect(tabWidget,SIGNAL(tabAdded(int)), this,SLOT(tabWidget_tabAdded(int)));
-	QObject::connect(tabWidget,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
-	QObject::connect(this,SIGNAL(checkOpenFiles(QDateTime)), tabWidget,SLOT(checkOpenFiles(QDateTime)));
-	QObject::connect(this,SIGNAL(applyProjectProperties()), tabWidget,SLOT(applyProjectProperties()));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), tabWidget,SLOT(applyEnvironmentSettings()));
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), tabWidget,SIGNAL(updateTargetMachine(QString)));
-	QObject::connect(AppSettings::instance(),SIGNAL(appSettingsChanged()), tabWidget,SLOT(applyAppSettings()));
+	QObject::connect(tabWidget, SIGNAL(tabModified(int, bool)), this, SLOT(tabWidget_tabModified(int, bool)));
+	QObject::connect(tabWidget, SIGNAL(tabAdded(int)), this, SLOT(tabWidget_tabAdded(int)));
+	QObject::connect(tabWidget, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
+	QObject::connect(this, SIGNAL(checkOpenFiles(QDateTime)), tabWidget, SLOT(checkOpenFiles(QDateTime)));
+	QObject::connect(this, SIGNAL(applyProjectProperties()), tabWidget, SLOT(applyProjectProperties()));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), tabWidget, SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), tabWidget, SIGNAL(updateTargetMachine(QString)));
+	QObject::connect(AppSettings::instance(), SIGNAL(appSettingsChanged()), tabWidget, SLOT(applyAppSettings()));
 
-	QObject::connect(menuEdit,SIGNAL(aboutToShow()), this,SLOT(menuEdit_aboutToShow()));
+	QObject::connect(menuEdit, SIGNAL(aboutToShow()), this, SLOT(menuEdit_aboutToShow()));
 
-	QObject::connect(menuWindow,SIGNAL(aboutToShow()), this,SLOT(menuWindow_aboutToShow()));
+	QObject::connect(menuWindow, SIGNAL(aboutToShow()), this, SLOT(menuWindow_aboutToShow()));
 
 	menuWindow->setEnabled(false);
 
@@ -314,7 +314,7 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 	// Set up common UI elements.
 	m_pSourceNavigator = new SourceNavigator();
 	compilerToolbar->addWidget(m_pSourceNavigator);
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pSourceNavigator,SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pSourceNavigator, SLOT(updateTargetMachine(QString)));
 	CDockWidgetRegistry::instance()->addWidget("Source Navigator", m_pSourceNavigator);
 
 	m_pSearchBar = new SearchBar("SearchBar");
@@ -337,26 +337,26 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 	output = new OutputPaneDockWidget(this);
 	addDockWidget(Qt::BottomDockWidgetArea, output);
 	//   expandableStatusBar->addExpandingWidget(output);
-	QObject::connect(generalTextLogger,SIGNAL(updateText(QString)), output,SLOT(updateGeneralPane(QString)));
-	QObject::connect(buildTextLogger,SIGNAL(updateText(QString)), output,SLOT(updateBuildPane(QString)));
-	QObject::connect(debugTextLogger,SIGNAL(updateText(QString)), output,SLOT(updateDebugPane(QString)));
-	QObject::connect(searchTextLogger,SIGNAL(updateText(QString)), output,SLOT(updateSearchPane(QString)));
-	QObject::connect(generalTextLogger,SIGNAL(eraseText()), output,SLOT(eraseGeneralPane()));
-	QObject::connect(buildTextLogger,SIGNAL(eraseText()), output,SLOT(eraseBuildPane()));
-	QObject::connect(debugTextLogger,SIGNAL(eraseText()), output,SLOT(eraseDebugPane()));
-	QObject::connect(searchTextLogger,SIGNAL(eraseText()), output,SLOT(eraseSearchPane()));
-	QObject::connect(breakpointWatcher,SIGNAL(showPane(int)), output,SLOT(showPane(int)));
-	QObject::connect(output,SIGNAL(addStatusBarWidget(QWidget*)), this,SLOT(addStatusBarWidget(QWidget*)));
-	QObject::connect(output,SIGNAL(removeStatusBarWidget(QWidget*)), this,SLOT(removeStatusBarWidget(QWidget*)));
-	QObject::connect(output,SIGNAL(addPermanentStatusBarWidget(QWidget*)), this,
-	                 SLOT(addPermanentStatusBarWidget(QWidget*)));
-	QObject::connect(output,SIGNAL(removePermanentStatusBarWidget(QWidget*)), this,
-	                 SLOT(removePermanentStatusBarWidget(QWidget*)));
-	QObject::connect(compiler,SIGNAL(compileStarted()), output,SLOT(compiler_compileStarted()));
-	QObject::connect(compiler,SIGNAL(compileDone(bool)), output,SLOT(compiler_compileDone(bool)));
-	QObject::connect(compiler,SIGNAL(cleanStarted()), output,SLOT(compiler_cleanStarted()));
-	QObject::connect(compiler,SIGNAL(cleanDone(bool)), output,SLOT(compiler_cleanDone(bool)));
-	QObject::connect(searcher,SIGNAL(searchDone(int)), output,SLOT(searcher_searchDone(int)));
+	QObject::connect(generalTextLogger, SIGNAL(updateText(QString)), output, SLOT(updateGeneralPane(QString)));
+	QObject::connect(buildTextLogger, SIGNAL(updateText(QString)), output, SLOT(updateBuildPane(QString)));
+	QObject::connect(debugTextLogger, SIGNAL(updateText(QString)), output, SLOT(updateDebugPane(QString)));
+	QObject::connect(searchTextLogger, SIGNAL(updateText(QString)), output, SLOT(updateSearchPane(QString)));
+	QObject::connect(generalTextLogger, SIGNAL(eraseText()), output, SLOT(eraseGeneralPane()));
+	QObject::connect(buildTextLogger, SIGNAL(eraseText()), output, SLOT(eraseBuildPane()));
+	QObject::connect(debugTextLogger, SIGNAL(eraseText()), output, SLOT(eraseDebugPane()));
+	QObject::connect(searchTextLogger, SIGNAL(eraseText()), output, SLOT(eraseSearchPane()));
+	QObject::connect(breakpointWatcher, SIGNAL(showPane(int)), output, SLOT(showPane(int)));
+	QObject::connect(output, SIGNAL(addStatusBarWidget(QWidget*)), this, SLOT(addStatusBarWidget(QWidget*)));
+	QObject::connect(output, SIGNAL(removeStatusBarWidget(QWidget*)), this, SLOT(removeStatusBarWidget(QWidget*)));
+	QObject::connect(output, SIGNAL(addPermanentStatusBarWidget(QWidget*)), this,
+		SLOT(addPermanentStatusBarWidget(QWidget*)));
+	QObject::connect(output, SIGNAL(removePermanentStatusBarWidget(QWidget*)), this,
+		SLOT(removePermanentStatusBarWidget(QWidget*)));
+	QObject::connect(compiler, SIGNAL(compileStarted()), output, SLOT(compiler_compileStarted()));
+	QObject::connect(compiler, SIGNAL(compileDone(bool)), output, SLOT(compiler_compileDone(bool)));
+	QObject::connect(compiler, SIGNAL(cleanStarted()), output, SLOT(compiler_cleanStarted()));
+	QObject::connect(compiler, SIGNAL(cleanDone(bool)), output, SLOT(compiler_cleanDone(bool)));
+	QObject::connect(searcher, SIGNAL(searchDone(int)), output, SLOT(searcher_searchDone(int)));
 	CDockWidgetRegistry::instance()->addWidget("Output", output);
 	output->hide();
 
@@ -365,22 +365,22 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 		"<strong>Plugin Scripting Subsystem:</strong> " + CPluginManager::instance()->getVersionInfo());
 
 	m_pExecutionInspector = new ExecutionInspectorDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pExecutionInspector,
-	                 SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pExecutionInspector,
+		SLOT(updateTargetMachine(QString)));
 	addDockWidget(Qt::BottomDockWidgetArea, m_pExecutionInspector);
 	m_pExecutionInspector->hide();
-	QObject::connect(m_pExecutionInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pExecutionInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Execution Inspector", m_pExecutionInspector);
 
 	m_pSymbolInspector = new SymbolWatchDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pSymbolInspector,SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pSymbolInspector, SLOT(updateTargetMachine(QString)));
 	addDockWidget(Qt::BottomDockWidgetArea, m_pSymbolInspector);
 	m_pSymbolInspector->hide();
-	QObject::connect(m_pSymbolInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pSymbolInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Symbol Inspector", m_pSymbolInspector);
 
 	m_pCodeProfiler = new CodeProfilerDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pCodeProfiler,SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pCodeProfiler, SLOT(updateTargetMachine(QString)));
 	addDockWidget(Qt::LeftDockWidgetArea, m_pCodeProfiler);
 	m_pCodeProfiler->hide();
 	CDockWidgetRegistry::instance()->addWidget("Code Profiler", m_pCodeProfiler);
@@ -426,12 +426,12 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 		restoreState(settings.value("CodingModeIDEState").toByteArray());
 	}
 
-	QObject::connect(menuProject,SIGNAL(aboutToShow()), this,SLOT(updateRecentFiles()));
+	QObject::connect(menuProject, SIGNAL(aboutToShow()), this, SLOT(updateRecentFiles()));
 	m_menuRecentFiles = new QMenu("Recent Projects/Files...", menuProject);
 	for (idx = 0; idx < MAX_RECENT_FILES; idx++)
 	{
 		auto action = new QAction("Recent File " + QString::number(idx + 1));
-		QObject::connect(action,SIGNAL(triggered(bool)), this,SLOT(openRecentFile()));
+		QObject::connect(action, SIGNAL(triggered(bool)), this, SLOT(openRecentFile()));
 		m_menuRecentFiles->addAction(action);
 	}
 	menuRecent_Projects_Files->addActions(m_menuRecentFiles->actions());
@@ -597,7 +597,7 @@ void MainWindow::applicationActivationChanged(bool activated)
 #if QT_VERSION >= 0x040700
 	QDateTime now = QDateTime::currentDateTimeUtc();
 #else
-   QDateTime now = QDateTime::currentDateTime();
+	QDateTime now = QDateTime::currentDateTime();
 #endif
 	QString str;
 	int result;
@@ -616,7 +616,7 @@ void MainWindow::applicationActivationChanged(bool activated)
 				str += "\n\nhas been modified outside of NESICIDE.\n\n";
 				str += "Do you want to re-load the project?";
 				result = QMessageBox::warning(this, "External interference detected!", str, QMessageBox::Yes,
-				                              QMessageBox::No);
+					QMessageBox::No);
 
 				if (result == QMessageBox::Yes)
 				{
@@ -962,15 +962,15 @@ void MainWindow::createNesUi()
 	}
 	CObjectRegistry::instance()->addObject("Emulator", m_pNESEmulatorThread);
 
-	QObject::connect(this,SIGNAL(startEmulation()), m_pNESEmulatorThread,SLOT(startEmulation()));
-	QObject::connect(this,SIGNAL(pauseEmulation(bool)), m_pNESEmulatorThread,SLOT(pauseEmulation(bool)));
-	QObject::connect(this,SIGNAL(primeEmulator()), m_pNESEmulatorThread,SLOT(primeEmulator()));
-	QObject::connect(this,SIGNAL(resetEmulator()), m_pNESEmulatorThread,SLOT(resetEmulator()));
-	QObject::connect(this,SIGNAL(exitEmulator()), m_pNESEmulatorThread,SLOT(exitEmulator()));
-	QObject::connect(this,SIGNAL(adjustAudio(int32_t)), m_pNESEmulatorThread,SLOT(adjustAudio(int32_t)));
+	QObject::connect(this, SIGNAL(startEmulation()), m_pNESEmulatorThread, SLOT(startEmulation()));
+	QObject::connect(this, SIGNAL(pauseEmulation(bool)), m_pNESEmulatorThread, SLOT(pauseEmulation(bool)));
+	QObject::connect(this, SIGNAL(primeEmulator()), m_pNESEmulatorThread, SLOT(primeEmulator()));
+	QObject::connect(this, SIGNAL(resetEmulator()), m_pNESEmulatorThread, SLOT(resetEmulator()));
+	QObject::connect(this, SIGNAL(exitEmulator()), m_pNESEmulatorThread, SLOT(exitEmulator()));
+	QObject::connect(this, SIGNAL(adjustAudio(int32_t)), m_pNESEmulatorThread, SLOT(adjustAudio(int32_t)));
 
 	m_pNESEmulator = new NESEmulatorDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pNESEmulator,SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pNESEmulator, SLOT(updateTargetMachine(QString)));
 	addDockWidget(Qt::RightDockWidgetArea, m_pNESEmulator);
 	m_pNESEmulator->hide();
 	CDockWidgetRegistry::instance()->addWidget("Emulator", m_pNESEmulator);
@@ -978,32 +978,32 @@ void MainWindow::createNesUi()
 	m_pNESEmulatorControl = new NESEmulatorControl();
 	debuggerToolBar->addWidget(m_pNESEmulatorControl);
 	debuggerToolBar->show();
-	QObject::connect(m_pNESEmulatorControl,SIGNAL(focusEmulator()), this,SLOT(focusEmulator()));
+	QObject::connect(m_pNESEmulatorControl, SIGNAL(focusEmulator()), this, SLOT(focusEmulator()));
 
 	// Add menu for emulator control.  The emulator control provides menu for itself!  =]
 	QAction* firstEmuMenuAction = menuEmulator->actions().at(0);
-	foreach(QAction* action, m_pNESEmulatorControl->menu())
+	foreach(QAction * action, m_pNESEmulatorControl->menu())
 	{
 		menuEmulator->insertAction(firstEmuMenuAction, action);
 	}
 	menuEmulator->insertSeparator(firstEmuMenuAction);
 
 	m_pBreakpointInspector = new BreakpointDockWidget(nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBreakpointInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBreakpointInspector,SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBreakpointInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBreakpointInspector, SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBreakpointInspector);
 	m_pBreakpointInspector->hide();
-	QObject::connect(m_pBreakpointInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBreakpointInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Breakpoints", m_pBreakpointInspector);
 
 	m_pAssemblyInspector = new CodeBrowserDockWidget(nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pAssemblyInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pAssemblyInspector,SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pAssemblyInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pAssemblyInspector, SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::RightDockWidgetArea, m_pAssemblyInspector);
 	m_pAssemblyInspector->hide();
-	QObject::connect(m_pAssemblyInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pAssemblyInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Assembly Browser", m_pAssemblyInspector);
 
 	m_pGfxCHRMemoryInspector = new CHRMEMInspector();
@@ -1014,345 +1014,345 @@ void MainWindow::createNesUi()
 	m_pGfxCHRMemoryInspector->setAllowedAreas(Qt::AllDockWidgetAreas);
 	addDockWidget(Qt::BottomDockWidgetArea, m_pGfxCHRMemoryInspector);
 	m_pGfxCHRMemoryInspector->hide();
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pGfxCHRMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
-	QObject::connect(m_pGfxCHRMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
-	QObject::connect(m_pGfxCHRMemoryInspector,SIGNAL(setStatusBarMessage(QString)), this,
-	                 SLOT(setStatusBarMessage(QString)));
-	QObject::connect(m_pGfxCHRMemoryInspector,SIGNAL(addStatusBarWidget(QWidget*)), this,
-	                 SLOT(addStatusBarWidget(QWidget*)));
-	QObject::connect(m_pGfxCHRMemoryInspector,SIGNAL(removeStatusBarWidget(QWidget*)), this,
-	                 SLOT(removeStatusBarWidget(QWidget*)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pGfxCHRMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
+	QObject::connect(m_pGfxCHRMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pGfxCHRMemoryInspector, SIGNAL(setStatusBarMessage(QString)), this,
+		SLOT(setStatusBarMessage(QString)));
+	QObject::connect(m_pGfxCHRMemoryInspector, SIGNAL(addStatusBarWidget(QWidget*)), this,
+		SLOT(addStatusBarWidget(QWidget*)));
+	QObject::connect(m_pGfxCHRMemoryInspector, SIGNAL(removeStatusBarWidget(QWidget*)), this,
+		SLOT(removeStatusBarWidget(QWidget*)));
 	CDockWidgetRegistry::instance()->addWidget("CHR Memory Visualizer", m_pGfxCHRMemoryInspector);
 
 	m_pGfxOAMMemoryInspector = new OAMVisualizerDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pGfxOAMMemoryInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pGfxOAMMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pGfxOAMMemoryInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pGfxOAMMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::BottomDockWidgetArea, m_pGfxOAMMemoryInspector);
 	m_pGfxOAMMemoryInspector->hide();
-	QObject::connect(m_pGfxOAMMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pGfxOAMMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("OAM Memory Visualizer", m_pGfxOAMMemoryInspector);
 
 	m_pGfxNameTableMemoryInspector = new NameTableVisualizerDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pGfxNameTableMemoryInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pGfxNameTableMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pGfxNameTableMemoryInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pGfxNameTableMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::RightDockWidgetArea, m_pGfxNameTableMemoryInspector);
 	m_pGfxNameTableMemoryInspector->hide();
-	QObject::connect(m_pGfxNameTableMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pGfxNameTableMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Name Table Visualizer", m_pGfxNameTableMemoryInspector);
 
 	m_pJoypadLoggerInspector = new JoypadLoggerDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pJoypadLoggerInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pJoypadLoggerInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pJoypadLoggerInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pJoypadLoggerInspector,
+		SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::BottomDockWidgetArea, m_pJoypadLoggerInspector);
 	m_pJoypadLoggerInspector->hide();
-	QObject::connect(m_pJoypadLoggerInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pJoypadLoggerInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Joypad Logger", m_pJoypadLoggerInspector);
 
 	m_pExecutionVisualizer = new ExecutionVisualizerDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pExecutionVisualizer,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pExecutionVisualizer,SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pExecutionVisualizer,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pExecutionVisualizer, SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::BottomDockWidgetArea, m_pExecutionVisualizer);
 	m_pExecutionVisualizer->hide();
-	QObject::connect(m_pExecutionVisualizer,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pExecutionVisualizer, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Execution Visualizer", m_pExecutionVisualizer);
 
 	m_pCodeDataLoggerInspector = new CodeDataLoggerDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pCodeDataLoggerInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pCodeDataLoggerInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pCodeDataLoggerInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pCodeDataLoggerInspector,
+		SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::RightDockWidgetArea, m_pCodeDataLoggerInspector);
 	m_pCodeDataLoggerInspector->hide();
-	QObject::connect(m_pCodeDataLoggerInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pCodeDataLoggerInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Code/Data Logger Inspector", m_pCodeDataLoggerInspector);
 
 	m_pBinCPURegisterInspector = new RegisterInspectorDockWidget(nesGetCpuRegisterDatabase, nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinCPURegisterInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinCPURegisterInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinCPURegisterInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinCPURegisterInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinCPURegisterInspector->setObjectName("cpuRegisterInspector");
 	m_pBinCPURegisterInspector->setWindowTitle("CPU Register Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinCPURegisterInspector);
 	m_pBinCPURegisterInspector->hide();
-	QObject::connect(m_pBinCPURegisterInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinCPURegisterInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("CPU Register Inspector", m_pBinCPURegisterInspector);
 
 	m_pBinCPURAMInspector = new MemoryInspectorDockWidget(nesGetCpuMemoryDatabase, nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinCPURAMInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinCPURAMInspector,SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinCPURAMInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinCPURAMInspector, SLOT(applyEnvironmentSettings()));
 	m_pBinCPURAMInspector->setObjectName("cpuMemoryInspector");
 	m_pBinCPURAMInspector->setWindowTitle("CPU RAM Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinCPURAMInspector);
 	m_pBinCPURAMInspector->hide();
-	QObject::connect(m_pBinCPURAMInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinCPURAMInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("CPU RAM Inspector", m_pBinCPURAMInspector);
 
 	m_pBinROMInspector = new MemoryInspectorDockWidget(nesGetCartridgePRGROMMemoryDatabase, nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinROMInspector,SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinROMInspector,SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinROMInspector, SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinROMInspector, SLOT(applyEnvironmentSettings()));
 	m_pBinROMInspector->setObjectName("cartPRGROMMemoryInspector");
 	m_pBinROMInspector->setWindowTitle("PRG-ROM Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinROMInspector);
 	m_pBinROMInspector->hide();
-	QObject::connect(m_pBinROMInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinROMInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("PRG-ROM Inspector", m_pBinROMInspector);
 
 	m_pBinCartVRAMMemoryInspector = new MemoryInspectorDockWidget(nesGetCartridgeVRAMMemoryDatabase,
-	                                                              nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinCartVRAMMemoryInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinCartVRAMMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
+		nesGetBreakpointDatabase());
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinCartVRAMMemoryInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinCartVRAMMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinCartVRAMMemoryInspector->setObjectName("cartVRAMMemoryInspector");
 	m_pBinCartVRAMMemoryInspector->setWindowTitle("Cartridge VRAM Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinCartVRAMMemoryInspector);
 	m_pBinCartVRAMMemoryInspector->hide();
-	QObject::connect(m_pBinCartVRAMMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinCartVRAMMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Cartridge VRAM Inspector", m_pBinCartVRAMMemoryInspector);
 
 	m_pBinNameTableMemoryInspector = new MemoryInspectorDockWidget(nesGetPpuNameTableMemoryDatabase,
-	                                                               nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinNameTableMemoryInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinNameTableMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
+		nesGetBreakpointDatabase());
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinNameTableMemoryInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinNameTableMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinNameTableMemoryInspector->setObjectName("ppuNameTableMemoryInspector");
 	m_pBinNameTableMemoryInspector->setWindowTitle("NameTable Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinNameTableMemoryInspector);
 	m_pBinNameTableMemoryInspector->hide();
-	QObject::connect(m_pBinNameTableMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinNameTableMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("NameTable Inspector", m_pBinNameTableMemoryInspector);
 
 	m_pBinPPURegisterInspector = new RegisterInspectorDockWidget(nesGetPpuRegisterDatabase, nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinPPURegisterInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinPPURegisterInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinPPURegisterInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinPPURegisterInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinPPURegisterInspector->setObjectName("ppuRegisterInspector");
 	m_pBinPPURegisterInspector->setWindowTitle("PPU Register Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinPPURegisterInspector);
 	m_pBinPPURegisterInspector->hide();
-	QObject::connect(m_pBinPPURegisterInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinPPURegisterInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("PPU Register Inspector", m_pBinPPURegisterInspector);
 
 	m_pPPUInformationInspector = new PPUInformationDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pPPUInformationInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pPPUInformationInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pPPUInformationInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pPPUInformationInspector,
+		SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::BottomDockWidgetArea, m_pPPUInformationInspector);
 	m_pPPUInformationInspector->hide();
-	QObject::connect(m_pPPUInformationInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pPPUInformationInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("PPU Information", m_pPPUInformationInspector);
 
 	m_pBinAPURegisterInspector = new RegisterInspectorDockWidget(nesGetApuRegisterDatabase, nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinAPURegisterInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinAPURegisterInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinAPURegisterInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinAPURegisterInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinAPURegisterInspector->setObjectName("apuRegisterInspector");
 	m_pBinAPURegisterInspector->setWindowTitle("APU Register Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinAPURegisterInspector);
 	m_pBinAPURegisterInspector->hide();
-	QObject::connect(m_pBinAPURegisterInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinAPURegisterInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("APU Register Inspector", m_pBinAPURegisterInspector);
 
 	m_pAPUInformationInspector = new APUInformationDockWidget();
 	addDockWidget(Qt::BottomDockWidgetArea, m_pAPUInformationInspector);
 	m_pAPUInformationInspector->hide();
-	QObject::connect(m_pAPUInformationInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pAPUInformationInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pAPUInformationInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(m_pAPUInformationInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pAPUInformationInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pAPUInformationInspector,
+		SLOT(applyEnvironmentSettings()));
 	CDockWidgetRegistry::instance()->addWidget("APU Information", m_pAPUInformationInspector);
 
 	m_pBinCHRMemoryInspector = new MemoryInspectorDockWidget(nesGetCartridgeCHRMemoryDatabase,
-	                                                         nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinCHRMemoryInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinCHRMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
+		nesGetBreakpointDatabase());
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinCHRMemoryInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinCHRMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinCHRMemoryInspector->setObjectName("chrMemoryInspector");
 	m_pBinCHRMemoryInspector->setWindowTitle("CHR Memory Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinCHRMemoryInspector);
 	m_pBinCHRMemoryInspector->hide();
-	QObject::connect(m_pBinCHRMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinCHRMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("CHR Memory Inspector", m_pBinCHRMemoryInspector);
 
 	m_pBinOAMMemoryInspector = new
 		RegisterInspectorDockWidget(nesGetPpuOamRegisterDatabase, nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinOAMMemoryInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinOAMMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinOAMMemoryInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinOAMMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinOAMMemoryInspector->setObjectName("oamMemoryInspector");
 	m_pBinOAMMemoryInspector->setWindowTitle("OAM Memory Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinOAMMemoryInspector);
 	m_pBinOAMMemoryInspector->hide();
-	QObject::connect(m_pBinOAMMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinOAMMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("OAM Memory Inspector", m_pBinOAMMemoryInspector);
 
 	m_pBinPaletteMemoryInspector = new MemoryInspectorDockWidget(nesGetPpuPaletteMemoryDatabase,
-	                                                             nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinPaletteMemoryInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinPaletteMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
+		nesGetBreakpointDatabase());
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinPaletteMemoryInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinPaletteMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinPaletteMemoryInspector->setObjectName("ppuPaletteMemoryInspector");
 	m_pBinPaletteMemoryInspector->setWindowTitle("Palette Memory Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinPaletteMemoryInspector);
 	m_pBinPaletteMemoryInspector->hide();
-	QObject::connect(m_pBinPaletteMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinPaletteMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Palette Memory Inspector", m_pBinPaletteMemoryInspector);
 
 	m_pBinSRAMMemoryInspector = new MemoryInspectorDockWidget(nesGetCartridgeSRAMMemoryDatabase,
-	                                                          nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinSRAMMemoryInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinSRAMMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
+		nesGetBreakpointDatabase());
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinSRAMMemoryInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinSRAMMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinSRAMMemoryInspector->setObjectName("cartSRAMMemoryInspector");
 	m_pBinSRAMMemoryInspector->setWindowTitle("Cartridge SRAM Memory Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinSRAMMemoryInspector);
 	m_pBinSRAMMemoryInspector->hide();
-	QObject::connect(m_pBinSRAMMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinSRAMMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Cartridge SRAM Memory Inspector", m_pBinSRAMMemoryInspector);
 
 	m_pBinEXRAMMemoryInspector = new MemoryInspectorDockWidget(nesGetCartridgeEXRAMMemoryDatabase,
-	                                                           nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinEXRAMMemoryInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinEXRAMMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
+		nesGetBreakpointDatabase());
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinEXRAMMemoryInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinEXRAMMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinEXRAMMemoryInspector->setObjectName("cartEXRAMMemoryInspector");
 	m_pBinEXRAMMemoryInspector->setWindowTitle("Cartridge EXRAM Memory Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinEXRAMMemoryInspector);
 	m_pBinEXRAMMemoryInspector->hide();
-	QObject::connect(m_pBinEXRAMMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinEXRAMMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Cartridge EXRAM Memory Inspector", m_pBinEXRAMMemoryInspector);
 
 	m_pMapperInformationInspector = new MapperInformationDockWidget();
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pMapperInformationInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pMapperInformationInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pMapperInformationInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pMapperInformationInspector,
+		SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::BottomDockWidgetArea, m_pMapperInformationInspector);
 	m_pMapperInformationInspector->hide();
-	QObject::connect(m_pMapperInformationInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pMapperInformationInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Cartridge Mapper Information", m_pMapperInformationInspector);
 
 	m_pBinMapperMemoryInspector = new RegisterInspectorDockWidget(nesGetCartridgeRegisterDatabase,
-	                                                              nesGetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinMapperMemoryInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinMapperMemoryInspector,
-	                 SLOT(applyEnvironmentSettings()));
+		nesGetBreakpointDatabase());
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinMapperMemoryInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinMapperMemoryInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinMapperMemoryInspector->setObjectName("cartMapperRegisterInspector");
 	m_pBinMapperMemoryInspector->setWindowTitle("Cartridge Mapper Register Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinMapperMemoryInspector);
 	m_pBinMapperMemoryInspector->hide();
-	QObject::connect(m_pBinMapperMemoryInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinMapperMemoryInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Cartridge Mapper Register Inspector", m_pBinMapperMemoryInspector);
 
 	// Connect slots for new UI elements.
-	QObject::connect(action1x,SIGNAL(triggered()), this,SLOT(action1x_triggered()));
-	QObject::connect(action1_5x,SIGNAL(triggered()), this,SLOT(action1_5x_triggered()));
-	QObject::connect(action2x,SIGNAL(triggered()), this,SLOT(action2x_triggered()));
-	QObject::connect(action2_5x,SIGNAL(triggered()), this,SLOT(action2_5x_triggered()));
-	QObject::connect(action3x,SIGNAL(triggered()), this,SLOT(action3x_triggered()));
-	QObject::connect(actionLinear_Interpolation,SIGNAL(toggled(bool)), this,
-	                 SLOT(actionLinear_Interpolation_toggled(bool)));
-	QObject::connect(action4_3_Aspect,SIGNAL(toggled(bool)), this,SLOT(action4_3_Aspect_toggled(bool)));
-	QObject::connect(actionFullscreen,SIGNAL(toggled(bool)), this,SLOT(actionFullscreen_toggled(bool)));
-	QObject::connect(actionSquare_1,SIGNAL(toggled(bool)), this,SLOT(actionSquare_1_toggled(bool)));
-	QObject::connect(actionSquare_2,SIGNAL(toggled(bool)), this,SLOT(actionSquare_2_toggled(bool)));
-	QObject::connect(actionTriangle,SIGNAL(toggled(bool)), this,SLOT(actionTriangle_toggled(bool)));
-	QObject::connect(actionNoise,SIGNAL(toggled(bool)), this,SLOT(actionNoise_toggled(bool)));
-	QObject::connect(actionDelta_Modulation,SIGNAL(toggled(bool)), this,SLOT(actionDelta_Modulation_toggled(bool)));
-	QObject::connect(actionPulse_1VRC6,SIGNAL(toggled(bool)), this,SLOT(actionPulse_1VRC6_toggled(bool)));
-	QObject::connect(actionPulse_2VRC6,SIGNAL(toggled(bool)), this,SLOT(actionPulse_2VRC6_toggled(bool)));
-	QObject::connect(actionSawtoothVRC6,SIGNAL(toggled(bool)), this,SLOT(actionSawtoothVRC6_toggled(bool)));
-	QObject::connect(actionSquare_1MMC5,SIGNAL(toggled(bool)), this,SLOT(actionSquare_1MMC5_toggled(bool)));
-	QObject::connect(actionSquare_2MMC5,SIGNAL(toggled(bool)), this,SLOT(actionSquare_2MMC5_toggled(bool)));
-	QObject::connect(actionDMCMMC5,SIGNAL(toggled(bool)), this,SLOT(actionDMCMMC5_toggled(bool)));
-	QObject::connect(actionWave_1N106,SIGNAL(toggled(bool)), this,SLOT(actionWave_1N106_toggled(bool)));
-	QObject::connect(actionWave_2N106,SIGNAL(toggled(bool)), this,SLOT(actionWave_2N106_toggled(bool)));
-	QObject::connect(actionWave_3N106,SIGNAL(toggled(bool)), this,SLOT(actionWave_3N106_toggled(bool)));
-	QObject::connect(actionWave_4N106,SIGNAL(toggled(bool)), this,SLOT(actionWave_4N106_toggled(bool)));
-	QObject::connect(actionWave_5N106,SIGNAL(toggled(bool)), this,SLOT(actionWave_5N106_toggled(bool)));
-	QObject::connect(actionWave_6N106,SIGNAL(toggled(bool)), this,SLOT(actionWave_6N106_toggled(bool)));
-	QObject::connect(actionWave_7N106,SIGNAL(toggled(bool)), this,SLOT(actionWave_7N106_toggled(bool)));
-	QObject::connect(actionWave_8N106,SIGNAL(toggled(bool)), this,SLOT(actionWave_8N106_toggled(bool)));
-	QObject::connect(actionPAL,SIGNAL(triggered()), this,SLOT(actionPAL_triggered()));
-	QObject::connect(actionNTSC,SIGNAL(triggered()), this,SLOT(actionNTSC_triggered()));
-	QObject::connect(actionDendy,SIGNAL(triggered()), this,SLOT(actionDendy_triggered()));
-	QObject::connect(actionAssembly_Inspector,SIGNAL(triggered()), this,SLOT(actionAssembly_Inspector_triggered()));
-	QObject::connect(actionBreakpoint_Inspector,SIGNAL(triggered()), this,SLOT(actionBreakpoint_Inspector_triggered()));
-	QObject::connect(actionEmulation_Window,SIGNAL(triggered()), this,SLOT(actionEmulation_Window_triggered()));
-	QObject::connect(actionRun_Test_Suite,SIGNAL(triggered()), this,SLOT(actionRun_Test_Suite_triggered()));
-	QObject::connect(actionConfigure,SIGNAL(triggered()), this,SLOT(actionConfigure_triggered()));
-	QObject::connect(actionCodeDataLogger_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionCodeDataLogger_Inspector_triggered()));
-	QObject::connect(actionExecution_Visualizer_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionExecution_Visualizer_Inspector_triggered()));
-	QObject::connect(actionGfxCHRMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionGfxCHRMemory_Inspector_triggered()));
-	QObject::connect(actionGfxOAMMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionGfxOAMMemory_Inspector_triggered()));
-	QObject::connect(actionGfxNameTableNESMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionGfxNameTableNESMemory_Inspector_triggered()));
-	QObject::connect(actionBinCPURegister_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinCPURegister_Inspector_triggered()));
-	QObject::connect(actionBinCPURAM_Inspector,SIGNAL(triggered()), this,SLOT(actionBinCPURAM_Inspector_triggered()));
-	QObject::connect(actionBinROM_Inspector,SIGNAL(triggered()), this,SLOT(actionBinROM_Inspector_triggered()));
-	QObject::connect(actionBinCartVRAMMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinCartVRAMMemory_Inspector_triggered()));
-	QObject::connect(actionBinNameTableNESMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinNameTableNESMemory_Inspector_triggered()));
-	QObject::connect(actionBinCHRMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinCHRMemory_Inspector_triggered()));
-	QObject::connect(actionBinOAMMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinOAMMemory_Inspector_triggered()));
-	QObject::connect(actionBinSRAMMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinSRAMMemory_Inspector_triggered()));
-	QObject::connect(actionBinEXRAMMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinEXRAMMemory_Inspector_triggered()));
-	QObject::connect(actionBinPaletteNESMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinPaletteNESMemory_Inspector_triggered()));
-	QObject::connect(actionBinAPURegister_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinAPURegister_Inspector_triggered()));
-	QObject::connect(actionBinPPURegister_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinPPURegister_Inspector_triggered()));
-	QObject::connect(actionBinMapperMemory_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinMapperMemory_Inspector_triggered()));
-	QObject::connect(actionPPUInformation_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionPPUInformation_Inspector_triggered()));
-	QObject::connect(actionAPUInformation_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionAPUInformation_Inspector_triggered()));
-	QObject::connect(actionMapperInformation_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionMapperInformation_Inspector_triggered()));
-	QObject::connect(actionJoypadLogger_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionJoypadLogger_Inspector_triggered()));
+	QObject::connect(action1x, SIGNAL(triggered()), this, SLOT(action1x_triggered()));
+	QObject::connect(action1_5x, SIGNAL(triggered()), this, SLOT(action1_5x_triggered()));
+	QObject::connect(action2x, SIGNAL(triggered()), this, SLOT(action2x_triggered()));
+	QObject::connect(action2_5x, SIGNAL(triggered()), this, SLOT(action2_5x_triggered()));
+	QObject::connect(action3x, SIGNAL(triggered()), this, SLOT(action3x_triggered()));
+	QObject::connect(actionLinear_Interpolation, SIGNAL(toggled(bool)), this,
+		SLOT(actionLinear_Interpolation_toggled(bool)));
+	QObject::connect(action4_3_Aspect, SIGNAL(toggled(bool)), this, SLOT(action4_3_Aspect_toggled(bool)));
+	QObject::connect(actionFullscreen, SIGNAL(toggled(bool)), this, SLOT(actionFullscreen_toggled(bool)));
+	QObject::connect(actionSquare_1, SIGNAL(toggled(bool)), this, SLOT(actionSquare_1_toggled(bool)));
+	QObject::connect(actionSquare_2, SIGNAL(toggled(bool)), this, SLOT(actionSquare_2_toggled(bool)));
+	QObject::connect(actionTriangle, SIGNAL(toggled(bool)), this, SLOT(actionTriangle_toggled(bool)));
+	QObject::connect(actionNoise, SIGNAL(toggled(bool)), this, SLOT(actionNoise_toggled(bool)));
+	QObject::connect(actionDelta_Modulation, SIGNAL(toggled(bool)), this, SLOT(actionDelta_Modulation_toggled(bool)));
+	QObject::connect(actionPulse_1VRC6, SIGNAL(toggled(bool)), this, SLOT(actionPulse_1VRC6_toggled(bool)));
+	QObject::connect(actionPulse_2VRC6, SIGNAL(toggled(bool)), this, SLOT(actionPulse_2VRC6_toggled(bool)));
+	QObject::connect(actionSawtoothVRC6, SIGNAL(toggled(bool)), this, SLOT(actionSawtoothVRC6_toggled(bool)));
+	QObject::connect(actionSquare_1MMC5, SIGNAL(toggled(bool)), this, SLOT(actionSquare_1MMC5_toggled(bool)));
+	QObject::connect(actionSquare_2MMC5, SIGNAL(toggled(bool)), this, SLOT(actionSquare_2MMC5_toggled(bool)));
+	QObject::connect(actionDMCMMC5, SIGNAL(toggled(bool)), this, SLOT(actionDMCMMC5_toggled(bool)));
+	QObject::connect(actionWave_1N106, SIGNAL(toggled(bool)), this, SLOT(actionWave_1N106_toggled(bool)));
+	QObject::connect(actionWave_2N106, SIGNAL(toggled(bool)), this, SLOT(actionWave_2N106_toggled(bool)));
+	QObject::connect(actionWave_3N106, SIGNAL(toggled(bool)), this, SLOT(actionWave_3N106_toggled(bool)));
+	QObject::connect(actionWave_4N106, SIGNAL(toggled(bool)), this, SLOT(actionWave_4N106_toggled(bool)));
+	QObject::connect(actionWave_5N106, SIGNAL(toggled(bool)), this, SLOT(actionWave_5N106_toggled(bool)));
+	QObject::connect(actionWave_6N106, SIGNAL(toggled(bool)), this, SLOT(actionWave_6N106_toggled(bool)));
+	QObject::connect(actionWave_7N106, SIGNAL(toggled(bool)), this, SLOT(actionWave_7N106_toggled(bool)));
+	QObject::connect(actionWave_8N106, SIGNAL(toggled(bool)), this, SLOT(actionWave_8N106_toggled(bool)));
+	QObject::connect(actionPAL, SIGNAL(triggered()), this, SLOT(actionPAL_triggered()));
+	QObject::connect(actionNTSC, SIGNAL(triggered()), this, SLOT(actionNTSC_triggered()));
+	QObject::connect(actionDendy, SIGNAL(triggered()), this, SLOT(actionDendy_triggered()));
+	QObject::connect(actionAssembly_Inspector, SIGNAL(triggered()), this, SLOT(actionAssembly_Inspector_triggered()));
+	QObject::connect(actionBreakpoint_Inspector, SIGNAL(triggered()), this, SLOT(actionBreakpoint_Inspector_triggered()));
+	QObject::connect(actionEmulation_Window, SIGNAL(triggered()), this, SLOT(actionEmulation_Window_triggered()));
+	QObject::connect(actionRun_Test_Suite, SIGNAL(triggered()), this, SLOT(actionRun_Test_Suite_triggered()));
+	QObject::connect(actionConfigure, SIGNAL(triggered()), this, SLOT(actionConfigure_triggered()));
+	QObject::connect(actionCodeDataLogger_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionCodeDataLogger_Inspector_triggered()));
+	QObject::connect(actionExecution_Visualizer_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionExecution_Visualizer_Inspector_triggered()));
+	QObject::connect(actionGfxCHRMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionGfxCHRMemory_Inspector_triggered()));
+	QObject::connect(actionGfxOAMMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionGfxOAMMemory_Inspector_triggered()));
+	QObject::connect(actionGfxNameTableNESMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionGfxNameTableNESMemory_Inspector_triggered()));
+	QObject::connect(actionBinCPURegister_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinCPURegister_Inspector_triggered()));
+	QObject::connect(actionBinCPURAM_Inspector, SIGNAL(triggered()), this, SLOT(actionBinCPURAM_Inspector_triggered()));
+	QObject::connect(actionBinROM_Inspector, SIGNAL(triggered()), this, SLOT(actionBinROM_Inspector_triggered()));
+	QObject::connect(actionBinCartVRAMMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinCartVRAMMemory_Inspector_triggered()));
+	QObject::connect(actionBinNameTableNESMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinNameTableNESMemory_Inspector_triggered()));
+	QObject::connect(actionBinCHRMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinCHRMemory_Inspector_triggered()));
+	QObject::connect(actionBinOAMMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinOAMMemory_Inspector_triggered()));
+	QObject::connect(actionBinSRAMMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinSRAMMemory_Inspector_triggered()));
+	QObject::connect(actionBinEXRAMMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinEXRAMMemory_Inspector_triggered()));
+	QObject::connect(actionBinPaletteNESMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinPaletteNESMemory_Inspector_triggered()));
+	QObject::connect(actionBinAPURegister_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinAPURegister_Inspector_triggered()));
+	QObject::connect(actionBinPPURegister_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinPPURegister_Inspector_triggered()));
+	QObject::connect(actionBinMapperMemory_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinMapperMemory_Inspector_triggered()));
+	QObject::connect(actionPPUInformation_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionPPUInformation_Inspector_triggered()));
+	QObject::connect(actionAPUInformation_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionAPUInformation_Inspector_triggered()));
+	QObject::connect(actionMapperInformation_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionMapperInformation_Inspector_triggered()));
+	QObject::connect(actionJoypadLogger_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionJoypadLogger_Inspector_triggered()));
 
 	// Connect snapTo's from various debuggers.
 	QObject::connect(m_pExecutionVisualizer, SIGNAL(snapTo(QString)), tabWidget, SLOT(snapToTab(QString)));
 	QObject::connect(m_pBreakpointInspector, SIGNAL(snapTo(QString)), tabWidget, SLOT(snapToTab(QString)));
 	QObject::connect(m_pSymbolInspector, SIGNAL(snapTo(QString)), m_pBinCPURAMInspector, SLOT(snapToHandler(QString)));
 	QObject::connect(m_pSymbolInspector, SIGNAL(snapTo(QString)), m_pBinSRAMMemoryInspector,
-	                 SLOT(snapToHandler(QString)));
+		SLOT(snapToHandler(QString)));
 	QObject::connect(m_pSymbolInspector, SIGNAL(snapTo(QString)), m_pBinEXRAMMemoryInspector,
-	                 SLOT(snapToHandler(QString)));
+		SLOT(snapToHandler(QString)));
 	QObject::connect(m_pSymbolInspector, SIGNAL(snapTo(QString)), m_pBinROMInspector, SLOT(snapToHandler(QString)));
 
 	updateFromEmulatorPrefs(true);
@@ -1392,7 +1392,7 @@ void MainWindow::destroyNesUi()
 		t.setSingleShot(true);
 		connect(&t, SIGNAL(timeout()), &q, SLOT(quit()));
 		connect(emulator, SIGNAL(emulatorExited()),
-		        &q, SLOT(quit()));
+			&q, SLOT(quit()));
 
 		t.start(5000); // 5s timeout
 		emit exitEmulator();
@@ -1636,12 +1636,12 @@ void MainWindow::createC64Ui()
 
 	m_pC64EmulatorThread = new C64EmulatorThread();
 	CObjectRegistry::instance()->addObject("Emulator", m_pC64EmulatorThread);
-	QObject::connect(m_pC64EmulatorThread,SIGNAL(emulatorWantsExit()), this,SLOT(close()));
+	QObject::connect(m_pC64EmulatorThread, SIGNAL(emulatorWantsExit()), this, SLOT(close()));
 
-	QObject::connect(this,SIGNAL(startEmulation()), m_pC64EmulatorThread,SLOT(startEmulation()));
-	QObject::connect(this,SIGNAL(pauseEmulation(bool)), m_pC64EmulatorThread,SLOT(pauseEmulation(bool)));
-	QObject::connect(this,SIGNAL(primeEmulator()), m_pC64EmulatorThread,SLOT(primeEmulator()));
-	QObject::connect(this,SIGNAL(resetEmulator()), m_pC64EmulatorThread,SLOT(resetEmulator()));
+	QObject::connect(this, SIGNAL(startEmulation()), m_pC64EmulatorThread, SLOT(startEmulation()));
+	QObject::connect(this, SIGNAL(pauseEmulation(bool)), m_pC64EmulatorThread, SLOT(pauseEmulation(bool)));
+	QObject::connect(this, SIGNAL(primeEmulator()), m_pC64EmulatorThread, SLOT(primeEmulator()));
+	QObject::connect(this, SIGNAL(resetEmulator()), m_pC64EmulatorThread, SLOT(resetEmulator()));
 
 	m_pC64EmulatorControl = new C64EmulatorControl();
 	debuggerToolBar->addWidget(m_pC64EmulatorControl);
@@ -1653,67 +1653,67 @@ void MainWindow::createC64Ui()
 	menuEmulator->insertSeparator(firstEmuMenuAction);
 
 	m_pBreakpointInspector = new BreakpointDockWidget(c64GetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBreakpointInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBreakpointInspector,SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBreakpointInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBreakpointInspector, SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBreakpointInspector);
 	m_pBreakpointInspector->hide();
-	QObject::connect(m_pBreakpointInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBreakpointInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Breakpoints", m_pBreakpointInspector);
 
 	m_pAssemblyInspector = new CodeBrowserDockWidget(c64GetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pAssemblyInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pAssemblyInspector,SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pAssemblyInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pAssemblyInspector, SLOT(applyEnvironmentSettings()));
 	addDockWidget(Qt::RightDockWidgetArea, m_pAssemblyInspector);
 	m_pAssemblyInspector->hide();
-	QObject::connect(m_pAssemblyInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pAssemblyInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("Assembly Browser", m_pAssemblyInspector);
 
 	m_pBinCPURegisterInspector = new RegisterInspectorDockWidget(c64GetCpuRegisterDatabase, c64GetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinCPURegisterInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinCPURegisterInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinCPURegisterInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinCPURegisterInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinCPURegisterInspector->setObjectName("cpuRegisterInspector");
 	m_pBinCPURegisterInspector->setWindowTitle("CPU Register Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinCPURegisterInspector);
 	m_pBinCPURegisterInspector->hide();
-	QObject::connect(m_pBinCPURegisterInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinCPURegisterInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("CPU Register Inspector", m_pBinCPURegisterInspector);
 
 	m_pBinCPURAMInspector = new MemoryInspectorDockWidget(c64GetCpuMemoryDatabase, c64GetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinCPURAMInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinCPURAMInspector,SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinCPURAMInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinCPURAMInspector, SLOT(applyEnvironmentSettings()));
 	m_pBinCPURAMInspector->setObjectName("cpuMemoryInspector");
 	m_pBinCPURAMInspector->setWindowTitle("CPU RAM Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinCPURAMInspector);
 	m_pBinCPURAMInspector->hide();
-	QObject::connect(m_pBinCPURAMInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinCPURAMInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("CPU RAM Inspector", m_pBinCPURAMInspector);
 
 	m_pBinSIDRegisterInspector = new RegisterInspectorDockWidget(c64GetSidRegisterDatabase, c64GetBreakpointDatabase());
-	QObject::connect(this,SIGNAL(updateTargetMachine(QString)), m_pBinSIDRegisterInspector,
-	                 SLOT(updateTargetMachine(QString)));
-	QObject::connect(this,SIGNAL(applyEnvironmentSettings()), m_pBinSIDRegisterInspector,
-	                 SLOT(applyEnvironmentSettings()));
+	QObject::connect(this, SIGNAL(updateTargetMachine(QString)), m_pBinSIDRegisterInspector,
+		SLOT(updateTargetMachine(QString)));
+	QObject::connect(this, SIGNAL(applyEnvironmentSettings()), m_pBinSIDRegisterInspector,
+		SLOT(applyEnvironmentSettings()));
 	m_pBinSIDRegisterInspector->setObjectName("sidRegisterInspector");
 	m_pBinSIDRegisterInspector->setWindowTitle("SID Register Inspector");
 	addDockWidget(Qt::BottomDockWidgetArea, m_pBinSIDRegisterInspector);
 	m_pBinSIDRegisterInspector->hide();
-	QObject::connect(m_pBinSIDRegisterInspector,SIGNAL(markProjectDirty(bool)), this,SLOT(markProjectDirty(bool)));
+	QObject::connect(m_pBinSIDRegisterInspector, SIGNAL(markProjectDirty(bool)), this, SLOT(markProjectDirty(bool)));
 	CDockWidgetRegistry::instance()->addWidget("SID Register Inspector", m_pBinSIDRegisterInspector);
 
 	// Connect slots for new UI elements.
-	QObject::connect(actionConfigure,SIGNAL(triggered()), this,SLOT(actionConfigure_triggered()));
-	QObject::connect(actionBinCPURegister_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinCPURegister_Inspector_triggered()));
-	QObject::connect(actionBinCPURAM_Inspector,SIGNAL(triggered()), this,SLOT(actionBinCPURAM_Inspector_triggered()));
-	QObject::connect(actionBinSIDRegister_Inspector,SIGNAL(triggered()), this,
-	                 SLOT(actionBinSIDRegister_Inspector_triggered()));
-	QObject::connect(actionAssembly_Inspector,SIGNAL(triggered()), this,SLOT(actionAssembly_Inspector_triggered()));
-	QObject::connect(actionBreakpoint_Inspector,SIGNAL(triggered()), this,SLOT(actionBreakpoint_Inspector_triggered()));
+	QObject::connect(actionConfigure, SIGNAL(triggered()), this, SLOT(actionConfigure_triggered()));
+	QObject::connect(actionBinCPURegister_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinCPURegister_Inspector_triggered()));
+	QObject::connect(actionBinCPURAM_Inspector, SIGNAL(triggered()), this, SLOT(actionBinCPURAM_Inspector_triggered()));
+	QObject::connect(actionBinSIDRegister_Inspector, SIGNAL(triggered()), this,
+		SLOT(actionBinSIDRegister_Inspector_triggered()));
+	QObject::connect(actionAssembly_Inspector, SIGNAL(triggered()), this, SLOT(actionAssembly_Inspector_triggered()));
+	QObject::connect(actionBreakpoint_Inspector, SIGNAL(triggered()), this, SLOT(actionBreakpoint_Inspector_triggered()));
 
 	// Connect snapTo's from various debuggers.
 	QObject::connect(m_pBreakpointInspector, SIGNAL(snapTo(QString)), tabWidget, SLOT(snapToTab(QString)));
@@ -2002,18 +2002,18 @@ void MainWindow::on_actionSave_Project_triggered()
 		if (!CNesicideProject::instance()->getProjectTarget().compare("nes", Qt::CaseInsensitive))
 		{
 			fileName = QFileDialog::getSaveFileName(this, "Save Project",
-			                                        QDir::currentPath() + QDir::separator() +
-			                                        CNesicideProject::instance()->getProjectOutputName() +
-			                                        ".nesproject",
-			                                        "NES Project (*.nesproject)");
+				QDir::currentPath() + QDir::separator() +
+				CNesicideProject::instance()->getProjectOutputName() +
+				".nesproject",
+				"NES Project (*.nesproject)");
 		}
 		else if (!CNesicideProject::instance()->getProjectTarget().compare("c64", Qt::CaseInsensitive))
 		{
 			fileName = QFileDialog::getSaveFileName(this, "Save Project",
-			                                        QDir::currentPath() + QDir::separator() +
-			                                        CNesicideProject::instance()->getProjectOutputName() +
-			                                        ".c64project",
-			                                        "C64 Project (*.c64project)");
+				QDir::currentPath() + QDir::separator() +
+				CNesicideProject::instance()->getProjectOutputName() +
+				".c64project",
+				"C64 Project (*.c64project)");
 		}
 	}
 
@@ -2037,27 +2037,27 @@ void MainWindow::saveEmulatorState(QString fileName)
 		if (!file.open(QFile::WriteOnly))
 		{
 			QMessageBox::critical(this, "Error",
-			                      "An error occured while trying to open the save state file for writing.");
+				"An error occured while trying to open the save state file for writing.");
 			return;
 		}
 
 #if defined(XML_SAVE_STATE)
-      QDomDocument doc;
-      QDomProcessingInstruction instr = doc.createProcessingInstruction("xml", "version='1.0' encoding='UTF-8'");
-      doc.appendChild(instr);
+		QDomDocument doc;
+		QDomProcessingInstruction instr = doc.createProcessingInstruction("xml", "version='1.0' encoding='UTF-8'");
+		doc.appendChild(instr);
 
-      if (!m_pNESEmulatorThread->serialize(doc, doc))
-      {
-         QMessageBox::critical(this, "Error", "An error occured while trying to serialize the save state data.");
-         file.close();
-      }
+		if (!m_pNESEmulatorThread->serialize(doc, doc))
+		{
+			QMessageBox::critical(this, "Error", "An error occured while trying to serialize the save state data.");
+			file.close();
+		}
 
-      // Create a text stream so we can stream the XML data to the file easily.
-      QTextStream ts( &file );
+		// Create a text stream so we can stream the XML data to the file easily.
+		QTextStream ts(&file);
 
-      // Use the standard C++ stream function for streaming the string representation of our XML to
-      // our file stream.
-      ts << doc.toString();
+		// Use the standard C++ stream function for streaming the string representation of our XML to
+		// our file stream.
+		ts << doc.toString();
 #else
 		if (!m_pNESEmulatorThread->serializeContent(file))
 		{
@@ -2126,12 +2126,12 @@ void MainWindow::on_actionSave_Project_As_triggered()
 	if (!CNesicideProject::instance()->getProjectTarget().compare("nes", Qt::CaseInsensitive))
 	{
 		fileName = QFileDialog::getSaveFileName(this, "Save Project", QDir::currentPath(),
-		                                        "NES Project (*.nesproject)");
+			"NES Project (*.nesproject)");
 	}
 	else if (!CNesicideProject::instance()->getProjectTarget().compare("c64", Qt::CaseInsensitive))
 	{
 		fileName = QFileDialog::getSaveFileName(this, "Save Project", QDir::currentPath(),
-		                                        "C64 Project (*.c64project)");
+			"C64 Project (*.c64project)");
 	}
 
 	if (!fileName.isEmpty())
@@ -2233,7 +2233,7 @@ void MainWindow::explodeAddOn(int level, QString projectName, QString addonDirNa
 }
 
 void MainWindow::explodeTemplate(int level, QString templateName, QString projectName, QString templateDirName,
-                                 QString localDirName, QString* projectFileName)
+	QString localDirName, QString* projectFileName)
 {
 	QDir templateDir(templateDirName);
 	QDir localDir;
@@ -2283,18 +2283,18 @@ void MainWindow::explodeTemplate(int level, QString templateName, QString projec
 				{
 					templateFileContent.replace("<!project-title!>", projectName.toUtf8());
 					templateFileContent.replace("<!project-mapper!>",
-					                            QString::number(
-						                            CNesicideProject::instance()->getCartridge()->getMapperNumber()).
-					                            toUtf8());
+						QString::number(
+							CNesicideProject::instance()->getCartridge()->getMapperNumber()).
+						toUtf8());
 					(*projectFileName) = localFile.fileName();
 				}
 				else if (!fileInfo.suffix().compare("c64project_in", Qt::CaseInsensitive))
 				{
 					templateFileContent.replace("<!project-title!>", projectName.toUtf8());
 					templateFileContent.replace("<!project-mapper!>",
-					                            QString::number(
-						                            CNesicideProject::instance()->getCartridge()->getMapperNumber()).
-					                            toUtf8());
+						QString::number(
+							CNesicideProject::instance()->getCartridge()->getMapperNumber()).
+						toUtf8());
 					(*projectFileName) = localFile.fileName();
 				}
 
@@ -2308,7 +2308,7 @@ void MainWindow::explodeTemplate(int level, QString templateName, QString projec
 }
 
 void MainWindow::explodeINESHeaderTemplate(QString templateName, QString projectName, QString templateDirName,
-                                           QString localDirName)
+	QString localDirName)
 {
 	QString templateFileName = ":/templates/NES/" + templateName + "/header.s_in";
 	auto fileInfo = QFileInfo(templateFileName);
@@ -2333,20 +2333,20 @@ void MainWindow::explodeINESHeaderTemplate(QString templateName, QString project
 		templateFileContent = templateFile.readAll();
 
 		templateFileContent.replace("<!prg-banks!>",
-		                            QString::number(
-			                            CNesicideProject::instance()->getCartridge()->getPrgRomBanks()->childCount(),
-			                            16));
+			QString::number(
+				CNesicideProject::instance()->getCartridge()->getPrgRomBanks()->childCount(),
+				16));
 		templateFileContent.replace("<!chr-banks!>",
-		                            QString::number(
-			                            CNesicideProject::instance()->getCartridge()->getChrRomBanks()->childCount(),
-			                            16));
+			QString::number(
+				CNesicideProject::instance()->getCartridge()->getChrRomBanks()->childCount(),
+				16));
 		templateFileContent.replace("<!mapper-low!>",
-		                            QString::number(
-			                            (CNesicideProject::instance()->getCartridge()->getMapperNumber() & 0x0F) << 4,
-			                            16));
+			QString::number(
+				(CNesicideProject::instance()->getCartridge()->getMapperNumber() & 0x0F) << 4,
+				16));
 		templateFileContent.replace("<!mapper-high!>",
-		                            QString::number(
-			                            CNesicideProject::instance()->getCartridge()->getMapperNumber() & 0xF0, 16));
+			QString::number(
+				CNesicideProject::instance()->getCartridge()->getMapperNumber() & 0xF0, 16));
 
 		localFile.write(templateFileContent.toUtf8());
 	}
@@ -2571,8 +2571,8 @@ void MainWindow::on_actionCreate_Project_from_File_triggered()
 	QString romPath = EnvironmentSettingsDialog::romPath();
 	QString selectedFilter;
 	QString fileName = QFileDialog::getOpenFileName(this, "Open ROM", romPath,
-	                                                "All Files (*.*);;iNES ROM (*.nes);;Commodore 64 Program (*.c64 *.prg);;Commodore 64 Disk Image (*.d64)",
-	                                                &selectedFilter);
+		"All Files (*.*);;iNES ROM (*.nes);;Commodore 64 Program (*.c64 *.prg);;Commodore 64 Disk Image (*.d64)",
+		&selectedFilter);
 
 	if (fileName.isEmpty())
 	{
@@ -2604,7 +2604,7 @@ void MainWindow::tabWidget_tabModified(int tab, bool modified)
 	{
 		match = match + "*";
 	}
-	foreach(QAction* action, actions)
+	foreach(QAction * action, actions)
 	{
 		if (match == action->text())
 		{
@@ -2647,7 +2647,7 @@ void MainWindow::tabWidget_tabAdded(int tab)
 	{
 		QAction* action = menuWindow->addAction(tabWidget->tabText(tab));
 		action->setCheckable(true);
-		QObject::connect(action,SIGNAL(triggered()), this,SLOT(windowMenu_triggered()));
+		QObject::connect(action, SIGNAL(triggered()), this, SLOT(windowMenu_triggered()));
 	}
 	menuWindow->setEnabled(true);
 }
@@ -2663,7 +2663,7 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 	{
 		QAction* action = menuWindow->addAction(tabWidget->tabText(tab));
 		action->setCheckable(true);
-		QObject::connect(action,SIGNAL(triggered()), this,SLOT(windowMenu_triggered()));
+		QObject::connect(action, SIGNAL(triggered()), this, SLOT(windowMenu_triggered()));
 	}
 	menuWindow->setEnabled(tabWidget->count() > 0);
 
@@ -2937,7 +2937,7 @@ void MainWindow::on_actionOpen_Project_triggered()
 	}
 
 	QString fileName = QFileDialog::getOpenFileName(this, "Open Project", "",
-	                                                "NES Project (*.nesproject);;Commodore 64 Project (*.c64project)");
+		"NES Project (*.nesproject);;Commodore 64 Project (*.c64project)");
 
 	if (fileName.isEmpty())
 	{
@@ -3211,8 +3211,8 @@ bool MainWindow::closeProject()
 	if (CNesicideProject::instance()->isDirty())
 	{
 		int result = QMessageBox::question(this, "Save Project?",
-		                                   "Your project settings, project content, or debugger content has changed, would you like to save the project?",
-		                                   QMessageBox::Yes, QMessageBox::No, QMessageBox::Cancel);
+			"Your project settings, project content, or debugger content has changed, would you like to save the project?",
+			QMessageBox::Yes, QMessageBox::No, QMessageBox::Cancel);
 		if (result == QMessageBox::Yes)
 		{
 			on_actionSave_Project_triggered();
@@ -3248,7 +3248,7 @@ bool MainWindow::closeProject()
 
 		foreach(action, actions)
 		{
-			QObject::disconnect(action,SIGNAL(triggered()), this,SLOT(windowMenu_triggered()));
+			QObject::disconnect(action, SIGNAL(triggered()), this, SLOT(windowMenu_triggered()));
 			menuWindow->removeAction(action);
 		}
 		menuWindow->setEnabled(menuWindow->actions().count() > 0);
@@ -3267,7 +3267,7 @@ bool MainWindow::closeProject()
 			t.setSingleShot(true);
 			connect(&t, SIGNAL(timeout()), &q, SLOT(quit()));
 			connect(emulator, SIGNAL(emulatorReset()),
-			        &q, SLOT(quit()));
+				&q, SLOT(quit()));
 
 			t.start(5000); // 5s timeout
 			emit primeEmulator();
@@ -4256,7 +4256,7 @@ void MainWindow::on_actionManage_Add_Ons_triggered()
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 	NewProjectDialog dlg("Add-Ons", CNesicideProject::instance()->getProjectTitle(),
-	                     settings.value("LastProjectBasePath").toString(), true);
+		settings.value("LastProjectBasePath").toString(), true);
 
 	if (dlg.exec() == QDialog::Accepted)
 	{

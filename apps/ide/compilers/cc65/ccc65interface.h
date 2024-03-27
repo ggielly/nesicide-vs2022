@@ -40,7 +40,7 @@ public:
 	void updateTargetMachine(QString target);
 
 	// Debug information parsing/extending APIs.
-	QStringList getSourceFiles();
+	QStringList getSourceFiles() const;
 	uint32_t getSegmentBase(QString segment);
 	unsigned int getSourceFileModificationTime(QString sourceFile);
 	QStringList getSymbolsForSourceFile(QString sourceFile);

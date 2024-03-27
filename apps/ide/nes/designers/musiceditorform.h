@@ -45,7 +45,7 @@ public slots:
 
 	void editor_modification_changed(bool m);
 	void document_saved();
-	void document_closed();
+	void document_closed() const;
 };
 
 #endif // MUSICEDITORFORM_H

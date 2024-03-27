@@ -54,7 +54,7 @@ MapperInformationDockWidget::~MapperInformationDockWidget()
 	delete ui;
 }
 
-void MapperInformationDockWidget::updateTargetMachine(QString target)
+void MapperInformationDockWidget::updateTargetMachine(QString target) const
 {
 	if (!target.compare("nes"))
 	{

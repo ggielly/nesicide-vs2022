@@ -32,7 +32,7 @@ protected:
 
 public slots:
 	void updateMemory();
-	void updateTargetMachine(QString target);
+	void updateTargetMachine(QString target) const;
 	void snapToHandler(QString item);
 	void applyEnvironmentSettings();
 

@@ -20,7 +20,7 @@ public:
 	void initializeProject();
 	void terminateProject();
 
-	CProjectPrimitives* getProjectPrimitives() { return m_pProjectPrimitives; }
+	CProjectPrimitives* getProjectPrimitives() const { return m_pProjectPrimitives; }
 	CSources* getSources() { return m_pSources; }
 	CBinaryFiles* getBinaryFiles() { return m_pBinaryFiles; }
 	CGraphicsBanks* getGraphicsBanks() { return m_pGraphicsBanks; }

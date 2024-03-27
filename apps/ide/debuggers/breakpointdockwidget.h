@@ -46,7 +46,7 @@ private:
 
 public slots:
 	void updateData();
-	void updateTargetMachine(QString target);
+	void updateTargetMachine(QString target) const;
 
 private slots:
 	void on_tableView_pressed(QModelIndex index);

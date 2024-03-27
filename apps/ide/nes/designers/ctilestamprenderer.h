@@ -15,7 +15,7 @@ public:
 	void paintGL() override;
 	void changeZoom(int newZoom);
 	void setSize(int newX, int newY);
-	bool pointToPixel(int ptx, int pty, int* pixx, int* pixy);
+	bool pointToPixel(int ptx, int pty, int* pixx, int* pixy) const;
 	void setBGColor(QColor clr);
 	void setScrollX(int newScrollX) { scrollX = newScrollX; }
 	void setScrollY(int newScrollY) { scrollY = newScrollY; }
@@ -29,7 +29,7 @@ public:
 		boxY2 = y2;
 	}
 
-	void getBox(int* x1, int* y1, int* x2, int* y2)
+	void getBox(int* x1, int* y1, int* x2, int* y2) const
 	{
 		(*x1) = boxX1;
 		(*y1) = boxY1;

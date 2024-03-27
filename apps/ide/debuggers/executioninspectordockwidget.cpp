@@ -37,7 +37,7 @@ ExecutionInspectorDockWidget::~ExecutionInspectorDockWidget()
 	delete model;
 }
 
-void ExecutionInspectorDockWidget::updateTargetMachine(QString target)
+void ExecutionInspectorDockWidget::updateTargetMachine(QString target) const
 {
 	if (target.compare("none"))
 	{

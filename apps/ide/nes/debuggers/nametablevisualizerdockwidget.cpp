@@ -46,7 +46,7 @@ NameTableVisualizerDockWidget::~NameTableVisualizerDockWidget()
 	delete renderer;
 }
 
-void NameTableVisualizerDockWidget::updateTargetMachine(QString target)
+void NameTableVisualizerDockWidget::updateTargetMachine(QString target) const
 {
 	if (!target.compare("nes"))
 	{

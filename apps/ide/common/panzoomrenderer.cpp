@@ -76,7 +76,7 @@ PanZoomRenderer::~PanZoomRenderer()
 	delete renderer;
 }
 
-QColor PanZoomRenderer::getColor(int idx)
+QColor PanZoomRenderer::getColor(int idx) const
 {
 	switch (idx)
 	{

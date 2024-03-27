@@ -105,7 +105,7 @@ public:
 		return m_value[index];
 	}
 
-	int InsertValue(int data, int bitsToInsert)
+	int InsertValue(int data, int bitsToInsert) const
 	{
 		int mask = ((1 << m_width) - 1);
 		mask <<= m_start;

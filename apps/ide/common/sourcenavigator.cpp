@@ -47,7 +47,7 @@ void SourceNavigator::updateTargetMachine(QString target)
 	}
 }
 
-void SourceNavigator::shutdown()
+void SourceNavigator::shutdown() const
 {
 	ui->files->clear();
 	ui->symbols->clear();

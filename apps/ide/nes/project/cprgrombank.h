@@ -15,7 +15,7 @@ public:
 	~CPRGROMBank() override;
 
 	// Member Getters
-	uint32_t getBankIndex() { return m_bankIndex; }
+	uint32_t getBankIndex() const { return m_bankIndex; }
 	uint8_t* getBankData() { return m_bankData; }
 	PRGROMDisplayDialog* editor() { return dynamic_cast<PRGROMDisplayDialog*>(m_editor); }
 

@@ -208,18 +208,18 @@ protected:
 	TestSuiteExecutiveDialog* testSuiteExecutive;
 
 private:
-	bool openAnyFile(QString fileName);
-	void openNesProject(QString fileName, bool runRom = true);
-	void openC64Project(QString fileName, bool run = true);
-	void saveProject(QString fileName);
-	void saveEmulatorState(QString fileName);
+	bool openAnyFile(const QString& fileName);
+	void openNesProject(const QString& fileName, bool runRom = true);
+	void openC64Project(const QString& fileName, bool run = true);
+	void saveProject(const QString& fileName);
+	void saveEmulatorState(const QString& fileName);
 	bool closeProject();
 	void applyAddOns(QStringList addOns);
-	void explodeAddOn(int level, QString projectName, QString addonDirName, QString localDirName);
-	void explodeTemplate(int level, QString templateName, QString projectName, QString templateDirName,
-	                     QString localDirName, QString* projectFileName);
-	void explodeINESHeaderTemplate(QString templateName, QString projectName, QString templateDirName,
-	                               QString localDirName);
+	void explodeAddOn(int level, const QString& projectName, const QString& addonDirName, const QString& localDirName);
+	void explodeTemplate(int level, const QString& templateName, const QString& projectName, const QString& templateDirName,
+	                     const QString& localDirName, QString* projectFileName);
+	void explodeINESHeaderTemplate(const QString& templateName, const QString& projectName, QString templateDirName,
+	                               const QString& localDirName);
 	void updateFromEmulatorPrefs(bool initial);
 
 protected:
@@ -243,20 +243,21 @@ signals:
 
 public slots:
 	void openRecentFile();
-	void saveRecentFiles(QString fileName);
-	void updateRecentFiles();
+	auto updateRecentFiles() -> void;
+	void saveRecentFiles(const QString& fileName);
+	void updateRecentFiles() const;
 	void on_actionExit_triggered();
 	void applicationActivationChanged(bool activated);
-	void createTarget(QString target);
+	void createTarget(const QString& target);
 	void addStatusBarWidget(QWidget* widget);
 	void removeStatusBarWidget(QWidget* widget);
 	void addToolBarWidget(QToolBar* toolBar);
 	void removeToolBarWidget(QToolBar* toolBar);
 	void addPermanentStatusBarWidget(QWidget* widget);
 	void removePermanentStatusBarWidget(QWidget* widget);
-	void setStatusBarMessage(QString message);
-	void openNesROM(QString fileName, bool runRom = true);
-	void openC64File(QString fileName);
+	void setStatusBarMessage(const QString& message);
+	void openNesROM(const QString& fileName, bool runRom = true);
+	void openC64File(const QString& fileName);
 	void on_actionAbout_Qt_triggered();
 	void menuEdit_aboutToShow();
 	void menuWindow_aboutToShow();
@@ -291,7 +292,7 @@ public slots:
 	void on_actionProject_Properties_triggered();
 	void on_actionSave_Project_As_triggered();
 	void on_actionSave_Project_triggered();
-	void openFile(QString file);
+	void openFile(const QString& file);
 
 	// Common/reused UI elements.
 	void actionBreakpoint_Inspector_triggered();

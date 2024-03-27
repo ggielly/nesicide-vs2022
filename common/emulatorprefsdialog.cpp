@@ -276,7 +276,7 @@ void EmulatorPrefsDialog::readSettings()
 	settings.endGroup();
 }
 
-void EmulatorPrefsDialog::writeSettings()
+void EmulatorPrefsDialog::writeSettings() const
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 	QKeySequence upKeyStandardSequence(ui->upKeyStandard->text());

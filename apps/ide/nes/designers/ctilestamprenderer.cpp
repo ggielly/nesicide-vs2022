@@ -214,7 +214,7 @@ void CTileStampRenderer::setSize(int newX, int newY)
 	update();
 }
 
-bool CTileStampRenderer::pointToPixel(int ptx, int pty, int* pixx, int* pixy)
+bool CTileStampRenderer::pointToPixel(int ptx, int pty, int* pixx, int* pixy) const
 {
 	int size = (xSize > ySize) ? xSize : ySize;
 	float xpixSize = (float)width() / (float)size;

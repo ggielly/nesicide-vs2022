@@ -16,7 +16,7 @@ public:
 	explicit SourceNavigator(QWidget* parent = nullptr);
 	~SourceNavigator() override;
 
-	void shutdown();
+	void shutdown() const;
 
 private:
 	Ui::SourceNavigator* ui;

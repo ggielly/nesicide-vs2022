@@ -41,7 +41,7 @@ private slots:
 	void on_event_currentIndexChanged(int index);
 	void on_bitfield_currentIndexChanged(int index);
 	void on_reg_currentIndexChanged(int index);
-	void on_type_currentIndexChanged(int index);
+	void on_type_currentIndexChanged(int index) const;
 };
 
 #endif // BREAKPOINTDIALOG_H

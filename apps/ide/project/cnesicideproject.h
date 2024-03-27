@@ -53,7 +53,7 @@ public:
 	QString getProjectDebugInfoName() { return m_projectDebugInfoName; }
 	QString getProjectCHRROMOutputBasePath() { return m_projectCHRROMOutputBasePath; }
 	QString getProjectCHRROMOutputName() { return m_projectCHRROMOutputName; }
-	bool getProjectUsesCHRROM() { return m_projectUsesCHRROM; }
+	bool getProjectUsesCHRROM() const { return m_projectUsesCHRROM; }
 	QString getProjectCartridgeOutputName() { return m_projectCartridgeOutputName; }
 	QString getProjectCartridgeSaveStateName() { return m_projectCartridgeSaveStateName; }
 	QString getCompilerDefinedSymbols() { return m_compilerDefinedSymbols; }

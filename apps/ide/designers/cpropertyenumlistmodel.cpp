@@ -253,7 +253,7 @@ void CPropertyEnumListModel::insertRow(QString text, const QModelIndex& parent)
 	endInsertRows();
 }
 
-QString CPropertyEnumListModel::getItems()
+QString CPropertyEnumListModel::getItems() const
 {
 	return getEnumRawString(m_items);
 }

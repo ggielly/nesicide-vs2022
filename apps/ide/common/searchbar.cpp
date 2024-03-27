@@ -71,7 +71,7 @@ void SearchBar::focusInEvent(QFocusEvent*/*event*/)
 	ui->searchText->lineEdit()->setSelection(0, ui->searchText->currentText().length());
 }
 
-void SearchBar::showCloseButton(bool show)
+void SearchBar::showCloseButton(bool show) const
 {
 	if (show)
 	{

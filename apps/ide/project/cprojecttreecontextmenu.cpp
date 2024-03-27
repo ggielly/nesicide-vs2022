@@ -157,7 +157,7 @@ void CProjectTreeContextMenu::visit(CPrgRomUuid&)
 //--------------------------------------------------------------------------------------
 // Modal dialogs
 //--------------------------------------------------------------------------------------
-void CProjectTreeContextMenu::appendGlobalMenuItems(QMenu* menu)
+void CProjectTreeContextMenu::appendGlobalMenuItems(QMenu* menu) const
 {
 	menu->addSeparator();
 

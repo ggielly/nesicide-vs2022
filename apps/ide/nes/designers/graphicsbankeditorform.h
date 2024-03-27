@@ -29,7 +29,7 @@ public:
 	void updateChrRomBankItemList(QList<IChrRomBankItem*> bankItems);
 
 	// Member getters.
-	QList<IChrRomBankItem*> bankItems();
+	QList<IChrRomBankItem*> bankItems() const;
 	uint32_t bankSize();
 
 protected:

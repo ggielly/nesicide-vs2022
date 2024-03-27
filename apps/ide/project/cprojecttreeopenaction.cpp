@@ -65,7 +65,7 @@ void CProjectTreeOpenAction::visit(CPrgRomUuid& data)
 	doVisit(m_project->getCartridgeModel(), data.uuid);
 }
 
-void CProjectTreeOpenAction::doVisit(CSubModel* model, const QUuid& uuid)
+void CProjectTreeOpenAction::doVisit(CSubModel* model, const QUuid& uuid) const
 {
 	// If already open, bring item to front.
 	for (int i = 0; i < m_tabWidget->count(); ++i)

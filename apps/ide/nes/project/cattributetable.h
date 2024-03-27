@@ -20,7 +20,7 @@ public:
 	// Member getters
 	QList<uint8_t>& getPalette();
 
-	AttributeTableEditorForm* editor() { return dynamic_cast<AttributeTableEditorForm*>(m_editor); }
+	AttributeTableEditorForm* editor() const { return dynamic_cast<AttributeTableEditorForm*>(m_editor); }
 
 	// IXMLSerializable Interface Implementation
 	bool serialize(QDomDocument& doc, QDomNode& node) override;

@@ -41,7 +41,7 @@ public:
 	//      _icon = QIcon(iconFile);
 	//   }
 
-	QString uuid()
+	QString uuid() const
 	{
 		return ident->toString();
 	}

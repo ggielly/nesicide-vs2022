@@ -794,7 +794,7 @@ void C64EmulatorThread::processResponses(QStringList requests, QStringList respo
 	}
 }
 
-void C64EmulatorThread::lockRequestQueue()
+void C64EmulatorThread::lockRequestQueue() const
 {
 	m_requestMutex->lock();
 }

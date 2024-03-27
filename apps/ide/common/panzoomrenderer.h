@@ -21,8 +21,8 @@ public:
 	                QWidget* parent = nullptr);
 	void commonConstructor(bool showPalette);
 	~PanZoomRenderer() override;
-	void reloadData(int8_t* imageData) { renderer->reloadData(imageData); }
-	QColor getColor(int idx);
+	void reloadData(int8_t* imageData) const { renderer->reloadData(imageData); }
+	QColor getColor(int idx) const;
 	void showPalette(bool show);
 	bool pointToPixel(int ptx, int pty, int* pixx, int* pixy) { return renderer->pointToPixel(ptx, pty, pixx, pixy); }
 	QWidget* getRenderer() { return renderer; }

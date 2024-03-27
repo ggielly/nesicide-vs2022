@@ -95,7 +95,7 @@ void TestSuiteExecutiveDialog::updateTargetMachine(QString target)
 {
 }
 
-void TestSuiteExecutiveDialog::updateProgress()
+void TestSuiteExecutiveDialog::updateProgress() const
 {
 	ui->testProgress->setValue(ui->testProgress->value() + 1);
 }

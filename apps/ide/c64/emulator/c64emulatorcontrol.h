@@ -15,7 +15,7 @@ class C64EmulatorControl : public QWidget
 public:
 	explicit C64EmulatorControl(QWidget* parent = nullptr);
 	~C64EmulatorControl() override;
-	QList<QAction*> menu();
+	QList<QAction*> menu() const;
 
 private:
 	Ui::C64EmulatorControl* ui;

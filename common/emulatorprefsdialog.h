@@ -104,7 +104,7 @@ private:
 	QString m_targetLoaded;
 
 	// Interface to store values to QSettings from local storage.
-	void writeSettings();
+	void writeSettings() const;
 
 	// General data structures.
 	static bool pauseOnTaskSwitch;

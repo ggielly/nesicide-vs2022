@@ -52,7 +52,7 @@ public:
 	int styleBitsNeeded() const override { return 8; }
 
 	bool readSettings(QSettings& qs, const char* prefix = "/Scintilla");
-	bool writeSettings(QSettings& qs, const char* prefix = "/Scintilla");
+	bool writeSettings(QSettings& qs, const char* prefix = "/Scintilla") const;
 
 protected:
 	bool readProperties(QSettings& qs, const QString& prefix) override;

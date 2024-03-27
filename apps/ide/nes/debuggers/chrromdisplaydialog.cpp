@@ -88,7 +88,7 @@ CHRROMDisplayDialog::~CHRROMDisplayDialog()
 	delete renderer;
 }
 
-void CHRROMDisplayDialog::updateTargetMachine(QString target)
+void CHRROMDisplayDialog::updateTargetMachine(QString target) const
 {
 	if (!target.compare("nes"))
 	{

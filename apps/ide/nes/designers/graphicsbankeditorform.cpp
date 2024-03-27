@@ -87,7 +87,7 @@ GraphicsBankEditorForm::~GraphicsBankEditorForm()
 	delete delegate;
 }
 
-QList<IChrRomBankItem*> GraphicsBankEditorForm::bankItems()
+QList<IChrRomBankItem*> GraphicsBankEditorForm::bankItems() const
 {
 	return model->bankItems();
 }

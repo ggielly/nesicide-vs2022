@@ -42,7 +42,7 @@ public:
 	QList<WatchedItem> getItems() { return m_items; }
 	void setItems(QList<WatchedItem> items) { m_items = items; }
 
-	int resolveSymbol(QString text, int addr = -1);
+	int resolveSymbol(QString text, int addr = -1) const;
 
 public slots:
 	void update();

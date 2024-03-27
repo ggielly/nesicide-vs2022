@@ -307,7 +307,7 @@ void CSymbolWatchModel::insertRow(QString text, int addr, const QModelIndex& par
 	endInsertRows();
 }
 
-int CSymbolWatchModel::resolveSymbol(QString text, int addr)
+int CSymbolWatchModel::resolveSymbol(QString text, int addr) const
 {
 	unsigned int checkAddr;
 	unsigned int absAddr;

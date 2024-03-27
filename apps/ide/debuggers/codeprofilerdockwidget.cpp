@@ -39,7 +39,7 @@ CodeProfilerDockWidget::~CodeProfilerDockWidget()
 	delete ui;
 }
 
-void CodeProfilerDockWidget::updateTargetMachine(QString target)
+void CodeProfilerDockWidget::updateTargetMachine(QString target) const
 {
 	if (target.compare("none"))
 	{

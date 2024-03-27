@@ -52,7 +52,7 @@ private slots:
 	void on_bitfieldView_doubleClicked(QModelIndex index);
 	void on_bitfieldView_clicked(QModelIndex index);
 	void binaryView_currentChanged(QModelIndex index, QModelIndex);
-	void updateTargetMachine(QString target);
+	void updateTargetMachine(QString target) const;
 };
 
 #endif // REGISTERINSPECTORDOCKWIDGET_H

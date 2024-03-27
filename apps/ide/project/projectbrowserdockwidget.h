@@ -76,7 +76,7 @@ public slots:
 	void itemModified(int tabId, bool modified);
 	void itemSelectionChanged();
 
-	void openItems_itemEntered(QTreeWidgetItem* item, int column);
+	void openItems_itemEntered(QTreeWidgetItem* item, int column) const;
 	void openItems_itemClicked(QTreeWidgetItem* item, int column);
 
 	void projectTreeChanged(QUuid uuid);

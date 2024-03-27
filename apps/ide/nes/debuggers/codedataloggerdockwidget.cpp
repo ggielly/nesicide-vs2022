@@ -45,7 +45,7 @@ CodeDataLoggerDockWidget::~CodeDataLoggerDockWidget()
 	delete renderer;
 }
 
-void CodeDataLoggerDockWidget::updateTargetMachine(QString target)
+void CodeDataLoggerDockWidget::updateTargetMachine(QString target) const
 {
 	if (target.compare("none"))
 	{

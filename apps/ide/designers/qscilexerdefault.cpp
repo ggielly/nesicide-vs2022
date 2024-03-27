@@ -114,7 +114,7 @@ bool QsciLexerDefault::readSettings(QSettings& qs, const char* prefix)
 	return QsciLexer::readSettings(qs, prefix);
 }
 
-bool QsciLexerDefault::writeSettings(QSettings& qs, const char* prefix)
+bool QsciLexerDefault::writeSettings(QSettings& qs, const char* prefix) const
 {
 	return QsciLexer::writeSettings(qs, prefix);
 }

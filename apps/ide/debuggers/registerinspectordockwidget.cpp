@@ -58,7 +58,7 @@ RegisterInspectorDockWidget::~RegisterInspectorDockWidget()
 	delete bitfieldDelegate;
 }
 
-void RegisterInspectorDockWidget::updateTargetMachine(QString target)
+void RegisterInspectorDockWidget::updateTargetMachine(QString target) const
 {
 	if (target.compare("none"))
 	{

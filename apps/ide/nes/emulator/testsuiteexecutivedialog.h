@@ -49,7 +49,7 @@ private slots:
 	void on_execute_clicked();
 	void on_executeSelection_clicked();
 	void on_abort_clicked();
-	void updateProgress();
+	void updateProgress() const;
 	void updateTargetMachine(QString target);
 	void machineReady();
 	void emulatorPausedAfter();

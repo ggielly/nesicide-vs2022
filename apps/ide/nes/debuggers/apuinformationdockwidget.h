@@ -23,7 +23,7 @@ protected:
 
 public slots:
 	void updateInformation();
-	void updateTargetMachine(QString target);
+	void updateTargetMachine(QString target) const;
 
 private:
 	Ui::APUInformationDockWidget* ui;

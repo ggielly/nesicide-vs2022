@@ -72,7 +72,7 @@ private:
 	Ui::EnvironmentSettingsDialog* ui;
 
 	// Write settings from local to QSettings.
-	void writeSettings();
+	void writeSettings() const;
 
 	void setupCodeEditor(int index);
 

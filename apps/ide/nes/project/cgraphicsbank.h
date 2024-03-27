@@ -17,9 +17,9 @@ public:
 
 	// Member getters
 	QList<IChrRomBankItem*> getGraphics();
-	uint32_t getSize();
+	uint32_t getSize() const;
 
-	GraphicsBankEditorForm* editor() { return dynamic_cast<GraphicsBankEditorForm*>(m_editor); }
+	GraphicsBankEditorForm* editor() const { return dynamic_cast<GraphicsBankEditorForm*>(m_editor); }
 	void exportAsPNG();
 
 	// IXMLSerializable Interface Implementation

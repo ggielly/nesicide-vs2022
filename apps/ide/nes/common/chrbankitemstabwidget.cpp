@@ -130,7 +130,7 @@ QModelIndex ChrBankItemsTabWidget::currentIndex() const
 	return QModelIndex();
 }
 
-void ChrBankItemsTabWidget::setCurrentIndex(QModelIndex index)
+void ChrBankItemsTabWidget::setCurrentIndex(QModelIndex index) const
 {
 	int tab;
 

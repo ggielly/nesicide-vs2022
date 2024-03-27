@@ -25,14 +25,14 @@ public:
 	bool initialize(QString fileName);
 
 	// Database information.
-	QString getGameDBTimestamp();
+	QString getGameDBTimestamp() const;
 	QString getGameDBAuthor();
 
 	// Database searching.
 	bool find(CCartridge* pCartridge);
 
 	// Game values.
-	QString getName()
+	QString getName() const
 	{
 		GAME_DATA("name");
 	}

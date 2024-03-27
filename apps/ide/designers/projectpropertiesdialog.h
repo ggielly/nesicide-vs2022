@@ -34,7 +34,7 @@ protected:
 
 private:
 	Ui::ProjectPropertiesDialog* ui;
-	void updateUI(int colid = -1);
+	void updateUI(int colid = -1) const;
 	QList<QColor> currentPalette;
 	bool linkerConfigChanged;
 	bool customRulesChanged;

@@ -101,7 +101,7 @@ public:
 	virtual bool serializeContent(QFile& fileOut);
 	virtual bool deserializeContent(QFile& fileIn);
 
-	NESEmulatorWorker* worker() { return pWorker; }
+	NESEmulatorWorker* worker() const { return pWorker; }
 
 public slots:
 	void breakpointsChanged();
@@ -117,7 +117,7 @@ public slots:
 	void stepPPUEmulation();
 	void advanceFrame();
 	void exitEmulator();
-	void adjustAudio(int32_t bufferDepth);
+	void adjustAudio(int32_t bufferDepth) const;
 	void controllerInput(uint32_t* joy) { pWorker->controllerInput(joy); }
 signals:
 	void breakpoint();

@@ -141,7 +141,7 @@ void OutputPaneDockWidget::initialize()
 	ui->searchStackedWidget->setCurrentWidget(m_pSearch);
 }
 
-void OutputPaneDockWidget::searcher_searchDone(int results)
+void OutputPaneDockWidget::searcher_searchDone(int results) const
 {
 	if (results)
 	{

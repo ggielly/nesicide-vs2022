@@ -32,7 +32,7 @@ signals:
 	void showPane(int pane);
 
 public slots:
-	void breakpoint() { pWorker->breakpoint(); }
+	void breakpoint() const { pWorker->breakpoint(); }
 
 protected:
 	BreakpointWatcherWorker* pWorker;

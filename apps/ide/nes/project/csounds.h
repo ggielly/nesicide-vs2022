@@ -18,7 +18,7 @@ public:
 	void initializeProject();
 	void terminateProject();
 
-	CMusics* getMusics() { return m_pMusics; }
+	CMusics* getMusics() const { return m_pMusics; }
 
 	// IXMLSerializable Interface Implementation
 	bool serialize(QDomDocument& doc, QDomNode& node) override;

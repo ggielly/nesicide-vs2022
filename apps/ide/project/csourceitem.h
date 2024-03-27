@@ -21,7 +21,7 @@ public:
 	// Member Setters
 	void setSourceCode(QString sourceCode);
 
-	CodeEditorForm* editor() { return dynamic_cast<CodeEditorForm*>(m_editor); }
+	CodeEditorForm* editor() const { return dynamic_cast<CodeEditorForm*>(m_editor); }
 
 	// IXMLSerializable Interface Implementation
 	bool serialize(QDomDocument& doc, QDomNode& node) override;

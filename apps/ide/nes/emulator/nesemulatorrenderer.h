@@ -1,7 +1,8 @@
 #ifndef CNESEMULATORRENDERER_H
 #define CNESEMULATORRENDERER_H
 
-#include <QWidget>
+#include "QWidget"
+
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
 

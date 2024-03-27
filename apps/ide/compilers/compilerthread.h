@@ -18,7 +18,7 @@ public:
 	CompilerWorker(QObject* parent = nullptr);
 	~CompilerWorker() override;
 
-	bool assembledOk() { return m_assembledOk; }
+	bool assembledOk() const { return m_assembledOk; }
 	void reset() { m_assembledOk = false; }
 
 	void compile();

@@ -204,7 +204,7 @@ void CodeBrowserDockWidget::changeEvent(QEvent* e)
 	}
 }
 
-void CodeBrowserDockWidget::snapTo(QString item)
+void CodeBrowserDockWidget::snapTo(QString item) const
 {
 	uint32_t addr;
 

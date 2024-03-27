@@ -16,7 +16,7 @@ public:
 	explicit SearchBar(QString settingsPrefix, QWidget* parent = nullptr);
 	~SearchBar() override;
 
-	void showCloseButton(bool show);
+	void showCloseButton(bool show) const;
 	QString currentSearchText();
 	bool isCaseSensitive();
 	bool isRegularExpression();

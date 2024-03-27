@@ -15,7 +15,7 @@ class NESEmulatorControl : public QWidget
 public:
 	explicit NESEmulatorControl(QWidget* parent = nullptr);
 	~NESEmulatorControl() override;
-	QList<QAction*> menu();
+	QList<QAction*> menu() const;
 
 private:
 	Ui::NESEmulatorControl* ui;

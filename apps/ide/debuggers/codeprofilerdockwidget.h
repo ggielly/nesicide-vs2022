@@ -33,7 +33,7 @@ private slots:
 	void on_clear_clicked();
 	void on_tableView_doubleClicked(QModelIndex index);
 	void updateUi();
-	void updateTargetMachine(QString target);
+	void updateTargetMachine(QString target) const;
 };
 
 #endif // CODEPROFILERDOCKWIDGET_H

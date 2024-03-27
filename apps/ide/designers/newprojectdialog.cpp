@@ -108,7 +108,7 @@ bool NewProjectDialog::eventFilter(QObject* obj, QEvent* event)
 }
 
 
-QString NewProjectDialog::getName()
+QString NewProjectDialog::getName() const
 {
 	return ui->name->text();
 }

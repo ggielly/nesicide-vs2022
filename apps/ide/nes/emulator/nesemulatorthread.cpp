@@ -144,7 +144,7 @@ NESEmulatorThread::~NESEmulatorThread()
 	pThread->deleteLater();
 }
 
-void NESEmulatorThread::adjustAudio(int32_t bufferDepth)
+void NESEmulatorThread::adjustAudio(int32_t bufferDepth) const
 {
 	pWorker->adjustAudio(bufferDepth);
 }

@@ -17,7 +17,7 @@ public:
 	NewProjectDialog(QString windowTitle = "New", QString defName = "", QString defPath = "", bool addOnsOnly = false,
 	                 QWidget* parent = nullptr);
 	~NewProjectDialog() override;
-	QString getName();
+	QString getName() const;
 	QString getPath();
 	QString getTarget();
 	QString getTargetShort();

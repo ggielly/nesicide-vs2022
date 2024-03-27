@@ -402,7 +402,7 @@ void CodeEditorForm::hideEvent(QHideEvent*/*event*/)
 	emit removeStatusBarWidget(info);
 }
 
-void CodeEditorForm::compiler_compileStarted()
+void CodeEditorForm::compiler_compileStarted() const
 {
 	m_scintilla->markerDeleteAll(Marker_Error);
 

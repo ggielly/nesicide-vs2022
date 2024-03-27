@@ -23,7 +23,7 @@ public:
 	QByteArray getTileData();
 	QByteArray getAttributeData();
 
-	void getSize(int* xSize, int* ySize)
+	void getSize(int* xSize, int* ySize) const
 	{
 		(*xSize) = m_xSize;
 		(*ySize) = m_ySize;

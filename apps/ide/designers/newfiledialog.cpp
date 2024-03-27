@@ -35,7 +35,7 @@ void NewFileDialog::changeEvent(QEvent* e)
 	}
 }
 
-QString NewFileDialog::getName()
+QString NewFileDialog::getName() const
 {
 	return ui->name->text();
 }

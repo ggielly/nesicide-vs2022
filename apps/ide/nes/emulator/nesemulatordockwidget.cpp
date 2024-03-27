@@ -81,7 +81,7 @@ void NESEmulatorDockWidget::setScalingFactor(float factor)
 	resize(rect.width(), rect.height());
 }
 
-void NESEmulatorDockWidget::updateTargetMachine(QString target)
+void NESEmulatorDockWidget::updateTargetMachine(QString target) const
 {
 	if (!target.compare("nes"))
 	{

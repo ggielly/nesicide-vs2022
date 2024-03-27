@@ -22,7 +22,7 @@ struct ProfiledItem
 	unsigned int size;
 	unsigned int count;
 
-	bool operator==(const ProfiledItem& rI)
+	bool operator==(const ProfiledItem& rI) const
 	{
 		if ((rI.file == file) &&
 			(rI.symbol == symbol) &&

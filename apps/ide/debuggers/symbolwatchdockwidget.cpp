@@ -266,7 +266,7 @@ void SymbolWatchDockWidget::updateUi()
 	emit markProjectDirty(true);
 }
 
-void SymbolWatchDockWidget::updateVariables()
+void SymbolWatchDockWidget::updateVariables() const
 {
 	QStringList symbols = CCC65Interface::instance()->getSymbolsForSourceFile("");
 	int addr;

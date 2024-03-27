@@ -188,7 +188,7 @@ void CRendererBase::changeZoom(int newZoom)
 	update();
 }
 
-bool CRendererBase::pointToPixel(int ptx, int pty, int* pixx, int* pixy)
+bool CRendererBase::pointToPixel(int ptx, int pty, int* pixx, int* pixy) const
 {
 	int zf = _zoomFactor / 100;
 

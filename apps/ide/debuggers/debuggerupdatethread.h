@@ -30,13 +30,13 @@ public:
 	explicit DebuggerUpdateThread(void (*func)(), QObject* parent = nullptr);
 	~DebuggerUpdateThread() override;
 
-	void changeFunction(void (*func)()) { pWorker->changeFunction(func); }
+	void changeFunction(void (*func)()) const { pWorker->changeFunction(func); }
 
 	static void silence(bool silence) { silenced = silence; }
 	static bool isSilenced() { return silenced; }
 
 public slots:
-	void updateDebuggers();
+	void updateDebuggers() const;
 
 signals:
 	void updateComplete();

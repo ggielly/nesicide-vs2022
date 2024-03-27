@@ -26,7 +26,7 @@ protected:
 public slots:
 	void updateInformation();
 	void machineReady();
-	void updateTargetMachine(QString target);
+	void updateTargetMachine(QString target) const;
 
 private:
 	Ui::MapperInformationDockWidget* ui;

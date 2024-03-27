@@ -48,7 +48,7 @@ private:
 private slots:
 	void on_actionGo_to_Source_triggered();
 	void on_tableView_doubleClicked(QModelIndex index);
-	void snapTo(QString item);
+	void snapTo(QString item) const;
 	void on_tableView_pressed(QModelIndex index);
 	void on_actionEnable_breakpoint_triggered();
 	void on_actionRemove_breakpoint_triggered();

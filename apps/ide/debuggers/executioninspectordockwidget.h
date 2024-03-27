@@ -26,7 +26,7 @@ protected:
 
 public slots:
 	void updateTracer();
-	void updateTargetMachine(QString target);
+	void updateTargetMachine(QString target) const;
 
 private:
 	Ui::ExecutionInspectorDockWidget* ui;

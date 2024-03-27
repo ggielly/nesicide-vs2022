@@ -166,7 +166,7 @@ void CBreakpointInfo::RemoveBreakpoint(const int index)
 	m_numBreakpoints--;
 }
 
-BreakpointStatus CBreakpointInfo::GetStatus(const int idx)
+BreakpointStatus CBreakpointInfo::GetStatus(const int idx) const
 {
 	if ((m_breakpoint[idx].enabled) && (m_breakpoint[idx].hit))
 	{

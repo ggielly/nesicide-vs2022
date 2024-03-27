@@ -25,7 +25,7 @@ public:
 	void terminateProject();
 
 	// Member Getters
-	eMirrorMode getMirrorMode()
+	eMirrorMode getMirrorMode() const
 	{
 		return m_mirrorMode;
 	}

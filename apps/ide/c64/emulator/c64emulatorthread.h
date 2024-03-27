@@ -103,7 +103,7 @@ signals:
 	void emulatorWantsExit();
 
 protected:
-	void lockRequestQueue();
+	void lockRequestQueue() const;
 	void clearRequestQueue();
 	void addToRequestQueue(QString command, int expecting);
 	void runRequestQueue();

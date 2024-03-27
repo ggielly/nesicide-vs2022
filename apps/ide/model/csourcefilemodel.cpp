@@ -33,7 +33,7 @@ QUuid CSourceFileModel::addExistingSourceFile(const QString& path)
 	return file->uuid();
 }
 
-void CSourceFileModel::fileProperties(const QUuid& uuid)
+void CSourceFileModel::fileProperties(const QUuid& uuid) const
 {
 	if (m_pNesicideProject == nullptr)
 		return;

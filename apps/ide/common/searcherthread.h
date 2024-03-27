@@ -42,7 +42,7 @@ public:
 
 public slots:
 	void search(QDir dir, QString searchText, QString pattern, bool subfolders, bool sourceSearchPaths, bool useRegex,
-	            bool caseSensitive)
+	            bool caseSensitive) const
 	{
 		pWorker->search(dir, searchText, pattern, subfolders, sourceSearchPaths, useRegex, caseSensitive);
 	}

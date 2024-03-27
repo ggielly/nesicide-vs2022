@@ -55,7 +55,7 @@ NESEmulatorControl::~NESEmulatorControl()
 	delete ui;
 }
 
-QList<QAction*> NESEmulatorControl::menu()
+QList<QAction*> NESEmulatorControl::menu() const
 {
 	QList<QAction*> items;
 	items.append(ui->actionDebugging);

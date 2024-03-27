@@ -34,7 +34,7 @@ OAMVisualizerDockWidget::~OAMVisualizerDockWidget()
 	delete renderer;
 }
 
-void OAMVisualizerDockWidget::updateTargetMachine(QString target)
+void OAMVisualizerDockWidget::updateTargetMachine(QString target) const
 {
 	if (!target.compare("nes"))
 	{

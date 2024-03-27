@@ -178,7 +178,7 @@ void SearchWidget::searcher_searchDone(int found)
 	searchTextLogger->write("<b>" + QString::number(found) + " found.</b>");
 }
 
-void SearchWidget::on_projectFolder_clicked(bool checked)
+void SearchWidget::on_projectFolder_clicked(bool checked) const
 {
 	ui->location->setEnabled(!checked);
 	ui->browse->setEnabled(!checked);

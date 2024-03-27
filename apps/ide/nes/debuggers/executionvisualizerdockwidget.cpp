@@ -60,7 +60,7 @@ ExecutionVisualizerDockWidget::~ExecutionVisualizerDockWidget()
 	delete model;
 }
 
-void ExecutionVisualizerDockWidget::updateTargetMachine(QString target)
+void ExecutionVisualizerDockWidget::updateTargetMachine(QString target) const
 {
 	if (target.compare("none"))
 	{

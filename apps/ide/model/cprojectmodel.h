@@ -41,7 +41,7 @@ public:
 	void visitDataItem(const QUuid& uuid, IUuidVisitor& visitor);
 
 	// Submodel retrieval.
-	CAttributeModel* getAttributeModel() { return m_pAttributeModel; }
+	CAttributeModel* getAttributeModel() const { return m_pAttributeModel; }
 	CBinaryFileModel* getBinaryFileModel() { return m_pBinaryFileModel; }
 	CCartridgeModel* getCartridgeModel() { return m_pCartridgeModel; }
 	CFilterModel* getFilterModel() { return m_pFilterModel; }

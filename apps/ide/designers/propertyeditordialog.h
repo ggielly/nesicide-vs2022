@@ -22,7 +22,7 @@ public:
 	~PropertyEditorDialog() override;
 
 	QString propertyName() { return property.name; }
-	propertyTypeEnum propertyType() { return property.type; }
+	propertyTypeEnum propertyType() const { return property.type; }
 	QString propertyValue() { return property.value; }
 
 	void setPropertyName(QString name) { property.name = name; }

@@ -57,7 +57,7 @@ public:
 	QByteArray attributeData(bool useOverlay = false);
 	QList<PropertyItem> tileProperties() { return m_tileProperties; }
 
-	void currentSize(int* xSize, int* ySize)
+	void currentSize(int* xSize, int* ySize) const
 	{
 		(*xSize) = m_xSize;
 		(*ySize) = m_ySize;
@@ -139,7 +139,7 @@ private slots:
 	void xSize_currentIndexChanged(int index);
 	void colorPicked(bool value);
 	void on_verticalScrollBar_valueChanged(int value);
-	void on_horizontalScrollBar_valueChanged(int value);
+	void on_horizontalScrollBar_valueChanged(int value) const;
 	void on_zoomSlider_valueChanged(int value);
 	void applyChangesToTab(QString uuid) override;
 	void tilePropertyListModel_dataChanged(QModelIndex topLeft, QModelIndex bottomRight);

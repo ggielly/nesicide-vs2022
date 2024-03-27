@@ -52,7 +52,7 @@ public slots:
 	void compiler_compileDone(bool ok);
 	void compiler_cleanStarted();
 	void compiler_cleanDone(bool ok);
-	void searcher_searchDone(int results);
+	void searcher_searchDone(int results) const;
 	void handleVisibilityChanged(bool visible);
 
 signals:

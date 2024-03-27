@@ -76,7 +76,7 @@ void CExpandableStatusBar::addExpandingWidget(QWidget* widget, int stretch)
 	ui->frame->update();
 }
 
-void CExpandableStatusBar::addWidget(QWidget* widget, int stretch)
+void CExpandableStatusBar::addWidget(QWidget* widget, int stretch) const
 {
 	ui->horizontalLayout->insertWidget(0, widget, stretch, Qt::AlignLeft);
 }

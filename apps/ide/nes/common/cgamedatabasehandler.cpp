@@ -41,7 +41,7 @@ bool CGameDatabaseHandler::initialize(QString fileName)
 	return openedFile;
 }
 
-QString CGameDatabaseHandler::getGameDBTimestamp()
+QString CGameDatabaseHandler::getGameDBTimestamp() const
 {
 	QDomElement docElem = m_db.documentElement();
 	return docElem.attribute("timestamp");

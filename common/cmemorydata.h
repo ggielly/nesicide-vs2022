@@ -103,7 +103,7 @@ public:
 		return m_size;
 	}
 
-	uint32_t GetCellRedComponent(int idx)
+	uint32_t GetCellRedComponent(int idx) const
 	{
 		if (m_cellRed)
 		{

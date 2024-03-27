@@ -18,7 +18,7 @@ PPUInformationDockWidget::~PPUInformationDockWidget()
 	delete ui;
 }
 
-void PPUInformationDockWidget::updateTargetMachine(QString target)
+void PPUInformationDockWidget::updateTargetMachine(QString target) const
 {
 	if (!target.compare("nes"))
 	{

@@ -20,7 +20,7 @@ public:
 	void setPath(QString path) { m_path = path; }
 
 	void setEditor(CDesignerEditorBase* editor) { m_editor = editor; }
-	CDesignerEditorBase* editor() { return m_editor; }
+	CDesignerEditorBase* editor() const { return m_editor; }
 
 	void setIncludeInBuild(bool include) { m_includeInBuild = include; }
 	bool includeInBuild() { return m_includeInBuild; }

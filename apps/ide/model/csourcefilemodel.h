@@ -22,7 +22,7 @@ public:
 	void removeSourceFile(const QUuid& uuid);
 
 	// Properties handler.
-	void fileProperties(const QUuid& uuid);
+	void fileProperties(const QUuid& uuid) const;
 
 	QList<QUuid> getUuids() const override;
 	QString getName(const QUuid& uuid) const override;

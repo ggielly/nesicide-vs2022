@@ -53,7 +53,7 @@ C64EmulatorControl::~C64EmulatorControl()
 	delete ui;
 }
 
-QList<QAction*> C64EmulatorControl::menu()
+QList<QAction*> C64EmulatorControl::menu() const
 {
 	QList<QAction*> items;
 	items.append(ui->actionDebugging);

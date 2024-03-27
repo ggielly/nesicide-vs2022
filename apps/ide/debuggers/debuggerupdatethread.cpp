@@ -67,7 +67,7 @@ DebuggerUpdateThread::~DebuggerUpdateThread()
 	pMutex->unlock();
 }
 
-void DebuggerUpdateThread::updateDebuggers()
+void DebuggerUpdateThread::updateDebuggers() const
 {
 	if (!silenced)
 	{

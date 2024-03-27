@@ -528,7 +528,7 @@ bool QsciLexerCA65::readSettings(QSettings& qs, const char* prefix)
 	return QsciLexer::readSettings(qs, prefix);
 }
 
-bool QsciLexerCA65::writeSettings(QSettings& qs, const char* prefix)
+bool QsciLexerCA65::writeSettings(QSettings& qs, const char* prefix) const
 {
 	return QsciLexer::writeSettings(qs, prefix);
 }

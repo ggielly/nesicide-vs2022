@@ -39,7 +39,7 @@ private:
 	QString selectNewFileName();
 	QString selectNewItemName(const QString& caption, const QString& text);
 
-	void appendGlobalMenuItems(QMenu* menu);
+	void appendGlobalMenuItems(QMenu* menu) const;
 
 private slots:
 	void newGraphicsBank();

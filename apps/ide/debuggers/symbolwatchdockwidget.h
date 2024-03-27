@@ -64,7 +64,7 @@ signals:
 private slots:
 	void on_actionGo_to_Definition_triggered();
 	void updateUi();
-	void updateVariables();
+	void updateVariables() const;
 	void addWatchedItem(QString item);
 	void on_actionRemove_symbol_triggered();
 	void on_actionBreak_on_CPU_access_here_triggered();

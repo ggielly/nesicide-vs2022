@@ -23,7 +23,7 @@ public:
 	void setBGColor(QColor clr);
 	void setScrollX(int scrollX) { _scrollX = scrollX; }
 	void setScrollY(int scrollY) { _scrollY = scrollY; }
-	bool pointToPixel(int ptx, int pty, int* pixx, int* pixy);
+	bool pointToPixel(int ptx, int pty, int* pixx, int* pixy) const;
 
 protected:
 	void DeleteFunctions()

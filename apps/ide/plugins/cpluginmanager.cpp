@@ -1,12 +1,17 @@
 #include "cpluginmanager.h"
 
-#if defined(Q_OS_MAC) || defined(Q_OS_MACX) || defined(Q_OS_MAC64)
-#include <sys/stat.h>
-#endif
+//#if defined(Q_OS_MAC) || defined(Q_OS_MACX) || defined(Q_OS_MAC64)
+//#include <sys/stat.h>
+//#endif
+
 
 #include <QCoreApplication>
 #include <QDir>
+
 #include "../../libs/lua-5.1.5/src/lua.h"
+#include "../../libs/lua-5.1.5/src/lua.h"
+
+
 
 static int luabind_compiler_logger_print(lua_State* lua);
 

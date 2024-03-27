@@ -48,7 +48,7 @@ BreakpointDockWidget::~BreakpointDockWidget()
 	delete model;
 }
 
-void BreakpointDockWidget::updateTargetMachine(QString target)
+void BreakpointDockWidget::updateTargetMachine(QString target) const
 {
 	if (target.compare("none"))
 	{

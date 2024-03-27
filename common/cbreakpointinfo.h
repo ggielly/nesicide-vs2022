@@ -119,7 +119,7 @@ public:
 		return m_elementRadix;
 	}
 
-	bool Evaluate(struct _BreakpointInfo* pBreakpoint, int data)
+	bool Evaluate(struct _BreakpointInfo* pBreakpoint, int data) const
 	{
 		return m_evalFunc(pBreakpoint, data);
 	}
@@ -182,7 +182,7 @@ public:
 	                   eBreakpointDataType data_type, int data) const;
 	void ToggleEnabled(int bp);
 	void SetEnabled(int bp, bool enabled);
-	BreakpointStatus GetStatus(int idx);
+	BreakpointStatus GetStatus(int idx) const;
 	virtual void GetPrintable(int idx, char* msg) = 0; // Must be provided by subclass.
 	virtual void GetHitPrintable(int idx, char* hmsg) = 0; // Must be provided by subclass.
 	int GetNumBreakpoints(void) const

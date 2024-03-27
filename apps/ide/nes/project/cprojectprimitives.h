@@ -19,7 +19,7 @@ public:
 	void initializeProject();
 	void terminateProject();
 
-	CAttributeTables* getAttributeTables() { return m_pAttributeTables; }
+	CAttributeTables* getAttributeTables() const { return m_pAttributeTables; }
 	CTileStamps* getTileStamps() { return m_pTileStamps; }
 
 	// IXMLSerializable Interface Implementation

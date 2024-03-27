@@ -32,7 +32,7 @@ private:
 	CProjectTabWidget* m_tabWidget;
 	CProjectModel* m_project;
 
-	void doVisit(CSubModel* model, const QUuid& uuid);
+	void doVisit(CSubModel* model, const QUuid& uuid) const;
 };
 
 #endif // CPROJECTTREEOPENACTION_H

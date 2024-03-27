@@ -290,7 +290,7 @@ void EnvironmentSettingsDialog::readSettings()
 	settings.endGroup();
 }
 
-void EnvironmentSettingsDialog::writeSettings()
+void EnvironmentSettingsDialog::writeSettings() const
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 

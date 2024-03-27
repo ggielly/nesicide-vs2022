@@ -27,7 +27,7 @@ protected:
 
 public slots:
 	void renderData();
-	void updateTargetMachine(QString target);
+	void updateTargetMachine(QString target) const;
 
 private slots:
 	void on_showVisible_toggled(bool checked);

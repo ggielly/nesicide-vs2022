@@ -24,7 +24,7 @@ QList<IChrRomBankItem*> CGraphicsBank::getGraphics()
 	return m_bankItems;
 }
 
-uint32_t CGraphicsBank::getSize()
+uint32_t CGraphicsBank::getSize() const
 {
 	return m_bankSize;
 }

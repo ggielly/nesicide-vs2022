@@ -17,7 +17,7 @@ public:
 	void importFromPNG();
 
 	// Member Getters
-	uint32_t getBankIndex() { return m_bankIndex; }
+	uint32_t getBankIndex() const { return m_bankIndex; }
 	uint8_t* getBankData() { return m_bankData; }
 
 	// Member Setters
