@@ -454,7 +454,7 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 	// Filter for supported files to open.
 	const QStringList argv_nesproject = argv.filter(QRegExp(".*[.]nesproject$", Qt::CaseInsensitive));
 	const QStringList argv_nes = argv.filter(QRegExp(".*[.]nes$", Qt::CaseInsensitive));
-	const QStringList argv_c64project = argv.filter(QRegExp(".*[.]c64project$", Qt::CaseInsensitive));
+	const QStringList argv_c64_project = argv.filter(QRegExp(".*[.]c64project$", Qt::CaseInsensitive));
 	const QStringList argv_c64 = argv.filter(QRegExp(".*[.](c64|prg|d64)$", Qt::CaseInsensitive));
 	QStringList argv_ftm = argv.filter(QRegExp(".*[.](ftm)$", Qt::CaseInsensitive));
 
@@ -462,7 +462,7 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 	if (argv_nes.count()
 		+ argv_nesproject.count()
 		+ argv_c64.count()
-		+ argv_c64project.count() > 1)
+		+ argv_c64_project.count() > 1)
 	{
 		const QString error = "Conflicting command line arguments:\n\n" + argv.join(" ");
 		QMessageBox::information(nullptr, "Command Line Error", error);
@@ -487,9 +487,9 @@ MainWindow::MainWindow(CProjectModel* projectModel, QWidget* parent) :
 	{
 		openC64File(argv_c64.at(0));
 	}
-	else if (argv_c64project.count() >= 1)
+	else if (argv_c64_project.count() >= 1)
 	{
-		openC64Project(argv_c64project.at(0));
+		openC64Project(argv_c64_project.at(0));
 	}
 
 	projectDataChangesEvent();
@@ -534,7 +534,7 @@ MainWindow::~MainWindow()
 	delete m_pC64EmulatorThread;
 }
 
-void MainWindow::openRecentFile()
+void MainWindow::open_recent_file()
 {
 	const auto action = dynamic_cast<QAction*>(sender());
 	const QString fileName = action->text();
@@ -576,21 +576,21 @@ void MainWindow::updateRecentFiles() const
 	}
 }
 
-void MainWindow::saveRecentFiles(QString fileName)
+void MainWindow::saveRecentFiles(const QString file_name)
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 
-	QStringList recentFiles = settings.value("RecentFiles").toStringList();
-	recentFiles.removeAll(fileName);
-	recentFiles.insert(0, fileName);
-	if (recentFiles.count() > MAX_RECENT_FILES)
+	QStringList recent_files = settings.value("RecentFiles").toStringList();
+	recent_files.removeAll(file_name);
+	recent_files.insert(0, file_name);
+	if (recent_files.count() > MAX_RECENT_FILES)
 	{
-		recentFiles.removeLast();
+		recent_files.removeLast();
 	}
-	settings.setValue("RecentFiles", recentFiles);
+	settings.setValue("RecentFiles", recent_files);
 }
 
-void MainWindow::applicationActivationChanged(bool activated)
+void MainWindow::applicationActivationChanged(const bool activated)
 {
 	QFileInfo fileInfo;
 #if QT_VERSION >= 0x040700
@@ -648,7 +648,7 @@ void MainWindow::applicationActivationChanged(bool activated)
 	m_lastActivationChangeTime = now;
 }
 
-void MainWindow::createTarget(QString target)
+void MainWindow::createTarget(const QString target)
 {
 	if (!target.compare("nes", Qt::CaseInsensitive))
 	{
@@ -1806,7 +1806,7 @@ void MainWindow::dragMoveEvent(QDragMoveEvent* event)
 	}
 }
 
-bool MainWindow::openAnyFile(QString fileName)
+bool MainWindow::openAnyFile(const QString fileName)
 {
 	QFileInfo fileInfo;
 	const bool opened = false;
@@ -1939,7 +1939,7 @@ void MainWindow::projectDataChangesEvent()
 	setWindowTitle(CNesicideProject::instance()->getProjectTitle().append("[*] - NESICIDE"));
 }
 
-void MainWindow::markProjectDirty(bool dirty)
+void MainWindow::markProjectDirty(const bool dirty)
 {
 	CNesicideProject::instance()->setDirty(dirty);
 	setWindowModified(dirty);
@@ -1985,7 +1985,7 @@ void MainWindow::removePermanentStatusBarWidget(QWidget* widget)
 	appStatusBar->removeWidget(widget);
 }
 
-void MainWindow::setStatusBarMessage(QString message)
+void MainWindow::setStatusBarMessage(const QString message)
 {
 	appStatusBar->showMessage(message, 2000);
 }
@@ -2151,7 +2151,7 @@ void MainWindow::on_actionProject_Properties_triggered()
 	emit applyProjectProperties();
 }
 
-void MainWindow::explodeAddOn(int level, QString projectName, QString addonDirName, QString localDirName)
+void MainWindow::explodeAddOn(const int level, QString projectName, QString addonDirName, QString localDirName)
 {
 	const QDir addonDir(addonDirName);
 	QDir localDir;
@@ -2231,8 +2231,8 @@ void MainWindow::explodeAddOn(int level, QString projectName, QString addonDirNa
 	}
 }
 
-void MainWindow::explodeTemplate(int level, QString templateName, QString projectName, QString templateDirName,
-	QString localDirName, QString* projectFileName)
+void MainWindow::explodeTemplate(const int level, QString templateName, QString projectName, QString templateDirName,
+                                 QString localDirName, QString* projectFileName)
 {
 	const QDir templateDir(templateDirName);
 	const QDir localDir;
@@ -2425,7 +2425,7 @@ void MainWindow::on_actionNew_Project_triggered()
 	}
 }
 
-void MainWindow::openNesROM(QString fileName, bool runRom)
+void MainWindow::openNesROM(QString fileName, const bool runRom)
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 	const QFileInfo fi(fileName);
@@ -2589,7 +2589,7 @@ void MainWindow::on_actionCreate_Project_from_File_triggered()
 	}
 }
 
-void MainWindow::tabWidget_tabModified(int tab, bool modified)
+void MainWindow::tabWidget_tabModified(const int tab, const bool modified)
 {
 	QList<QAction*> actions = menuWindow->actions();
 	QString match;
@@ -2651,7 +2651,7 @@ void MainWindow::tabWidget_tabAdded(int tab)
 	menuWindow->setEnabled(true);
 }
 
-void MainWindow::on_tabWidget_tabCloseRequested(int index)
+void MainWindow::on_tabWidget_tabCloseRequested(const int index)
 {
 	const auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->widget(index));
 	int tab;
@@ -2745,7 +2745,7 @@ void MainWindow::timerEvent(QTimerEvent*/*event*/)
 	//   on_actionCompile_Project_triggered();
 }
 
-void MainWindow::openNesProject(QString fileName, bool runRom)
+void MainWindow::openNesProject(QString fileName, const bool runRom)
 {
 	QSettings settings(QSettings::IniFormat, QSettings::UserScope, "CSPSoftware", "NESICIDE");
 	QString errors;
@@ -2950,7 +2950,7 @@ void MainWindow::on_actionOpen_Project_triggered()
 	}
 }
 
-void MainWindow::on_tabWidget_currentChanged(int index)
+void MainWindow::on_tabWidget_currentChanged(const int index)
 {
 	const auto projectItem = dynamic_cast<ICenterWidgetItem*>(tabWidget->widget(index));
 	int idx;
@@ -3351,7 +3351,7 @@ void MainWindow::actionPAL_triggered()
 	emit startEmulation();
 }
 
-void MainWindow::actionDelta_Modulation_toggled(bool value)
+void MainWindow::actionDelta_Modulation_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setDMCEnabled(value);
 	if (value)
@@ -3371,7 +3371,7 @@ void MainWindow::actionDelta_Modulation_toggled(bool value)
 	}
 }
 
-void MainWindow::actionNoise_toggled(bool value)
+void MainWindow::actionNoise_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setNoiseEnabled(value);
 	if (value)
@@ -3391,7 +3391,7 @@ void MainWindow::actionNoise_toggled(bool value)
 	}
 }
 
-void MainWindow::actionTriangle_toggled(bool value)
+void MainWindow::actionTriangle_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setTriangleEnabled(value);
 	if (value)
@@ -3411,7 +3411,7 @@ void MainWindow::actionTriangle_toggled(bool value)
 	}
 }
 
-void MainWindow::actionSquare_2_toggled(bool value)
+void MainWindow::actionSquare_2_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setSquare2Enabled(value);
 	if (value)
@@ -3431,7 +3431,7 @@ void MainWindow::actionSquare_2_toggled(bool value)
 	}
 }
 
-void MainWindow::actionSquare_1_toggled(bool value)
+void MainWindow::actionSquare_1_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setSquare1Enabled(value);
 	if (value)
@@ -3451,7 +3451,7 @@ void MainWindow::actionSquare_1_toggled(bool value)
 	}
 }
 
-void MainWindow::actionSawtoothVRC6_toggled(bool value)
+void MainWindow::actionSawtoothVRC6_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setSawtoothVRC6Enabled(value);
 	if (value)
@@ -3467,7 +3467,7 @@ void MainWindow::actionSawtoothVRC6_toggled(bool value)
 	}
 }
 
-void MainWindow::actionPulse_2VRC6_toggled(bool value)
+void MainWindow::actionPulse_2VRC6_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setPulse2VRC6Enabled(value);
 	if (value)
@@ -3483,7 +3483,7 @@ void MainWindow::actionPulse_2VRC6_toggled(bool value)
 	}
 }
 
-void MainWindow::actionPulse_1VRC6_toggled(bool value)
+void MainWindow::actionPulse_1VRC6_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setPulse1VRC6Enabled(value);
 	if (value)
@@ -3499,7 +3499,7 @@ void MainWindow::actionPulse_1VRC6_toggled(bool value)
 	}
 }
 
-void MainWindow::actionDMCMMC5_toggled(bool value)
+void MainWindow::actionDMCMMC5_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setDMCMMC5Enabled(value);
 	if (value)
@@ -3515,7 +3515,7 @@ void MainWindow::actionDMCMMC5_toggled(bool value)
 	}
 }
 
-void MainWindow::actionSquare_2MMC5_toggled(bool value)
+void MainWindow::actionSquare_2MMC5_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setSquare2MMC5Enabled(value);
 	if (value)
@@ -3531,7 +3531,7 @@ void MainWindow::actionSquare_2MMC5_toggled(bool value)
 	}
 }
 
-void MainWindow::actionSquare_1MMC5_toggled(bool value)
+void MainWindow::actionSquare_1MMC5_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setSquare1MMC5Enabled(value);
 	if (value)
@@ -3547,7 +3547,7 @@ void MainWindow::actionSquare_1MMC5_toggled(bool value)
 	}
 }
 
-void MainWindow::actionWave_8N106_toggled(bool value)
+void MainWindow::actionWave_8N106_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setWave8N106Enabled(value);
 	if (value)
@@ -3573,7 +3573,7 @@ void MainWindow::actionWave_8N106_toggled(bool value)
 	}
 }
 
-void MainWindow::actionWave_7N106_toggled(bool value)
+void MainWindow::actionWave_7N106_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setWave7N106Enabled(value);
 	if (value)
@@ -3599,7 +3599,7 @@ void MainWindow::actionWave_7N106_toggled(bool value)
 	}
 }
 
-void MainWindow::actionWave_6N106_toggled(bool value)
+void MainWindow::actionWave_6N106_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setWave6N106Enabled(value);
 	if (value)
@@ -3625,7 +3625,7 @@ void MainWindow::actionWave_6N106_toggled(bool value)
 	}
 }
 
-void MainWindow::actionWave_5N106_toggled(bool value)
+void MainWindow::actionWave_5N106_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setWave5N106Enabled(value);
 	if (value)
@@ -3651,7 +3651,7 @@ void MainWindow::actionWave_5N106_toggled(bool value)
 	}
 }
 
-void MainWindow::actionWave_4N106_toggled(bool value)
+void MainWindow::actionWave_4N106_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setWave4N106Enabled(value);
 	if (value)
@@ -3677,7 +3677,7 @@ void MainWindow::actionWave_4N106_toggled(bool value)
 	}
 }
 
-void MainWindow::actionWave_3N106_toggled(bool value)
+void MainWindow::actionWave_3N106_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setWave3N106Enabled(value);
 	if (value)
@@ -3703,7 +3703,7 @@ void MainWindow::actionWave_3N106_toggled(bool value)
 	}
 }
 
-void MainWindow::actionWave_2N106_toggled(bool value)
+void MainWindow::actionWave_2N106_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setWave2N106Enabled(value);
 	if (value)
@@ -3729,7 +3729,7 @@ void MainWindow::actionWave_2N106_toggled(bool value)
 	}
 }
 
-void MainWindow::actionWave_1N106_toggled(bool value)
+void MainWindow::actionWave_1N106_toggled(const bool value)
 {
 	EmulatorPrefsDialog::setWave1N106Enabled(value);
 	if (value)
@@ -3767,7 +3767,7 @@ void MainWindow::on_actionEnvironment_Settings_triggered()
 	}
 }
 
-void MainWindow::updateFromEmulatorPrefs(bool initial)
+void MainWindow::updateFromEmulatorPrefs(const bool initial)
 {
 	// Synchronize UI elements with changes.
 	if (initial || EmulatorPrefsDialog::systemSettingsChanged())
@@ -3965,7 +3965,7 @@ void MainWindow::on_actionClean_Project_triggered()
 	emit clean();
 }
 
-void MainWindow::openFile(QString file)
+void MainWindow::openFile(const QString file)
 {
 	const QDir dir(QDir::currentPath());
 	const QString fileName = dir.fromNativeSeparators(dir.filePath(file));
@@ -3986,7 +3986,7 @@ void MainWindow::openFile(QString file)
 	}
 }
 
-void MainWindow::actionFullscreen_toggled(bool value)
+void MainWindow::actionFullscreen_toggled(const bool value)
 {
 	if (value)
 	{

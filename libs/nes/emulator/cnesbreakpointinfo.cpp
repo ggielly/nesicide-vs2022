@@ -94,7 +94,7 @@ void CNESBreakpointInfo::ModifyBreakpoint ( BreakpointInfo* pBreakpoint, int typ
 void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
 {
    CRegisterData* pRegister;
-   c_bitfield_data* pBitfield;
+   CBitfieldData* pBitfield;
    char printableAddress[32];
 
    switch ( m_breakpoint[idx].type )
@@ -1250,19 +1250,19 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                   sprintf ( msg, "Break if %s::%s is '%s'",
                             pRegister->GetName(),
                             pBitfield->get_name(),
-                            pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
+                            pBitfield->get_value_by_index(m_breakpoint[idx].data) );
                   break;
                case eBreakIfEqual:
                   sprintf ( msg, "Break if %s::%s is '%s'",
                             pRegister->GetName(),
                             pBitfield->get_name(),
-                            pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
+                            pBitfield->get_value_by_index(m_breakpoint[idx].data) );
                   break;
                case eBreakIfNotEqual:
                   sprintf ( msg, "Break if %s::%s is not '%s'",
                             pRegister->GetName(),
                             pBitfield->get_name(),
-                            pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
+                            pBitfield->get_value_by_index(m_breakpoint[idx].data) );
                   break;
                case eBreakIfGreaterThan:
                   sprintf ( msg, "Break if %s::%s is greater than %X",
@@ -1500,13 +1500,13 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                   sprintf ( msg, "Break if %s::%s is '%s'",
                             pRegister->GetName(),
                             pBitfield->get_name(),
-                            pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
+                            pBitfield->get_value_by_index(m_breakpoint[idx].data) );
                   break;
                case eBreakIfNotEqual:
                   sprintf ( msg, "Break if %s::%s is not '%s'",
                             pRegister->GetName(),
                             pBitfield->get_name(),
-                            pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
+                            pBitfield->get_value_by_index(m_breakpoint[idx].data) );
                   break;
                case eBreakIfGreaterThan:
                   sprintf ( msg, "Break if %s::%s is greater than %X",
@@ -1618,13 +1618,13 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                   sprintf ( msg, "Break if %s::%s is '%s'",
                             pRegister->GetName(),
                             pBitfield->get_name(),
-                            pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
+                            pBitfield->get_value_by_index(m_breakpoint[idx].data) );
                   break;
                case eBreakIfNotEqual:
                   sprintf ( msg, "Break if %s::%s is not '%s'",
                             pRegister->GetName(),
                             pBitfield->get_name(),
-                            pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
+                            pBitfield->get_value_by_index(m_breakpoint[idx].data) );
                   break;
                case eBreakIfGreaterThan:
                   sprintf ( msg, "Break if %s::%s is greater than %X",
@@ -1739,13 +1739,13 @@ void CNESBreakpointInfo::GetPrintable (const int idx, char* msg )
                      sprintf ( msg, "Break if %s::%s is '%s'",
                                pRegister->GetName(),
                                pBitfield->get_name(),
-                               pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
+                               pBitfield->get_value_by_index(m_breakpoint[idx].data) );
                      break;
                   case eBreakIfNotEqual:
                      sprintf ( msg, "Break if %s::%s is not '%s'",
                                pRegister->GetName(),
                                pBitfield->get_name(),
-                               pBitfield->GetValueByIndex(m_breakpoint[idx].data) );
+                               pBitfield->get_value_by_index(m_breakpoint[idx].data) );
                      break;
                   case eBreakIfGreaterThan:
                      sprintf ( msg, "Break if %s::%s is greater than %X",

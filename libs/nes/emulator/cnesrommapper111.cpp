@@ -19,13 +19,13 @@
 #include "cregisterdata.h"
 
 // Mapper 111 Registers
-static c_bitfield_data* tbl5000_5FFFBitfields [] =
+static CBitfieldData* tbl5000_5FFFBitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 4, "%X", 0),
-   new c_bitfield_data("CHR Bank", 4, 1, "%X", 0),
-   new c_bitfield_data("Nametable Bank", 5, 1, "%X", 0),
-   new c_bitfield_data("Red LED", 6, 1, "%X", 2, "On", "Off"),
-   new c_bitfield_data("Green LED", 7, 1, "%X", 2, "On", "Off")
+   new CBitfieldData("PRG Bank", 0, 4, "%X", 0),
+   new CBitfieldData("CHR Bank", 4, 1, "%X", 0),
+   new CBitfieldData("Nametable Bank", 5, 1, "%X", 0),
+   new CBitfieldData("Red LED", 6, 1, "%X", 2, "On", "Off"),
+   new CBitfieldData("Green LED", 7, 1, "%X", 2, "On", "Off")
 };
 
 static CRegisterData* tblRegisters [] =

@@ -44,15 +44,15 @@ private:
 	int m_register;
 
 private slots:
-	void on_binaryView_entered(QModelIndex index);
-	void on_binaryView_activated(QModelIndex index);
-	void on_binaryView_pressed(QModelIndex index);
-	void on_binaryView_clicked(QModelIndex index);
-	void on_binaryView_doubleClicked(QModelIndex index);
-	void on_bitfieldView_doubleClicked(QModelIndex index) const;
-	void on_bitfieldView_clicked(QModelIndex index);
-	void binaryView_currentChanged(QModelIndex index, QModelIndex);
-	void updateTargetMachine(QString target) const;
+	void on_binaryView_entered(const QModelIndex& index);
+	void on_binaryView_activated(const QModelIndex& index);
+	void on_binaryView_pressed(const QModelIndex& index);
+	void on_binaryView_clicked(const QModelIndex& index);
+	void on_binaryView_doubleClicked(const QModelIndex& index);
+	void on_bitfieldView_doubleClicked(const QModelIndex& index) const;
+	void on_bitfieldView_clicked(const QModelIndex& index);
+	void binaryView_currentChanged(const QModelIndex& index, QModelIndex);
+	void updateTargetMachine(const QString& target) const;
 };
 
 #endif // REGISTERINSPECTORDOCKWIDGET_H

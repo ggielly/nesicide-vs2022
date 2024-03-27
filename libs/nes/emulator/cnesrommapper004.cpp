@@ -21,47 +21,47 @@
 #include "cregisterdata.h"
 
 // Mapper 004 Registers
-static c_bitfield_data* tbl8000Bitfields [] =
+static CBitfieldData* tbl8000Bitfields [] =
 {
-   new c_bitfield_data("CHR Mode", 7, 1, "%X", 2, "2KBx2,1KBx4", "1KBx4,2KBx2"),
-   new c_bitfield_data("PRG Mode", 6, 1, "%X", 2, "8000 and A000 swappable, C000 and E000 fixed to last bank", "8000 and E000 swappable, A000 and C000 fixed to last bank"),
-   new c_bitfield_data("Address", 0, 3, "%X", 8, "CHR Register 0", "CHR Register 1", "CHR Register 2", "CHR Register 3", "CHR Register 4", "CHR Register 5", "PRG Register 0", "PRG Register 1")
+   new CBitfieldData("CHR Mode", 7, 1, "%X", 2, "2KBx2,1KBx4", "1KBx4,2KBx2"),
+   new CBitfieldData("PRG Mode", 6, 1, "%X", 2, "8000 and A000 swappable, C000 and E000 fixed to last bank", "8000 and E000 swappable, A000 and C000 fixed to last bank"),
+   new CBitfieldData("Address", 0, 3, "%X", 8, "CHR Register 0", "CHR Register 1", "CHR Register 2", "CHR Register 3", "CHR Register 4", "CHR Register 5", "PRG Register 0", "PRG Register 1")
 };
 
-static c_bitfield_data* tbl8001Bitfields [] =
+static CBitfieldData* tbl8001Bitfields [] =
 {
-   new c_bitfield_data("Data", 0, 8, "%02X", 0)
+   new CBitfieldData("Data", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tblA000Bitfields [] =
+static CBitfieldData* tblA000Bitfields [] =
 {
-   new c_bitfield_data("Mirroring", 0, 1, "%X", 2, "Vertical", "Horizontal")
+   new CBitfieldData("Mirroring", 0, 1, "%X", 2, "Vertical", "Horizontal")
 };
 
-static c_bitfield_data* tblA001Bitfields [] =
+static CBitfieldData* tblA001Bitfields [] =
 {
-   new c_bitfield_data("WRAM", 7, 1, "%X", 2, "Disabled", "Enabled"),
-   new c_bitfield_data("WRAM Write-protect", 6, 1, "%X", 2, "Off", "On")
+   new CBitfieldData("WRAM", 7, 1, "%X", 2, "Disabled", "Enabled"),
+   new CBitfieldData("WRAM Write-protect", 6, 1, "%X", 2, "Off", "On")
 };
 
-static c_bitfield_data* tblC000Bitfields [] =
+static CBitfieldData* tblC000Bitfields [] =
 {
-   new c_bitfield_data("IRQ Reload", 0, 8, "%02X", 0)
+   new CBitfieldData("IRQ Reload", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tblC001Bitfields [] =
+static CBitfieldData* tblC001Bitfields [] =
 {
-   new c_bitfield_data("IRQ Clear", 0, 8, "%02X", 0)
+   new CBitfieldData("IRQ Clear", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tblE000Bitfields [] =
+static CBitfieldData* tblE000Bitfields [] =
 {
-   new c_bitfield_data("IRQ Ack/Disable", 0, 8, "%02X", 0)
+   new CBitfieldData("IRQ Ack/Disable", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tblE001Bitfields [] =
+static CBitfieldData* tblE001Bitfields [] =
 {
-   new c_bitfield_data("IRQ Enable", 0, 8, "%02X", 0)
+   new CBitfieldData("IRQ Enable", 0, 8, "%02X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

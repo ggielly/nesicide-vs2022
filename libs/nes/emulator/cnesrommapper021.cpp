@@ -21,46 +21,46 @@
 #include "cregisterdata.h"
 
 // Mapper 021 Registers
-static c_bitfield_data* tbl8000Bitfields [] =
+static CBitfieldData* tbl8000Bitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 5, "%X", 0)
+   new CBitfieldData("PRG Bank", 0, 5, "%X", 0)
 };
 
-static c_bitfield_data* tbl9000Bitfields [] =
+static CBitfieldData* tbl9000Bitfields [] =
 {
-   new c_bitfield_data("Mirroring", 0, 2, "%X", 4, "Vertical", "Horizontal", "One-screen A", "One-screen B")
+   new CBitfieldData("Mirroring", 0, 2, "%X", 4, "Vertical", "Horizontal", "One-screen A", "One-screen B")
 };
 
-static c_bitfield_data* tbl9004Bitfields [] =
+static CBitfieldData* tbl9004Bitfields [] =
 {
-   new c_bitfield_data("PRG Swap Mode", 1, 1, "%X", 2, "Swap $8000", "Swap $C000")
+   new CBitfieldData("PRG Swap Mode", 1, 1, "%X", 2, "Swap $8000", "Swap $C000")
 };
 
-static c_bitfield_data* tblB000Bitfields [] =
+static CBitfieldData* tblB000Bitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 4, "%X", 0)
+   new CBitfieldData("CHR Bank", 0, 4, "%X", 0)
 };
 
-static c_bitfield_data* tblF000Bitfields [] =
+static CBitfieldData* tblF000Bitfields [] =
 {
-   new c_bitfield_data("IRQ Latch LSN", 0, 4, "%X", 0)
+   new CBitfieldData("IRQ Latch LSN", 0, 4, "%X", 0)
 };
 
-static c_bitfield_data* tblF002Bitfields [] =
+static CBitfieldData* tblF002Bitfields [] =
 {
-   new c_bitfield_data("IRQ Latch HSN", 0, 4, "%X", 0)
+   new CBitfieldData("IRQ Latch HSN", 0, 4, "%X", 0)
 };
 
-static c_bitfield_data* tblF004Bitfields [] =
+static CBitfieldData* tblF004Bitfields [] =
 {
-   new c_bitfield_data("IRQ Enable after ack", 0, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("IRQ Enable", 1, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("IRQ Mode", 2, 1, "%X", 2, "Scanline mode", "Cycle mode")
+   new CBitfieldData("IRQ Enable after ack", 0, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("IRQ Enable", 1, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("IRQ Mode", 2, 1, "%X", 2, "Scanline mode", "Cycle mode")
 };
 
-static c_bitfield_data* tblF006Bitfields [] =
+static CBitfieldData* tblF006Bitfields [] =
 {
-   new c_bitfield_data("IRQ Acknowledge", 0, 8, "%X", 0)
+   new CBitfieldData("IRQ Acknowledge", 0, 8, "%X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

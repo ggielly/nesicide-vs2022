@@ -20,45 +20,45 @@
 #include "cregisterdata.h"
 
 // Mapper 033 Registers
-static c_bitfield_data* tbl8000Bitfields [] =
+static CBitfieldData* tbl8000Bitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 6, "%X", 0),
-   new c_bitfield_data("Mirroring", 6, 1, "%X", 2, "Vertical", "Horizontal")
+   new CBitfieldData("PRG Bank", 0, 6, "%X", 0),
+   new CBitfieldData("Mirroring", 6, 1, "%X", 2, "Vertical", "Horizontal")
 };
 
-static c_bitfield_data* tbl8001Bitfields [] =
+static CBitfieldData* tbl8001Bitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 6, "%X", 0)
+   new CBitfieldData("PRG Bank", 0, 6, "%X", 0)
 };
 
-static c_bitfield_data* tbl8002Bitfields [] =
+static CBitfieldData* tbl8002Bitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 8, "%X", 0)
+   new CBitfieldData("CHR Bank", 0, 8, "%X", 0)
 };
 
-static c_bitfield_data* tbl8003Bitfields [] =
+static CBitfieldData* tbl8003Bitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 8, "%X", 0)
+   new CBitfieldData("CHR Bank", 0, 8, "%X", 0)
 };
 
-static c_bitfield_data* tblA000Bitfields [] =
+static CBitfieldData* tblA000Bitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 8, "%X", 0)
+   new CBitfieldData("CHR Bank", 0, 8, "%X", 0)
 };
 
-static c_bitfield_data* tblA001Bitfields [] =
+static CBitfieldData* tblA001Bitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 8, "%X", 0)
+   new CBitfieldData("CHR Bank", 0, 8, "%X", 0)
 };
 
-static c_bitfield_data* tblA002Bitfields [] =
+static CBitfieldData* tblA002Bitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 8, "%X", 0)
+   new CBitfieldData("CHR Bank", 0, 8, "%X", 0)
 };
 
-static c_bitfield_data* tblA003Bitfields [] =
+static CBitfieldData* tblA003Bitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 8, "%X", 0)
+   new CBitfieldData("CHR Bank", 0, 8, "%X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

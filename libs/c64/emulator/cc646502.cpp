@@ -19,55 +19,55 @@
 #include "c64_emulator_core.h"
 
 // CPU Registers
-static c_bitfield_data* tblCPUPCBitfields [] =
+static CBitfieldData* tblCPUPCBitfields [] =
 {
-   new c_bitfield_data("Instruction Pointer", 0, 16, "%04X", 0),
+   new CBitfieldData("Instruction Pointer", 0, 16, "%04X", 0),
 };
 
-static c_bitfield_data* tblCPUABitfields [] =
+static CBitfieldData* tblCPUABitfields [] =
 {
-   new c_bitfield_data("Accumulator", 0, 8, "%02X", 0),
+   new CBitfieldData("Accumulator", 0, 8, "%02X", 0),
 };
 
-static c_bitfield_data* tblCPUXBitfields [] =
+static CBitfieldData* tblCPUXBitfields [] =
 {
-   new c_bitfield_data("X Index", 0, 8, "%02X", 0),
+   new CBitfieldData("X Index", 0, 8, "%02X", 0),
 };
 
-static c_bitfield_data* tblCPUYBitfields [] =
+static CBitfieldData* tblCPUYBitfields [] =
 {
-   new c_bitfield_data("Y Index", 0, 8, "%02X", 0),
+   new CBitfieldData("Y Index", 0, 8, "%02X", 0),
 };
 
-static c_bitfield_data* tblCPUSPBitfields [] =
+static CBitfieldData* tblCPUSPBitfields [] =
 {
-   new c_bitfield_data("Stack Pointer", 0, 12, "%03X", 0),
+   new CBitfieldData("Stack Pointer", 0, 12, "%03X", 0),
 };
 
-static c_bitfield_data* tblCPUFBitfields [] =
+static CBitfieldData* tblCPUFBitfields [] =
 {
-   new c_bitfield_data("Negative", 7, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Overflow", 6, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Break", 4, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Decimal Mode", 3, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Interrupt", 2, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Zero", 1, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Carry", 0, 1, "%X", 2, "No", "Yes")
+   new CBitfieldData("Negative", 7, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Overflow", 6, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Break", 4, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Decimal Mode", 3, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Interrupt", 2, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Zero", 1, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Carry", 0, 1, "%X", 2, "No", "Yes")
 };
 
-static c_bitfield_data* tblCPUNMIVectorBitfields [] =
+static CBitfieldData* tblCPUNMIVectorBitfields [] =
 {
-   new c_bitfield_data("NMI Vector", 0, 16, "%04X", 0),
+   new CBitfieldData("NMI Vector", 0, 16, "%04X", 0),
 };
 
-static c_bitfield_data* tblCPUIRQVectorBitfields [] =
+static CBitfieldData* tblCPUIRQVectorBitfields [] =
 {
-   new c_bitfield_data("IRQ Vector", 0, 16, "%04X", 0),
+   new CBitfieldData("IRQ Vector", 0, 16, "%04X", 0),
 };
 
-static c_bitfield_data* tblCPURESETVectorBitfields [] =
+static CBitfieldData* tblCPURESETVectorBitfields [] =
 {
-   new c_bitfield_data("RESET Vector", 0, 16, "%04X", 0),
+   new CBitfieldData("RESET Vector", 0, 16, "%04X", 0),
 };
 
 static CRegisterData* tblCPURegisters [] =

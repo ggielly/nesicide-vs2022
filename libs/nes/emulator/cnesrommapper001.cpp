@@ -20,28 +20,28 @@
 #include "cregisterdata.h"
 
 // Mapper 001 Registers
-static c_bitfield_data* tbl8000_9FFFBitfields [] =
+static CBitfieldData* tbl8000_9FFFBitfields [] =
 {
-   new c_bitfield_data("CHR Mode", 4, 1, "%X", 2, "8KB mapping", "4KB mapping"),
-   new c_bitfield_data("PRG Size", 3, 1, "%X", 2, "32KB", "16KB"),
-   new c_bitfield_data("Slot Select", 2, 1, "%X", 2, "C000 swappable, 8000 fixed to page 00", "8000 swappable, C000 fixed to page 0F"),
-   new c_bitfield_data("Mirroring", 0, 2, "%X", 4, "One-screen 2000", "One-screen 2400", "Vertical", "Horizontal")
+   new CBitfieldData("CHR Mode", 4, 1, "%X", 2, "8KB mapping", "4KB mapping"),
+   new CBitfieldData("PRG Size", 3, 1, "%X", 2, "32KB", "16KB"),
+   new CBitfieldData("Slot Select", 2, 1, "%X", 2, "C000 swappable, 8000 fixed to page 00", "8000 swappable, C000 fixed to page 0F"),
+   new CBitfieldData("Mirroring", 0, 2, "%X", 4, "One-screen 2000", "One-screen 2400", "Vertical", "Horizontal")
 };
 
-static c_bitfield_data* tblA000_BFFFBitfields [] =
+static CBitfieldData* tblA000_BFFFBitfields [] =
 {
-   new c_bitfield_data("CHR Bank 0", 0, 5, "%02X", 0)
+   new CBitfieldData("CHR Bank 0", 0, 5, "%02X", 0)
 };
 
-static c_bitfield_data* tblC000_DFFFBitfields [] =
+static CBitfieldData* tblC000_DFFFBitfields [] =
 {
-   new c_bitfield_data("CHR Bank 1", 0, 5, "%02X", 0)
+   new CBitfieldData("CHR Bank 1", 0, 5, "%02X", 0)
 };
 
-static c_bitfield_data* tblE000_FFFFBitfields [] =
+static CBitfieldData* tblE000_FFFFBitfields [] =
 {
-   new c_bitfield_data("WRAM State", 4, 1, "%X", 2, "Enabled", "Disabled"),
-   new c_bitfield_data("PRG Bank", 0, 4, "%X", 0)
+   new CBitfieldData("WRAM State", 4, 1, "%X", 2, "Enabled", "Disabled"),
+   new CBitfieldData("PRG Bank", 0, 4, "%X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

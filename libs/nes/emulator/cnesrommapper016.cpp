@@ -21,39 +21,39 @@
 #include "cregisterdata.h"
 
 // Mapper 016 Registers
-static c_bitfield_data* tbl0000Bitfields [] =
+static CBitfieldData* tbl0000Bitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR Bank", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl0008Bitfields [] =
+static CBitfieldData* tbl0008Bitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 8, "%02X", 0)
+   new CBitfieldData("PRG Bank", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl0009Bitfields [] =
+static CBitfieldData* tbl0009Bitfields [] =
 {
-   new c_bitfield_data("Mirroring", 0, 2, "%X", 4, "Vertical", "Horizontal", "One-screen A", "One-screen B")
+   new CBitfieldData("Mirroring", 0, 2, "%X", 4, "Vertical", "Horizontal", "One-screen A", "One-screen B")
 };
 
-static c_bitfield_data* tbl000ABitfields [] =
+static CBitfieldData* tbl000ABitfields [] =
 {
-   new c_bitfield_data("IRQ Enabled", 0, 1, "%X", 2, "No", "Yes")
+   new CBitfieldData("IRQ Enabled", 0, 1, "%X", 2, "No", "Yes")
 };
 
-static c_bitfield_data* tbl000BBitfields [] =
+static CBitfieldData* tbl000BBitfields [] =
 {
-   new c_bitfield_data("IRQ Counter LSB", 0, 8, "%02X", 0)
+   new CBitfieldData("IRQ Counter LSB", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl000CBitfields [] =
+static CBitfieldData* tbl000CBitfields [] =
 {
-   new c_bitfield_data("IRQ Counter MSB", 0, 8, "%X", 0)
+   new CBitfieldData("IRQ Counter MSB", 0, 8, "%X", 0)
 };
 
-static c_bitfield_data* tbl000DBitfields [] =
+static CBitfieldData* tbl000DBitfields [] =
 {
-   new c_bitfield_data("EEPROM I/O", 0, 8, "%02X", 0)
+   new CBitfieldData("EEPROM I/O", 0, 8, "%02X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

@@ -1,26 +1,21 @@
 #include "cdebuggerbitfieldcomboboxdelegate.h"
 
-CDebuggerBitfieldComboBoxDelegate::CDebuggerBitfieldComboBoxDelegate()
-	: m_pBitfield(nullptr)
-{
-}
+CDebuggerBitfieldComboBoxDelegate::CDebuggerBitfieldComboBoxDelegate(): m_p_bitfield_(nullptr){}
 
 QWidget* CDebuggerBitfieldComboBoxDelegate::createEditor(QWidget* parent,
                                                          const QStyleOptionViewItem& /* option */,
                                                          const QModelIndex& /* index */) const
 {
-	char data[64];
-	int idx;
-
-	if (m_pBitfield)
+	if (m_p_bitfield_)
 	{
-		if (m_pBitfield->GetNumValues())
+		if (m_p_bitfield_->GetNumValues())
 		{
 			const auto editor = new QComboBox(parent);
 
-			for (idx = 0; idx < m_pBitfield->GetNumValues(); idx++)
+			for (int idx = 0; idx < m_p_bitfield_->GetNumValues(); idx++)
 			{
-				sprintf(data, "%s", m_pBitfield->GetValueByIndex(idx));
+				char data[64];
+				sprintf(data, "%s", m_p_bitfield_->GetValueByIndex(idx));
 				editor->addItem(data, QVariant(idx));
 			}
 
@@ -49,11 +44,11 @@ void CDebuggerBitfieldComboBoxDelegate::setEditorData(QWidget* editor,
 	char data[8];
 
 	// reduce to the bits we care about...
-	if (m_pBitfield)
+	if (m_p_bitfield_)
 	{
-		value = m_pBitfield->GetValueRaw(index.model()->data(index, Qt::EditRole).toString().toInt(&ok, 16));
+		value = m_p_bitfield_->GetValueRaw(index.model()->data(index, Qt::EditRole).toString().toInt(&ok, 16));
 
-		if (m_pBitfield->GetNumValues())
+		if (m_p_bitfield_->GetNumValues())
 		{
 			const auto comboBox = dynamic_cast<QComboBox*>(editor);
 			comboBox->setCurrentIndex(value);
@@ -63,7 +58,7 @@ void CDebuggerBitfieldComboBoxDelegate::setEditorData(QWidget* editor,
 		{
 			const auto edit = dynamic_cast<QLineEdit*>(editor);
 
-			sprintf(data, m_pBitfield->GetDisplayFormat(), value);
+			sprintf(data, m_p_bitfield_->GetDisplayFormat(), value);
 
 			edit->setText(data);
 		}
@@ -83,18 +78,18 @@ void CDebuggerBitfieldComboBoxDelegate::setModelData(QWidget* editor, QAbstractI
 	int value;
 	char data[8];
 
-	if (m_pBitfield)
+	if (m_p_bitfield_)
 	{
-		if (m_pBitfield->GetNumValues())
+		if (m_p_bitfield_->GetNumValues())
 		{
 			const auto combo_box = dynamic_cast<QComboBox*>(editor);
 
 			int bitfieldValue = combo_box->currentIndex();
 
-			value = m_pBitfield->InsertValue(index.model()->data(index, Qt::EditRole).toString().toInt(&ok, 16),
+			value = m_p_bitfield_->InsertValue(index.model()->data(index, Qt::EditRole).toString().toInt(&ok, 16),
 			                                 bitfieldValue);
 
-			sprintf(data, m_pBitfield->GetDisplayFormat(), value);
+			sprintf(data, m_p_bitfield_->GetDisplayFormat(), value);
 
 			model->setData(index, data, Qt::EditRole);
 		}
@@ -102,10 +97,10 @@ void CDebuggerBitfieldComboBoxDelegate::setModelData(QWidget* editor, QAbstractI
 		{
 			const auto edit = dynamic_cast<QLineEdit*>(editor);
 
-			value = m_pBitfield->InsertValue(index.model()->data(index, Qt::EditRole).toString().toInt(&ok, 16),
+			value = m_p_bitfield_->InsertValue(index.model()->data(index, Qt::EditRole).toString().toInt(&ok, 16),
 			                                 edit->text().toInt(&ok, 16));
 
-			sprintf(data, m_pBitfield->GetDisplayFormat(), value);
+			sprintf(data, m_p_bitfield_->GetDisplayFormat(), value);
 
 			model->setData(index, data, Qt::EditRole);
 		}

@@ -297,7 +297,7 @@ void CNES::CHECKBREAKPOINT (const eBreakpointTarget target, eBreakpointType type
    int32_t idx;
    BreakpointInfo* pBreakpoint;
    CRegisterData* pRegister;
-   c_bitfield_data* pBitfield;
+   CBitfieldData* pBitfield;
    uint32_t addr = 0;
    uint32_t absAddr = 0;
    int32_t value = 0;

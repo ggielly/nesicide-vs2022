@@ -16,14 +16,16 @@
 #include "cobjectregistry.h"
 
 #include "cnesicideproject.h"
+#include "cregisterdata.h"
 
-BreakpointDialog::BreakpointDialog(CBreakpointInfo* pBreakpoints, int bp, QWidget* parent) :
+
+BreakpointDialog::BreakpointDialog(CBreakpointInfo* p_breakpoints, const int bp, QWidget* parent) :
 	QDialog(parent),
 	ui(new Ui::BreakpointDialog)
 {
 	ui->setupUi(this);
 
-	m_pBreakpoints = pBreakpoints;
+	m_pBreakpoints = p_breakpoints;
 
 	ui->type->addItem("CPU Execution");
 	ui->type->addItem("CPU Memory Access (Read or Write)");
@@ -70,8 +72,8 @@ BreakpointDialog::BreakpointDialog(CBreakpointInfo* pBreakpoints, int bp, QWidge
 		ui->resolve->setChecked(false);
 	}
 
-	m_pRegister = nullptr;
-	m_pBitfield = nullptr;
+	m_p_register_ = nullptr;
+	m_p_bitfield_ = nullptr;
 	m_pEvent = nullptr;
 
 	if (bp >= 0)
@@ -106,7 +108,7 @@ void BreakpointDialog::changeEvent(QEvent* e)
 	}
 }
 
-void BreakpointDialog::on_type_currentIndexChanged(int index) const
+void BreakpointDialog::on_type_currentIndexChanged(const int index) const
 {
 	CBreakpointEventInfo** pBreakpointEventInfo = nullptr;
 	int idx;
@@ -277,51 +279,49 @@ void BreakpointDialog::on_type_currentIndexChanged(int index) const
 	}
 }
 
-void BreakpointDialog::on_reg_currentIndexChanged(int index)
+void BreakpointDialog::on_reg_currentIndexChanged(const int index)
 {
-	int idx;
-
 	if (index >= 0)
 	{
 		switch (ui->type->currentIndex())
 		{
 		case eBreakOnCPUState:
-			m_pRegister = nesGetCpuRegisterDatabase()->GetRegister(ui->reg->currentIndex());
+			m_p_register_ = nesGetCpuRegisterDatabase()->GetRegister(ui->reg->currentIndex());
 			break;
 		case eBreakOnPPUState:
-			m_pRegister = nesGetPpuRegisterDatabase()->GetRegister(ui->reg->currentIndex());
+			m_p_register_ = nesGetPpuRegisterDatabase()->GetRegister(ui->reg->currentIndex());
 			break;
 		case eBreakOnAPUState:
-			m_pRegister = nesGetApuRegisterDatabase()->GetRegister(ui->reg->currentIndex());
+			m_p_register_ = nesGetApuRegisterDatabase()->GetRegister(ui->reg->currentIndex());
 			break;
 		case eBreakOnMapperState:
 
 			if (nesGetCartridgeRegisterDatabase()->GetNumRegisters() > 0)
 			{
-				m_pRegister = nesGetCartridgeRegisterDatabase()->GetRegister(ui->reg->currentIndex());
+				m_p_register_ = nesGetCartridgeRegisterDatabase()->GetRegister(ui->reg->currentIndex());
 			}
 			else
 			{
-				m_pRegister = nullptr;
+				m_p_register_ = nullptr;
 			}
 
 			break;
 		default:
-			m_pRegister = nullptr;
+			m_p_register_ = nullptr;
 			break;
 		}
 
 		ui->bitfield->clear();
 
-		if (m_pRegister)
+		if (m_p_register_)
 		{
-			for (idx = 0; idx < m_pRegister->GetNumBitfields(); idx++)
+			for (int idx = 0; idx < m_p_register_->GetNumBitfields(); idx++)
 			{
-				CBitfieldData* pBitfield = m_pRegister->GetBitfield(idx);
-				ui->bitfield->addItem(pBitfield->GetName());
+				CBitfieldData* p_bitfield = m_p_register_->GetBitfield(idx);
+				ui->bitfield->addItem(p_bitfield->GetName());
 			}
 
-			if (m_pRegister->GetNumBitfields() > 1)
+			if (m_p_register_->GetNumBitfields() > 1)
 			{
 				ui->bitfield->setEnabled(true);
 			}
@@ -334,32 +334,30 @@ void BreakpointDialog::on_reg_currentIndexChanged(int index)
 	}
 }
 
-void BreakpointDialog::on_bitfield_currentIndexChanged(int index)
+void BreakpointDialog::on_bitfield_current_index_changed(const int index)
 {
-	int idx;
-
 	ui->data2->clear();
 
-	if (m_pRegister)
+	if (m_p_register_)
 	{
 		if (index >= 0)
 		{
-			m_pBitfield = m_pRegister->GetBitfield(index);
+			m_p_bitfield_ = m_p_register_->GetBitfield(index);
 		}
 		else
 		{
-			m_pBitfield = nullptr;
+			m_p_bitfield_ = nullptr;
 		}
 
-		if (m_pBitfield)
+		if (m_p_bitfield_)
 		{
-			if (m_pBitfield->GetNumValues())
+			if (m_p_bitfield_->GetNumValues())
 			{
 				ui->dataWidget->setCurrentIndex(eBreakpointDataPick);
 
-				for (idx = 0; idx < m_pBitfield->GetNumValues(); idx++)
+				for (int idx = 0; idx < m_p_bitfield_->GetNumValues(); idx++)
 				{
-					ui->data2->addItem(m_pBitfield->GetValueByIndex(idx));
+					ui->data2->addItem(m_p_bitfield_->GetValueByIndex(idx));
 				}
 			}
 			else
@@ -370,7 +368,7 @@ void BreakpointDialog::on_bitfield_currentIndexChanged(int index)
 	}
 }
 
-void BreakpointDialog::on_event_currentIndexChanged(int)
+void BreakpointDialog::on_event_current_index_changed(int)
 {
 	if (ui->event->currentIndex() >= 0)
 	{
@@ -450,7 +448,7 @@ void BreakpointDialog::DisplayResolutions(BreakpointInfo* pBreakpoint)
 	QString text;
 	QStringList textSplit;
 	QFileInfo fileInfo;
-	auto compiler = dynamic_cast<CompilerThread*>(CObjectRegistry::instance()->getObject("Compiler"));
+	const auto compiler = dynamic_cast<CompilerThread*>(CObjectRegistry::instance()->getObject("Compiler"));
 
 	// Get address from UI
 	originalAddr = ui->addr1->text().toInt(nullptr, 16);
@@ -515,7 +513,7 @@ void BreakpointDialog::DisplayResolutions(BreakpointInfo* pBreakpoint)
 	}
 }
 
-void BreakpointDialog::DisplayBreakpoint(int idx)
+void BreakpointDialog::DisplayBreakpoint(const int idx)
 {
 	char buffer[16];
 	BreakpointInfo* pBreakpoint = m_pBreakpoints->GetBreakpoint(idx);
@@ -629,7 +627,7 @@ void BreakpointDialog::on_cancel_clicked()
 	reject();
 }
 
-void BreakpointDialog::on_addBreakpoint_clicked()
+void BreakpointDialog::on_add_breakpoint_clicked()
 {
 	int item1 = 0;
 	int item1Physical = 0;

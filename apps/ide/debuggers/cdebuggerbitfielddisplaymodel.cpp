@@ -1,5 +1,10 @@
 #include "cdebuggerbitfielddisplaymodel.h"
+
+#include <cregisterdata.h>
+
 #include <cstdio> // needed for sprintf_s
+
+#include "cregisterdata.h"
 
 CDebuggerBitfieldDisplayModel::CDebuggerBitfieldDisplayModel(const regDBFunc reg_db, QObject*)
 {
@@ -22,9 +27,9 @@ QVariant CDebuggerBitfieldDisplayModel::data(const QModelIndex& index, const int
 		return {};
 	}
 
-	auto pRegister = static_cast<CRegisterData*>(index.internalPointer());
-	CBitfieldData* pBitfield = pRegister->GetBitfield(index.row());
-	uint32_t reg_data = pRegister->Get();
+	auto p_register = static_cast<CRegisterData*>(index.internalPointer());
+	CBitfieldData* p_bitfield = p_register->GetBitfield(index.row());
+	uint32_t reg_data = p_register->Get();
 
 /*	if (role == Qt::ToolTipRole)
 	{
@@ -59,22 +64,24 @@ QVariant CDebuggerBitfieldDisplayModel::data(const QModelIndex& index, const int
 
 	if (role == Qt::ToolTipRole)
 	{
-		if (pBitfield->GetNumValues())
+		if (p_bitfield->GetNumValues())
 		{
 			p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer), "<pre>");
 
-			for (int value = 0; value < pBitfield->GetNumValues(); value++)
+			for (int value = 0; value < p_bitfield->GetNumValues(); value++)
 			{
-				if (value == pBitfield->GetValueRaw(reg_data))
+				if (value == p_bitfield->GetValueRaw(reg_data))
 				{
-					p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer), "<b>%s</b>", pBitfield->GetValueByIndex(value));
+					p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer),
+					                      "<b>%s</b>", p_bitfield->GetValueByIndex(value));
 				}
 				else
 				{
-					p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer), "%s", pBitfield->GetValueByIndex(value));
+					p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer),
+					                      "%s", p_bitfield->GetValueByIndex(value));
 				}
 
-				if (value < pBitfield->GetNumValues() - 1)
+				if (value < p_bitfield->GetNumValues() - 1)
 				{
 					p_values += sprintf_s(p_values, sizeof(m_modelStringBuffer) - (p_values - m_modelStringBuffer), "\n");
 				}
@@ -89,20 +96,20 @@ QVariant CDebuggerBitfieldDisplayModel::data(const QModelIndex& index, const int
 
 	if (role == Qt::DisplayRole)
 	{
-		if (pBitfield->GetNumValues())
+		if (p_bitfield->GetNumValues())
 		{
-			sprintf(m_modelStringBuffer, "%s", pBitfield->GetValue(reg_data));
+			sprintf(m_modelStringBuffer, "%s", p_bitfield->GetValue(reg_data));
 		}
 		else
 		{
-			sprintf(m_modelStringBuffer, pBitfield->GetDisplayFormat(), pBitfield->GetValueRaw(reg_data));
+			sprintf(m_modelStringBuffer, p_bitfield->GetDisplayFormat(), p_bitfield->GetValueRaw(reg_data));
 		}
 
 		return {m_modelStringBuffer};
 	}
 	else if (role == Qt::EditRole)
 	{
-		sprintf(m_modelStringBuffer, pBitfield->GetDisplayFormat(), reg_data);
+		sprintf(m_modelStringBuffer, p_bitfield->GetDisplayFormat(), reg_data);
 		return {m_modelStringBuffer};
 	}
 
@@ -111,7 +118,7 @@ QVariant CDebuggerBitfieldDisplayModel::data(const QModelIndex& index, const int
 
 Qt::ItemFlags CDebuggerBitfieldDisplayModel::flags(const QModelIndex&) const
 {
-	Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable;
+	constexpr Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable;
 	return flags;
 }
 
@@ -130,16 +137,16 @@ QVariant CDebuggerBitfieldDisplayModel::headerData(const int section, const Qt::
 	{
 		if (m_regDB())
 		{
-			CBitfieldData* pBitfield = m_regDB()->GetRegister(m_register)->GetBitfield(section);
+			CBitfieldData* p_bitfield = m_regDB()->GetRegister(m_register)->GetBitfield(section);
 
-			if (pBitfield->GetWidth() == 1)
+			if (p_bitfield->GetWidth() == 1)
 			{
-				sprintf(m_modelStringBuffer, "[%d] %s", pBitfield->GetLsb(), pBitfield->GetName());
+				sprintf(m_modelStringBuffer, "[%d] %s", p_bitfield->GetLsb(), p_bitfield->GetName());
 			}
 			else
 			{
-				sprintf(m_modelStringBuffer, "[%d:%d] %s", pBitfield->GetMsb(), pBitfield->GetLsb(),
-				        pBitfield->GetName());
+				sprintf(m_modelStringBuffer, "[%d:%d] %s", p_bitfield->GetMsb(), p_bitfield->GetLsb(),
+				        p_bitfield->GetName());
 			}
 		}
 	}

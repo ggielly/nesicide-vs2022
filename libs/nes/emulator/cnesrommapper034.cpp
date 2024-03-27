@@ -19,24 +19,24 @@
 #include "cregisterdata.h"
 
 // Mapper 034 Registers
-static c_bitfield_data* tbl8000_FFFFBitfields [] =
+static CBitfieldData* tbl8000_FFFFBitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 8, "%X", 0)
+   new CBitfieldData("PRG Bank", 0, 8, "%X", 0)
 };
 
-static c_bitfield_data* tbl7FFDBitfields [] =
+static CBitfieldData* tbl7FFDBitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 8, "%X", 0)
+   new CBitfieldData("PRG Bank", 0, 8, "%X", 0)
 };
 
-static c_bitfield_data* tbl7FFEBitfields [] =
+static CBitfieldData* tbl7FFEBitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 8, "%X", 0)
+   new CBitfieldData("CHR Bank", 0, 8, "%X", 0)
 };
 
-static c_bitfield_data* tbl7FFFBitfields [] =
+static CBitfieldData* tbl7FFFBitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 8, "%X", 0)
+   new CBitfieldData("CHR Bank", 0, 8, "%X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

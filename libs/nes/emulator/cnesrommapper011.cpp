@@ -18,11 +18,11 @@
 #include "cnesppu.h"
 
 // Mapper 011 Registers
-static c_bitfield_data* tbl8000_FFFFBitfields [] =
+static CBitfieldData* tbl8000_FFFFBitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 2, "%X", 0),
-   new c_bitfield_data("Lockout defeat", 2, 2, "%X", 0),
-   new c_bitfield_data("CHR Bank", 4, 4, "%X", 0),
+   new CBitfieldData("PRG Bank", 0, 2, "%X", 0),
+   new CBitfieldData("Lockout defeat", 2, 2, "%X", 0),
+   new CBitfieldData("CHR Bank", 4, 4, "%X", 0),
 };
 
 static CRegisterData* tblRegisters [] =

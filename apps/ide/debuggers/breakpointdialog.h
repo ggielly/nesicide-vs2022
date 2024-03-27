@@ -16,7 +16,7 @@ class BreakpointDialog : public QDialog
 	Q_OBJECT
 
 public:
-	BreakpointDialog(CBreakpointInfo* pBreakpoints, int bp = -1, QWidget* parent = nullptr);
+	BreakpointDialog(CBreakpointInfo* p_breakpoints, int bp = -1, QWidget* parent = nullptr);
 	~BreakpointDialog() override;
 	BreakpointInfo* getBreakpoint() { return &m_breakpoint; }
 
@@ -26,8 +26,8 @@ protected:
 private:
 	Ui::BreakpointDialog* ui;
 	CBreakpointInfo* m_pBreakpoints;
-	CRegisterData* m_pRegister;
-	CBitfieldData* m_pBitfield;
+	CRegisterData* m_p_register_;
+	CBitfieldData* m_p_bitfield_;
 	CBreakpointEventInfo* m_pEvent;
 	void DisplayBreakpoint(int idx);
 	void DisplayResolutions(BreakpointInfo* pBreakpoint);
@@ -35,11 +35,11 @@ private:
 
 private slots:
 	void on_resolve_clicked();
-	void on_addBreakpoint_clicked();
+	void on_add_breakpoint_clicked();
 	void on_cancel_clicked();
 	void on_addr1_textChanged(QString text);
-	void on_event_currentIndexChanged(int index);
-	void on_bitfield_currentIndexChanged(int index);
+	void on_event_current_index_changed(int index);
+	void on_bitfield_current_index_changed(int index);
 	void on_reg_currentIndexChanged(int index);
 	void on_type_currentIndexChanged(int index) const;
 };

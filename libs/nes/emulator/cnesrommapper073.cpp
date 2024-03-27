@@ -21,41 +21,41 @@
 #include "cregisterdata.h"
 
 // Mapper 073 Registers
-static c_bitfield_data* tbl8000Bitfields [] =
+static CBitfieldData* tbl8000Bitfields [] =
 {
-   new c_bitfield_data("IRQ Reload bits 0:3", 0, 4, "%X", 0)
+   new CBitfieldData("IRQ Reload bits 0:3", 0, 4, "%X", 0)
 };
 
-static c_bitfield_data* tbl9000Bitfields [] =
+static CBitfieldData* tbl9000Bitfields [] =
 {
-   new c_bitfield_data("IRQ Reload bits 4:7", 0, 4, "%X", 0)
+   new CBitfieldData("IRQ Reload bits 4:7", 0, 4, "%X", 0)
 };
 
-static c_bitfield_data* tblA000Bitfields [] =
+static CBitfieldData* tblA000Bitfields [] =
 {
-   new c_bitfield_data("IRQ Reload bits 8:11", 0, 4, "%X", 0)
+   new CBitfieldData("IRQ Reload bits 8:11", 0, 4, "%X", 0)
 };
 
-static c_bitfield_data* tblB000Bitfields [] =
+static CBitfieldData* tblB000Bitfields [] =
 {
-   new c_bitfield_data("IRQ Reload bits 12:15", 0, 4, "%X", 0)
+   new CBitfieldData("IRQ Reload bits 12:15", 0, 4, "%X", 0)
 };
 
-static c_bitfield_data* tblC000Bitfields [] =
+static CBitfieldData* tblC000Bitfields [] =
 {
-   new c_bitfield_data("IRQ Enable after ack", 0, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("IRQ Enable", 1, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("IRQ Mode", 2, 1, "%X", 2, "16-bit counter", "8-bit counter")
+   new CBitfieldData("IRQ Enable after ack", 0, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("IRQ Enable", 1, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("IRQ Mode", 2, 1, "%X", 2, "16-bit counter", "8-bit counter")
 };
 
-static c_bitfield_data* tblD000Bitfields [] =
+static CBitfieldData* tblD000Bitfields [] =
 {
-   new c_bitfield_data("IRQ Acknowledge", 0, 8, "%X", 0)
+   new CBitfieldData("IRQ Acknowledge", 0, 8, "%X", 0)
 };
 
-static c_bitfield_data* tblF000Bitfields [] =
+static CBitfieldData* tblF000Bitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 4, "%X", 0)
+   new CBitfieldData("PRG Bank", 0, 4, "%X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

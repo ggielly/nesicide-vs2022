@@ -21,19 +21,19 @@
 #include "cregisterdata.h"
 
 // Mapper 022 Registers
-static c_bitfield_data* tbl8000Bitfields [] =
+static CBitfieldData* tbl8000Bitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 4, "%X", 0)
+   new CBitfieldData("PRG Bank", 0, 4, "%X", 0)
 };
 
-static c_bitfield_data* tbl9000Bitfields [] =
+static CBitfieldData* tbl9000Bitfields [] =
 {
-   new c_bitfield_data("Mirroring", 0, 2, "%X", 4, "Vertical", "Horizontal", "One-screen A", "One-screen B")
+   new CBitfieldData("Mirroring", 0, 2, "%X", 4, "Vertical", "Horizontal", "One-screen A", "One-screen B")
 };
 
-static c_bitfield_data* tblB000Bitfields [] =
+static CBitfieldData* tblB000Bitfields [] =
 {
-   new c_bitfield_data("CHR Bank", 0, 4, "%X", 0)
+   new CBitfieldData("CHR Bank", 0, 4, "%X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

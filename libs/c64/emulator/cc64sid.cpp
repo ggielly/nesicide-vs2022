@@ -19,38 +19,38 @@
 #include "c64_emulator_core.h"
 
 // CPU Registers
-static c_bitfield_data* tblFrequencyBitfields [] =
+static CBitfieldData* tblFrequencyBitfields [] =
 {
-   new c_bitfield_data("Frequency", 0, 16, "%04X", 0),
+   new CBitfieldData("Frequency", 0, 16, "%04X", 0),
 };
 
-static c_bitfield_data* tblPulseWidthBitfields [] =
+static CBitfieldData* tblPulseWidthBitfields [] =
 {
-   new c_bitfield_data("Pulse Width", 0, 16, "%04X", 0),
+   new CBitfieldData("Pulse Width", 0, 16, "%04X", 0),
 };
 
-static c_bitfield_data* tblControlBitfields [] =
+static CBitfieldData* tblControlBitfields [] =
 {
-   new c_bitfield_data("Status", 0, 1, "%X", 2, "Voice off, Release cycle", "Voice on, Attack-Decay-Sustain cycle"),
-   new c_bitfield_data("Synchronization", 1, 1, "%X", 2, "Synchronization disabled", "Synchronization enabled"),
-   new c_bitfield_data("Ring Modulation", 2, 1, "%X", 2, "Ring modulation disabled", "Ring modulation enabled"),
-   new c_bitfield_data("Voice Enable", 3, 1, "%X", 2, "Enable voice", "Disable voice, reset noise generator"),
-   new c_bitfield_data("Triangle Waveform", 4, 1, "%X", 2, "Disabled", "Enabled"),
-   new c_bitfield_data("Saw Waveform", 5, 1, "%X", 2, "Disabled", "Enabled"),
-   new c_bitfield_data("Rectangle Waveform", 6, 1, "%X", 2, "Disabled", "Enabled"),
-   new c_bitfield_data("Noise", 7, 1, "%X", 2, "Disabled", "Enabled"),
+   new CBitfieldData("Status", 0, 1, "%X", 2, "Voice off, Release cycle", "Voice on, Attack-Decay-Sustain cycle"),
+   new CBitfieldData("Synchronization", 1, 1, "%X", 2, "Synchronization disabled", "Synchronization enabled"),
+   new CBitfieldData("Ring Modulation", 2, 1, "%X", 2, "Ring modulation disabled", "Ring modulation enabled"),
+   new CBitfieldData("Voice Enable", 3, 1, "%X", 2, "Enable voice", "Disable voice, reset noise generator"),
+   new CBitfieldData("Triangle Waveform", 4, 1, "%X", 2, "Disabled", "Enabled"),
+   new CBitfieldData("Saw Waveform", 5, 1, "%X", 2, "Disabled", "Enabled"),
+   new CBitfieldData("Rectangle Waveform", 6, 1, "%X", 2, "Disabled", "Enabled"),
+   new CBitfieldData("Noise", 7, 1, "%X", 2, "Disabled", "Enabled"),
 };
 
-static c_bitfield_data* tblAttackDecayLengthBitfields [] =
+static CBitfieldData* tblAttackDecayLengthBitfields [] =
 {
-   new c_bitfield_data("Decay length", 0, 4, "%X", 16, "6 ms", "24 ms", "48 ms", "72 ms", "114 ms", "168 ms", "204 ms", "240 ms", "300 ms", "750 ms", "1.5 s", "2.4 s", "3 s", "9 s", "15 s", "24 s"),
-   new c_bitfield_data("Attack length", 4, 4, "%X", 16, "2 ms", "8 ms", "16 ms", "24 ms", "38 ms", "56 ms", "68 ms", "80 ms", "100 ms", "250 ms", "500 ms", "800 ms", "1 s", "3 s", "5 s", "8 s"),
+   new CBitfieldData("Decay length", 0, 4, "%X", 16, "6 ms", "24 ms", "48 ms", "72 ms", "114 ms", "168 ms", "204 ms", "240 ms", "300 ms", "750 ms", "1.5 s", "2.4 s", "3 s", "9 s", "15 s", "24 s"),
+   new CBitfieldData("Attack length", 4, 4, "%X", 16, "2 ms", "8 ms", "16 ms", "24 ms", "38 ms", "56 ms", "68 ms", "80 ms", "100 ms", "250 ms", "500 ms", "800 ms", "1 s", "3 s", "5 s", "8 s"),
 };
 
-static c_bitfield_data* tblSustainVolumeReleaseLengthBitfields [] =
+static CBitfieldData* tblSustainVolumeReleaseLengthBitfields [] =
 {
-   new c_bitfield_data("Release length", 0, 4, "%X", 16, "6 ms", "24 ms", "48 ms", "72 ms", "114 ms", "168 ms", "204 ms", "240 ms", "300 ms", "750 ms", "1.5 s", "2.4 s", "3 s", "9 s", "15 s", "24 s"),
-   new c_bitfield_data("Sustain volume", 4, 4, "%X", 0)
+   new CBitfieldData("Release length", 0, 4, "%X", 16, "6 ms", "24 ms", "48 ms", "72 ms", "114 ms", "168 ms", "204 ms", "240 ms", "300 ms", "750 ms", "1.5 s", "2.4 s", "3 s", "9 s", "15 s", "24 s"),
+   new CBitfieldData("Sustain volume", 4, 4, "%X", 0)
 };
 
 static CRegisterData* tblSIDRegisters [] =

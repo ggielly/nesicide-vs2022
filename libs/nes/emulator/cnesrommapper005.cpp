@@ -22,234 +22,234 @@
 #include "cregisterdata.h"
 
 // Mapper 005 Registers
-static c_bitfield_data* tbl5000Bitfields [] =
+static CBitfieldData* tbl5000Bitfields [] =
 {
-   new c_bitfield_data("Duty Cycle", 6, 2, "%X", 4, "25%", "50%", "75%", "12.5%"),
-   new c_bitfield_data("Channel State", 5, 1, "%X", 2, "Running", "Halted"),
-   new c_bitfield_data("Envelope Disabled", 4, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Volume/Envelope", 0, 4, "%X", 0)
+   new CBitfieldData("Duty Cycle", 6, 2, "%X", 4, "25%", "50%", "75%", "12.5%"),
+   new CBitfieldData("Channel State", 5, 1, "%X", 2, "Running", "Halted"),
+   new CBitfieldData("Envelope Disabled", 4, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Volume/Envelope", 0, 4, "%X", 0)
 };
 
-static c_bitfield_data* tbl5001Bitfields [] =
+static CBitfieldData* tbl5001Bitfields [] =
 {
-   new c_bitfield_data("Sweep Enabled", 7, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Sweep Divider", 4, 3, "%X", 0),
-   new c_bitfield_data("Sweep Direction", 3, 1, "%X", 2, "Down", "Up"),
-   new c_bitfield_data("Sweep Shift", 0, 3, "%X", 0)
+   new CBitfieldData("Sweep Enabled", 7, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Sweep Divider", 4, 3, "%X", 0),
+   new CBitfieldData("Sweep Direction", 3, 1, "%X", 2, "Down", "Up"),
+   new CBitfieldData("Sweep Shift", 0, 3, "%X", 0)
 };
 
-static c_bitfield_data* tbl5002Bitfields [] =
+static CBitfieldData* tbl5002Bitfields [] =
 {
-   new c_bitfield_data("Period Low-bits", 0, 8, "%02X", 0)
+   new CBitfieldData("Period Low-bits", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5003Bitfields [] =
+static CBitfieldData* tbl5003Bitfields [] =
 {
-   new c_bitfield_data("Length", 3, 5, "%X", 32, "0A","FE","14","02","28","04","50","06","A0","08","3C","0A","0E","0C","1A","0E","0C","10","18","12","30","14","60","16","C0","18","48","1A","10","1C","20","1E"),
-   new c_bitfield_data("Period High-bits", 0, 3, "%X", 0)
+   new CBitfieldData("Length", 3, 5, "%X", 32, "0A","FE","14","02","28","04","50","06","A0","08","3C","0A","0E","0C","1A","0E","0C","10","18","12","30","14","60","16","C0","18","48","1A","10","1C","20","1E"),
+   new CBitfieldData("Period High-bits", 0, 3, "%X", 0)
 };
 
-static c_bitfield_data* tbl5010Bitfields [] =
+static CBitfieldData* tbl5010Bitfields [] =
 {
-   new c_bitfield_data("IRQ Enabled", 7, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Loop", 6, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Period", 0, 4, "%X", 16, "1AC","17C","154","140","11E","0FE","0E2","0D6","0BE","0A0","08E","080","06A","054","048","036")
+   new CBitfieldData("IRQ Enabled", 7, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Loop", 6, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Period", 0, 4, "%X", 16, "1AC","17C","154","140","11E","0FE","0E2","0D6","0BE","0A0","08E","080","06A","054","048","036")
 };
 
-static c_bitfield_data* tbl5011Bitfields [] =
+static CBitfieldData* tbl5011Bitfields [] =
 {
-   new c_bitfield_data("Volume", 0, 8, "%02X", 0)
+   new CBitfieldData("Volume", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5015Bitfields [] =
+static CBitfieldData* tbl5015Bitfields [] =
 {
-   new c_bitfield_data("Square2 Channel", 1, 1, "%X", 2, "Disabled", "Enabled"),
-   new c_bitfield_data("Square1 Channel", 0, 1, "%X", 2, "Disabled", "Enabled"),
+   new CBitfieldData("Square2 Channel", 1, 1, "%X", 2, "Disabled", "Enabled"),
+   new CBitfieldData("Square1 Channel", 0, 1, "%X", 2, "Disabled", "Enabled"),
 };
 
-static c_bitfield_data* tbl5100Bitfields [] =
+static CBitfieldData* tbl5100Bitfields [] =
 {
-   new c_bitfield_data("PRG Mode", 0, 2, "%X", 4, "32KB", "16KB", "16KB+8KB", "8KB")
+   new CBitfieldData("PRG Mode", 0, 2, "%X", 4, "32KB", "16KB", "16KB+8KB", "8KB")
 };
 
-static c_bitfield_data* tbl5101Bitfields [] =
+static CBitfieldData* tbl5101Bitfields [] =
 {
-   new c_bitfield_data("CHR Mode", 0, 2, "%X", 4, "8KB", "4KB", "2KB", "1KB")
+   new CBitfieldData("CHR Mode", 0, 2, "%X", 4, "8KB", "4KB", "2KB", "1KB")
 };
 
-static c_bitfield_data* tbl5102Bitfields [] =
+static CBitfieldData* tbl5102Bitfields [] =
 {
-   new c_bitfield_data("PRG-RAM Protect A", 0, 2, "%X", 0)
+   new CBitfieldData("PRG-RAM Protect A", 0, 2, "%X", 0)
 };
 
-static c_bitfield_data* tbl5103Bitfields [] =
+static CBitfieldData* tbl5103Bitfields [] =
 {
-   new c_bitfield_data("PRG-RAM Protect B", 0, 2, "%X", 0)
+   new CBitfieldData("PRG-RAM Protect B", 0, 2, "%X", 0)
 };
 
-static c_bitfield_data* tbl5104Bitfields [] =
+static CBitfieldData* tbl5104Bitfields [] =
 {
-   new c_bitfield_data("EXRAM Mode", 0, 2, "%X", 4, "Extra Nametable mode", "Extended Attribute mode", "CPU access mode", "CPU read-only mode")
+   new CBitfieldData("EXRAM Mode", 0, 2, "%X", 4, "Extra Nametable mode", "Extended Attribute mode", "CPU access mode", "CPU read-only mode")
 };
 
-static c_bitfield_data* tbl5105Bitfields [] =
+static CBitfieldData* tbl5105Bitfields [] =
 {
-   new c_bitfield_data("$2000 mapping", 0, 2, "%X", 4, "$2000", "$2400", "EXRAM", "Fill mode"),
-   new c_bitfield_data("$2400 mapping", 2, 2, "%X", 4, "$2000", "$2400", "EXRAM", "Fill mode"),
-   new c_bitfield_data("$2800 mapping", 4, 2, "%X", 4, "$2000", "$2400", "EXRAM", "Fill mode"),
-   new c_bitfield_data("$2C00 mapping", 6, 2, "%X", 4, "$2000", "$2400", "EXRAM", "Fill mode")
+   new CBitfieldData("$2000 mapping", 0, 2, "%X", 4, "$2000", "$2400", "EXRAM", "Fill mode"),
+   new CBitfieldData("$2400 mapping", 2, 2, "%X", 4, "$2000", "$2400", "EXRAM", "Fill mode"),
+   new CBitfieldData("$2800 mapping", 4, 2, "%X", 4, "$2000", "$2400", "EXRAM", "Fill mode"),
+   new CBitfieldData("$2C00 mapping", 6, 2, "%X", 4, "$2000", "$2400", "EXRAM", "Fill mode")
 };
 
-static c_bitfield_data* tbl5106Bitfields [] =
+static CBitfieldData* tbl5106Bitfields [] =
 {
-   new c_bitfield_data("Fill Tile", 0, 8, "%02X", 0)
+   new CBitfieldData("Fill Tile", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5107Bitfields [] =
+static CBitfieldData* tbl5107Bitfields [] =
 {
-   new c_bitfield_data("Fill Attribute bits", 0, 2, "%X", 0)
+   new CBitfieldData("Fill Attribute bits", 0, 2, "%X", 0)
 };
 
-static c_bitfield_data* tbl5113Bitfields [] =
+static CBitfieldData* tbl5113Bitfields [] =
 {
-   new c_bitfield_data("$6000 mapping", 0, 3, "%X", 0)
+   new CBitfieldData("$6000 mapping", 0, 3, "%X", 0)
 };
 
-static c_bitfield_data* tbl5114Bitfields [] =
+static CBitfieldData* tbl5114Bitfields [] =
 {
-   new c_bitfield_data("PRG mapping", 0, 7, "%02X", 0),
-   new c_bitfield_data("ROM select", 7, 1, "%X", 2, "RAM", "ROM")
+   new CBitfieldData("PRG mapping", 0, 7, "%02X", 0),
+   new CBitfieldData("ROM select", 7, 1, "%X", 2, "RAM", "ROM")
 };
 
-static c_bitfield_data* tbl5115Bitfields [] =
+static CBitfieldData* tbl5115Bitfields [] =
 {
-   new c_bitfield_data("PRG mapping", 0, 7, "%02X", 0),
-   new c_bitfield_data("ROM select", 7, 1, "%X", 2, "RAM", "ROM")
+   new CBitfieldData("PRG mapping", 0, 7, "%02X", 0),
+   new CBitfieldData("ROM select", 7, 1, "%X", 2, "RAM", "ROM")
 };
 
-static c_bitfield_data* tbl5116Bitfields [] =
+static CBitfieldData* tbl5116Bitfields [] =
 {
-   new c_bitfield_data("PRG mapping", 0, 7, "%02X", 0),
-   new c_bitfield_data("ROM select", 7, 1, "%X", 2, "RAM", "ROM")
+   new CBitfieldData("PRG mapping", 0, 7, "%02X", 0),
+   new CBitfieldData("ROM select", 7, 1, "%X", 2, "RAM", "ROM")
 };
 
-static c_bitfield_data* tbl5117Bitfields [] =
+static CBitfieldData* tbl5117Bitfields [] =
 {
-   new c_bitfield_data("PRG mapping", 0, 7, "%02X", 0)
+   new CBitfieldData("PRG mapping", 0, 7, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5120Bitfields [] =
+static CBitfieldData* tbl5120Bitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5121Bitfields [] =
+static CBitfieldData* tbl5121Bitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5122Bitfields [] =
+static CBitfieldData* tbl5122Bitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5123Bitfields [] =
+static CBitfieldData* tbl5123Bitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5124Bitfields [] =
+static CBitfieldData* tbl5124Bitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5125Bitfields [] =
+static CBitfieldData* tbl5125Bitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5126Bitfields [] =
+static CBitfieldData* tbl5126Bitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5127Bitfields [] =
+static CBitfieldData* tbl5127Bitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5128Bitfields [] =
+static CBitfieldData* tbl5128Bitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5129Bitfields [] =
+static CBitfieldData* tbl5129Bitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl512ABitfields [] =
+static CBitfieldData* tbl512ABitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl512BBitfields [] =
+static CBitfieldData* tbl512BBitfields [] =
 {
-   new c_bitfield_data("CHR mapping", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR mapping", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5130Bitfields [] =
+static CBitfieldData* tbl5130Bitfields [] =
 {
-   new c_bitfield_data("CHR high bits", 0, 2, "%X", 0)
+   new CBitfieldData("CHR high bits", 0, 2, "%X", 0)
 };
 
-static c_bitfield_data* tbl5200Bitfields [] =
+static CBitfieldData* tbl5200Bitfields [] =
 {
-   new c_bitfield_data("Tile", 0, 5, "%X", 0),
-   new c_bitfield_data("Side", 6, 1, "%X", 2, "Left", "Right"),
-   new c_bitfield_data("Enabled", 7, 1, "%X", 2, "No", "Yes")
+   new CBitfieldData("Tile", 0, 5, "%X", 0),
+   new CBitfieldData("Side", 6, 1, "%X", 2, "Left", "Right"),
+   new CBitfieldData("Enabled", 7, 1, "%X", 2, "No", "Yes")
 };
 
-static c_bitfield_data* tbl5201Bitfields [] =
+static CBitfieldData* tbl5201Bitfields [] =
 {
-   new c_bitfield_data("Split Y scroll", 0, 8, "%02X", 0)
+   new CBitfieldData("Split Y scroll", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5202Bitfields [] =
+static CBitfieldData* tbl5202Bitfields [] =
 {
-   new c_bitfield_data("Split 4KB CHR page", 0, 8, "%02X", 0)
+   new CBitfieldData("Split 4KB CHR page", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5203Bitfields [] =
+static CBitfieldData* tbl5203Bitfields [] =
 {
-   new c_bitfield_data("IRQ Target", 0, 8, "%02X", 0),
+   new CBitfieldData("IRQ Target", 0, 8, "%02X", 0),
 };
 
-static c_bitfield_data* tbl5204Bitfields [] =
+static CBitfieldData* tbl5204Bitfields [] =
 {
-   new c_bitfield_data("In Frame", 6, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Enabled/Pending", 7, 1, "%X", 2, "No", "Yes")
+   new CBitfieldData("In Frame", 6, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Enabled/Pending", 7, 1, "%X", 2, "No", "Yes")
 };
 
-static c_bitfield_data* tbl5205Bitfields [] =
+static CBitfieldData* tbl5205Bitfields [] =
 {
-   new c_bitfield_data("Multiplicand & Result LSB", 0, 8, "%02X", 0)
+   new CBitfieldData("Multiplicand & Result LSB", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5206Bitfields [] =
+static CBitfieldData* tbl5206Bitfields [] =
 {
-   new c_bitfield_data("Multiplier & Result MSB", 0, 8, "%02X", 0)
+   new CBitfieldData("Multiplier & Result MSB", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl5209Bitfields [] =
+static CBitfieldData* tbl5209Bitfields [] =
 {
-   new c_bitfield_data("Timer IRQ", 7, 1, "%X", 2, "No", "Yes"),
-   new c_bitfield_data("Timer LSB", 0, 8, "%02X", 0)
+   new CBitfieldData("Timer IRQ", 7, 1, "%X", 2, "No", "Yes"),
+   new CBitfieldData("Timer LSB", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tbl520ABitfields [] =
+static CBitfieldData* tbl520ABitfields [] =
 {
-   new c_bitfield_data("Timer MSB", 0, 8, "%02X", 0)
+   new CBitfieldData("Timer MSB", 0, 8, "%02X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

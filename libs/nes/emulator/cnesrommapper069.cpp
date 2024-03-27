@@ -21,24 +21,24 @@
 #include "cregisterdata.h"
 
 // Mapper 069 Registers
-static c_bitfield_data* tbl8000Bitfields [] =
+static CBitfieldData* tbl8000Bitfields [] =
 {
-   new c_bitfield_data("Address", 0, 4, "%X", 16, "CHR Register 0", "CHR Register 1", "CHR Register 2", "CHR Register 3", "CHR Register 4", "CHR Register 5", "CHR Register 6", "CHR Register 7", "PRG Register 0", "PRG Register 1", "PRG Register 2", "PRG Register 3", "Mirroring", "IRQ Control", "IRQ Counter Low", "IRQ Counter High")
+   new CBitfieldData("Address", 0, 4, "%X", 16, "CHR Register 0", "CHR Register 1", "CHR Register 2", "CHR Register 3", "CHR Register 4", "CHR Register 5", "CHR Register 6", "CHR Register 7", "PRG Register 0", "PRG Register 1", "PRG Register 2", "PRG Register 3", "Mirroring", "IRQ Control", "IRQ Counter Low", "IRQ Counter High")
 };
 
-static c_bitfield_data* tblA000Bitfields [] =
+static CBitfieldData* tblA000Bitfields [] =
 {
-   new c_bitfield_data("Data", 0, 8, "%02X", 0)
+   new CBitfieldData("Data", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tblC000Bitfields [] =
+static CBitfieldData* tblC000Bitfields [] =
 {
-   new c_bitfield_data("Expansion Sound Address", 0, 4, "%X", 16, "Channel 0 Frequency Low", "Channel 0 Frequency High", "Channel 1 Frequency Low", "Channel 1 Frequency High", "Channel 2 Frequency Low", "Channel 2 Frequency High", "Channel Disables", "Channel 0 Volume", "Channel 1 Volume", "Channel 2 Volume", "", "", "", "", "", "")
+   new CBitfieldData("Expansion Sound Address", 0, 4, "%X", 16, "Channel 0 Frequency Low", "Channel 0 Frequency High", "Channel 1 Frequency Low", "Channel 1 Frequency High", "Channel 2 Frequency Low", "Channel 2 Frequency High", "Channel Disables", "Channel 0 Volume", "Channel 1 Volume", "Channel 2 Volume", "", "", "", "", "", "")
 };
 
-static c_bitfield_data* tblE000Bitfields [] =
+static CBitfieldData* tblE000Bitfields [] =
 {
-   new c_bitfield_data("Expansion Sound Data", 0, 8, "%02X", 0)
+   new CBitfieldData("Expansion Sound Data", 0, 8, "%02X", 0)
 };
 
 static CRegisterData* tblRegisters [] =

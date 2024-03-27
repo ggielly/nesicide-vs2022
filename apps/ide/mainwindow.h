@@ -110,6 +110,7 @@ protected:
 	void showEvent(QShowEvent* event) override;
 	void keyPressEvent(QKeyEvent* event) override;
 
+
 	// Target UI builders/destroyers.
 	void createNesUi();
 	void destroyNesUi();
@@ -254,7 +255,9 @@ private:
 	void openC64Project(const QString& fileName, bool run = true);
 	void saveProject(const QString& fileName);
 	void saveEmulatorState(const QString& fileName);
+
 	bool closeProject();
+
 	void applyAddOns(QStringList addOns);
 	void explodeAddOn(int level, const QString& projectName, const QString& addonDirName, const QString& localDirName);
 	void explodeTemplate(int level, const QString& templateName, const QString& projectName, const QString& templateDirName,
@@ -283,11 +286,9 @@ signals:
 	void clean();
 
 public slots:
-	void openRecentFile();
+	void open_recent_file();
 	void saveRecentFiles(const QString& fileName);
-	void openRecentFile();
 	//auto updateRecentFiles() -> void;
-	void saveRecentFiles(const QString& fileName);
 	// void updateRecentFiles() const;
 	void on_actionExit_triggered();
 	void applicationActivationChanged(bool activated);

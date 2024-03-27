@@ -29,18 +29,9 @@ RegisterInspectorDockWidget::RegisterInspectorDockWidget(regDBFunc regDB, CBreak
 
 	ui->label->setText("");
 
-#if defined(Q_OS_MAC) || defined(Q_OS_MACX) || defined(Q_OS_MAC64)
-   ui->binaryView->setFont(QFont("Monaco", 11));
-   ui->bitfieldView->setFont(QFont("Monaco", 11));
-#endif
-#ifdef Q_OS_LINUX
-   ui->binaryView->setFont(QFont("Monospace", 10));
-   ui->bitfieldView->setFont(QFont("Monospace", 10));
-#endif
-#ifdef Q_OS_WIN
 	ui->binaryView->setFont(QFont("Monospace", 10));
 	ui->bitfieldView->setFont(QFont("Monospace", 10));
-#endif
+
 
 	// Connect inter-model signals so the models can update each other.
 	QObject::connect(bitfieldModel, SIGNAL(dataChanged(QModelIndex,QModelIndex)), binaryModel, SLOT(update()));
@@ -58,7 +49,7 @@ RegisterInspectorDockWidget::~RegisterInspectorDockWidget()
 	delete bitfieldDelegate;
 }
 
-void RegisterInspectorDockWidget::updateTargetMachine(QString target) const
+void RegisterInspectorDockWidget::updateTargetMachine(const QString& target) const
 {
 	if (target.compare("none"))
 	{
@@ -248,7 +239,7 @@ void RegisterInspectorDockWidget::updateMemory()
 	}
 }
 
-void RegisterInspectorDockWidget::binaryView_currentChanged(QModelIndex index, QModelIndex)
+void RegisterInspectorDockWidget::binaryView_currentChanged(const QModelIndex& index, QModelIndex)
 {
 	char buffer[128];
 	int cols = index.model()->columnCount();
@@ -265,7 +256,7 @@ void RegisterInspectorDockWidget::binaryView_currentChanged(QModelIndex index, Q
 	bitfieldModel->update();
 }
 
-void RegisterInspectorDockWidget::on_binaryView_clicked(QModelIndex index)
+void RegisterInspectorDockWidget::on_binaryView_clicked(const QModelIndex& index)
 {
 	char buffer[128];
 	int cols = index.model()->columnCount();
@@ -282,7 +273,7 @@ void RegisterInspectorDockWidget::on_binaryView_clicked(QModelIndex index)
 	bitfieldModel->update();
 }
 
-void RegisterInspectorDockWidget::on_binaryView_doubleClicked(QModelIndex index)
+void RegisterInspectorDockWidget::on_binaryView_doubleClicked(const QModelIndex& index)
 {
 	char buffer[128];
 	int cols = index.model()->columnCount();
@@ -299,7 +290,7 @@ void RegisterInspectorDockWidget::on_binaryView_doubleClicked(QModelIndex index)
 	bitfieldModel->update();
 }
 
-void RegisterInspectorDockWidget::on_binaryView_pressed(QModelIndex index)
+void RegisterInspectorDockWidget::on_binaryView_pressed(const QModelIndex& index)
 {
 	char buffer[128];
 	int cols = index.model()->columnCount();
@@ -316,7 +307,7 @@ void RegisterInspectorDockWidget::on_binaryView_pressed(QModelIndex index)
 	bitfieldModel->update();
 }
 
-void RegisterInspectorDockWidget::on_binaryView_activated(QModelIndex index)
+void RegisterInspectorDockWidget::on_binaryView_activated(const QModelIndex& index)
 {
 	char buffer[128];
 	int cols = index.model()->columnCount();
@@ -333,7 +324,7 @@ void RegisterInspectorDockWidget::on_binaryView_activated(QModelIndex index)
 	bitfieldModel->update();
 }
 
-void RegisterInspectorDockWidget::on_binaryView_entered(QModelIndex index)
+void RegisterInspectorDockWidget::on_binaryView_entered(const QModelIndex& index)
 {
 	char buffer[128];
 	int cols = index.model()->columnCount();
@@ -350,20 +341,20 @@ void RegisterInspectorDockWidget::on_binaryView_entered(QModelIndex index)
 	bitfieldModel->update();
 }
 
-void RegisterInspectorDockWidget::on_bitfieldView_clicked(QModelIndex index)
+void RegisterInspectorDockWidget::on_bitfieldView_clicked(const QModelIndex& index)
 {
 	if (m_regDB)
 	{
-		bitfieldDelegate->setBitfield(m_regDB->GetRegister(m_register)->GetBitfield(index.row()));
+		bitfieldDelegate->set_bitfield(m_regDB->GetRegister(m_register)->GetBitfield(index.row()));
 		binaryModel->update();
 	}
 }
 
-void RegisterInspectorDockWidget::on_bitfieldView_doubleClicked(QModelIndex index) const
+void RegisterInspectorDockWidget::on_bitfieldView_doubleClicked(const QModelIndex& index) const
 {
 	if (m_regDB)
 	{
-		bitfieldDelegate->setBitfield(m_regDB->GetRegister(m_register)->GetBitfield(index.row()));
+		bitfieldDelegate->set_bitfield(m_regDB->GetRegister(m_register)->GetBitfield(index.row()));
 		binaryModel->update();
 	}
 }

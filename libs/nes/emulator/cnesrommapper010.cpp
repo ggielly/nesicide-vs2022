@@ -18,34 +18,34 @@
 #include "cnesppu.h"
 
 // Mapper 010 Registers
-static c_bitfield_data* tblA000_AFFFBitfields [] =
+static CBitfieldData* tblA000_AFFFBitfields [] =
 {
-   new c_bitfield_data("PRG Bank", 0, 8, "%02X", 0)
+   new CBitfieldData("PRG Bank", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tblB000_BFFFBitfields [] =
+static CBitfieldData* tblB000_BFFFBitfields [] =
 {
-   new c_bitfield_data("CHR Bank 0A", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR Bank 0A", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tblC000_CFFFBitfields [] =
+static CBitfieldData* tblC000_CFFFBitfields [] =
 {
-   new c_bitfield_data("CHR Bank 0B", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR Bank 0B", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tblD000_DFFFBitfields [] =
+static CBitfieldData* tblD000_DFFFBitfields [] =
 {
-   new c_bitfield_data("CHR Bank 1A", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR Bank 1A", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tblE000_EFFFBitfields [] =
+static CBitfieldData* tblE000_EFFFBitfields [] =
 {
-   new c_bitfield_data("CHR Bank 1B", 0, 8, "%02X", 0)
+   new CBitfieldData("CHR Bank 1B", 0, 8, "%02X", 0)
 };
 
-static c_bitfield_data* tblF000_FFFFBitfields [] =
+static CBitfieldData* tblF000_FFFFBitfields [] =
 {
-   new c_bitfield_data("Mirroring", 0, 1, "%X", 2, "Vertical", "Horizontal")
+   new CBitfieldData("Mirroring", 0, 1, "%X", 2, "Vertical", "Horizontal")
 };
 
 static CRegisterData* tblRegisters [] =
