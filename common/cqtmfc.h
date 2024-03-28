@@ -1,8 +1,9 @@
 #ifndef CQTMFC_H
 #define CQTMFC_H
 
-#ifndef _CRectNesicide_H_
 #define _CRectNesicide_H_
+//#include <afxwin.h>
+
 
 #undef PASCAL
 #define PASCAL
@@ -3172,28 +3173,51 @@ public:
    }
 };
 
+
 class CSize : public tagSIZE
 {
 public:
-   CSize( ) { cx = 0; cy = 0; }
-   CSize(
-      int initCX,
-      int initCY
-   ) { cx = initCX; cy = initCY; }
-   CSize(
-      SIZE initSize
-   ) { cx = initSize.cx; cy = initSize.cy; }
-   CSize(
-      POINT initPt
-   ) { cx = initPt.x; cy = initPt.y; }
-   CSize(
-      DWORD dwSize
-   ) { cx = dwSize&0xFFFF; cy = (dwSize>>16); }
-   CSize(QSize qSize) { cx = qSize.width(); cy = qSize.height(); }
+	// Default constructor that initializes cx and cy to 0
+	CSize() { cx = 0; cy = 0; }
+
+	// Constructor with initial values for cx and cy
+	CSize(
+		int initCX,
+		int initCY
+	) {
+		cx = initCX; cy = initCY;
+	}
+
+	// Constructor from a SIZE structure
+	CSize(
+		SIZE initSize
+	) {
+		cx = initSize.cx; cy = initSize.cy;
+	}
+
+	// Constructor from a POINT structure (uses coordinates as dimensions)
+	CSize(
+		POINT initPt
+	) {
+		cx = initPt.x; cy = initPt.y;
+	}
+
+	// Constructor from a DWORD value (extracts width and height)
+	CSize(
+		DWORD dwSize
+	) {
+		cx = dwSize & 0xFFFF; cy = (dwSize >> 16);
+	}
+
+	// Constructor from a QSize object (Qt integration)
+	CSize(QSize qSize) { cx = qSize.width(); cy = qSize.height(); }
+
+	// Member variables for width and height
+	int cx;
+	int cy;
 };
 
-//
-class CRectNesicide : public CRectNesicide
+class CRectNesicide : public CRect
 {
 public:
 	// Constructors
@@ -3245,111 +3269,6 @@ private:
 	int right; // The right coordinate of the rectangle
 	int bottom; // The bottom coordinate of the rectangle
 };
-
-#endif // _CRectNesicide_H_
-
-/*
-class CRectNesicide : public tagRECT
-{
-public:
-   CRectNesicide( );
-   CRectNesicide(
-      int l,
-      int t,
-      int r,
-      int b
-   );
-   CRectNesicide(
-      const RECT& srcRect
-   );
-   CRectNesicide(
-      LPCRECT lpSrcRect
-   );
-   CRectNesicide(
-      POINT point,
-      SIZE size
-   );
-   CRectNesicide(
-      POINT topLeft,
-      POINT bottomRight
-   );
-   int Width() const { return (right-left); }
-   int Height() const { return (bottom-top); }
-   CSize Size() const { return CSize((right-left),(bottom-top)); }
-   void MoveToX(
-      int x
-   );
-   void MoveToY(
-      int y
-   );
-   void MoveToXY(
-      int x,
-      int y
-   );
-   void MoveToXY(
-      POINT point
-   );
-   void DeflateRect(
-      int x,
-      int y
-   );
-   void DeflateRect(
-      SIZE size
-   );
-   void DeflateRect(
-      LPCRECT lpRect
-   );
-   void DeflateRect(
-      int l,
-      int t,
-      int r,
-      int b
-   );
-   void InflateRect(
-      int x,
-      int y
-   );
-   void InflateRect(
-      SIZE size
-   );
-   void InflateRect(
-      LPCRECT lpRect
-   );
-   void InflateRect(
-      int l,
-      int t,
-      int r,
-      int b
-   );
-   void OffsetRect( 
-      int x, 
-      int y  
-   ); 
-   void OffsetRect( 
-      POINT point  
-   ); 
-   void OffsetRect( 
-      SIZE size  
-   );
-   BOOL PtInRect(
-      POINT point
-   ) const;
-   operator LPRECT() const
-   {
-      return (RECT*)this;
-   }
-   operator LPCRECT() const
-   {
-      return (const RECT*)this;
-   }
-   operator QRect() const
-   {
-      return QRect(left,top,(right-left),(bottom-top));
-   }
-};*/
-
-
-
 
 #define AFX_DATA
 static AFX_DATA const CRectNesicide rectDefault;
@@ -4018,22 +3937,24 @@ public:
       LPCTSTR lpszClassName, 
       LPCTSTR lpszWindowName, 
       DWORD dwStyle = WS_OVERLAPPEDWINDOW, 
-      const RECT& rectnescide = rectDefault, // // // 
+      const RECT& rect = rectDefault, // // //     
       CWnd* pParentWnd = NULL, 
       LPCTSTR lpszMenuName = NULL, 
       DWORD dwExStyle = 0, 
       CCreateContext* pContext = NULL  
    );
-   virtual BOOL CreateEx(
-      DWORD dwExStyle,
-      LPCTSTR lpszClassName,
-      LPCTSTR lpszWindowName,
-      DWORD dwStyle,
-      const RECT& rect,
-      CWnd* pParentWnd,
-      UINT nID,
-      LPVOID lpParam = NULL
+
+   BOOL CreateEx(
+	   DWORD dwExStyle,
+	   LPCTSTR lpszClassName,
+	   LPCTSTR lpszWindowName,
+	   DWORD dwStyle,
+	   const RECT& rect = rectDefault, // Use conversion if available
+	   CWnd* pParentWnd,
+	   UINT nID,
+	   LPVOID lpParam = NULL
    );
+
    void UpdateDialogControls(
       CCmdTarget* pTarget,
       BOOL bDisableIfNoHndler

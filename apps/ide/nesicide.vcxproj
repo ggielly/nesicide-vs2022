@@ -37,7 +37,7 @@
     <IntermediateDirectory>debug\</IntermediateDirectory>
     <PrimaryOutput>nesicide</PrimaryOutput>
     <SpectreMitigation>false</SpectreMitigation>
-    <UseOfMfc>Static</UseOfMfc>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <Import Project="$(QtMsBuild)\qt_defaults.props" Condition="Exists('$(QtMsBuild)\qt_defaults.props')" />
