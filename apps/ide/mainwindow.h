@@ -336,7 +336,7 @@ public slots:
 	void on_actionProject_Properties_triggered();
 	void on_actionSave_Project_As_triggered();
 	void on_actionSave_Project_triggered();
-	void openFile(const QString& file);
+	void openFile(const QString file);
 
 	// Common/reused UI elements.
 	void actionBreakpoint_Inspector_triggered();

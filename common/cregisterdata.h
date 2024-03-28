@@ -203,7 +203,7 @@ public:
 	}
 
 	void Set(const uint32_t data) const { m_set(m_addr, data); }
-	uint32_t get() const { return m_get(m_addr); }
+	uint32_t Get() const { return m_get(m_addr); }
 
 protected:
 	int m_addr;
