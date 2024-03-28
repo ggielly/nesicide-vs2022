@@ -3189,7 +3189,67 @@ public:
    CSize(QSize qSize) { cx = qSize.width(); cy = qSize.height(); }
 };
 
-// CRectNesicide::CRectNesicide() {} ?
+//
+#ifndef _CRectNesicide_H_
+#define _CRectNesicide_H_
+//#include <afxwin.h> // for CRect
+
+class CRectNesicide : public CRect
+{
+public:
+	// Constructors
+	CRectNesicide(); // Default constructor
+	CRectNesicide(int l, int t, int r, int b); // Constructor with left, top, right, and bottom coordinates
+	CRectNesicide(const RECT& srcRect); // Constructor from a RECT structure
+	CRectNesicide(LPCRECT lpSrcRect); // Constructor from a pointer to a RECT structure
+	CRectNesicide(POINT point, SIZE size); // Constructor from a point and a size
+	CRectNesicide(POINT topLeft, POINT bottomRight); // Constructor from two points
+
+	// Accessors
+	int Width() const { return (right - left); } // Gets the width of the rectangle
+	int Height() const { return (bottom - top); } // Gets the height of the rectangle
+	CSize Size() const { return CSize((right - left), (bottom - top)); } // Gets the size of the rectangle as a CSize object
+
+	// Movement methods
+	void MoveToX(int x); // Moves the rectangle to the specified x-coordinate
+	void MoveToY(int y); // Moves the rectangle to the specified y-coordinate
+	void MoveToXY(int x, int y); // Moves the rectangle to the specified x- and y-coordinates
+	void MoveToXY(POINT point); // Moves the rectangle to the specified point
+
+	// Resizing methods
+	void DeflateRect(int x, int y); // Deflates the rectangle by the specified x- and y-offsets
+	void DeflateRect(SIZE size); // Deflates the rectangle by the specified size
+	void DeflateRect(LPCRECT lpRect); // Deflates the rectangle by the specified RECT structure
+	void DeflateRect(int l, int t, int r, int b); // Deflates the rectangle by the specified left, top, right, and bottom coordinates
+	void InflateRect(int x, int y); // Inflates the rectangle by the specified x- and y-offsets
+	void InflateRect(SIZE size); // Inflates the rectangle by the specified size
+	void InflateRect(LPCRECT lpRect); // Inflates the rectangle by the specified RECT structure
+	void InflateRect(int l, int t, int r, int b); // Inflates the rectangle by the specified left, top, right, and bottom coordinates
+
+	// Offset methods
+	void OffsetRect(int x, int y); // Offsets the rectangle by the specified x- and y-offsets
+	void OffsetRect(POINT point); // Offsets the rectangle by the specified point
+	void OffsetRect(SIZE size); // Offsets the rectangle by the specified size
+
+	// Containment test
+	BOOL PtInRect(POINT point) const; // Tests whether the specified point is inside the rectangle
+
+	// Conversions
+	operator LPRECT() const { return (RECT*)this; } // Converts the CRectNesicide object to a pointer to a RECT structure
+	operator LPCRECT() const { return (const RECT*)this; } // Converts the CRectNesicide object to a pointer to a const RECT structure
+	operator QRect() const { return QRect(left, top, (right - left), (bottom - top)); } // Converts the CRectNesicide object to a QRect object
+
+private:
+	// Fields
+	int left; // The left coordinate of the rectangle
+	int top; // The top coordinate of the rectangle
+	int right; // The right coordinate of the rectangle
+	int bottom; // The bottom coordinate of the rectangle
+};
+
+#endif // _CRectNesicide_H_
+
+/*
 class CRectNesicide : public tagRECT
 {
 public:
@@ -3287,7 +3347,10 @@ public:
    {
       return QRect(left,top,(right-left),(bottom-top));
    }
-};
+};*/
+
+
+
 
 #define AFX_DATA
 static AFX_DATA const CRectNesicide rectDefault;
