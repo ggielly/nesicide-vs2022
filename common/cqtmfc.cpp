@@ -2530,7 +2530,7 @@ BOOL CStdioFile::ReadString(
    return rString.GetLength()?TRUE:FALSE;
 }
 
-CRect::CRect( )
+CRectNesicide::CRectNesicide( )
 {
    top = 0;
    bottom = 0;
@@ -2538,7 +2538,7 @@ CRect::CRect( )
    right = 0;
 }
 
-CRect::CRect(
+CRectNesicide::CRectNesicide(
    int l,
    int t,
    int r,
@@ -2551,7 +2551,7 @@ CRect::CRect(
    right = r;
 }
 
-CRect::CRect(
+CRectNesicide::CRectNesicide(
    const RECT& srcRect
 )
 {
@@ -2561,7 +2561,7 @@ CRect::CRect(
    right = srcRect.right;
 }
 
-CRect::CRect(
+CRectNesicide::CRectNesicide(
    LPCRECT lpSrcRect
 )
 {
@@ -2571,7 +2571,7 @@ CRect::CRect(
    right = lpSrcRect->right;
 }
 
-CRect::CRect(
+CRectNesicide::CRectNesicide(
    POINT point,
    SIZE size
 )
@@ -2582,7 +2582,7 @@ CRect::CRect(
    right = point.x+size.cx;
 }
 
-CRect::CRect(
+CRectNesicide::CRectNesicide(
    POINT topLeft,
    POINT bottomRight
 )
@@ -2593,7 +2593,7 @@ CRect::CRect(
    right = bottomRight.x;
 }
 
-void CRect::MoveToX(
+void CRectNesicide::MoveToX(
    int x
 )
 {
@@ -2601,7 +2601,7 @@ void CRect::MoveToX(
    left = x;
 }
 
-void CRect::MoveToY(
+void CRectNesicide::MoveToY(
    int y
 )
 {
@@ -2609,7 +2609,7 @@ void CRect::MoveToY(
    top = y;
 }
 
-void CRect::MoveToXY(
+void CRectNesicide::MoveToXY(
    int x,
    int y
 )
@@ -2620,7 +2620,7 @@ void CRect::MoveToXY(
    top = y;
 }
 
-void CRect::MoveToXY(
+void CRectNesicide::MoveToXY(
    POINT point
 )
 {
@@ -2630,7 +2630,7 @@ void CRect::MoveToXY(
    top = point.y;
 }
 
-void CRect::DeflateRect(
+void CRectNesicide::DeflateRect(
    int x,
    int y
 )
@@ -2641,7 +2641,7 @@ void CRect::DeflateRect(
    bottom -= y;
 }
 
-void CRect::DeflateRect(
+void CRectNesicide::DeflateRect(
    SIZE size
 )
 {
@@ -2651,7 +2651,7 @@ void CRect::DeflateRect(
    bottom -= size.cy;
 }
 
-void CRect::DeflateRect(
+void CRectNesicide::DeflateRect(
    LPCRECT lpRect
 )
 {
@@ -2661,7 +2661,7 @@ void CRect::DeflateRect(
    bottom -= lpRect->bottom;
 }
 
-void CRect::DeflateRect(
+void CRectNesicide::DeflateRect(
    int l,
    int t,
    int r,
@@ -2674,7 +2674,7 @@ void CRect::DeflateRect(
    bottom -= b;
 }
 
-void CRect::InflateRect(
+void CRectNesicide::InflateRect(
    int x,
    int y
 )
@@ -2685,7 +2685,7 @@ void CRect::InflateRect(
    bottom += y;
 }
 
-void CRect::InflateRect(
+void CRectNesicide::InflateRect(
    SIZE size
 )
 {
@@ -2695,7 +2695,7 @@ void CRect::InflateRect(
    bottom += size.cy;
 }
 
-void CRect::InflateRect(
+void CRectNesicide::InflateRect(
    LPCRECT lpRect
 )
 {
@@ -2705,7 +2705,7 @@ void CRect::InflateRect(
    bottom += lpRect->bottom;
 }
 
-void CRect::InflateRect(
+void CRectNesicide::InflateRect(
    int l,
    int t,
    int r,
@@ -2718,7 +2718,7 @@ void CRect::InflateRect(
    bottom += b;
 }
 
-void CRect::OffsetRect(
+void CRectNesicide::OffsetRect(
    int x,
    int y
 )
@@ -2729,7 +2729,7 @@ void CRect::OffsetRect(
    bottom += y;
 }
 
-void CRect::OffsetRect(
+void CRectNesicide::OffsetRect(
    POINT point
 )
 {
@@ -2739,7 +2739,7 @@ void CRect::OffsetRect(
    bottom += point.y;
 }
 
-void CRect::OffsetRect(
+void CRectNesicide::OffsetRect(
    SIZE size
 )
 {
@@ -2749,7 +2749,7 @@ void CRect::OffsetRect(
    bottom += size.cy;
 }
 
-BOOL CRect::PtInRect(
+BOOL CRectNesicide::PtInRect(
    POINT point
 ) const
 {
@@ -3769,7 +3769,7 @@ CComboBox::~CComboBox()
 
 void CComboBox::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    _qt->installEventFilter(dynamic_cast<CComboBox*>(this));
@@ -4026,7 +4026,7 @@ CListBox::~CListBox()
 
 void CListBox::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    _qt->installEventFilter(dynamic_cast<CListBox*>(this));
@@ -4131,7 +4131,7 @@ CCheckListBox::~CCheckListBox()
 
 void CCheckListBox::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    _qt->installEventFilter(dynamic_cast<CCheckListBox*>(this));
@@ -4211,7 +4211,7 @@ CListCtrl::~CListCtrl()
 
 void CListCtrl::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
 //   _qt->installEventFilter(dynamic_cast<CListCtrl*>(this));
@@ -5576,7 +5576,7 @@ CTreeCtrl::~CTreeCtrl()
 
 void CTreeCtrl::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    _qt->installEventFilter(dynamic_cast<CTreeCtrl*>(this));
@@ -5881,7 +5881,7 @@ CScrollBar::~CScrollBar()
 
 void CScrollBar::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    _qt->installEventFilter(dynamic_cast<CScrollBar*>(this));
@@ -8156,15 +8156,15 @@ void CWnd::SetFont(
 
 void CWnd::MoveWindow(int x, int y, int cx, int cy, BOOL bRepaint)
 {
-   MoveWindow(CRect(CPoint(x,y),CSize(cx,cy)),bRepaint);
+   MoveWindow(CRectNesicide(CPoint(x,y),CSize(cx,cy)),bRepaint);
 }
 
 void CWnd::MoveWindow(LPCRECT lpRect, BOOL bRepaint)
 {
-   CRect rectOrig = *lpRect;
+   CRectNesicide rectOrig = *lpRect;
    if ( _dwStyle&WS_CHILD )
    {
-      CRect rectParent;
+      CRectNesicide rectParent;
       GetParent()->GetClientRect(&rectParent);
       rectOrig.OffsetRect(rectParent.left,rectParent.top);
       if ( rectOrig.Width() < 0 ) rectOrig.right = rectOrig.left;
@@ -9324,7 +9324,7 @@ bool CView::eventFilter(QObject *object, QEvent *event)
 
 void CView::resizeEvent(QResizeEvent *event)
 {
-   CRect rect(0,0,event->size().width(),event->size().height());
+   CRectNesicide rect(0,0,event->size().width(),event->size().height());
    rect.InflateRect(0,0,2*GetSystemMetrics(SM_CXEDGE),2*GetSystemMetrics(SM_CYEDGE));
 //   qDebug("cv size %dx%d",event->size().width(),event->size().height());
    CalcWindowRect(&rect);
@@ -9564,7 +9564,7 @@ END_MESSAGE_MAP()
 
 void CReBarCtrl::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    _qt->installEventFilter(dynamic_cast<CReBarCtrl*>(this));
@@ -9607,7 +9607,7 @@ BOOL CReBarCtrl::Create(
 
    _qtd->setMouseTracking(true);
    _qtd->setMovable(false);
-   CRect clientRect;
+   CRectNesicide clientRect;
    pParentWnd->GetClientRect(&clientRect);
    _qtd->setGeometry(clientRect.left,clientRect.top,(clientRect.right-clientRect.left),(clientRect.bottom-clientRect.top));
 
@@ -9685,7 +9685,7 @@ BOOL CReBar::Create(
    m_hWnd = (HWND)this;
    _id = nID;
 
-   CRect rect;
+   CRectNesicide rect;
    pParentWnd->GetClientRect(&rect);
    m_pReBarCtrl->Create(dwStyle,rect,this,nID);
    SetParent(pParentWnd);
@@ -9782,14 +9782,14 @@ BOOL CToolBar::Create(
    UINT nID
 )
 {
-   return CreateEx(pParentWnd,TBSTYLE_FLAT,dwStyle,CRect(0,0,0,0),nID);
+   return CreateEx(pParentWnd,TBSTYLE_FLAT,dwStyle,CRectNesicide(0,0,0,0),nID);
 }
 
 BOOL CToolBar::CreateEx(
    CWnd* pParentWnd,
    DWORD dwCtrlStyle,
    DWORD dwStyle,
-   CRect rcBorders,
+   CRectNesicide rcBorders,
    UINT nID
 )
 {
@@ -9984,7 +9984,7 @@ BOOL CStatusBar::SetIndicators(
    for ( pane = 0; pane < nIDCount; pane++ )
    {
       CStatic* newPane = new CStatic;
-      newPane->Create(qtMfcStringResource(lpIDArray[pane]),WS_VISIBLE,CRect(0,0,0,0),NULL,lpIDArray[pane]);
+      newPane->Create(qtMfcStringResource(lpIDArray[pane]),WS_VISIBLE,CRectNesicide(0,0,0,0),NULL,lpIDArray[pane]);
       _panes.insert(pane,newPane);
 
       if ( lpIDArray[pane] != ID_SEPARATOR )
@@ -10117,7 +10117,7 @@ BOOL CDialogBar::Create(
       _qt->setFixedSize(_mfcd->rect().width(),_mfcd->rect().height());
    }
    
-   CRect rect;
+   CRectNesicide rect;
     GetWindowRect(&rect);
    m_sizeDefault = rect.Size();//CSize(_mfcd->rect().size());    // set fixed size
    
@@ -12459,7 +12459,7 @@ CTabCtrl::~CTabCtrl()
 
 void CTabCtrl::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    _qt->installEventFilter(dynamic_cast<CTabCtrl*>(this));
@@ -12665,7 +12665,7 @@ CEdit::~CEdit()
 
 void CEdit::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    setMfcBuddy(widget->mfcBuddy());
@@ -13251,7 +13251,7 @@ CButton::~CButton()
 
 void CButton::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    CString text;
    widget->GetWindowText(text);
@@ -13811,7 +13811,7 @@ CSpinButtonCtrl::~CSpinButtonCtrl()
 
 void CSpinButtonCtrl::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    _qt->installEventFilter(dynamic_cast<CSpinButtonCtrl*>(this));
@@ -14323,7 +14323,7 @@ void CSliderCtrl::valueChanged(int value)
 
 void CSliderCtrl::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    _qt->installEventFilter(dynamic_cast<CSliderCtrl*>(this));
@@ -14506,7 +14506,7 @@ CProgressCtrl::~CProgressCtrl()
 
 void CProgressCtrl::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    Create(widget->GetStyle(),rect,widget->GetParent(),nID);
    _qt->installEventFilter(dynamic_cast<CProgressCtrl*>(this));
@@ -14623,7 +14623,7 @@ CStatic::~CStatic()
 
 void CStatic::subclassWidget(int nID,CWnd* widget)
 {
-   CRect rect;
+   CRectNesicide rect;
    widget->GetWindowRect(&rect);
    CString text;
    widget->GetWindowText(text);

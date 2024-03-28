@@ -1,6 +1,9 @@
 #ifndef CQTMFC_H
 #define CQTMFC_H
 
+#ifndef _CRectNesicide_H_
+#define _CRectNesicide_H_
+
 #undef PASCAL
 #define PASCAL
 
@@ -3190,11 +3193,7 @@ public:
 };
 
 //
-#ifndef _CRectNesicide_H_
-#define _CRectNesicide_H_
-//#include <afxwin.h> // for CRect
-
-class CRectNesicide : public CRect
+class CRectNesicide : public CRectNesicide
 {
 public:
 	// Constructors
@@ -4019,7 +4018,7 @@ public:
       LPCTSTR lpszClassName, 
       LPCTSTR lpszWindowName, 
       DWORD dwStyle = WS_OVERLAPPEDWINDOW, 
-      const RECT& rect = rectDefault, 
+      const RECT& rectnescide = rectDefault, // // // 
       CWnd* pParentWnd = NULL, 
       LPCTSTR lpszMenuName = NULL, 
       DWORD dwExStyle = 0, 
@@ -4352,7 +4351,7 @@ public:
       LPCTSTR lpszClassName, 
       LPCTSTR lpszWindowName, 
       DWORD dwStyle = WS_OVERLAPPEDWINDOW, 
-      const RECT& rect = rectDefault, 
+      const RECT& rectnesicide = rectDefault, 
       CWnd* pParentWnd = NULL, 
       LPCTSTR lpszMenuName = NULL, 
       DWORD dwExStyle = 0, 
