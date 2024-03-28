@@ -3189,27 +3189,28 @@ public:
    CSize(QSize qSize) { cx = qSize.width(); cy = qSize.height(); }
 };
 
-class CRect : public tagRECT
+// CRectNesicide::CRectNesicide() {} ?
+class CRectNesicide : public tagRECT
 {
 public:
-   CRect( );
-   CRect(
+   CRectNesicide( );
+   CRectNesicide(
       int l,
       int t,
       int r,
       int b
    );
-   CRect(
+   CRectNesicide(
       const RECT& srcRect
    );
-   CRect(
+   CRectNesicide(
       LPCRECT lpSrcRect
    );
-   CRect(
+   CRectNesicide(
       POINT point,
       SIZE size
    );
-   CRect(
+   CRectNesicide(
       POINT topLeft,
       POINT bottomRight
    );
@@ -3289,7 +3290,7 @@ public:
 };
 
 #define AFX_DATA
-static AFX_DATA const CRect rectDefault;
+static AFX_DATA const CRectNesicide rectDefault;
 
 #define FWS_ADDTOTITLE 0x1
 
@@ -4337,7 +4338,7 @@ protected:
    QWidget* realCentralWidget;
    CDocument* m_pDocument;
    BOOL m_bInRecalcLayout;
-   CRect m_rectBorder;
+   CRectNesicide m_rectBorder;
    CString m_strTitle;
    BOOL m_bAutoMenuEnable;
    
@@ -6177,7 +6178,7 @@ public:
       CWnd* pParentWnd,
       DWORD dwCtrlStyle = TBSTYLE_FLAT,
       DWORD dwStyle = WS_CHILD | WS_VISIBLE | CBRS_ALIGN_TOP,
-      CRect rcBorders = CRect(
+      CRectNesicide rcBorders = CRectNesicide(
       0,
       0,
       0,
